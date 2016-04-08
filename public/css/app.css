@@ -3,7 +3,7 @@
 /* Padding below the footer and lighter body text */
 body {
   padding-top: 50px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   color: #5a5a5a;
 }
 
@@ -163,8 +163,22 @@ thead {
 }
 
 .title {
-	color: #fff;
+	color: #0077FA;
 	background-color: #FF4E00;
 	padding: 7px 0 5px 10px;
-	font-weight: bold;
+	/*font-weight: bold;*/
+	text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+}
+
+.text-orange {
+	color: #FF4E00;
+}
+
+
+.thumbnail {
+	border-color: #FF4E00;
 }

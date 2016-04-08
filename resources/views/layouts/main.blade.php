@@ -22,7 +22,7 @@
 
             @yield('content')
 
-            <hr>
+            <hr style="border-color:#FF4E00" />
 
             @include('layouts.footer')
 

@@ -7,7 +7,7 @@
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img class="first-slide" src="/images/lugualami.jpg" alt="First slide">
+      <img class="first-slide" src="/images/bumi.jpg" alt="First slide">
       <div class="container">
         <div class="carousel-caption">
           <!-- <h1>Example headline.</h1>
