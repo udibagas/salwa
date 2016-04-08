@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('home.index');
 });
+
+
+Route::get('/video/show', function () {
+    return view('video.show');
+});

@@ -5,7 +5,7 @@
 		<div class="thumbnail">
 			<img src="/images/langitbumi.jpg" style="width:100%" alt="">
 			<div class="caption">
-				<h4><a href="#">Hakikat Penciptaan Langit dan Bumi</a></h4>
+				<h4><a href="/video/show">Hakikat Penciptaan Langit dan Bumi</a></h4>
 				<b>Ustadz Abu yahya Badrusalam, Lc</b><br />
 				<em>Selasa, 28 Februari 2016</em>
 			</div>
