@@ -12,12 +12,15 @@
 
 
 <h4 class="title">SALWA PROMO</h4>
-<p> <img src="/images/annajm.jpg" alt="" class="img img-responsive" style="border:1px solid #FF4E00;" /> </p>
-<p> <img src="/images/tokobuku.jpg" alt="" class="img img-responsive" style="border:1px solid #FF4E00;" /> </p>
-<p> <img src="/images/lugualami.jpg" alt="" class="img img-responsive" style="border:1px solid #FF4E00;" /> </p>
+
+<p><a href="#"><img src="/images/annajm.jpg" alt="" class="img img-responsive img-thumbnail" /></a></p>
+
+<p><a href="#"><img src="/images/tokobuku.jpg" alt="" class="img img-responsive img-thumbnail" /></a></p>
+
+<p><a href="#"><img src="/images/lugualami.jpg" alt="" class="img img-responsive img-thumbnail" /></a></p>
 
 <h4 class="title">DOA HARI INI</h4>
-<h3 class="text-success text-right">
+<h3 class="text-orange text-right" style="line-height:40px;">
 	اللَّهُمَّ إِنَّكَ عُفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي
 </h3>
 <br />
@@ -26,7 +29,7 @@
 </blockquote>
 
 <h4 class="title">HADITH HARI INI</h4>
-<h3 class="text-success text-right">
+<h3 class="text-orange text-right" style="line-height:40px;">
 	- إِذَا كَانَ جُنْحُ اللَّيْلِ -أَوْ أَمْسَيْتُمْ- فَكُفُّوْا صِبْيَانَكُمْ؛ فَإِنَّ الشَّيَاطِيْنَ تَنْتَشِرُ حِيْنَئِذٍ، فَإِذَا ذَهَبَ سَاعَةٌ مِنَ اللَّيْلِ فَخَلُّوْهُمْ، وَأَغْلِقُوا اْلأَبْوَابَ وَاذْكُرُوا اسْمَ اللهِ؛ فَإِنَّ الشَّيْطَانَ لاَ يَفْتَحُ بَابًا مُغْلَقًا، وَأَوْكُوْا قِرَبَكُمْ وَاذْكُرُوا اسْمَ اللهِ، وَخَمِّرُوْا آنِيَتَكُمْ وَاذْكُرُوا اسْمَ اللهِ، وَلَوْ أَنْ تَعْرُضُوْا عَلَيْهَا شَيْئًا، وَأَطْفِئُوْا مَصَابِيْحَكُمْ
 </h3>
 <br />
@@ -36,4 +39,4 @@
 </blockquote>
 
 <h4 class="title">SALWA IMAGE</h4>
-<img src="/images/image1.jpg" alt="" class="img img-responsive" />
+<a href="#"><img src="/images/image1.jpg" alt="" class="img img-responsive img-thumbnail" /></a>

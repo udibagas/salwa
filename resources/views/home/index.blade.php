@@ -14,6 +14,7 @@
 				@include('home.forum')
 			</div>
 		</div>
+		@include('home.kitab')
 		@include('home.peduli')
 		@include('home.market')
 	</div>

@@ -3,7 +3,7 @@
 	@for ($i=0;$i<=2;$i++)
 	<div class="col-md-4">
 		<div class="thumbnail">
-			<img src="/images/rumah.jpg" style="width:100%" alt="">
+			<a href="#"><img src="/images/rumah.jpg" style="width:100%" alt=""></a>
 			<div class="caption">
 				<h4><a href="#">Hukum Kredit Perumahan</a></h4>
 				<b>Ustadz Abu yahya Badrusalam, Lc</b><br />
