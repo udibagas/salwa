@@ -5,7 +5,7 @@
 <h4 class="title">SALWA INFO</h4>
 @for ($i=0;$i<=2;$i++)
 <p>
-	<a href="#"><h4 class="media-heading">Pendaftaran Santri Baru Takhassus 2016</h4></a>
+	<a href="/info/show"><h4 class="media-heading">Pendaftaran Santri Baru Takhassus 2016</h4></a>
 	<em>Selasa, 12 April 2016 16:45</em>
 </p>
 @endfor
