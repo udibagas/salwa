@@ -10,11 +10,10 @@
 				@for ($i=0;$i<=17;$i++)
 				<div class="col-md-4">
 					<div class="thumbnail">
-						<a href="#"><img src="/images/langitbumi.jpg" style="width:100%" alt=""></a>
+						<a href="#"><img src="/images/yayasan.jpg" style="width:100%" alt=""></a>
 						<div class="caption">
-							<h4><a href="/peduli/show">Hakikat Penciptaan Langit dan Bumi</a></h4>
-							<b>Ustadz Abu yahya Badrusalam, Lc</b><br />
-							<em>Selasa, 28 Februari 2016</em>
+							<h4><a href="#">Update Pembangunan Pusat Dakwah</a></h4>
+							<em>Selasa, 20 Oktober 2015 18:17</em>
 						</div>
 					</div>
 				</div>

@@ -6,7 +6,7 @@
 <div class="row">
 	<div class="col-md-8">
 
-		<img src="/images/langitbumi.jpg" style="width:100%;margin-bottom:30px;" alt="" />
+		<img src="/images/yayasan.jpg" style="width:100%;margin-bottom:30px;" alt="" />
 
 
 		<p>
@@ -31,11 +31,10 @@
 			@for ($i=0;$i<=2;$i++)
 			<div class="col-md-4">
 				<div class="thumbnail">
-					<img src="/images/langitbumi.jpg" style="width:100%" alt="">
+					<a href="#"><img src="/images/yayasan.jpg" style="width:100%" alt=""></a>
 					<div class="caption">
-						<h4><a href="/video/show">Hakikat Penciptaan Langit dan Bumi</a></h4>
-						<b>Ustadz Abu yahya Badrusalam, Lc</b><br />
-						<em>Selasa, 28 Februari 2016</em>
+						<h4><a href="#">Update Pembangunan Pusat Dakwah</a></h4>
+						<em>Selasa, 20 Oktober 2015 18:17</em>
 					</div>
 				</div>
 			</div>
