@@ -16,13 +16,14 @@
     <body>
 
         @include('layouts.nav')
-        @include('layouts.slider')
+
+		@yield('slider')
 
         <div class="container marketing">
 
             @yield('content')
 
-            <hr style="border-color:#FF4E00" />
+            <hr style="border-style:dashed;" />
 
             @include('layouts.footer')
 

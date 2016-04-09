@@ -1,10 +1,9 @@
 <div class="row">
 
 	<div class="col-md-6">
+		<h5 class="title">TENTANG SALWA</h5>
 		<div class="media">
 			<div class="media-body">
-				<strong class="media-heading text-orange">TENTANG SALWA</strong>
-				<br /><br />
 				<p>
 					Salam Dakwah adalah situs dan aplikasi untuk Smartphone, seperti BlackBerry, Android, iPhone, dan Tablet yang memungkinkan Anda untuk mendapatkan tayangan video kajian, audio kajian, forum islami, jadwal kajian dan artikel, yang berdasarkan Al-Quran dan As-Sunnah sebagaimana pemahaman para sahabat Rosululloh Shallallahu Alaihi Wasallam. <a href="#">more...</a>
 				</p>
@@ -20,7 +19,7 @@
 
 	<div class="col-md-3">
 
-		<strong class="text-orange">STAY IN TOUCH WITH US</strong><br /><br />
+		<h5 class="title">STAY IN TOUCH WITH US</h5>
 
 		<a href="https://www.facebook.com/Salamdakwah-287022414764661/?ref=hl" target="_blank">
 			<span class="fa fa-facebook fa-3x text-blue" style="padding:10px;"></span>
@@ -38,7 +37,7 @@
 
 	<div class="col-md-3">
 
-		<strong class="text-orange">DOWNLOAD APP</strong><br /><br />
+		<h5 class="title">DOWNLOAD APP</h5>
 
 		<a href="https://play.google.com/store/apps/details?id=com.bhn.salamdakwah" target="_blank">
 			<span class="fa fa-android fa-3x text-blue" style="padding:10px;"></span>
@@ -51,7 +50,7 @@
 	</div>
 </div>
 
-<hr style="border-color:#FF4E00" />
+<hr style="border-style:dashed;" />
 
 <div class="text-center text-muted">
 	<small>&copy; {{date('Y')}} - SalamDakwah.Com</small>
