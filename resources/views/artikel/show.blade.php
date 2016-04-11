@@ -18,7 +18,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<h1>Hakikat Penciptaan Langit dan Bumi</h1><hr />
-		<b class="text-muted">Selasa, 20 April 2016 12:45 | Ustad Abu Yahya Badrusalam, Lc</b>
+		<b>Selasa, 20 April 2016 12:45 | Ustad Abu Yahya Badrusalam, Lc</b>
 		<hr>
 
 		<img src="/images/langitbumi.jpg" style="width:100%;margin-bottom:30px;" alt="" />

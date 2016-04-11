@@ -1,4 +1,5 @@
 <h4 class="title">VIDEO</h4>
+
 <div class="row">
 	@for ($i=0;$i<=2;$i++)
 	<div class="col-md-4">
@@ -13,3 +14,12 @@
 	</div>
 	@endfor
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#media').carousel({
+		pause: true,
+		interval: false,
+	});
+});
+</script>

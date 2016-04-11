@@ -18,7 +18,7 @@
 <h1>Hakikat Penciptaan Langit dan Bumi</h1><hr />
 <div class="row">
 	<div class="col-md-8">
-		<iframe width="748" height="360" src="https://www.youtube.com/embed/06HMM2CNSwA" frameborder="0" allowfullscreen></iframe>
+		<iframe width="100%" height="360" src="https://www.youtube.com/embed/06HMM2CNSwA" frameborder="0" allowfullscreen></iframe>
 
 		<hr>
 
@@ -30,7 +30,7 @@
 			<a href="#" class="btn btn-warning"><i class="fa fa-envelope"></i></a>
 			<a href="#" class="btn btn-warning"><i class="fa fa-whatsapp"></i></a>
 		</div>
-		
+
 		<hr>
 
 		<h4 class="title">VIDEO TERKAIT</h4>

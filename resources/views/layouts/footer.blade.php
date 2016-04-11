@@ -21,17 +21,11 @@
 
 		<h5 class="title">STAY IN TOUCH WITH US</h5>
 
-		<a href="https://www.facebook.com/Salamdakwah-287022414764661/?ref=hl" target="_blank">
-			<span class="fa fa-facebook fa-3x text-blue" style="padding:10px;"></span>
-		</a>
+		<a href="https://www.facebook.com/Salamdakwah-287022414764661/?ref=hl" target="_blank" class="fa fa-facebook-square fa-4x"> </a>
 
-		<a href="https://twitter.com/salamdakwah" target="_blank">
-			<span class="fa fa-twitter fa-3x text-blue" style="padding:10px;"></span>
-		</a>
+		<a href="https://twitter.com/salamdakwah" target="_blank" class="fa fa-twitter-square fa-4x"> </a>
 
-		<a href="https://www.youtube.com/user/salamdakwah" target="_blank">
-			<span class="fa fa-youtube fa-3x text-blue" style="padding:10px;"></span>
-		</a>
+		<a href="https://www.youtube.com/user/salamdakwah" target="_blank" class="fa fa-youtube-square fa-4x"> </a>
 
 	</div>
 
@@ -39,12 +33,10 @@
 
 		<h5 class="title">DOWNLOAD APP</h5>
 
-		<a href="https://play.google.com/store/apps/details?id=com.bhn.salamdakwah" target="_blank">
-			<span class="fa fa-android fa-3x text-blue" style="padding:10px;"></span>
-		</a>
+		<a href="https://play.google.com/store/apps/details?id=com.bhn.salamdakwah" target="_blank" class="fa fa-android fa-4x text-blue"> </a>
 
-		<a href="http://appworld.blackberry.com/webstore/content/135344/?lang=en&countrycode=ID" target="_blank">
-			<img src="/images/bb.png" alt="" />
+		<a href="http://appworld.blackberry.com/webstore/content/135344/?lang=en&countrycode=ID" target="_blank" class="btn btn-blue" style="margin-top:-25px;margin-left:10px;">
+			<img src="/images/bb.png" alt="" style="width:30px;" />
 		</a>
 
 	</div>

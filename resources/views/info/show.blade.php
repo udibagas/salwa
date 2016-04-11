@@ -35,7 +35,7 @@
 		</p>
 
 		<br />
-		<b>Selasa, 20 April 2016 12:45 | Ustad Abu Yahya Badrusalam, Lc</b>
+		<b>Selasa, 20 April 2016 12:45 | Redaksi Salamdakwah</b>
 
 		<hr>
 		Share:

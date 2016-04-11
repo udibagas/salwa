@@ -304,6 +304,10 @@ hr {
   z-index: 3;
 }
 
+a.fa:hover {
+	text-decoration: none;
+}
+
 /** The Spacing **/
 .btn-breadcrumb .btn {
   padding:6px 12px 6px 24px;
@@ -412,3 +416,58 @@ hr {
 .btn-breadcrumb .btn.btn-info:hover:not(:last-child):before {
   border-left: 10px solid #269abc;
 }
+
+/* carousel */
+.media-carousel1
+{
+  margin-bottom: 0;
+  padding: 0 40px 30px 40px;
+  margin-top: 30px;
+}
+/* Previous button  */
+.media-carousel1 .carousel-control.left
+{
+  left: -12px;
+  background-image: none;
+  background: none repeat scroll 0 0 #222222;
+  border: 4px solid #FFFFFF;
+  border-radius: 23px 23px 23px 23px;
+  height: 40px;
+  width : 40px;
+  margin-top: 30px
+}
+/* Next button  */
+.media-carousel1 .carousel-control.right
+{
+  right: -12px !important;
+  background-image: none;
+  background: none repeat scroll 0 0 #222222;
+  border: 4px solid #FFFFFF;
+  border-radius: 23px 23px 23px 23px;
+  height: 40px;
+  width : 40px;
+  margin-top: 30px
+}
+/* Changes the position of the indicators */
+.media-carousel1 .carousel-indicators
+{
+  right: 50%;
+  top: auto;
+  bottom: 0px;
+  margin-right: -19px;
+}
+/* Changes the colour of the indicators */
+.media-carousel1 .carousel-indicators li
+{
+  background: #c0c0c0;
+}
+.media-carousel1 .carousel-indicators .active
+{
+  background: #333333;
+}
+.media-carousel1 img
+{
+  width: 250px;
+  height: 100px
+}
+/* End carousel */
