@@ -1,5 +1,18 @@
 @extends('layouts.main')
 
+@section('breadcrumbs')
+
+	<div class="container">
+		<br />
+		<div class="btn-group btn-breadcrumb">
+			<a href="#" class="btn btn-info"><i class="fa fa-home"></i></a>
+			<a href="#" class="btn btn-info">TANYA USTADZ</a>
+			<a href="#" class="btn btn-info">Apa hukum menikahi wanita sekampung?</a>
+		</div>
+	</div>
+
+@stop
+
 @section('content')
 
 <h1>Apa hukum menikahi wanita sekampung?</h1><hr />
@@ -30,12 +43,23 @@
 			<b>Selasa, 20 April 2016 12:45 | Ustadz Abu Yasmin Al Kalisari</b>
 		</div>
 
+		<hr>
+		Share:
+		<div class="btn-group">
+			<a href="#" class="btn btn-warning"><i class="fa fa-facebook"></i></a>
+			<a href="#" class="btn btn-warning"><i class="fa fa-twitter"></i></a>
+			<a href="#" class="btn btn-warning"><i class="fa fa-google"></i></a>
+			<a href="#" class="btn btn-warning"><i class="fa fa-envelope"></i></a>
+			<a href="#" class="btn btn-warning"><i class="fa fa-whatsapp"></i></a>
+		</div>
+		<hr>
+
 		<h4 class="title">PERTANYAAN TERKAIT</h4>
 		@for ($i=0;$i<=3;$i++)
 		<a href="/tanya/show"><h4>Apa hukum menikahi wanita sekampung?</h4></a>
 		<b class="text-muted">Selasa, 20 April 2016 12:45 | Ikhwan</b>
 		@endfor
-		
+
 	</div>
 
 	<div class="col-md-4">

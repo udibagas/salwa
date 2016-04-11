@@ -17,6 +17,8 @@
 
         @include('layouts.nav')
 
+		@yield('breadcrumbs')
+
 		@yield('slider')
 
         <div class="container marketing">

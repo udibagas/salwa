@@ -1,52 +1,61 @@
 @extends('layouts.main')
 
-@section('content')
+@section('breadcrumbs')
 
-<h1>Hakikat Penciptaan Langit dan Bumi</h1><hr />
-<div class="row">
-	<div class="col-md-8">
-
-		<img src="/images/langitbumi.jpg" style="width:100%;margin-bottom:30px;" alt="" />
-
-
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p>
-
+	<div class="container">
 		<br />
-		<b>Selasa, 20 April 2016 12:45 | Ustad Abu Yahya Badrusalam, Lc</b>
-
-		<h4 class="title">INFO TERKAIT</h4>
-		<div class="row">
-			@for ($i=0;$i<=2;$i++)
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img src="/images/langitbumi.jpg" style="width:100%" alt="">
-					<div class="caption">
-						<h4><a href="/video/show">Hakikat Penciptaan Langit dan Bumi</a></h4>
-						<b>Ustadz Abu yahya Badrusalam, Lc</b><br />
-						<em>Selasa, 28 Februari 2016</em>
-					</div>
-				</div>
-			</div>
-			@endfor
+		<div class="btn-group btn-breadcrumb">
+			<a href="#" class="btn btn-info"><i class="fa fa-home"></i></a>
+			<a href="#" class="btn btn-info">KITAB & TERJEMAHAN</a>
+			<a href="#" class="btn btn-info">Sifat Shalat Nabi</a>
 		</div>
 	</div>
 
-	<div class="col-md-4">
-		@include('home.sidebar')
+@stop
+
+@section('content')
+
+	<h1 class="title">Sifat Shalat Nabi</h1>
+
+	<div class="row">
+		<div class="col-md-8">
+			<div class="media">
+				<div class="media-left">
+					<a href="#">
+						<img class="media-object" src="/images/bukushalat.jpg" alt="...">
+					</a>
+				</div>
+				<div class="media-body">
+					<h3 class="media-heading">Sifat Shalat Nabi</h3>
+					<b>Muhammad Nashiruddin Al Albani</b>
+					<br />
+					<br />
+
+					<p>
+						"Aku ketengahkan di dalam buku ini beberapa faidah tambahan atas kitab "Shifat Shalat", aku berikan isyarat kepadanya, dan hal ini aku anggap bagus untuk disebutkan. Selain itu, aku juga memberikan perhatian khusus untuk menjelaskan sebagian lafazh-lafazh yang diriwayatkan dalam sebagian kalimat-kalimat baru, atau pada sebagian dzikir-dzikir (yang ada)."
+					</p>
+
+				</div>
+
+				<hr>
+
+				Share:
+				<div class="btn-group">
+					<a href="#" class="btn btn-warning"><i class="fa fa-facebook"></i></a>
+					<a href="#" class="btn btn-warning"><i class="fa fa-twitter"></i></a>
+					<a href="#" class="btn btn-warning"><i class="fa fa-google"></i></a>
+					<a href="#" class="btn btn-warning"><i class="fa fa-envelope"></i></a>
+					<a href="#" class="btn btn-warning"><i class="fa fa-whatsapp"></i></a>
+				</div>
+				<a href="#" class="btn btn-orange"><span class="fa fa-download"></span> Download (3232x)</a>
+
+			</div>
+
+		</div>
+
+		<div class="col-md-4">
+			@include('home.sidebar')
+		</div>
 	</div>
-</div>
-
-
 
 @stop

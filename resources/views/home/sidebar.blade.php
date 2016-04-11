@@ -13,11 +13,11 @@
 
 <h4 class="title">SALWA PROMO</h4>
 
-<p><a href="#"><img src="/images/annajm.jpg" alt="" class="img img-responsive img-thumbnail" /></a></p>
+<p><a href="/promo/show"><img src="/images/annajm.jpg" alt="" class="img img-responsive img-thumbnail" /></a></p>
 
-<p><a href="#"><img src="/images/tokobuku.jpg" alt="" class="img img-responsive img-thumbnail" /></a></p>
+<p><a href="/promo/show"><img src="/images/tokobuku.jpg" alt="" class="img img-responsive img-thumbnail" /></a></p>
 
-<p><a href="#"><img src="/images/lugualami.jpg" alt="" class="img img-responsive img-thumbnail" /></a></p>
+<p><a href="/promo/show"><img src="/images/lugualami.jpg" alt="" class="img img-responsive img-thumbnail" /></a></p>
 
 <h4 class="title">DOA HARI INI</h4>
 <div class="alert alert-danger text-right">
@@ -38,4 +38,4 @@
 </div>
 
 <h4 class="title">SALWA IMAGE</h4>
-<a href="#"><img src="/images/image1.jpg" alt="" class="img img-responsive img-thumbnail" /></a>
+<a href="/image/show"><img src="/images/image1.jpg" alt="" class="img img-responsive img-thumbnail" /></a>

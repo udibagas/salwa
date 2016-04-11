@@ -1,11 +1,25 @@
 @extends('layouts.main')
 
+@section('breadcrumbs')
+
+	<div class="container">
+		<br />
+		<div class="btn-group btn-breadcrumb">
+			<a href="#" class="btn btn-info"><i class="fa fa-home"></i></a>
+			<a href="#" class="btn btn-info">FORUM</a>
+		</div>
+	</div>
+
+@stop
+
 @section('content')
 
 	<h1 class="title">FORUM</h1>
 
 	<div class="row">
 		<div class="col-md-8">
+			<a href="/forum/create" class="btn btn-orange"><i class="fa fa-comment"></i> Buat Thread Baru</a>
+			<hr>
 			<ul class="nav nav-tabs" role="tablist">
 				<li role="presentation" class="active"><a href="#tanyajawab" aria-controls="home" role="tab" data-toggle="tab">Tanya Jawab</a></li>
 				<li role="presentation"><a href="#informasi" aria-controls="informasi" role="tab" data-toggle="tab">Informasi</a></li>

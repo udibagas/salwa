@@ -133,12 +133,20 @@ Route::group(['prefix' => 'forum'], function() {
 	    return view('forum.show');
 	});
 
+	Route::get('create', function () {
+	    return view('forum.create');
+	});
+
 });
 
 Route::group(['prefix' => 'doa'], function() {
 
 	Route::get('index', function () {
 	    return view('doa.index');
+	});
+
+	Route::get('show', function () {
+	    return view('doa.show');
 	});
 
 });

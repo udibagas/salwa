@@ -1,5 +1,18 @@
 @extends('layouts.main')
 
+@section('breadcrumbs')
+
+	<div class="container">
+		<br />
+		<div class="btn-group btn-breadcrumb">
+			<a href="#" class="btn btn-info"><i class="fa fa-home"></i></a>
+			<a href="#" class="btn btn-info">SALWA PEDULI</a>
+			<a href="#" class="btn btn-info">Update Pembangunan Markas Dakwah</a>
+		</div>
+	</div>
+
+@stop
+
 @section('content')
 
 <h1>Update Pembangunan Markas Dakwah</h1><hr />
@@ -24,6 +37,17 @@
 
 		<br />
 		<b>Selasa, 20 April 2016 12:45 | Redaksi SalamDakwah</b>
+
+		<hr>
+		Share:
+		<div class="btn-group">
+			<a href="#" class="btn btn-warning"><i class="fa fa-facebook"></i></a>
+			<a href="#" class="btn btn-warning"><i class="fa fa-twitter"></i></a>
+			<a href="#" class="btn btn-warning"><i class="fa fa-google"></i></a>
+			<a href="#" class="btn btn-warning"><i class="fa fa-envelope"></i></a>
+			<a href="#" class="btn btn-warning"><i class="fa fa-whatsapp"></i></a>
+		</div>
+		<hr>
 
 
 		<h4 class="title">SALWA PEDULI</h4>
