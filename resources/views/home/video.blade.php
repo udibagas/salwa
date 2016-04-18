@@ -7,7 +7,7 @@
 			<a href="/video/show"><img src="http://www.salamdakwah.com/{{ $v->img_video }}" style="width:100%" alt=""></a>
 			<div class="caption">
 				<h4><a href="/video/show">{{ $v->title }}</a></h4>
-				<b>Ustadz Abu yahya Badrusalam, Lc</b><br />
+				<b>{{ $v->user->name }}</b><br />
 				<em>{{ $v->updated->diffForHumans() }}</em>
 			</div>
 		</div>
