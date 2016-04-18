@@ -1,15 +1,15 @@
 <h4 class="title">SALWA MARKET</h4>
 <div class="row">
-	@for ($i=0;$i<=2;$i++)
+	@foreach ($produk as $p)
 	<div class="col-md-4">
 		<div class="thumbnail">
-			<a href="/market/show"><img src="/images/flash.jpg" style="width:100%" alt=""></a>
+			<a href="/market/show"><img src="http://www.salamdakwah.com/{{ $p->img_buku }}" style="width:100%" alt=""></a>
 			<div class="caption">
-				<h4><a href="/market/show">Flash Card Huruf Hijaiyah</a></h4>
-				<b>Zahra Publishing House</b><br />
-				<em>Rp 52.000,-</em>
+				<h4><a href="/market/show">{{ $p->judul }}</a></h4>
+				<b>{{ $p->penerbit }}</b><br />
+				<em>Rp {{ $p->harga }}</em>
 			</div>
 		</div>
 	</div>
-	@endfor
+	@endforeach
 </div>

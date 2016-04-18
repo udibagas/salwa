@@ -6,12 +6,7 @@
 
 
 <h4 class="title">SALWA PROMO</h4>
-
-<p><a href="/promo/show"><img src="/images/annajm.jpg" alt="" class="img img-responsive img-thumbnail" /></a></p>
-
-<p><a href="/promo/show"><img src="/images/tokobuku.jpg" alt="" class="img img-responsive img-thumbnail" /></a></p>
-
-<p><a href="/promo/show"><img src="/images/lugualami.jpg" alt="" class="img img-responsive img-thumbnail" /></a></p>
+@include('home.banner')
 
 <h4 class="title">DOA HARI INI</h4>
 @include('home.hadist', ['hadist' => $doa])

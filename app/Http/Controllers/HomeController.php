@@ -15,6 +15,8 @@ use App\Buku;
 use App\BukuTerjemahan;
 use App\SalwaImages;
 use App\Hadist;
+use App\Banner;
+use App\Produk;
 
 class HomeController extends Controller
 {
@@ -45,6 +47,8 @@ class HomeController extends Controller
 			'buku'		=> Buku::limit(4)->orderBy('buku_id', 'DESC')->get(),
 			'hadist'	=> Hadist::where('group_id', 42)->orderBy('hadist_id', 'DESC')->first(),
 			'doa'		=> Hadist::where('group_id', 59)->orderBy('hadist_id', 'DESC')->first(),
+			'banner'	=> Banner::limit(3)->orderBy('banner_id', 'DESC')->get(),
+			'produk'	=> Produk::limit(3)->orderBy('id_produk', 'DESC')->get(),
 			'salwaImage'	=> SalwaImages::orderBy('id_salwaimages', 'DESC')->first(),
 			'pertanyaan'	=> Pertanyaan::limit(5)->orderBy('pertanyaan_id', 'DESC')->get(),
 			'bukuterjemahan'	=> BukuTerjemahan::limit(4)->orderBy('terjamahan_id', 'DESC')->get(),
