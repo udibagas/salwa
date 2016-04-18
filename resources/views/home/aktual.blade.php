@@ -6,7 +6,7 @@
 			<a href="/artikel/show"><img src="http://www.salamdakwah.com/{{ $a->img_artikel }}" style="width:100%" alt=""></a>
 			<div class="caption">
 				<h4><a href="/artikel/show">{{ $a->judul }}</a></h4>
-				<b>{{ $a->user->name }}</b><br />
+				<b>{{ $a->user ? $a->user->name : '' }}</b><br />
 				<em>{{ $a->updated->diffForHumans() }}</em>
 			</div>
 		</div>
