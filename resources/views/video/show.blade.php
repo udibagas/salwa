@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title') Video : {{ $video->title }} @stop
+
 @section('breadcrumbs')
 
 	<div class="container">

@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="../../favicon.ico">
-        <title>SalamDakwah | @yield('title')</title>
+        <title>SalamDakwah |@yield('title')</title>
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
         <link href="/css/app.css" rel="stylesheet">
