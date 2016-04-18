@@ -1,18 +1,18 @@
 <h4 class="title">VIDEO</h4>
 
 <div class="row">
-	@for ($i=0;$i<=2;$i++)
+	@foreach ($videos as $v)
 	<div class="col-md-4">
 		<div class="thumbnail">
-			<a href="/video/show"><img src="/images/langitbumi.jpg" style="width:100%" alt=""></a>
+			<a href="/video/show"><img src="{{ $v->img_video }}" style="width:100%" alt=""></a>
 			<div class="caption">
-				<h4><a href="/video/show">Hakikat Penciptaan Langit dan Bumi</a></h4>
+				<h4><a href="/video/show">{{ $v->title }}</a></h4>
 				<b>Ustadz Abu yahya Badrusalam, Lc</b><br />
-				<em>Selasa, 28 Februari 2016</em>
+				<em>{{ $v->updated->diffForHumans() }}</em>
 			</div>
 		</div>
 	</div>
-	@endfor
+	@endforeach
 </div>
 
 <script type="text/javascript">
