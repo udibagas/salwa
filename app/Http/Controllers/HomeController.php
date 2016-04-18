@@ -28,8 +28,8 @@ class HomeController extends Controller
     public function index()
     {
         return view('home.index', [
-			'videos' => Video::limit(3)->get(),
-			'artikel' => Artikel::limit(3)->get()
+			'videos' => Video::limit(3)->orderBy('video_id', 'DESC')->get(),
+			'artikel' => Artikel::limit(3)->orderBy('artikel_id', 'DESC')->get()
 		]);
     }
 }
