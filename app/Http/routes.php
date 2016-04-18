@@ -183,6 +183,9 @@ Route::group(['prefix' => 'murottal'], function() {
 
 });
 
+
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => 'auth'], function() {
+	Route::resource('post', 'PostController');
+});
