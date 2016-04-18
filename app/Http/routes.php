@@ -12,54 +12,10 @@
 */
 
 Route::get('/', 'HomeController@index');
-
-Route::group(['prefix' => 'video'], function() {
-
-	Route::get('index', function () {
-	    return view('video.index');
-	});
-
-	Route::get('show', function () {
-	    return view('video.show');
-	});
-
-});
-
-Route::group(['prefix' => 'artikel'], function() {
-
-	Route::get('index', function () {
-	    return view('artikel.index');
-	});
-
-	Route::get('show', function () {
-	    return view('artikel.show');
-	});
-
-});
-
-Route::group(['prefix' => 'peduli'], function() {
-
-	Route::get('index', function () {
-	    return view('peduli.index');
-	});
-
-	Route::get('show', function () {
-	    return view('peduli.show');
-	});
-
-});
-
-Route::group(['prefix' => 'info'], function() {
-
-	Route::get('index', function () {
-	    return view('info.index');
-	});
-
-	Route::get('show', function () {
-	    return view('info.show');
-	});
-
-});
+Route::resource('artikel', 'ArtikelController');
+Route::resource('informasi', 'InformasiController');
+Route::resource('peduli', 'PeduliController');
+Route::resource('video', 'VideoController');
 
 Route::group(['prefix' => 'market'], function() {
 

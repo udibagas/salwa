@@ -6,7 +6,7 @@
 		<br />
 		<div class="btn-group btn-breadcrumb">
 			<a href="/" class="btn btn-info"><i class="fa fa-home"></i></a>
-			<a href="/peduli" class="btn btn-info">PEDULI</a>
+			<a href="/informasi" class="btn btn-info">AKTUAL</a>
 		</div>
 	</div>
 
@@ -19,14 +19,14 @@
 	<div class="row">
 		<div class="col-md-8">
 			<div class="row">
-				@foreach ($pedulis as $a)
-					@include('peduli._list', ['peduli' => $a])
+				@foreach ($informasis as $a)
+					@include('informasi._list', ['informasi' => $a])
 				@endforeach
 			</div>
 
 			<hr>
 			<nav class="text-center">
-				{!! $pedulis->links() !!}
+				{!! $informasis->links() !!}
 			</nav>
 		</div>
 

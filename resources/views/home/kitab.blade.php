@@ -2,7 +2,7 @@
 <div class="row">
 	@foreach ($buku as $b)
 	<div class="col-md-6">
-		<div class="media box-shadow">
+		<div class="media box-shadow" style="height:170px;">
 			<div class="media-left">
 				<a href="#">
 					<img class="media-object" src="http://www.salamdakwah.com/{{ $b->img_buku }}" style="width:100px;">

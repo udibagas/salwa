@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Video;
+use App\Informasi;
 
-class VideoController extends Controller
+class InformasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return view('video.index', ['videos' => Video::orderBy('updated', 'DESC')->paginate()]);
+        return view('informasi.index', ['informasis' => Informasi::orderBy('updated', 'DESC')->paginate()]);
     }
 
     /**
@@ -47,11 +47,11 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Video $video)
+    public function show(Informasi $informasi)
     {
-        return view('video.show', [
-			'video' 	=> $video,
-			'terkait'	=> Video::where('user_id', $video->user_id)->limit(3)->get()
+        return view('informasi.show', [
+			'informasi' => $informasi,
+			'terkait'	=> Informasi::where('user_id', $informasi->user_id)->limit(3)->get()
 		]);
     }
 

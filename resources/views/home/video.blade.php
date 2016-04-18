@@ -2,16 +2,7 @@
 
 <div class="row">
 	@foreach ($videos as $v)
-	<div class="col-md-4">
-		<div class="thumbnail">
-			<a href="/video/show"><img src="http://www.salamdakwah.com/{{ $v->img_video }}" style="width:100%" alt=""></a>
-			<div class="caption">
-				<h4><a href="/video/show">{{ $v->title }}</a></h4>
-				<b>{{ $v->user ? $v->user->name : '' }}</b><br />
-				<em>{{ $v->updated->diffForHumans() }}</em>
-			</div>
-		</div>
-	</div>
+		@include('video._list', ['video' => $v])
 	@endforeach
 </div>
 

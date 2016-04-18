@@ -21,25 +21,25 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
           <li class=""><a href="/"><span class="fa fa-home text-orange"></span></a></li>
-          <li class=""><a href="/video/index">Video</a></li>
+          <li class=""><a href="/video">Video</a></li>
 		  <li class=""><a href="http://tv.salamdakwah.com">TV</a></li>
-		  <li class=""><a href="/artikel/index">Aktual</a></li>
-		  <li class=""><a href="/tanya/index">Tanya Ustadz</a></li>
-		  <li class=""><a href="/forum/index">Forum</a></li>
-		  <li class=""><a href="/market/index">Market</a></li>
-		  <li class=""><a href="/peduli/index">Salwa Peduli</a></li>
-		  <li class=""><a href="/audio/index">Audio</a></li>
+		  <li class=""><a href="/artikel">Aktual</a></li>
+		  <li class=""><a href="/tanya">Tanya Ustadz</a></li>
+		  <li class=""><a href="/forum">Forum</a></li>
+		  <li class=""><a href="/market">Market</a></li>
+		  <li class=""><a href="/peduli">Salwa Peduli</a></li>
+		  <li class=""><a href="/audio">Audio</a></li>
 		  <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-bars text-orange"></span> <span class="caret text-orange"></span></a>
 	          <ul class="dropdown-menu">
-				<li><a href="/kitab/index">Kitab & Terjemahan</a></li>
-	            <li><a href="/doa/index">Do'a</a></li>
-	            <li><a href="/dzikir/index">Dzikir</a></li>
-	            <li><a href="/hadits/index">Hadits</a></li>
-	            <li><a href="/murottal/index">Murottal Qur'an</a></li>
-	            <li><a href="/image/index">Salwa Image</a></li>
-	            <li><a href="/info/index">Salwa Info</a></li>
-	            <li><a href="/promo/index">Salwa Promo</a></li>
+				<li><a href="/kitab">Kitab & Terjemahan</a></li>
+	            <li><a href="/doa">Do'a</a></li>
+	            <li><a href="/dzikir">Dzikir</a></li>
+	            <li><a href="/hadits">Hadits</a></li>
+	            <li><a href="/murottal">Murottal Qur'an</a></li>
+	            <li><a href="/image">Salwa Image</a></li>
+	            <li><a href="/informasi">Salwa Info</a></li>
+	            <li><a href="/promo">Salwa Promo</a></li>
 	          </ul>
 	        </li>
       </ul>

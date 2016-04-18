@@ -6,8 +6,8 @@
 		<br />
 		<div class="btn-group btn-breadcrumb">
 			<a href="/" class="btn btn-info"><i class="fa fa-home"></i></a>
-			<a href="/artikel" class="btn btn-info">AKTUAL</a>
-			<a href="/artikel/{{ $artikel->artikel_id }}" class="btn btn-info">{{ $artikel->judul }}</a>
+			<a href="/informasi" class="btn btn-info">AKTUAL</a>
+			<a href="/informasi/{{ $informasi->informasi_id }}" class="btn btn-info">{{ $informasi->judul }}</a>
 		</div>
 	</div>
 
@@ -17,13 +17,13 @@
 
 <div class="row">
 	<div class="col-md-8">
-		<h1>{{ $artikel->judul }}</h1><hr />
-		<b>{{ $artikel->user ? $artikel->user->name : '' }} | {{ $artikel->updated->diffForHumans() }}</b><br />
+		<h1>{{ $informasi->judul }}</h1><hr />
+		<b>{{ $informasi->user ? $informasi->user->name : '' }} | {{ $informasi->updated->diffForHumans() }}</b><br />
 		<hr>
 
-		<img src="http://www.salamdakwah.com/{{ $artikel->img_artikel }}" style="width:100%;margin-bottom:30px;" alt="" />
+		<img src="http://www.salamdakwah.com/{{ $informasi->img_informasi }}" style="width:100%;margin-bottom:30px;" alt="" />
 
-		{!! $artikel->isi !!}
+		{!! $informasi->isi !!}
 
 		<hr>
 		Share:
@@ -35,10 +35,10 @@
 			<a href="#" class="btn btn-warning"><i class="fa fa-whatsapp"></i></a>
 		</div>
 
-		<h4 class="title">ARTIKEL TERKAIT</h4>
+		<h4 class="title">INFORMASI TERKAIT</h4>
 		<div class="row">
 			@foreach ($terkait as $t)
-				@include('artikel._list', ['artikel' => $t])
+				@include('informasi._list', ['informasi' => $t])
 			@endforeach
 		</div>
 
