@@ -2,13 +2,11 @@
 
 @section('breadcrumbs')
 
-	<div class="container">
-		<br />
-		<div class="btn-group btn-breadcrumb">
-			<a href="/" class="btn btn-info"><i class="fa fa-home"></i></a>
-			<a href="/artikel" class="btn btn-info">AKTUAL</a>
-		</div>
-	</div>
+	@include('layouts._breadcrumbs', [
+		'breadcrumbs' => [
+			'/artikel' => 'AKTUAL'
+		]
+	])
 
 @stop
 

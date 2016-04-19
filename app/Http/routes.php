@@ -12,10 +12,11 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::resource('artikel', 'ArtikelController');
 Route::resource('informasi', 'InformasiController');
+Route::resource('artikel', 'ArtikelController');
 Route::resource('peduli', 'PeduliController');
 Route::resource('video', 'VideoController');
+Route::resource('image', 'ImageController');
 
 Route::group(['prefix' => 'market'], function() {
 
@@ -61,18 +62,6 @@ Route::group(['prefix' => 'promo'], function() {
 
 	Route::get('show', function () {
 	    return view('promo.show');
-	});
-
-});
-
-Route::group(['prefix' => 'image'], function() {
-
-	Route::get('index', function () {
-	    return view('image.index');
-	});
-
-	Route::get('show', function () {
-	    return view('image.show');
 	});
 
 });

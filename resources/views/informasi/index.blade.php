@@ -6,7 +6,7 @@
 		<br />
 		<div class="btn-group btn-breadcrumb">
 			<a href="/" class="btn btn-info"><i class="fa fa-home"></i></a>
-			<a href="/informasi" class="btn btn-info">AKTUAL</a>
+			<a href="/informasi" class="btn btn-info">INFORMASI</a>
 		</div>
 	</div>
 
@@ -14,7 +14,7 @@
 
 @section('content')
 
-	<h1 class="title">AKTUAL</h1>
+	<h1 class="title">INFORMASI</h1>
 
 	<div class="row">
 		<div class="col-md-8">

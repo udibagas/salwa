@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Informasi;
+use App\SalwaImages;
 
-class InformasiController extends Controller
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class InformasiController extends Controller
      */
     public function index()
     {
-        return view('informasi.index', ['informasis' => Informasi::orderBy('updated', 'DESC')->paginate()]);
+        return view('image.index', ['images' => SalwaImages::orderBy('updated', 'DESC')->paginate()]);
     }
 
     /**
@@ -47,11 +47,11 @@ class InformasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Informasi $informasi)
+    public function show(SalwaImages $image)
     {
-        return view('informasi.show', [
-			'informasi' => $informasi,
-			'terkait'	=> Informasi::where('group_id', $informasi->group_id)->limit(3)->get()
+        return view('image.show', [
+			'image' 	=> $image,
+			'terkait'	=> SalwaImages::limit(3)->get()
 		]);
     }
 

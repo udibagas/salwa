@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
+@section('title') Aktual : {{ $artikel->judul }} @stop
+
 @section('breadcrumbs')
 
-	<div class="container">
-		<br />
-		<div class="btn-group btn-breadcrumb">
-			<a href="/" class="btn btn-info"><i class="fa fa-home"></i></a>
-			<a href="/artikel" class="btn btn-info">AKTUAL</a>
-			<a href="#" class="btn btn-info">{{ $artikel->judul }}</a>
-		</div>
-	</div>
+	@include('layouts._breadcrumbs', [
+		'breadcrumbs' => [
+			'/artikel' => 'AKTUAL',
+			'#' => $artikel->judul
+		]
+	])
 
 @stop
 
@@ -23,10 +23,12 @@
 
 		<img src="http://www.salamdakwah.com/{{ $artikel->img_artikel }}" style="width:100%;margin-bottom:30px;" alt="" />
 
+		 <!-- preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags($artikel->isi, '<p><br><i><em><strong><hr><img>')) -->
 		{!! $artikel->isi !!}
 
 		<hr>
 		@include('layouts._share', ['url' => url('/artikel/'.$artikel->artikel_id.'-'.str_slug($artikel->judul))])
+		<hr>
 
 		<h4 class="title">ARTIKEL TERKAIT</h4>
 		<div class="row">

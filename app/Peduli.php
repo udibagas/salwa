@@ -10,6 +10,8 @@ class Peduli extends Model
 
     protected $dates = ['created', 'updated'];
 
+	protected $primaryKey = 'peduli_id';
+
 	public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'user_id');

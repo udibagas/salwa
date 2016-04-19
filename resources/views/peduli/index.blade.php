@@ -14,7 +14,7 @@
 
 @section('content')
 
-	<h1 class="title">AKTUAL</h1>
+	<h1 class="title">PEDULI</h1>
 
 	<div class="row">
 		<div class="col-md-8">

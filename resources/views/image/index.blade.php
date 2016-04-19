@@ -5,8 +5,8 @@
 	<div class="container">
 		<br />
 		<div class="btn-group btn-breadcrumb">
-			<a href="#" class="btn btn-info"><i class="fa fa-home"></i></a>
-			<a href="#" class="btn btn-info">SALWA IMAGE</a>
+			<a href="/" class="btn btn-info"><i class="fa fa-home"></i></a>
+			<a href="#" class="btn btn-info">IMAGES</a>
 		</div>
 	</div>
 
@@ -14,48 +14,26 @@
 
 @section('content')
 
-	<h1 class="title">SALWA IMAGE</h1>
+	<h1 class="title">IMAGES</h1>
 
 	<div class="row">
 		<div class="col-md-8">
 			<div class="row">
-				@for ($i=0;$i<=11;$i++)
-				<div class="col-md-4">
-					<div class="thumbnail">
-						<a href="/image/show"><img src="/images/image1.jpg" style="width:100%" alt=""></a>
-						<div class="caption">
-							<h4 class="text-center"><a href="/image/show">Tatkala Kematian Menjelang</a></h4>
-						</div>
-					</div>
-				</div>
-				@endfor
+				@foreach ($images as $v)
+					@include('image._list', ['image' => $v])
+				@endforeach
 			</div>
 
 			<hr>
 			<nav class="text-center">
-				<ul class="pagination">
-					<li>
-						<a href="#" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li>
-						<a href="#" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
-				</ul>
+				{{ $images->links() }}
 			</nav>
 		</div>
 
 		<div class="col-md-4">
 			@include('home.sidebar')
 		</div>
+
 	</div>
 
 @stop
