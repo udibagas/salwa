@@ -24,7 +24,7 @@
           <li class=""><a href="/video">Video</a></li>
 		  <li class=""><a href="http://tv.salamdakwah.com">TV</a></li>
 		  <li class=""><a href="/artikel">Aktual</a></li>
-		  <li class=""><a href="/tanya">Tanya Ustadz</a></li>
+		  <li class=""><a href="/pertanyaan">Tanya Ustadz</a></li>
 		  <li class=""><a href="/forum">Forum</a></li>
 		  <li class=""><a href="/market">Market</a></li>
 		  <li class=""><a href="/peduli">Salwa Peduli</a></li>

@@ -17,6 +17,7 @@ Route::resource('artikel', 'ArtikelController');
 Route::resource('peduli', 'PeduliController');
 Route::resource('video', 'VideoController');
 Route::resource('image', 'ImageController');
+Route::resource('pertanyaan', 'PertanyaanController');
 
 Route::group(['prefix' => 'market'], function() {
 
@@ -26,18 +27,6 @@ Route::group(['prefix' => 'market'], function() {
 
 	Route::get('show', function () {
 	    return view('market.show');
-	});
-
-});
-
-Route::group(['prefix' => 'tanya'], function() {
-
-	Route::get('index', function () {
-	    return view('tanya.index');
-	});
-
-	Route::get('show', function () {
-	    return view('tanya.show');
 	});
 
 });
