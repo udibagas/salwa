@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
-@section('title') Aktual @stop
+@section('title') Produk @stop
 
 @section('breadcrumbs')
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'/artikel' => 'AKTUAL'
+			'/produk' => 'PRODUK'
 		]
 	])
 
@@ -14,19 +14,19 @@
 
 @section('content')
 
-	<h1 class="title">AKTUAL</h1>
+	<h1 class="title">SALWA MARKET</h1>
 
 	<div class="row">
 		<div class="col-md-8">
 			<div class="row">
-				@foreach ($artikels as $a)
-					@include('artikel._list', ['artikel' => $a])
+				@foreach ($produks as $p)
+					@include('produk._list', ['produk' => $p])
 				@endforeach
 			</div>
 
 			<hr>
 			<nav class="text-center">
-				{!! $artikels->links() !!}
+				{!! $produks->links() !!}
 			</nav>
 		</div>
 

@@ -18,18 +18,10 @@ Route::resource('peduli', 'PeduliController');
 Route::resource('video', 'VideoController');
 Route::resource('image', 'ImageController');
 Route::resource('pertanyaan', 'PertanyaanController');
-
-Route::group(['prefix' => 'market'], function() {
-
-	Route::get('index', function () {
-	    return view('market.index');
-	});
-
-	Route::get('show', function () {
-	    return view('market.show');
-	});
-
-});
+Route::resource('forum', 'ForumController');
+Route::get('forum-category/{group}', 'ForumController@category');
+Route::resource('produk', 'ProdukController');
+Route::resource('murottal', 'MurottalController');
 
 Route::group(['prefix' => 'kitab'], function() {
 
@@ -51,22 +43,6 @@ Route::group(['prefix' => 'promo'], function() {
 
 	Route::get('show', function () {
 	    return view('promo.show');
-	});
-
-});
-
-Route::group(['prefix' => 'forum'], function() {
-
-	Route::get('index', function () {
-	    return view('forum.index');
-	});
-
-	Route::get('show', function () {
-	    return view('forum.show');
-	});
-
-	Route::get('create', function () {
-	    return view('forum.create');
 	});
 
 });

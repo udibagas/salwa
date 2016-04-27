@@ -14,4 +14,14 @@ class Video extends Model
 	{
 		return $this->belongsTo('App\User', 'user_id', 'user_id');
 	}
+
+	public function scopeAudio($query)
+	{
+		return $query->where('type', 'audio');
+	}
+
+	public function scopeVideo($query)
+	{
+		return $query->where('type', 'video');
+	}
 }

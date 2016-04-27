@@ -6,19 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $table = 'post';
+    protected $table = 'posts';
 
-	protected $fillable = [
-		'judul', 'isi', 'terjemah', 'jenis', 'gambar', 'file', 'user_id', 'ustadz_id'
-	];
+	protected $primaryKey = 'post_id';
 
-	public function kategori()
-    {
-    	return $this->belongsToMany('App\Kategori', 'post_kategori', 'post_id', 'kategori_id');
-    }
+	protected $dates = ['created', 'updated'];
 
-	public function slug()
-    {
-    	return $this->belongsToMany('App\Slug', 'post_slug', 'post_id', 'slug_id');
-    }
+	public function user()
+	{
+		return $this->belongsTo('App\User', 'user_id', 'user_id');
+	}
+
+	public function forum()
+	{
+		return $this->belongsTo('App\Forum', 'forum_id', 'forum_id');
+	}
 }

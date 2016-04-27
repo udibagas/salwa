@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Produk extends Model
+class Murottal extends Model
 {
-	protected $table = 'produk';
-
-	protected $primaryKey = 'id_produk';
-
+	protected $table = 'murotal';
+	
     protected $dates = ['created', 'updated'];
 
+	protected $primaryKey = 'murotal_id';
 }

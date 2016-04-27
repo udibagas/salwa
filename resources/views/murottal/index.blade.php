@@ -1,14 +1,14 @@
 @extends('layouts.main')
 
+@section('title') Murottal @stop
+
 @section('breadcrumbs')
 
-	<div class="container">
-		<br />
-		<div class="btn-group btn-breadcrumb">
-			<a href="#" class="btn btn-info"><i class="fa fa-home"></i></a>
-			<a href="#" class="btn btn-info">MUROTTAL AL QURAN</a>
-		</div>
-	</div>
+	@include('layouts._breadcrumbs', [
+		'breadcrumbs' => [
+			'/murottal' => 'MUROTTAL'
+		]
+	])
 
 @stop
 
@@ -20,39 +20,23 @@
 		<div class="col-md-8">
 			<table class="table table-hover table-striped">
 				<tbody>
-					@for ($i=0;$i<=17;$i++)
+					@foreach ($murottals as $m)
 					<tr>
 						<td>
-							<h4>001 - Al Fatihah - Misyari Al Afasi</h4>
+							<h4>{{ $m->nama_surat }}</h4>
 						</td>
 						<td>
-							<a href="#" class="btn btn-orange"><span class="fa fa-play"></span> Play</a>
-							<a href="#" class="btn btn-orange"><span class="fa fa-download"></span> Download</a>
+							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-orange play"><span class="fa fa-play"></span> Play</a>
+							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-orange"><span class="fa fa-download"></span> Download</a>
 						</td>
 					</tr>
-					@endfor
+					@endforeach
 				</tbody>
 			</table>
 
 			<hr>
 			<nav class="text-center">
-				<ul class="pagination">
-					<li>
-						<a href="#" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li>
-						<a href="#" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
-				</ul>
+				{!! $murottals->links() !!}
 			</nav>
 		</div>
 
@@ -60,5 +44,33 @@
 			@include('home.sidebar')
 		</div>
 	</div>
+
+@stop
+
+@section('script')
+
+	<script type="text/javascript">
+
+
+		$(document).on('click', '.fa-play', function() {
+			var audio = new Audio(this.href);
+			audio.play();
+			$(this).removeClass('fa-play');
+			$(this).addClass('fa-pause');
+		});
+
+		$(document).on('click', '.fa-pause', function() {
+			var audio = new Audio(this.href);
+			audio.pause();
+			$(this).removeClass('fa-pause');
+			$(this).addClass('fa-play');
+		});
+
+		// $('.play').click(function(e) {
+		// 	e.preventDefault();
+		//
+		// 	audio.play();
+		// });
+	</script>
 
 @stop

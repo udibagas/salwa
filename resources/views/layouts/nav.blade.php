@@ -26,7 +26,7 @@
 		  <li class=""><a href="/artikel">Aktual</a></li>
 		  <li class=""><a href="/pertanyaan">Tanya Ustadz</a></li>
 		  <li class=""><a href="/forum">Forum</a></li>
-		  <li class=""><a href="/market">Market</a></li>
+		  <li class=""><a href="/produk">Market</a></li>
 		  <li class=""><a href="/peduli">Salwa Peduli</a></li>
 		  <li class=""><a href="/audio">Audio</a></li>
 		  <li class="dropdown">
