@@ -542,3 +542,12 @@ a.fa:hover {
 .table > tbody > tr > td {
 	vertical-align: middle;
 }
+
+.underlined {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 15px;
+}
+
+.underlined:last-of-type {
+	border-bottom: none;
+}
