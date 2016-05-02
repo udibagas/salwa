@@ -471,3 +471,7 @@ a.fa:hover {
   height: 100px
 }
 /* End carousel */
+
+.table > tbody > tr > td {
+	vertical-align: middle;
+}

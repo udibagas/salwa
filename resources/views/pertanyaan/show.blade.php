@@ -15,19 +15,19 @@
 
 @section('content')
 
-<h1>{{ $pertanyaan->judul_pertanyaan }}</h1><hr />
 <div class="row">
 	<div class="col-md-8">
+		<h1>{{ $pertanyaan->judul_pertanyaan }}</h1><hr />
 
 		<div class="alert alert-danger">
 			<h4>Pertanyaan:</h4>
-			<p>{{ $pertanyaan->ket_pertanyaan }}</p><br />
+			<p>{!! nl2br($pertanyaan->ket_pertanyaan) !!}</p><br />
 			<b>{{ $pertanyaan->user ? $pertanyaan->user->name : '' }} | {{ $pertanyaan->created->diffForHumans() }}</b>
 		</div>
 
 		<div class="alert alert-info">
 			<h4>Jawaban:</h4>
-			<p>{!! $pertanyaan->jawaban !!}</p> <br />
+			<p>{!! nl2br($pertanyaan->jawaban) !!}</p> <br />
 			<b>{{ $pertanyaan->ustadz ? $pertanyaan->ustadz->name : '' }} | {{ $pertanyaan->updated->diffForHumans() }}</b>
 		</div>
 

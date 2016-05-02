@@ -28,14 +28,14 @@
 		  <li class=""><a href="/forum">Forum</a></li>
 		  <li class=""><a href="/produk">Market</a></li>
 		  <li class=""><a href="/peduli">Salwa Peduli</a></li>
-		  <li class=""><a href="/audio">Audio</a></li>
+		  <li class=""><a href="/mp3">Audio</a></li>
 		  <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-bars text-orange"></span> <span class="caret text-orange"></span></a>
 	          <ul class="dropdown-menu">
 				<li><a href="/kitab">Kitab & Terjemahan</a></li>
 	            <li><a href="/doa">Do'a</a></li>
 	            <li><a href="/dzikir">Dzikir</a></li>
-	            <li><a href="/hadits">Hadits</a></li>
+	            <li><a href="/hadist">Hadist</a></li>
 	            <li><a href="/murottal">Murottal Qur'an</a></li>
 	            <li><a href="/image">Salwa Image</a></li>
 	            <li><a href="/informasi">Salwa Info</a></li>

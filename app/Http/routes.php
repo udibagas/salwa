@@ -16,80 +16,20 @@ Route::resource('informasi', 'InformasiController');
 Route::resource('artikel', 'ArtikelController');
 Route::resource('peduli', 'PeduliController');
 Route::resource('video', 'VideoController');
+Route::resource('mp3', 'Mp3Controller');
 Route::resource('image', 'ImageController');
 Route::resource('pertanyaan', 'PertanyaanController');
 Route::resource('forum', 'ForumController');
 Route::get('forum-category/{group}', 'ForumController@category');
 Route::resource('produk', 'ProdukController');
 Route::resource('murottal', 'MurottalController');
-
-Route::group(['prefix' => 'kitab'], function() {
-
-	Route::get('index', function () {
-	    return view('kitab.index');
-	});
-
-	Route::get('show', function () {
-	    return view('kitab.show');
-	});
-
-});
-
-Route::group(['prefix' => 'promo'], function() {
-
-	Route::get('index', function () {
-	    return view('promo.index');
-	});
-
-	Route::get('show', function () {
-	    return view('promo.show');
-	});
-
-});
-
-Route::group(['prefix' => 'doa'], function() {
-
-	Route::get('index', function () {
-	    return view('doa.index');
-	});
-
-	Route::get('show', function () {
-	    return view('doa.show');
-	});
-
-});
-
-Route::group(['prefix' => 'dzikir'], function() {
-
-	Route::get('index', function () {
-	    return view('doa.index');
-	});
-
-});
-
-Route::group(['prefix' => 'hadits'], function() {
-
-	Route::get('index', function () {
-	    return view('doa.index');
-	});
-
-});
-
-Route::group(['prefix' => 'audio'], function() {
-
-	Route::get('index', function () {
-	    return view('audio.index');
-	});
-
-});
-
-Route::group(['prefix' => 'murottal'], function() {
-
-	Route::get('index', function () {
-	    return view('murottal.index');
-	});
-
-});
+Route::resource('promo', 'PromoController');
+Route::resource('kitab', 'KitabController');
+Route::get('hadist', 'HadistController@indexHadist');
+Route::get('doa', 'HadistController@indexDoa');
+Route::get('dzikir', 'HadistController@indexDzikir');
+Route::get('hadist/{hadist}', 'HadistController@show');
+// Route::resource('hadist', 'HadistController');
 
 
 Route::auth();

@@ -16,9 +16,9 @@
 
 @section('content')
 
-<h1>{{ $forum->title }}</h1><hr />
 <div class="row">
 	<div class="col-md-8">
+		<h1>{{ $forum->title }}</h1><hr />
 
 		@foreach ($posts as $p)
 

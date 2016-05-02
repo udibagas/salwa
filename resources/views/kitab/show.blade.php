@@ -1,39 +1,34 @@
 @extends('layouts.main')
 
+@section('title') Kitab & Terjemahan @stop
+
 @section('breadcrumbs')
 
-	<div class="container">
-		<br />
-		<div class="btn-group btn-breadcrumb">
-			<a href="#" class="btn btn-info"><i class="fa fa-home"></i></a>
-			<a href="#" class="btn btn-info">KITAB & TERJEMAHAN</a>
-			<a href="#" class="btn btn-info">Sifat Shalat Nabi</a>
-		</div>
-	</div>
+	@include('layouts._breadcrumbs', [
+		'breadcrumbs' => [
+			'/kitab' => 'KITAB & TERJEMAHAN',
+			'' => $kitab->judul,
+		]
+	])
 
 @stop
 
 @section('content')
 
-	<h1 class="title">Sifat Shalat Nabi</h1>
 
 	<div class="row">
 		<div class="col-md-8">
+			<h1 class="title">{{ $kitab->judul }}</h1>
 			<div class="media">
 				<div class="media-left">
-					<a href="#">
-						<img class="media-object" src="/images/bukushalat.jpg" alt="...">
-					</a>
+					<img class="media-object" src="http://www.salamdakwah.com/{{ $kitab->img_buku }}" alt="..." style="width:200px;">
 				</div>
 				<div class="media-body">
-					<h3 class="media-heading">Sifat Shalat Nabi</h3>
-					<b>Muhammad Nashiruddin Al Albani</b>
-					<br />
+					<h3 class="media-heading">{{ $kitab->judul }}</h3>
+					<b>{{ $kitab->penulis }}</b>
 					<br />
 
-					<p>
-						"Aku ketengahkan di dalam buku ini beberapa faidah tambahan atas kitab "Shifat Shalat", aku berikan isyarat kepadanya, dan hal ini aku anggap bagus untuk disebutkan. Selain itu, aku juga memberikan perhatian khusus untuk menjelaskan sebagian lafazh-lafazh yang diriwayatkan dalam sebagian kalimat-kalimat baru, atau pada sebagian dzikir-dzikir (yang ada)."
-					</p>
+					<p>{!! $kitab->materi !!}</p>
 
 				</div>
 
@@ -47,7 +42,7 @@
 					<a href="#" class="btn btn-warning"><i class="fa fa-envelope"></i></a>
 					<a href="#" class="btn btn-warning"><i class="fa fa-whatsapp"></i></a>
 				</div>
-				<a href="#" class="btn btn-orange"><span class="fa fa-download"></span> Download (3232x)</a>
+				<a href="http://www.salamdakwah.com/{{ $kitab->file_pdf }}" class="btn btn-orange"><span class="fa fa-download"></span> Download ({{ $kitab->didownload }}x)</a>
 
 			</div>
 

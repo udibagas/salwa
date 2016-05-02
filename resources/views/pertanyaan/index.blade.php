@@ -21,7 +21,7 @@
 			@foreach ($pertanyaans as $p)
 				<div class="alert alert-info">
 					<h3><a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">{{ $p->judul_pertanyaan }}</a></h3>
-					<p>{{ $p->ket_pertanyaan }}</p><br />
+					<p>{!! nl2br($p->ket_pertanyaan) !!}</p><br />
 
 					<b>{{ $p->user ? $p->user->name : '' }} | {{ $p->updated->diffForHumans() }}</b>
 				</div>

@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
-@section('title') Murottal @stop
+@section('title') Audio @stop
 
 @section('breadcrumbs')
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'/murottal' => 'MUROTTAL'
+			'#' => 'AUDIO'
 		]
 	])
 
@@ -17,13 +17,14 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<h1 class="title">MUROTTAL QURAN</h1>
+			<h1 class="title">SALWA AUDIO</h1>
 			<table class="table table-hover table-striped">
 				<tbody>
-					@foreach ($murottals as $m)
+					@foreach ($mp3s as $m)
 					<tr>
 						<td>
-							<b>{{ $m->nama_surat }}</b>
+							<b>{{ $m->judul }}</b>
+							<br /><i>{{ $m->updated->diffForHumans() }}</i>
 						</td>
 						<td style="width:200px;">
 							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-orange play"><span class="fa fa-play"></span> Play</a>
@@ -36,7 +37,7 @@
 
 			<hr>
 			<nav class="text-center">
-				{!! $murottals->links() !!}
+				{!! $mp3s->links() !!}
 			</nav>
 		</div>
 

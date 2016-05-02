@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Video;
+use App\Banner;
 
-class VideoController extends Controller
+class PromoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +17,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return view('video.index', ['videos' => Video::video()->orderBy('updated', 'DESC')->paginate()]);
-    }
-
-    public function indexAudio()
-    {
-        return view('video.indexAudio', ['audios' => Video::audio()->orderBy('updated', 'DESC')->paginate()]);
+        return view('promo.index', ['promos' => Banner::orderBy('updated', 'DESC')->paginate(5)]);
     }
 
     /**
@@ -52,11 +47,11 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Video $video)
+    public function show(Artikel $artikel)
     {
-        return view('video.show', [
-			'video' 	=> $video,
-			'terkait'	=> Video::where('user_id', $video->user_id)->limit(3)->get()
+        return view('artikel.show', [
+			'artikel' 	=> $artikel,
+			'terkait'	=> Artikel::where('user_id', $artikel->user_id)->limit(3)->get()
 		]);
     }
 

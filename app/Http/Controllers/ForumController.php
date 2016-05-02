@@ -98,7 +98,7 @@ class ForumController extends Controller
 	{
 		return view('forum.category', [
 			'group' => $group,
-			'forums' => $group->forums()->paginate()
+			'forums' => $group->forums()->orderBy('updated', 'DESC')->paginate()
 		]);
 	}
 }

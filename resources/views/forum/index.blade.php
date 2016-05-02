@@ -32,7 +32,7 @@
 								{{ $g->description }}
 							</p>
 						</td>
-						<td style="width:120px;">{{ $g->forums->count() }} threads</td>
+						<td style="width:120px;" class="text-right"><span class="badge">{{ $g->forums->count() }} threads</span></td>
 					</tr>
 					@endforeach
 				</tbody>
