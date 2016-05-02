@@ -13,7 +13,7 @@
 				<b>{{ $b->penulis }}</b>
 				<br />
 				<br />
-				<a href="http://www.salamdakwah.com/{{ $k->file_pdf }}" class="btn btn-orange"><span class="fa fa-download"></span> Download ({{ $b->didownload }}x)</a>
+				<a href="http://www.salamdakwah.com/{{ $b->file_pdf }}" class="btn btn-orange"><span class="fa fa-download"></span> Download ({{ $b->didownload }}x)</a>
 			</div>
 		</div>
 	</div>
