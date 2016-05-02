@@ -5,7 +5,7 @@
 	<br>
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-orange">
+            <div class="panel panel-primary">
                 <div class="panel-heading">REGISTER</div>
                 <div class="panel-body">
                     <form class="form-vertical" role="form" method="POST" action="{{ url('/register') }}">

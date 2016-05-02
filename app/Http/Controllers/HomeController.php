@@ -13,6 +13,9 @@ use App\Forum;
 use App\Buku;
 use App\BukuTerjemahan;
 use App\Produk;
+use App\Hadist;
+use App\Banner;
+use App\Group;
 
 class HomeController extends Controller
 {
@@ -34,14 +37,18 @@ class HomeController extends Controller
     public function index()
     {
         return view('home.index', [
-			'videos' 	=> Video::limit(3)->orderBy('video_id', 'DESC')->get(),
+			'videos' 	=> Video::limit(9)->orderBy('video_id', 'DESC')->get(),
 			'slider' 	=> Video::limit(3)->orderBy('video_id', 'DESC')->get(),
-			'artikel' 	=> Artikel::limit(3)->orderBy('artikel_id', 'DESC')->get(),
+			'artikel' 	=> Artikel::limit(4)->orderBy('artikel_id', 'DESC')->get(),
 			'peduli' 	=> Peduli::limit(3)->orderBy('peduli_id', 'DESC')->get(),
 			'forum'		=> Forum::limit(5)->orderBy('forum_id', 'DESC')->get(),
 			'buku'		=> Buku::limit(4)->orderBy('buku_id', 'DESC')->get(),
 			'produk'	=> Produk::limit(3)->orderBy('id_produk', 'DESC')->get(),
+			'doa'		=> Hadist::limit(3)->orderBy('updated', 'DESC')->get(),
+			'dzikir'	=> Hadist::limit(3)->orderBy('updated', 'DESC')->get(),
 			'pertanyaan'	=> Pertanyaan::limit(5)->orderBy('pertanyaan_id', 'DESC')->get(),
+			'forumKategori'	=> Group::forum()->has('forums')->get(),
+			'bannerHome'	=> Banner::orderBy('banner_id', 'DESC')->first(),
 			'bukuterjemahan'	=> BukuTerjemahan::limit(4)->orderBy('terjamahan_id', 'DESC')->get(),
 		]);
     }

@@ -4,22 +4,20 @@
 
 @section('breadcrumbs')
 
-	<div class="container">
-		<br />
-		<div class="btn-group btn-breadcrumb">
-			<a href="/" class="btn btn-info"><i class="fa fa-home"></i></a>
-			<a href="/video" class="btn btn-info">VIDEO</a>
-			<a href="#" class="btn btn-info">{{ $video->title }}</a>
-		</div>
-	</div>
+	@include('layouts._breadcrumbs', [
+		'breadcrumbs' => [
+			'/video' => 'VIDEO',
+			'#' => $video->title
+		]
+	])
 
 @stop
 
 @section('content')
 
-<h1>{{ $video->title }}</h1><hr />
 <div class="row">
 	<div class="col-md-8">
+		<h1>{{ $video->title }}</h1><hr />
 		<iframe width="100%" height="360" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
 
 		<hr>

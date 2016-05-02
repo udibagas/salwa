@@ -5,12 +5,3 @@
 		@include('video._list', ['video' => $v])
 	@endforeach
 </div>
-
-<script type="text/javascript">
-$(document).ready(function() {
-	$('#media').carousel({
-		pause: true,
-		interval: false,
-	});
-});
-</script>

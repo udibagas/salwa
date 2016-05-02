@@ -26,8 +26,6 @@
 
             @yield('content')
 
-            <hr style="border-style:dashed;" />
-
             @include('layouts.footer')
 
         </div>

@@ -23,6 +23,14 @@ body {
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
+.navbar-default {
+	background-color: #033AAE;
+	border-color: #033AAE;
+	-webkit-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);
+}
+
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
   position: absolute;
@@ -51,8 +59,8 @@ body {
 
 /* Carousel base class */
 .carousel {
-  height: 550px;
-  margin-bottom: 40px;
+  height: 400px;
+  margin-bottom: 20px;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -61,16 +69,15 @@ body {
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-  height: 550px;
+  height: 400px;
   background-color: #777;
 }
 .carousel-inner > .item > img {
   /*position: absolute;*/
   /*top: 0;
   left: 0;*/
-  min-width: 100%;
   text-align: center;
-  height: 550px;
+  height: 400px;
 }
 
 
@@ -161,28 +168,71 @@ thead {
 	color: inherit;
 }
 
+.navbar-nav>li {
+	border-left: 1px solid #032876;
+	border-right: 1px solid #032876;
+}
+
+.navbar-nav>li:first-of-type {
+	border-left: 2px solid #032876;
+}
+
+.navbar-nav>li:last-of-type {
+	border-right: 2px solid #032876;
+}
+
+ul.link-icon {
+	list-style: none;
+}
+
+ul.link-icon > li {
+	float: left;
+}
+
+.link-icon > li > a {
+	color: #555;
+	font-size: 12px;
+}
+
+.link-icon > li {
+	border-right: 1px solid #555;
+	padding: 0px 3px;
+	color: #555;
+	width: 122px;
+	margin-bottom: 15px;
+}
+
+.link-icon > li > a > i {
+	font-size: 25px;
+}
+
+.link-icon > li:last-of-type {
+	border-right: none;
+}
+
 .navbar-brand {
 	padding: 5px;
 }
 
-/*.title {
-	color: #0077FA;
-	background-color: #FF4E00;
-	padding: 7px 0 5px 10px;
-	font-weight: bold;
-	text-shadow:
-    -1px -1px 0 #fff,
-    1px -1px 0 #fff,
-    -1px 1px 0 #fff,
-    1px 1px 0 #fff;
-	border-radius: 3px;
-}*/
-
 .title {
-	color: #FF4E00;
-	border-bottom: 2px solid #FF4E00;
-	/*font-weight: bold;*/
-	padding: 10px 0 5px 0;
+	background-color: #0084FF;
+	font-weight: bold;
+	padding: 10px;
+	color: #FFFFFF;
+	-webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+	box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+}
+
+.sub-title {
+	background-color: #A2D2FF;
+	font-weight: bold;
+	padding: 10px;
+	color: #134A80;
+	-webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+	box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+	margin: 0;
 }
 
 .text-orange {
@@ -204,8 +254,15 @@ thead {
 }
 
 .thumbnail, .img-thumbnail {
-	border-color: #FF4E00;
-	border-radius: 3px;
+	border: none;
+	padding: 0;
+}
+
+.thumbnail .caption {
+	position: absolute;
+    top: 0;
+    left: 15px;
+	color: #FFFFFF;
 }
 
 .box-shadow {
@@ -216,16 +273,26 @@ thead {
 }
 
 .thumbnail:hover, .img-thumbnail:hover, .box-shadow:hover {
-	border-color: #0077FA;
-	-webkit-box-shadow: 0px 0px 0px 3px rgba(0,119,250,1);
-	-moz-box-shadow: 0px 0px 0px 3px rgba(0,119,250,1);
-	box-shadow: 0px 0px 0px 3px rgba(0,119,250,1);
-	/*box-shadow: 0 0 10px #0077FA inset;*/
+
 }
 
 .navbar-default .navbar-nav>li>a, .dropdown-menu>li>a {
 	font-weight: bold;
-	color: #FF4E00;
+	/*color: #FF4E00;*/
+	color: #FFFFFF;
+}
+
+.panel, .list-group-item:first-child, .list-group-item:last-child {
+	border-radius: 0;
+}
+
+a.list-group-item {
+	color: #033AAE;
+	font-weight: bold;
+}
+
+.list-group-item {
+	border-color: #033AAE;
 }
 
 .panel-orange>.panel-heading {
@@ -247,7 +314,7 @@ thead {
 }
 
 hr {
-	border-color: #FF4E00;
+	/*border-color: #FF4E00;*/
 }
 
 .table>tbody>tr>td,
@@ -257,7 +324,7 @@ hr {
 .table>thead>tr>td,
 .table>thead>tr>th {
 	/*border-color: #0077FA;*/
-	border-color: #FF4E00;
+	/*border-color: #FF4E00;*/
 }
 
 .alert {
