@@ -6,12 +6,49 @@
 	         <div class="carousel slide" data-ride="carousel">
 	          <!-- Wrapper for slides -->
 	          <div class="carousel-inner">
-	            <div class="item active">
-	               <img src="http://handsontek.net/demoimages/tiles/twitter1.png" class="img-responsive"/>
+				  <?php $i = 0; ?>
+				  @foreach ($videos as $v)
+	            <div class="item @if ($i == 0) active @endif">
+	               <img src="http://www.salamdakwah.com/{{ $v->img_video }}" class="img-responsive"/>
 	            </div>
-	            <div class="item">
-	               <img src="http://handsontek.net/demoimages/tiles/twitter2.png" class="img-responsive"/>
+				<?php $i++; ?>
+				@endforeach
+	          </div>
+	        </div>
+
+	    	</div>
+		</div>
+	    <div class="col-sm-3 col-xs-3">
+	    	<div id="tile1" class="tile">
+
+	         <div class="carousel slide" data-ride="carousel">
+	          <!-- Wrapper for slides -->
+	          <div class="carousel-inner">
+				  <?php $i = 0; ?>
+				  @foreach ($videos as $v)
+	            <div class="item @if ($i == 0) active @endif">
+	               <img src="http://www.salamdakwah.com/{{ $v->img_video }}" class="img-responsive"/>
 	            </div>
+				<?php $i++; ?>
+				@endforeach
+	          </div>
+	        </div>
+
+	    	</div>
+		</div>
+	    <div class="col-sm-3 col-xs-3">
+	    	<div id="tile1" class="tile">
+
+	         <div class="carousel slide" data-ride="carousel">
+	          <!-- Wrapper for slides -->
+	          <div class="carousel-inner">
+				  <?php $i = 0; ?>
+				  @foreach ($videos as $v)
+	            <div class="item @if ($i == 0) active @endif">
+	               <img src="http://www.salamdakwah.com/{{ $v->img_video }}" class="img-responsive"/>
+	            </div>
+				<?php $i++; ?>
+				@endforeach
 	          </div>
 	        </div>
 

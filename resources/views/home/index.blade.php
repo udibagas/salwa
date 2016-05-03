@@ -15,7 +15,7 @@
 		<li><a href="/murottal"><i class="fa fa-microphone"></i><br />Murottal Al Quran</a></li>
 		<li><a href="/image"><i class="fa fa-image"></i><br />Salwa Images</a></li>
 		<li><a href="/info"><i class="fa fa-info-circle"></i><br />Salwa Info</a></li>
-		<li><a href="/promo"><i class="fa fa-tag"></i><br />Salwa Promo</a></li>
+		<li><a href="/promo"><i class="fa fa-tags"></i><br />Salwa Promo</a></li>
 	</ul>
 
 	<div class="clearfix"></div>
