@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
 	<br />
 	<div class="btn-group btn-breadcrumb">
 		<a href="/" class="btn btn-primary"><i class="fa fa-home"></i></a>

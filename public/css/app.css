@@ -1,24 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
+@import url(https://fonts.googleapis.com/css?family=PT+Sans);
 
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 body {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'PT Sans', sans-serif;
 	padding-top: 50px;
 	padding-bottom: 20px;
 	color: #5a5a5a;
 }
-
-.jumbotron {
-  text-align: center;
-  background-color: transparent;
-}
-.jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 21px;
-}
-
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
@@ -51,65 +42,6 @@ body {
 }
 .navbar-wrapper .navbar .container {
   width: auto;
-}
-
-
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-/* Carousel base class */
-.carousel {
-  height: 400px;
-  margin-bottom: 20px;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
-}
-
-/* Declare heights because of positioning of img element */
-.carousel .item {
-  height: 400px;
-  background-color: #777;
-}
-.carousel-inner > .item > img {
-  /*position: absolute;*/
-  /*top: 0;
-  left: 0;*/
-  text-align: center;
-  height: 400px;
-}
-
-
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-.marketing h2 {
-  font-weight: normal;
-}
-.marketing .col-lg-4 p {
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-
-/* Featurettes
-------------------------- */
-
-.featurette-divider {
-  margin: 80px 0; /* Space out the Bootstrap <hr> more */
-}
-
-/* Thin out the marketing headings */
-.featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -1px;
 }
 
 
@@ -183,10 +115,11 @@ thead {
 
 ul.link-icon {
 	list-style: none;
+	margin: 15px auto 0px;
 }
 
 ul.link-icon > li {
-	float: left;
+	display: inline-block;
 }
 
 .link-icon > li > a {
@@ -313,24 +246,6 @@ a.list-group-item {
 	color: #0077FA;
 }
 
-hr {
-	/*border-color: #FF4E00;*/
-}
-
-.table>tbody>tr>td,
-.table>tbody>tr>th,
-.table>tfoot>tr>td,
-.table>tfoot>tr>th,
-.table>thead>tr>td,
-.table>thead>tr>th {
-	/*border-color: #0077FA;*/
-	/*border-color: #FF4E00;*/
-}
-
-.alert {
-	border-radius: 3px;
-}
-
 .nav-tabs>li>a {
 	font-weight: bold;
 	color: #FF4E00;
@@ -339,205 +254,6 @@ hr {
 .nav-tabs>li.active>a {
 	color: #0077FA;
 }
-
-/** The Magic **/
-.btn-breadcrumb .btn:not(:last-child):after {
-  content: " ";
-  display: block;
-  width: 0;
-  height: 0;
-  border-top: 17px solid transparent;
-  border-bottom: 17px solid transparent;
-  border-left: 10px solid white;
-  position: absolute;
-  top: 50%;
-  margin-top: -17px;
-  left: 100%;
-  z-index: 3;
-}
-.btn-breadcrumb .btn:not(:last-child):before {
-  content: " ";
-  display: block;
-  width: 0;
-  height: 0;
-  border-top: 17px solid transparent;
-  border-bottom: 17px solid transparent;
-  border-left: 10px solid rgb(173, 173, 173);
-  position: absolute;
-  top: 50%;
-  margin-top: -17px;
-  margin-left: 1px;
-  left: 100%;
-  z-index: 3;
-}
-
-a.fa:hover {
-	text-decoration: none;
-}
-
-/** The Spacing **/
-.btn-breadcrumb .btn {
-  padding:6px 12px 6px 24px;
-}
-.btn-breadcrumb .btn:first-child {
-  padding:6px 6px 6px 10px;
-}
-.btn-breadcrumb .btn:last-child {
-  padding:6px 18px 6px 24px;
-}
-
-/** Default button **/
-.btn-breadcrumb .btn.btn-default:not(:last-child):after {
-  border-left: 10px solid #fff;
-}
-.btn-breadcrumb .btn.btn-default:not(:last-child):before {
-  border-left: 10px solid #ccc;
-}
-.btn-breadcrumb .btn.btn-default:hover:not(:last-child):after {
-  border-left: 10px solid #ebebeb;
-}
-.btn-breadcrumb .btn.btn-default:hover:not(:last-child):before {
-  border-left: 10px solid #adadad;
-}
-
-/** Primary button **/
-.btn-breadcrumb .btn.btn-primary:not(:last-child):after {
-  border-left: 10px solid #428bca;
-}
-.btn-breadcrumb .btn.btn-primary:not(:last-child):before {
-  border-left: 10px solid #357ebd;
-}
-.btn-breadcrumb .btn.btn-primary:hover:not(:last-child):after {
-  border-left: 10px solid #3276b1;
-}
-.btn-breadcrumb .btn.btn-primary:hover:not(:last-child):before {
-  border-left: 10px solid #285e8e;
-}
-
-/** Success button **/
-.btn-breadcrumb .btn.btn-success:not(:last-child):after {
-  border-left: 10px solid #5cb85c;
-}
-.btn-breadcrumb .btn.btn-success:not(:last-child):before {
-  border-left: 10px solid #4cae4c;
-}
-.btn-breadcrumb .btn.btn-success:hover:not(:last-child):after {
-  border-left: 10px solid #47a447;
-}
-.btn-breadcrumb .btn.btn-success:hover:not(:last-child):before {
-  border-left: 10px solid #398439;
-}
-
-/** Danger button **/
-.btn-breadcrumb .btn.btn-danger:not(:last-child):after {
-  border-left: 10px solid #d9534f;
-}
-.btn-breadcrumb .btn.btn-danger:not(:last-child):before {
-  border-left: 10px solid #d43f3a;
-}
-.btn-breadcrumb .btn.btn-danger:hover:not(:last-child):after {
-  border-left: 10px solid #d2322d;
-}
-.btn-breadcrumb .btn.btn-danger:hover:not(:last-child):before {
-  border-left: 10px solid #ac2925;
-}
-
-/** Warning button **/
-.btn-breadcrumb .btn.btn-warning:not(:last-child):after {
-  border-left: 10px solid #f0ad4e;
-}
-.btn-breadcrumb .btn.btn-warning:not(:last-child):before {
-  border-left: 10px solid #eea236;
-}
-.btn-breadcrumb .btn.btn-warning:hover:not(:last-child):after {
-  border-left: 10px solid #ed9c28;
-}
-.btn-breadcrumb .btn.btn-warning:hover:not(:last-child):before {
-  border-left: 10px solid #d58512;
-}
-
-/** Warning button **/
-.btn-breadcrumb .btn.btn-orange:not(:last-child):after {
-  border-left: 10px solid #f0ad4e;
-}
-.btn-breadcrumb .btn.btn-orange:not(:last-child):before {
-  border-left: 10px solid #eea236;
-}
-.btn-breadcrumb .btn.btn-orange:hover:not(:last-child):after {
-  border-left: 10px solid #ed9c28;
-}
-.btn-breadcrumb .btn.btn-orange:hover:not(:last-child):before {
-  border-left: 10px solid #d58512;
-}
-
-/** Info button **/
-.btn-breadcrumb .btn.btn-info:not(:last-child):after {
-  border-left: 10px solid #5bc0de;
-}
-.btn-breadcrumb .btn.btn-info:not(:last-child):before {
-  border-left: 10px solid #46b8da;
-}
-.btn-breadcrumb .btn.btn-info:hover:not(:last-child):after {
-  border-left: 10px solid #39b3d7;
-}
-.btn-breadcrumb .btn.btn-info:hover:not(:last-child):before {
-  border-left: 10px solid #269abc;
-}
-
-/* carousel */
-.media-carousel1
-{
-  margin-bottom: 0;
-  padding: 0 40px 30px 40px;
-  margin-top: 30px;
-}
-/* Previous button  */
-.media-carousel1 .carousel-control.left
-{
-  left: -12px;
-  background-image: none;
-  background: none repeat scroll 0 0 #222222;
-  border: 4px solid #FFFFFF;
-  border-radius: 23px 23px 23px 23px;
-  height: 40px;
-  width : 40px;
-  margin-top: 30px
-}
-/* Next button  */
-.media-carousel1 .carousel-control.right
-{
-  right: -12px !important;
-  background-image: none;
-  background: none repeat scroll 0 0 #222222;
-  border: 4px solid #FFFFFF;
-  border-radius: 23px 23px 23px 23px;
-  height: 40px;
-  width : 40px;
-  margin-top: 30px
-}
-/* Changes the position of the indicators */
-.media-carousel1 .carousel-indicators
-{
-  right: 50%;
-  top: auto;
-  bottom: 0px;
-  margin-right: -19px;
-}
-/* Changes the colour of the indicators */
-.media-carousel1 .carousel-indicators li
-{
-  background: #c0c0c0;
-}
-.media-carousel1 .carousel-indicators .active
-{
-  background: #333333;
-}
-.media-carousel1 img
-{
-  width: 250px;
-  height: 100px
-}
-/* End carousel */
 
 .table > tbody > tr > td {
 	vertical-align: middle;

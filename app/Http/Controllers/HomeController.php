@@ -46,9 +46,9 @@ class HomeController extends Controller
 			'produk'	=> Produk::limit(3)->orderBy('id_produk', 'DESC')->get(),
 			'doa'		=> Hadist::limit(3)->orderBy('updated', 'DESC')->get(),
 			'dzikir'	=> Hadist::limit(3)->orderBy('updated', 'DESC')->get(),
+			'promo'		=> Banner::limit(3)->orderBy('banner_id', 'DESC')->get(),
 			'pertanyaan'	=> Pertanyaan::limit(5)->orderBy('pertanyaan_id', 'DESC')->get(),
 			'forumKategori'	=> Group::forum()->has('forums')->get(),
-			'bannerHome'	=> Banner::orderBy('banner_id', 'DESC')->first(),
 			'bukuterjemahan'	=> BukuTerjemahan::limit(4)->orderBy('terjamahan_id', 'DESC')->get(),
 		]);
     }

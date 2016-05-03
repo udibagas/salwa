@@ -11,7 +11,9 @@
         <title>SalamDakwah |@yield('title')</title>
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/app.css" rel="stylesheet">
+        <link href="/css/carousel.css" rel="stylesheet">
+        <link href="/css/breadcrumb.css" rel="stylesheet">
+		<link href="/css/app.css" rel="stylesheet">
     </head>
 
     <body>
@@ -22,7 +24,7 @@
 
 		@yield('slider')
 
-        <div class="container marketing">
+        <div class="container-fluid">
 
             @yield('content')
 
@@ -32,6 +34,7 @@
 
         <script src="/js/jquery.min.js"></script>
         <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/js/carousel.js"></script>
 
     </body>
 </html>
