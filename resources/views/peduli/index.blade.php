@@ -1,23 +1,23 @@
 @extends('layouts.main')
 
+@section('title') Salwa Peduli @stop
+
 @section('breadcrumbs')
 
-	<div class="container">
-		<br />
-		<div class="btn-group btn-breadcrumb">
-			<a href="/" class="btn btn-info"><i class="fa fa-home"></i></a>
-			<a href="/peduli" class="btn btn-info">PEDULI</a>
-		</div>
-	</div>
+	@include('layouts._breadcrumbs', [
+		'breadcrumbs' => [
+			'#' => 'SALWA PEDULI',
+		]
+	])
 
 @stop
 
 @section('content')
 
-	<h1 class="title">PEDULI</h1>
 
 	<div class="row">
 		<div class="col-md-8">
+			<h1 class="title">SALWA PEDULI</h1>
 			<div class="row">
 				@foreach ($pedulis as $a)
 					@include('peduli._list', ['peduli' => $a])

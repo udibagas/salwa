@@ -11,16 +11,16 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
 
-      <form class="navbar-form navbar-left" method="GET" action="/home/search">
+      <form class="navbar-form navbar-left" method="GET" action="/search">
         <div class="form-group">
 			<div class="input-group">
-				<input type="search" name="q" placeholder="Search" class="form-control">
+				<input type="search" name="q" placeholder="Search" class="form-control" style="width:390px;">
 				<div class="input-group-addon"><i class="fa fa-search"></i></div>
 			</div>
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-          <li class=""><a href="/">Home</a></li>
+          <li class=""><a href="/"><i class="fa fa-home"></i></a></li>
           <li class=""><a href="/video">Salwa Video</a></li>
 		  <li class=""><a href="/artikel">Salwa Aktual</a></li>
 		  <li class=""><a href="/pertanyaan">Tanya Ustadz</a></li>

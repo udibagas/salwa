@@ -7,7 +7,7 @@
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
 			'/kitab' => 'KITAB & TERJEMAHAN',
-			'' => $kitab->judul,
+			'#' => $kitab->judul,
 		]
 	])
 

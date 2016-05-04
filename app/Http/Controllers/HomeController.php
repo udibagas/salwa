@@ -56,4 +56,11 @@ class HomeController extends Controller
 			'bukuterjemahan'	=> BukuTerjemahan::limit(4)->orderBy('terjamahan_id', 'DESC')->get(),
 		]);
     }
+
+	public function search()
+	{
+		return view('home.search', [
+			'q' => $_REQUEST['q']
+		]);
+	}
 }

@@ -1,4 +1,4 @@
-<h4 class="title">VIDEO</h4>
+<h4 class="title"><i class="fa fa-video-camera"></i> VIDEO</h4>
 
 <div class="row">
 	@foreach ($videos as $v)

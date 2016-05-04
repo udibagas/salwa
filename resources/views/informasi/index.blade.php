@@ -1,14 +1,14 @@
 @extends('layouts.main')
 
+@section('title') Informasi @stop
+
 @section('breadcrumbs')
 
-	<div class="container">
-		<br />
-		<div class="btn-group btn-breadcrumb">
-			<a href="/" class="btn btn-info"><i class="fa fa-home"></i></a>
-			<a href="/informasi" class="btn btn-info">INFORMASI</a>
-		</div>
-	</div>
+	@include('layouts._breadcrumbs', [
+		'breadcrumbs' => [
+			'#' => 'INFORMASI'
+		]
+	])
 
 @stop
 

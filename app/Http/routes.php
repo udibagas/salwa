@@ -29,6 +29,7 @@ Route::get('hadist', 'HadistController@indexHadist');
 Route::get('doa', 'HadistController@indexDoa');
 Route::get('dzikir', 'HadistController@indexDzikir');
 Route::get('hadist/{hadist}', 'HadistController@show');
+Route::any('search', 'HomeController@search');
 // Route::resource('hadist', 'HadistController');
 
 

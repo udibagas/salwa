@@ -6,7 +6,7 @@
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'#' => 'AUDIO'
+			'#' => 'SALWA AUDIO'
 		]
 	])
 

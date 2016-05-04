@@ -1,25 +1,23 @@
 @extends('layouts.main')
 
-@section('title') Image : {{ $image->judul }} @stop
+@section('title') Salwa Image : {{ $image->judul }} @stop
 
 @section('breadcrumbs')
 
-	<div class="container">
-		<br />
-		<div class="btn-group btn-breadcrumb">
-			<a href="/" class="btn btn-info"><i class="fa fa-home"></i></a>
-			<a href="/image" class="btn btn-info">IMAGES</a>
-			<a href="#" class="btn btn-info">{{ $image->judul }}</a>
-		</div>
-	</div>
+	@include('layouts._breadcrumbs', [
+		'breadcrumbs' => [
+			'/image' => 'SALWA IMAGE',
+			'#' => $image->judul
+		]
+	])
 
 @stop
 
 @section('content')
 
-<h1>{{ $image->judul }}</h1><hr />
 <div class="row">
 	<div class="col-md-8">
+		<h1>{{ $image->judul }}</h1><hr />
 		<img src="http://www.salamdakwah.com/{{ $image->img_images }}" alt="" class="img img-responsive" style="width:100%" />
 
 		<hr>
