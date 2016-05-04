@@ -14,10 +14,10 @@
 
 @section('content')
 
-	<h1 class="title">TANYA USTADZ</h1>
 
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-9">
+			<h4 class="title"><i class="fa fa-question-circle-o"></i> TANYA USTADZ</h4>
 			@foreach ($pertanyaans as $p)
 				<div class="alert alert-info">
 					<h3><a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">{{ $p->judul_pertanyaan }}</a></h3>
@@ -32,7 +32,7 @@
 				{!! $pertanyaans->links() !!}
 			</nav>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-3">
 			@include('home.sidebar')
 		</div>
 	</div>

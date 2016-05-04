@@ -17,7 +17,14 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-2">
+		@include('forum.list-category', [
+			'group' => $forum->group,
+			'groups' => \App\Group::forum()->orderBy('group_name', 'ASC')->get()
+		]);
+	</div>
+
+	<div class="col-md-7">
 		<h1>{{ $forum->title }}</h1><hr />
 
 		@foreach ($posts as $p)
@@ -38,12 +45,12 @@
 			<div class="form-group">
 				<textarea name="komentar" rows="8" class="form-control" placeholder="Tulis komentar"></textarea>
 			</div>
-			<button type="submit" name="button" class="btn btn-orange"><span class="fa fa-send"></span> Kirim Komentar</button>
+			<button type="submit" name="button" class="btn btn-primary"><span class="fa fa-send"></span> Kirim Komentar</button>
 		</form>
 
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-3">
 		@include('home.sidebar')
 	</div>
 </div>

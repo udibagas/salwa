@@ -6,7 +6,7 @@
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'#' => 'VIDEO',
+			'#' => 'SALWA VIDEO',
 		]
 	])
 
@@ -14,10 +14,10 @@
 
 @section('content')
 
-	<h1 class="title">VIDEO</h1>
 
 	<div class="row">
 		<div class="col-md-9">
+			<h4 class="title"><i class="fa fa-video-camera"></i> SALWA VIDEO</h4>
 			<div class="row">
 				@foreach ($videos as $v)
 					@include('video._list', ['video' => $v])

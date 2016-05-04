@@ -14,10 +14,10 @@
 
 @section('content')
 
-	<h1 class="title">SALWA MARKET</h1>
 
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-9">
+			<h4 class="title">SALWA MARKET</h4>
 			<div class="row">
 				@foreach ($produks as $p)
 					@include('produk._list', ['produk' => $p])
@@ -30,7 +30,7 @@
 			</nav>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 			@include('home.sidebar')
 		</div>
 	</div>

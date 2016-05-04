@@ -1,9 +1,9 @@
-<div class="container-fluid">
-	<br />
-	<div class="btn-group btn-breadcrumb">
-		<a href="/" class="btn btn-primary"><i class="fa fa-home"></i></a>
+<div class="container-fluid" style="margin-bottom:0px;padding-bottom:0px;">
+	<br>
+	<ol class="breadcrumb breadcrumb-arrow">
+		<li><a href="/"><i class="fa fa-home"></i></a></li>
 		@foreach ($breadcrumbs as $link => $label)
-		<a href="{{ $link }}" class="btn btn-primary">{{ $label }}</a>
+		<li><a href="{{ $link }}" class="btn btn-info">{{ $label }}</a></li>
 		@endforeach
-	</div>
+	</ol>
 </div>

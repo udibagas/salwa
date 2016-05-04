@@ -16,7 +16,7 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-9">
 		<h1>{{ $pertanyaan->judul_pertanyaan }}</h1><hr />
 
 		<div class="alert alert-danger">
@@ -43,7 +43,7 @@
 
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-3">
 		@include('home.sidebar')
 	</div>
 </div>

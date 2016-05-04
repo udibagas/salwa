@@ -6,7 +6,7 @@
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'/forum' => 'FORUM'
+			'#' => 'FORUM',
 		]
 	])
 
@@ -14,33 +14,25 @@
 
 @section('content')
 
-	<h1 class="title">FORUM</h1>
-
 	<div class="row">
-		<div class="col-md-8">
 
-			<table class="table table-hover table-striped">
-				<tbody>
-					@foreach ($groups as $g)
-					<tr>
-						<td>
-							<a href="/forum-category/{{ $g->group_id }}-{{ str_slug($g->group_name) }}"><img src="http://www.salamdakwah.com/{{ $g->img_group }}" style="height:80px;" alt="" /></a>
-						</td>
-						<td>
-							<h4><a href="/forum-category/{{ $g->group_id }}-{{ str_slug($g->group_name) }}">{{ $g->group_name }}</a></h4>
-							<p>
-								{{ $g->description }}
-							</p>
-						</td>
-						<td style="width:120px;" class="text-right"><span class="badge">{{ $g->forums->count() }} threads</span></td>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>
+		<div class="col-md-2">
+			@include('forum.list-category', ['group' => null]);
+		</div>
+
+		<div class="col-md-7">
+
+			<h4 class="title"><i class="fa fa-clock-o"></i> FORUM TERBARU</h4>
+
+			<div style="border:1px solid #8EC7FB;">
+				@foreach ($groups as $g)
+					@include('forum._list', ['group' => $g])
+				@endforeach
+			</div>
 
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 			@include('home.sidebar')
 		</div>
 

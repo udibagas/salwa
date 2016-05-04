@@ -94,12 +94,6 @@ thead {
 	background-color: #d9edf7;
 }
 
-.list-group-item.active {
-	background-color: #d9edf7;
-	border-color: #d9edf7;
-	color: inherit;
-}
-
 .navbar-nav>li {
 	border-left: 1px solid #032876;
 	border-right: 1px solid #032876;
@@ -189,6 +183,7 @@ ul.link-icon > li {
 .thumbnail, .img-thumbnail {
 	border: none;
 	padding: 0;
+	/*margin-bottom: 0;*/
 }
 
 .thumbnail .caption {
@@ -225,7 +220,7 @@ a.list-group-item {
 }
 
 .list-group-item {
-	border-color: #033AAE;
+	border-color: #8EC7FB;
 }
 
 .panel-orange>.panel-heading {
@@ -266,4 +261,16 @@ a.list-group-item {
 
 .underlined:last-of-type {
 	border-bottom: none;
+}
+
+
+.col-md-4, .col-md-3 {
+    /*padding:1px;*/
+}
+
+.alert {
+	-webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+	box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+	border-radius: 0;
 }
