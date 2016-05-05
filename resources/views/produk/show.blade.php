@@ -16,14 +16,14 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-9">
 		<h1>{{ $produk->judul }}</h1><hr />
 
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-5">
 				<img src="http://www.salamdakwah.com/{{ $produk->img_buku }}" style="width:100%;margin-bottom:30px;" alt="" />
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-7">
 				<p>{!! $produk->sinopsis !!}</p>
 				<table class="table table-hover table-striped">
 					<tbody>
@@ -53,7 +53,7 @@
 
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-3">
 		@include('home.sidebar')
 	</div>
 </div>

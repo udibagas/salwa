@@ -16,7 +16,7 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-9">
 		<h1>{{ $image->judul }}</h1><hr />
 		<img src="http://www.salamdakwah.com/{{ $image->img_images }}" alt="" class="img img-responsive" style="width:100%" />
 
@@ -32,7 +32,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-3">
 		@include('home.sidebar')
 	</div>
 </div>

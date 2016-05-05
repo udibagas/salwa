@@ -16,7 +16,7 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-9">
 		<h1>{{ $hadist->judul }}</h1><hr />
 
 		<div class="text-right" style="font-size:30px;">
@@ -30,7 +30,7 @@
 
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-3">
 		@include('home.sidebar')
 	</div>
 </div>

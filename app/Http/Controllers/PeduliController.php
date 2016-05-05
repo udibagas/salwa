@@ -17,7 +17,7 @@ class PeduliController extends Controller
      */
     public function index()
     {
-        return view('peduli.index', ['pedulis' => Peduli::orderBy('updated', 'DESC')->paginate()]);
+        return view('peduli.index', ['pedulis' => Peduli::orderBy('updated', 'DESC')->paginate(20)]);
     }
 
     /**
@@ -51,7 +51,7 @@ class PeduliController extends Controller
     {
         return view('peduli.show', [
 			'peduli' => $peduli,
-			'terkait'	=> Peduli::where('user_id', $peduli->user_id)->limit(3)->get()
+			'terkait'	=> Peduli::where('user_id', $peduli->user_id)->limit(4)->get()
 		]);
     }
 

@@ -16,8 +16,8 @@
 
 
 	<div class="row">
-		<div class="col-md-8">
-			<h1 class="title">MUROTTAL QURAN</h1>
+		<div class="col-md-9">
+			<h4 class="title"><i class="fa fa-microphone"></i> MUROTTAL QURAN</h4>
 			<table class="table table-hover table-striped">
 				<tbody>
 					@foreach ($murottals as $m)
@@ -26,8 +26,8 @@
 							<b>{{ $m->nama_surat }}</b>
 						</td>
 						<td style="width:200px;">
-							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-orange play"><span class="fa fa-play"></span> Play</a>
-							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-orange"><span class="fa fa-download"></span> Download</a>
+							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-info play"><span class="fa fa-play"></span> Play</a>
+							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
 						</td>
 					</tr>
 					@endforeach
@@ -40,7 +40,7 @@
 			</nav>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 			@include('home.sidebar')
 		</div>
 	</div>

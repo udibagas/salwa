@@ -17,7 +17,7 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        return view('artikel.index', ['artikels' => Artikel::orderBy('updated', 'DESC')->paginate()]);
+        return view('artikel.index', ['artikels' => Artikel::orderBy('updated', 'DESC')->paginate(20)]);
     }
 
     /**
@@ -51,7 +51,7 @@ class ArtikelController extends Controller
     {
         return view('artikel.show', [
 			'artikel' 	=> $artikel,
-			'terkait'	=> Artikel::where('user_id', $artikel->user_id)->limit(3)->get()
+			'terkait'	=> Artikel::where('user_id', $artikel->user_id)->limit(4)->get()
 		]);
     }
 

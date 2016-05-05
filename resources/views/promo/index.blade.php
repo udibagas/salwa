@@ -18,8 +18,8 @@
 
 
 	<div class="row">
-		<div class="col-md-8">
-			<h1 class="title">SALWA PROMO</h1>
+		<div class="col-md-9">
+			<h4 class="title">SALWA PROMO</h4>
 
 			@foreach ($promos as $p)
 				<p><a href="{{ $p->url }}"><img src="http://www.salamdakwah.com/{{ $p->img_banner }}" alt="" class="img img-responsive img-thumbnail" style="width:100%" /></a></p>
@@ -31,7 +31,7 @@
 
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 			@include('home.sidebar')
 		</div>
 	</div>

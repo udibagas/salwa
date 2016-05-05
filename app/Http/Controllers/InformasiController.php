@@ -51,7 +51,7 @@ class InformasiController extends Controller
     {
         return view('informasi.show', [
 			'informasi' => $informasi,
-			'terkait'	=> Informasi::where('group_id', $informasi->group_id)->limit(3)->get()
+			'terkait'	=> Informasi::where('group_id', $informasi->group_id)->limit(4)->get()
 		]);
     }
 

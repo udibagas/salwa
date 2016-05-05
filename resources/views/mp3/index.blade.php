@@ -16,8 +16,8 @@
 
 
 	<div class="row">
-		<div class="col-md-8">
-			<h1 class="title">SALWA AUDIO</h1>
+		<div class="col-md-9">
+			<h4 class="title">SALWA AUDIO</h4>
 			<table class="table table-hover table-striped">
 				<tbody>
 					@foreach ($mp3s as $m)
@@ -27,8 +27,8 @@
 							<br /><i>{{ $m->updated->diffForHumans() }}</i>
 						</td>
 						<td style="width:200px;">
-							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-orange play"><span class="fa fa-play"></span> Play</a>
-							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-orange"><span class="fa fa-download"></span> Download</a>
+							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-info play"><span class="fa fa-play"></span> Play</a>
+							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
 						</td>
 					</tr>
 					@endforeach
@@ -41,7 +41,7 @@
 			</nav>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 			@include('home.sidebar')
 		</div>
 	</div>

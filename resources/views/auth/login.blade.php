@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-	<h1 class="title">LOGIN</h1>
+	<h4 class="title">LOGIN</h4>
 	<br />
     <div class="row">
         <div class="col-md-4">
@@ -39,7 +39,7 @@
 				<hr>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-orange">
+                    <button type="submit" class="btn btn-primary">
                         <i class="fa fa-btn fa-sign-in"></i> Login
                     </button>
 

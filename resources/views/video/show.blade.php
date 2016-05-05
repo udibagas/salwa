@@ -16,7 +16,7 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-9">
 		<h1>{{ $video->title }}</h1><hr />
 		<iframe width="100%" height="360" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
 
@@ -32,7 +32,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-3">
 		@include('home.sidebar')
 	</div>
 </div>

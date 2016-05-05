@@ -5,7 +5,7 @@
 			<a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">
 				<h4><i class="fa fa-comments-o"></i>  {{ $f->title }} </h4>
 			</a>
-			<b>{{ $f->user ? $f->user->name : '' }} | {{ $f->updated->diffForHumans() }} | {{ $f->posts->count() }} post(s)</b>
+			<em>{{ $f->user ? $f->user->name : '' }} | {{ $f->updated->diffForHumans() }} | {{ $f->posts->count() }} post(s)</em>
 		</div>
 	@endforeach
 </div>

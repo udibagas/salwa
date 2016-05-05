@@ -16,21 +16,20 @@
 
 
 	<div class="row">
-		<div class="col-md-8">
-			<h1 class="title">SALWA PEDULI</h1>
+		<div class="col-md-9">
+			<h4 class="title">SALWA PEDULI</h4>
 			<div class="row">
 				@foreach ($pedulis as $a)
 					@include('peduli._list', ['peduli' => $a])
 				@endforeach
 			</div>
 
-			<hr>
 			<nav class="text-center">
 				{!! $pedulis->links() !!}
 			</nav>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 			@include('home.sidebar')
 		</div>
 	</div>

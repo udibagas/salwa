@@ -14,23 +14,22 @@
 
 @section('content')
 
-	<h1 class="title">INFORMASI</h1>
 
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-9">
+			<h4 class="title">INFORMASI</h4>
 			<div class="row">
 				@foreach ($informasis as $a)
 					@include('informasi._list', ['informasi' => $a])
 				@endforeach
 			</div>
 
-			<hr>
 			<nav class="text-center">
 				{!! $informasis->links() !!}
 			</nav>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 			@include('home.sidebar')
 		</div>
 	</div>

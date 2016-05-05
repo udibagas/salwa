@@ -184,13 +184,16 @@ ul.link-icon > li {
 	border: none;
 	padding: 0;
 	/*margin-bottom: 0;*/
+	background: rgb(71,193,228);
+	border-radius: 0;
 }
 
 .thumbnail .caption {
 	position: absolute;
     top: 0;
     left: 15px;
-	color: #FFFFFF;
+	padding-right: 15px;
+	color: yellow;
 }
 
 .box-shadow {

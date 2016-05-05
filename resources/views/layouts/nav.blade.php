@@ -27,7 +27,11 @@
 		  <li class=""><a href="/forum">Salwa Forum</a></li>
 		  <li class=""><a href="/produk">Salwa Market</a></li>
 		  <li class=""><a href="/peduli">Salwa Peduli</a></li>
+		  @if (Auth::guest())
 		  <li class=""><a href="/register">Daftar/Masuk</a></li>
+		  @else
+		  <li class=""><a href="/register">{{ Auth::user()->name }}</a></li>
+		  @endif
       </ul>
     </div><!--/.navbar-collapse -->
   </div>

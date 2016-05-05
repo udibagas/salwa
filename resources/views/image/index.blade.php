@@ -6,7 +6,7 @@
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'#' => 'SALWA IMAGE',
+			'#' => 'SALWA IMAGES',
 		]
 	])
 
@@ -14,10 +14,10 @@
 
 @section('content')
 
-	<h1 class="title">IMAGES</h1>
 
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-9">
+			<h4 class="title"><i class="fa fa-image"></i> SALWA IMAGES</h4>
 			<div class="row">
 				@foreach ($images as $v)
 					@include('image._list', ['image' => $v])
@@ -30,7 +30,7 @@
 			</nav>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 			@include('home.sidebar')
 		</div>
 

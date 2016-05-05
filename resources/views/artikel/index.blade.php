@@ -24,7 +24,6 @@
 				@endforeach
 			</div>
 
-			<hr>
 			<nav class="text-center">
 				{!! $artikels->links() !!}
 			</nav>
