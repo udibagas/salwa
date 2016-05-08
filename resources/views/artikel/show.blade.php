@@ -31,7 +31,7 @@
 		<hr>
 
 		<h4 class="title">ARTIKEL TERKAIT</h4>
-		<div class="row">
+		<div class="row no-gutter">
 			@foreach ($terkait as $t)
 				@include('artikel._list', ['artikel' => $t])
 			@endforeach

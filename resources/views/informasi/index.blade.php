@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col-md-9">
 			<h4 class="title">INFORMASI</h4>
-			<div class="row">
+			<div class="row no-gutter">
 				@foreach ($informasis as $a)
 					@include('informasi._list', ['informasi' => $a])
 				@endforeach

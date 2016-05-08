@@ -18,13 +18,12 @@
 	<div class="row">
 		<div class="col-md-9">
 			<h4 class="title"><i class="fa fa-image"></i> SALWA IMAGES</h4>
-			<div class="row">
+			<div class="row no-gutter">
 				@foreach ($images as $v)
 					@include('image._list', ['image' => $v])
 				@endforeach
 			</div>
 
-			<hr>
 			<nav class="text-center">
 				{{ $images->links() }}
 			</nav>

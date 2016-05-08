@@ -1,4 +1,8 @@
 <h4 class="title">Forum Category</h4>
+<p>
+	<a href="/forum/create" class="btn btn-info form-control"><i class="fa fa-plus-circle"></i> Buat Thread Baru</a>
+</p>
+
 <div class="list-group">
 	<a href="/forum" class="list-group-item @if ($group == null) active @endif"><i class="fa fa-clock-o"></i> Forum Terbaru</a>
 	@foreach ($groups as $g)

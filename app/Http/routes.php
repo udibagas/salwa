@@ -20,6 +20,7 @@ Route::resource('mp3', 'Mp3Controller');
 Route::resource('image', 'ImageController');
 Route::resource('pertanyaan', 'PertanyaanController');
 Route::resource('forum', 'ForumController');
+Route::post('forum/comment', 'ForumController@comment');
 Route::get('forum-category/{group}', 'ForumController@category');
 Route::resource('produk', 'ProdukController');
 Route::resource('murottal', 'MurottalController');

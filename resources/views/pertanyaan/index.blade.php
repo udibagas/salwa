@@ -27,7 +27,6 @@
 				</div>
 			@endforeach
 
-			<hr>
 			<nav class="text-center">
 				{!! $pertanyaans->links() !!}
 			</nav>

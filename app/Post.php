@@ -12,6 +12,12 @@ class Post extends Model
 
 	protected $dates = ['created', 'updated'];
 
+	protected $fillable = ['user_id', 'forum_id', 'description'];
+
+	const CREATED_AT = 'created';
+
+	const UPDATED_AT = 'updated';
+
 	public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'user_id');
@@ -20,5 +26,10 @@ class Post extends Model
 	public function forum()
 	{
 		return $this->belongsTo('App\Forum', 'forum_id', 'forum_id');
+	}
+
+	public function images()
+	{
+		return $this->hasMany('App\PostImage', 'post_id', 'post_id');
 	}
 }

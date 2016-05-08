@@ -34,7 +34,6 @@
 				</tbody>
 			</table>
 
-			<hr>
 			<nav class="text-center">
 				{!! $murottals->links() !!}
 			</nav>

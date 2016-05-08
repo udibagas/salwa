@@ -25,7 +25,7 @@
 		<hr>
 
 		<h4 class="title">VIDEO TERKAIT</h4>
-		<div class="row">
+		<div class="row no-gutter">
 			@foreach ($terkait as $t)
 				@include('video._list', ['video' => $t])
 			@endforeach

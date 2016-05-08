@@ -17,7 +17,7 @@ class InformasiController extends Controller
      */
     public function index()
     {
-        return view('informasi.index', ['informasis' => Informasi::orderBy('updated', 'DESC')->paginate()]);
+        return view('informasi.index', ['informasis' => Informasi::orderBy('updated', 'DESC')->paginate(20)]);
     }
 
     /**

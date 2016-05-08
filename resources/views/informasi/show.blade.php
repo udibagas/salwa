@@ -30,7 +30,7 @@
 		<hr>
 
 		<h4 class="title">INFORMASI TERKAIT</h4>
-		<div class="row">
+		<div class="row no-gutter">
 			@foreach ($terkait as $t)
 				@include('informasi._list', ['informasi' => $t])
 			@endforeach

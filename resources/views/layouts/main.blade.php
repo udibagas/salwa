@@ -14,6 +14,8 @@
         <link href="/css/carousel.css" rel="stylesheet">
         <link href="/css/breadcrumb.css" rel="stylesheet">
 		<link href="/css/app.css" rel="stylesheet">
+		<link href="/css/gallery.css" rel="stylesheet">
+		<link href="/css/comment.css" rel="stylesheet">
     </head>
 
     <body>

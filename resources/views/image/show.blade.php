@@ -6,7 +6,7 @@
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'/image' => 'SALWA IMAGE',
+			'/image' => 'SALWA IMAGES',
 			'#' => $image->judul
 		]
 	])
@@ -25,7 +25,7 @@
 		<hr>
 
 		<h4 class="title">IMAGE TERKAIT</h4>
-		<div class="row">
+		<div class="row no-gutter">
 			@foreach ($terkait as $t)
 				@include('image._list', ['image' => $t])
 			@endforeach

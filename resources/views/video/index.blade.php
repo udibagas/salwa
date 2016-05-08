@@ -18,13 +18,12 @@
 	<div class="row">
 		<div class="col-md-9">
 			<h4 class="title"><i class="fa fa-video-camera"></i> SALWA VIDEO</h4>
-			<div class="row">
+			<div class="row no-gutter">
 				@foreach ($videos as $v)
 					@include('video._list', ['video' => $v])
 				@endforeach
 			</div>
 
-			<hr>
 			<nav class="text-center">
 				{{ $videos->links() }}
 			</nav>

@@ -25,22 +25,34 @@
 			<h4 class="title"><i class="fa fa-hashtag"></i> {{ $group->group_name }}</h4>
 
 			<div class="alert alert-info">
-				<a href="/forum-category/{{ $group->group_id }}-{{ str_slug($group->group_name) }}"><img src="http://www.salamdakwah.com/{{ $group->img_group }}" style="height:100px;float:left;margin:0 10px 10px 0;" alt="" /></a>
+				@if ($group->img_group)
+				<img src="http://www.salamdakwah.com/{{ $group->img_group }}" style="height:100px;float:left;margin:0 10px 10px 0;" alt="" />
+				@endif
 
-				<strong>{{ $group->description }}</strong>
+				@if ($group->description)
+				<p>
+					<strong>{{ $group->description }}</strong>
+				</p>
+				<br>
+				@endif
 
-				<hr />
 
+				@if (!Auth::check())
 				<a href="/forum/create" class="btn btn-info">
 					<i class="fa fa-plus-circle"></i> Buat Thread Baru
 				</a>
+				@endif
 
-				<!-- <div class="clearfix"></div> -->
+				<div class="clearfix"></div>
 			</div>
 
 
 
 			<div class="" style="padding:10px 20px;border:1px solid #8EC7FB;">
+				@if (count($forums) == 0)
+					<strong>Belum ada post</strong>
+				@endif
+
 				@foreach ($forums as $f)
 					<div class="underlined">
 						<a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">

@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col-md-9">
 			<h4 class="title">SALWA MARKET</h4>
-			<div class="row">
+			<div class="row no-gutter">
 				@foreach ($produks as $p)
 					@include('produk._list', ['produk' => $p])
 				@endforeach

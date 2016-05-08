@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Forum;
 use App\Group;
+use App\Post;
 
 class ForumController extends Controller
 {
@@ -31,7 +32,11 @@ class ForumController extends Controller
      */
     public function create()
     {
-        //
+        return view('forum.create', [
+			'model' => new Forum([
+				'user_id' => 44
+			])
+		]);
     }
 
     /**
@@ -42,7 +47,8 @@ class ForumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	$forum = Forum::create($request->all());
+		return redirect('/forum/'.$forum->forum_id);
     }
 
     /**
@@ -56,7 +62,8 @@ class ForumController extends Controller
         return view('forum.show', [
 			'forum' 	=> $forum,
 			'posts'		=> $forum->posts()->paginate(),
-			'terkait'	=> Forum::where('group_id', $forum->group_id)->limit(5)->get()
+			'terkait'	=> Forum::where('group_id', $forum->group_id)->limit(5)->get(),
+			'model'		=> new Post
 		]);
     }
 
@@ -101,5 +108,14 @@ class ForumController extends Controller
 			'group' 	=> $group,
 			'forums' 	=> $group->forums()->orderBy('updated', 'DESC')->paginate()
 		]);
+	}
+
+	public function comment(Request $request)
+	{
+		$post = Post::create($request->all());
+		$post->user_id = 44;
+		$post->save();
+		
+		return redirect()->action('ForumController@show', ['forum' => $post->forum]);
 	}
 }

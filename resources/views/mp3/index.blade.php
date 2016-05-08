@@ -17,7 +17,7 @@
 
 	<div class="row">
 		<div class="col-md-9">
-			<h4 class="title">SALWA AUDIO</h4>
+			<h4 class="title"><i class="fa fa-music"></i> SALWA AUDIO</h4>
 			<table class="table table-hover table-striped">
 				<tbody>
 					@foreach ($mp3s as $m)
@@ -35,7 +35,6 @@
 				</tbody>
 			</table>
 
-			<hr>
 			<nav class="text-center">
 				{!! $mp3s->links() !!}
 			</nav>
