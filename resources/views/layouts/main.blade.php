@@ -38,5 +38,7 @@
         <script src="/bootstrap/js/bootstrap.min.js"></script>
         <script src="/js/carousel.js"></script>
 
+		@yield('script')
+
     </body>
 </html>
