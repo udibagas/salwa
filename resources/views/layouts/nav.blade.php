@@ -14,7 +14,7 @@
       <form class="navbar-form navbar-left" method="GET" action="/search">
         <div class="form-group">
 			<div class="input-group">
-				<input type="search" name="q" placeholder="Search" class="form-control" style="width:390px;">
+				<input type="search" name="q" placeholder="Search" class="form-control">
 				<div class="input-group-addon"><i class="fa fa-search"></i></div>
 			</div>
         </div>

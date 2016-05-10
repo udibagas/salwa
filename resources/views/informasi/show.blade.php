@@ -21,8 +21,10 @@
 		<b>{{ $informasi->updated->diffForHumans() }}</b><br />
 		<hr>
 
+		@if ($informasi->img_gambar)
 		<img src="http://www.salamdakwah.com/{{ $informasi->img_gambar }}" style="width:100%;margin-bottom:30px;" alt="" />
-
+		@endif
+		
 		{!! $informasi->content !!}
 
 		<hr>

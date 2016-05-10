@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\PertanyaanRequest;
 
 use App\Pertanyaan;
 
@@ -27,7 +28,7 @@ class PertanyaanController extends Controller
      */
     public function create()
     {
-        //
+        return view('pertanyaan.create', ['model' => new Pertanyaan]);
     }
 
     /**
@@ -36,9 +37,13 @@ class PertanyaanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PertanyaanRequest $request)
     {
-        //
+        $pertanyaan = Pertanyaan::create($request->all());
+		$pertanyaan->user_id = 44;
+		$pertanyaan->save();
+
+		return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan]);
     }
 
     /**
@@ -61,9 +66,9 @@ class PertanyaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pertanyaan $pertanyaan)
     {
-        //
+        return view('pertanyaan.edit', ['model' => $pertanyaan]);
     }
 
     /**
@@ -73,9 +78,10 @@ class PertanyaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PertanyaanRequest $request, Pertanyaan $pertanyaan)
     {
-        //
+		$pertanyaan->update($request->all());
+		return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan]);
     }
 
     /**
@@ -86,6 +92,7 @@ class PertanyaanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pertanyaan->delete();
+		return redirect('/pertanyaan');
     }
 }

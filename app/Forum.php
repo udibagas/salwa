@@ -14,6 +14,10 @@ class Forum extends Model
 
 	protected $fillable = ['user_id', 'title', 'group_id'];
 
+	const CREATED_AT = 'created';
+
+	const UPDATED_AT = 'updated';
+
 	public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'user_id');

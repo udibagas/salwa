@@ -3,7 +3,7 @@
 	@foreach ($dzikir as $d)
 	<div class="underlined">
 		<a href="/hadist/{{ $d->hadist_id }}-{{ str_slug($d->judul) }}">
-			<h4><i class="fa fa-heartbeat"></i> {{ $d->judul }}</h4>
+			<h4><i class="fa fa-hand-stop-o"></i> {{ $d->judul }}</h4>
 		</a>
 	</div>
 	@endforeach

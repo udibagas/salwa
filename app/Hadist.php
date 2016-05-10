@@ -16,4 +16,14 @@ class Hadist extends Model
 	{
 		return $this->belongsTo('App\Group', 'group_id', 'group_id');
 	}
+
+	public function scopeDoa($query)
+	{
+		return $query->join('groups', 'groups.group_id', '=', 'hadist.group_id')->where('groups.group_name', 'Doa');
+	}
+
+	public function scopeDzikir($query)
+	{
+		return $query->join('groups', 'groups.group_id', '=', 'hadist.group_id')->where('groups.group_name', 'Dzikir');
+	}
 }

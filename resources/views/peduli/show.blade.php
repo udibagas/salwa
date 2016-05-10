@@ -21,7 +21,9 @@
 		<b>{{ $peduli->updated->diffForHumans() }}</b><br />
 		<hr>
 
+		@if ($peduli->img_artikel)
 		<img src="http://www.salamdakwah.com/{{ $peduli->img_artikel }}" style="width:100%;margin-bottom:30px;" alt="" />
+		@endif
 
 		{!! $peduli->isi !!}
 

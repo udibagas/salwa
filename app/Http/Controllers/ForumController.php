@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\CommentRequest;
+use App\Http\Requests\ForumRequest;
 
 use App\Forum;
 use App\Group;
@@ -45,10 +47,19 @@ class ForumController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ForumRequest $request)
     {
     	$forum = Forum::create($request->all());
-		return redirect('/forum/'.$forum->forum_id);
+		$forum->user_id = 44;
+		$forum->save();
+
+		$comment = Post::create([
+			'user_id' 	=> 44,
+			'forum_id'	=> $forum->forum_id,
+			'description'	=> $request->description
+		]);
+
+		return redirect()->action('ForumController@show', ['forum' => $forum]);
     }
 
     /**
@@ -110,12 +121,12 @@ class ForumController extends Controller
 		]);
 	}
 
-	public function comment(Request $request)
+	public function comment(CommentRequest $request)
 	{
 		$post = Post::create($request->all());
 		$post->user_id = 44;
 		$post->save();
-		
+
 		return redirect()->action('ForumController@show', ['forum' => $post->forum]);
 	}
 }
