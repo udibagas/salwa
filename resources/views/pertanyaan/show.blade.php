@@ -27,7 +27,7 @@
 			@include('pertanyaan._jawaban', ['p' => $pertanyaan])
 		@else
 			<div class="alert alert-danger text-center">
-				Belum ada jawaban untu pertanyaan terkait.
+				Belum ada jawaban untuk pertanyaan terkait.
 			</div>
 		@endif
 

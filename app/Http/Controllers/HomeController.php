@@ -45,7 +45,7 @@ class HomeController extends Controller
 			'artikel' 	=> Artikel::limit(4)->orderBy('artikel_id', 'DESC')->get(),
 			'peduli' 	=> Peduli::limit(3)->orderBy('peduli_id', 'DESC')->get(),
 			'forum'		=> Forum::limit(3)->orderBy('forum_id', 'DESC')->get(),
-			'buku'		=> Buku::limit(4)->orderBy('buku_id', 'DESC')->get(),
+			'buku'		=> Buku::limit(6)->orderBy('buku_id', 'ASC')->get(),
 			'produk'	=> Produk::limit(3)->orderBy('id_produk', 'DESC')->get(),
 			'doa'		=> Hadist::limit(5)->doa()->orderBy('hadist.updated', 'DESC')->get(),
 			'dzikir'	=> Hadist::limit(5)->dzikir()->orderBy('hadist.updated', 'DESC')->get(),

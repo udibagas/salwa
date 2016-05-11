@@ -18,25 +18,17 @@
 	<div class="row">
 		<div class="col-md-9">
 			<h4 class="title"><i class="fa fa-book"></i> KITAB & TERJEMAHAN</h4>
-			@foreach ($kitabs as $k)
-				<div class="media alert alert-warning">
-					<div class="media-left">
-						<a href="/kitab/{{ $k->buku_id }}-{{ str_slug($k->judul) }}">
-							<img class="media-object" src="http://www.salamdakwah.com/{{ $k->img_buku }}" alt="" style="width:200px;">
+			<div class="row no-gutter">
+				@foreach ($kitabs as $b)
+				<div class="col-md-4">
+					<div class="thumbnail">
+						<a href="/kitab/{{ $b->buku_id }}-{{ str_slug($b->judul) }}">
+							<img src="http://www.salamdakwah.com/{{ $b->img_buku }}" class="img-responsive" style="width:100%;height:350px;">
 						</a>
 					</div>
-					<div class="media-body">
-						<a href="/kitab/{{ $k->buku_id }}-{{ str_slug($k->judul) }}"><h3 class="media-heading">{{ $k->judul }}</h3></a>
-						<b>{{ $k->penulis }}</b>
-						<br />
-						<br />
-
-						<p>{{ $k->keterangan }}</p>
-
-						<a href="http://www.salamdakwah.com/{{ $k->file_pdf }}" class="btn btn-info"><span class="fa fa-download"></span> Download ({{ $k->didownload }}x)</a>
-					</div>
 				</div>
-			@endforeach
+				@endforeach
+			</div>
 
 			<nav class="text-center">
 				{!! $kitabs->links() !!}
