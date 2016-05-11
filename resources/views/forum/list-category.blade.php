@@ -1,7 +1,14 @@
 <h4 class="title">Forum Category</h4>
+@if (Auth::check())
 <p>
 	<a href="/forum/create" class="btn btn-info form-control"><i class="fa fa-plus-circle"></i> Buat Thread Baru</a>
 </p>
+
+@else
+	<div class="alert alert-danger text-center">
+		Silakan <a href="/login">Login</a> untuk membuat thread.
+	</div>
+@endif
 
 <div class="list-group">
 	<a href="/forum" class="list-group-item @if ($group == null) active @endif"><i class="fa fa-clock-o"></i> Forum Terbaru</a>

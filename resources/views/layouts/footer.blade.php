@@ -42,7 +42,7 @@
 	</div>
 </div>
 
-<hr style="border-style:dashed;" />
+<hr />
 
 <div class="text-center text-muted">
 	<small>&copy; {{date('Y')}} - SalamDakwah.Com</small>

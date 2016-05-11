@@ -1,10 +1,10 @@
-<h4 class="title" style="margin:0;">DZIKIR</h4>
-<div style="padding:20px;border:1px solid #8EC7FB;margin:0;">
+<h4 class="title">DZIKIR</h4>
+<ul class="list-group">
 	@foreach ($dzikir as $d)
-	<div class="underlined">
+	<li class="list-group-item">
 		<a href="/hadist/{{ $d->hadist_id }}-{{ str_slug($d->judul) }}">
-			<h4><i class="fa fa-hand-stop-o"></i> {{ $d->judul }}</h4>
+			<strong><i class="fa fa-hand-stop-o"></i> {{ $d->judul }}</strong>
 		</a>
-	</div>
+	</li>
 	@endforeach
-</div>
+</ul>

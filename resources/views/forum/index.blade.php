@@ -17,7 +17,7 @@
 	<div class="row">
 
 		<div class="col-md-2">
-			@include('forum.list-category', ['group' => null]);
+			@include('forum.list-category', ['group' => null])
 		</div>
 
 		<div class="col-md-7">

@@ -16,7 +16,6 @@
 	@include('home.promo')
 	@include('home.aktual')
 
-
 	<div style="border:1px solid #8EC7FB;">
 		<h4 class="title" style="margin:0;">FORUM</h4>
 		@foreach ($forumKategori as $g)
@@ -25,8 +24,15 @@
 	</div>
 
 	@include('home.kitab')
-	@include('home.doa')
-	@include('home.dzikir')
+
+	<div class="row">
+		<div class="col-md-6">
+			@include('home.doa')
+		</div>
+		<div class="col-md-6">
+			@include('home.dzikir')
+		</div>
+	</div>
 
 @stop
 

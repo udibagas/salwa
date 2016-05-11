@@ -2,7 +2,7 @@
 	<article class="row">
 		<div class="col-md-2 col-sm-2 hidden-xs">
 			<figure class="thumbnail">
-				@if ($p->user && $p->user->img_user)
+				@if ($p->user->img_user)
 				<img class="img-responsive" src="http://www.salamdakwah.com/{{ $p->user->img_user }}" />
 				@else
 				<img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
@@ -22,24 +22,19 @@
 
 					<div class="comment-post">
 
-						<div class="row no-gutter">
-							<br />
-							@foreach ($p->images as $image)
-							@include('forum._list-image')
-							@endforeach
-						</div>
-
-						<div class="clearfix"></div>
-						<br>
-
-						<p>{!! nl2br($p->description) !!}</p>
+						<h3>Pertanyaan : {{ $p->judul_pertanyaan }}</h3>
+						<p>{!! nl2br($p->ket_pertanyaan) !!}</p>
 
 					</div>
 					@if (Auth::check() && Auth::user()->user_id == $p->user_id)
+					{!! Form::open(['url' => '/pertanyaan/'.$p->pertanyaan_id, 'method' => 'DELETE']) !!}
 					<p class="text-right">
-						<a href="/post/{{$p->post_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
-						<a href="/post/{{$p->post_id}}/delete" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+						<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
+						<button type="submit" name="delete" class="btn btn-xs btn-danger">
+							<i class="fa fa-trash"></i> Hapus
+						</button>
 					</p>
+					{!! Form::close() !!}
 					@endif
 				</div>
 			</div>

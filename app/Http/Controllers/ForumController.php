@@ -12,6 +12,8 @@ use App\Forum;
 use App\Group;
 use App\Post;
 
+use Auth;
+
 class ForumController extends Controller
 {
     /**
@@ -35,9 +37,7 @@ class ForumController extends Controller
     public function create()
     {
         return view('forum.create', [
-			'model' => new Forum([
-				'user_id' => 44
-			])
+			'model' => new Forum
 		]);
     }
 
@@ -50,11 +50,11 @@ class ForumController extends Controller
     public function store(ForumRequest $request)
     {
     	$forum = Forum::create($request->all());
-		$forum->user_id = 44;
+		$forum->user_id = Auth::user()->user_id;
 		$forum->save();
 
 		$comment = Post::create([
-			'user_id' 	=> 44,
+			'user_id' 	=> Auth::user()->user_id,
 			'forum_id'	=> $forum->forum_id,
 			'description'	=> $request->description
 		]);
@@ -124,7 +124,7 @@ class ForumController extends Controller
 	public function comment(CommentRequest $request)
 	{
 		$post = Post::create($request->all());
-		$post->user_id = 44;
+		$post->user_id = Auth::user()->user_id;
 		$post->save();
 
 		return redirect()->action('ForumController@show', ['forum' => $post->forum]);

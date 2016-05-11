@@ -35,8 +35,12 @@
 			{{ $posts->links() }}
 		</nav>
 
-		@if (!Auth::check())
+		@if (Auth::check())
 			@include('forum._form-komentar')
+		@else
+			<div class="alert alert-danger text-center">
+				Silakan <a href="/login">Login</a> untuk menulis komentar.
+			</div>
 		@endif
 
 	</div>

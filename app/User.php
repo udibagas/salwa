@@ -15,6 +15,8 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+	protected $primaryKey = 'user_id';
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -23,5 +25,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+	const CREATED_AT = 'created';
+
+	const UPDATED_AT = 'updated';
 
 }

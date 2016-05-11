@@ -9,6 +9,8 @@ use App\Http\Requests\PertanyaanRequest;
 
 use App\Pertanyaan;
 
+use Auth;
+
 class PertanyaanController extends Controller
 {
     /**
@@ -40,7 +42,7 @@ class PertanyaanController extends Controller
     public function store(PertanyaanRequest $request)
     {
         $pertanyaan = Pertanyaan::create($request->all());
-		$pertanyaan->user_id = 44;
+		$pertanyaan->user_id = Auth::user()->user_id;
 		$pertanyaan->save();
 
 		return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan]);
@@ -90,7 +92,7 @@ class PertanyaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pertanyaan $pertanyaan)
     {
         $pertanyaan->delete();
 		return redirect('/pertanyaan');

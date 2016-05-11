@@ -16,8 +16,8 @@
 
 
 	<div class="row">
-		<div class="col-md-8">
-			<h1 class="title">KITAB & TERJEMAHAN</h1>
+		<div class="col-md-9">
+			<h4 class="title"><i class="fa fa-book"></i> KITAB & TERJEMAHAN</h4>
 			@foreach ($kitabs as $k)
 				<div class="media alert alert-warning">
 					<div class="media-left">
@@ -33,19 +33,18 @@
 
 						<p>{{ $k->keterangan }}</p>
 
-						<a href="http://www.salamdakwah.com/{{ $k->file_pdf }}" class="btn btn-orange"><span class="fa fa-download"></span> Download ({{ $k->didownload }}x)</a>
+						<a href="http://www.salamdakwah.com/{{ $k->file_pdf }}" class="btn btn-info"><span class="fa fa-download"></span> Download ({{ $k->didownload }}x)</a>
 					</div>
 				</div>
 			@endforeach
 
-			<hr>
 			<nav class="text-center">
 				{!! $kitabs->links() !!}
 			</nav>
 
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-3">
 			@include('home.sidebar')
 		</div>
 	</div>
