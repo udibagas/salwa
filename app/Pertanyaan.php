@@ -32,4 +32,9 @@ class Pertanyaan extends Model
 	{
 		return $query->where('status', 's');
 	}
+
+	public function scopeDijawab($query)
+	{
+		return $query->where('jawaban', '!=', 'NULL');
+	}
 }

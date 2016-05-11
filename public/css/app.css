@@ -246,11 +246,6 @@ a.list-group-item {
 
 .nav-tabs>li>a {
 	font-weight: bold;
-	color: #FF4E00;
-}
-
-.nav-tabs>li.active>a {
-	color: #0077FA;
 }
 
 .table > tbody > tr > td {
@@ -302,4 +297,8 @@ a.list-group-item {
 .row.no-gutter [class*='col-']:not(:last-child) {
   padding-right: 1px;
   padding-left: 1px;
+}
+
+.panel-heading {
+	border-radius: 0;
 }

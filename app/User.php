@@ -30,4 +30,14 @@ class User extends Authenticatable
 
 	const UPDATED_AT = 'updated';
 
+	public function forums()
+	{
+		return $this->hasMany('App\Forum', 'user_id', 'user_id');
+	}
+
+	public function pertanyaans()
+	{
+		return $this->hasMany('App\Pertanyaan', 'user_id', 'user_id');
+	}
+
 }

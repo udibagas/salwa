@@ -30,7 +30,7 @@
 		  @if (Auth::guest())
 		  <li class=""><a href="/register">Daftar/Masuk</a></li>
 		  @else
-		  <li class=""><a href="/profile">{{ Auth::user()->name }}</a></li>
+		  <li class=""><a href="/user/{{ Auth::user()->user_id }}">{{ Auth::user()->name }}</a></li>
 		  <li class=""><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
 		  @endif
       </ul>
