@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="../../favicon.ico">
+        <link rel="icon" href="/images/logo.png">
         <title>SalamDakwah |@yield('title')</title>
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
