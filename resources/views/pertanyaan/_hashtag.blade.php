@@ -11,6 +11,15 @@
 	</div>
 @endif
 
+{!! Form::open(['url' => '/pertanyaan/search', 'method' => 'GET']) !!}
+	<div class="form-group">
+		<div class="input-group">
+			<input type="text" name="search" value="{{ Request::get('search') }}" placeholder="Search Pertanyaan" class="form-control">
+			<div class="input-group-addon"><i class="fa fa-search"></i></div>
+		</div>
+	</div>
+{!! Form::close() !!}
+
 
 <div class="list-group hidden-xs">
 	<a href="#" class="list-group-item"><i class="fa fa-hashtag"></i> Aqidah</a>

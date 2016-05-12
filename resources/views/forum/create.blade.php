@@ -16,6 +16,13 @@
 @section('content')
 
 <div class="row">
+	<div class="col-md-3">
+		@include('forum.list-category', [
+			'groups' => \App\Group::forum()->orderBy('group_name', 'ASC')->get(),
+			'group' => null
+		])
+	</div>
+
 	<div class="col-md-9">
 		<h4 class="title">Buat Thread Baru</h4>
 
@@ -66,9 +73,9 @@
 
 	</div>
 
-	<div class="col-md-3">
-		@include('home.sidebar')
-	</div>
+	<!-- <div class="col-md-3">
+		include('home.sidebar')
+	</div> -->
 </div>
 
 

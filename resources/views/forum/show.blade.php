@@ -17,14 +17,14 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-2">
+	<div class="col-md-3">
 		@include('forum.list-category', [
 			'group' => $forum->group,
 			'groups' => \App\Group::forum()->orderBy('group_name', 'ASC')->get()
 		])
 	</div>
 
-	<div class="col-md-7">
+	<div class="col-md-9">
 		<h1>{{ $forum->title }}</h1><hr />
 
 		@foreach ($posts as $p)
@@ -36,7 +36,15 @@
 		</nav>
 
 		@if (Auth::check())
-			@include('forum._form-komentar')
+
+			@if (Auth::user()->jenis_kelamin == $forum->user->jenis_kelamin)
+				@include('forum._form-komentar')
+			@else
+				<div class="alert alert-danger text-center">
+					Anda tidak dapat berkomentar di thread ini. Forum Akhwat dan Ikhwan kami pisahkan.
+				</div>
+			@endif
+
 		@else
 			<div class="alert alert-danger text-center">
 				Silakan <a href="/login">Login</a> untuk menulis komentar.
@@ -45,9 +53,9 @@
 
 	</div>
 
-	<div class="col-md-3">
-		@include('home.sidebar')
-	</div>
+	<!-- <div class="col-md-3">
+		include('home.sidebar')
+	</div> -->
 </div>
 
 

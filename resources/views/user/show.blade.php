@@ -17,12 +17,13 @@
 
 <div class="row">
 
-	<div class="col-md-9">
+	<div class="col-md-12">
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
 			<li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">PROFILE</a></li>
 			<li role="presentation"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">PERTANYAAN SAYA</a></li>
 			<li role="presentation"><a href="#3" aria-controls="3" role="tab" data-toggle="tab">FORUM SAYA</a></li>
+			<li role="presentation"><a href="#4" aria-controls="4" role="tab" data-toggle="tab">POST SAYA</a></li>
 		</ul>
 
 		<!-- Tab panes -->
@@ -43,12 +44,17 @@
 				@include('user._forum', ['forums' => $user->forums])
 			</div>
 
+			<div role="tabpanel" class="tab-pane" id="4">
+				<br />
+				@include('user._post', ['posts' => $user->posts])
+			</div>
+
 		</div>
 	</div>
 
-	<div class="col-md-3">
-		@include('home.sidebar')
-	</div>
+	<!-- <div class="col-md-3">
+		include('home.sidebar')
+	</div> -->
 </div>
 
 @stop

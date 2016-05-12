@@ -16,10 +16,10 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-2">
+	<div class="col-md-3">
 		@include('pertanyaan._hashtag')
 	</div>
-	<div class="col-md-7">
+	<div class="col-md-9">
 
 		@include('pertanyaan._pertanyaan', ['p' => $pertanyaan])
 
@@ -47,9 +47,9 @@
 
 	</div>
 
-	<div class="col-md-3">
-		@include('home.sidebar')
-	</div>
+	<!-- <div class="col-md-3">
+		include('home.sidebar')
+	</div> -->
 </div>
 
 @stop

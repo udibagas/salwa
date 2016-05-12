@@ -16,13 +16,13 @@
 
 	<div class="row">
 
-		<div class="col-md-2">
+		<div class="col-md-3">
 			@include('pertanyaan._hashtag')
 		</div>
 
-		<div class="col-md-7">
+		<div class="col-md-9">
 
-			<h4 class="title"><i class="fa fa-question-circle-o"></i> TANYA USTADZ</h4>
+			<h4 class="title"><i class="fa fa-question-circle-o"></i> TANYA USTADZ : {{ Request::get('search') }}</h4>
 
 			@foreach ($pertanyaans as $p)
 				@include('pertanyaan._list', ['p' => $p])
@@ -34,9 +34,9 @@
 
 		</div>
 
-		<div class="col-md-3">
-			@include('home.sidebar')
-		</div>
+		<!-- <div class="col-md-3">
+			include('home.sidebar')
+		</div> -->
 
 	</div>
 

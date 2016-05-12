@@ -18,7 +18,9 @@ Route::resource('peduli', 'PeduliController');
 Route::resource('video', 'VideoController');
 Route::resource('mp3', 'Mp3Controller');
 Route::resource('image', 'ImageController');
+Route::get('/pertanyaan/search', 'PertanyaanController@search');
 Route::resource('pertanyaan', 'PertanyaanController');
+Route::get('/forum/search', 'ForumController@search');
 Route::resource('forum', 'ForumController');
 Route::post('forum/comment', 'ForumController@comment');
 Route::get('forum-category/{group}', 'ForumController@category');
@@ -32,6 +34,7 @@ Route::get('dzikir', 'HadistController@indexDzikir');
 Route::get('hadist/{hadist}', 'HadistController@show');
 Route::any('search', 'HomeController@search');
 // Route::resource('hadist', 'HadistController');
+Route::get('me', 'UserController@me');
 Route::resource('user', 'UserController');
 
 

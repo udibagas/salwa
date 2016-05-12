@@ -27,7 +27,7 @@
 							<br /><i>{{ $m->updated->diffForHumans() }}</i>
 						</td>
 						<td style="width:200px;">
-							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-info play"><span class="fa fa-play"></span> Play</a>
+							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-info fa fa-play"> Play</a>
 							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
 						</td>
 					</tr>
@@ -51,26 +51,26 @@
 
 	<script type="text/javascript">
 
+		var audio;
 
 		$(document).on('click', '.fa-play', function() {
-			var audio = new Audio(this.href);
+			audio = new Audio(this.href);
 			audio.play();
 			$(this).removeClass('fa-play');
-			$(this).addClass('fa-pause');
+			$(this).addClass('fa-stop');
+			$(this).text(' Stop');
+			return false;
 		});
 
-		$(document).on('click', '.fa-pause', function() {
-			var audio = new Audio(this.href);
-			audio.pause();
-			$(this).removeClass('fa-pause');
+		$(document).on('click', '.fa-stop', function() {
+			// var audio = new Audio(this.href);
+			audio.stop();
+			$(this).removeClass('fa-stop');
 			$(this).addClass('fa-play');
+			$(this).text(' Play');
+			return false;
 		});
 
-		// $('.play').click(function(e) {
-		// 	e.preventDefault();
-		//
-		// 	audio.play();
-		// });
 	</script>
 
 @stop

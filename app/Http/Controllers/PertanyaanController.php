@@ -97,4 +97,14 @@ class PertanyaanController extends Controller
         $pertanyaan->delete();
 		return redirect('/pertanyaan');
     }
+
+	public function search(Request $request)
+	{
+		return view('pertanyaan.index', [
+			'search'		=> $request->search,
+			'pertanyaans' 	=> Pertanyaan::show()
+								->where('ket_pertanyaan', 'like', '%'.$request->search.'%')
+								->orderBy('updated', 'DESC')->paginate(),
+		]);
+	}
 }

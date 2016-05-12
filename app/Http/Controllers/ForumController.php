@@ -72,7 +72,7 @@ class ForumController extends Controller
     {
         return view('forum.show', [
 			'forum' 	=> $forum,
-			'posts'		=> $forum->posts()->paginate(),
+			'posts'		=> $forum->posts()->orderBy('created', 'ASC')->paginate(),
 			'terkait'	=> Forum::where('group_id', $forum->group_id)->limit(5)->get(),
 			'model'		=> new Post
 		]);
@@ -118,6 +118,18 @@ class ForumController extends Controller
 			'groups' 	=> Group::forum()->orderBy('group_name', 'ASC')->get(),
 			'group' 	=> $group,
 			'forums' 	=> $group->forums()->orderBy('updated', 'DESC')->paginate()
+		]);
+	}
+
+	public function search(Request $request)
+	{
+		return view('forum.search', [
+			'groups' 	=> Group::forum()->orderBy('group_name', 'ASC')->get(),
+			'group'		=> Group::find($request->group_id),
+			'search'	=> $request->search,
+			'forums' 	=> Forum::where('title', 'like', '%'.$request->search.'%')
+							->where('group_id', $request->group_id)
+							->orderBy('updated', 'DESC')->paginate()
 		]);
 	}
 
