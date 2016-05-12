@@ -1,3 +1,7 @@
+<p>
+	<a href="/forum/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Buat Thread Baru</a>
+</p>
+
 <ul class="list-group">
 	@foreach ($forums as $f)
 	<li class="list-group-item">
