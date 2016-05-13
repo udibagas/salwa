@@ -31,6 +31,11 @@
     background: rgb(50,93,233);
 }
 
+.tile:hover  {
+  background: #333;
+  opacity: 0.8;
+}
+
 .tilecaption{
     position: absolute;
     top: 10px;
