@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="" style="height:40px;" /></a>
+      <a class="navbar-brand" href="/"><img src="/images/logo-putih.png" alt="" style="height:40px;" /></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
 
