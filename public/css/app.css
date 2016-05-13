@@ -1,10 +1,21 @@
 @import url(https://fonts.googleapis.com/css?family=PT+Sans);
 
+@font-face {
+    font-family: "Nirmala UI";
+    src: url("/fonts/NirmalaS.ttf");
+}
+
+@font-face {
+    font-family: "Nirmala UI";
+    src: url("/fonts/Nirmala_0.ttf");
+	font-weight: bold;
+}
+
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 body {
-	font-family: 'PT Sans', sans-serif;
+	font-family: "Nirmala UI", sans-serif;
 	padding-top: 50px;
 	padding-bottom: 20px;
 	color: #5a5a5a;
@@ -138,9 +149,6 @@ ul.link-icon > li {
 	font-weight: bold;
 	padding: 10px;
 	color: #FFFFFF;
-	/*-webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
-	box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);*/
 }
 
 .sub-title {
@@ -148,9 +156,6 @@ ul.link-icon > li {
 	font-weight: bold;
 	padding: 10px;
 	color: #134A80;
-	/*-webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
-	box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);*/
 	margin: 0;
 }
 
@@ -197,7 +202,6 @@ ul.link-icon > li {
 
 .navbar-default .navbar-nav>li>a, .dropdown-menu>li>a {
 	font-weight: bold;
-	/*color: #FF4E00;*/
 	color: #FFFFFF;
 }
 
