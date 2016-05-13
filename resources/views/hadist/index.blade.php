@@ -21,11 +21,14 @@
 				@foreach ($hadists as $h)
 					<div class="alert alert-info">
 						<a href="/hadist/{{ $h->hadist_id }}-{{ str_slug($h->judul) }}"><h3>{{ $h->judul }}</h3></a>
+						<br>
 						<div class="text-right" style="font-size:30px;">
 							{{ $h->hadist }}
 						</div>
 						<br />
-						<em>{!! $h->penjelasan !!}</em>
+
+						{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $h->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
+
 					</div>
 				@endforeach
 
