@@ -103,7 +103,8 @@ class PertanyaanController extends Controller
 		return view('pertanyaan.index', [
 			'search'		=> $request->search,
 			'pertanyaans' 	=> Pertanyaan::show()
-								->where('ket_pertanyaan', 'like', '%'.$request->search.'%')
+								->where('judul_pertanyaan', 'like', '%'.$request->search.'%')
+								->orWhere('ket_pertanyaan', 'like', '%'.$request->search.'%')
 								->orderBy('updated', 'DESC')->paginate(),
 		]);
 	}

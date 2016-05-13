@@ -123,13 +123,16 @@ class ForumController extends Controller
 
 	public function search(Request $request)
 	{
+		$group_id = $request->group_id;
+
 		return view('forum.search', [
 			'groups' 	=> Group::forum()->orderBy('group_name', 'ASC')->get(),
-			'group'		=> Group::find($request->group_id),
+			'group'		=> Group::find($group_id),
 			'search'	=> $request->search,
 			'forums' 	=> Forum::where('title', 'like', '%'.$request->search.'%')
-							->where('group_id', $request->group_id)
-							->orderBy('updated', 'DESC')->paginate()
+							->when($group_id, function($query) use ($group_id) {
+								return $query->where('group_id', $group_id);
+							})->orderBy('updated', 'DESC')->paginate()
 		]);
 	}
 
