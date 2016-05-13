@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway);
 @import url(https://fonts.googleapis.com/css?family=PT+Sans);
 
 /* GLOBAL STYLES
@@ -16,10 +15,8 @@ body {
 
 .navbar-default {
 	background-color: #033AAE;
-	border-color: #033AAE;
-	-webkit-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);
-	box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);
+	/*border-color: #033AAE;*/
+	border: none;
 }
 
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
@@ -96,15 +93,10 @@ thead {
 
 .navbar-nav>li {
 	border-left: 1px solid #032876;
-	border-right: 1px solid #032876;
 }
 
 .navbar-nav>li:first-of-type {
-	border-left: 2px solid #032876;
-}
-
-.navbar-nav>li:last-of-type {
-	border-right: 2px solid #032876;
+	border-left: none;
 }
 
 ul.link-icon {
@@ -146,9 +138,9 @@ ul.link-icon > li {
 	font-weight: bold;
 	padding: 10px;
 	color: #FFFFFF;
-	-webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+	/*-webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
-	box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+	box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);*/
 }
 
 .sub-title {
@@ -156,9 +148,9 @@ ul.link-icon > li {
 	font-weight: bold;
 	padding: 10px;
 	color: #134A80;
-	-webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+	/*-webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
-	box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+	box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);*/
 	margin: 0;
 }
 
@@ -203,10 +195,6 @@ ul.link-icon > li {
 	margin-bottom:10px;
 }
 
-.thumbnail:hover, .img-thumbnail:hover, .box-shadow:hover {
-
-}
-
 .navbar-default .navbar-nav>li>a, .dropdown-menu>li>a {
 	font-weight: bold;
 	/*color: #FF4E00;*/
@@ -241,7 +229,18 @@ a.list-group-item {
 .dropdown-menu>li>a:hover,
 .navbar-default .navbar-nav>li.active>a,
 .dropdown-menu>li.active>a {
-	color: #0077FA;
+	color: #FFFFFF;
+}
+
+/* fix this */
+.dropdown-menu>li:hover,
+.navbar-default .navbar-nav>li:hover,
+.navbar-default .navbar-nav>li.active,
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover
+ {
+	background-color: #032876;
 }
 
 .nav-tabs>li>a {
@@ -274,8 +273,8 @@ a.list-group-item {
 }
 
 .thumbnail {
-  filter: gray; /* IE6-9 */
-  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+  filter: none;
+  -webkit-filter: grayscale(0);
     /*-webkit-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
     box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);*/
@@ -283,9 +282,8 @@ a.list-group-item {
 }
 
 .thumbnail:hover {
-  filter: none; /* IE6-9 */
-  -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
-
+  filter: gray;
+  -webkit-filter: grayscale(1);
 }
 
 .row.no-gutter {

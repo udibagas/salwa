@@ -42,7 +42,7 @@
 
 	var audio = new Audio('http://119.82.232.83:1111/;stream.mp3');
 
-	audio.play();
+	// audio.play();
 
 	$(document).on('click', '.fa-play', function() {
 		audio.play();

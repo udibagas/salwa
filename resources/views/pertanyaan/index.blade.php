@@ -29,7 +29,7 @@
 			@endforeach
 
 			<nav class="text-center">
-				{!! $pertanyaans->links() !!}
+				{!! $pertanyaans->appends(['search' => Request::get('search')])->links() !!}
 			</nav>
 
 		</div>

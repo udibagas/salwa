@@ -1,5 +1,5 @@
 <h4 class="title">SALWA RADIO</h4>
-<audio controls="controls" autoplay="autoplay" preload="none" style="width:100%"><source src="http://119.82.232.83:1111/;stream.mp3" type="application/ogg"></source></audio>
+<audio controls="controls" preload="none" style="width:100%"><source src="http://119.82.232.83:1111/;stream.mp3" type="application/ogg"></source></audio>
 
 @include('home.info')
 

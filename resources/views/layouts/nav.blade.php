@@ -11,7 +11,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
 
-      <form class="navbar-form navbar-left" method="GET" action="/search">
+      <form class="navbar-form navbar-left" method="GET" action="/search" style="margin-left:20px;">
         <div class="form-group">
 			<div class="input-group">
 				<input type="search" name="q" placeholder="Search" class="form-control">
@@ -20,17 +20,16 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-          <li class=""><a href="/"><i class="fa fa-home"></i></a></li>
-          <li class=""><a href="/video">Salwa Video</a></li>
-		  <li class=""><a href="/artikel">Salwa Aktual</a></li>
-		  <li class=""><a href="/pertanyaan">Tanya Ustadz</a></li>
-		  <li class=""><a href="/forum">Salwa Forum</a></li>
-		  <li class=""><a href="/produk">Salwa Market</a></li>
-		  <li class=""><a href="/peduli">Salwa Peduli</a></li>
+          <li class="@if (url()->current() == url('video')) active @endif"><a href="/video">Salwa Video</a></li>
+		  <li class="@if (url()->current() == url('artikel')) active @endif"><a href="/artikel">Salwa Aktual</a></li>
+		  <li class="@if (url()->current() == url('pertanyaan')) active @endif"><a href="/pertanyaan">Tanya Ustadz</a></li>
+		  <li class="@if (url()->current() == url('forum')) active @endif"><a href="/forum">Salwa Forum</a></li>
+		  <li class="@if (url()->current() == url('produk')) active @endif"><a href="/produk">Salwa Market</a></li>
+		  <li class="@if (url()->current() == url('peduli')) active @endif"><a href="/peduli">Salwa Peduli</a></li>
 		  @if (Auth::guest())
-		  <li class=""><a href="/register">Daftar/Masuk</a></li>
+		  <li class="@if (url()->current() == url('register')) active @endif"><a href="/register">Daftar/Masuk</a></li>
 		  @else
-		  <li class=""><a href="/me">{{ Auth::user()->name }}</a></li>
+		  <li class="@if (url()->current() == url('me')) active @endif"><a href="/me">{{ Auth::user()->name }}</a></li>
 		  <li class=""><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
 		  @endif
       </ul>

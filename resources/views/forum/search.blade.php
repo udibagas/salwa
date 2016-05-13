@@ -44,7 +44,7 @@
 			</div>
 
 			<nav class="text-center">
-				{!! $forums->links() !!}
+				{!! $forums->appends(['search' => Request::get('search'), 'group_id' => Request::get('group_id')])->links() !!}
 			</nav>
 
 		</div>
