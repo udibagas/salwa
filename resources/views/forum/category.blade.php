@@ -58,11 +58,11 @@
 						<a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">
 							<h4><i class="fa fa-comment-o"></i>  {{ $f->title }} </h4>
 						</a>
-						<em>
+						<span>
 							<i class="fa fa-user"></i> {{ $f->user ? $f->user->name : '' }}
 							<i class="fa fa-clock-o"></i> {{ $f->updated->diffForHumans() }}
 							<i class="fa fa-comments-o"></i> {{ $f->posts->count() }} post{{ $f->posts->count() > 1 ? 's' : '' }}
-						</em>
+						</span>
 					</div>
 				@endforeach
 			</div>

@@ -1,25 +1,20 @@
-<p>
-	<a href="/forum/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Buat Thread Baru</a>
-</p>
-
 <table class="table table-hover table-striped">
 	<thead>
 		<tr>
 			<th>Post</th>
-			<th>Forum</th>
-			<th>Kategori</th>
-			<th>Waktu</th>
-			<th>Action</th>
+			<th style="width:150px;">Forum</th>
+			<th style="width:100px;">Waktu</th>
+			<th style="width:140px;">Action</th>
 		</tr>
 	</thead>
 	<tbody>
 		@foreach ($posts as $p)
 		<tr>
-			<td>{{ $p->description }}</td>
 			<td>
 				<a href="/forum/{{ $p->forum_id }}-{{ str_slug($p->forum->title) }}">
-					<strong>{{ $p->forum->title }} </strong>
+					<h5>{{ $p->forum->title }}</h5>
 				</a>
+				{!! nl2br($p->description) !!}
 			</td>
 			<td>
 				<a href="/forum-category/{{ $p->forum->group_id }}-{{ str_slug($p->forum->group->group_name) }}">

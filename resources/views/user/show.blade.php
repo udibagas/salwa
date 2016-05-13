@@ -23,7 +23,7 @@
 			<li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">PROFILE</a></li>
 			<li role="presentation"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">PERTANYAAN SAYA</a></li>
 			<li role="presentation"><a href="#3" aria-controls="3" role="tab" data-toggle="tab">FORUM SAYA</a></li>
-			<li role="presentation"><a href="#4" aria-controls="4" role="tab" data-toggle="tab">POST SAYA</a></li>
+			<li role="presentation"><a href="#4" aria-controls="4" role="tab" data-toggle="tab">DISKUSI SAYA</a></li>
 		</ul>
 
 		<!-- Tab panes -->

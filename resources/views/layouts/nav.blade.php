@@ -14,11 +14,12 @@
       <form class="navbar-form navbar-left" method="GET" action="/search" style="margin-left:20px;">
         <div class="form-group">
 			<div class="input-group">
-				<input type="search" name="q" placeholder="Search" class="form-control">
+				<input type="text" name="q" placeholder="Search" class="form-control">
 				<div class="input-group-addon"><i class="fa fa-search"></i></div>
 			</div>
         </div>
       </form>
+	  
       <ul class="nav navbar-nav navbar-right">
           <li class="@if (url()->current() == url('video')) active @endif"><a href="/video">Salwa Video</a></li>
 		  <li class="@if (url()->current() == url('artikel')) active @endif"><a href="/artikel">Salwa Aktual</a></li>

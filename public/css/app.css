@@ -26,8 +26,8 @@ body {
 
 .navbar-default {
 	background-color: #033AAE;
-	/*border-color: #033AAE;*/
-	border: none;
+	border-color: #032876;
+	/*border: none;*/
 }
 
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
@@ -80,16 +80,6 @@ body {
     margin-bottom: 20px;
     font-size: 21px;
     line-height: 1.4;
-  }
-
-  .featurette-heading {
-    font-size: 50px;
-  }
-}
-
-@media (min-width: 992px) {
-  .featurette-heading {
-    margin-top: 120px;
   }
 }
 
@@ -177,30 +167,6 @@ ul.link-icon > li {
 	color: #fff;
 }
 
-.thumbnail, .img-thumbnail {
-	border: none;
-	padding: 0;
-	/*margin-bottom: 0;*/
-	background: rgb(71,193,228);
-	border-radius: 0;
-}
-
-.thumbnail .caption {
-	position: absolute;
-    top: 0;
-    left: 15px;
-	padding-right: 15px;
-	/*color: yellow;*/
-	color: #FFF;
-}
-
-.box-shadow {
-	border:1px solid #FF4E00;
-	padding:5px;
-	border-radius: 3px;
-	margin-bottom:10px;
-}
-
 .navbar-default .navbar-nav>li>a, .dropdown-menu>li>a {
 	font-weight: bold;
 	color: #FFFFFF;
@@ -281,18 +247,37 @@ a.list-group-item {
     margin-bottom:2px;
 }
 
-.video-block {
+.thumbnail, .img-thumbnail {
+	border: none;
+	padding: 0;
+	/*margin-bottom: 0;*/
+	background: rgb(71,193,228);
+	border-radius: 0;
+}
+
+.thumbnail .caption {
+	position: absolute;
+    top: 0;
+    left: 0;
+	padding: 0 15px 0 15px;
+	color: #FFF;
+}
+
+.video-block, .thumbnail-block {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 270px;
-	background: #000;
-	opacity: 0.1;
+	height: 100%;
 }
 
-a .video-block:hover {
+.video-block:hover  {
   background: #333 url('/images/play-icon.png') no-repeat center;
+  opacity: 0.8;
+}
+
+.thumbnail-block:hover  {
+  background: #333;
   opacity: 0.8;
 }
 
