@@ -16,12 +16,19 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-8">
-		<h1>{{ $artikel->judul }}</h1><hr />
-		<b>{{ $artikel->user ? $artikel->user->name : '' }} | {{ $artikel->updated->diffForHumans() }}</b><br />
-		<hr>
+	<div class="col-md-3">
+		@include('artikel._group')
+	</div>
+	<div class="col-md-9">
+		<h1>{{ $artikel->judul }}</h1>
 
-		<img src="http://www.salamdakwah.com/{{ $artikel->img_artikel }}" style="width:100%;margin-bottom:30px;" alt="" />
+		<i class="fa fa-user"></i> {{ $artikel->user ? $artikel->user->name : '' }}
+		<i class="fa fa-clock-o"></i> {{ $artikel->updated->diffForHumans() }}
+		<br /><br />
+
+		@if ($artikel->img_artikel)
+		<img src="http://www.salamdakwah.com/{{ $artikel->img_artikel }}" style="margin-bottom:30px;" alt="" />
+		@endif
 
 		 <!-- preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags($artikel->isi, '<p><br><i><em><strong><hr><img>')) -->
 		{!! $artikel->isi !!}
@@ -39,9 +46,9 @@
 
 	</div>
 
-	<div class="col-md-4">
-		@include('home.sidebar')
-	</div>
+	<!-- <div class="col-md-4">
+		include('home.sidebar')
+	</div> -->
 </div>
 
 

@@ -2,12 +2,12 @@
 
 @font-face {
     font-family: "Nirmala UI";
-    src: url("/fonts/NirmalaS.ttf");
+    src: url("/fonts/Nirmala_0.ttf");
 }
 
 @font-face {
     font-family: "Nirmala UI";
-    src: url("/fonts/Nirmala_0.ttf");
+    src: url("/fonts/NirmalaB_0.ttf");
 	font-weight: bold;
 }
 
@@ -136,14 +136,12 @@ ul.link-icon > li {
 
 .title {
 	background-color: #0084FF;
-	font-weight: bold;
 	padding: 10px;
 	color: #FFFFFF;
 }
 
 .sub-title {
 	background-color: #A2D2FF;
-	font-weight: bold;
 	padding: 10px;
 	color: #134A80;
 	margin: 0;
@@ -168,7 +166,6 @@ ul.link-icon > li {
 }
 
 .navbar-default .navbar-nav>li>a, .dropdown-menu>li>a {
-	font-weight: bold;
 	color: #FFFFFF;
 }
 
@@ -178,7 +175,6 @@ ul.link-icon > li {
 
 a.list-group-item {
 	color: #033AAE;
-	font-weight: bold;
 }
 
 .list-group-item {
@@ -212,6 +208,7 @@ a.list-group-item {
 .navbar-default .navbar-nav>.active>a:hover
  {
 	background-color: #032876;
+	/*background-color: #0084FF;*/
 }
 
 .nav-tabs>li>a {
@@ -294,4 +291,20 @@ a.list-group-item {
 
 .panel-heading {
 	border-radius: 0;
+}
+
+.search-nav {
+	border-radius:20px;
+	background-color: #032876;
+	border: none;
+	color: #fff;
+	padding-top: 2px;
+}
+
+.panel-link a:hover {
+	text-decoration: none;
+}
+
+.badge {
+	font-weight: normal;
 }

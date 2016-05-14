@@ -15,9 +15,15 @@ class PeduliController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('peduli.index', ['pedulis' => Peduli::orderBy('updated', 'DESC')->paginate(20)]);
+        return view('peduli.index', [
+			'pedulis' => Peduli::when($request->search, function($query) use ($request) {
+								return $query->where('judul', 'like', '%'.$request->search.'%');
+							})->when($request->group_id, function($query) use ($request) {
+								return $query->where('group_id', $request->group_id);
+							})->orderBy('updated', 'DESC')->paginate(20)
+		]);
     }
 
     /**

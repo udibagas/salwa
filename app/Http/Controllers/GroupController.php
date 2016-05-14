@@ -5,24 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Group;
 
-use App\Informasi;
-
-class InformasiController extends Controller
+class GroupController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        return view('informasi.index', [
-			'informasis' => Informasi::when($request->search, function($query) use ($request) {
-								return $query->where('judul', 'like', '%'.$request->search.'%');
-							})->when($request->group_id, function($query) use ($request) {
-								return $query->where('group_id', $request->group_id);
-							})->orderBy('updated', 'DESC')->paginate(20)
+        return view('group.index', [
+			'groups' => Group::orderBy('group_name', 'ASC')->paginate()
 		]);
     }
 
@@ -53,12 +48,9 @@ class InformasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Informasi $informasi)
+    public function show($id)
     {
-        return view('informasi.show', [
-			'informasi' => $informasi,
-			'terkait'	=> Informasi::where('group_id', $informasi->group_id)->limit(4)->get()
-		]);
+        //
     }
 
     /**

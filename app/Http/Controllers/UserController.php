@@ -14,9 +14,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('user.index', [
+			'users' => User::orderBy('user_name', 'ASC')
+						->when($request->search, function($query) use ($request) {
+							return $query->where('user_name', 'like', '%'.$request->search.'%')
+										->orWhere('name', 'like', '%'.$request->search.'%')
+										->orWhere('email', 'like', '%'.$request->search.'%');
+						})->paginate()
+		]);
     }
 
     /**
@@ -55,7 +62,7 @@ class UserController extends Controller
 
 	public function me()
 	{
-		return view('user.show', [
+		return view('user.profile', [
 			'user' => auth()->user()
 		]);
 	}

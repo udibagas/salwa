@@ -1,6 +1,7 @@
 <p>
 	<a href="/pertanyaan/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Input Pertanyaan</a>
 </p>
+<hr>
 
 <table class="table table-hover table-striped">
 	<thead>
@@ -17,7 +18,7 @@
 		<tr>
 			<td>
 				<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">
-					<strong>{{ $p->judul_pertanyaan }} </strong>
+					{{ $p->judul_pertanyaan }}
 				</a>
 			</td>
 			<td>{{ $p->ket_pertanyaan }}</td>

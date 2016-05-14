@@ -16,13 +16,16 @@
 @section('content')
 
 <div class="row">
+	<div class="col-md-3">
+		@include('peduli._group')
+	</div>
 	<div class="col-md-9">
-		<h1>{{ $peduli->judul }}</h1><hr />
-		<b>{{ $peduli->updated->diffForHumans() }}</b><br />
-		<hr>
+		<h1>{{ $peduli->judul }}</h1>
+		<i class="fa fa-clock-o"></i> {{ $peduli->updated->diffForHumans() }}
+		<br /><br />
 
 		@if ($peduli->img_artikel)
-		<img src="http://www.salamdakwah.com/{{ $peduli->img_artikel }}" style="width:100%;margin-bottom:30px;" alt="" />
+		<img src="http://www.salamdakwah.com/{{ $peduli->img_artikel }}" class="img-responsive" style="margin-bottom:30px;" alt="" />
 		@endif
 
 		{!! $peduli->isi !!}
@@ -40,9 +43,9 @@
 
 	</div>
 
-	<div class="col-md-3">
-		@include('home.sidebar')
-	</div>
+	<!-- <div class="col-md-3">
+		include('home.sidebar')
+	</div> -->
 </div>
 
 

@@ -26,4 +26,9 @@ class Hadist extends Model
 	{
 		return $query->join('groups', 'groups.group_id', '=', 'hadist.group_id')->where('groups.group_name', 'Dzikir');
 	}
+
+	public function scopeHadist($query)
+	{
+		return $query->join('groups', 'groups.group_id', '=', 'hadist.group_id')->where('groups.group_name', 'Kumpulan Hadits');
+	}
 }

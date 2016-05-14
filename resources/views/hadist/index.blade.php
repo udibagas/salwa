@@ -16,7 +16,10 @@
 
 
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-md-2">
+			@include('hadist._hashtag')
+		</div>
+		<div class="col-md-7">
 			<h4 class="title">{{ strtoupper($groupName) }}</h4>
 				@foreach ($hadists as $h)
 					<div class="alert alert-info">

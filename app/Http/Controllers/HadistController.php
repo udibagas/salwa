@@ -15,40 +15,46 @@ class HadistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexHadist()
+    public function indexHadist(Request $request)
     {
 		$group_name = 'kumpulan hadits';
 
         return view('hadist.index', [
 			'groupName'	=> $group_name,
 			'hadists' 	=> Hadist::join('groups', 'hadist.group_id', '=', 'groups.group_id')
-						->where('group_name', $group_name)
+						->when($request->search, function($query) use ($request) {
+							return $query->where('judul', 'like', '%'.$request->search.'%');
+						})->where('group_name', $group_name)
 						->orderBy('hadist.updated', 'DESC')
 						->paginate()
 		]);
     }
 
-    public function indexDoa()
+    public function indexDoa(Request $request)
     {
 		$group_name = 'doa';
 
         return view('hadist.index', [
 			'groupName'	=> $group_name,
 			'hadists' 	=> Hadist::join('groups', 'hadist.group_id', '=', 'groups.group_id')
-						->where('group_name', $group_name)
+						->when($request->search, function($query) use ($request) {
+							return $query->where('judul', 'like', '%'.$request->search.'%');
+						})->where('group_name', $group_name)
 						->orderBy('hadist.updated', 'DESC')
 						->paginate()
 		]);
     }
 
-    public function indexDzikir()
+    public function indexDzikir(Request $request)
     {
 		$group_name = 'dzikir';
 
         return view('hadist.index', [
 			'groupName'	=> $group_name,
 			'hadists' 	=> Hadist::join('groups', 'hadist.group_id', '=', 'groups.group_id')
-						->where('group_name', $group_name)
+						->when($request->search, function($query) use ($request) {
+							return $query->where('judul', 'like', '%'.$request->search.'%');
+						})->where('group_name', $group_name)
 						->orderBy('hadist.updated', 'DESC')
 						->paginate()
 		]);

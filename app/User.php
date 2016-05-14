@@ -26,6 +26,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+	protected $appends = ['role'];
+
 	const CREATED_AT = 'created';
 
 	const UPDATED_AT = 'updated';
@@ -44,5 +46,29 @@ class User extends Authenticatable
 	{
 		return $this->hasMany('App\Post', 'user_id', 'user_id');
 	}
+
+	public function scopeActive($query)
+	{
+		return $query->where('active', 'Y');
+	}
+
+	public static function roleList($index = 9999)
+	{
+		$list = [
+			null	=> '- Pilih Role -',
+			1		=> 'Admin',
+			2		=> 'Staff',
+			3		=> 'Ustadz',
+			4		=> 'Aktualita',
+			5		=> 'Member'
+		];
+
+		return isset($list[$index]) ? $list[$index] : $list;
+	}
+
+	public function getRoleAttribute()
+    {
+        return self::roleList($this->user_status);
+    }
 
 }

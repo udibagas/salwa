@@ -10,7 +10,7 @@
 				<ul>
 					<li>Tanya langsung masalah keislaman dengan narasumber yang berkompeten di bidangnya</li>
 					<li>Iklankan produk Anda di Salwa Market</li>
-					<li>Berinteraksi dengan lebih dari 2000 member aktif di Salwa Forum</li>
+					<li>Berinteraksi dengan {{ \App\User::active()->count() }} member aktif di Salwa Forum</li>
 					<li>Berlangganan artikel yang ditulis langsung oleh para asatidz Ahlussunnah Wal Jama'ah</li>
 				</ul>
 

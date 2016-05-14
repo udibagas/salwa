@@ -16,7 +16,12 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-9">
+
+	<div class="col-md-2">
+		@include('hadist._hashtag')
+	</div>
+
+	<div class="col-md-7">
 		<h1>{{ $hadist->judul }}</h1><hr />
 
 		<div class="text-right" style="font-size:30px;">

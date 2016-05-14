@@ -1,6 +1,7 @@
 <p>
 	<a href="/forum/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Buat Thread Baru</a>
 </p>
+<hr>
 
 <table class="table table-hover table-striped">
 	<thead>
@@ -17,12 +18,12 @@
 		<tr>
 			<td>
 				<a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">
-					<strong>{{ $f->title }} </strong>
+					{{ $f->title }}
 				</a>
 			</td>
 			<td>
 				<a href="/forum-category/{{ $f->group_id }}-{{ str_slug($f->group->group_name) }}">
-					<strong>{{ $f->group->group_name }} </strong>
+					{{ $f->group->group_name }}
 				</a>
 			</td>
 			<td>{{ $f->created->diffForHumans() }}</td>

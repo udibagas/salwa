@@ -18,7 +18,7 @@
 			</td>
 			<td>
 				<a href="/forum-category/{{ $p->forum->group_id }}-{{ str_slug($p->forum->group->group_name) }}">
-					<strong>{{ $p->forum->group->group_name }} </strong>
+					{{ $p->forum->group->group_name }}
 				</a>
 			</td>
 			<td>{{ $p->created->diffForHumans() }}</td>

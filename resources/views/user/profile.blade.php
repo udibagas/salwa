@@ -1,4 +1,4 @@
-@extends('layouts.cms')
+@extends('layouts.main')
 
 @section('title') Profile : {{ $user->name }} @stop
 
@@ -17,7 +17,7 @@
 
 @stop
 
-@section('cms-content')
+@section('content')
 
 <div class="row">
 
@@ -34,7 +34,7 @@
 		<div class="tab-content">
 
 			<div role="tabpanel" class="tab-pane active" id="1">
-				<br>
+				<br />
 				<div class="row">
 					<div class="col-md-7">
 						@include('user._form', ['url' => '/user/'.$user->id, 'method' => 'PUT'])

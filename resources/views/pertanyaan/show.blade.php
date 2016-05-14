@@ -39,8 +39,9 @@
 		<ul class="list-group">
 			@foreach ($terkait as $p)
 			<li class="list-group-item">
-				<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}"><strong>{{ $p->judul_pertanyaan }}</strong></a><br>
-				<i> {{ $p->user ? $p->user->name : '' }} | {{ $p->updated->diffForHumans() }}</i>
+				<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">{{ $p->judul_pertanyaan }}</a><br>
+				<i class="fa fa-user"></i> {{ $p->user ? $p->user->name : '' }}
+				<i class="fa fa-clock-o"></i> {{ $p->updated->diffForHumans() }}
 			</li>
 			@endforeach
 		</ul>

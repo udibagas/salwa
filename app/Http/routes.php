@@ -18,11 +18,8 @@ Route::resource('peduli', 'PeduliController');
 Route::resource('video', 'VideoController');
 Route::resource('mp3', 'Mp3Controller');
 Route::resource('image', 'ImageController');
-Route::get('/pertanyaan/search', 'PertanyaanController@search');
-Route::resource('pertanyaan', 'PertanyaanController');
 Route::get('/forum/search', 'ForumController@search');
 Route::resource('forum', 'ForumController');
-Route::post('forum/comment', 'ForumController@comment');
 Route::get('forum-category/{group}', 'ForumController@category');
 Route::resource('produk', 'ProdukController');
 Route::resource('murottal', 'MurottalController');
@@ -32,17 +29,25 @@ Route::get('hadist', 'HadistController@indexHadist');
 Route::get('doa', 'HadistController@indexDoa');
 Route::get('dzikir', 'HadistController@indexDzikir');
 Route::get('hadist/{hadist}', 'HadistController@show');
-Route::any('search', 'HomeController@search');
+Route::get('doa/{hadist}', 'HadistController@show');
+Route::get('dzikir/{hadist}', 'HadistController@show');
 // Route::resource('hadist', 'HadistController');
-Route::get('me', 'UserController@me');
-Route::resource('user', 'UserController');
-
 
 Route::auth();
 
 Route::group(['middleware' => 'auth'], function() {
-	Route::resource('post', 'PostController');
+	Route::resource('group', 'GroupController');
+	Route::get('me', 'UserController@me');
+	Route::get('cms', 'CmsController@index');
+	Route::resource('user', 'UserController');
+	Route::get('pertanyaan/create', 'PertanyaanController@create');
+	Route::get('pertanyaan/admin', 'PertanyaanController@admin');
+	Route::get('pertanyaan/{pertanyaan}/jawab', 'PertanyaanController@jawab');
+	Route::post('forum/comment', 'ForumController@comment');
 });
+
+Route::resource('pertanyaan', 'PertanyaanController');
+
 
 Route::get('design', function() {
 	return '<img src="/images/design.jpg" style="width:100%" />';

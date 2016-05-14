@@ -1,10 +1,12 @@
 @extends('layouts.main')
 
 @section('content')
-	<h4 class="title">LOGIN</h4>
-	<br />
-    <div class="row">
-        <div class="col-md-4">
+    <div class="row" style="min-height:280px;margin-top:60px;">
+		<div class="col-md-4">
+
+		</div>
+        <div class="col-md-4 text-center">
+			<h4 class="title">LOGIN</h4>
             <form class="form-vertical" role="form" method="POST" action="{{ url('/login') }}">
                 {!! csrf_field() !!}
 
@@ -39,11 +41,11 @@
 				<hr>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-info">
                         <i class="fa fa-btn fa-sign-in"></i> Login
                     </button>
 
-                    <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                    <!-- <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a> -->
                 </div>
             </form>
         </div>

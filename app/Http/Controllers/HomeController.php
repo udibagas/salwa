@@ -36,8 +36,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+		if ($request->search)
+		{
+			return view('home.search', [
+				'search' => $request->search
+			]);
+		}
+
         return view('home.index', [
 			'videos' 	=> Video::limit(9)->orderBy('video_id', 'DESC')->get(),
 			'images' 	=> SalwaImages::limit(3)->orderBy('updated', 'DESC')->get(),
@@ -45,7 +52,7 @@ class HomeController extends Controller
 			'artikel' 	=> Artikel::limit(4)->orderBy('artikel_id', 'DESC')->get(),
 			'peduli' 	=> Peduli::limit(3)->orderBy('peduli_id', 'DESC')->get(),
 			'forum'		=> Forum::limit(3)->orderBy('forum_id', 'DESC')->get(),
-			'buku'		=> Buku::limit(6)->orderBy('buku_id', 'ASC')->get(),
+			'buku'		=> Buku::limit(6)->orderBy('buku_id', 'DESC')->get(),
 			'produk'	=> Produk::limit(3)->orderBy('id_produk', 'DESC')->get(),
 			'doa'		=> Hadist::limit(5)->doa()->orderBy('hadist.updated', 'DESC')->get(),
 			'dzikir'	=> Hadist::limit(5)->dzikir()->orderBy('hadist.updated', 'DESC')->get(),
@@ -56,11 +63,4 @@ class HomeController extends Controller
 			'bukuterjemahan'	=> BukuTerjemahan::limit(4)->orderBy('terjamahan_id', 'DESC')->get(),
 		]);
     }
-
-	public function search()
-	{
-		return view('home.search', [
-			'q' => $_REQUEST['q']
-		]);
-	}
 }

@@ -18,10 +18,28 @@ class PertanyaanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('pertanyaan.index', ['pertanyaans' => Pertanyaan::show()->orderBy('updated', 'DESC')->paginate()]);
-    }
+	public function index(Request $request)
+	{
+		return view('pertanyaan.index', [
+			'search'		=> $request->search,
+			'pertanyaans' 	=> Pertanyaan::show()
+								->when($request->search, function($query) use ($request) {
+									return $query->where('judul_pertanyaan', 'like', '%'.$request->search.'%')
+												->orWhere('ket_pertanyaan', 'like', '%'.$request->search.'%');
+								})->orderBy('updated', 'DESC')->paginate(),
+		]);
+	}
+
+	public function admin(Request $request)
+	{
+		return view('pertanyaan.admin', [
+			'search'		=> $request->search,
+			'pertanyaans' 	=> Pertanyaan::when($request->search, function($query) use ($request) {
+									return $query->where('judul_pertanyaan', 'like', '%'.$request->search.'%')
+												->orWhere('ket_pertanyaan', 'like', '%'.$request->search.'%');
+								})->orderBy('updated', 'DESC')->paginate(),
+		]);
+	}
 
     /**
      * Show the form for creating a new resource.
@@ -73,6 +91,11 @@ class PertanyaanController extends Controller
         return view('pertanyaan.edit', ['model' => $pertanyaan]);
     }
 
+    public function jawab(Pertanyaan $pertanyaan)
+    {
+        return view('pertanyaan.jawab', ['model' => $pertanyaan]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -97,15 +120,4 @@ class PertanyaanController extends Controller
         $pertanyaan->delete();
 		return redirect('/pertanyaan');
     }
-
-	public function search(Request $request)
-	{
-		return view('pertanyaan.index', [
-			'search'		=> $request->search,
-			'pertanyaans' 	=> Pertanyaan::show()
-								->where('judul_pertanyaan', 'like', '%'.$request->search.'%')
-								->orWhere('ket_pertanyaan', 'like', '%'.$request->search.'%')
-								->orderBy('updated', 'DESC')->paginate(),
-		]);
-	}
 }

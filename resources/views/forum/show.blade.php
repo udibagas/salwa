@@ -37,7 +37,11 @@
 
 		@if (Auth::check())
 
-			@if (Auth::user()->jenis_kelamin == $forum->user->jenis_kelamin)
+			@if ($forum->close == 'Y')
+				<div class="alert alert-danger text-center">
+					Anda tidak dapat berkomentar di thread ini. Forum ini sudah ditutup.
+				</div>
+			@elseif (Auth::user()->jenis_kelamin == $forum->user->jenis_kelamin)
 				@include('forum._form-komentar')
 			@else
 				<div class="alert alert-danger text-center">

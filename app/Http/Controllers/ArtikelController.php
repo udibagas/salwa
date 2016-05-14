@@ -15,9 +15,15 @@ class ArtikelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('artikel.index', ['artikels' => Artikel::orderBy('updated', 'DESC')->paginate(20)]);
+        return view('artikel.index', [
+			'artikels' => Artikel::when($request->group_id, function($query) use ($request) {
+								return $query->where('group_id', $request->group_id);
+							})->when($request->search, function($query) use ($request) {
+								return $query->where('judul', 'like', '%'.$request->search.'%');
+							})->orderBy('updated', 'DESC')->paginate(20)
+		]);
     }
 
     /**

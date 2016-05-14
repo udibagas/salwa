@@ -16,6 +16,9 @@
 
 
 	<div class="row">
+		<div class="col-md-3">
+			@include('informasi._group')
+		</div>
 		<div class="col-md-9">
 			<h4 class="title">INFORMASI</h4>
 			<div class="row no-gutter">
@@ -29,9 +32,9 @@
 			</nav>
 		</div>
 
-		<div class="col-md-3">
-			@include('home.sidebar')
-		</div>
+		<!-- <div class="col-md-3">
+			include('home.sidebar')
+		</div> -->
 	</div>
 
 @stop

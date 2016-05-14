@@ -7,19 +7,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><img src="/images/logo-putih.png" alt="" style="height:40px;" /></a>
+      <a class="navbar-brand" href="/">
+		  <img src="/images/logo-putih.png" alt="" style="height:40px;" />
+	  </a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
 
-      <form class="navbar-form navbar-left" method="GET" action="/search" style="margin-left:20px;">
-        <div class="form-group">
-			<div class="input-group">
-				<input type="text" name="q" placeholder="Search" class="form-control">
-				<div class="input-group-addon"><i class="fa fa-search"></i></div>
-			</div>
-        </div>
+      <form class="navbar-form navbar-left" method="GET" action="/" style="margin-left:20px;">
+			<input type="text" name="search" value="{{ Request::get('search') }}" placeholder="Search" class="form-control search-nav" style="width:230px;">
       </form>
-	  
+
       <ul class="nav navbar-nav navbar-right">
           <li class="@if (url()->current() == url('video')) active @endif"><a href="/video">Salwa Video</a></li>
 		  <li class="@if (url()->current() == url('artikel')) active @endif"><a href="/artikel">Salwa Aktual</a></li>
@@ -31,6 +28,9 @@
 		  <li class="@if (url()->current() == url('register')) active @endif"><a href="/register">Daftar/Masuk</a></li>
 		  @else
 		  <li class="@if (url()->current() == url('me')) active @endif"><a href="/me">{{ Auth::user()->name }}</a></li>
+		  @if (Auth::user()->user_status == 1)
+		  <li class="@if (url()->current() == url('cms')) active @endif"><a href="/cms">CMS</a></li>
+		  @endif
 		  <li class=""><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
 		  @endif
       </ul>

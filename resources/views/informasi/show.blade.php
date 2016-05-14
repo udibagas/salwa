@@ -16,15 +16,18 @@
 @section('content')
 
 <div class="row">
+	<div class="col-md-3">
+		@include('informasi._group')
+	</div>
 	<div class="col-md-9">
-		<h1>{{ $informasi->judul }}</h1><hr />
-		<b>{{ $informasi->updated->diffForHumans() }}</b><br />
-		<hr>
+		<h1>{{ $informasi->judul }}</h1>
+		<i class="fa fa-clock-o"></i> {{ $informasi->updated->diffForHumans() }}
+		<br /><br />
 
 		@if ($informasi->img_gambar)
-		<img src="http://www.salamdakwah.com/{{ $informasi->img_gambar }}" style="width:100%;margin-bottom:30px;" alt="" />
+		<img src="http://www.salamdakwah.com/{{ $informasi->img_gambar }}" class="img-responsive" style="margin-bottom:30px;" alt="" />
 		@endif
-		
+
 		{!! $informasi->content !!}
 
 		<hr>
@@ -40,9 +43,9 @@
 
 	</div>
 
-	<div class="col-md-3">
-		@include('home.sidebar')
-	</div>
+	<!-- <div class="col-md-3">
+		include('home.sidebar')
+	</div> -->
 </div>
 
 @stop
