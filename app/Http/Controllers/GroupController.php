@@ -14,10 +14,16 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+		$search = str_replace(' ', '%', $request->search);
+
         return view('group.index', [
-			'groups' => Group::orderBy('group_name', 'ASC')->paginate()
+			'groups' => Group::when($search, function($query) use ($search) {
+						return $query->where('group_name', 'like', '%'.$search.'%')
+									->orWhere('type', 'like', '%'.$search.'%')
+									->orWhere('description', 'like', '%'.$search.'%');
+					})->orderBy('group_name', 'ASC')->paginate()
 		]);
     }
 

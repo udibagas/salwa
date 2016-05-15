@@ -16,12 +16,32 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+		$search = str_replace(' ', '%', $request->search);
+
         return view('user.index', [
 			'users' => User::orderBy('user_name', 'ASC')
-						->when($request->search, function($query) use ($request) {
-							return $query->where('user_name', 'like', '%'.$request->search.'%')
-										->orWhere('name', 'like', '%'.$request->search.'%')
-										->orWhere('email', 'like', '%'.$request->search.'%');
+						->when($search, function($query) use ($search) {
+							return $query->where('user_name', 'like', '%'.$search.'%')
+										->orWhere('name', 'like', '%'.$search.'%')
+										->orWhere('email', 'like', '%'.$search.'%');
+						})->when(str_contains($search, 'ustadz'), function($query) {
+							return $query->where('user_status', User::ROLE_USTADZ);
+						})->when($search == 'admin', function($query) {
+							return $query->orWhere('user_status', User::ROLE_ADMIN);
+						})->when($search == 'member', function($query) {
+							return $query->orWhere('user_status', User::ROLE_MEMBER);
+						})->when($search == 'aktualita', function($query) {
+							return $query->orWhere('user_status', User::ROLE_AKTUALITA);
+						})->when($search == 'staff', function($query) {
+							return $query->orWhere('user_status', User::ROLE_STAFF);
+						})->when($search == 'active', function($query) {
+							return $query->orWhere('active', 'Y');
+						})->when($search == 'nonactive', function($query) {
+							return $query->orWhere('active', 'N');
+						})->when($search == 'pria', function($query) {
+							return $query->orWhere('jenis_kelamin', 'p');
+						})->when($search == 'wanita', function($query) {
+							return $query->orWhere('jenis_kelamin', 'w');
 						})->paginate()
 		]);
     }
@@ -55,16 +75,12 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('user.show', [
-			'user' => $user,
-		]);
+        return view('user.show', ['user' => $user]);
     }
 
 	public function me()
 	{
-		return view('user.profile', [
-			'user' => auth()->user()
-		]);
+		return view('user.profile', ['user' => auth()->user()]);
 	}
 
     /**
@@ -73,7 +89,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         //
     }

@@ -17,12 +17,27 @@ class ArtikelController extends Controller
      */
     public function index(Request $request)
     {
+		$search = str_replace(' ', '%', $request->search);
+
         return view('artikel.index', [
 			'artikels' => Artikel::when($request->group_id, function($query) use ($request) {
 								return $query->where('group_id', $request->group_id);
-							})->when($request->search, function($query) use ($request) {
-								return $query->where('judul', 'like', '%'.$request->search.'%');
+							})->when($search, function($query) use ($search) {
+								return $query->where('judul', 'like', '%'.$search.'%');
 							})->orderBy('updated', 'DESC')->paginate(20)
+		]);
+    }
+
+    public function admin(Request $request)
+    {
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('artikel.admin', [
+			'artikels' => Artikel::when($request->group_id, function($query) use ($request) {
+								return $query->where('group_id', $request->group_id);
+							})->when($search, function($query) use ($search) {
+								return $query->where('judul', 'like', '%'.$search.'%');
+							})->orderBy('updated', 'DESC')->paginate()
 		]);
     }
 

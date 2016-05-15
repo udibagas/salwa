@@ -25,7 +25,10 @@
 	</div>
 
 	<div class="col-md-9">
-		<h1>{{ $forum->title }}</h1><hr />
+		<h1>{{ $forum->title }}</h1>
+		<hr>
+		@include('layouts._share')
+		<hr />
 
 		@foreach ($posts as $p)
 			@include('forum._list-komentar')

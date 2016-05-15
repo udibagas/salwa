@@ -18,6 +18,8 @@ use App\Banner;
 use App\Group;
 use App\SalwaImages;
 use App\Informasi;
+use App\Mp3;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -40,8 +42,23 @@ class HomeController extends Controller
     {
 		if ($request->search)
 		{
+			$search = str_replace(' ', '%', $request->search);
+
 			return view('home.search', [
-				'search' => $request->search
+				'videos'	=> Video::where('title', 'like', '%'.$search.'%')->orderBy('updated', 'DESC')->limit(10)->get(),
+				'forums'	=> Forum::where('title', 'like', '%'.$search.'%')->orderBy('updated', 'DESC')->limit(10)->get(),
+				'posts'		=> Post::where('description', 'like', '%'.$search.'%')->orderBy('updated', 'DESC')->limit(10)->get(),
+				'artikels'	=> Artikel::where('judul', 'like', '%'.$search.'%')->orderBy('updated', 'DESC')->limit(10)->get(),
+				'produks'	=> Produk::where('judul', 'like', '%'.$search.'%')->orderBy('updated', 'DESC')->limit(10)->get(),
+				'images'	=> SalwaImages::where('judul', 'like', '%'.$search.'%')->orderBy('updated', 'DESC')->limit(10)->get(),
+				'audios'	=> Mp3::where('judul', 'like', '%'.$search.'%')->orderBy('updated', 'DESC')->limit(10)->get(),
+				'informasis'=> Informasi::where('judul', 'like', '%'.$search.'%')->orderBy('updated', 'DESC')->limit(10)->get(),
+				'buku'		=> Buku::where('judul', 'like', '%'.$search.'%')->orderBy('updated', 'DESC')->limit(10)->get(),
+				'pertanyaan'=> Pertanyaan::show()->where('judul_pertanyaan', 'like', '%'.$search.'%')->orderBy('updated', 'DESC')->limit(10)->get(),
+				'pedulis'	=> Peduli::where('judul', 'like', '%'.$search.'%')->orderBy('updated', 'DESC')->limit(10)->get(),
+				'doa'		=> Hadist::doa()->where('judul', 'like', '%'.$search.'%')->orderBy('hadist.updated', 'DESC')->limit(10)->get(),
+				'dzikir'	=> Hadist::dzikir()->where('judul', 'like', '%'.$search.'%')->orderBy('hadist.updated', 'DESC')->limit(10)->get(),
+				'hadist'	=> Hadist::hadist()->where('judul', 'like', '%'.$search.'%')->orderBy('hadist.updated', 'DESC')->limit(10)->get(),
 			]);
 		}
 

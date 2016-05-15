@@ -34,7 +34,7 @@
 
 				<hr>
 
-				@include('layouts._share', ['url' => url('/kitab/'.$kitab->buku_id.'-'.str_slug($kitab->judul))])
+				@include('layouts._share')
 
 				<a href="http://www.salamdakwah.com/{{ $kitab->file_pdf }}" class="btn btn-info"><span class="fa fa-download"></span> Download ({{ $kitab->didownload }}x)</a>
 

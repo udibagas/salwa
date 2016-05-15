@@ -17,7 +17,26 @@ class KitabController extends Controller
      */
     public function index()
     {
-        return view('kitab.index', ['kitabs' => Buku::orderBy('updated', 'DESC')->paginate()]);
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('kitab.admin', [
+			'kitabs' => Buku::when($search, function($query) use ($search) {
+							return $query->where('judul', 'like', '%'.$search.'%')
+									->orWhere('penulis', 'like', '%'.$search.'%');
+						})->orderBy('updated', 'DESC')->paginate()
+		]);
+    }
+
+    public function admin(Request $request)
+    {
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('kitab.admin', [
+			'kitabs' => Buku::when($search, function($query) use ($search) {
+							return $query->where('judul', 'like', '%'.$search.'%')
+									->orWhere('penulis', 'like', '%'.$search.'%');
+						})->orderBy('updated', 'DESC')->paginate()
+		]);
     }
 
     /**

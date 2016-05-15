@@ -17,12 +17,27 @@ class InformasiController extends Controller
      */
     public function index(Request $request)
     {
+		$search = str_replace(' ', '%', $request->search);
+
         return view('informasi.index', [
-			'informasis' => Informasi::when($request->search, function($query) use ($request) {
-								return $query->where('judul', 'like', '%'.$request->search.'%');
+			'informasis' => Informasi::when($search, function($query) use ($search) {
+								return $query->where('judul', 'like', '%'.$search.'%');
 							})->when($request->group_id, function($query) use ($request) {
 								return $query->where('group_id', $request->group_id);
 							})->orderBy('updated', 'DESC')->paginate(20)
+		]);
+    }
+
+    public function admin(Request $request)
+    {
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('informasi.admin', [
+			'informasis' => Informasi::when($search, function($query) use ($search) {
+								return $query->where('judul', 'like', '%'.$search.'%');
+							})->when($request->group_id, function($query) use ($request) {
+								return $query->where('group_id', $request->group_id);
+							})->orderBy('updated', 'DESC')->paginate()
 		]);
     }
 

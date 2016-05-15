@@ -32,6 +32,16 @@ class User extends Authenticatable
 
 	const UPDATED_AT = 'updated';
 
+	const ROLE_ADMIN = 1;
+
+	const ROLE_STAFF = 2;
+
+	const ROLE_USTADZ = 3;
+
+	const ROLE_AKTUALITA = 4;
+
+	const ROLE_MEMBER = 5;
+
 	public function forums()
 	{
 		return $this->hasMany('App\Forum', 'user_id', 'user_id');

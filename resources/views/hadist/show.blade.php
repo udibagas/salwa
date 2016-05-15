@@ -32,7 +32,7 @@
 		{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
 
 		<hr>
-		@include('layouts._share', ['url' => url('/hadist/'.$hadist->hadist_id.'-'.str_slug($hadist->judul))])
+		@include('layouts._share')
 
 	</div>
 

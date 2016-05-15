@@ -31,7 +31,7 @@
 		{!! $peduli->isi !!}
 
 		<hr>
-		@include('layouts._share', ['url' => url('/peduli/'.$peduli->peduli_id.'-'.str_slug($peduli->judul))])
+		@include('layouts._share'])
 		<hr>
 
 		<h4 class="title">SALWA PEDULI</h4>

@@ -15,9 +15,26 @@ class MurottalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('murottal.index', ['murottals' => Murottal::orderBy('nama_surat', 'ASC')->paginate()]);
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('murottal.admin', [
+			'murottals' => Murottal::when($search, function($query) use ($search) {
+						return $query->where('nama_surat', 'like', '%'.$search.'%');
+					})->orderBy('nama_surat', 'ASC')->paginate()
+		]);
+    }
+
+	public function admin(Request $request)
+    {
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('murottal.admin', [
+			'murottals' => Murottal::when($search, function($query) use ($search) {
+						return $query->where('nama_surat', 'like', '%'.$search.'%');
+					})->orderBy('nama_surat', 'ASC')->paginate()
+		]);
     }
 
     /**

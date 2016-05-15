@@ -31,7 +31,7 @@
 		{!! $informasi->content !!}
 
 		<hr>
-		@include('layouts._share', ['url' => url('/informasi/'.$informasi->informasi_id.'-'.str_slug($informasi->judul))])
+		@include('layouts._share')
 		<hr>
 
 		<h4 class="title">INFORMASI TERKAIT</h4>

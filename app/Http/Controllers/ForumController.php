@@ -123,15 +123,28 @@ class ForumController extends Controller
 
 	public function search(Request $request)
 	{
-		$group_id = $request->group_id;
+		$group_id	= $request->group_id;
+		$search		= str_replace(' ', '%', $request->search);
 
 		return view('forum.search', [
 			'groups' 	=> Group::forum()->orderBy('group_name', 'ASC')->get(),
 			'group'		=> Group::find($group_id),
 			'search'	=> $request->search,
-			'forums' 	=> Forum::where('title', 'like', '%'.$request->search.'%')
-							->when($group_id, function($query) use ($group_id) {
+			'forums' 	=> Forum::when($search, function($query) use ($search) {
+								return $query->where('title', 'like', '%'.$search.'%');
+							})->when($group_id, function($query) use ($group_id) {
 								return $query->where('group_id', $group_id);
+							})->orderBy('updated', 'DESC')->paginate()
+		]);
+	}
+
+	public function admin(Request $request)
+	{
+		$search		= str_replace(' ', '%', $request->search);
+
+		return view('forum.admin', [
+			'forums' 	=> Forum::when($search, function($query) use ($search) {
+								return $query->where('title', 'like', '%'.$search.'%');
 							})->orderBy('updated', 'DESC')->paginate()
 		]);
 	}

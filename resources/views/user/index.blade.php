@@ -19,25 +19,31 @@
 
 @section('cms-content')
 	<h4 class="title"><i class="fa fa-users"></i> USERS</h4>
-	<a href="/user/create" class="btn btn-info"><i class="fa fa-user-plus"></i> Create User</a>
-	<hr>
-	<div class="row">
-		<div class="col-md-4">
-			{!! Form::open(['method' => 'GET', 'class' => 'form-inline', 'style' => 'display:inline-block']) !!}
-				<div class="form-group">
-					<div class="input-group">
-						<input type="text" name="search" value="{{ Request::get('search') }}" placeholder="Search" class="form-control">
-						<div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+	<div class="well well-sm" style="margin-bottom:10px;">
+		<div class="row no-gutter">
+			<div class="col-md-4">
+				{!! Form::open(['method' => 'GET', 'class' => 'form-inline', 'style' => 'display:inline-block']) !!}
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" name="search" value="{{ Request::get('search') }}" placeholder="Search" class="form-control">
+							<div class="input-group-addon"><i class="fa fa-search"></i></div>
+						</div>
 					</div>
-				</div>
-			{!! Form::close() !!}
-		</div>
-		<div class="col-md-8 text-right">
-			Showing {{ $users->firstItem() }} to {{ $users->lastItem() }} of {{ $users->total() }} entries
+				{!! Form::close() !!}
+			</div>
+			<div class="col-md-4">
+				<a href="/user/create" class="btn btn-info"><i class="fa fa-user-plus"></i> Add User</a>
+			</div>
+			<div class="col-md-4 text-right">
+				<p style="padding:5px 5px 0 0;">
+					<b>
+						Showing {{ $users->firstItem() }} to {{ $users->lastItem() }} of {{ $users->total() }} entries
+					</b>
+				</p>
+			</div>
 		</div>
 	</div>
-
-	<br />
 
 	<table class="table table-hover table-striped">
 		<thead>
@@ -49,7 +55,7 @@
 				<th>Role</th>
 				<th>Active</th>
 				<th>Member Since</th>
-				<th>Action</th>
+				<th style="width:130px;">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -60,7 +66,7 @@
 				<td>{{ $u->jenis_kelamin == 'p' ? 'Pria' : 'Wanita' }}</td>
 				<td><a href="mailto:{{ $u->email }}">{{ $u->email }}</a></td>
 				<td>{{ $u->role }}</td>
-				<td>{{ $u->active }}</td>
+				<td><b class="{{ $u->active == 'Y' ? 'text-success' : 'text-danger' }}">{{ $u->active }}</b></td>
 				<td>{{ $u->created }}</td>
 				<td>
 					{!! Form::open(['method' => 'DELETE', 'url' => '/user/'.$u->user_id]) !!}

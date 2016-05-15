@@ -28,7 +28,7 @@
 		  <li class="@if (url()->current() == url('register')) active @endif"><a href="/register">Daftar/Masuk</a></li>
 		  @else
 		  <li class="@if (url()->current() == url('me')) active @endif"><a href="/me">{{ Auth::user()->name }}</a></li>
-		  @if (Auth::user()->user_status == 1)
+		  @if (Auth::user()->user_status == \App\User::ROLE_ADMIN)
 		  <li class="@if (url()->current() == url('cms')) active @endif"><a href="/cms">CMS</a></li>
 		  @endif
 		  <li class=""><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>

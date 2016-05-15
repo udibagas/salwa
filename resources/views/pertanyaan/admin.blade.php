@@ -16,6 +16,28 @@
 
 <h4 class="title"><i class="fa fa-question-circle"></i> TANYA USTADZ</h4>
 
+<div class="well well-sm" style="margin-bottom:10px;">
+	<div class="row">
+		<div class="col-md-4">
+			{!! Form::open(['method' => 'GET', 'class' => 'form-inline']) !!}
+				<div class="form-group">
+					<div class="input-group">
+						<input type="text" name="search" value="{{ Request::get('search') }}" placeholder="Search" class="form-control">
+						<div class="input-group-addon"><i class="fa fa-search"></i></div>
+					</div>
+				</div>
+			{!! Form::close() !!}
+		</div>
+		<div class="col-md-8 text-right">
+			<p style="padding:5px 5px 0 0;">
+				<b><em>
+					Showing {{ $pertanyaans->firstItem() }} to {{ $pertanyaans->lastItem() }} of {{ $pertanyaans->total() }} entries
+				</em></b>
+			</p>
+		</div>
+	</div>
+</div>
+
 <table class="table table-hover table-striped">
 	<thead>
 		<tr>
@@ -42,16 +64,16 @@
 			<td>{{ $p->created->diffForHumans() }}</td>
 			<td>
 				@if ($p->jawaban)
-					<span class="label label-success">Y</span>
+					<span class="label label-success">Sudah</span>
 				@else
-					<span class="label label-warning">N</span>
+					<span class="label label-default">Belum</span>
 				@endif
 			</td>
 			<td>{{ $p->ustadz ? $p->ustadz->name : '' }}</td>
 			<td>{{ $p->status == 's' ? 'Y' : 'N' }}</td>
 			<td>
 				@if ($p->jawaban)
-					
+
 				@else
 					{!! Form::open(['method' => 'DELETE', 'url' => '/pertanyaan/'.$p->pertanyaan_id]) !!}
 					<a href="/pertanyaan/{{ $p->pertanyaan_id }}/jawab" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Jawab</a>

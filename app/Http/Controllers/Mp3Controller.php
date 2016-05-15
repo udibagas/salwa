@@ -17,7 +17,24 @@ class Mp3Controller extends Controller
      */
     public function index()
     {
-        return view('mp3.index', ['mp3s' => Mp3::orderBy('updated', 'DESC')->paginate()]);
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('mp3.admin', [
+			'audios' => Mp3::when($search, function($query) use ($search) {
+						return $query->where('judul', 'like', '%'.$search.'%');
+					})->orderBy('updated', 'DESC')->paginate()
+		]);
+    }
+
+    public function admin(Request $request)
+    {
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('mp3.admin', [
+			'audios' => Mp3::when($search, function($query) use ($search) {
+						return $query->where('judul', 'like', '%'.$search.'%');
+					})->orderBy('updated', 'DESC')->paginate()
+		]);
     }
 
     /**

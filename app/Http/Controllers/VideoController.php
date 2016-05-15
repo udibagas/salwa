@@ -15,9 +15,26 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('video.index', ['videos' => Video::video()->orderBy('updated', 'DESC')->paginate()]);
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('video.index', [
+			'videos' => Video::video()->when($search, function($query) use ($search) {
+						return $query->where('title', 'like', '%'.$search.'%');
+					})->orderBy('updated', 'DESC')->paginate()
+		]);
+    }
+
+    public function admin(Request $request)
+    {
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('video.admin', [
+			'videos' => Video::video()->when($search, function($query) use ($search) {
+						return $query->where('title', 'like', '%'.$search.'%');
+					})->orderBy('updated', 'DESC')->paginate()
+		]);
     }
 
     public function indexAudio()

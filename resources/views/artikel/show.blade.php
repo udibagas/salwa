@@ -34,7 +34,7 @@
 		{!! $artikel->isi !!}
 
 		<hr>
-		@include('layouts._share', ['url' => url('/artikel/'.$artikel->artikel_id.'-'.str_slug($artikel->judul))])
+		@include('layouts._share')
 		<hr>
 
 		<h4 class="title">ARTIKEL TERKAIT</h4>

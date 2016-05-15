@@ -30,6 +30,17 @@ class HadistController extends Controller
 		]);
     }
 
+    public function admin(Request $request)
+    {
+        return view('hadist.admin', [
+			'hadists' 	=> Hadist::join('groups', 'hadist.group_id', '=', 'groups.group_id')
+						->when($request->search, function($query) use ($request) {
+							return $query->where('judul', 'like', '%'.$request->search.'%');
+						})->orderBy('hadist.updated', 'DESC')
+						->paginate()
+		]);
+    }
+
     public function indexDoa(Request $request)
     {
 		$group_name = 'doa';

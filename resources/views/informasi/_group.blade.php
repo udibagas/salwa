@@ -15,7 +15,7 @@
 	</a>
 	@foreach (\App\Group::informasi()->orderBy('group_name', 'ASC')->get() as $g)
 	<a href="/informasi?search={{ Request::get('search') }}&group_id={{ $g->group_id }}" class="list-group-item @if (Request::get('group_id') == $g->group_id) active @endif">
-		<i class="fa fa-hashtag"></i> {{ $g->group_name }} <span class="pull-right badge">{{ $g->informasis->count() }} info</span>
+		<i class="fa fa-hashtag"></i> {{ $g->group_name }} <span class="pull-right label label-default">{{ $g->informasis->count() }} info</span>
 	</a>
 	@endforeach
 </div>

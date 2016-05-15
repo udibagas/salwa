@@ -18,10 +18,10 @@
 <div class="row">
 	<div class="col-md-9">
 		<h1>{{ $image->judul }}</h1><hr />
-		<img src="http://www.salamdakwah.com/{{ $image->img_images }}" alt="" class="img img-responsive" style="width:100%" />
+		<img src="http://www.salamdakwah.com/{{ $image->img_images }}" alt="" class="img-responsive" />
 
 		<hr>
-		@include('layouts._share', ['url' => url('/image/'.$image->id_salwaimages.'-'.str_slug($image->judul))])
+		@include('layouts._share')
 		<hr>
 
 		<h4 class="title">IMAGE TERKAIT</h4>

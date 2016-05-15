@@ -1,7 +1,9 @@
+<hr style="border-color:#0077FA;">
+
 <div class="row">
 
 	<div class="col-md-6">
-		<h5 class="title">TENTANG SALWA</h5>
+		<h4 class="">TENTANG SALWA</h4>
 		<div class="media">
 			<div class="media-body">
 				<p>
@@ -19,7 +21,7 @@
 
 	<div class="col-md-3">
 
-		<h5 class="title">STAY IN TOUCH WITH US</h5>
+		<h4 class="">STAY IN TOUCH WITH US</h4>
 
 		<a href="https://www.facebook.com/Salamdakwah-287022414764661/?ref=hl" target="_blank" class="fa fa-facebook-square fa-4x"> </a>
 
@@ -31,7 +33,7 @@
 
 	<div class="col-md-3">
 
-		<h5 class="title">DOWNLOAD APP</h5>
+		<h4 class="">DOWNLOAD APP</h4>
 
 		<a href="https://play.google.com/store/apps/details?id=com.bhn.salamdakwah" target="_blank" class="fa fa-android fa-4x text-blue"> </a>
 
@@ -42,7 +44,7 @@
 	</div>
 </div>
 
-<hr />
+<hr style="border-color:#0077FA;" />
 
 <div class="text-center text-muted">
 	<small>&copy; {{date('Y')}} - SalamDakwah.Com</small>

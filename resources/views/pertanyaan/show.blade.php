@@ -32,7 +32,7 @@
 		@endif
 
 		<hr>
-		@include('layouts._share', ['url' => url('/pertanyaan/'.$pertanyaan->pertanyaan_id.'-'.str_slug($pertanyaan->judul_pertanyaan))])
+		@include('layouts._share')
 		<hr>
 
 		<h4 class="title">PERTANYAAN TERKAIT</h4>

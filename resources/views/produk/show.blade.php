@@ -41,7 +41,7 @@
 		</div>
 
 		<hr>
-		@include('layouts._share', ['url' => url('/produk/'.$produk->id_produk.'-'.str_slug($produk->judul))])
+		@include('layouts._share')
 		<hr>
 
 		<h4 class="title">PRODUK TERKAIT</h4>

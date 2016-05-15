@@ -20,12 +20,14 @@ class PertanyaanController extends Controller
      */
 	public function index(Request $request)
 	{
+		$search = str_replace(' ', '%', $request->search);
+
 		return view('pertanyaan.index', [
 			'search'		=> $request->search,
 			'pertanyaans' 	=> Pertanyaan::show()
-								->when($request->search, function($query) use ($request) {
-									return $query->where('judul_pertanyaan', 'like', '%'.$request->search.'%')
-												->orWhere('ket_pertanyaan', 'like', '%'.$request->search.'%');
+								->when($request->search, function($query) use ($search) {
+									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
+												// ->orWhere('ket_pertanyaan', 'like', '%'.$search.'%');
 								})->orderBy('updated', 'DESC')->paginate(),
 		]);
 	}

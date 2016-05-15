@@ -15,9 +15,26 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('image.index', ['images' => SalwaImages::orderBy('updated', 'DESC')->paginate()]);
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('image.index', [
+			'images' => SalwaImages::when($search, function($query) use ($search) {
+						return $query->where('judul', 'like', '%'.$search.'%');
+					})->orderBy('updated', 'DESC')->paginate()
+		]);
+    }
+
+	public function admin(Request $request)
+    {
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('image.admin', [
+			'images' => SalwaImages::when($search, function($query) use ($search) {
+						return $query->where('judul', 'like', '%'.$search.'%');
+					})->orderBy('updated', 'DESC')->paginate()
+		]);
     }
 
     /**
