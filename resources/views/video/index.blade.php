@@ -30,7 +30,7 @@
 			</div>
 
 			<nav class="text-center">
-				{{ $videos->links() }}
+				{{ $videos->appends(['search' => request('search'), 'user_id' => request('user_id')])->links() }}
 			</nav>
 		</div>
 
