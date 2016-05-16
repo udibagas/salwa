@@ -5,7 +5,7 @@
 			<div class="thumbnail-block">
 				<div class="caption">
 					<h4>{{ $artikel->judul }}</h4>
-					<b>{{ $artikel->user ? $artikel->user->name : '' }}</b><br />
+					{{ $artikel->user ? $artikel->user->name : '' }}<br />
 					<em>{{ $artikel->updated->diffForHumans() }}</em>
 				</div>
 			</div>

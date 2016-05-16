@@ -30,7 +30,7 @@
 							<div class="thumbnail-block">
 								<div class="caption">
 									<h3>{{ $b->judul }}</h3>
-									<b>{{ $b->penulis }}</b>
+									{{ $b->penulis }}
 								</div>
 							</div>
 						</a>

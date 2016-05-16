@@ -5,7 +5,7 @@
 			<div class="thumbnail-block">
 				<div class="caption">
 					<h4>{{ $produk->judul }}</h4>
-					<b>{{ $produk->penerbit }}</b><br />
+					{{ $produk->penerbit }}<br />
 					<em>Rp {{ $produk->harga }}</em>
 				</div>
 			</div>

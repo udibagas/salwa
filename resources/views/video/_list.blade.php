@@ -7,7 +7,7 @@
 			<div class="video-block">
 				<div class="caption">
 					<h2>{{ $video->title }}</h2>
-					<b>{{ $video->user ? $video->user->name : '' }}</b><br />
+					{{ $video->user ? $video->user->name : '' }}<br />
 					<em>{{ $video->updated->diffForHumans() }}</em>
 				</div>
 			</div>

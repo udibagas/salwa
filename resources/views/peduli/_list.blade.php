@@ -5,11 +5,11 @@
 			@if ($peduli->img_artikel)
 			<img src="http://www.salamdakwah.com/{{ $peduli->img_artikel }}" style="width:100%;height:200px;" alt="">
 			@endif
-			
+
 			<div class="thumbnail-block">
 				<div class="caption">
 					<h4>{{ $peduli->judul }}</h4>
-					<b>{{ $peduli->user ? $peduli->user->name : '' }}</b><br />
+					{{ $peduli->user ? $peduli->user->name : '' }}<br />
 					<em>{{ $peduli->updated->diffForHumans() }}</em>
 				</div>
 			</div>
