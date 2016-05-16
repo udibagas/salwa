@@ -20,7 +20,7 @@
 			@include('peduli._group')
 		</div>
 		<div class="col-md-9">
-			<h4 class="title">SALWA PEDULI</h4>
+			<h4 class="title"><i class="fa fa-heart-o"></i> SALWA PEDULI</h4>
 			<div class="row no-gutter">
 				@foreach ($pedulis as $a)
 					@include('peduli._list', ['peduli' => $a])

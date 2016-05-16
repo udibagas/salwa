@@ -6,8 +6,13 @@
 }
 
 @font-face {
-    font-family: "Nirmala UI";
-    src: url("/fonts/NirmalaB_0.ttf");
+    font-family: "Gotham";
+    src: url("/fonts/Gotham-Book.ttf");
+}
+
+@font-face {
+    font-family: "Gotham";
+    src: url("/fonts/Gotham-Bold.ttf");
 	font-weight: bold;
 }
 
@@ -15,7 +20,8 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 body {
-	font-family: "Nirmala UI", sans-serif;
+	/*font-family: "Nirmala UI", sans-serif;*/
+	font-family: "Gotham", sans-serif;
 	padding-top: 50px;
 	padding-bottom: 20px;
 	color: #5a5a5a;
@@ -310,4 +316,19 @@ a.list-group-item {
 a:hover {
 	text-decoration: none;
 	color: #800000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  /*font-weight: bold;*/
 }
