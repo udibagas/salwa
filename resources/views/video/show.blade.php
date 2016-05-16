@@ -30,7 +30,7 @@
 		<h1>{{ $video->title }}</h1><hr />
 
 		@if ($video->url_video_youtube)
-		<iframe width="100%" height="360" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
+		<iframe width="100%" height="500" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
 		@endif
 
 		<div id="video"></div>

@@ -14,7 +14,7 @@
 
 	@include('home.video')
 	@include('home.promo')
-	@include('home.aktual')
+	@include('home._aktual')
 
 	<div style="border:1px solid #8EC7FB;">
 		<h4 class="title" style="margin:0;">FORUM</h4>
@@ -23,7 +23,14 @@
 		@endforeach
 	</div>
 
-	@include('home.kitab')
+	<br>
+	<div class="clearfix"></div>
+	@include('home._kitab')
+	<div class="clearfix"></div>
+
+	<br>
+	<br>
+	<br>
 
 	<div class="row">
 		<div class="col-md-6">
@@ -56,6 +63,10 @@
 		$(this).removeClass('fa-pause');
 		$(this).addClass('fa-play');
 		return false;
+	});
+
+	$('#myCarousel').carousel({
+		interval: 10000
 	});
 
 </script>

@@ -17,6 +17,7 @@
 
 #tile4 {
 	background: rgb(71,193,228);
+	background: #99ff33;
 }
 
 #tile8 {
@@ -24,7 +25,8 @@
 }
 
 #tile10 {
-	background: rgb(175,26,63);
+	/*background: rgb(175,26,63);*/
+	background-color: #ff9900;
 }
 
 .tile {

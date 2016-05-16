@@ -10,7 +10,9 @@
 	  @foreach ($promo as $p)
 	  <?php $i++ ?>
     <div class="item @if ($i == 1) active @endif">
-      <img class="first-slide" src="http://www.salamdakwah.com/{{ $p->img_banner }}" alt="First slide" style="width:100%;">
+		<a href="{{ $p->url }}">
+      <img class="first-slide" src="http://www.salamdakwah.com/{{ $p->img_banner }}" alt="" style="width:100%;">
+	  </a>
     </div>
 	@endforeach
   </div>
