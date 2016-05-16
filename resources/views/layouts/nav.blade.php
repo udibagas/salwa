@@ -13,8 +13,8 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
 
-      <form class="navbar-form navbar-left" method="GET" action="/" style="margin-left:20px;">
-			<input type="text" name="search" value="{{ Request::get('search') }}" placeholder="Search" class="form-control search-nav" style="width:230px;">
+      <form class="navbar-form navbar-left" method="GET" action="/" style="margin-left:10px;">
+			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control search-nav" style="width:170px;">
       </form>
 
       <ul class="nav navbar-nav navbar-right">
