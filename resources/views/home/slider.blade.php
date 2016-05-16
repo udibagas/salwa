@@ -13,9 +13,9 @@
 				<img src="http://www.salamdakwah.com/{{ $a->img_artikel }}" class="img-responsive" style="height:100%" />
 				<div class="thumbnail-block">
 					<div class="tilecaption">
-						<h3><i class="fa fa-clock-o"></i> <u>SALWA AKTUAL</u></h3>
+						<h3><i class="fa fa-clock-o"></i> SALWA AKTUAL</h3>
 						<h4>{{ $a->judul }}</h4>
-						<strong>{{ $a->user ? $a->user->name : '' }} | {{ $a->updated->diffForHumans() }}</strong>
+						{{ $a->user ? $a->user->name : '' }} | {{ $a->updated->diffForHumans() }}
 					</div>
 				</div>
 			</a>
@@ -62,9 +62,9 @@
 		  		 <img src="http://www.salamdakwah.com/{{ $v->img_video }}" class="img-responsive"/>
 				 <div class="video-block">
 					 <div class="tilecaption">
-						 <h3><i class="fa fa-video-camera"></i> <u>SALWA VIDEO</u></h3>
+						 <h3><i class="fa fa-video-camera"></i> SALWA VIDEO</h3>
 						 <h3>{{ $v->title }}</h3>
-						 <strong>{{ $v->user->name }}</strong>
+						 {{ $v->user->name }}
 					 </div>
 				 </div>
 				 </a>
@@ -87,9 +87,9 @@
 				<a href="/pertanyaan/{{ $v->pertanyaan_id }}-{{ str_slug($v->judul_pertanyaan) }}">
 					<div class="thumbnail-block">
 						<div class="tilecaption">
-							<h3><i class="fa fa-question-circle"></i> <u>TANYA USTADZ</u></h3>
+							<h3><i class="fa fa-question-circle"></i> TANYA USTADZ</h3>
 							<h3>{{ $v->judul_pertanyaan }}</h3>
-							<strong>{{ $v->user->name }} | {{ $v->updated->diffForHumans() }}</strong>
+							{{ $v->user->name }} | {{ $v->updated->diffForHumans() }}
 						</div>
 					</div>
 			   </a>
@@ -119,9 +119,9 @@
 				@endif
 				<div class="thumbnail-block">
 					<div class="tilecaption">
-						<h3><i class="fa fa-heart"></i> <u>SALWA PEDULI</u></h3>
+						<h3><i class="fa fa-heart"></i> SALWA PEDULI</h3>
 						<h3>{{ $a->judul }}</h3>
-						<strong>{{ $a->updated->diffForHumans() }}</strong>
+						{{ $a->updated->diffForHumans() }}
 					</div>
 				</div>
 	   		</a>
@@ -145,9 +145,9 @@
 			  <a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">
 			  <div class="thumbnail-block">
 				  <div class="tilecaption">
-					  <h3><i class="fa fa-comment"></i> <u>FORUM</u></h3>
+					  <h3><i class="fa fa-comment"></i> FORUM</h3>
 					  <h3>{{ $f->title }}</h3>
-					  <strong>{{ $f->user->name }} | {{ $f->updated->diffForHumans() }}</strong>
+					  {{ $f->user->name }} | {{ $f->updated->diffForHumans() }}
 				  </div>
 			  </div>
 			  </a>
@@ -173,9 +173,9 @@
 				  @endif
 				  <div class="thumbnail-block">
 					  <div class="tilecaption">
-						  <h3><i class="fa fa-info-circle"></i> <u>SALWA INFO</u></h3>
+						  <h3><i class="fa fa-info-circle"></i> SALWA INFO</h3>
 						  <h3>{{ $a->judul }}</h3>
-						  <strong>{{ $a->updated->diffForHumans() }}</strong>
+						  {{ $a->updated->diffForHumans() }}
 					  </div>
 				  </div>
 				  </a>

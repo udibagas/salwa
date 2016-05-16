@@ -306,3 +306,8 @@ a.list-group-item {
 .badge {
 	font-weight: normal;
 }
+
+a:hover {
+	text-decoration: none;
+	color: #800000;
+}
