@@ -57,9 +57,19 @@ class User extends Authenticatable
 		return $this->hasMany('App\Post', 'user_id', 'user_id');
 	}
 
+	public function videos()
+	{
+		return $this->hasMany('App\Video', 'user_id', 'user_id');
+	}
+
 	public function scopeActive($query)
 	{
 		return $query->where('active', 'Y');
+	}
+
+	public function scopeUstadz($query)
+	{
+		return $query->where('user_status', self::ROLE_USTADZ);
 	}
 
 	public static function roleList($index = 9999)

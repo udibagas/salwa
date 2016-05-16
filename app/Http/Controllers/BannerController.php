@@ -5,28 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Banner;
 
-use App\Mp3;
-
-class Mp3Controller extends Controller
+class BannerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-		$search = str_replace(' ', '%', $request->search);
-
-        return view('mp3.index', [
-			'audios' => Mp3::when($search, function($query) use ($search) {
-						return $query->where('judul', 'like', '%'.$search.'%');
-					})->orderBy('updated', 'DESC')->paginate()
-		]);
+        //
     }
 
-    public function admin(Request $request)
+	public function admin(Request $request)
     {
 		$search = str_replace(' ', '%', $request->search);
 
@@ -64,12 +57,9 @@ class Mp3Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Mp3 $mp3)
+    public function show($id)
     {
-        return view('mp3.show', [
-			'mp3' 	=> $mp3,
-			'terkait'	=> Mp3::where('user_id', $mp3->user_id)->limit(3)->get()
-		]);
+        //
     }
 
     /**

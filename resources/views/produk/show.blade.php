@@ -46,9 +46,7 @@
 
 		<h4 class="title">PRODUK TERKAIT</h4>
 		<div class="row no-gutter">
-			@foreach ($terkait as $t)
-				@include('produk._list', ['produk' => $t])
-			@endforeach
+			@each('produk._list', $terkait, 'produk')
 		</div>
 
 	</div>

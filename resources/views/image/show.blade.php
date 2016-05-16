@@ -26,9 +26,7 @@
 
 		<h4 class="title">IMAGE TERKAIT</h4>
 		<div class="row no-gutter">
-			@foreach ($terkait as $t)
-				@include('image._list', ['image' => $t])
-			@endforeach
+			@each('image._list', $terkait, 'image')
 		</div>
 	</div>
 
@@ -36,7 +34,5 @@
 		@include('home.sidebar')
 	</div>
 </div>
-
-
 
 @stop

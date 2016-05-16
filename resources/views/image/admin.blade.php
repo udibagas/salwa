@@ -52,9 +52,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php $i = $images->firstItem(); ?>
 			@foreach ($images as $a)
 				<tr>
-					<td>{{ $a->id_salwaimages }}</td>
+					<td>{{ $i++ }}</td>
 					<td><img src="http://www.salamdakwah.com/{{ $a->img_images }}" alt="" style="width:100px;" /></td>
 					<td><a href="/image/{{ $a->id_salwaimages }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
 					<td>{{ $a->updated }}</td>

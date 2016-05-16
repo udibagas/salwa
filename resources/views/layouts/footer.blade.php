@@ -1,4 +1,4 @@
-<hr style="border-color:#0077FA;">
+<hr style="border-color:#8EC7FB;">
 
 <div class="row">
 
@@ -42,10 +42,4 @@
 		</a>
 
 	</div>
-</div>
-
-<hr style="border-color:#0077FA;" />
-
-<div class="text-center text-muted">
-	<small>&copy; {{date('Y')}} - SalamDakwah.Com</small>
 </div>

@@ -1,10 +1,17 @@
 @extends('layouts.cms')
 
-@section('title') Users @stop
+@section('title', 'Users')
 
-@section('css')
-<link href="/DataTables/datatables.min.css" rel="stylesheet">
-@stop
+@push('css')
+	<link href="/DataTables/datatables.min.css" rel="stylesheet">
+@endpush
+
+@push('script')
+	<script src="/DataTables/datatables.min.js"></script>
+	<script type="text/javascript">
+		// $('table').dataTable();
+	</script>
+@endpush
 
 @section('breadcrumbs')
 
@@ -48,6 +55,7 @@
 	<table class="table table-hover table-striped">
 		<thead>
 			<tr>
+				<th>#</th>
 				<th>Username</th>
 				<th>Display Name</th>
 				<th>Jenis Kelamin</th>
@@ -59,8 +67,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php $i = $users->firstItem(); ?>
 			@foreach ($users as $u)
 			<tr>
+				<td>{{ $i++ }}</td>
 				<td>{{ $u->user_name }}</td>
 				<td><a href="/user/{{ $u->user_id }}">{{ $u->name }}</a></td>
 				<td>{{ $u->jenis_kelamin == 'p' ? 'Pria' : 'Wanita' }}</td>
@@ -83,11 +93,4 @@
 		{!! $users->appends(['search' => Request::get('search')])->links() !!}
 	</div>
 
-@stop
-
-@section('script')
-<script src="/DataTables/datatables.min.js"></script>
-<script type="text/javascript">
-	// $('table').dataTable();
-</script>
-@stop
+@endsection

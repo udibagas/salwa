@@ -49,17 +49,19 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 Route::resource('artikel', 'ArtikelController');
+Route::resource('banner', 'BannerController');
+Route::resource('forum', 'ForumController');
+Route::resource('image', 'ImageController');
 Route::resource('pertanyaan', 'PertanyaanController');
 Route::resource('informasi', 'InformasiController');
-Route::resource('peduli', 'PeduliController');
 Route::resource('kitab', 'KitabController');
-Route::resource('video', 'VideoController');
-Route::resource('forum', 'ForumController');
 Route::resource('mp3', 'Mp3Controller');
 Route::resource('murottal', 'MurottalController');
-Route::resource('image', 'ImageController');
+Route::resource('peduli', 'PeduliController');
 Route::resource('produk', 'ProdukController');
 Route::resource('promo', 'PromoController');
+Route::resource('video', 'VideoController');
+
 Route::get('hadist/{hadist}', 'HadistController@show');
 
 Route::get('design', function() {

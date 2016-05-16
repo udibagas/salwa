@@ -13,6 +13,24 @@
 
 @stop
 
+@push('script')
+
+	<script type="text/javascript" src="/js/jwplayer.js"></script>
+	<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
+	<script type="text/javascript">
+		<?php $file = $video->files()->web()->first(); ?>
+		var playlist = [{file:"http://www.salamdakwah.com/{{ $file->file_upload }}",image:"http://www.salamdakwah.com/{{ $file->img_file }}",title:"{{ $video->title }}"}];
+
+
+	    	jwplayer("video").setup({
+	        playlist: playlist,
+			width: 600,
+			height: 300
+		});
+	</script>
+
+@endpush
+
 @section('content')
 
 <div class="row">
@@ -23,9 +41,11 @@
 		<iframe width="100%" height="360" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
 		@endif
 
-		@if ($video->files)
+		<div id="video"></div>
+
+		<!-- @if ($video->files)
 			<div class="row no-gutter">
-				@foreach ($video->files as $f)
+				@foreach ($video->files()->web()->get() as $f)
 				<div class="col-md-6">
 					<video width="100%" height="300" controls  poster="http://www.salamdakwah.com/{{ $f->img_file }}" style="width:100%;height:300px;">
 						<source src="http://www.salamdakwah.com/{{ $f->file_upload }}" type="video/3gp">
@@ -33,7 +53,7 @@
 				</div>
 				@endforeach
 			</div>
-		@endif
+		@endif -->
 
 		<hr>
 		@include('layouts._share')
@@ -52,6 +72,4 @@
 	</div>
 </div>
 
-
-
-@stop
+@endsection

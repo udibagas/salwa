@@ -16,6 +16,11 @@
 
 
 	<div class="row">
+		<div class="col-md-3">
+			@include('video._group', [
+				'groups' => \App\User::ustadz()->has('videos')->orderBy('name', 'ASC')->get()
+			])
+		</div>
 		<div class="col-md-9">
 			<h4 class="title"><i class="fa fa-video-camera"></i> SALWA VIDEO</h4>
 			<div class="row no-gutter">
@@ -29,9 +34,9 @@
 			</nav>
 		</div>
 
-		<div class="col-md-3">
-			@include('home.sidebar')
-		</div>
+		<!-- <div class="col-md-3">
+			include('home.sidebar')
+		</div> -->
 
 	</div>
 

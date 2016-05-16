@@ -1,0 +1,617 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+<meta name="author" content="Salamdakwah" />
+<meta name="description" content="video kajian, audio kajian, forum islami, jadwal kajian dan artikel, yang berdasarkan Al-Quran dan As-Sunnah sebagaimana pemahaman para sahabat Rosululloh Shallallahu Alaihi Wasallam" />
+<meta name="keyword" content="video kajian,audio kajian,forum islami,jadwal kajian,artikel,Al-Quran,Sunnah,sahabat,Rosululloh,islam,muslim,muhammad" />
+<meta name="copyright" content="Copyrright 2011 by Salamdakwah.com" />
+<meta name="language" content="Indonesian" />
+<meta name="distribution" content="Global" />
+<meta name="rating" content="General" />
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+<meta name="revisit-after" content="1 days" />
+<meta name="expires" content="never" />
+<meta name="dc.title" content="Salamdakwah.com" />
+<meta name="dc.creator.e-mail" content="m.m158a@gmail.com" />
+<meta name="dc.creator.name" content="Salamdakwah" />
+<meta name="dc.creator.website" content="http://www.xxxxx.com" />
+<meta name="tgn.name" content="Jakarta" />
+<meta name="tgn.nation" content="Indonesia" />
+
+<title>salamdakwah.com</title>
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+
+<!--<link rel="stylesheet" href="/fonts.css" type="text/css" charset="utf-8" />-->
+<link rel="stylesheet" href="/webfontkit/stylesheet.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="/calibri/stylesheet.css" type="text/css" charset="utf-8" />
+<link href="/salamdakwah-2015.css" rel="stylesheet" type="text/css" />
+
+
+<link href="/css/calendar-brown.css" rel="stylesheet" type="text/css" media="all" title="winter" />
+<script src="/jquery-1.4.2.min.js"></script>
+<script src="/salamdakwah.2015.js"></script>
+<!--<script src="/sosialdakwah.js.js"></script>-->
+<!--<script src="/swfobject.js"></script>-->
+
+<script type="text/javascript" src="/js/calendar.js"></script>
+<script type="text/javascript" src="/js/lang/calendar-en.js"></script>
+<script type="text/javascript" src="/js/calendar-setup.js"></script>
+
+
+<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
+<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
+
+<script type="text/javascript">
+
+var _LOGIN = '';
+var _SPolling = false;
+var _SIPolling = false;
+var _URL_NOW = '/js/jwplayer.flash.swf';
+
+var EXT = '.html';
+var ABS_PATH = '/';
+var API_URL = ABS_PATH+'chat.api/';
+var IMAGE_URL = ABS_PATH+'images/';
+</script>
+
+
+</head>
+
+<body>
+<div id="main-content">
+	<div id="left-side">
+    	<a href="/" id="logo-salwa">Logo</a>
+        
+        <div id="main-menu">
+        	<ul>
+            	<li><a href="/">home</a></li>
+            	<li><a href="/videos/video.html">salwa video</a></li>
+            	<li><a href="http://salwa.tv/" target="_blank">salwa tv</a></li>
+            	<li><a href="/artikel.html">salwa aktual</a></li>
+            	<li><a href="/pertanyaan.html">tanya ustadz</a></li>
+            	<li><a href="/buat-pertanyaan.html" onclick="return Salwa.checkInputPertanyaan()">Input Pertanyaan</a></li>
+            	<li><a href="/masuk-forum/kumpulan-tanya-jawab.html">salwa forum</a></li>
+            	<li><a href="/produk.html">salwa market</a></li>
+            	<li><a href="/peduli.html">salwa peduli</a></li>
+            	<!--<li><a href="/videos/praktek.html">video praktek ibadah</a></li>-->
+            	<li><a href="/buku.html">Kitab &amp; Terjemahan</a></li>
+            	<li><a href="/hadist/doa.html">doa</a></li>
+            	<li><a href="/hadist/dzikir.html">dzikir</a></li>
+            	<li><a href="/hadist/kumpulan-hadits.html">hadist</a></li>
+            	<li><a href="/mp3download.html">salwa audio</a></li>
+            	<li><a href="/murotal.html">murottal qur'an</a></li>
+            	<li><a href="/salwaimages.html">salwa image</a></li>
+            	<li><a href="/informasi.html">salwa info</a></li>
+                            	<li><a href="/banner.html">salwa promo</a></li>
+            	<li><a href="/pages/tentang-kami.html">tentang salwa</a></li>
+            	
+                                <li><a href="javascript:Salwa.showForm('formLogin');">login</a>
+                	<div class="form" id="formLogin">
+  					<div class="triangle"></div>
+                    <h1>Login</h1>
+                	<form id="apiLogin" name="apiLogin" method="post" onsubmit="return Salwa.login('apiLogin','uid','pass')">
+                    <span class="error" id="errLogin"></span>
+                    <input type="hidden" name="url" id="url" />
+                    <script>$('#url').val(document.location);</script>
+                    <input type="text" id="uid" name="uid" placeholder="User ID" /></td>
+                    <input type="password" id="pass" name="pass" placeholder="Password" /></td>
+                    <input type="submit" value="Login" />
+                    <p><a href="/lupa-password.html">Lupa password</a>? | Bukan member, silahkan <a href="javascript:Salwa.showForm('formRegister');">Gabung</a></p>
+                    </form>
+                    </div>
+                    
+                    <div class="form" id="formRegister" style="width:400px;">
+                    	<div class="triangle"></div>
+                        <h1>Gabung</h1>
+                        <form id="apiRegister" name="apiRegister" method="post" action="#" onsubmit="return Salwa.register('apiRegister')">
+                    	<span class="error" id="errRegister"></span>
+                        <input type="text" id="user_name" placeholder="User name" name="user_name"><input type="hidden" value="website" id="engine" name="engine">
+                        <input type="text" id="email" placeholder="Email" name="email">
+                        <input type="password" id="password" placeholder="Password" name="password">
+                        <input type="password" id="confirm" placeholder="Konfirmasi" name="confirm">
+                        <input type="text" id="name" placeholder="Nama" name="name">
+                        <select class="registrasi" id="jenis_kelamin" name="jenis_kelamin">
+                                      <option value="">Jenis Kelamin</option>
+                                                        <option value="p">Pria</option>
+                                                        <option value="w">Wanita</option>
+                       	</select>
+                        <input type="checkbox" checked="checked" value="y" id="subscribe" name="subscribe">
+                                  Subscribe
+                        <input type="submit" value="Mendaftar" id="btnDaftar" name="btnDaftar">
+                          </form>
+                    </div>
+                </li>
+            	<!--<li><a href="javascript:Salwa.showForm('formRegister');">gabung</a>
+                	
+                </li>-->
+				            </ul>
+        </div>
+      
+      <div style="display:block; margin:0 10px 5px;">
+      <h3>Salwa Radio:</h3>
+      	<audio controls style="width:100%;"><source src="http://119.82.232.83:1111/;stream.mp3" type="audio/mp3">Your browser does not support the audio element.</audio>
+      </div>
+        
+      <div id="share-app-sosmed">
+      <h3>Mobile APP:</h3>
+        <ul>
+        	<li><a href="https://play.google.com/store/apps/details?id=com.bhn.salamdakwah" target="_blank" title="Andoid"><img src="/images/android.png" width="24" height="24" border="0" /></a></li>
+        	<!--<li><a href="" title="Iphone"><img src="images/apple.png" width="24" height="24" border="0" /></a></li>
+        	<li><a href="" title="Windows Phone"><img src="images/windows.png" width="24" height="24" border="0" /></a></li>-->
+        	<li><a href="http://appworld.blackberry.com	/webstore/content/135344/?lang=en&countrycode=ID" target="_blank" title="Blackbery"><img src="/images/bb.png" width="24" height="24" border="0" /></a></li>
+        </ul>
+        <div class="clear"></div>
+      <h3>Stay in touch with us:</h3>
+        <ul>
+        	<li><a href="https://www.facebook.com/Salamdakwah-287022414764661/?ref=hl" target="_blank" title="Facebook"><img src="/images/facebook.png" width="24" height="24" border="0" /></a></li>
+        	<li><a href="https://twitter.com/salamdakwah" target="_blank" title="Twitter"><img src="/images/twitter.png" width="24" height="24" border="0" /></a></li>
+        	<li><a href="https://www.youtube.com/user/salamdakwah" target="_blank" title="Youtube"><img src="/images/youtube.png" width="24" height="24" border="0" /></a></li>
+        </ul>
+        <div class="clear"></div>
+        </div>
+        
+        
+         <p>
+            <img style="visibility:hidden;width:0px;height:0px;" border=0 width=0 height=0 src="http://c.gigcount.com/wildfire/IMP/CXNID=2000002.0NXC/bT*xJmx*PTEzODA1Mjc2Mjc4MTgmcHQ9MTM4MDUyNzY*NDA4NiZwPTIzODk4MSZkPSZnPTEmbz1iNTM*ZDg2OGYzYjU*ZWVlOWM5/MjE3MzczZmIzYmEzMCZvZj*w.gif" /><DIV style="TEXT-ALIGN:center;"><A href="http://www.al-habib.info/islamic-calendar/"  style="FONT-SIZE: 8px;COLOR:red;text-decoration:none;"><IMG style="border:0px;WIDTH:120px;" alt="Islamic Calendar Widgets by Alhabib" border="0" src="http://js.al-habib.info/phpimg2.php?ic=green&it=rect&ad=+7"></A></DIV>
+        </p>
+			
+            <!-- Histats.com  START  (standard)-->
+            <p style="text-align:center">
+            <script type="text/javascript">document.write(unescape("%3Cscript src=%27http://s10.histats.com/js15.js%27 type=%27text/javascript%27%3E%3C/script%3E"));</script>
+            <a href="http://www.histats.com" target="_blank" title="" ><script  type="text/javascript" >
+            try {Histats.start(1,2462121,4,402,118,80,"00011111");
+            Histats.track_hits();} catch(err){};
+            </script></a>
+            <noscript><a href="http://www.histats.com" target="_blank"><img  src="http://sstatic1.histats.com/0.gif?2462121&101" alt="" border="0"></a></noscript>
+            </p>
+            <!-- Histats.com  END  -->
+        
+    </div>
+    
+    <div id="right-side">
+    	<div id="searchPage">
+        <form id="frm-search" onsubmit="return false">
+            	<input type="text" name="txt_search" id="txt_search" onkeyup="Salwa.goSearch(event)" />
+                <input type="button" name="btn_search" id="btn_search" value="Cari" onclick="Salwa.createSearch()" />
+            </form>
+        </div>
+        
+                            
+            <div id="slider1_container" style="display: none; position: relative; margin: 0; width: 1140px;
+        height: 150px; overflow: hidden;">
+
+            <!-- Loading Screen -->
+            <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+                <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
+
+                background-color: #000; top: 0px; left: 0px;width: 100%; height:100%;">
+                </div>
+                <div style="position: absolute; display: block; background: url(/jssor/img/loading.gif) no-repeat center center;
+
+                top: 0px; left: 0px;width: 100%;height:100%;">
+                </div>
+            </div>
+
+            <!-- Slides Container -->
+            <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1140px; height: 150px;
+            overflow: hidden;">            
+                   			<div>
+                    <a href="" target="_blank"><img u="image" src2="/uploads/dirimg_banner/mib_201503041418375927_BANNAER MITRA ANAKKU.jpg" /></a>
+                </div>
+			       			<div>
+                    <a href="http://www.anisc.sch.id/" target="_blank"><img u="image" src2="/uploads/dirimg_banner/mib_201504221551555226_BANNER AN NAJM 1140 x 150.jpg" /></a>
+                </div>
+			       			<div>
+                    <a href="http://srpo.lugualami.com/login" target="_blank"><img u="image" src2="/uploads/dirimg_banner/mib_201503031501173094_Lugu Alami 1140 x 150.jpg" /></a>
+                </div>
+			       			<div>
+                    <a href="http://www.salamdakwah.com/baca-forum/disewakan-villa-syar-i-di-kawsan-dago-bandung.html" target="_blank"><img u="image" src2="/uploads/dirimg_banner/mib_201511271410563496_BANNER VILLA SYARIAH.jpg" /></a>
+                </div>
+			       			<div>
+                    <a href="" target="_blank"><img u="image" src2="/uploads/dirimg_banner/mib_201511301354511038_SHALAT PROPHET.jpg" /></a>
+                </div>
+			       			<div>
+                    <a href="http://fokusislam.com/" target="_blank"><img u="image" src2="/uploads/dirimg_banner/mib_201604251341056368_Fokus Islam.jpg" /></a>
+                </div>
+			            </div>
+            <!-- Bullet Navigator Skin Begin -->
+            <style>
+                /* jssor slider bullet navigator skin 05 css */
+                /*
+                .jssorb05 div           (normal)
+                .jssorb05 div:hover     (normal mouseover)
+                .jssorb05 .av           (active)
+                .jssorb05 .av:hover     (active mouseover)
+                .jssorb05 .dn           (mousedown)
+                */
+                .jssorb05 div, .jssorb05 div:hover, .jssorb05 .av {
+                    background: url(/jssor/img/b05.png) no-repeat;
+                    overflow: hidden;
+                    cursor: pointer;
+                }
+
+                .jssorb05 div {
+                    background-position: -7px -7px;
+                }
+
+                    .jssorb05 div:hover, .jssorb05 .av:hover {
+                        background-position: -37px -7px;
+                    }
+
+                .jssorb05 .av {
+                    background-position: -67px -7px;
+                }
+
+                .jssorb05 .dn, .jssorb05 .dn:hover {
+                    background-position: -97px -7px;
+                }
+            </style>
+            <!-- bullet navigator container -->
+            <div u="navigator" class="jssorb05" style="position: absolute; bottom: 16px; right: 6px;">
+                <!-- bullet navigator item prototype -->
+                <div u="prototype" style="POSITION: absolute; WIDTH: 16px; HEIGHT: 16px;"></div>
+            </div>
+            <!-- Bullet Navigator Skin End -->
+            <!-- Arrow Navigator Skin Begin -->
+            <style>
+                /* jssor slider arrow navigator skin 11 css */
+                /*
+                .jssora11l              (normal)
+                .jssora11r              (normal)
+                .jssora11l:hover        (normal mouseover)
+                .jssora11r:hover        (normal mouseover)
+                .jssora11ldn            (mousedown)
+                .jssora11rdn            (mousedown)
+                */
+                .jssora11l, .jssora11r, .jssora11ldn, .jssora11rdn {
+                    position: absolute;
+                    cursor: pointer;
+                    display: block;
+                    background: url(/jssor/img/a11.png) no-repeat;
+                    overflow: hidden;
+                }
+
+                .jssora11l {
+                    background-position: -11px -41px;
+                }
+
+                .jssora11r {
+                    background-position: -71px -41px;
+                }
+
+                .jssora11l:hover {
+                    background-position: -131px -41px;
+                }
+
+                .jssora11r:hover {
+                    background-position: -191px -41px;
+                }
+
+                .jssora11ldn {
+                    background-position: -251px -41px;
+                }
+
+                .jssora11rdn {
+                    background-position: -311px -41px;
+                }
+            </style>
+            <!-- Arrow Left -->
+            <span u="arrowleft" class="jssora11l" style="width: 37px; height: 37px; top: 123px; left: 8px;">
+            </span>
+            <!-- Arrow Right -->
+            <span u="arrowright" class="jssora11r" style="width: 37px; height: 37px; top: 123px; right: 8px">
+            </span>
+            <!-- Arrow Navigator Skin End -->
+            
+        </div>
+        <!-- Jssor Slider End -->
+        <script src="/jssor/js/jquery-1.9.1.min.js"></script>
+    <script src="/jssor/bootstrap.min.js"></script>
+    <script src="/jssor/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/jssor/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- jssor slider scripts-->
+    <!-- use jssor.js + jssor.slider.js instead for development -->
+    <!-- jssor.slider.mini.js = (jssor.js + jssor.slider.js) -->
+    <script type="text/javascript" src="/jssor/js/jssor.slider.mini.js"></script>
+    <script>
+
+        jQuery(document).ready(function ($) {
+            var options = {
+                $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+                $AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
+                $AutoPlayInterval: 2000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+                $PauseOnHover: 1,                                   //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
+
+                $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+                $SlideEasing: $JssorEasing$.$EaseOutQuint,          //[Optional] Specifies easing for right to left animation, default value is $JssorEasing$.$EaseOutQuad
+                $SlideDuration: 800,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+                $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
+                //$SlideWidth: 600,                                 //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+                //$SlideHeight: 300,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
+                $SlideSpacing: 0, 					                //[Optional] Space between each slide in pixels, default value is 0
+                $DisplayPieces: 1,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
+                $ParkingPosition: 0,                                //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
+                $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+                $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
+                $DragOrientation: 1,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+
+                $ArrowNavigatorOptions: {                           //[Optional] Options to specify and enable arrow navigator or not
+                    $Class: $JssorArrowNavigator$,                  //[Requried] Class to create arrow navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 2,                                 //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                    $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
+                    $Scale: false                                   //Scales bullets navigator or not while slider scale
+                },
+
+                $BulletNavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
+                    $Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 1,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                    $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
+                    $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
+                    $SpacingX: 12,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
+                    $SpacingY: 4,                                   //[Optional] Vertical space between each item in pixel, default value is 0
+                    $Orientation: 1,                                //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
+                    $Scale: false                                   //Scales bullets navigator or not while slider scale
+                }
+            };
+
+            //Make the element 'slider1_container' visible before initialize jssor slider.
+            $("#slider1_container").css("display", "block");
+            var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizes
+            function ScaleSlider() {
+                var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+                if (parentWidth) {
+                    jssor_slider1.$ScaleWidth(parentWidth - 30);
+                }
+                else
+                    window.setTimeout(ScaleSlider, 30);
+            }
+            ScaleSlider();
+
+            $(window).bind("load", ScaleSlider);
+            $(window).bind("resize", ScaleSlider);
+            $(window).bind("orientationchange", ScaleSlider);
+            //responsive code end
+        });
+    </script>
+            
+                    
+		
+<ul id="video-home">
+        <li>
+        <a href="/videos-detail/LQRbmxX-NOQ.html">
+			<img src="/image/videos/722.html?w=344&h=230" width="344" height="230" />           
+            <div></div>
+            <h3>Sebab Sebab Adzab Kubur</h3>
+            <h1>Ustadz Abu Yahya Badrusalam, Lc</h1>
+        </a>
+    </li>
+        <li>
+        <a href="/videos-detail/wasiat-nabawiyyah-untuk-muslimin-indonesia.html">
+			<img src="/image/videos/721.html?w=344&h=230" width="344" height="230" />           
+            <div></div>
+            <h3>Wasiat Nabawiyyah Untuk Muslimin Indonesia</h3>
+            <h1>Syaikh Prof.Dr.Sa'ad Bin Nashir Asy-Syatsri</h1>
+        </a>
+    </li>
+        <li>
+        <a href="/videos-detail/dasar-dasar-islam-dalam-membentengi-umat-dari-penyimpangan-.html">
+			<img src="/image/videos/719.html?w=344&h=230" width="344" height="230" />           
+            <div></div>
+            <h3>Dasar Dasar Islam Dalam Membentengi Umat Dari Penyimpangan</h3>
+            <h1>Ustadz Abu Qotadah</h1>
+        </a>
+    </li>
+        <li>
+        <a href="/videos-detail/3-kaidah-penting-dalam-beribadah.html">
+			<img src="/image/videos/718.html?w=344&h=230" width="344" height="230" />           
+            <div></div>
+            <h3>3 Kaidah Penting Dalam Beribadah</h3>
+            <h1>Ustadz Abu Yahya Badrusalam, Lc</h1>
+        </a>
+    </li>
+        <li>
+        <a href="/videos-detail/renungan-takbir.html">
+			<img src="/image/videos/717.html?w=344&h=230" width="344" height="230" />           
+            <div></div>
+            <h3>Renungan Takbir</h3>
+            <h1>Ustadz Abu Yahya Badrusalam, Lc</h1>
+        </a>
+    </li>
+        <li>
+        <a href="/videos-detail/muhammad-bin-abdul-wahhab-memberontak.html">
+			<img src="/image/videos/716.html?w=344&h=230" width="344" height="230" />           
+            <div></div>
+            <h3>Muhammad Bin Abdul Wahhab Memberontak</h3>
+            <h1>Syaikh Prof.Dr. Ibrahim Ar Ruhaily</h1>
+        </a>
+    </li>
+        <li>
+        <a href="/videos-detail/bagaimana-menjadi-shalihah.html">
+			<img src="/image/videos/715.html?w=344&h=230" width="344" height="230" />           
+            <div></div>
+            <h3>Bagaimana Menjadi Shalihah</h3>
+            <h1>Ustadz Muhammad Nuzul Dzikry, Lc</h1>
+        </a>
+    </li>
+        <li>
+        <a href="/videos-detail/kredit-dalam-pandangan-islam.html">
+			<img src="/image/videos/714.html?w=344&h=230" width="344" height="230" />           
+            <div></div>
+            <h3>Kredit Dalam Pandangan Islam</h3>
+            <h1>Ustadz Dr. Erwandi Tarmizi</h1>
+        </a>
+    </li>
+        <li>
+        <a href="/videos-detail/4-hadits-dasar-seluruh-dab-mulia.html">
+			<img src="/image/videos/713.html?w=344&h=230" width="344" height="230" />           
+            <div></div>
+            <h3>4 Hadits Dasar Seluruh Adab Mulia</h3>
+            <h1>Ustadz Firanda Andirja, MA</h1>
+        </a>
+    </li>
+        <li>
+        <a href="/videos-detail/kenalilah-a-qidah-yang-sesat.html">
+			<img src="/image/videos/712.html?w=344&h=230" width="344" height="230" />           
+            <div></div>
+            <h3>Kenalilah Aqidah Yang Sesat</h3>
+            <h1>Ustadz Mahfudz Umry, Lc</h1>
+        </a>
+    </li>
+        <li>
+        <a href="/videos-detail/panduan-hidup-di-akhir-zaman-1.html">
+			<img src="/image/videos/711.html?w=344&h=230" width="344" height="230" />           
+            <div></div>
+            <h3>Panduan Hidup Di Akhir Zaman</h3>
+            <h1>Ustadz Abu Yahya Badrusalam, Lc</h1>
+        </a>
+    </li>
+        <li>
+        <a href="/videos-detail/tazkiyatun-nafs.html">
+			<img src="/image/videos/710.html?w=344&h=230" width="344" height="230" />           
+            <div></div>
+            <h3>Tazkiyatun Nafs</h3>
+            <h1>Ustadz Abu Yahya Badrusalam, Lc</h1>
+        </a>
+    </li>
+    </ul>        <!--<ul id="video-home">
+        	<li>
+            	<a href="#">
+                	<img src="images/video1.jpg" width="375" height="229" />
+                    <div></div>
+                    <h3>Menatap Masa Depan</h3>
+                    <h1>Ustadz Maududi Abdullah, Lc.</h1>
+                </a>
+            </li>
+        	<li>
+            	<a href="#">
+                	<img src="images/video2.jpg" width="375" height="229" />
+                    <div></div>
+                    <h3>Menatap Masa Depan</h3>
+                    <h1>Ustadz Maududi Abdullah, Lc.</h1>
+                </a>
+            </li>
+        	<li>
+            	<a href="#">
+                	<img src="images/video3.jpg" width="375" height="229" />
+                    <div></div>
+                    <h3>Menatap Masa Depan</h3>
+                    <h1>Ustadz Maududi Abdullah, Lc.</h1>
+                </a>
+            </li>
+        	<li>
+            	<a href="#">
+                	<img src="images/video4.jpg" width="375" height="229" />
+                    <div></div>
+                    <h3>Menatap Masa Depan</h3>
+                    <h1>Ustadz Maududi Abdullah, Lc.</h1>
+                </a>
+            </li>
+        	<li>
+            	<a href="#">
+                	<img src="images/video5.jpg" width="375" height="229" />
+                    <div></div>
+                    <h3>Menatap Masa Depan</h3>
+                    <h1>Ustadz Maududi Abdullah, Lc.</h1>
+                </a>
+            </li>
+        	<li>
+            	<a href="#">
+                	<img src="images/video6.jpg" width="375" height="229" />
+                    <div></div>
+                    <h3>Menatap Masa Depan</h3>
+                    <h1>Ustadz Maududi Abdullah, Lc.</h1>
+                </a>
+            </li>
+        	<li>
+            	<a href="#">
+                	<img src="images/video1.jpg" width="375" height="229" />
+                    <div></div>
+                    <h3>Menatap Masa Depan</h3>
+                    <h1>Ustadz Maududi Abdullah, Lc.</h1>
+                </a>
+            </li>
+        	<li>
+            	<a href="#">
+                	<img src="images/video4.jpg" width="375" height="229" />
+                    <div></div>
+                    <h3>Menatap Masa Depan</h3>
+                    <h1>Ustadz Maududi Abdullah, Lc.</h1>
+                </a>
+            </li>
+        	<li>
+            	<a href="#">
+                	<img src="images/video5.jpg" width="375" height="229" />
+                    <div></div>
+                    <h3>Menatap Masa Depan</h3>
+                    <h1>Ustadz Maududi Abdullah, Lc.</h1>
+                </a>
+            </li>
+        </ul>-->
+    </div>
+
+
+
+
+
+<script type="text/javascript">
+//if(jQuery.cookie('close') != 1){
+	$('#div-polling').show('slow');
+	if(_SIPolling) $('#btnPolling').attr('disabled',true);
+//}
+
+/*$(document).click(function(e) {
+    if($('#subMenuUstadz')){
+		
+		alert($('#subMenuUstadz').css('display'));
+		
+		$('#subMenuUstadz').hide('slow');
+	}
+});*/
+
+</script>
+
+</div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-25076142-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-37277062-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

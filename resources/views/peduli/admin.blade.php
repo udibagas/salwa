@@ -53,9 +53,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php $i = $pedulis->firstItem(); ?>
 			@foreach ($pedulis as $a)
 				<tr>
-					<td>{{ $a->peduli_id }}</td>
+					<td>{{ $i++ }}</td>
 					<td><a href="/peduli/{{ $a->peduli_id }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
 					<td>{{ $a->user ? $a->user->name : '' }}</td>
 					<td>{{ $a->group ? $a->group->group_name : '' }}</td>

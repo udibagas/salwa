@@ -11,9 +11,12 @@
         <title>SalamDakwah |@yield('title')</title>
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
-		<link href="/css/breadcrumb.css" rel="stylesheet">
-		@stack('css')
+        <link href="/css/carousel.css" rel="stylesheet">
+        <link href="/css/breadcrumb.css" rel="stylesheet">
+		<link href="/css/gallery.css" rel="stylesheet">
+		<link href="/css/comment.css" rel="stylesheet">
 		<link href="/css/app.css" rel="stylesheet">
+		@yield('css')
     </head>
 
     <body>
@@ -30,18 +33,15 @@
 
             @yield('content')
 
-            @yield('footer')
-
-			<hr style="border-color:#8EC7FB;" />
-			<div class="text-center text-muted">
-				<small>&copy; {{date('Y')}} - SalamDakwah.Com</small>
-			</div>
+            @include('layouts.footer')
 
         </div>
 
         <script src="/js/jquery.min.js"></script>
         <script src="/bootstrap/js/bootstrap.min.js"></script>
-		@stack('script')
+        <script src="/js/carousel.js"></script>
+
+		@yield('script')
 
     </body>
 </html>

@@ -21,8 +21,10 @@ class VideoController extends Controller
 
         return view('video.index', [
 			'videos' => Video::video()->when($search, function($query) use ($search) {
-						return $query->where('title', 'like', '%'.$search.'%');
-					})->orderBy('updated', 'DESC')->paginate()
+							return $query->where('title', 'like', '%'.$search.'%');
+						})->when($request->user_id, function($query) use ($request) {
+							return $query->where('user_id', $request->user_id);
+						})->orderBy('updated', 'DESC')->paginate()
 		]);
     }
 

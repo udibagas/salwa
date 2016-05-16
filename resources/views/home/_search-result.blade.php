@@ -121,7 +121,7 @@
 		@foreach($posts as $v)
 
 		<li class="list-group-item" style="padding:5px">
-			<a href="/forum/{{ $v->forum->forum_id }}-{{ str_slug($v->forum->title) }}">{{ $v->description }}</a>
+			<a href="/forum/{{ $v->forum->forum_id }}-{{ str_slug($v->forum->title) }}">{{ str_limit($v->description, 150) }}</a>
 			<br />
 			<em>{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}</em>
 		</li>

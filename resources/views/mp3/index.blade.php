@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title') Audio @stop
+@section('title', 'Salwa Audio')
 
 @section('breadcrumbs')
 
@@ -20,7 +20,7 @@
 			<h4 class="title"><i class="fa fa-music"></i> SALWA AUDIO</h4>
 			<table class="table table-hover table-striped">
 				<tbody>
-					@foreach ($mp3s as $m)
+					@foreach ($audios as $m)
 					<tr>
 						<td>
 							<b>{{ $m->judul }}</b>
@@ -36,7 +36,7 @@
 			</table>
 
 			<nav class="text-center">
-				{!! $mp3s->links() !!}
+				{!! $audios->links() !!}
 			</nav>
 		</div>
 
@@ -47,7 +47,7 @@
 
 @stop
 
-@section('script')
+@push('script')
 
 	<script type="text/javascript">
 
@@ -73,4 +73,4 @@
 
 	</script>
 
-@stop
+@endpush

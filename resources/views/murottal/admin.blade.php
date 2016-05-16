@@ -50,9 +50,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php $i = $murottals->firstItem(); ?>
 			@foreach ($murottals as $a)
 				<tr>
-					<td>{{ $a->murotal_id }}</td>
+					<td>{{ $i++ }}</td>
 					<td><a href="/murottal/{{ $a->murotal_id }}-{{ str_slug($a->nama_surat) }}">{{ $a->nama_surat }}</a></td>
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/murottal/'.$a->murotal_id]) !!}

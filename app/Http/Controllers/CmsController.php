@@ -10,6 +10,6 @@ class CmsController extends Controller
 {
     public function index()
 	{
-		return view('layouts.cms-dashboard');
+		return view('cms.dashboard');
 	}
 }

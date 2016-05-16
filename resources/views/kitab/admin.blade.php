@@ -44,14 +44,17 @@
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
+				<th>#</th>
 				<th>Judul</th>
 				<th>Penulis</th>
 				<th style="width:130px;">Action</th>
 			</tr>
 		</thead>
 		<tbody>
+			<?php $i = $kitabs->firstItem(); ?>
 			@foreach ($kitabs as $a)
 				<tr>
+					<td>{{ $i++ }}</td>
 					<td><a href="/kitab/{{ $a->buku_id }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
 					<td>{{ $a->penulis }}</td>
 					<td>

@@ -51,9 +51,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php $i = $audios->firstItem(); ?>
 			@foreach ($audios as $a)
 				<tr>
-					<td>{{ $a->mp3_download_id }}</td>
+					<td>{{ $i++ }}</td>
 					<td><a href="/mp3/{{ $a->mp3_download_id }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
 					<td>{{ $a->updated }}</td>
 					<td>

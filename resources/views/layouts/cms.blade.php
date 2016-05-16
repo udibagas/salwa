@@ -1,14 +1,13 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
-<div class="row">
-	<div class="col-md-2">
-		@include('layouts.adminnav')
-	</div>
+	<div class="row">
+		<div class="col-md-2">
+			@include('layouts.adminnav')
+		</div>
 
-	<div class="col-md-10">
-		@yield('cms-content')
+		<div class="col-md-10">
+			@yield('cms-content')
+		</div>
 	</div>
-</div>
-
-@stop
+@endsection

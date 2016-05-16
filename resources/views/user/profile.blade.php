@@ -1,10 +1,18 @@
 @extends('layouts.main')
 
-@section('title') Profile : {{ $user->name }} @stop
+@section('title', 'Profile : '.$user->name)
 
-@section('css')
-<link href="/DataTables/datatables.min.css" rel="stylesheet">
-@stop
+@push('css')
+	<link href="/DataTables/datatables.min.css" rel="stylesheet">
+@endpush
+
+
+@push('script')
+	<script src="/DataTables/datatables.min.js"></script>
+	<script type="text/javascript">
+		$('table').dataTable();
+	</script>
+@endpush
 
 @section('breadcrumbs')
 
@@ -69,11 +77,4 @@
 
 </div>
 
-@stop
-
-@section('script')
-<script src="/DataTables/datatables.min.js"></script>
-<script type="text/javascript">
-	$('table').dataTable();
-</script>
 @stop

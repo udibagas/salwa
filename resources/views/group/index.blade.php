@@ -43,6 +43,7 @@
 	<table class="table table-hover table-striped">
 		<thead>
 			<tr>
+				<th>#</th>
 				<th style="width:220px;">Name</th>
 				<th>Type</th>
 				<th>Description</th>
@@ -50,8 +51,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php $i = $groups->firstItem(); ?>
 			@foreach ($groups as $g)
 			<tr>
+				<td>{{ $i++ }}</td>
 				<td>{{ $g->group_name }}</td>
 				<td>{{ $g->type }}</td>
 				<td>{{ $g->description }}</td>

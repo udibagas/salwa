@@ -10,4 +10,10 @@ class Banner extends Model
 
     protected $dates = ['created', 'updated'];
 
+	const CREATED_AT = 'created';
+
+	const UPDATED_AT = 'updated';
+
+	protected $primaryKey = 'banner_id';
+
 }

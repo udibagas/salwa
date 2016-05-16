@@ -53,9 +53,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php $i = $forums->firstItem(); ?>
 			@foreach ($forums as $a)
 				<tr>
-					<td>{{ $a->forum_id }}</td>
+					<td>{{ $i++ }}</td>
 					<td><a href="/forum/{{ $a->forum_id }}-{{ str_slug($a->title) }}">{{ $a->title }}</a></td>
 					<td>{{ $a->user ? $a->user->name : '' }}</td>
 					<td>{{ $a->group ? $a->group->group_name : '' }}</td>

@@ -41,6 +41,7 @@
 <table class="table table-hover table-striped">
 	<thead>
 		<tr>
+			<th>#</th>
 			<th>Judul Pertanyaan</th>
 			<th>Penanya</th>
 			<th>Jns. Kelamin</th>
@@ -52,8 +53,10 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php $i = $pertanyaans->firstItem(); ?>
 		@foreach ($pertanyaans as $p)
 		<tr>
+			<td>{{ $i++ }}</td>
 			<td>
 				<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">
 					{{ $p->judul_pertanyaan }}

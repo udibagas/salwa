@@ -52,9 +52,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php $i = $hadists->firstItem(); ?>
 			@foreach ($hadists as $a)
 				<tr>
-					<td>{{ $a->hadist_id }}</td>
+					<td>{{ $i++ }}</td>
 					<td><a href="/hadist/{{ $a->hadist_id }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
 					<td>{{ $a->group ? $a->group->group_name : '' }}</td>
 					<td>{{ $a->updated }}</td>

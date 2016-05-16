@@ -31,14 +31,12 @@
 		{!! $peduli->isi !!}
 
 		<hr>
-		@include('layouts._share'])
+		@include('layouts._share')
 		<hr>
 
 		<h4 class="title">SALWA PEDULI</h4>
 		<div class="row no-gutter">
-			@foreach ($terkait as $t)
-				@include('peduli._list', ['peduli' => $t])
-			@endforeach
+			@each('peduli._list', $terkait, 'peduli')
 		</div>
 
 	</div>

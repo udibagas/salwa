@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title') Informasi : {{ $informasi->judul }} @stop
+@section('title', ' Informasi : '.$informasi->judul)
 
 @section('breadcrumbs')
 
@@ -36,9 +36,7 @@
 
 		<h4 class="title">INFORMASI TERKAIT</h4>
 		<div class="row no-gutter">
-			@foreach ($terkait as $t)
-				@include('informasi._list', ['informasi' => $t])
-			@endforeach
+			@each('informasi._list', $terkait, 'informasi')
 		</div>
 
 	</div>

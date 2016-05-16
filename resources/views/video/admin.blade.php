@@ -56,9 +56,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php $i = $videos->firstItem(); ?>
 			@foreach ($videos as $a)
 				<tr>
-					<td>{{ $a->video_id }}</td>
+					<td>{{ $i++ }}</td>
 					<td><a href="/video/{{ $a->video_id }}-{{ str_slug($a->title) }}">{{ $a->title }}</a></td>
 					<td>{{ $a->type }}</td>
 					<td>{{ $a->url_video_youtube }}</td>
