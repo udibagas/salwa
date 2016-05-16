@@ -22,14 +22,15 @@
 body {
 	/*font-family: "Nirmala UI", sans-serif;*/
 	font-family: "Gotham", sans-serif;
-	padding-top: 50px;
+	padding-top: 80px;
 	padding-bottom: 20px;
 	color: #5a5a5a;
+	/*font-size: 13px;*/
 }
 
 .navbar-fixed-top {
-	/*top: 30px;*/
-	/*border-width: 0;*/
+	top: 30px;
+	border-width: 0;
 }
 
 /* CUSTOMIZE THE NAVBAR
@@ -151,7 +152,9 @@ ul.link-icon > li {
 }
 
 .navbar-brand {
-	padding: 5px;
+	/*padding: 5px;*/
+	position: fixed;
+	top: -10px;
 }
 
 .title {
@@ -316,6 +319,7 @@ a.list-group-item {
 	border: none;
 	/*color: #fff;*/
 	padding: 1px 0 1px 20px;
+	font-size: 12px;
 }
 
 .panel-link a:hover {
@@ -330,6 +334,7 @@ a:hover {
 	text-decoration: none;
 	color: #800000;
 }
+
 
 h1,
 h2,

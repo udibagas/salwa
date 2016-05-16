@@ -70,7 +70,7 @@
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/video/'.$a->video_id]) !!}
 						<a href="/video/{{ $a->video_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>
-						<button type="submit" name="delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</button>
+						<button type="submit" name="delete" class="btn btn-danger btn-xs delete"><i class="fa fa-trash"></i> Hapus</button>
 						{!! Form::close() !!}
 					</td>
 				</tr>

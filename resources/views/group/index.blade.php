@@ -21,7 +21,7 @@
 				{!! Form::open(['method' => 'GET', 'class' => 'form-inline']) !!}
 					<div class="form-group">
 						<div class="input-group">
-							<input type="text" name="search" value="{{ Request::get('search') }}" placeholder="Search" class="form-control">
+							<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control">
 							<div class="input-group-addon"><i class="fa fa-search"></i></div>
 						</div>
 					</div>
@@ -61,7 +61,7 @@
 				<td>
 					{!! Form::open(['method' => 'DELETE', 'url' => '/group/'.$g->group_id]) !!}
 					<a href="/group/{{ $g->group_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>
-					<button type="submit" name="delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</button>
+					<button type="submit" name="delete" class="btn btn-danger btn-xs delete"><i class="fa fa-trash"></i> Hapus</button>
 					{!! Form::close() !!}
 				</td>
 			</tr>
@@ -70,7 +70,7 @@
 	</table>
 
 	<div class="text-center">
-		{!! $groups->appends(['search' => Request::get('search')])->links() !!}
+		{!! $groups->appends(['search' => request('search')])->links() !!}
 	</div>
 
 @stop

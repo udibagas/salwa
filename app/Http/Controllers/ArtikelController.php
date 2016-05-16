@@ -105,8 +105,9 @@ class ArtikelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Artikel $artikel)
     {
-        //
+        $artikel->delete();
+		return redirect('/artikel/admin');
     }
 }

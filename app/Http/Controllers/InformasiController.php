@@ -105,8 +105,9 @@ class InformasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Informasi $informasi)
     {
-        //
+        $informasi->delete();
+		return redirect('/informasi/delete');
     }
 }

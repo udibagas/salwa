@@ -8,6 +8,23 @@
 </style>
 @endpush
 
+@push('script')
+
+<script type="text/javascript">
+	$('.delete').click(function() {
+
+		return confirm('Anda yakin?');
+		
+		// if (confirm('Anda yakin?')) {
+		// 	return true;
+		// }
+		//
+		// return false;
+	});
+</script>
+
+@endpush
+
 @section('content')
 	<div class="row">
 		<div class="col-md-2">

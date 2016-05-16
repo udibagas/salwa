@@ -105,8 +105,9 @@ class PeduliController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Peduli $peduli)
     {
-        //
+		$peduli->delete();
+        return redirect('/peduli/admin');
     }
 }

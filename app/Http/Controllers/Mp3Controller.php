@@ -101,8 +101,9 @@ class Mp3Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Mp3 $mp3)
     {
-        //
+        $mp3->delete();
+		return redirect('/mp3/admin');
     }
 }

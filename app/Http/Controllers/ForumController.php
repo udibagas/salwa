@@ -107,9 +107,11 @@ class ForumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Forum $forum)
     {
-        //
+        $forum->delete();
+		Post::where('forum_id', $forum->forum_id)->delete();
+		return redirect('/forum/admin');
     }
 
 	public function category(Group $group)

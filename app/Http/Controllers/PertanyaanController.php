@@ -23,22 +23,26 @@ class PertanyaanController extends Controller
 		$search = str_replace(' ', '%', $request->search);
 
 		return view('pertanyaan.index', [
-			'search'		=> $request->search,
 			'pertanyaans' 	=> Pertanyaan::show()
-								->when($request->search, function($query) use ($search) {
-									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
-												// ->orWhere('ket_pertanyaan', 'like', '%'.$search.'%');
+								->when($search, function($query) use ($search) {
+									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%')
+												->orWhere('ket_pertanyaan', 'like', '%'.$search.'%');
+								})->when($request->search == 'belum dijawab', function($query) {
+									return $query->where('jawaban', '');
 								})->orderBy('updated', 'DESC')->paginate(),
 		]);
 	}
 
 	public function admin(Request $request)
 	{
+		$search = str_replace(' ', '%', $request->search);
+
 		return view('pertanyaan.admin', [
-			'search'		=> $request->search,
-			'pertanyaans' 	=> Pertanyaan::when($request->search, function($query) use ($request) {
-									return $query->where('judul_pertanyaan', 'like', '%'.$request->search.'%')
-												->orWhere('ket_pertanyaan', 'like', '%'.$request->search.'%');
+			'pertanyaans' 	=> Pertanyaan::when($request->search == 'belum dijawab', function($query) {
+									return $query->where('jawaban', '');
+								})->when($search, function($query) use ($search) {
+									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
+												// ->orWhere('ket_pertanyaan', 'like', '%'.$search.'%');
 								})->orderBy('updated', 'DESC')->paginate(),
 		]);
 	}
