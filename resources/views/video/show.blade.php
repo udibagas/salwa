@@ -18,15 +18,7 @@
 	<script type="text/javascript" src="/js/jwplayer.js"></script>
 	<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
 	<script type="text/javascript">
-		<?php $file = $video->files()->web()->first(); ?>
-		var playlist = [{file:"http://www.salamdakwah.com/{{ $file->file_upload }}",image:"http://www.salamdakwah.com/{{ $file->img_file }}",title:"{{ $video->title }}"}];
 
-
-	    	jwplayer("video").setup({
-	        playlist: playlist,
-			width: 600,
-			height: 300
-		});
 	</script>
 
 @endpush
@@ -43,7 +35,7 @@
 
 		<div id="video"></div>
 
-		<!-- @if ($video->files)
+		@if ($video->files)
 			<div class="row no-gutter">
 				@foreach ($video->files()->web()->get() as $f)
 				<div class="col-md-6">
@@ -53,7 +45,7 @@
 				</div>
 				@endforeach
 			</div>
-		@endif -->
+		@endif
 
 		<hr>
 		@include('layouts._share')
