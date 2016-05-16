@@ -14,7 +14,7 @@
     <div id="navbar" class="navbar-collapse collapse">
 
       <form class="navbar-form navbar-left" method="GET" action="/" style="margin-left:10px;">
-			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control search-nav" style="width:170px;">
+			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control search-nav" style="width:200px;">
       </form>
 
       <ul class="nav navbar-nav navbar-right">
@@ -27,11 +27,17 @@
 		  @if (Auth::guest())
 		  <li class="@if (url()->current() == url('register')) active @endif"><a href="/register">Daftar/Masuk</a></li>
 		  @else
-		  <li class="@if (url()->current() == url('me')) active @endif"><a href="/me">{{ Auth::user()->name }}</a></li>
-		  @if (Auth::user()->user_status == \App\User::ROLE_ADMIN)
-		  <li class="@if (url()->current() == url('cms')) active @endif"><a href="/cms">CMS</a></li>
-		  @endif
-		  <li class=""><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+		  <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/me"><i class="fa fa-user"></i> Profile</a></li>
+			@if (Auth::user()->user_status == \App\User::ROLE_ADMIN)
+  		  <li class="@if (url()->current() == url('cms')) active @endif"><a href="/cms"><i class="fa fa-th"></i> CMS</a></li>
+  		  @endif
+            <!-- <li role="separator" class="divider"></li> -->
+            <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+          </ul>
+        </li>
 		  @endif
       </ul>
     </div><!--/.navbar-collapse -->

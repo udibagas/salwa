@@ -12,12 +12,12 @@
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
 		<link href="/css/breadcrumb.css" rel="stylesheet">
-		@stack('css')
 		<link href="/css/app.css" rel="stylesheet">
+		@stack('css')
     </head>
 
     <body>
-
+		
         @include('layouts.nav')
 
 		<div class="hidden-xs">

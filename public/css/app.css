@@ -27,6 +27,11 @@ body {
 	color: #5a5a5a;
 }
 
+.navbar-fixed-top {
+	/*top: 30px;*/
+	/*border-width: 0;*/
+}
+
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
@@ -35,6 +40,14 @@ body {
 	background-color: #297FB9;
 	border-color: #032876;
 	/*border: none;*/
+}
+
+.dropdown-menu {
+	background-color: #297FB9;
+}
+
+.dropdown-menu > li > a:hover {
+	background-color: #032876;
 }
 
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
@@ -299,10 +312,10 @@ a.list-group-item {
 
 .search-nav {
 	border-radius:20px;
-	background-color: #032876;
+	/*background-color: #032876;*/
 	border: none;
-	color: #fff;
-	padding-left: 20px;
+	/*color: #fff;*/
+	padding: 1px 0 1px 20px;
 }
 
 .panel-link a:hover {
