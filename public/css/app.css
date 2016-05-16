@@ -31,7 +31,8 @@ body {
 -------------------------------------------------- */
 
 .navbar-default {
-	background-color: #033AAE;
+	/*background-color: #033AAE;*/
+	background-color: #297FB9;
 	border-color: #032876;
 	/*border: none;*/
 }

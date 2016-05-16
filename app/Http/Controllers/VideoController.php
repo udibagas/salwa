@@ -108,8 +108,9 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Video $video)
     {
-        //
+        $video->delete();
+		return redirect('/video/admin');
     }
 }
