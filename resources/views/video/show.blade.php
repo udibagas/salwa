@@ -41,10 +41,8 @@
 		<iframe width="100%" height="500" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
 		@endif
 
-		<div id="video"></div>
-
 		@if ($video->files)
-			<div class="row no-gutter">
+			<div class="row">
 				@foreach ($video->files()->web()->get() as $f)
 				<div class="col-md-6">
 					<video width="100%" height="300" controls  poster="http://www.salamdakwah.com/{{ $f->img_file }}" style="width:100%;height:300px;">
