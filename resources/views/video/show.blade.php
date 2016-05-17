@@ -33,26 +33,19 @@
 
 		<div id="video"></div>
 		<script type="text/javascript">
-			var playerInstance = jwplayer("videooo");
-				playerInstance.setup({
-				file: "/uploads/dirfile_upload/mib_201112191256457757_ubjumatan1AFLV.flv",
-				image: ""
-				// mediaid: "MEDIAID",
 
+			var playlist =[@foreach ($video->files()->web()->get() as $f) {file:"{{ $f->file_upload }}", image:"{{ $f->img_file }}", title:"{{ $video->title }}"}, @endforeach];
+
+			jwplayer("video").setup({
+		        playlist: playlist,
+				width: 600,
+				height: 300
 			});
 
-			// var playlist = [{file:"http://www.salamdakwah.com/uploads/dirfile_upload/mib_201112191256457757_ubjumatan1AFLV.flv",image:"http://www.salamdakwah.com/uploads/dirimg_file/mib_201111041505263076_1.jpg",title:"Khutbah Jumat - Keutamaan 10 hari bulan Dzulhijjah"},{file:"http://www.salamdakwah.com/uploads/dirfile_upload/mib_201112191256454036_ubjumatan1BFLV.flv",image:"http://www.salamdakwah.com/uploads/dirimg_file/mib_201111041505262181_2.jpg",title:"Khutbah Jumat - Keutamaan 10 hari bulan Dzulhijjah"},{file:"http://www.salamdakwah.com/uploads/dirfile_upload/mib_201112191256455148_ubjumatan1CFLV.flv",image:"http://www.salamdakwah.com/uploads/dirimg_file/mib_201111041505267596_3.jpg",title:"Khutbah Jumat - Keutamaan 10 hari bulan Dzulhijjah"},{file:"http://www.salamdakwah.com/uploads/dirfile_upload/mib_201112191256456719_ubjumatan1DFLV.flv",image:"http://www.salamdakwah.com/uploads/dirimg_file/mib_201111041505268832_4.jpg",title:"Khutbah Jumat - Keutamaan 10 hari bulan Dzulhijjah"}];
-			//
-			//
-		    // jwplayer("video").setup({
-		    //     playlist: playlist,
-			// 	width: 600,
-			// 	height: 300
-			// });
         </script>
 
 
-		@if ($video->files)
+		<!-- @if ($video->files)
 			<div class="row">
 				@foreach ($video->files()->web()->get() as $f)
 				<div class="col-md-6">
@@ -62,7 +55,7 @@
 				</div>
 				@endforeach
 			</div>
-		@endif
+		@endif -->
 
 		<hr>
 		@include('layouts._share')
