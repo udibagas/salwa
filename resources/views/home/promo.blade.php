@@ -11,7 +11,7 @@
 	  <?php $i++ ?>
     <div class="item @if ($i == 1) active @endif">
 		<a href="{{ $p->url }}" target="_blank">
-      <img class="first-slide" src="http://www.salamdakwah.com/{{ $p->img_banner }}" alt="" style="width:100%;">
+      <img class="first-slide" src="/{{ $p->img_banner }}" alt="" style="width:100%;">
 	  </a>
     </div>
 	@endforeach

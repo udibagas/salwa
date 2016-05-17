@@ -22,7 +22,7 @@
 				<div class="media alert alert-warning">
 					<div class="media-left">
 						<a href="/kitab/{{ $k->buku_id }}-{{ str_slug($k->judul) }}">
-							<img class="media-object" src="http://www.salamdakwah.com/{{ $k->img_buku }}" alt="" style="width:200px;">
+							<img class="media-object" src="/{{ $k->img_buku }}" alt="" style="width:200px;">
 						</a>
 					</div>
 					<div class="media-body">

@@ -26,7 +26,7 @@
 
 			<div class="alert alert-info">
 				@if ($group->img_group)
-				<img src="http://www.salamdakwah.com/{{ $group->img_group }}" style="height:100px;float:left;margin:0 10px 10px 0;" alt="" />
+				<img src="/{{ $group->img_group }}" style="height:100px;float:left;margin:0 10px 10px 0;" alt="" />
 				@endif
 
 				@if ($group->description)

@@ -56,7 +56,7 @@
 			@foreach ($images as $a)
 				<tr>
 					<td>{{ $i++ }}</td>
-					<td><img src="http://www.salamdakwah.com/{{ $a->img_images }}" alt="" style="width:100px;" /></td>
+					<td><img src="/{{ $a->img_images }}" alt="" style="width:100px;" /></td>
 					<td><a href="/image/{{ $a->id_salwaimages }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
 					<td>{{ $a->updated }}</td>
 					<td>

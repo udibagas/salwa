@@ -25,7 +25,7 @@
 		<br /><br />
 
 		@if ($peduli->img_artikel)
-		<img src="http://www.salamdakwah.com/{{ $peduli->img_artikel }}" class="img-responsive" style="margin-bottom:30px;" alt="" />
+		<img src="/{{ $peduli->img_artikel }}" class="img-responsive" style="margin-bottom:30px;" alt="" />
 		@endif
 
 		{!! $peduli->isi !!}

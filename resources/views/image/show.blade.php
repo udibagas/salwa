@@ -18,7 +18,7 @@
 <div class="row">
 	<div class="col-md-9">
 		<h1>{{ $image->judul }}</h1><hr />
-		<img src="http://www.salamdakwah.com/{{ $image->img_images }}" alt="" class="img-responsive" />
+		<img src="/{{ $image->img_images }}" alt="" class="img-responsive" />
 
 		<hr>
 		@include('layouts._share')

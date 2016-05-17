@@ -21,7 +21,7 @@
 			<h4 class="title"><i class="fa fa-book"></i> KITAB & TERJEMAHAN</h4>
 			<div class="media">
 				<div class="media-left">
-					<img class="media-object" src="http://www.salamdakwah.com/{{ $kitab->img_buku }}" alt="..." style="width:200px;">
+					<img class="media-object" src="/{{ $kitab->img_buku }}" alt="..." style="width:200px;">
 				</div>
 				<div class="media-body">
 					<h3 class="media-heading">{{ $kitab->judul }}</h3>

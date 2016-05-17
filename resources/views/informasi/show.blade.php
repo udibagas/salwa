@@ -25,7 +25,7 @@
 		<br /><br />
 
 		@if ($informasi->img_gambar)
-		<img src="http://www.salamdakwah.com/{{ $informasi->img_gambar }}" class="img-responsive" style="margin-bottom:30px;" alt="" />
+		<img src="/{{ $informasi->img_gambar }}" class="img-responsive" style="margin-bottom:30px;" alt="" />
 		@endif
 
 		{!! $informasi->content !!}

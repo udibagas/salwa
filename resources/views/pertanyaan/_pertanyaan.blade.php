@@ -3,7 +3,7 @@
 		<div class="col-md-2 col-sm-2 hidden-xs">
 			<figure class="thumbnail">
 				@if ($p->user->img_user)
-				<img class="img-responsive" src="http://www.salamdakwah.com/{{ $p->user->img_user }}" />
+				<img class="img-responsive" src="/{{ $p->user->img_user }}" />
 				@else
 				<img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
 				@endif

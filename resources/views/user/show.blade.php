@@ -48,7 +48,7 @@
 					</div>
 					<div class="col-md-2">
 						@if ($user->img_user)
-						<img class="img-responsive" src="http://www.salamdakwah.com/{{ $user->img_user }}" />
+						<img class="img-responsive" src="/{{ $user->img_user }}" />
 						@else
 						<img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
 						@endif

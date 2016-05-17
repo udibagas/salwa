@@ -21,7 +21,7 @@
 
 		<div class="row">
 			<div class="col-md-5">
-				<img src="http://www.salamdakwah.com/{{ $produk->img_buku }}" style="width:100%;margin-bottom:30px;" alt="" />
+				<img src="/{{ $produk->img_buku }}" style="width:100%;margin-bottom:30px;" alt="" />
 			</div>
 			<div class="col-md-7">
 				<p>{!! $produk->sinopsis !!}</p>
