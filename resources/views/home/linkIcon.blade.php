@@ -1,5 +1,5 @@
 <ul class="link-icon text-center">
-	<li><a href="/kitab"><i class="fa fa-book"></i><br />Kitab &amp; Terjemahan</a></li>
+	<li><a href="/kitab"><i class="fa fa-book"></i><br />Kitab</a></li>
 	<li><a href="/doa"><i class="fa fa-heartbeat"></i><br />Do'a</a></li>
 	<li><a href="/dzikir"><i class="fa fa-hand-stop-o"></i><br />Dzikir</a></li>
 	<li><a href="/hadist"><i class="fa fa-list-alt"></i><br />Hadist</a></li>

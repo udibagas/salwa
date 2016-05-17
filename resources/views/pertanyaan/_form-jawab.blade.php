@@ -1,7 +1,7 @@
-{!! Form::model($model, ['class' => 'form-vertical', 'method' => 'PUT']) !!}
+{!! Form::model($model, ['url' => '/pertanyaan/'.$model->pertanyaan_id.'/simpan-jawaban', 'class' => 'form-vertical', 'method' => 'PUT']) !!}
 
 <div class="form-group{{ $errors->has('jawaban') ? ' has-error' : '' }}">
-	{{ Form::textarea('jawaban', $model->jawaban, ['rows' => 20, 'class' => 'form-control', 'placeholder' => 'Tulis Pertanyaan']) }}
+	{{ Form::textarea('jawaban', $model->jawaban, ['rows' => 10, 'class' => 'form-control', 'placeholder' => 'Tulis Pertanyaan']) }}
 
 	@if ($errors->has('jawaban'))
 		<span class="help-block">

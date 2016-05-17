@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('group', 'GroupController');
 
 	Route::post('forum/comment', 'ForumController@comment');
+	Route::put('pertanyaan/{pertanyaan}/simpan-jawaban', 'PertanyaanController@simpanJawaban');
+	Route::get('pertanyaan/jawab', 'PertanyaanController@jawab');
 
 	Route::get('me', 'UserController@me');
 	Route::get('cms', 'CmsController@index');

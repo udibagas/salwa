@@ -21,6 +21,7 @@
 {!! nl2br($model->ket_pertanyaan) !!}
 
 <br>
+<br>
 
 @include('pertanyaan._form-jawab')
 

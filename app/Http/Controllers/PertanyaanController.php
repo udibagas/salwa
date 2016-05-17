@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\PertanyaanRequest;
+use App\Http\Requests\JawabanRequest;
 
 use App\Pertanyaan;
 
@@ -102,6 +103,17 @@ class PertanyaanController extends Controller
         return view('pertanyaan.jawab', ['model' => $pertanyaan]);
     }
 
+	public function simpanJawaban(JawabanRequest $request, Pertanyaan $pertanyaan)
+	{
+		$data = $request->all();
+		$data['dijawab_oleh'] = auth()->user()->user_id;
+		$data['tanggal_jawab'] = date('U');
+		dd($data);
+
+		$pertanyaan->update($data);
+		return redirect('/pertanyaan/admin');
+	}
+
     /**
      * Update the specified resource in storage.
      *
@@ -124,6 +136,6 @@ class PertanyaanController extends Controller
     public function destroy(Pertanyaan $pertanyaan)
     {
         $pertanyaan->delete();
-		return redirect('/pertanyaan');
+		return redirect('/pertanyaan/admin');
     }
 }
