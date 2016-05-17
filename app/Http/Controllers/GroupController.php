@@ -48,7 +48,7 @@ class GroupController extends Controller
     public function store(GroupRequest $request)
     {
         Group::create($request->all());
-		return redirect('/group');
+		return redirect('/group')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -83,7 +83,7 @@ class GroupController extends Controller
     public function update(GroupRequest $request, Group $group)
     {
 		$group->update($request->all());
-		return redirect('/group');
+		return redirect('/group')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -94,7 +94,21 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
+		// if (count($group->forums) || count($group->artikels)
+		// || count($group->informasis) || count($group->hadists)
+		// || count($group->videos) || count($group->audios)
+		// || count($group->murottals) || count($group->pedulis)
+		// || count($group->pertanyaans) || count($group->kitabs)
+		// || count($group->produks) || count($group->images))
+
+		if (count($group->forums) || count($group->artikels)
+		|| count($group->informasis) || count($group->hadists)
+		|| count($group->pedulis) || count($group->produks))
+		{
+			return redirect('/group')->with('error', 'Group gagal dihapus karena digunakan');
+		}
+
         $group->delete();
-		return redirect('/group');
+		return redirect('/group')->with('success', 'Data berhasil dihapus');
     }
 }

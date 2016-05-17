@@ -29,6 +29,8 @@
 
 		<a href="https://www.youtube.com/user/salamdakwah" target="_blank" class="fa fa-youtube-square fa-4x"> </a>
 
+		<a href="https://www.instagram.com/salamdakwah" target="_blank" class="fa fa-instagram fa-4x"> </a>
+
 	</div>
 
 	<div class="col-md-3">

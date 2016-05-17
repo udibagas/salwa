@@ -15,5 +15,5 @@
 
 @section('cms-content')
 	<h4 class="title"><i class="fa fa-tags"></i> EDIT GROUP</h4>
-	@include('group._form', ['url' => '/group/'.$model->group_id, 'method' => 'PUT'])
+	@include('group._form', ['url' => '/group/'.$group->group_id, 'method' => 'PUT'])
 @endsection

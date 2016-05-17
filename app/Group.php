@@ -16,10 +16,7 @@ class Group extends Model
 
 	const UPDATED_AT = 'updated';
 
-	public function group()
-	{
-		return $this->belongsTo('App\Group', 'group_id', 'group_id');
-	}
+	protected $fillable = ['group_name', 'type', 'description'];
 
 	public function forums()
 	{
@@ -39,6 +36,46 @@ class Group extends Model
 	public function pedulis()
 	{
 		return $this->hasMany('App\Peduli', 'group_id', 'group_id');
+	}
+
+	public function hadists()
+	{
+		return $this->hasMany('App\Hadist', 'group_id', 'group_id');
+	}
+
+	public function videos()
+	{
+		return $this->hasMany('App\Video', 'group_id', 'group_id');
+	}
+
+	public function audios()
+	{
+		return $this->hasMany('App\Mp3', 'group_id', 'group_id');
+	}
+
+	public function murottals()
+	{
+		return $this->hasMany('App\Mp3', 'group_id', 'group_id');
+	}
+
+	public function pertanyaans()
+	{
+		return $this->hasMany('App\Mp3', 'group_id', 'group_id');
+	}
+
+	public function kitabs()
+	{
+		return $this->hasMany('App\Buku', 'group_id', 'group_id');
+	}
+
+	public function produks()
+	{
+		return $this->hasMany('App\Produk', 'group_id', 'group_id');
+	}
+
+	public function images()
+	{
+		return $this->hasMany('App\Produk', 'group_id', 'group_id');
 	}
 
 	public function scopeForum($query)
@@ -69,15 +106,17 @@ class Group extends Model
 	public static function typeList()
 	{
 		return [
+			'artikel'	=> 'Artikel',
+			'audio'		=> 'Audio',
 			'forum'		=> 'Forum',
 			'hadist'	=> 'Hadist',
-			'informasi'	=> 'informasi',
+			'informasi'	=> 'Informasi',
+			'image'		=> 'Image',
+			'murottal'	=> 'Murottal',
 			'peduli'	=> 'Peduli',
-			'artikel'	=> 'Artikel',
+			'pertanyaan'	=> 'Pertanyaan',
+			// 'promo'		=> 'Promo',
 			'video'		=> 'Video',
-			'pertanyaan'	=> 'Tanya Ustadz',
-			'audio'		=> 'Audio',
-			'murottal'	=> 'Murottal'
 		];
 	}
 }

@@ -6,7 +6,7 @@ use App\Http\Requests\Request;
 use App\User;
 use Auth;
 
-class CommentRequest extends Request
+class GroupRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
