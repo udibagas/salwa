@@ -13,16 +13,6 @@
 
 @stop
 
-@push('script')
-
-	<script type="text/javascript" src="/js/jwplayer.js"></script>
-	<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
-	<script type="text/javascript">
-
-	</script>
-
-@endpush
-
 @section('content')
 
 <div class="row">
@@ -41,12 +31,33 @@
 		<iframe width="100%" height="500" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
 		@endif
 
+		<div id="video"></div>
+		<script type="text/javascript">
+			var playerInstance = jwplayer("videooo");
+				playerInstance.setup({
+				file: "/uploads/dirfile_upload/mib_201112191256457757_ubjumatan1AFLV.flv",
+				image: ""
+				// mediaid: "MEDIAID",
+
+			});
+
+			// var playlist = [{file:"http://www.salamdakwah.com/uploads/dirfile_upload/mib_201112191256457757_ubjumatan1AFLV.flv",image:"http://www.salamdakwah.com/uploads/dirimg_file/mib_201111041505263076_1.jpg",title:"Khutbah Jumat - Keutamaan 10 hari bulan Dzulhijjah"},{file:"http://www.salamdakwah.com/uploads/dirfile_upload/mib_201112191256454036_ubjumatan1BFLV.flv",image:"http://www.salamdakwah.com/uploads/dirimg_file/mib_201111041505262181_2.jpg",title:"Khutbah Jumat - Keutamaan 10 hari bulan Dzulhijjah"},{file:"http://www.salamdakwah.com/uploads/dirfile_upload/mib_201112191256455148_ubjumatan1CFLV.flv",image:"http://www.salamdakwah.com/uploads/dirimg_file/mib_201111041505267596_3.jpg",title:"Khutbah Jumat - Keutamaan 10 hari bulan Dzulhijjah"},{file:"http://www.salamdakwah.com/uploads/dirfile_upload/mib_201112191256456719_ubjumatan1DFLV.flv",image:"http://www.salamdakwah.com/uploads/dirimg_file/mib_201111041505268832_4.jpg",title:"Khutbah Jumat - Keutamaan 10 hari bulan Dzulhijjah"}];
+			//
+			//
+		    // jwplayer("video").setup({
+		    //     playlist: playlist,
+			// 	width: 600,
+			// 	height: 300
+			// });
+        </script>
+
+
 		@if ($video->files)
 			<div class="row">
 				@foreach ($video->files()->web()->get() as $f)
 				<div class="col-md-6">
-					<video width="100%" height="300" controls  poster="http://www.salamdakwah.com/{{ $f->img_file }}" style="width:100%;height:300px;">
-						<source src="http://www.salamdakwah.com/{{ $f->file_upload }}" type="video/3gp">
+					<video width="100%" height="300" controls  poster="/{{ $f->img_file }}" style="width:100%;height:300px;">
+						<source src="/{{ $f->file_upload }}" type="video/flv">
 					</video>
 				</div>
 				@endforeach
