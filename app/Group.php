@@ -55,12 +55,12 @@ class Group extends Model
 
 	public function murottals()
 	{
-		return $this->hasMany('App\Mp3', 'group_id', 'group_id');
+		return $this->hasMany('App\Murottal', 'group_id', 'group_id');
 	}
 
 	public function pertanyaans()
 	{
-		return $this->hasMany('App\Mp3', 'group_id', 'group_id');
+		return $this->hasMany('App\Pertanyaan', 'group_id', 'group_id');
 	}
 
 	public function kitabs()
@@ -75,7 +75,12 @@ class Group extends Model
 
 	public function images()
 	{
-		return $this->hasMany('App\Produk', 'group_id', 'group_id');
+		return $this->hasMany('App\SalwaImages', 'group_id', 'group_id');
+	}
+
+	public function promos()
+	{
+		return $this->hasMany('App\Banner', 'group_id', 'group_id');
 	}
 
 	public function scopeForum($query)
@@ -123,6 +128,21 @@ class Group extends Model
 		return $query->where('type', 'murottal');
 	}
 
+	public function scopeKitab($query)
+	{
+		return $query->where('type', 'kitab');
+	}
+
+	public function scopeImage($query)
+	{
+		return $query->where('type', 'image');
+	}
+
+	public function scopePromo($query)
+	{
+		return $query->where('type', 'promo');
+	}
+
 	public static function typeList()
 	{
 		return [
@@ -132,10 +152,12 @@ class Group extends Model
 			'hadist'	=> 'Hadist',
 			'informasi'	=> 'Informasi',
 			'image'		=> 'Image',
+			'kitab'		=> 'Kitab',
 			'murottal'	=> 'Murottal',
 			'peduli'	=> 'Peduli',
 			'pertanyaan'	=> 'Pertanyaan',
-			// 'promo'		=> 'Promo',
+			'produk'	=> 'Prduk',
+			'promo'		=> 'Promo',
 			'video'		=> 'Video',
 		];
 	}

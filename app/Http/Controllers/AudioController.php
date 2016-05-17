@@ -22,6 +22,8 @@ class AudioController extends Controller
         return view('audio.index', [
 			'audios' => Mp3::when($search, function($query) use ($search) {
 						return $query->where('judul', 'like', '%'.$search.'%');
+					})->when($request->group_id, function($query) use ($request) {
+						return $query->where('group_id', $request->group_id);
 					})->orderBy('updated', 'DESC')->paginate()
 		]);
     }
@@ -33,6 +35,8 @@ class AudioController extends Controller
         return view('audio.admin', [
 			'audios' => Mp3::when($search, function($query) use ($search) {
 						return $query->where('judul', 'like', '%'.$search.'%');
+					})->when($request->group_id, function($query) use ($request) {
+						return $query->where('group_id', $request->group_id);
 					})->orderBy('updated', 'DESC')->paginate()
 		]);
     }

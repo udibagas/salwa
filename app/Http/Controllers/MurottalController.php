@@ -21,8 +21,10 @@ class MurottalController extends Controller
 
         return view('murottal.index', [
 			'murottals' => Murottal::when($search, function($query) use ($search) {
-						return $query->where('nama_surat', 'like', '%'.$search.'%');
-					})->orderBy('nama_surat', 'ASC')->paginate()
+							return $query->where('nama_surat', 'like', '%'.$search.'%');
+						})->when($request->group_id, function($query) use ($request) {
+							return $query->where('group_id', $request->group_id);
+						})->orderBy('nama_surat', 'ASC')->paginate()
 		]);
     }
 
@@ -32,8 +34,10 @@ class MurottalController extends Controller
 
         return view('murottal.admin', [
 			'murottals' => Murottal::when($search, function($query) use ($search) {
-						return $query->where('nama_surat', 'like', '%'.$search.'%');
-					})->orderBy('nama_surat', 'ASC')->paginate()
+							return $query->where('nama_surat', 'like', '%'.$search.'%');
+						})->when($request->group_id, function($query) use ($request) {
+							return $query->where('group_id', $request->group_id);
+						})->orderBy('nama_surat', 'ASC')->paginate()
 		]);
     }
 

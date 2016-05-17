@@ -15,14 +15,16 @@ class KitabController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('kitab.admin', [
+        return view('kitab.index', [
 			'kitabs' => Buku::when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%')
 									->orWhere('penulis', 'like', '%'.$search.'%');
+						})->when($request->group_id, function($query) use ($request) {
+							return $query->where('group_id', $request->group_id);
 						})->orderBy('updated', 'DESC')->paginate()
 		]);
     }
@@ -35,6 +37,8 @@ class KitabController extends Controller
 			'kitabs' => Buku::when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%')
 									->orWhere('penulis', 'like', '%'.$search.'%');
+						})->when($request->group_id, function($query) use ($request) {
+							return $query->where('group_id', $request->group_id);
 						})->orderBy('updated', 'DESC')->paginate()
 		]);
     }

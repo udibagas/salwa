@@ -22,6 +22,8 @@ class ImageController extends Controller
         return view('image.index', [
 			'images' => SalwaImages::when($search, function($query) use ($search) {
 						return $query->where('judul', 'like', '%'.$search.'%');
+					})->when($request->group_id, function($query) use ($request) {
+						return $query->where('group_id', $request->group_id);
 					})->orderBy('updated', 'DESC')->paginate()
 		]);
     }
@@ -33,6 +35,8 @@ class ImageController extends Controller
         return view('image.admin', [
 			'images' => SalwaImages::when($search, function($query) use ($search) {
 						return $query->where('judul', 'like', '%'.$search.'%');
+					})->when($request->group_id, function($query) use ($request) {
+						return $query->where('group_id', $request->group_id);
 					})->orderBy('updated', 'DESC')->paginate()
 		]);
     }

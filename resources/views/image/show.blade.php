@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title') Salwa Image : {{ $image->judul }} @stop
+@section('title', 'Salwa Image : '.$image->judul)
 
 @section('breadcrumbs')
 
@@ -16,6 +16,9 @@
 @section('content')
 
 <div class="row">
+	<div class="col-md-3">
+		@include('image._group')
+	</div>
 	<div class="col-md-9">
 		<h1>{{ $image->judul }}</h1><hr />
 		<img src="/{{ $image->img_images }}" alt="" class="img-responsive" />
@@ -28,10 +31,6 @@
 		<div class="row no-gutter">
 			@each('image._list', $terkait, 'image')
 		</div>
-	</div>
-
-	<div class="col-md-3">
-		@include('home.sidebar')
 	</div>
 </div>
 
