@@ -18,9 +18,7 @@
 
 	<div style="border:1px solid #8EC7FB;">
 		<h4 class="title" style="margin:0;">FORUM</h4>
-		@foreach ($forumKategori as $g)
-			@include('forum._list', ['group' => $g])
-		@endforeach
+		@each('forum._list', $forumKategori, 'group')
 	</div>
 
 	<br>
