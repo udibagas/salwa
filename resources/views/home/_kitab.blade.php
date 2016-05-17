@@ -11,14 +11,14 @@
 	  @foreach ($buku->chunk(6) as $chunk)
 			  <?php $i++ ?>
 			<div class="item @if ($i == 1) active @endif">
-				<div class="row no-gutter">
+				<div class="row">
 					@foreach ($chunk as $b)
 					<div class="col-md-2">
 						<div class="thumbnail">
 							<a href="/kitab/{{ $b->buku_id }}-{{ str_slug($b->judul) }}">
 
 
-								<img src="/{{ $b->img_buku }}" class="img-responsive" style="width:100%;height:270px;">
+								<img src="/{{ $b->img_buku }}" class="img-responsive" style="width:100%;height:224px;">
 
 								<div class="thumbnail-block">
 									<div class="caption">

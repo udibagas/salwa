@@ -26,10 +26,6 @@
 	@include('home._kitab')
 	<div class="clearfix"></div>
 
-	<br>
-	<br>
-	<br>
-
 	<div class="row">
 		<div class="col-md-6">
 			@include('home.doa')

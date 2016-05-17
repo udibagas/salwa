@@ -3,9 +3,6 @@
 
 @include('home.info')
 
-<!-- <h4 class="title">SALWA PROMO</h4>
-include('home.banner') -->
-
 <h4 class="title">DOA HARI INI</h4>
 @include('home.hadist', ['hadist' => $doa])
 
