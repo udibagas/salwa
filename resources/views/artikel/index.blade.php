@@ -31,10 +31,6 @@
 				{!! $artikels->appends(['search' => Request::get('search'), 'group_id' => Request::get('group_id')])->links() !!}
 			</nav>
 		</div>
-
-		<!-- <div class="col-md-3">
-			include('home.sidebar')
-		</div> -->
 	</div>
 
 @stop

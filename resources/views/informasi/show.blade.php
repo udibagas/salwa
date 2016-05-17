@@ -40,10 +40,6 @@
 		</div>
 
 	</div>
-
-	<!-- <div class="col-md-3">
-		include('home.sidebar')
-	</div> -->
 </div>
 
 @stop

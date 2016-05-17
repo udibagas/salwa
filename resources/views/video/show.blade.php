@@ -26,8 +26,16 @@
 @section('content')
 
 <div class="row">
+	<div class="col-md-3">
+		@include('video._group', [
+			'groups' => \App\User::ustadz()->has('videos')->orderBy('name', 'ASC')->get()
+		])
+	</div>
 	<div class="col-md-9">
-		<h1>{{ $video->title }}</h1><hr />
+		<h1>{{ $video->title }}</h1>
+		<i class="fa fa-user"></i> {{ $video->user ? $video->user->name : '' }}
+		<i class="fa fa-clock-o"></i> {{ $video->updated->diffForHumans() }}
+		<hr />
 
 		@if ($video->url_video_youtube)
 		<iframe width="100%" height="500" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
@@ -59,9 +67,6 @@
 		</div>
 	</div>
 
-	<div class="col-md-3">
-		@include('home.sidebar')
-	</div>
 </div>
 
 @endsection

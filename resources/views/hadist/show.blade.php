@@ -17,11 +17,11 @@
 
 <div class="row">
 
-	<div class="col-md-2">
-		@include('hadist._hashtag')
+	<div class="col-md-3">
+		@include('hadist._group')
 	</div>
 
-	<div class="col-md-7">
+	<div class="col-md-9">
 		<h1>{{ $hadist->judul }}</h1><hr />
 
 		<div class="text-right" style="font-size:30px;">
@@ -34,10 +34,6 @@
 		<hr>
 		@include('layouts._share')
 
-	</div>
-
-	<div class="col-md-3">
-		@include('home.sidebar')
 	</div>
 </div>
 

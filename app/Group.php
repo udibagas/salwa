@@ -12,6 +12,10 @@ class Group extends Model
 
 	protected $dates = ['created', 'updated'];
 
+	const CREATED_AT = 'created';
+
+	const UPDATED_AT = 'updated';
+
 	public function group()
 	{
 		return $this->belongsTo('App\Group', 'group_id', 'group_id');
@@ -55,5 +59,25 @@ class Group extends Model
 	public function scopePeduli($query)
 	{
 		return $query->where('type', 'peduli');
+	}
+
+	public function scopeHadist($query)
+	{
+		return $query->where('type', 'hadist');
+	}
+
+	public static function typeList()
+	{
+		return [
+			'forum'		=> 'Forum',
+			'hadist'	=> 'Hadist',
+			'informasi'	=> 'informasi',
+			'peduli'	=> 'Peduli',
+			'artikel'	=> 'Artikel',
+			'video'		=> 'Video',
+			'pertanyaan'	=> 'Tanya Ustadz',
+			'audio'		=> 'Audio',
+			'murottal'	=> 'Murottal'
+		];
 	}
 }

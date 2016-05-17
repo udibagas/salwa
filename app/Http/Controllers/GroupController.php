@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\GroupRequest;
+
 use App\Group;
 
 class GroupController extends Controller
@@ -34,7 +36,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return view('group.create', ['group' => new Group]);
     }
 
     /**
@@ -43,9 +45,10 @@ class GroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GroupRequest $request)
     {
-        //
+        Group::create($request->all());
+		return redirect('/group');
     }
 
     /**
@@ -65,9 +68,9 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Group $group)
     {
-        //
+        return view('group.edit', ['group' => $group]);
     }
 
     /**
@@ -77,9 +80,10 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GroupRequest $request, Group $group)
     {
-        //
+		$group->update($request->all());
+		return redirect('/group');
     }
 
     /**
