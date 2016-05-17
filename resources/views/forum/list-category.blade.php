@@ -1,5 +1,5 @@
 <h4 class="title">Forum Category</h4>
-@if (Auth::check())
+@if (auth()->check())
 <p>
 	<a href="/forum/create" class="btn btn-info form-control"><i class="fa fa-plus-circle"></i> Buat Thread Baru</a>
 </p>
@@ -13,7 +13,7 @@
 {!! Form::open(['url' => '/forum/search', 'method' => 'GET']) !!}
 	<div class="form-group">
 		<div class="input-group">
-			<input type="text" name="search" value="{{ Request::get('search') }}" placeholder="Search Forum" class="form-control">
+			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search Forum" class="form-control">
 
 			@if ($group)
 			{!! Form::hidden('group_id', $group->group_id) !!}

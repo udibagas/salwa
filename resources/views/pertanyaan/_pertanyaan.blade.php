@@ -26,7 +26,7 @@
 						<p>{!! nl2br($p->ket_pertanyaan) !!}</p>
 
 					</div>
-					@if (Auth::check() && Auth::user()->user_id == $p->user_id && $p->jawaban == null)
+					@if (auth()->check() && auth()->user()->user_id == $p->user_id && $p->jawaban == null)
 					{!! Form::open(['url' => '/pertanyaan/'.$p->pertanyaan_id, 'method' => 'DELETE']) !!}
 					<p class="text-right">
 						<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>

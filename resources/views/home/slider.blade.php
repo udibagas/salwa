@@ -17,7 +17,8 @@
 					<div class="tilecaption">
 						<h3><i class="fa fa-clock-o"></i> SALWA AKTUAL</h3>
 						<h4>{{ $a->judul }}</h4>
-						{{ $a->user ? $a->user->name : '' }} | {{ $a->updated->diffForHumans() }}
+						{{ $a->user ? $a->user->name : '' }}<br>
+						<em>{{ $a->updated->diffForHumans() }}</em>
 					</div>
 				</div>
 			</a>
@@ -68,7 +69,8 @@
 					 <div class="tilecaption">
 						 <h3><i class="fa fa-video-camera"></i> SALWA VIDEO</h3>
 						 <h3>{{ $v->title }}</h3>
-						 {{ $v->user->name }}
+						 {{ $v->user->name }}<br>
+						 <em>{{ $v->updated->diffForHumans() }}</em>
 					 </div>
 				 </div>
 				 </a>
@@ -93,7 +95,8 @@
 						<div class="tilecaption">
 							<h3><i class="fa fa-question-circle"></i> TANYA USTADZ</h3>
 							<h3>{{ $v->judul_pertanyaan }}</h3>
-							{{ $v->user->name }} | {{ $v->updated->diffForHumans() }}
+							{{ $v->user->name }}<br>
+							<em>{{ $v->updated->diffForHumans() }}</em>
 						</div>
 					</div>
 			   </a>
@@ -151,7 +154,8 @@
 				  <div class="tilecaption">
 					  <h3><i class="fa fa-comment"></i> FORUM</h3>
 					  <h3>{{ $f->title }}</h3>
-					  {{ $f->user->name }} | {{ $f->updated->diffForHumans() }}
+					  {{ $f->user->name }}<br>
+					  <em>{{ $f->updated->diffForHumans() }}</em>
 				  </div>
 			  </div>
 			  </a>

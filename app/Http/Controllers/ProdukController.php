@@ -15,9 +15,30 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('produk.index', ['produks' => Produk::orderBy('updated', 'DESC')->paginate()]);
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('produk.index', [
+			'produks' => Produk::when($request->group_id, function($query) use ($request) {
+								return $query->where('group_id', $request->group_id);
+							})->when($search, function($query) use ($search) {
+								return $query->where('judul', 'like', '%'.$search.'%');
+							})->orderBy('updated', 'DESC')->paginate(20)
+		]);
+    }
+
+    public function admin(Request $request)
+    {
+		$search = str_replace(' ', '%', $request->search);
+
+        return view('produk.admin', [
+			'produks' => Produk::when($request->group_id, function($query) use ($request) {
+								return $query->where('group_id', $request->group_id);
+							})->when($search, function($query) use ($search) {
+								return $query->where('judul', 'like', '%'.$search.'%');
+							})->orderBy('updated', 'DESC')->paginate(20)
+		]);
     }
 
     /**

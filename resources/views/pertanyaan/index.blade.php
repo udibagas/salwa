@@ -17,7 +17,7 @@
 	<div class="row">
 
 		<div class="col-md-3">
-			@include('pertanyaan._hashtag')
+			@include('pertanyaan._group')
 		</div>
 
 		<div class="col-md-9">
@@ -35,14 +35,10 @@
 			@endforeach
 
 			<nav class="text-center">
-				{!! $pertanyaans->appends(['search' => Request::get('search')])->links() !!}
+				{!! $pertanyaans->appends(['search' => request('search')])->links() !!}
 			</nav>
 
 		</div>
-
-		<!-- <div class="col-md-3">
-			include('home.sidebar')
-		</div> -->
 
 	</div>
 

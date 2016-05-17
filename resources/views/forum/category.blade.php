@@ -37,7 +37,7 @@
 				@endif
 
 
-				@if (Auth::check())
+				@if (auth()->check())
 				<a href="/forum/create" class="btn btn-info">
 					<i class="fa fa-plus-circle"></i> Buat Thread Baru
 				</a>

@@ -2,7 +2,7 @@
 {!! Form::open(['url' => url()->current(), 'method' => 'GET']) !!}
 	<div class="form-group">
 		<div class="input-group">
-			<input type="text" name="search" value="{{ Request::get('search') }}" placeholder="Search Doa" class="form-control">
+			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search Doa" class="form-control">
 			<div class="input-group-addon"><i class="fa fa-search"></i></div>
 		</div>
 	</div>

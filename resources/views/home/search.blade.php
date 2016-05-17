@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
-@section('title') Search : {{ Request::get('search') }} @stop
+@section('title') Search : {{ request('search') }} @stop
 
 @section('breadcrumbs')
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'#' => 'Search : "'.Request::get('search').'"',
+			'#' => 'Search : "'.request('search').'"',
 		]
 	])
 

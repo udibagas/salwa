@@ -19,7 +19,7 @@ class MurottalController extends Controller
     {
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('murottal.admin', [
+        return view('murottal.index', [
 			'murottals' => Murottal::when($search, function($query) use ($search) {
 						return $query->where('nama_surat', 'like', '%'.$search.'%');
 					})->orderBy('nama_surat', 'ASC')->paginate()

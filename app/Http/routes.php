@@ -38,7 +38,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('forum/admin', 'ForumController@admin');
 	Route::get('hadist/admin', 'HadistController@admin');
 	Route::get('video/admin', 'VideoController@admin');
-	Route::get('mp3/admin', 'Mp3Controller@admin');
+	Route::get('audio/admin', 'AudioController@admin');
 	Route::get('murottal/admin', 'MurottalController@admin');
 	Route::get('image/admin', 'ImageController@admin');
 
@@ -51,7 +51,7 @@ Route::resource('hadist', 'HadistController');
 Route::resource('image', 'ImageController');
 Route::resource('informasi', 'InformasiController');
 Route::resource('kitab', 'KitabController');
-Route::resource('mp3', 'Mp3Controller');
+Route::resource('audio', 'AudioController');
 Route::resource('murottal', 'MurottalController');
 Route::resource('peduli', 'PeduliController');
 Route::resource('pertanyaan', 'PertanyaanController');

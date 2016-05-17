@@ -8,7 +8,7 @@ use App\Http\Requests;
 
 use App\Mp3;
 
-class Mp3Controller extends Controller
+class AudioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class Mp3Controller extends Controller
     {
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('mp3.index', [
+        return view('audio.index', [
 			'audios' => Mp3::when($search, function($query) use ($search) {
 						return $query->where('judul', 'like', '%'.$search.'%');
 					})->orderBy('updated', 'DESC')->paginate()
@@ -30,7 +30,7 @@ class Mp3Controller extends Controller
     {
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('mp3.admin', [
+        return view('audio.admin', [
 			'audios' => Mp3::when($search, function($query) use ($search) {
 						return $query->where('judul', 'like', '%'.$search.'%');
 					})->orderBy('updated', 'DESC')->paginate()
@@ -64,11 +64,11 @@ class Mp3Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Mp3 $mp3)
+    public function show(Mp3 $audio)
     {
-        return view('mp3.show', [
-			'mp3' 	=> $mp3,
-			'terkait'	=> Mp3::where('user_id', $mp3->user_id)->limit(3)->get()
+        return view('audio.show', [
+			'audio' 	=> $audio,
+			'terkait'	=> Mp3::where('user_id', $audio->user_id)->limit(3)->get()
 		]);
     }
 
@@ -101,9 +101,9 @@ class Mp3Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mp3 $mp3)
+    public function destroy(Mp3 $audio)
     {
-        $mp3->delete();
-		return redirect('/mp3/admin');
+        $audio->delete();
+		return redirect('/audio/admin');
     }
 }

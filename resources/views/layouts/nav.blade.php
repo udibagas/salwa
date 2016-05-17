@@ -36,14 +36,14 @@
 		  <li class="@if (url()->current() == url('forum')) active @endif"><a href="/forum">Salwa Forum</a></li>
 		  <li class="@if (url()->current() == url('produk')) active @endif"><a href="/produk">Salwa Market</a></li>
 		  <li class="@if (url()->current() == url('peduli')) active @endif"><a href="/peduli">Salwa Peduli</a></li>
-		  @if (Auth::guest())
+		  @if (auth()->guest())
 		  <li class="@if (url()->current() == url('register')) active @endif"><a href="/register">Daftar/Masuk</a></li>
 		  @else
 		  <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/me"><i class="fa fa-user"></i> Profile</a></li>
-			@if (Auth::user()->user_status == \App\User::ROLE_ADMIN)
+			@if (auth()->user()->user_status == \App\User::ROLE_ADMIN)
   		  <li class="@if (url()->current() == url('cms')) active @endif"><a href="/cms"><i class="fa fa-th"></i> CMS</a></li>
   		  @endif
             <!-- <li role="separator" class="divider"></li> -->

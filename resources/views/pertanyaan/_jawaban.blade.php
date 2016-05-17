@@ -25,7 +25,7 @@
 						<p>{!! nl2br($p->jawaban) !!}</p>
 
 					</div>
-					@if (Auth::check() && Auth::user()->user_id == $p->dijawab_oleh)
+					@if (auth()->check() && auth()->user()->user_id == $p->dijawab_oleh)
 					<p class="text-right">
 						<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
 						<a href="/pertanyaan/{{$p->pertanyaan_id}}/delete" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>

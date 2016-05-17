@@ -1,5 +1,5 @@
 <h4 class="title hidden-xs"> Hashtag Pertanyaan</h4>
-@if (Auth::check())
+@if (auth()->check())
 <p>
 	<a href="/pertanyaan/create" class="btn btn-info form-control">
 		<i class="fa fa-plus-circle"></i> Input Pertanyaan
@@ -14,7 +14,7 @@
 {!! Form::open(['url' => '/pertanyaan', 'method' => 'GET']) !!}
 	<div class="form-group">
 		<div class="input-group">
-			<input type="text" name="search" value="{{ Request::get('search') }}" placeholder="Search Pertanyaan" class="form-control">
+			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search Pertanyaan" class="form-control">
 			<div class="input-group-addon"><i class="fa fa-search"></i></div>
 		</div>
 	</div>

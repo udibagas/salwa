@@ -98,9 +98,29 @@ class Group extends Model
 		return $query->where('type', 'peduli');
 	}
 
+	public function scopePertanyaan($query)
+	{
+		return $query->where('type', 'pertanyaan');
+	}
+
 	public function scopeHadist($query)
 	{
 		return $query->where('type', 'hadist');
+	}
+
+	public function scopeProduk($query)
+	{
+		return $query->where('type', 'produk');
+	}
+
+	public function scopeAudio($query)
+	{
+		return $query->where('type', 'audio');
+	}
+
+	public function scopeMurottal($query)
+	{
+		return $query->where('type', 'murottal');
 	}
 
 	public static function typeList()

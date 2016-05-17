@@ -14,7 +14,7 @@
 
 		<li class="list-group-item text-center">
 			@if (count($videos))
-			<b><a href="/video?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/video?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -37,7 +37,7 @@
 		@endforeach
 		<li class="list-group-item text-center">
 			@if (count($artikels))
-			<b><a href="/artikel?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/artikel?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -60,7 +60,7 @@
 		@endforeach
 		<li class="list-group-item text-center">
 			@if (count($informasis))
-			<b><a href="/informasi?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/informasi?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -83,7 +83,7 @@
 		@endforeach
 		<li class="list-group-item text-center">
 			@if (count($pedulis))
-			<b><a href="/peduli?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/peduli?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -106,7 +106,7 @@
 
 		<li class="list-group-item text-center">
 			@if (count($forums))
-			<b><a href="/forum?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/forum?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -130,7 +130,7 @@
 
 		<li class="list-group-item text-center">
 			@if (count($posts))
-			<b><a href="/post?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/post?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -153,7 +153,7 @@
 		@endforeach
 		<li class="list-group-item text-center">
 			@if (count($pertanyaan))
-			<b><a href="/pertanyaan?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/pertanyaan?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -176,7 +176,7 @@
 
 		<li class="list-group-item text-center">
 			@if (count($buku))
-			<b><a href="/kitab?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/kitab?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -198,7 +198,7 @@
 
 		<li class="list-group-item text-center">
 			@if (count($doa))
-			<b><a href="/doa?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/doa?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -219,7 +219,7 @@
 
 		<li class="list-group-item text-center">
 			@if (count($dzikir))
-			<b><a href="/doa?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/doa?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -240,7 +240,7 @@
 
 		<li class="list-group-item text-center">
 			@if (count($hadist))
-			<b><a href="/doa?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/doa?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -263,7 +263,7 @@
 
 		<li class="list-group-item text-center">
 			@if (count($audios))
-			<b><a href="/mp3?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/mp3?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -285,7 +285,7 @@
 
 		<li class="list-group-item text-center">
 			@if (count($images))
-			<b><a href="/image?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/image?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -309,7 +309,7 @@
 
 		<li class="list-group-item text-center">
 			@if (count($produks))
-			<b><a href="/produk?search={{ Request::get('search') }}">More Results...</a></b>
+			<b><a href="/produk?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif

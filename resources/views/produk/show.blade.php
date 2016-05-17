@@ -16,13 +16,14 @@
 @section('content')
 
 <div class="row">
+	<div class="col-md-3">
+		@include('produk._group')
+	</div>
+
 	<div class="col-md-9">
 		<h1>{{ $produk->judul }}</h1><hr />
 
 		<div class="row">
-			<div class="col-md-5">
-				<img src="/{{ $produk->img_buku }}" style="width:100%;margin-bottom:30px;" alt="" />
-			</div>
 			<div class="col-md-7">
 				<p>{!! $produk->sinopsis !!}</p>
 				<table class="table table-hover table-striped">
@@ -38,6 +39,9 @@
 					</tbody>
 				</table>
 			</div>
+			<div class="col-md-5">
+				<img src="/{{ $produk->img_buku }}" style="width:100%;margin-bottom:30px;" alt="" />
+			</div>
 		</div>
 
 		<hr>
@@ -49,10 +53,6 @@
 			@each('produk._list', $terkait, 'produk')
 		</div>
 
-	</div>
-
-	<div class="col-md-3">
-		@include('home.sidebar')
 	</div>
 </div>
 

@@ -16,15 +16,25 @@
 
 
 	<div class="row">
+		<div class="col-md-3">
+			@include('murottal._group')
+		</div>
 		<div class="col-md-9">
 			<h4 class="title"><i class="fa fa-microphone"></i> MUROTTAL QURAN</h4>
 			<table class="table table-hover table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Nama Surat</th>
+						<th>Action</th>
+					</tr>
+				</thead>
 				<tbody>
+					<?php $i = $murottals->firstItem(); ?>
 					@foreach ($murottals as $m)
 					<tr>
-						<td>
-							<b>{{ $m->nama_surat }}</b>
-						</td>
+						<td>{{ $i++ }}</td>
+						<td>{{ $m->nama_surat }}</td>
 						<td style="width:200px;">
 							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-info play"><span class="fa fa-play"></span> Play</a>
 							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
@@ -35,12 +45,8 @@
 			</table>
 
 			<nav class="text-center">
-				{!! $murottals->links() !!}
+				{!! $murottals->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
 			</nav>
-		</div>
-
-		<div class="col-md-3">
-			@include('home.sidebar')
 		</div>
 	</div>
 

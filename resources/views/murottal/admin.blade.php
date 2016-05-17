@@ -54,7 +54,8 @@
 			@foreach ($murottals as $a)
 				<tr>
 					<td>{{ $i++ }}</td>
-					<td><a href="/murottal/{{ $a->murotal_id }}-{{ str_slug($a->nama_surat) }}">{{ $a->nama_surat }}</a></td>
+					<td>{{ $a->group ? $a->group->group_name : '' }}</td>
+					<td>{{ $a->nama_surat }}</td>
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/murottal/'.$a->murotal_id]) !!}
 						<a href="/murottal/{{ $a->murotal_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>

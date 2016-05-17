@@ -35,7 +35,7 @@
 						<p>{!! nl2br($p->description) !!}</p>
 
 					</div>
-					@if (Auth::check() && Auth::user()->user_id == $p->user_id)
+					@if (auth()->check() && auth()->user()->user_id == $p->user_id)
 					<p class="text-right">
 						<a href="/post/{{$p->post_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
 						<a href="/post/{{$p->post_id}}/delete" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>

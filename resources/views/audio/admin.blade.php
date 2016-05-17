@@ -1,12 +1,12 @@
 @extends('layouts.cms')
 
-@section('title') Salwa Audio @stop
+@section('title', 'Salwa Audio')
 
 @section('breadcrumbs')
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'/mp3/admin' => 'SALWA AUDIO'
+			'/audio/admin' => 'SALWA AUDIO'
 		]
 	])
 

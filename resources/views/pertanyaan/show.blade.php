@@ -17,7 +17,7 @@
 
 <div class="row">
 	<div class="col-md-3">
-		@include('pertanyaan._hashtag')
+		@include('pertanyaan._group')
 	</div>
 	<div class="col-md-9">
 
@@ -47,10 +47,6 @@
 		</ul>
 
 	</div>
-
-	<!-- <div class="col-md-3">
-		include('home.sidebar')
-	</div> -->
 </div>
 
 @stop

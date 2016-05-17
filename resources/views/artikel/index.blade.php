@@ -28,7 +28,7 @@
 			</div>
 
 			<nav class="text-center">
-				{!! $artikels->appends(['search' => Request::get('search'), 'group_id' => Request::get('group_id')])->links() !!}
+				{!! $artikels->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
 			</nav>
 		</div>
 	</div>

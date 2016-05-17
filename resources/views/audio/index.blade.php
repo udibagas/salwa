@@ -16,19 +16,31 @@
 
 
 	<div class="row">
+		<div class="col-md-3">
+			@include('audio._group')
+		</div>
+
 		<div class="col-md-9">
 			<h4 class="title"><i class="fa fa-music"></i> SALWA AUDIO</h4>
 			<table class="table table-hover table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Judul</th>
+						<th>Last Update</th>
+						<th>Action</th>
+					</tr>
+				</thead>
 				<tbody>
+					<?php $i = $audios->firstItem(); ?>
 					@foreach ($audios as $m)
 					<tr>
-						<td>
-							<b>{{ $m->judul }}</b>
-							<br /><i>{{ $m->updated->diffForHumans() }}</i>
-						</td>
+						<td>{{ $i++ }}</td>
+						<td>{{ $m->judul }}</td>
+						<td>{{ $m->updated->diffForHumans() }}</td>
 						<td style="width:200px;">
-							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-info fa fa-play"> Play</a>
-							<a href="http://www.salamdakwah.com/{{ $m->file_mp3 }}" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
+							<a href="/{{ $m->file_mp3 }}" class="btn btn-info fa fa-play"> Play</a>
+							<a href="/{{ $m->file_mp3 }}" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
 						</td>
 					</tr>
 					@endforeach
@@ -36,13 +48,10 @@
 			</table>
 
 			<nav class="text-center">
-				{!! $audios->links() !!}
+				{!! $audios->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
 			</nav>
 		</div>
 
-		<div class="col-md-3">
-			@include('home.sidebar')
-		</div>
 	</div>
 
 @stop

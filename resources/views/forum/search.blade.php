@@ -22,7 +22,7 @@
 
 		<div class="col-md-9">
 
-			<h4 class="title"><i class="fa fa-clock-o"></i> HASIL PENCARIAN "{{ Request::get('search') }}"</h4>
+			<h4 class="title"><i class="fa fa-clock-o"></i> HASIL PENCARIAN "{{ request('search') }}"</h4>
 
 			<div class="" style="padding:10px 20px;border:1px solid #8EC7FB;">
 				@if (count($forums) == 0)
@@ -44,7 +44,7 @@
 			</div>
 
 			<nav class="text-center">
-				{!! $forums->appends(['search' => Request::get('search'), 'group_id' => Request::get('group_id')])->links() !!}
+				{!! $forums->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
 			</nav>
 
 		</div>

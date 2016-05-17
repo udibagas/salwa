@@ -33,7 +33,7 @@
 				{!! Form::open(['method' => 'GET', 'class' => 'form-inline', 'style' => 'display:inline-block']) !!}
 					<div class="form-group">
 						<div class="input-group">
-							<input type="text" name="search" value="{{ Request::get('search') }}" placeholder="Search" class="form-control">
+							<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control">
 							<div class="input-group-addon"><i class="fa fa-search"></i></div>
 						</div>
 					</div>
@@ -90,7 +90,7 @@
 	</table>
 
 	<div class="text-center">
-		{!! $users->appends(['search' => Request::get('search')])->links() !!}
+		{!! $users->appends(['search' => request('search')])->links() !!}
 	</div>
 
 @endsection

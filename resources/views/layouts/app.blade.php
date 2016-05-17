@@ -16,6 +16,7 @@
 		@stack('css')
 
 		<script type="text/javascript" src="/js/jwplayer.js"></script>
+		<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
 
     </head>
 
