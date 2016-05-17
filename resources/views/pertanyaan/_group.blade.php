@@ -1,4 +1,15 @@
 <h4 class="title">KATEGORI PERTANYAAN</h4>
+@if (auth()->check())
+<p>
+	<a href="/pertanyaan/create" class="btn btn-info form-control"><i class="fa fa-plus-circle"></i> Input Pertanyaan</a>
+</p>
+
+@else
+	<div class="alert alert-danger text-center">
+		Silakan <a href="/login">Login</a> untuk input pertanyaan.
+	</div>
+@endif
+
 {!! Form::open(['url' => '/pertanyaan', 'method' => 'GET']) !!}
 	{!! Form::hidden('group_id', request('group_id')) !!}
 	<div class="form-group">
