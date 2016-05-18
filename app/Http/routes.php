@@ -62,3 +62,7 @@ Route::resource('video', 'VideoController');
 Route::get('design', function() {
 	return '<img src="/images/design.jpg" style="width:100%" />';
 });
+
+Route::get('test', function() {
+	return phpinfo();
+});

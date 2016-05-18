@@ -12,6 +12,7 @@
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
 		<link href="/css/breadcrumb.css" rel="stylesheet">
+		<link href="/summernote/summernote.css" rel="stylesheet">
 		<link href="/css/app.css" rel="stylesheet">
 		@stack('css')
 
@@ -45,7 +46,25 @@
 
         <script src="/js/jquery.min.js"></script>
         <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/summernote/summernote.min.js"></script>
 		@stack('script')
+
+		<script type="text/javascript">
+			$('.summernote').summernote({
+				height: 200,
+				toolbar: [
+					// [groupName, [list of button]]
+					['style', ['bold', 'italic', 'underline', 'clear']],
+					// ['font', ['strikethrough', 'superscript', 'subscript']],
+					['fontsize', ['fontsize']],
+					['color', ['color']],
+					['para', ['ul', 'ol', 'paragraph']],
+					['insert', ['picture', 'video', 'link', 'hr', 'table']],
+					['misc', ['codeview', 'fullscreen']]
+					// ['height', ['height']]
+				]
+			});
+		</script>
 
     </body>
 </html>

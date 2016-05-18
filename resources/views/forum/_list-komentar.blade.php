@@ -23,16 +23,15 @@
 					<div class="comment-post">
 
 						<div class="row no-gutter">
-							<br />
+							<br>
 							@foreach ($p->images as $image)
 							@include('forum._list-image')
 							@endforeach
 						</div>
 
 						<div class="clearfix"></div>
-						<br>
 
-						<p>{!! nl2br($p->description) !!}</p>
+						{!! nl2br($p->description) !!}
 
 					</div>
 					@if (auth()->check() && auth()->user()->user_id == $p->user_id)

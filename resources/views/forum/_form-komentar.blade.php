@@ -20,7 +20,7 @@
 			{{ Form::hidden('forum_id', $forum->forum_id) }}
 
 			<div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-				{{ Form::textarea('description', $model->description, ['rows' => 7, 'class' => 'form-control', 'placeholder' => 'Tulis Komentar']) }}
+				{{ Form::textarea('description', $model->description, ['class' => 'summernote', 'placeholder' => 'Tulis Komentar']) }}
 
 				@if ($errors->has('description'))
 					<span class="help-block">
