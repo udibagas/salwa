@@ -15,7 +15,7 @@
 
 @section('cms-content')
 
-	<h4 class="title">Edit Artikel</h4>
+	<h4 class="title"><i class="fa fa-edit"></i> Edit Artikel</h4>
 	@include('artikel._form', ['url' => '/artikel/'.$artikel->artikel_id, 'method' => 'PUT'])
 
 @stop

@@ -15,18 +15,6 @@
 @section('cms-content')
 	<h4 class="title"><i class="fa fa-tags"></i> GROUPS</h4>
 
-	@if (session('error'))
-		<div class="alert alert-danger text-center">
-			<strong>{{ session('error') }}</strong>
-		</div>
-	@endif
-
-	@if (session('success'))
-		<div class="alert alert-success text-center">
-			<strong>{{ session('success') }}</strong>
-		</div>
-	@endif
-
 	<div class="well well-sm" style="margin-bottom:10px;">
 		<div class="row no-gutter">
 			<div class="col-md-4">

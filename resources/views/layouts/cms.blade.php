@@ -17,6 +17,18 @@
 		</div>
 
 		<div class="col-md-10">
+			@if (session('error'))
+				<div class="alert alert-danger text-center">
+					<strong>{{ session('error') }}</strong>
+				</div>
+			@endif
+
+			@if (session('success'))
+				<div class="alert alert-success text-center">
+					<strong>{{ session('success') }}</strong>
+				</div>
+			@endif
+			
 			@yield('cms-content')
 		</div>
 	</div>

@@ -15,7 +15,7 @@
 
 @section('cms-content')
 
-	<h4 class="title">Buat Artikel Baru</h4>
+	<h4 class="title"><i class="fa fa-plus-circle"></i> Tambah Artikel Baru</h4>
 	@include('artikel._form', ['url' => '/artikel', 'method' => 'POST'])
 
 @stop

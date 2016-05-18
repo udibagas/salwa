@@ -24,53 +24,62 @@
 		</div>
 	</div>
 
-	<div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
-		<label for="group_id" class="col-md-2 control-label">Group :</label>
-		<div class="col-md-4">
-			{{ Form::select('group_id',
-				\App\Group::artikel()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
-				$artikel->group_id, [
-					'class' => 'form-control',
-					'placeholder' => '--Pilih Kategori--'
-				]
-			) }}
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
+				<label for="group_id" class="col-md-3 control-label">Group :</label>
+				<div class="col-md-9">
+					{{ Form::select('group_id',
+						\App\Group::artikel()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
+						$artikel->group_id, [
+							'class' => 'form-control',
+							'placeholder' => '-- Pilih Kategori --'
+						]
+					) }}
 
-			@if ($errors->has('group_id'))
-				<span class="help-block">
-					<strong>{{ $errors->first('group_id') }}</strong>
-				</span>
-			@endif
+					@if ($errors->has('group_id'))
+						<span class="help-block">
+							<strong>{{ $errors->first('group_id') }}</strong>
+						</span>
+					@endif
+				</div>
+			</div>
+
+			<div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
+				<label for="user_id" class="col-md-3 control-label">User :</label>
+				<div class="col-md-9">
+					{{ Form::select('user_id',
+						\App\User::ustadz()->orderBy('name', 'ASC')->pluck('name', 'user_id'),
+						$artikel->user_id, [
+							'class' => 'form-control',
+							'placeholder' => '-- Pilih User --'
+						]
+					) }}
+
+					@if ($errors->has('user_id'))
+						<span class="help-block">
+							<strong>{{ $errors->first('user_id') }}</strong>
+						</span>
+					@endif
+				</div>
+			</div>
+
+			<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
+				<label for="img" class="col-md-3 control-label">Gambar :</label>
+				<div class="col-md-9">
+					{{ Form::file('img') }}
+
+					@if ($errors->has('img'))
+						<span class="help-block">
+							<strong>{{ $errors->first('img') }}</strong>
+						</span>
+					@endif
+				</div>
+			</div>
 		</div>
-	</div>
-
-	<div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
-		<label for="user_id" class="col-md-2 control-label">User :</label>
-		<div class="col-md-4">
-			{{ Form::select('user_id',
-				\App\User::ustadz()->orderBy('name', 'ASC')->pluck('name', 'user_id'),
-				$artikel->user_id, [
-					'class' => 'form-control',
-					'placeholder' => '--Pilih Ustadz--'
-				]
-			) }}
-
-			@if ($errors->has('user_id'))
-				<span class="help-block">
-					<strong>{{ $errors->first('user_id') }}</strong>
-				</span>
-			@endif
-		</div>
-	</div>
-
-	<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-		<label for="img" class="col-md-2 control-label">Gambar :</label>
-		<div class="col-md-4">
-			{{ Form::file('img') }}
-
-			@if ($errors->has('img'))
-				<span class="help-block">
-					<strong>{{ $errors->first('img') }}</strong>
-				</span>
+		<div class="col-md-6">
+			@if ($artikel->img_artikel)
+			<img src="/{{ $artikel->img_artikel }}" class="img-responsive" alt="" />
 			@endif
 		</div>
 	</div>
@@ -78,7 +87,7 @@
 	<hr>
 
 	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
+		<div class="col-sm-12">
 			<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
 		</div>
 	</div>
