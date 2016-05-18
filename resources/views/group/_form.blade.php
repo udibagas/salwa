@@ -27,7 +27,7 @@
 	<div class="form-group @if ($errors->has('description')) has-error @endif">
 		<label for="description" class="col-md-3 control-label">Description:</label>
 		<div class="col-md-9">
-			{!! Form::textarea('description', $group->description, ['class' => 'form-control', 'placeholder' => 'Profile', 'rows' => 4]) !!}
+			{!! Form::textarea('description', $group->description, ['class' => 'form-control', 'placeholder' => 'Description', 'rows' => 4]) !!}
 			@if ($errors->has('description'))
 				<span class="help-block">
 					<strong>{{ $errors->first('description') }}</strong>

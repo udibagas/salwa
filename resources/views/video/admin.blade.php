@@ -17,7 +17,7 @@
 	<h4 class="title"><i class="fa fa-video-camera"></i> SALWA VIDEO</h4>
 
 	<div class="well well-sm" style="margin-bottom:10px;">
-		<div class="row">
+		<div class="row no-gutter">
 			<div class="col-md-4">
 				{!! Form::open(['method' => 'GET', 'class' => 'form-inline']) !!}
 					<div class="form-group">
@@ -48,8 +48,6 @@
 				<th>Judul</th>
 				<th>Type</th>
 				<th>Youtube ID</th>
-				<th>File FLV</th>
-				<th>File 3GP</th>
 				<th>User</th>
 				<th style="width:150px;">Last Update</th>
 				<th style="width:130px;">Action</th>
@@ -62,9 +60,7 @@
 					<td>{{ $i++ }}</td>
 					<td><a href="/video/{{ $a->video_id }}-{{ str_slug($a->title) }}">{{ $a->title }}</a></td>
 					<td>{{ $a->type }}</td>
-					<td>{{ $a->url_video_youtube }}</td>
-					<td>{{ $a->file_flv }}</td>
-					<td>{{ $a->file_3gp }}</td>
+					<td><a href="http://youtu.be/{{ $a->url_video_youtube }}" target="_blank">{{ $a->url_video_youtube }}</a></td>
 					<td>{{ $a->user ? $a->user->name : '' }}</td>
 					<td>{{ $a->updated }}</td>
 					<td>

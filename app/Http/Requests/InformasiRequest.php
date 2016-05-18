@@ -6,7 +6,7 @@ use App\Http\Requests\Request;
 use App\User;
 use Auth;
 
-class ArtikelRequest extends Request
+class InformasiRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,9 +28,7 @@ class ArtikelRequest extends Request
         return [
             'group_id'	=> 'required',
 			'judul'		=> 'required|min:3',
-			'isi'		=> 'required|min:3',
-			'user_id'	=> 'required',
-			'img'		=> 'required|image',
+			'content'	=> 'required|min:3'
         ];
     }
 }

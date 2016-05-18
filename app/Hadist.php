@@ -12,6 +12,15 @@ class Hadist extends Model
 
 	protected $primaryKey = 'hadist_id';
 
+	const CREATED_AT = 'created';
+
+	const UPDATED_AT = 'updated';
+
+	protected $fillable = [
+		'judul', 'hadist', 'ringkasan', 'penjelasan', 'tanggal',
+		'kd_judul', 'updatedby', 'createdby', 'group_id',
+	];
+
 	public function group()
 	{
 		return $this->belongsTo('App\Group', 'group_id', 'group_id');

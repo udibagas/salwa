@@ -16,6 +16,12 @@ class Informasi extends Model
 
 	const UPDATED_AT = 'updated';
 
+	protected $fillable = [
+		'judul', 'content', 'summary',
+		'kd_judul', 'updatedby', 'tanggal',
+		'createdby', 'group_id', 'img_gambar'
+	];
+
 	public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'user_id');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\InformasiRequest;
 
 use App\Informasi;
 
@@ -48,7 +49,7 @@ class InformasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('informasi.create', ['informasi' => new Informasi]);
     }
 
     /**
@@ -57,10 +58,30 @@ class InformasiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+	public function store(InformasiRequest $request)
     {
-        //
+        $data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['tanggal'] 		= date('Y-m-d H:i:s');
+		$data['summary'] 		= str_limit($data['content'], 250);
+		$data['createdby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+			$file = $request->file('img');
+
+			$fileName = time().'_'.$file->getClientOriginalName();
+			$file->move('uploads/dirimg_gambarinformasi', $fileName);
+
+			$data['img_gambar'] = 'uploads/dirimg_gambarinformasi/'.$fileName;
+
+        }
+
+		Informasi::create($data);
+
+		return redirect('/informasi/admin')->with('success', 'Informasi berhasil disimpan');
     }
+
 
     /**
      * Display the specified resource.
@@ -82,9 +103,9 @@ class InformasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Informasi $informasi)
     {
-        //
+        return view('informasi.edit', ['informasi' => $informasi]);
     }
 
     /**
@@ -94,9 +115,27 @@ class InformasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(InformasiRequest $request, Informasi $informasi)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['summary'] 		= str_limit($data['content'], 250);
+		$data['updatedby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_gambarinformasi', $fileName);
+
+            $data['img_gambar'] = 'uploads/dirimg_gambarinformasi/'.$fileName;
+
+        }
+
+		$informasi->update($data);
+
+        return redirect('/informasi/admin')->with('success', 'Informasi berhasil disimpan');
     }
 
     /**
@@ -108,6 +147,6 @@ class InformasiController extends Controller
     public function destroy(Informasi $informasi)
     {
         $informasi->delete();
-		return redirect('/informasi/delete');
+		return redirect('/informasi/admin');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\PeduliRequest;
 
 use App\Peduli;
 
@@ -48,7 +49,7 @@ class PeduliController extends Controller
      */
     public function create()
     {
-        //
+        return view('peduli.create', ['peduli' => new Peduli]);
     }
 
     /**
@@ -57,9 +58,30 @@ class PeduliController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PeduliRequest $request)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['tgl_artikel'] 	= date('Y-m-d H:i:s');
+		$data['isi_mobile'] 	= $data['isi'];
+		$data['ringkasan'] 		= str_limit($data['isi'], 250);
+		$data['createdby'] 		= auth()->user()->name;
+		$data['user_id']		= auth()->user()->user_id;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_artikel', $fileName);
+
+            $data['img_artikel'] = 'uploads/dirimg_artikel/'.$fileName;
+
+        }
+
+		Peduli::create($data);
+
+		return redirect('/peduli/admin')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -82,9 +104,9 @@ class PeduliController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Peduli $peduli)
     {
-        //
+        return view('peduli.edit', ['peduli' => $peduli]);
     }
 
     /**
@@ -94,9 +116,28 @@ class PeduliController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PeduliRequest $request, Peduli $peduli)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['isi_mobile'] 	= $data['isi'];
+		$data['ringkasan'] 		= str_limit($data['isi'], 250);
+		$data['updatedby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_artikel', $fileName);
+
+            $data['img_artikel'] = 'uploads/dirimg_artikel/'.$fileName;
+
+        }
+
+		$peduli->update($data);
+
+        return redirect('/peduli/admin')->with('success', 'Data berhasil disimpan');
     }
 
     /**

@@ -107,11 +107,10 @@ class PertanyaanController extends Controller
 	{
 		$data = $request->all();
 		$data['dijawab_oleh'] = auth()->user()->user_id;
-		$data['tanggal_jawab'] = date('U');
-		dd($data);
-
+		$data['tanggal_jawab'] = date('Y-m-d H:i:s');
 		$pertanyaan->update($data);
-		return redirect('/pertanyaan/admin');
+
+		return redirect('/pertanyaan/admin')->with('success', 'Jawaban telah disimpan');
 	}
 
     /**

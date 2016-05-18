@@ -6,7 +6,7 @@ use App\Http\Requests\Request;
 use App\User;
 use Auth;
 
-class ArtikelRequest extends Request
+class PeduliRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,8 +29,8 @@ class ArtikelRequest extends Request
             'group_id'	=> 'required',
 			'judul'		=> 'required|min:3',
 			'isi'		=> 'required|min:3',
-			'user_id'	=> 'required',
-			'img'		=> 'required|image',
+			'img'		=> 'required'
+			// 'user_id'	=> 'required'
         ];
     }
 }

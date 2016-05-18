@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\HadistRequest;
 
 use App\Hadist;
 
@@ -48,7 +49,7 @@ class HadistController extends Controller
      */
     public function create()
     {
-        //
+        return view('hadist.create', ['hadist' => new Hadist(['hadist' => 'Hadist', 'penjelasan' => 'Penjelasan'])]);
     }
 
     /**
@@ -57,9 +58,17 @@ class HadistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HadistRequest $request)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['tanggal'] 		= date('Y-m-d H:i:s');
+		$data['ringkasan'] 		= str_limit($data['penjelasan'], 250);
+		$data['createdby'] 		= auth()->user()->name;
+
+		Hadist::create($data);
+
+        return redirect('/hadist/admin')->with('success', 'Hadist berhasil disimpan');
     }
 
     /**
@@ -92,9 +101,9 @@ class HadistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Hadist $hadist)
     {
-        //
+        return view('hadist.create', ['hadist' => $hadist]);
     }
 
     /**
@@ -104,9 +113,16 @@ class HadistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HadistRequest $request, Hadist $hadist)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['ringkasan'] 		= str_limit($data['isi'], 250);
+		$data['updatedby'] 		= auth()->user()->name;
+
+		$hadist->update($data);
+
+        return redirect('/hadist/admin')->with('success', 'Hadist berhasil disimpan');
     }
 
     /**
