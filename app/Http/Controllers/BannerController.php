@@ -37,7 +37,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        return view('banner.create', ['banner' => new Banner]);
     }
 
     /**
@@ -68,9 +68,9 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Banner $banner)
     {
-        //
+        return view('banner.create', ['banner' => new Banner]);
     }
 
     /**

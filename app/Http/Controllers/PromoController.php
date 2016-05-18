@@ -27,7 +27,7 @@ class PromoController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

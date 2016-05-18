@@ -10,6 +10,17 @@ class Video extends Model
 
 	protected $primaryKey = 'video_id';
 
+	const CREATED_AT = 'created';
+
+	const UPDATED_AT = 'updated';
+
+	protected $fillable = [
+		'title', 'title_code', 'date', 'desc',
+		'updatedby', 'user_id', 'url_video_youtube',
+		'createdby', 'group_id', 'img_video'
+	];
+
+
 	public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'user_id');

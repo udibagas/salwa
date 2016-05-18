@@ -8,7 +8,6 @@
 			<span>
 				<i class="fa fa-user"></i> {{ $f->user ? $f->user->name : '' }}
 				<i class="fa fa-clock-o"></i> {{ $f->updated->diffForHumans() }}
-				<i class="fa fa-comments-o"></i> {{ $f->posts->count() }} post{{ $f->posts->count() > 1 ? 's' : '' }}
 			</span>
 		</div>
 	@endforeach

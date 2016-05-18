@@ -48,7 +48,7 @@ class MurottalController extends Controller
      */
     public function create()
     {
-        //
+        return view('murottal.create', ['murottal' => new Murottal]);
     }
 
     /**
@@ -81,9 +81,9 @@ class MurottalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Murottal $murottal)
     {
-        //
+        return view('murottal.edit', ['murottal' => $murottal]);
     }
 
     /**

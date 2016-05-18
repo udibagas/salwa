@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\VideoRequest;
 
 use App\Video;
 
@@ -51,7 +52,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        return view('video.create', ['video' => new Video]);
     }
 
     /**
@@ -60,9 +61,27 @@ class VideoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VideoRequest $request)
     {
-        //
+		$data 					= $request->all();
+		$data['title_code'] 	= str_slug($request->title);
+		$data['date'] 			= date('Y-m-d H:i:s');
+		$data['createdby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_video', $fileName);
+
+            $data['img_video'] = 'uploads/dirimg_video/'.$fileName;
+
+        }
+
+		Video::create($data);
+
+		return redirect('/video/admin')->with('success', 'Video berhasil disimpan');
     }
 
     /**
@@ -85,9 +104,9 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Video $video)
     {
-        //
+		return view('video.edit', ['video' => $video]);
     }
 
     /**
@@ -99,7 +118,24 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+		$data 					= $request->all();
+		$data['title_code'] 	= str_slug($request->title);
+		$data['updatedby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_video', $fileName);
+
+            $data['img_video'] = 'uploads/dirimg_video/'.$fileName;
+
+        }
+
+		$video->update($data);
+
+        return redirect('/video/admin')->with('success', 'Video berhasil disimpan');
     }
 
     /**

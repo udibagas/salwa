@@ -48,7 +48,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('image.create', ['image' => new SalwaImages]);
     }
 
     /**
@@ -82,9 +82,9 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SalwaImages $image)
     {
-        //
+        return view('image.edit', ['image' => $image]);
     }
 
     /**

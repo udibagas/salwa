@@ -48,7 +48,7 @@ class AudioController extends Controller
      */
     public function create()
     {
-        //
+        return view('audio.create', ['audio' => new Mp3]);
     }
 
     /**
@@ -82,9 +82,9 @@ class AudioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Mp3 $audio)
     {
-        //
+        return view('audio.edit', ['audio' => $audio]);
     }
 
     /**

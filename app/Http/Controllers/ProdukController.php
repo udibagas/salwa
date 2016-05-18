@@ -48,7 +48,7 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        return view('produk.create', ['produk' => new Produk]);
     }
 
     /**
@@ -82,9 +82,9 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Produk $produk)
     {
-        //
+        return view('produk.edit', ['produk' => $produk]);
     }
 
     /**
@@ -94,9 +94,9 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProdukRequest $request, Produk $produk)
     {
-        //
+
     }
 
     /**

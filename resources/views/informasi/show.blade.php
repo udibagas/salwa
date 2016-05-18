@@ -22,7 +22,7 @@
 	<div class="col-md-9">
 		<h1>{{ $informasi->judul }}</h1>
 		<i class="fa fa-clock-o"></i> {{ $informasi->updated->diffForHumans() }}
-		<br /><br />
+		<hr>
 
 		@if ($informasi->img_gambar)
 		<img src="/{{ $informasi->img_gambar }}" class="img-responsive" style="margin-bottom:30px;" alt="" />
