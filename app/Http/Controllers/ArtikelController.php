@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\ArtikelRequest;
 
 use App\Artikel;
 
@@ -48,7 +49,7 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        //
+        return view('artikel.create', ['artikel' => new Artikel]);
     }
 
     /**
@@ -57,9 +58,29 @@ class ArtikelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArtikelRequest $request)
     {
-        //
+        $data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['tgl_artikel'] 	= date('Y-m-d H:i:s');
+		$data['isi_mobile'] 	= $data['isi'];
+		$data['ringkasan'] 		= str_limit($data['isi'], 250);
+		$data['createdby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_artikel', $fileName);
+
+            $data['img_artikel'] = 'uploads/dirimg_artikel/'.$fileName;
+
+        }
+
+		Artikel::create($data);
+
+		return redirect('/artikel/admin')->with('success', 'Artikel berhasil disimpan');
     }
 
     /**
@@ -82,9 +103,9 @@ class ArtikelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Artikel $artikel)
     {
-        //
+        return view('artikel.edit', ['artikel' => $artikel]);
     }
 
     /**
@@ -94,9 +115,28 @@ class ArtikelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArtikelRequest $request, Artikel $artikel)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['isi_mobile'] 	= $data['isi'];
+		$data['ringkasan'] 		= str_limit($data['isi'], 250);
+		$data['updatedby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_artikel', $fileName);
+
+            $data['img_artikel'] = 'uploads/dirimg_artikel/'.$fileName;
+
+        }
+
+		$artikel->update($data);
+
+        return redirect('/artikel/admin')->with('success', 'Artikel berhasil disimpan');
     }
 
     /**

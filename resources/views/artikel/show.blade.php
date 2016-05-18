@@ -24,7 +24,7 @@
 
 		<i class="fa fa-user"></i> {{ $artikel->user ? $artikel->user->name : '' }}
 		<i class="fa fa-clock-o"></i> {{ $artikel->updated->diffForHumans() }}
-		<br /><br />
+		<hr>
 
 		@if ($artikel->img_artikel)
 		<img src="/{{ $artikel->img_artikel }}" style="margin-bottom:30px;" alt="" />

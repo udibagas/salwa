@@ -16,6 +16,12 @@ class Artikel extends Model
 
 	const UPDATED_AT = 'updated';
 
+	protected $fillable = [
+		'judul', 'isi', 'isi_mobile', 'ringkasan',
+		'kd_judul', 'updatedby', 'user_id',
+		'createdby', 'group_id', 'img_artikel'
+	];
+
 	public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'user_id');
