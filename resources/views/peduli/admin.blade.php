@@ -48,7 +48,8 @@
 				<th>Judul</th>
 				<th>User</th>
 				<th>Kategori</th>
-				<th style="width:150px;">Last Update</th>
+				<th style="width:150px;">Created</th>
+				<th style="width:150px;">Updated</th>
 				<th style="width:130px;">Action</th>
 			</tr>
 		</thead>
@@ -60,6 +61,7 @@
 					<td><a href="/peduli/{{ $a->peduli_id }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
 					<td>{{ $a->user ? $a->user->name : '' }}</td>
 					<td>{{ $a->group ? $a->group->group_name : '' }}</td>
+					<td>{{ $a->created }}</td>
 					<td>{{ $a->updated }}</td>
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/peduli/'.$a->peduli_id]) !!}

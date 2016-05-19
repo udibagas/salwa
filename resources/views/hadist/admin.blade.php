@@ -47,7 +47,8 @@
 				<th>#</th>
 				<th>Judul</th>
 				<th>Kategori</th>
-				<th style="width:150px;">Last Update</th>
+				<th style="width:150px;">Created At</th>
+				<th style="width:150px;">Updated At</th>
 				<th style="width:130px;">Action</th>
 			</tr>
 		</thead>
@@ -58,6 +59,7 @@
 					<td>{{ $i++ }}</td>
 					<td><a href="/hadist/{{ $a->hadist_id }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
 					<td>{{ $a->group ? $a->group->group_name : '' }}</td>
+					<td>{{ $a->created }}</td>
 					<td>{{ $a->updated }}</td>
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/hadist/'.$a->hadist_id]) !!}

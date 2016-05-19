@@ -52,7 +52,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        return view('video.create', ['video' => new Video]);
+        return view('video.create', ['video' => new Video(['desc' => 'Description'])]);
     }
 
     /**
@@ -116,7 +116,7 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(VideoRequest $request, Video $video)
     {
 		$data 					= $request->all();
 		$data['title_code'] 	= str_slug($request->title);

@@ -1,33 +1,22 @@
-{!! Form::model($informasi, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method, 'files' => true]) !!}
+<div class="row">
+	<div class="col-md-9">
+		{!! Form::model($informasi, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method, 'files' => true]) !!}
 
-	<div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
-		<div class="col-md-12">
-			{{ Form::text('judul', $informasi->judul, ['class' => 'form-control input-lg', 'placeholder' => 'Judul Informasi']) }}
+			<div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
+				<label for="judul" class="col-md-3 control-label">Judul:</label>
+				<div class="col-md-9">
+					{{ Form::text('judul', $informasi->judul, ['class' => 'form-control', 'placeholder' => 'Judul Informasi']) }}
 
-			@if ($errors->has('judul'))
-			<span class="help-block">
-				<strong>{{ $errors->first('judul') }}</strong>
-			</span>
-			@endif
-		</div>
-	</div>
+					@if ($errors->has('judul'))
+					<span class="help-block">
+						<strong>{{ $errors->first('judul') }}</strong>
+					</span>
+					@endif
+				</div>
+			</div>
 
-	<div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-		<div class="col-md-12">
-			{{ Form::textarea('content', $informasi->content, ['class' => 'summernote', 'placeholder' => '']) }}
-
-			@if ($errors->has('content'))
-			<span class="help-block">
-				<strong>{{ $errors->first('content') }}</strong>
-			</span>
-			@endif
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-6">
 			<div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
-				<label for="group_id" class="col-md-3 control-label">Group :</label>
+				<label for="group_id" class="col-md-3 control-label">Group:</label>
 				<div class="col-md-9">
 					{{ Form::select('group_id',
 						\App\Group::informasi()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
@@ -46,9 +35,9 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-				<label for="img" class="col-md-3 control-label">Gambar :</label>
+				<label for="img" class="col-md-3 control-label">Gambar:</label>
 				<div class="col-md-9">
-					{{ Form::file('img') }}
+					<input type="file" name="img" class="form-control">
 
 					@if ($errors->has('img'))
 						<span class="help-block">
@@ -57,20 +46,33 @@
 					@endif
 				</div>
 			</div>
-		</div>
-		<div class="col-md-6">
-			@if ($informasi->img_gambar)
-			<img src="/{{ $informasi->img_gambar }}" class="img-responsive" alt="" />
-			@endif
-		</div>
+
+			<div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+				<div class="col-md-12">
+					{{ Form::textarea('content', $informasi->content, ['class' => 'summernote', 'placeholder' => '']) }}
+
+					@if ($errors->has('content'))
+					<span class="help-block">
+						<strong>{{ $errors->first('content') }}</strong>
+					</span>
+					@endif
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="form-group">
+				<div class="col-sm-12">
+					<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+				</div>
+			</div>
+
+		{!! Form::close() !!}
 	</div>
 
-	<hr>
-
-	<div class="form-group">
-		<div class="col-sm-12">
-			<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
-		</div>
+	<div class="col-md-3">
+		@if ($informasi->img_gambar)
+		<img src="/{{ $informasi->img_gambar }}" class="img-responsive" alt="" />
+		@endif
 	</div>
-
-{!! Form::close() !!}
+</div>

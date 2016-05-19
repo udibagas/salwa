@@ -1,8 +1,9 @@
 {!! Form::model($hadist, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method]) !!}
 
 	<div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
-		<div class="col-md-12">
-			{{ Form::text('judul', $hadist->judul, ['class' => 'form-control input-lg', 'placeholder' => 'Judul Hadist']) }}
+		<label for="judul" class="col-md-2 control-label">Judul:</label>
+		<div class="col-md-10">
+			{{ Form::text('judul', $hadist->judul, ['class' => 'form-control', 'placeholder' => 'Judul Hadist']) }}
 
 			@if ($errors->has('judul'))
 			<span class="help-block">
@@ -13,8 +14,8 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
-		<!-- <label for="group_id" class="col-md-2 control-label">Group :</label> -->
-		<div class="col-md-12">
+		<label for="group_id" class="col-md-2 control-label">Group:</label>
+		<div class="col-md-10">
 			{{ Form::select('group_id',
 				\App\Group::hadist()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
 				$hadist->group_id, [
@@ -32,7 +33,8 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('hadist') ? ' has-error' : '' }}">
-		<div class="col-md-12">
+		<label for="hadist" class="col-md-2 control-label">Hadist/Doa/Dzikir:</label>
+		<div class="col-md-10">
 			{{ Form::textarea('hadist', $hadist->hadist, ['class' => 'summernote', 'placeholder' => 'Hadist']) }}
 
 			@if ($errors->has('hadist'))
@@ -44,7 +46,8 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('penjelasan') ? ' has-error' : '' }}">
-		<div class="col-md-12">
+		<label for="penjelasan" class="col-md-2 control-label">Penjelasan:</label>
+		<div class="col-md-10">
 			{{ Form::textarea('penjelasan', $hadist->penjelasan, ['class' => 'summernote', 'placeholder' => 'Penjelasan']) }}
 
 			@if ($errors->has('penjelasan'))

@@ -46,10 +46,10 @@
 			<tr>
 				<th>#</th>
 				<th>Judul</th>
-				<th>Type</th>
 				<th>Youtube ID</th>
 				<th>User</th>
-				<th style="width:150px;">Last Update</th>
+				<th style="width:150px;">Created At</th>
+				<th style="width:150px;">Updated At</th>
 				<th style="width:130px;">Action</th>
 			</tr>
 		</thead>
@@ -59,9 +59,9 @@
 				<tr>
 					<td>{{ $i++ }}</td>
 					<td><a href="/video/{{ $a->video_id }}-{{ str_slug($a->title) }}">{{ $a->title }}</a></td>
-					<td>{{ $a->type }}</td>
 					<td><a href="http://youtu.be/{{ $a->url_video_youtube }}" target="_blank">{{ $a->url_video_youtube }}</a></td>
 					<td>{{ $a->user ? $a->user->name : '' }}</td>
+					<td>{{ $a->created }}</td>
 					<td>{{ $a->updated }}</td>
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/video/'.$a->video_id]) !!}

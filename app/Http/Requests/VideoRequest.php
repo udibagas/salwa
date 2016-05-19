@@ -27,9 +27,8 @@ class VideoRequest extends Request
     {
         return [
 			'title'		=> 'required',
-            'group_id'	=> 'required',
 			'user_id'	=> 'required',
-			'img'		=> 'required|image',
+			// 'img'		=> 'required|image',
 			'url_video_youtube'		=> 'required',
         ];
     }

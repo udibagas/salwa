@@ -30,7 +30,7 @@ class ArtikelRequest extends Request
 			'judul'		=> 'required|min:3',
 			'isi'		=> 'required|min:3',
 			'user_id'	=> 'required',
-			'img'		=> 'required|image',
+			// 'img'		=> 'required|image',
         ];
     }
 }

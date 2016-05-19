@@ -91,7 +91,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -103,7 +103,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+		if ($request->has('img'))
+		{
+			$file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_user', $fileName);
+
+            $data['img_user'] = 'uploads/dirimg_user/'.$fileName;
+		}
+
+		$user->update($data);
+		return redirect('/user');
     }
 
     /**
