@@ -6,7 +6,7 @@
 	/*padding: 3px;*/
 }
 .gal-item .box{
-	height: 250px;
+	height: 270px;
 	overflow: hidden;
 }
 .box img{
@@ -29,7 +29,7 @@
 	top: 3px;
 	bottom: 3px;
 	text-align: center;
-    line-height: 250px;
+    line-height: 270px;
     font-size: 30px;
     color: #fff;
     -webkit-transition: all 0.5s ease-in-out 0s;
@@ -118,7 +118,7 @@
 }
 @media (max-width: 768px) {
     .gal-container .modal-content{
-        height:250px;
+        height:270px;
     }
 }
 /* Footer Style */
