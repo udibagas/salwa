@@ -47,7 +47,24 @@ class GroupController extends Controller
      */
     public function store(GroupRequest $request)
     {
-        Group::create($request->all());
+        $data 				= $request->all();
+		$data['group_code'] = str_slug($request->group_name);
+		$data['user_id']	= auth()->user()->user_id;
+		$data['createdby']	= auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_group', $fileName);
+
+            $data['img_group'] = 'uploads/dirimg_group/'.$fileName;
+
+        }
+
+		Group::create($data);
+
 		return redirect('/group')->with('success', 'Data berhasil disimpan');
     }
 
@@ -82,7 +99,23 @@ class GroupController extends Controller
      */
     public function update(GroupRequest $request, Group $group)
     {
-		$group->update($request->all());
+		$data 				= $request->all();
+		$data['group_code'] = str_slug($request->group_name);
+		$data['updatedby']	= auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_group', $fileName);
+
+            $data['img_group'] = 'uploads/dirimg_group/'.$fileName;
+
+        }
+
+		$group->update($data);
+
 		return redirect('/group')->with('success', 'Data berhasil disimpan');
     }
 

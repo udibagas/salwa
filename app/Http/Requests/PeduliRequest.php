@@ -29,7 +29,7 @@ class PeduliRequest extends Request
             'group_id'	=> 'required',
 			'judul'		=> 'required|min:3',
 			'isi'		=> 'required|min:3',
-			// 'img'		=> 'required|image'
+			'img'		=> 'image'
 			// 'user_id'	=> 'required'
         ];
     }

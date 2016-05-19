@@ -28,7 +28,8 @@ class InformasiRequest extends Request
         return [
             'group_id'	=> 'required',
 			'judul'		=> 'required|min:3',
-			'content'	=> 'required|min:3'
+			'content'	=> 'required|min:3',
+			'img'		=> 'image',
         ];
     }
 }

@@ -16,7 +16,7 @@ class Group extends Model
 
 	const UPDATED_AT = 'updated';
 
-	protected $fillable = ['group_name', 'type', 'description'];
+	protected $fillable = ['group_name', 'type', 'description', 'img_group', 'createdby', 'updatedby'];
 
 	public function forums()
 	{

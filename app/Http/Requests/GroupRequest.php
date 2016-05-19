@@ -28,6 +28,7 @@ class GroupRequest extends Request
         return [
             'group_name'	=> 'required',
 			'type'			=> 'required',
+			'img'			=> 'image',
 			// 'description'	=> 'required|min:3',
         ];
     }
