@@ -91,7 +91,7 @@
 	</table>
 
 	<div class="text-center">
-		{!! $forums->appends(['search' => request('search')])->links() !!}
+		{!! $forums->appends(['title' => request('title'),'user' => request('user'),'group_id' => request('group_id')])->links() !!}
 	</div>
 
 @stop
