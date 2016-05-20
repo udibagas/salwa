@@ -105,8 +105,10 @@ class ForumController extends Controller
      */
     public function update(ForumRequest $request, Forum $forum)
     {
-		$data = $request->all();
-		$data['updatedby'] = auth()->user()->name;
+		$data 				= $request->all();
+		$data['title_code']	= str_slug($request->title);
+		$data['updatedby'] 	= auth()->user()->name;
+
 		$forum->update($data);
 
 		$forum->post()->update([
@@ -115,9 +117,9 @@ class ForumController extends Controller
 		]);
 
 		if (auth()->user()->user_status == User::ROLE_ADMIN) {
-			return redirect('forum/admin')->with('success', 'Forum berhasil diupdate');
+			return redirect('forum/admin')->with('success', 'Forum berhasil disimpan');
 		} else {
-			return redirect()->action('ForumController@show', ['forum' => $forum]);
+			return redirect()->action('ForumController@show', ['forum' => $forum])->with('success', 'Forum berhasil disimpan');
 		}
     }
 

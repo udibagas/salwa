@@ -34,7 +34,7 @@
 
 	<div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
 		<div class="col-md-12">
-			{{ Form::textarea('description', $forum->post->description, ['class' => 'summernote', 'placeholder' => '']) }}
+			{{ Form::textarea('description', nl2br($forum->post->description), ['class' => 'summernote', 'placeholder' => '']) }}
 
 			@if ($errors->has('description'))
 			<span class="help-block">
