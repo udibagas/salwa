@@ -28,6 +28,10 @@
 		<h1>{{ $forum->title }}</h1>
 		<hr>
 		@include('layouts._share')
+
+		@if ($forum->user_id == auth()->user()->user_id)
+		<a href="/forum/{{ $forum->forum_id }}/edit"><i class="fa fa-edit" class="btn btn-primary"></i> Edit Forum</a>
+		@endif
 		<hr />
 
 		@foreach ($posts as $p)

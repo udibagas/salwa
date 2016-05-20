@@ -18,17 +18,7 @@
 
 	<div class="well well-sm" style="margin-bottom:10px;">
 		<div class="row no-gutter">
-			<div class="col-md-4">
-				{!! Form::open(['method' => 'GET', 'class' => 'form-inline']) !!}
-					<div class="form-group">
-						<div class="input-group">
-							<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control">
-							<div class="input-group-addon"><i class="fa fa-search"></i></div>
-						</div>
-					</div>
-				{!! Form::close() !!}
-			</div>
-			<div class="col-md-4">
+			<div class="col-md-8">
 				<a href="/forum/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Create Forum</a>
 			</div>
 			<div class="col-md-4 text-right">
@@ -50,8 +40,34 @@
 				<th>Kategori</th>
 				<th style="width:150px;">Created At</th>
 				<th style="width:150px;">Updated At</th>
-				<th style="width:130px;">Action</th>
+				<th style="width:170px;">Action</th>
 			</tr>
+			{!! Form::open(['method' => 'GET']) !!}
+			<tr>
+				<td></td>
+				<td>
+					<input type="text" name="title" value="{{ request('title') }}" placeholder="Title" class="form-control">
+				</td>
+				<td>
+					<input type="text" name="user" value="{{ request('user') }}" placeholder="User" class="form-control">
+				</td>
+				<td>
+					{{ Form::select('group_id',
+						\App\Group::forum()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
+						request('group_id'), [
+							'class' => 'form-control',
+							'placeholder' => '-- All --'
+						]
+					) }}
+				</td>
+				<td> </td>
+				<td> </td>
+				<td>
+					<button type="submit" name="submit" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
+					<a href="/forum/admin" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
+				</td>
+			</tr>
+			{!! Form::close() !!}
 		</thead>
 		<tbody>
 			<?php $i = $forums->firstItem(); ?>

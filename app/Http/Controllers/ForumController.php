@@ -164,12 +164,19 @@ class ForumController extends Controller
 
 	public function admin(Request $request)
 	{
-		$search		= str_replace(' ', '%', $request->search);
+		$title		= str_replace(' ', '%', $request->title);
 
 		return view('forum.admin', [
-			'forums' 	=> Forum::when($search, function($query) use ($search) {
-								return $query->where('title', 'like', '%'.$search.'%');
-							})->orderBy('updated', 'DESC')->paginate()
+			'forums' 	=> Forum::when($title, function($query) use ($title) {
+								return $query->where('title', 'like', '%'.$title.'%');
+							})->when($request->group_id, function($query) use ($request) {
+								return $query->where('group_id', $request->group_id);
+							})->when($request->user, function($query) use ($request) {
+								return $query->join('users', 'users.user_id', '=', 'forums.user_id')
+											->where('users.name', 'like', '%'.$request->user.'%');
+											// ->orWhere('users.user_name', 'like', '%'.$request->user.'%')
+											// ->orWhere('users.email', 'like', '%'.$request->user.'%');
+							})->orderBy('forums.updated', 'DESC')->paginate()
 		]);
 	}
 
