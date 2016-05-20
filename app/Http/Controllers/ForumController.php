@@ -11,6 +11,7 @@ use App\Http\Requests\ForumRequest;
 use App\Forum;
 use App\Group;
 use App\Post;
+use App\User;
 
 use Auth;
 
@@ -49,14 +50,19 @@ class ForumController extends Controller
      */
     public function store(ForumRequest $request)
     {
-    	$forum = Forum::create($request->all());
-		$forum->user_id = Auth::user()->user_id;
-		$forum->save();
+		$data 				= $request->all();
+		$data['user_id'] 	= auth()->user()->user_id;
+		$data['title_code'] = str_slug($request->title);
+		$data['date'] 		= date('Y-m-d H:i:s');
+		$data['createdby'] 	= auth()->user()->name;
 
-		$comment = Post::create([
-			'user_id' 	=> Auth::user()->user_id,
-			'forum_id'	=> $forum->forum_id,
-			'description'	=> $request->description
+    	$forum = Forum::create($data);
+
+		$forum->posts()->create([
+			'user_id'		=> auth()->user()->user_id,
+			'description'	=> $request->description,
+			'date'			=> date('Y-m-d H:i:s'),
+			'createdby'		=> auth()->user()->name
 		]);
 
 		return redirect()->action('ForumController@show', ['forum' => $forum]);
@@ -84,9 +90,10 @@ class ForumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Forum $forum)
     {
-        //
+		$view = auth()->user()->user_status == User::ROLE_ADMIN ? 'forum.edit-admin' : 'forum.edit';
+        return view($view, ['forum' => $forum]);
     }
 
     /**
@@ -96,9 +103,22 @@ class ForumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ForumRequest $request, Forum $forum)
     {
-        //
+		$data = $request->all();
+		$data['updatedby'] = auth()->user()->name;
+		$forum->update($data);
+
+		$forum->post()->update([
+			'description'	=> $request->description,
+			'updatedby'		=> auth()->user()->name,
+		]);
+
+		if (auth()->user()->user_status == User::ROLE_ADMIN) {
+			return redirect('forum/admin')->with('success', 'Forum berhasil diupdate');
+		} else {
+			return redirect()->action('ForumController@show', ['forum' => $forum]);
+		}
     }
 
     /**

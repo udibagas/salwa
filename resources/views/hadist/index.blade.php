@@ -22,7 +22,7 @@
 		<div class="col-md-9">
 			<h4 class="title">HADIST</h4>
 				@foreach ($hadists as $h)
-					<div class="alert alert-info">
+					<div class="well">
 						<a href="/hadist/{{ $h->hadist_id }}-{{ str_slug($h->judul) }}"><h3>{{ $h->judul }}</h3></a>
 						<br>
 						<div class="text-right" style="font-size:30px;">

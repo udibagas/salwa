@@ -10,9 +10,12 @@ class Pertanyaan extends Model
 
 	protected $primaryKey = 'pertanyaan_id';
 
-	protected $dates = ['created', 'updated'];
+	protected $dates = ['created', 'updated', 'tgl_tanya', 'tgl_jawab'];
 
-	protected $fillable = ['judul_pertanyaan', 'ket_pertanyaan'];
+	protected $fillable = [
+		'judul_pertanyaan', 'ket_pertanyaan', 'jawaban', 'dijawab_oleh', 'status',
+		'tgl_tanya', 'tgl_jawab', 'user_id', 'kd_judul', 'daerah_asal', 'createdby', 'updatedby'
+	];
 
 	const CREATED_AT = 'created';
 

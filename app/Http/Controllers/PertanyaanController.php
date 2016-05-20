@@ -95,12 +95,12 @@ class PertanyaanController extends Controller
      */
     public function edit(Pertanyaan $pertanyaan)
     {
-        return view('pertanyaan.edit', ['model' => $pertanyaan]);
+        return view('pertanyaan.edit', ['pertanyaan' => $pertanyaan]);
     }
 
     public function jawab(Pertanyaan $pertanyaan)
     {
-        return view('pertanyaan.jawab', ['model' => $pertanyaan]);
+        return view('pertanyaan.jawab', ['pertanyaan' => $pertanyaan]);
     }
 
 	public function simpanJawaban(JawabanRequest $request, Pertanyaan $pertanyaan)

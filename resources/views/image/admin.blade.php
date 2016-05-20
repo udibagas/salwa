@@ -47,7 +47,9 @@
 				<th style="width:30px;">#</th>
 				<th style="width:110px;">Image</th>
 				<th>Judul</th>
-				<th style="width:150px;">Last Update</th>
+				<th>Kategori</th>
+				<th style="width:150px;">Created At</th>
+				<th style="width:150px;">Updated At</th>
 				<th style="width:130px;">Action</th>
 			</tr>
 		</thead>
@@ -58,6 +60,8 @@
 					<td>{{ $i++ }}</td>
 					<td><img src="/{{ $a->img_images }}" alt="" style="width:100px;" /></td>
 					<td><a href="/image/{{ $a->id_salwaimages }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
+					<td>{{ $a->group ? $a->group->group_name : '' }}</td>
+					<td>{{ $a->created }}</td>
 					<td>{{ $a->updated }}</td>
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/image/'.$a->id_salwaimages]) !!}

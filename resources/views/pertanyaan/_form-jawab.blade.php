@@ -1,14 +1,25 @@
-{!! Form::model($model, ['url' => '/pertanyaan/'.$model->pertanyaan_id.'/simpan-jawaban', 'class' => 'form-vertical', 'method' => 'PUT']) !!}
+{!! Form::model($pertanyaan, ['url' => '/pertanyaan/'.$pertanyaan->pertanyaan_id.'/simpan-jawaban', 'class' => 'form-vertical', 'method' => 'PUT']) !!}
 
 <div class="form-group{{ $errors->has('jawaban') ? ' has-error' : '' }}">
-	{{ Form::textarea('jawaban', $model->jawaban, ['rows' => 10, 'class' => 'summernote', 'placeholder' => 'Tulis Jawaban']) }}
+	{{ Form::textarea('jawaban', $pertanyaan->jawaban, ['rows' => 10, 'class' => 'summernote', 'placeholder' => 'Tulis Jawaban']) }}
 
 	@if ($errors->has('jawaban'))
+	<span class="help-block">
+		<strong>{{ $errors->first('jawaban') }}</strong>
+	</span>
+	@endif
+</div>
+
+<div class="form-group @if ($errors->has('active')) has-error @endif">
+	{!! Form::select('status', ['s' => 'Tampilkan', 'h' => 'Sembunyikan'], $pertanyaan->status, ['class' => 'form-control']) !!}
+	@if ($errors->has('status'))
 		<span class="help-block">
-			<strong>{{ $errors->first('jawaban') }}</strong>
+			<strong>{{ $errors->first('status') }}</strong>
 		</span>
 	@endif
 </div>
+
+<hr>
 
 <div class="form-group">
 	<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-send"></i> Kirim Jawaban</button>

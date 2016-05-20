@@ -10,9 +10,9 @@ class Forum extends Model
 
 	protected $primaryKey = 'forum_id';
 
-	protected $dates = ['created', 'updated'];
+	protected $dates = ['created', 'updated', 'date'];
 
-	protected $fillable = ['user_id', 'title', 'group_id'];
+	protected $fillable = ['user_id', 'title', 'group_id', 'createdby', 'updatedby', 'date', 'title_code'];
 
 	const CREATED_AT = 'created';
 
@@ -31,5 +31,10 @@ class Forum extends Model
 	public function posts()
 	{
 		return $this->hasMany('App\Post', 'forum_id', 'forum_id', ['orderBy' => 'created ASC']);
+	}
+
+	public function post()
+	{
+		return $this->hasOne('App\Post', 'forum_id', 'forum_id', ['orderBy' => 'created ASC', 'where' => 'forum.user_id = posts.user_id']);
 	}
 }

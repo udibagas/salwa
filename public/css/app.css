@@ -159,6 +159,7 @@ ul.link-icon > li {
 	background-color: #0084FF;
 	padding: 10px;
 	color: #FFFFFF;
+	margin-top: 0;
 }
 
 .sub-title {
@@ -254,7 +255,7 @@ a.list-group-item {
     /*padding:1px;*/
 }
 
-.alert {
+.alert, .well {
 	border-radius: 0;
 }
 

@@ -3,10 +3,10 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use Auth;
 use App\User;
+use Auth;
 
-class JawabanRequest extends Request
+class ImageRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +15,7 @@ class JawabanRequest extends Request
      */
     public function authorize()
     {
-        return Auth::check() && (Auth::user()->user_status == User::ROLE_USTADZ || Auth::user()->user_status == User::ROLE_ADMIN);
+        return Auth::check() && Auth::user()->user_status == User::ROLE_ADMIN;
     }
 
     /**
@@ -26,7 +26,9 @@ class JawabanRequest extends Request
     public function rules()
     {
         return [
-            'jawaban' => 'required',
+            'group_id'	=> 'required',
+			'judul'		=> 'required|min:3',
+			'img'		=> 'image',
         ];
     }
 }

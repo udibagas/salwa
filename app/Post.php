@@ -10,9 +10,9 @@ class Post extends Model
 
 	protected $primaryKey = 'post_id';
 
-	protected $dates = ['created', 'updated'];
+	protected $dates = ['created', 'updated', 'date'];
 
-	protected $fillable = ['user_id', 'forum_id', 'description'];
+	protected $fillable = ['user_id', 'forum_id', 'description', 'date', 'createdby', 'updatedby'];
 
 	const CREATED_AT = 'created';
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\AudioRequest;
 
 use App\Mp3;
 
@@ -57,9 +58,26 @@ class AudioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AudioRequest $request)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['createdby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('file')) {
+
+            $file = $request->file('file');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirfile_mp3', $fileName);
+
+            $data['file_mp3'] = 'uploads/dirfile_mp3/'.$fileName;
+
+        }
+
+		Mp3::create($data);
+
+		return redirect('/audio/admin')->with('success', 'Audio berhasil disimpan');
     }
 
     /**
@@ -94,9 +112,26 @@ class AudioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AudioRequest $request, Mp3 $audio)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['updatedby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('file')) {
+
+            $file = $request->file('file');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirfile_mp3', $fileName);
+
+            $data['file_mp3'] = 'uploads/dirfile_mp3/'.$fileName;
+
+        }
+
+		$audio->update($data);
+
+		return redirect('/audio/admin')->with('success', 'Audio berhasil disimpan');
     }
 
     /**

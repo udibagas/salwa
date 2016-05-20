@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\ImageRequest;
 
 use App\SalwaImages;
 
@@ -57,9 +58,27 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImageRequest $request)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['tanggal'] 		= date('Y-m-d H:i:s');
+		$data['createdby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_images', $fileName);
+
+            $data['img_images'] = 'uploads/dirimg_images/'.$fileName;
+
+        }
+
+		SalwaImages::create($data);
+
+		return redirect('/image/admin')->with('success', 'Image berhasil disimpan');
     }
 
     /**
@@ -94,9 +113,26 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ImageRequest $request, SalwaImages $image)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['updatedby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_images', $fileName);
+
+            $data['img_images'] = 'uploads/dirimg_images/'.$fileName;
+
+        }
+
+		$image->update($data);
+
+		return redirect('/image/admin')->with('success', 'Image berhasil disimpan');
     }
 
     /**

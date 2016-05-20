@@ -61,6 +61,8 @@
 		{!! Form::close() !!}
 	</div>
 	<div class="col-md-3">
+		@if ($group->img_group)
 		<img src="/{{ $group->img_group }}" class="img-responsive" alt="" />
+		@endif
 	</div>
 </div>

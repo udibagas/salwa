@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\MurottalRequest;
 
 use App\Murottal;
 
@@ -59,7 +60,24 @@ class MurottalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_nama_surat'] 	= str_slug($request->nama_surat);
+		$data['createdby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('file')) {
+
+            $file = $request->file('file');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirfile_mp3', $fileName);
+
+            $data['file_mp3'] = 'uploads/dirfile_mp3/'.$fileName;
+
+        }
+
+		Murottal::create($data);
+
+		return redirect('/murottal/admin')->with('success', 'Murottal berhasil disimpan');
     }
 
     /**
@@ -93,9 +111,26 @@ class MurottalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MurottalRequest $request, Murottal $murottal)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_nama_surat'] 	= str_slug($request->nama_surat);
+		$data['updatedby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('file')) {
+
+            $file = $request->file('file');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirfile_mp3', $fileName);
+
+            $data['file_mp3'] = 'uploads/dirfile_mp3/'.$fileName;
+
+        }
+
+		$murottal->update($data);
+
+		return redirect('/murottal/admin')->with('success', 'Murottal berhasil disimpan');
     }
 
     /**

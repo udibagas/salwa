@@ -47,6 +47,9 @@
 				<th>#</th>
 				<th>Judul</th>
 				<th>Penulis</th>
+				<th>Kategori</th>
+				<th style="width:150px;">Created At</th>
+				<th style="width:150px;">Updated At</th>
 				<th style="width:130px;">Action</th>
 			</tr>
 		</thead>
@@ -57,6 +60,9 @@
 					<td>{{ $i++ }}</td>
 					<td><a href="/kitab/{{ $a->buku_id }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
 					<td>{{ $a->penulis }}</td>
+					<td>{{ $a->group ? $a->group->group_name : '' }}</td>
+					<td>{{ $a->created }}</td>
+					<td>{{ $a->updated }}</td>
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/kitab/'.$a->buku_id]) !!}
 						<a href="/kitab/{{ $a->buku_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>

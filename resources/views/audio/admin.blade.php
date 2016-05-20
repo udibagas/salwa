@@ -29,7 +29,7 @@
 				{!! Form::close() !!}
 			</div>
 			<div class="col-md-4">
-				<a href="/mp3/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Add Audio</a>
+				<a href="/audio/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Add Audio</a>
 			</div>
 			<div class="col-md-4 text-right">
 				<p style="padding:5px 5px 0 0;">
@@ -46,8 +46,10 @@
 			<tr>
 				<th>#</th>
 				<th>Judul</th>
-				<th style="width:150px;">Last Update</th>
-				<th style="width:130px;">Action</th>
+				<th>Kategori</th>
+				<th style="width:150px;">Created At</th>
+				<th style="width:150px;">Updated At</th>
+				<th style="width:180px;">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -55,11 +57,14 @@
 			@foreach ($audios as $a)
 				<tr>
 					<td>{{ $i++ }}</td>
-					<td><a href="/mp3/{{ $a->mp3_download_id }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
+					<td><a href="/audio/{{ $a->mp3_download_id }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
+					<td>{{ $a->group ? $a->group->group_name : '' }}</td>
+					<td>{{ $a->created }}</td>
 					<td>{{ $a->updated }}</td>
 					<td>
-						{!! Form::open(['method' => 'DELETE', 'url' => '/mp3/'.$a->mp3_download_id]) !!}
-						<a href="/mp3/{{ $a->mp3_download_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>
+						{!! Form::open(['method' => 'DELETE', 'url' => '/audio/'.$a->mp3_download_id]) !!}
+						<a href="/audio/{{ $a->mp3_download_id }}/play" class="btn btn-info btn-xs"><i class="fa fa-play"></i> Play</a>
+						<a href="/audio/{{ $a->mp3_download_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>
 						<button type="submit" name="delete" class="btn btn-danger btn-xs delete"><i class="fa fa-trash"></i> Hapus</button>
 						{!! Form::close() !!}
 					</td>

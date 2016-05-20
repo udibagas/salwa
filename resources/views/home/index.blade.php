@@ -16,6 +16,8 @@
 	@include('home.promo')
 	@include('home._aktual')
 
+	<br>
+
 	<div style="border:1px solid #8EC7FB;">
 		<h4 class="title" style="margin:0;">FORUM</h4>
 		@each('forum._list', $forumKategori, 'group')
@@ -25,6 +27,7 @@
 	<div class="clearfix"></div>
 	@include('home._kitab')
 	<div class="clearfix"></div>
+	<br>
 
 	<div class="row">
 		<div class="col-md-6">

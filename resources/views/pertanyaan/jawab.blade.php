@@ -17,11 +17,14 @@
 
 <h4 class="title"><i class="fa fa-edit"></i> JAWAB PERTANYAAN</h4>
 
-<h3>Pertanyaan: {{ $model->judul_pertanyaan }}</h3>
-{!! nl2br($model->ket_pertanyaan) !!}
 
-<br>
-<br>
+<div class="well">
+	<strong><i class="fa fa-user"></i> {{ $pertanyaan->user->name }}</strong><br>
+	<i class="fa fa-clock-o"></i> {{ $pertanyaan->created->diffForHumans() }}
+	
+	<h3>Pertanyaan: {{ $pertanyaan->judul_pertanyaan }}</h3>
+	{!! nl2br($pertanyaan->ket_pertanyaan) !!}
+</div>
 
 @include('pertanyaan._form-jawab')
 

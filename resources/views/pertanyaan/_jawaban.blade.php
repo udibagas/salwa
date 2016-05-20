@@ -16,7 +16,7 @@
 					<header class="text-left">
 						<div class="comment-user">
 							<b><i class="fa fa-user"></i> {{ $p->ustadz ? $p->ustadz->name : '' }}</b><br>
-							<em><i class="fa fa-clock-o"></i> {{ $p->updated ? $p->updated->diffForHumans() : "" }}</em>
+							<em><i class="fa fa-clock-o"></i> {{ $p->tgl_jawab ? $p->tgl_jawab->diffForHumans() : "" }}</em>
 						</div>
 					</header>
 
