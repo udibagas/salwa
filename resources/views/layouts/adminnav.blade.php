@@ -47,4 +47,19 @@
 	<a class="list-group-item @if (url()->current() == url('user')) active @endif" href="/user">
 		<i class="fa fa-users"></i> Users
 	</a>
+	<a class="list-group-item disabled text-center" href="#">
+		<i class="fa fa-android"></i> SUNNAH GO
+	</a>
+	<a class="list-group-item @if (url()->current() == url('lokasi')) active @endif" href="/lokasi">
+		<i class="fa fa-map"></i> Lokasi
+	</a>
+	<a class="list-group-item @if (url()->current() == url('area')) active @endif" href="/area">
+		<i class="fa fa-map"></i> Area
+	</a>
+	<a class="list-group-item @if (url()->current() == url('ustadz/admin')) active @endif" href="/ustadz/admin">
+		<i class="fa fa-users"></i> Ustadz
+	</a>
+	<a class="list-group-item @if (url()->current() == url('kajian')) active @endif" href="/kajian">
+		<i class="fa fa-edit"></i> Kajian
+	</a>
 </div>

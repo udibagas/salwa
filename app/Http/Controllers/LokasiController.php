@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\LokasiRequest;
 use App\Lokasi;
 use Response;
 
@@ -20,6 +21,16 @@ class LokasiController extends Controller
         return Lokasi::orderBy('nama_lokasi', 'ASC')->get();
     }
 
+	public function index(Request $request)
+	{
+		return view('lokasi.index', [
+			'lokasis' => Lokasi::orderBy('nama_lokasi', 'ASC')
+						->when($request->nama_lokasi, function($query) use ($request) {
+							return $query->where('nama_lokasi', 'like', '%'.$request->nama_lokasi.'%');
+						})->paginate()
+		]);
+	}
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +38,7 @@ class LokasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('lokasi.create', ['lokasi' => new Lokasi]);
     }
 
     /**
@@ -36,9 +47,13 @@ class LokasiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LokasiRequest $request)
     {
-        //
+        $data 				= $request->all();
+		$data['createdby']	= auth()->user()->name;
+
+		Lokasi::create($data);
+		return redirect('/lokasi')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -58,9 +73,9 @@ class LokasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Lokasi $lokasi)
     {
-        //
+    	return view('lokasi.edit', ['lokasi' => $lokasi]);
     }
 
     /**
@@ -70,9 +85,13 @@ class LokasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LokasiRequest $request, Lokasi $lokasi)
     {
-        //
+        $data 				= $request->all();
+		$data['updatedby']	= auth()->user()->name;
+
+		$lokasi->update($data);
+		return redirect('/lokasi')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -81,8 +100,9 @@ class LokasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Lokasi $lokasi)
     {
-        //
+        $lokasi->delete();
+		return redirect('/lokasi')->with('success', 'Data berhasil disimpan');
     }
 }

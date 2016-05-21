@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\AreaRequest;
 use App\Area;
 use Response;
 
@@ -22,6 +23,17 @@ class AreaController extends Controller
 				})->orderBy('nama_area', 'ASC')->get();
     }
 
+	public function index(Request $request)
+    {
+		return view('area.index', [
+			'areas' => Area::when($request->id_lokasi, function($query) use ($request) {
+							return $query->where('id_lokasi', $request->id_lokasi);
+						})->when($request->nama_area, function($query) use ($request) {
+							return $query->where('nama_area', 'like', '%'.$request->nama_area.'%');
+						})->orderBy('nama_area', 'ASC')->paginate()
+		]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +41,7 @@ class AreaController extends Controller
      */
     public function create()
     {
-        //
+        return view('area.create', ['area' => new Area]);
     }
 
     /**
@@ -38,9 +50,13 @@ class AreaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AreaRequest $request)
     {
-        //
+        $data 				= $request->all();
+		$data['createdby']	= auth()->user()->name;
+
+		Area::create($data);
+		return redirect('area')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -60,9 +76,9 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Area $area)
     {
-        //
+        return view('area.edit', ['area' => $area]);
     }
 
     /**
@@ -72,9 +88,13 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AreaRequest $request, Area $area)
     {
-        //
+		$data 				= $request->all();
+		$data['updatedby']	= auth()->user()->name;
+
+		$area->update($data);
+		return redirect('area')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -83,8 +103,9 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Area $area)
     {
-        //
+		$area->delete();
+		return redirect('/area')->with('success', 'Data berhasil disimpan');
     }
 }

@@ -31,12 +31,17 @@ class VideoController extends Controller
 
     public function admin(Request $request)
     {
-		$search = str_replace(' ', '%', $request->search);
+		$title = str_replace(' ', '%', $request->title);
 
         return view('video.admin', [
-			'videos' => Video::video()->when($search, function($query) use ($search) {
-						return $query->where('title', 'like', '%'.$search.'%');
-					})->orderBy('updated', 'DESC')->paginate()
+			'videos' => Video::video()->when($title, function($query) use ($title) {
+							return $query->where('title', 'like', '%'.$title.'%');
+						})->when($request->url_video_youtube, function($query) use ($request) {
+							return $query->where('url_video_youtube', 'like', '%'.$request->url_video_youtube.'%');
+						})->when($request->user, function($query) use ($request) {
+							return $query->join('users', 'users.user_id', '=', 'videos.user_id')
+								->where('users.name', 'like', '%'.$request->user.'%');
+						})->orderBy('videos.updated', 'DESC')->paginate()
 		]);
     }
 

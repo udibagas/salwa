@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\UstadzRequest;
 use App\Ustadz;
 use Response;
 
@@ -15,9 +16,22 @@ class UstadzController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function admin(Request $request)
     {
-        //
+        return view('ustadz.admin', [
+			'ustadzs' => Ustadz::orderBy('ustadz_name', 'ASC')
+							->when($request->ustadz_name, function($query) use ($request) {
+								$query->where('ustadz_name', 'like', '%'.$request->ustadz_name.'%');
+							})->when($request->address, function($query) use ($request) {
+								$query->where('address', 'like', '%'.$request->address.'%');
+							})->when($request->phone, function($query) use ($request) {
+								$query->where('phone', 'like', '%'.$request->phone.'%');
+							})->when($request->ustadz_gender, function($query) use ($request) {
+								$query->where('ustadz_gender', $request->ustadz_gender);
+							})->when($request->ustadz_status, function($query) use ($request) {
+								$query->where('ustadz_status', $request->ustadz_status);
+							})->paginate()
+		]);
     }
 
     /**
@@ -27,7 +41,7 @@ class UstadzController extends Controller
      */
     public function create()
     {
-        //
+        return view('ustadz.create', ['ustadz' => new Ustadz]);
     }
 
     /**
@@ -36,9 +50,13 @@ class UstadzController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UstadzRequest $request)
     {
-        //
+        $data 				= $request->all();
+		$data['createdby']	= auth()->user()->name;
+
+		Ustadz::create($data);
+		return redirect('ustadz/admin')->with('Data berhasil disimpan');
     }
 
     /**
@@ -47,9 +65,9 @@ class UstadzController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Ustadz $ustadz)
     {
-        //
+        return view('ustadz.show', ['ustadz' => $ustadz]);
     }
 
     /**
@@ -58,9 +76,9 @@ class UstadzController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Ustadz $ustadz)
     {
-        //
+        return view('ustadz.edit', ['ustadz' => $ustadz]);
     }
 
     /**
@@ -70,9 +88,13 @@ class UstadzController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UstadzRequest $request, Ustadz $ustadz)
     {
-        //
+		$data 				= $request->all();
+		$data['updatedby']	= auth()->user()->name;
+
+		$ustadz->update($data);
+		return redirect('ustadz/admin')->with('Data berhasil disimpan');
     }
 
     /**
@@ -81,9 +103,10 @@ class UstadzController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Ustadz $ustadz)
     {
-        //
+		$ustadz->delete();
+		return redirect('/ustadz/admin')->with('success', 'Data berhasil disimpan');
     }
 
 	// API

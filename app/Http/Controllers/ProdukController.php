@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use App\Http\Requests\ProdukRequest;
 use App\Produk;
 
 class ProdukController extends Controller
@@ -57,9 +57,28 @@ class ProdukController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProdukRequest $request)
     {
-        //
+		$data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		$data['tgl_artikel'] 	= date('Y-m-d H:i:s');
+		$data['isi_mobile'] 	= $data['isi'];
+		$data['ringkasan'] 		= str_limit($data['isi'], 250);
+		$data['createdby'] 		= auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_artikel', $fileName);
+
+            $data['img_artikel'] = 'uploads/dirimg_artikel/'.$fileName;
+
+        }
+
+		Produk::create($data);
+		return redirect('/produk/admin')->with('success', 'Produk berhasil disimpan');
     }
 
     /**

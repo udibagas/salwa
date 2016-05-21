@@ -20,4 +20,9 @@ class Ustadz extends Model
 		'ustadz_name', 'ustadz_address', 'ustadz_phone',
 		'ustadz_gender', 'ustadz_status', 'createdby', 'updatedby'
 	];
+
+	public function kajians()
+	{
+		$this->hasMany('App\Kajian', 'kajian_ustadz_id', 'ustadz_id');
+	}
 }

@@ -17,7 +17,19 @@ class KajianController extends Controller
      */
     public function index()
     {
-        //
+        return view('kajian.admin', [
+			'kajians' => Kajian::when($request->id_lokasi, function($query) use($request) {
+							return $query->where('id_lokasi', $request->id_lokasi);
+						})->when($request->id_area, function($query) use($request) {
+							return $query->where('id_area', $request->id_area);
+						})->when($request->kajian_tema, function($query) use($request) {
+							return $query->where('kajian_tema', 'like', '%'.$request->kajian_tema.'%');
+						})->when($request->kajian_ustadz_id, function($query) use($request) {
+							return $query->where('kajian_ustadz_id', $request->kajian_ustadz_id);
+						})->when($request->today, function($query) {
+							return $query->whereRaw('DATE(kajian_dates) = '.date('Y-m-d'));
+						})->orderBy('created', 'ASC')->paginate()
+		])
     }
 
     /**
@@ -27,7 +39,7 @@ class KajianController extends Controller
      */
     public function create()
     {
-        //
+        return view('kajian.create', ['kajian' => new Kajian]);
     }
 
     /**
@@ -36,9 +48,13 @@ class KajianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(KajianRequest $request)
     {
-        //
+        $data				= $request->all();
+		$data['createdby']	= auth()->user()->name;
+
+		Kajian::create($data);
+		return redirect('kajian/admin')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -47,9 +63,9 @@ class KajianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Kajian $kajian)
     {
-        //
+        return view('kajian.show', ['kajian' => $kajian]);
     }
 
     /**
@@ -58,9 +74,9 @@ class KajianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Kajian $kajian)
     {
-        //
+        return view('kajian.edit', ['kajian' => $kajian]);
     }
 
     /**
@@ -70,9 +86,13 @@ class KajianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(KajianRequest $request, Kajian $kajian)
     {
-        //
+		$data				= $request->all();
+		$data['updatedby']	= auth()->user()->name;
+
+		$kajian->update($data);
+		return redirect('kajian/admin')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -81,7 +101,7 @@ class KajianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Kajian $kajian)
     {
         //
     }

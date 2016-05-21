@@ -31,8 +31,25 @@
 				<th>Kategori</th>
 				<th style="width:150px;">Created At</th>
 				<th style="width:150px;">Updated At</th>
-				<th style="width:130px;">Action</th>
+				<th style="width:170px;">Action</th>
 			</tr>
+			{!! Form::open(['method' => 'GET']) !!}
+			<tr>
+				<td></td>
+				<td>
+					<input type="text" name="judul" value="{{ request('judul') }}" class="form-control" placeholder="Judul">
+				</td>
+				<td>
+					{!! Form::select('group_id', \App\Group::hadist()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'), request('group_id'), ['class' => 'form-control', 'placeholder' => '-All-']) !!}
+				</td>
+				<td></td>
+				<td></td>
+				<td>
+					<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
+					<a href="/hadist/admin" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
+				</td>
+			</tr>
+			{!! Form::close() !!}
 		</thead>
 		<tbody>
 			<?php $i = $hadists->firstItem(); ?>
@@ -55,7 +72,7 @@
 	</table>
 
 	<div class="text-center">
-		{!! $hadists->appends(['search' => request('search')])->links() !!}
+		{!! $hadists->appends(['judul' => request('judul'),'group_id' => request('group_id')])->links() !!}
 	</div>
 
 @stop

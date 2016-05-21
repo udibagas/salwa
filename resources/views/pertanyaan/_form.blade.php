@@ -11,7 +11,7 @@
 </div>
 
 <div class="form-group{{ $errors->has('ket_pertanyaan') ? ' has-error' : '' }}">
-	{{ Form::textarea('ket_pertanyaan', $model->ket_pertanyaan, ['rows' => 7, 'class' => 'form-control', 'placeholder' => 'Tulis Pertanyaan']) }}
+	{{ Form::textarea('ket_pertanyaan', $model->ket_pertanyaan, ['rows' => 7, 'class' => 'summernote', 'placeholder' => 'Tulis Pertanyaan']) }}
 
 	@if ($errors->has('ket_pertanyaan'))
 		<span class="help-block">

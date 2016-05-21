@@ -37,9 +37,8 @@
 
             @yield('footer')
 
-			<hr style="border-color:#8EC7FB;" />
-			<div class="text-center text-muted">
-				<small>&copy; {{date('Y')}} - SalamDakwah.Com</small>
+			<div class="row text-center" style="margin-top:0;background-color:#297FB9;color:#fff;padding:5px;">
+				<small>&copy; {{date('Y')}} - Www.SalamDakwah.Com</small>
 			</div>
 
         </div>

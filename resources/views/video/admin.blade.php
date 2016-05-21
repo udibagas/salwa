@@ -32,8 +32,28 @@
 				<th>User</th>
 				<th style="width:150px;">Created At</th>
 				<th style="width:150px;">Updated At</th>
-				<th style="width:130px;">Action</th>
+				<th style="width:170px;">Action</th>
 			</tr>
+			{!! Form::open(['method' => 'GET']) !!}
+			<tr>
+				<td></td>
+				<td>
+					<input type="text" name="title" value="{{ request('title') }}" class="form-control" placeholder="Judul">
+				</td>
+				<td>
+					<input type="text" name="url_video_youtube" value="{{ request('url_video_youtube') }}" class="form-control" placeholder="Youtube ID">
+				</td>
+				<td>
+					<input type="text" name="user" value="{{ request('user') }}" class="form-control" placeholder="User">
+				</td>
+				<td></td>
+				<td></td>
+				<td>
+					<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
+					<a href="/video/admin" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
+				</td>
+			</tr>
+			{!! Form::close() !!}
 		</thead>
 		<tbody>
 			<?php $i = $videos->firstItem(); ?>
@@ -57,7 +77,7 @@
 	</table>
 
 	<div class="text-center">
-		{!! $videos->appends(['search' => request('search')])->links() !!}
+		{!! $videos->appends(['title' => request('title'),'url_video_youtube' => request('url_video_youtube'),'user' => request('user')])->links() !!}
 	</div>
 
 @stop

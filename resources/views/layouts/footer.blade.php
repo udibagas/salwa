@@ -1,6 +1,4 @@
-<hr style="border-color:#8EC7FB;">
-
-<div class="row">
+<div class="row footer">
 
 	<div class="col-md-6">
 		<h4 class="">TENTANG SALWA</h4>
@@ -19,21 +17,37 @@
 		</div>
 	</div>
 
-	<div class="col-md-3">
+	<div class="col-md-2">
 
-		<h4 class="">STAY IN TOUCH WITH US</h4>
-
-		<a href="https://www.facebook.com/Salamdakwah-287022414764661/?ref=hl" target="_blank" class="fa fa-facebook-square fa-4x"> </a>
-
-		<a href="https://twitter.com/salamdakwah" target="_blank" class="fa fa-twitter-square fa-4x"> </a>
-
-		<a href="https://www.youtube.com/user/salamdakwah" target="_blank" class="fa fa-youtube-square fa-4x"> </a>
-
-		<a href="https://www.instagram.com/salamdakwah" target="_blank" class="fa fa-instagram fa-4x"> </a>
+		<ul style="list-style:none;font-weight:bold;">
+			<li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+			<li><a href="/artikel">Salwa Aktual</a></li>
+			<li><a href="/audio">Salwa Audio</a></li>
+			<li><a href="/forum">Salwa Forum</a></li>
+			<li><a href="/image">Salwa Images</a></li>
+			<li><a href="/informasi">Salwa Info</a></li>
+			<li><a href="/produk">Salwa Market</a></li>
+			<li><a href="/peduli">Salwa Peduli</a></li>
+		</ul>
 
 	</div>
 
-	<div class="col-md-3">
+	<div class="col-md-2">
+
+		<ul style="list-style:none;font-weight:bold;">
+			<li><a href="/promo">Salwa Promo</a></li>
+			<li><a href="/video">Salwa Video</a></li>
+			<li><a href="/doa">Do'a</a></li>
+			<li><a href="/dzikir">Dzikir</a></li>
+			<li><a href="/hadist">Hadist</a></li>
+			<li><a href="/kitab">Kitab & Terjemahan</a></li>
+			<li><a href="/murottal">Murottal AL Quran</a></li>
+			<li><a href="/pertanyaan">Tanya Ustadz</a></li>
+		</ul>
+
+	</div>
+
+	<div class="col-md-2">
 
 		<h4 class="">DOWNLOAD APP</h4>
 

@@ -17,7 +17,7 @@
 
 	<div class="row">
 		<div class="col-md-3">
-			@include('pertanyaan._hashtag')
+			@include('pertanyaan._group')
 		</div>
 		<div class="col-md-9">
 			<h4 class="title"><i class="fa fa-question-circle-o"></i> INPUT PERTANYAAN</h4>

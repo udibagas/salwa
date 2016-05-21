@@ -26,9 +26,30 @@
 		@if ($pertanyaan->jawaban)
 			@include('pertanyaan._jawaban', ['p' => $pertanyaan])
 		@else
-			<div class="alert alert-danger text-center">
-				Belum ada jawaban untuk pertanyaan terkait.
-			</div>
+
+			@if (auth()->user()->user_status == \App\User::ROLE_ADMIN || auth()->user()->user_status == \App\User::ROLE_USTADZ)
+
+				<div class="row">
+					<div class="col-md-2 hidden-xs">
+						<figure class="thumbnail">
+							@if (auth()->user()->img_user)
+							<img class="img-responsive" src="/{{ auth()->user()->img_user }}" />
+							@else
+							<img class="img-responsive" src="/images/nobody.jpg" />
+							@endif
+							<figcaption class="text-center">{{ auth()->user()->name }}</figcaption>
+						</figure>
+					</div>
+					<div class="col-md-10">
+						@include('pertanyaan._form-jawab', ['pertanyaan' => $pertanyaan])
+					</div>
+				</div>
+
+			@else
+				<div class="alert alert-danger text-center">
+					Belum ada jawaban untuk pertanyaan terkait.
+				</div>
+			@endif
 		@endif
 
 		<hr>

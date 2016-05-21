@@ -22,6 +22,6 @@ class Area extends Model
 
 	public function lokasi()
 	{
-		return $this->belongsTo('App\Area', 'id_lokasi', 'id_lokasi');
+		return $this->belongsTo('App\Lokasi', 'id_lokasi', 'id_lokasi');
 	}
 }

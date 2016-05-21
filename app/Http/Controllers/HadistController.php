@@ -32,13 +32,13 @@ class HadistController extends Controller
 
     public function admin(Request $request)
     {
-		$search = str_replace(' ', '%', $request->search);
+		$judul = str_replace(' ', '%', $request->judul);
 
         return view('hadist.admin', [
 			'hadists' 	=> Hadist::when($request->group_id, function($query) use ($request) {
 							return $query->where('group_id', $request->group_id);
-						})->when($search, function($query) use ($search) {
-							return $query->where('judul', 'like', '%'.$search.'%');
+						})->when($judul, function($query) use ($judul) {
+							return $query->where('judul', 'like', '%'.$judul.'%');
 						})->orderBy('updated', 'DESC')->paginate()
 		]);
     }

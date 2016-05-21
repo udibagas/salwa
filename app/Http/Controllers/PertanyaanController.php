@@ -9,7 +9,7 @@ use App\Http\Requests\PertanyaanRequest;
 use App\Http\Requests\JawabanRequest;
 
 use App\Pertanyaan;
-
+use App\User;
 use Auth;
 
 class PertanyaanController extends Controller
@@ -73,10 +73,12 @@ class PertanyaanController extends Controller
      */
     public function store(PertanyaanRequest $request)
     {
-        $pertanyaan = Pertanyaan::create($request->all());
-		$pertanyaan->user_id = Auth::user()->user_id;
-		$pertanyaan->save();
+		$data 				= $request->all();
+		$data['user_id']	= auth()->user()->user_id;
+		$data['tgl_tanya'] 	= date('Y-m-d H:i:s');
+		$data['createdby'] 	= auth()->user()->name;
 
+        $pertanyaan = Pertanyaan::create($data);
 		return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan]);
     }
 
@@ -114,10 +116,16 @@ class PertanyaanController extends Controller
 	{
 		$data = $request->all();
 		$data['dijawab_oleh'] = auth()->user()->user_id;
-		$data['tanggal_jawab'] = date('Y-m-d H:i:s');
+		$data['tgl_jawab'] = date('Y-m-d H:i:s');
 		$pertanyaan->update($data);
 
-		return redirect('/pertanyaan/admin')->with('success', 'Jawaban telah disimpan');
+		if (auth()->user()->user_status == User::ROLE_ADMIN) {
+			return redirect('/pertanyaan/admin')->with('success', 'Jawaban telah disimpan');
+		} else if (auth()->user()->user_status == User::ROLE_USTADZ) {
+			return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan])
+							->with('success', 'Jawaban telah disimpan');
+		}
+
 	}
 
     /**

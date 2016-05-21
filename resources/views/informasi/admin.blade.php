@@ -32,8 +32,28 @@
 				<th>Kategori</th>
 				<th style="width:150px;">Created At</th>
 				<th style="width:150px;">Updated At</th>
-				<th style="width:130px;">Action</th>
+				<th style="width:170px;">Action</th>
 			</tr>
+			{!! Form::open(['method' => 'GET']) !!}
+			<tr>
+				<td></td>
+				<td>
+					<input type="text" name="judul" value="{{ request('judul') }}" class="form-control" placeholder="Judul">
+				</td>
+				<!-- <td>
+					<input type="text" name="user" value="{{ request('user') }}" class="form-control" placeholder="User">
+				</td> -->
+				<td>
+					{!! Form::select('group_id', \App\Group::informasi()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'), request('group_id'), ['class' => 'form-control', 'placeholder' => '-All-']) !!}
+				</td>
+				<td></td>
+				<td></td>
+				<td>
+					<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
+					<a href="/informasi/admin" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
+				</td>
+			</tr>
+			{!! Form::close() !!}
 		</thead>
 		<tbody>
 			<?php $i = $informasis->firstItem(); ?>
@@ -57,7 +77,7 @@
 	</table>
 
 	<div class="text-center">
-		{!! $informasis->appends(['search' => request('search')])->links() !!}
+		{!! $informasis->appends(['judul' => request('judul'),'group_id' => request('group_id')])->links() !!}
 	</div>
 
 @stop

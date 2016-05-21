@@ -31,11 +31,11 @@ class InformasiController extends Controller
 
     public function admin(Request $request)
     {
-		$search = str_replace(' ', '%', $request->search);
+		$judul = str_replace(' ', '%', $request->judul);
 
         return view('informasi.admin', [
-			'informasis' => Informasi::when($search, function($query) use ($search) {
-								return $query->where('judul', 'like', '%'.$search.'%');
+			'informasis' => Informasi::when($judul, function($query) use ($judul) {
+								return $query->where('judul', 'like', '%'.$judul.'%');
 							})->when($request->group_id, function($query) use ($request) {
 								return $query->where('group_id', $request->group_id);
 							})->orderBy('updated', 'DESC')->paginate()

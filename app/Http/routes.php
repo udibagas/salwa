@@ -15,12 +15,17 @@ Route::get('/', 'HomeController@index');
 Route::get('/forum/search', 'ForumController@search');
 Route::get('forum-category/{group}', 'ForumController@category');
 
+Route::get('/doa', 'HadistController@index');
+Route::get('/dzikir', 'HadistController@index');
+
 Route::auth();
 
 Route::group(['middleware' => 'auth'], function() {
 
 	Route::resource('user', 'UserController');
 	Route::resource('group', 'GroupController');
+	Route::resource('lokasi', 'LokasiController');
+	Route::resource('area', 'AreaController');
 
 	Route::post('forum/comment', 'ForumController@comment');
 	Route::put('pertanyaan/{pertanyaan}/simpan-jawaban', 'PertanyaanController@simpanJawaban');
@@ -32,6 +37,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('pertanyaan/admin', 'PertanyaanController@admin');
 	Route::get('artikel/admin', 'ArtikelController@admin');
 	Route::get('informasi/admin', 'InformasiController@admin');
+	Route::get('kajian/admin', 'KajianController@admin');
 	Route::get('peduli/admin', 'PeduliController@admin');
 	Route::get('kitab/admin', 'KitabController@admin');
 	Route::get('pertanyaan/{pertanyaan}/jawab', 'PertanyaanController@jawab');
@@ -41,7 +47,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('audio/admin', 'AudioController@admin');
 	Route::get('murottal/admin', 'MurottalController@admin');
 	Route::get('image/admin', 'ImageController@admin');
-
+	Route::get('ustadz/admin', 'UstadzController@admin');
 });
 
 Route::resource('artikel', 'ArtikelController');
@@ -57,6 +63,7 @@ Route::resource('peduli', 'PeduliController');
 Route::resource('pertanyaan', 'PertanyaanController');
 Route::resource('produk', 'ProdukController');
 Route::resource('promo', 'PromoController');
+Route::resource('ustadz', 'UstadzController');
 Route::resource('video', 'VideoController');
 
 Route::get('design', function() {

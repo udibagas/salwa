@@ -6,6 +6,7 @@
 		<div class="col-md-8">
 			<div class="jumbotron">
 				<h2>Mari bergabung bersama SalamDakwah untuk mendapatkan manfaat lebih.</h2>
+				<span class="pull-right"><img src="/images/logo.png" alt="" /></span>
 				<hr>
 				<ul>
 					<li>Tanya langsung masalah keislaman dengan narasumber yang berkompeten di bidangnya</li>
@@ -19,7 +20,7 @@
 
         <div class="col-md-4">
 
-			<div class="panel panel-info">
+			<div class="panel panel-blue">
 				<div class="panel-heading">
 					<h3 class="panel-title">LOGIN</h3>
 				</div>
@@ -47,13 +48,13 @@
 		                    @endif
 		                </div>
 
-		                <!-- <div class="form-group">
+		                <div class="form-group">
 		                    <div class="checkbox">
 		                        <label>
 		                            <input type="checkbox" name="remember"> Remember Me
 		                        </label>
 		                    </div>
-		                </div> -->
+		                </div>
 
 						<hr>
 
@@ -62,13 +63,13 @@
 		                        <i class="fa fa-btn fa-sign-in"></i> Login
 		                    </button>
 
-		                    <!-- <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a> -->
+		                    <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
 		                </div>
 		            </form>
 				</div>
 			</div>
 
-            <div class="panel panel-info">
+            <div class="panel panel-blue">
                 <div class="panel-heading">REGISTER</div>
                 <div class="panel-body">
                     <form class="form-vertical" role="form" method="POST" action="{{ url('/register') }}">

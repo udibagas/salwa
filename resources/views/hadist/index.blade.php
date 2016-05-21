@@ -19,30 +19,24 @@
 		<div class="col-md-3">
 			@include('hadist._group')
 		</div>
-		<div class="col-md-9">
-			<h4 class="title">HADIST</h4>
-				@foreach ($hadists as $h)
-					<div class="well">
-						<a href="/hadist/{{ $h->hadist_id }}-{{ str_slug($h->judul) }}"><h3>{{ $h->judul }}</h3></a>
-						<br>
-						<div class="text-right" style="font-size:30px;">
-							{{ $h->hadist }}
-						</div>
-						<br />
-
-						{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $h->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
-
-					</div>
-				@endforeach
+		<div class="col-md-6">
+			<h4 class="title"><i class="fa fa-list-alt"></i> HADIST</h4>
+				<div class="list-group">
+					@foreach ($hadists as $h)
+					<a href="/hadist/{{ $h->hadist_id }}-{{ str_slug($h->judul) }}" class="list-group-item">
+						<i class="fa fa-heartbeat"></i> {{ $h->judul }}
+					</a>
+					@endforeach
+				</div>
 
 			<nav class="text-center">
 				{!! $hadists->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
 			</nav>
 
 		</div>
-		<!-- <div class="col-md-3">
-			include('home.sidebar')
-		</div> -->
+		<div class="col-md-3">
+			disini nanti ada slider buat hadist
+		</div>
 	</div>
 
 @stop
