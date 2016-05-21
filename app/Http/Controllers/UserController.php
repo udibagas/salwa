@@ -21,28 +21,18 @@ class UserController extends Controller
 
         return view('user.index', [
 			'users' => User::orderBy('user_name', 'ASC')
-						->when($search, function($query) use ($search) {
-							return $query->where('user_name', 'like', '%'.$search.'%')
-										->orWhere('name', 'like', '%'.$search.'%')
-										->orWhere('email', 'like', '%'.$search.'%');
-						})->when(str_contains($search, 'ustadz'), function($query) {
-							return $query->where('user_status', User::ROLE_USTADZ);
-						})->when($search == 'admin', function($query) {
-							return $query->orWhere('user_status', User::ROLE_ADMIN);
-						})->when($search == 'member', function($query) {
-							return $query->orWhere('user_status', User::ROLE_MEMBER);
-						})->when($search == 'aktualita', function($query) {
-							return $query->orWhere('user_status', User::ROLE_AKTUALITA);
-						})->when($search == 'staff', function($query) {
-							return $query->orWhere('user_status', User::ROLE_STAFF);
-						})->when($search == 'active', function($query) {
-							return $query->orWhere('active', 'Y');
-						})->when($search == 'nonactive', function($query) {
-							return $query->orWhere('active', 'N');
-						})->when($search == 'pria', function($query) {
-							return $query->orWhere('jenis_kelamin', 'p');
-						})->when($search == 'wanita', function($query) {
-							return $query->orWhere('jenis_kelamin', 'w');
+						->when($request->user_name, function($query) use ($request) {
+							return $query->where('user_name', 'like', '%'.$request->user_name.'%');
+						})->when($request->name, function($query) use ($request) {
+							return $query->where('name', 'like', '%'.$request->name.'%');
+						})->when($request->email, function($query) use ($request) {
+							return $query->where('email', 'like', '%'.$request->email.'%');
+						})->when($request->jenis_kelamin, function($query) use ($request) {
+							return $query->where('jenis_kelamin', $request->jenis_kelamin);
+						})->when($request->active, function($query) use ($request) {
+							return $query->where('active', $request->active);
+						})->when($request->user_status, function($query) use ($request) {
+							return $query->where('user_status', $request->user_status);
 						})->paginate()
 		]);
     }

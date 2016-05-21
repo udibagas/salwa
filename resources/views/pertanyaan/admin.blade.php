@@ -16,41 +16,53 @@
 
 <h4 class="title"><i class="fa fa-question-circle"></i> TANYA USTADZ</h4>
 
-<div class="well well-sm" style="margin-bottom:10px;">
-	<div class="row">
-		<div class="col-md-4">
-			{!! Form::open(['method' => 'GET', 'class' => 'form-inline']) !!}
-				<div class="form-group">
-					<div class="input-group">
-						<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control">
-						<div class="input-group-addon"><i class="fa fa-search"></i></div>
-					</div>
-				</div>
-			{!! Form::close() !!}
-		</div>
-		<div class="col-md-8 text-right">
-			<p style="padding:5px 5px 0 0;">
-				<b>
-					Showing {{ $pertanyaans->firstItem() }} to {{ $pertanyaans->lastItem() }} of {{ $pertanyaans->total() }} entries
-				</b>
-			</p>
-		</div>
-	</div>
+<div class="well well-sm text-right" style="margin-bottom:10px;">
+	<b>
+		Showing {{ $pertanyaans->firstItem() }} to {{ $pertanyaans->lastItem() }} of {{ $pertanyaans->total() }} entries
+	</b>
 </div>
 
 <table class="table table-hover table-striped">
 	<thead>
 		<tr>
 			<th>#</th>
-			<th>Judul Pertanyaan</th>
+			<th style="width:250px;">Judul Pertanyaan</th>
 			<th>Penanya</th>
 			<th>Jns. Kelamin</th>
 			<th>Waktu Tanya</th>
 			<th>Dijawab</th>
 			<th>Penjawab</th>
 			<th>Show</th>
-			<th style="width:140px;">Action</th>
+			<th style="width:170px;">Action</th>
 		</tr>
+		{!! Form::open(['method' => 'GET']) !!}
+		<tr>
+			<td></td>
+			<td>
+				<input type="text" name="judul_pertanyaan" value="{{ request('judul_pertanyaan') }}" placeholder="Judul Pertanyaan" class="form-control">
+			</td>
+			<td>
+				<input type="text" name="user" value="{{ request('user') }}" placeholder="Penanya" class="form-control">
+			</td>
+			<td>
+				{{ Form::select('jenis_kelamin', ['p' => 'Pria', 'w' => 'Wanita'], request('jenis_kelamin'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
+			</td>
+			<td></td>
+			<td>
+				{{ Form::select('jawaban', ['belum' => 'Belum', 'sudah' => 'Sudah'], request('status'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
+			</td>
+			<td>
+				{{ Form::select('dijawab_oleh', App\User::ustadz()->orderBy('name')->pluck('name', 'user_id'), request('dijawab_oleh'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
+			</td>
+			<td>
+				{{ Form::select('status', ['s' => 'Yes', 'h' => 'No'], request('status'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
+			</td>
+			<td>
+				<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
+				<a href="/pertanyaan/admin" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
+			</td>
+		</tr>
+		{!! Form::close() !!}
 	</thead>
 	<tbody>
 		<?php $i = $pertanyaans->firstItem(); ?>
@@ -63,8 +75,8 @@
 				</a>
 			</td>
 			<td>{{ $p->user->name }}</td>
-			<td>{{ $p->user->jenis_kelamin == 'P' ? 'Pria' : 'Wanita' }}</td>
-			<td>{{ $p->created->diffForHumans() }}</td>
+			<td>{{ $p->user->jenis_kelamin == 'p' ? 'Pria' : 'Wanita' }}</td>
+			<td>{{ $p->tgl_tanya }}</td>
 			<td>
 				@if ($p->jawaban)
 					<span class="label label-success">Sudah</span>
@@ -87,7 +99,7 @@
 </table>
 
 <div class="text-center">
-	{!! $pertanyaans->appends(['search' => request('search')])->links() !!}
+	{!! $pertanyaans->appends(['judul_pertanyaan' => request('judul_pertanyaan'),'user' => request('user'),'jenis_kelamin' => request('jenis_kelamin'),'jawaban' => request('jawaban'),'dijawab_oleh' => request('dijawab_oleh'),'status' => request('status')])->links() !!}
 </div>
 
 @stop

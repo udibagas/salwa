@@ -63,6 +63,22 @@ Route::get('design', function() {
 	return '<img src="/images/design.jpg" style="width:100%" />';
 });
 
-Route::get('test', function() {
-	return phpinfo();
+Route::group(['prefix' => 'api'], function() {
+	Route::get('lokasi', 'LokasiController@apiIndex');
+	Route::get('area', 'AreaController@apiIndex');
+
+	// hadist
+	Route::get('hadits', 'HadistController@apiIndexHadits');
+	Route::get('doa', 'HadistController@apiIndexDoa');
+	Route::get('dzikir', 'HadistController@apiIndexDzikir');
+	Route::get('hadits/{hadist}', 'HadistController@apiShow');
+
+	// kajian
+	Route::get('kajian', 'KajianController@apiIndex'); // list & search & today
+	Route::get('kajian/{kajian}', 'KajianController@apiShow'); // show detail
+
+	// ustadz
+	Route::get('ustadz', 'UstadzController@apiIndex');
+	Route::get('ustadz/{ustadz}', 'UstadzController@apiShow');
+
 });

@@ -76,7 +76,6 @@ class User extends Authenticatable
 	public static function roleList($index = 9999)
 	{
 		$list = [
-			null	=> '- Pilih Role -',
 			1		=> 'Admin',
 			2		=> 'Staff',
 			3		=> 'Ustadz',

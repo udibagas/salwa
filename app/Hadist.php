@@ -8,13 +8,20 @@ class Hadist extends Model
 {
     protected $table = 'hadist';
 
-	protected $dates = ['created', 'updated'];
+	protected $dates = ['created', 'updated', 'tanggal'];
 
 	protected $primaryKey = 'hadist_id';
 
 	const CREATED_AT = 'created';
 
 	const UPDATED_AT = 'updated';
+
+	protected $hidden = ['created', 'updated', 'createdby', 'updatedby', 'dilihat'];
+
+	public function getTanggalAttribute($value)
+	{
+		return date('d/m/Y H:i:s', strtotime($value));
+	}
 
 	protected $fillable = [
 		'judul', 'hadist', 'ringkasan', 'penjelasan', 'tanggal',

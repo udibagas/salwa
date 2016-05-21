@@ -24,27 +24,34 @@ class PertanyaanController extends Controller
 		$search = str_replace(' ', '%', $request->search);
 
 		return view('pertanyaan.index', [
-			'pertanyaans' 	=> Pertanyaan::show()
+			'pertanyaans' => Pertanyaan::show()
 								->when($search, function($query) use ($search) {
 									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%')
 												->orWhere('ket_pertanyaan', 'like', '%'.$search.'%');
-								})->when($request->search == 'belum dijawab', function($query) {
-									return $query->where('jawaban', '');
 								})->orderBy('updated', 'DESC')->paginate(),
 		]);
 	}
 
 	public function admin(Request $request)
 	{
-		$search = str_replace(' ', '%', $request->search);
-
 		return view('pertanyaan.admin', [
-			'pertanyaans' 	=> Pertanyaan::when($request->search == 'belum dijawab', function($query) {
-									return $query->where('jawaban', '');
-								})->when($search, function($query) use ($search) {
-									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
-												// ->orWhere('ket_pertanyaan', 'like', '%'.$search.'%');
-								})->orderBy('updated', 'DESC')->paginate(),
+			'pertanyaans' => Pertanyaan::when($request->judul_pertanyaan, function($query) use ($request) {
+									return $query->where('judul_pertanyaan', 'like', '%'.$request->judul_pertanyaan.'%');
+								})->when($request->status, function($query) use ($request) {
+									return $query->where('status', $request->status);
+								})->when($request->jawaban == 'belum', function($query) use ($request) {
+									return $query->where('jawaban', NULL);
+								})->when($request->jawaban == 'sudah', function($query) use ($request) {
+									return $query->where('jawaban', '!=', '');
+								})->when($request->user, function($query) use ($request) {
+									return $query->join('users', 'users.user_id', '=', 'pertanyaan.user_id')
+												->where('users.name', 'like', '%'.$request->user.'%');
+								})->when($request->dijawab_oleh, function($query) use ($request) {
+									return $query->where('dijawab_oleh', $request->dijawab_oleh);
+								})->when($request->jenis_kelamin, function($query) use ($request) {
+									return $query->join('users as u', 'u.user_id', '=', 'pertanyaan.user_id')
+												->where('u.jenis_kelamin',  $request->jenis_kelamin);
+								})->orderBy('pertanyaan.updated', 'DESC')->paginate(),
 		]);
 	}
 

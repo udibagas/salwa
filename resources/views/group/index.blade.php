@@ -16,28 +16,10 @@
 	<h4 class="title"><i class="fa fa-tags"></i> GROUPS</h4>
 
 	<div class="well well-sm" style="margin-bottom:10px;">
-		<div class="row no-gutter">
-			<div class="col-md-4">
-				{!! Form::open(['method' => 'GET', 'class' => 'form-inline']) !!}
-					<div class="form-group">
-						<div class="input-group">
-							<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control">
-							<div class="input-group-addon"><i class="fa fa-search"></i></div>
-						</div>
-					</div>
-				{!! Form::close() !!}
-			</div>
-			<div class="col-md-4">
-				<a href="/group/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Add Group</a>
-			</div>
-			<div class="col-md-4 text-right">
-				<p style="padding:5px 5px 0 0;">
-					<b>
-						Showing {{ $groups->firstItem() }} to {{ $groups->lastItem() }} of {{ $groups->total() }} entries
-					</b>
-				</p>
-			</div>
-		</div>
+		<a href="/group/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Add Group</a>
+		<b class="pull-right" style="padding-top:5px;">
+			Showing {{ $groups->firstItem() }} to {{ $groups->lastItem() }} of {{ $groups->total() }} entries
+		</b>
 	</div>
 
 	<table class="table table-hover table-striped">
@@ -47,8 +29,26 @@
 				<th style="width:220px;">Name</th>
 				<th>Type</th>
 				<th>Description</th>
-				<th style="width:130px;">Action</th>
+				<th style="width:170px;">Action</th>
 			</tr>
+			{!! Form::open(['method' => 'GET']) !!}
+			<tr>
+				<td></td>
+				<td>
+					<input type="text" name="group_name" value="{{ request('group_name') }}" placeholder="Name" class="form-control">
+				</td>
+				<td>
+					{{ Form::select('type', \App\Group::typeList(), request('type'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
+				</td>
+				<td>
+					<input type="text" name="description" value="{{ request('description') }}" placeholder="Description" class="form-control">
+				</td>
+				<td>
+					<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
+					<a href="/group" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
+				</td>
+			</tr>
+			{!! Form::close() !!}
 		</thead>
 		<tbody>
 			<?php $i = $groups->firstItem(); ?>
@@ -70,7 +70,7 @@
 	</table>
 
 	<div class="text-center">
-		{!! $groups->appends(['search' => request('search')])->links() !!}
+		{!! $groups->appends(['group_name' => request('group_name'),'type' => request('type'),'description' => request('description')])->links() !!}
 	</div>
 
 @stop

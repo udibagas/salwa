@@ -17,28 +17,10 @@
 	<h4 class="title"><i class="fa fa-heart-o"></i> SALWA PEDULI</h4>
 
 	<div class="well well-sm" style="margin-bottom:10px;">
-		<div class="row no-gutter">
-			<div class="col-md-4">
-				{!! Form::open(['method' => 'GET', 'class' => 'form-inline']) !!}
-					<div class="form-group">
-						<div class="input-group">
-							<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control">
-							<div class="input-group-addon"><i class="fa fa-search"></i></div>
-						</div>
-					</div>
-				{!! Form::close() !!}
-			</div>
-			<div class="col-md-4">
-				<a href="/peduli/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Create Peduli</a>
-			</div>
-			<div class="col-md-4 text-right">
-				<p style="padding:5px 5px 0 0;">
-					<b>
-						Showing {{ $pedulis->firstItem() }} to {{ $pedulis->lastItem() }} of {{ $pedulis->total() }} entries
-					</b>
-				</p>
-			</div>
-		</div>
+		<a href="/peduli/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Create Peduli</a>
+		<b class="pull-right" style="padding-top:5px;">
+			Showing {{ $pedulis->firstItem() }} to {{ $pedulis->lastItem() }} of {{ $pedulis->total() }} entries
+		</b>
 	</div>
 
 	<table class="table table-striped table-hover">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\HadistRequest;
+use Response;
 
 use App\Hadist;
 
@@ -136,4 +137,40 @@ class HadistController extends Controller
         $hadist->delete();
 		return redirect('/hadist/admin');
     }
+
+	// API
+	public function apiIndexHadits(Request $request)
+	{
+		return Hadist::select('hadist_id', 'judul', 'tanggal')
+		->hadist()->when($request->judul, function($query) use ($request) {
+			return $query->where('judul', 'like', '%'.$request->judul.'%');
+		})->orderBy('hadist.updated', 'DESC')->paginate(10);
+
+		// return Response::json([
+		// 	'results' 	=> $data->items(),
+		// 	'pages' 	=> $data->lastPage(),
+		// 	'total' 	=> $data->total()
+		// ]);
+	}
+
+	public function apiIndexDoa(Request $request)
+	{
+		return Hadist::select('hadist_id', 'judul', 'tanggal')
+		->doa()->when($request->judul, function($query) use ($request) {
+			return $query->where('judul', 'like', '%'.$request->judul.'%');
+		})->orderBy('hadist.updated', 'DESC')->paginate(10);
+	}
+
+	public function apiIndexDzikir(Request $request)
+	{
+		return Hadist::select('hadist_id', 'judul', 'tanggal')
+		->dzikir()->when($request->judul, function($query) use ($request) {
+			return $query->where('judul', 'like', '%'.$request->judul.'%');
+		})->orderBy('hadist.updated', 'DESC')->paginate(10);
+	}
+
+	public function apiShow(Hadist $hadist)
+	{
+		return $hadist;
+	}
 }

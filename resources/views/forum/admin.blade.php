@@ -17,18 +17,10 @@
 	<h4 class="title"><i class="fa fa-comments-o"></i> SALWA FORUM</h4>
 
 	<div class="well well-sm" style="margin-bottom:10px;">
-		<div class="row no-gutter">
-			<div class="col-md-8">
-				<a href="/forum/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Create Forum</a>
-			</div>
-			<div class="col-md-4 text-right">
-				<p style="padding:5px 5px 0 0;">
-					<b>
-						Showing {{ $forums->firstItem() }} to {{ $forums->lastItem() }} of {{ $forums->total() }} entries
-					</b>
-				</p>
-			</div>
-		</div>
+		<a href="/forum/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Create Forum</a>
+		<b class="pull-right" style="padding-top:5px;">
+			Showing {{ $forums->firstItem() }} to {{ $forums->lastItem() }} of {{ $forums->total() }} entries
+		</b>
 	</div>
 
 	<table class="table table-striped table-hover">

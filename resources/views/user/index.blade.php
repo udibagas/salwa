@@ -2,17 +2,6 @@
 
 @section('title', 'Users')
 
-@push('css')
-	<link href="/DataTables/datatables.min.css" rel="stylesheet">
-@endpush
-
-@push('script')
-	<script src="/DataTables/datatables.min.js"></script>
-	<script type="text/javascript">
-		// $('table').dataTable();
-	</script>
-@endpush
-
 @section('breadcrumbs')
 
 	@include('layouts._breadcrumbs', [
@@ -28,28 +17,10 @@
 	<h4 class="title"><i class="fa fa-users"></i> USERS</h4>
 
 	<div class="well well-sm" style="margin-bottom:10px;">
-		<div class="row no-gutter">
-			<div class="col-md-4">
-				{!! Form::open(['method' => 'GET', 'class' => 'form-inline', 'style' => 'display:inline-block']) !!}
-					<div class="form-group">
-						<div class="input-group">
-							<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control">
-							<div class="input-group-addon"><i class="fa fa-search"></i></div>
-						</div>
-					</div>
-				{!! Form::close() !!}
-			</div>
-			<div class="col-md-4">
-				<a href="/user/create" class="btn btn-info"><i class="fa fa-user-plus"></i> Add User</a>
-			</div>
-			<div class="col-md-4 text-right">
-				<p style="padding:5px 5px 0 0;">
-					<b>
-						Showing {{ $users->firstItem() }} to {{ $users->lastItem() }} of {{ $users->total() }} entries
-					</b>
-				</p>
-			</div>
-		</div>
+		<a href="/user/create" class="btn btn-info"><i class="fa fa-user-plus"></i> Add User</a>
+		<b class="pull-right" style="padding-top:5px;">
+			Showing {{ $users->firstItem() }} to {{ $users->lastItem() }} of {{ $users->total() }} entries
+		</b>
 	</div>
 
 	<table class="table table-hover table-striped">
@@ -63,8 +34,36 @@
 				<th>Role</th>
 				<th>Active</th>
 				<th>Member Since</th>
-				<th style="width:130px;">Action</th>
+				<th style="width:170px;">Action</th>
 			</tr>
+			{!! Form::open(['method' => 'GET']) !!}
+			<tr>
+				<td></td>
+				<td>
+					<input type="text" name="user_name" value="{{ request('user_name') }}" placeholder="Username" class="form-control">
+				</td>
+				<td>
+					<input type="text" name="name" value="{{ request('name') }}" placeholder="Display Name" class="form-control">
+				</td>
+				<td>
+					{{ Form::select('jenis_kelamin', ['p' => 'Pria', 'w' => 'Wanita'], request('jenis_kelamin'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
+				</td>
+				<td>
+					<input type="text" name="email" value="{{ request('email') }}" placeholder="Email" class="form-control">
+				</td>
+				<td>
+					{{ Form::select('user_status', \App\User::roleList(), request('user_status'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
+				</td>
+				<td>
+					{{ Form::select('active', ['Y' => 'Yes', 'N' => 'No'], request('active'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
+				</td>
+				<td></td>
+				<td>
+					<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
+					<a href="/user" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
+				</td>
+			</tr>
+			{!! Form::close() !!}
 		</thead>
 		<tbody>
 			<?php $i = $users->firstItem(); ?>
@@ -90,7 +89,7 @@
 	</table>
 
 	<div class="text-center">
-		{!! $users->appends(['search' => request('search')])->links() !!}
+		{!! $users->appends(['user_name' => request('user_name'),'name' => request('name'),'email' => request('email'),'user_status' => request('user_status'),'active' => request('active'),'jenis_kelamin' => request('jenis_kelamin')])->links() !!}
 	</div>
 
 @endsection

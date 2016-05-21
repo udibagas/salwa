@@ -18,14 +18,14 @@ class GroupController extends Controller
      */
     public function index(Request $request)
     {
-		$search = str_replace(' ', '%', $request->search);
-
         return view('group.index', [
-			'groups' => Group::when($search, function($query) use ($search) {
-						return $query->where('group_name', 'like', '%'.$search.'%')
-									->orWhere('type', 'like', '%'.$search.'%')
-									->orWhere('description', 'like', '%'.$search.'%');
-					})->orderBy('group_name', 'ASC')->paginate()
+			'groups' => Group::when($request->group_name, function($query) use ($request) {
+							return $query->where('group_name', 'like', '%'.$request->group_name.'%');
+						})->when($request->description, function($query) use ($request) {
+							return $query->where('description', 'like', '%'.$request->description.'%');
+						})->when($request->type, function($query) use ($request) {
+							return $query->where('type', $request->type);
+						})->orderBy('group_name', 'ASC')->paginate()
 		]);
     }
 

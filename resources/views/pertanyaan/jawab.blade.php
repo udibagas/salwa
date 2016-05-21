@@ -20,8 +20,8 @@
 
 <div class="well">
 	<strong><i class="fa fa-user"></i> {{ $pertanyaan->user->name }}</strong><br>
-	<i class="fa fa-clock-o"></i> {{ $pertanyaan->created->diffForHumans() }}
-	
+	<em><i class="fa fa-clock-o"></i> {{ $pertanyaan->created->diffForHumans() }}</em>
+
 	<h3>Pertanyaan: {{ $pertanyaan->judul_pertanyaan }}</h3>
 	{!! nl2br($pertanyaan->ket_pertanyaan) !!}
 </div>
