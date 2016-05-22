@@ -26,6 +26,7 @@ class PertanyaanRequest extends Request
     {
         return [
             'judul_pertanyaan'	=> 'required',
+            'daerah_asal'		=> 'required',
             'ket_pertanyaan'	=> 'required',
         ];
     }

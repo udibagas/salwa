@@ -25,7 +25,7 @@ class ArtikelController extends Controller
 								return $query->where('group_id', $request->group_id);
 							})->when($search, function($query) use ($search) {
 								return $query->where('judul', 'like', '%'.$search.'%');
-							})->orderBy('updated', 'DESC')->paginate(20)
+							})->orderBy('updated', 'DESC')->paginate(16)
 		]);
     }
 
@@ -95,7 +95,7 @@ class ArtikelController extends Controller
     {
         return view('artikel.show', [
 			'artikel' 	=> $artikel,
-			'terkait'	=> Artikel::where('user_id', $artikel->user_id)->limit(4)->get()
+			'terkait'	=> Artikel::where('group_id', $artikel->group_id)->orderByRaw('RAND()')->limit(4)->get()
 		]);
     }
 

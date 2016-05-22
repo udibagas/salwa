@@ -30,7 +30,7 @@
 		@include('layouts._share')
 
 		@if ($forum->user_id == auth()->user()->user_id)
-		<a href="/forum/{{ $forum->forum_id }}/edit"><i class="fa fa-edit" class="btn btn-primary"></i> Edit Forum</a>
+		<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-primary"><i class="fa fa-edit" class="btn btn-primary"></i> Edit Forum</a>
 		@endif
 		<hr />
 
@@ -46,27 +46,34 @@
 
 			@if ($forum->close == 'Y')
 				<div class="alert alert-danger text-center">
-					Anda tidak dapat berkomentar di thread ini. Forum ini sudah ditutup.
+					<strong>Anda tidak dapat berkomentar di thread ini. Forum ini sudah ditutup.</strong>
 				</div>
-			@elseif (auth()->user()->jenis_kelamin == $forum->user->jenis_kelamin)
+			@elseif ($forum->user && (auth()->user()->jenis_kelamin == $forum->user->jenis_kelamin))
 				@include('forum._form-komentar')
 			@else
 				<div class="alert alert-danger text-center">
-					Anda tidak dapat berkomentar di thread ini. Forum Akhwat dan Ikhwan kami pisahkan.
+					<strong>Anda tidak dapat berkomentar di thread ini. Forum Akhwat dan Ikhwan kami pisahkan.</strong>
 				</div>
 			@endif
 
 		@else
 			<div class="alert alert-danger text-center">
-				Silakan <a href="/login">Login</a> untuk menulis komentar.
+				<strong>Silakan <a href="/login">Login</a> untuk menulis komentar.</strong>
 			</div>
 		@endif
+		<br>
+		<h4 class="title">FORUM TERKAIT</h4>
+		<ul class="list-group">
+			@foreach ($terkait as $p)
+			<li class="list-group-item">
+				<b><a href="/forum/{{ $p->forum_id }}-{{ str_slug($p->title) }}">{{ $p->title }}</a></b><br>
+				<i class="fa fa-user"></i> {{ $p->user ? $p->user->name : '' }}
+				<i class="fa fa-clock-o"></i> {{ $p->updated->diffForHumans() }}
+			</li>
+			@endforeach
+		</ul>
 
 	</div>
-
-	<!-- <div class="col-md-3">
-		include('home.sidebar')
-	</div> -->
 </div>
 
 

@@ -30,9 +30,7 @@
 				</div>
 			@endif
 
-			@foreach ($pertanyaans as $p)
-				@include('pertanyaan._list', ['p' => $p])
-			@endforeach
+			@each('pertanyaan._list', $pertanyaans, 'p');
 
 			<nav class="text-center">
 				{!! $pertanyaans->appends(['search' => request('search')])->links() !!}

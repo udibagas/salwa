@@ -26,8 +26,9 @@ class PertanyaanController extends Controller
 		return view('pertanyaan.index', [
 			'pertanyaans' => Pertanyaan::show()
 								->when($search, function($query) use ($search) {
-									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%')
-												->orWhere('ket_pertanyaan', 'like', '%'.$search.'%');
+									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
+								})->when($request->group_id, function($query) use ($request) {
+									return $query->where('group_id', $request->group_id);
 								})->orderBy('updated', 'DESC')->paginate(),
 		]);
 	}
@@ -51,6 +52,8 @@ class PertanyaanController extends Controller
 								})->when($request->jenis_kelamin, function($query) use ($request) {
 									return $query->join('users as u', 'u.user_id', '=', 'pertanyaan.user_id')
 												->where('u.jenis_kelamin',  $request->jenis_kelamin);
+								})->when($request->group_id, function($query) use ($request) {
+									return $query->where('group_id', $request->group_id);
 								})->orderBy('pertanyaan.updated', 'DESC')->paginate(),
 		]);
 	}
@@ -92,7 +95,8 @@ class PertanyaanController extends Controller
     {
         return view('pertanyaan.show', [
 			'pertanyaan' 	=> $pertanyaan,
-			'terkait'	=> Pertanyaan::where('user_id', $pertanyaan->user_id)->show()->limit(5)->get()
+			'terkait'		=> Pertanyaan::where('group_id', $pertanyaan->group_id)
+									->show()->orderByRaw('RAND()')->limit(5)->get()
 		]);
     }
 

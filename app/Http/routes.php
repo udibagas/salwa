@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('lokasi', 'LokasiController');
 	Route::resource('area', 'AreaController');
 
-	Route::post('forum/comment', 'ForumController@comment');
+	Route::post('forum/comment/{forum}', 'ForumController@comment');
 	Route::put('pertanyaan/{pertanyaan}/simpan-jawaban', 'PertanyaanController@simpanJawaban');
 	Route::get('pertanyaan/jawab', 'PertanyaanController@jawab');
 

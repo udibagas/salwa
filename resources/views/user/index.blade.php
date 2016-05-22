@@ -29,11 +29,11 @@
 				<th>#</th>
 				<th>Username</th>
 				<th>Display Name</th>
-				<th>Jenis Kelamin</th>
+				<th>Sex</th>
 				<th>Email</th>
 				<th>Role</th>
 				<th>Active</th>
-				<th>Member Since</th>
+				<th>Join</th>
 				<th style="width:170px;">Action</th>
 			</tr>
 			{!! Form::open(['method' => 'GET']) !!}

@@ -10,12 +10,12 @@
 {!! Form::close() !!}
 
 <div class="list-group hidden-xs">
-	<a href="/mp3?search={{ request('search') }}" class="list-group-item @if (request('group_id') == null) active @endif">
-		<i class="fa fa-hashtag"></i> Semua Kategori
+	<a href="/audio?search={{ request('search') }}" class="list-group-item @if (request('group_id') == null) active @endif">
+		<i class="fa fa-hashtag"></i> Semua Kategori <span class="pull-right label label-default">{{ App\Mp3::count() }} file</span>
 	</a>
 	@foreach (\App\Group::audio()->orderBy('group_name', 'ASC')->get() as $g)
-	<a href="/mp3?search={{ request('search') }}&group_id={{ $g->group_id }}" class="list-group-item @if (request('group_id') == $g->group_id) active @endif">
-		<i class="fa fa-hashtag"></i> {{ $g->group_name }} <span class="pull-right label label-default">{{ $g->audios->count() }} info</span>
+	<a href="/audio?search={{ request('search') }}&group_id={{ $g->group_id }}" class="list-group-item @if (request('group_id') == $g->group_id) active @endif">
+		<i class="fa fa-hashtag"></i> {{ $g->group_name }} <span class="pull-right label label-default">{{ $g->audios->count() }} file</span>
 	</a>
 	@endforeach
 </div>

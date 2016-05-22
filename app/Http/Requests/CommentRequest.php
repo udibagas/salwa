@@ -25,9 +25,7 @@ class CommentRequest extends Request
     public function rules()
     {
         return [
-            'forum_id'	=> 'required',
-			// 'user_id'	=> 'required',
-			'description'	=> 'required|min:3',
+			'description'	=> 'required|min:10',
         ];
     }
 }

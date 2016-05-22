@@ -26,6 +26,11 @@ class Pertanyaan extends Model
 		return $this->belongsTo('App\User', 'user_id', 'user_id');
 	}
 
+	public function group()
+	{
+		return $this->belongsTo('App\Group', 'group_id', 'group_id');
+	}
+
 	public function ustadz()
 	{
 		return $this->belongsTo('App\User', 'dijawab_oleh', 'user_id');

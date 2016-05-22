@@ -38,7 +38,14 @@
 
 	</div>
 	<div class="col-md-3">
-		disini nanti ada slider buat hadist
+		<h4 class="title">TERKAIT</h4>
+		<div class="list-group">
+			@foreach ($terkait as $t)
+			<a class="list-group-item" href="/hadist/{{ $t->hadist_id }}-{{ str_slug($t->judul )}}">
+				{{ $t->judul }}
+			</a>
+			@endforeach
+		</div>
 	</div>
 </div>
 

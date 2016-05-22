@@ -35,7 +35,7 @@
 
 		</div>
 		<div class="col-md-3">
-			disini nanti ada slider buat hadist
+			disini nanti ada slider random hadist
 		</div>
 	</div>
 

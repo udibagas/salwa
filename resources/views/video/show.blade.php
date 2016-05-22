@@ -28,7 +28,7 @@
 		<hr />
 
 		@if ($video->url_video_youtube)
-		<iframe width="100%" height="500" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
+		<iframe width="600" height="300" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
 		@endif
 
 		@if (count($video->files))
@@ -46,18 +46,21 @@
         </script>
 		@endif
 
+		<br><br>
+		{{ $video->desc }}
 
-		<!-- @if ($video->files)
+
+		<!-- if ($video->files)
 			<div class="row">
-				@foreach ($video->files()->web()->get() as $f)
+				foreach ($video->files()->web()->get() as $f)
 				<div class="col-md-6">
-					<video width="100%" height="300" controls  poster="/{{ $f->img_file }}" style="width:100%;height:300px;">
-						<source src="/{{ $f->file_upload }}" type="video/flv">
+					<video width="100%" height="300" controls  poster="/{ $f->img_file }}" style="width:100%;height:300px;">
+						<source src="/{ $f->file_upload }}" type="video/flv">
 					</video>
 				</div>
-				@endforeach
+				endforeach
 			</div>
-		@endif -->
+		endif -->
 
 		<hr>
 		@include('layouts._share')

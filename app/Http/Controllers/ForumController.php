@@ -79,7 +79,7 @@ class ForumController extends Controller
         return view('forum.show', [
 			'forum' 	=> $forum,
 			'posts'		=> $forum->posts()->orderBy('created', 'ASC')->paginate(),
-			'terkait'	=> Forum::where('group_id', $forum->group_id)->limit(5)->get(),
+			'terkait'	=> Forum::where('group_id', $forum->group_id)->limit(5)->orderByRaw('RAND()')->get(),
 			'model'		=> new Post
 		]);
     }
@@ -180,12 +180,14 @@ class ForumController extends Controller
 		]);
 	}
 
-	public function comment(CommentRequest $request)
+	public function comment(CommentRequest $request, Forum $forum)
 	{
-		$post = Post::create($request->all());
-		$post->user_id = Auth::user()->user_id;
-		$post->save();
+		$data 				= $request->all();
+		$data['user_id'] 	= auth()->user()->user_id;
+		$data['createdby'] 	= auth()->user()->name;
+		$data['date']		= date('Y-m-d H:i:s');
 
-		return redirect()->action('ForumController@show', ['forum' => $post->forum]);
+		$forum->posts()->create($data);
+		return redirect()->action('ForumController@show', ['forum' => $forum]);
 	}
 }

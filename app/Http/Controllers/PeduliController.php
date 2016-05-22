@@ -25,7 +25,7 @@ class PeduliController extends Controller
 								return $query->where('judul', 'like', '%'.$search.'%');
 							})->when($request->group_id, function($query) use ($request) {
 								return $query->where('group_id', $request->group_id);
-							})->orderBy('updated', 'DESC')->paginate(20)
+							})->orderBy('updated', 'DESC')->paginate(16)
 		]);
     }
 
@@ -97,7 +97,8 @@ class PeduliController extends Controller
     {
         return view('peduli.show', [
 			'peduli' => $peduli,
-			'terkait'	=> Peduli::where('user_id', $peduli->user_id)->limit(4)->get()
+			'terkait'	=> Peduli::where('group_id', $peduli->group_id)
+							->orderBy('updated', 'DESC')->limit(4)->get()
 		]);
     }
 

@@ -25,7 +25,7 @@ class InformasiController extends Controller
 								return $query->where('judul', 'like', '%'.$search.'%');
 							})->when($request->group_id, function($query) use ($request) {
 								return $query->where('group_id', $request->group_id);
-							})->orderBy('updated', 'DESC')->paginate(20)
+							})->orderBy('updated', 'DESC')->paginate(16)
 		]);
     }
 

@@ -24,7 +24,7 @@ class ProdukController extends Controller
 								return $query->where('group_id', $request->group_id);
 							})->when($search, function($query) use ($search) {
 								return $query->where('judul', 'like', '%'.$search.'%');
-							})->orderBy('updated', 'DESC')->paginate(20)
+							})->orderBy('updated', 'DESC')->paginate(16)
 		]);
     }
 

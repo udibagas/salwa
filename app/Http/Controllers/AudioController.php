@@ -90,7 +90,7 @@ class AudioController extends Controller
     {
         return view('audio.show', [
 			'audio' 	=> $audio,
-			'terkait'	=> Mp3::where('user_id', $audio->user_id)->limit(3)->get()
+			'terkait'	=> Mp3::where('group_id', $audio->group_id)->orderBy('created', 'ASC')->get()
 		]);
     }
 

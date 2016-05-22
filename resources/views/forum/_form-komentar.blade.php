@@ -10,13 +10,9 @@
 		</figure>
 	</div>
 	<div class="col-md-10">
-		{{ Form::model($model, [
-			'enctype' => 'multipart/form-data',
-			'method' => 'post',
-			'url' => 'forum/comment'
-		]) }}
+		{{ Form::model($model, ['method' => 'post', 'url' => 'forum/comment/'.$forum->forum_id, 'files' => true]) }}
 
-		{{ Form::hidden('forum_id', $forum->forum_id) }}
+		<!-- {{ Form::hidden('forum_id', $forum->forum_id) }} -->
 
 		<div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
 			{{ Form::textarea('description', $model->description, ['class' => 'summernote', 'placeholder' => 'Tulis Komentar']) }}

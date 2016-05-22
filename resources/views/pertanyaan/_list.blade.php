@@ -15,7 +15,10 @@
 				<div class="panel-body">
 					<header class="text-left">
 						<div class="comment-user">
-							<b><i class="fa fa-user"></i> {{ $p->user ? $p->user->name : '' }}</b><br>
+							<b>
+								<i class="fa fa-user"></i> {{ $p->user ? $p->user->name : '' }}
+								@if ($p->daerah_asal) ({{ $p->daerah_asal }}) @endif
+							</b><br>
 							<em><i class="fa fa-clock-o"></i> {{ $p->updated ? $p->updated->diffForHumans() : "" }}</em>
 						</div>
 					</header>

@@ -92,7 +92,7 @@ class HadistController extends Controller
 			'url'		=> $url,
 			'groupName'	=> $hadist->group->group_name,
 			'hadist' 	=> $hadist,
-			'terkait'	=> Hadist::where('group_id', $hadist->group_id)->limit(3)->get()
+			'terkait'	=> Hadist::where('group_id', $hadist->group_id)->orderByRaw('RAND()')->limit(10)->get()
 		]);
     }
 

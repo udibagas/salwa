@@ -36,7 +36,7 @@
 
 				@include('layouts._share')
 
-				<a href="http://www.salamdakwah.com/{{ $kitab->file_pdf }}" class="btn btn-info"><span class="fa fa-download"></span> Download ({{ $kitab->didownload }}x)</a>
+				<a href="/{{ $kitab->file_pdf }}" class="btn btn-info"><span class="fa fa-download"></span> Download ({{ $kitab->didownload }}x)</a>
 
 			</div>
 
