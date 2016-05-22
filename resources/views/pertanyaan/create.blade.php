@@ -11,7 +11,7 @@
 		]
 	])
 
-@stop
+@endsection
 
 @section('content')
 
@@ -23,11 +23,6 @@
 			<h4 class="title"><i class="fa fa-question-circle-o"></i> INPUT PERTANYAAN</h4>
 			@include('pertanyaan._form', ['url' => '/pertanyaan', 'method' => 'post'])
 		</div>
-
-		<!-- <div class="col-md-3">
-			include('home.sidebar')
-		</div> -->
-
 	</div>
 
-@stop
+@endsection

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Requests\PeduliRequest;
-
 use App\Peduli;
 
 class PeduliController extends Controller
@@ -83,7 +81,6 @@ class PeduliController extends Controller
         }
 
 		Peduli::create($data);
-
 		return redirect('/peduli/admin')->with('success', 'Data berhasil disimpan');
     }
 
@@ -140,7 +137,6 @@ class PeduliController extends Controller
         }
 
 		$peduli->update($data);
-
         return redirect('/peduli/admin')->with('success', 'Data berhasil disimpan');
     }
 

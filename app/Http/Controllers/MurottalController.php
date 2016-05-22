@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Requests\MurottalRequest;
-
 use App\Murottal;
 
 class MurottalController extends Controller
@@ -76,7 +74,6 @@ class MurottalController extends Controller
         }
 
 		Murottal::create($data);
-
 		return redirect('/murottal/admin')->with('success', 'Murottal berhasil disimpan');
     }
 
@@ -129,7 +126,6 @@ class MurottalController extends Controller
         }
 
 		$murottal->update($data);
-
 		return redirect('/murottal/admin')->with('success', 'Murottal berhasil disimpan');
     }
 
@@ -144,4 +140,9 @@ class MurottalController extends Controller
         $murottal->delete();
 		return redirect('/murottal/admin');
     }
+
+	public function download(Murottal $murottal)
+	{
+		return response()->download($murottal->file_mp3);
+	}
 }

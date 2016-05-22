@@ -16,7 +16,12 @@
 					<header class="text-left">
 						<div class="comment-user">
 							<b><i class="fa fa-user"></i> {{ $p->ustadz ? $p->ustadz->name : '' }}</b><br>
-							<em><i class="fa fa-clock-o"></i> {{ $p->tgl_jawab ? $p->tgl_jawab->diffForHumans() : "" }}</em>
+							<em>
+								@if ($p->group)
+								<a href="/pertanyaan/?group_id={{ $p->group_id }}"><i class="fa fa-hashtag"></i> {{ $p->group->group_name }}</a>
+								@endif
+								<i class="fa fa-clock-o"></i> {{ $p->tgl_jawab ? $p->tgl_jawab->diffForHumans() : "" }}
+							</em>
 						</div>
 					</header>
 
@@ -27,8 +32,7 @@
 					</div>
 					@if (auth()->check() && auth()->user()->user_id == $p->dijawab_oleh)
 					<p class="text-right">
-						<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
-						<a href="/pertanyaan/{{$p->pertanyaan_id}}/delete" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+						<a href="/pertanyaan/{{$p->pertanyaan_id}}/jawab" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit Jawaban</a>
 					</p>
 					@endif
 				</div>

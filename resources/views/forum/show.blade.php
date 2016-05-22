@@ -18,7 +18,7 @@
 
 <div class="row">
 	<div class="col-md-3">
-		@include('forum.list-category', [
+		@include('forum._group', [
 			'group' => $forum->group,
 			'groups' => \App\Group::forum()->orderBy('group_name', 'ASC')->get()
 		])

@@ -91,4 +91,34 @@ class User extends Authenticatable
         return self::roleList($this->user_status);
     }
 
+	public function hasRole($role)
+	{
+		return $this->user_status == $role;
+	}
+
+	public function isAdmin()
+	{
+		return $this->user_status == self::ROLE_ADMIN;
+	}
+
+	public function isUstadz()
+	{
+		return $this->user_status == self::ROLE_USTADZ;
+	}
+
+	public function isStaff()
+	{
+		return $this->user_status == self::ROLE_STAFF;
+	}
+
+	public function isAktualita()
+	{
+		return $this->user_status == self::ROLE_AKTUALITA;
+	}
+
+	public function isMember()
+	{
+		return $this->user_status == self::ROLE_MEMBER;
+	}
+
 }

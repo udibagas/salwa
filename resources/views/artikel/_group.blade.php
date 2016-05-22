@@ -12,11 +12,12 @@
 <div class="list-group hidden-xs">
 	<a href="/artikel?search={{ request('search') }}" class="list-group-item @if (request('group_id') == null) active @endif">
 		<i class="fa fa-hashtag"></i> Semua Kategori
+		<span class="badge">{{ \App\Artikel::count() }}</span>
 	</a>
 	@foreach (\App\Group::artikel()->orderBy('group_name', 'ASC')->get() as $g)
 	<a href="/artikel?search={{ request('search') }}&group_id={{ $g->group_id }}" class="list-group-item @if (request('group_id') == $g->group_id) active @endif">
 		<i class="fa fa-hashtag"></i> {{ $g->group_name }}
-		<!-- <span class="pull-right label label-default">{{ $g->artikels->count() }} artikel</span> -->
+		<span class="badge">{{ $g->artikels->count() }}</span>
 	</a>
 	@endforeach
 </div>

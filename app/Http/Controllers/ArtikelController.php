@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Requests\ArtikelRequest;
-
 use App\Artikel;
 
 class ArtikelController extends Controller

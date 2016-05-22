@@ -1,25 +1,3 @@
-<h4 class="title hidden-xs"> Hashtag Pertanyaan</h4>
-@if (auth()->check())
-<p>
-	<a href="/pertanyaan/create" class="btn btn-info form-control">
-		<i class="fa fa-plus-circle"></i> Input Pertanyaan
-	</a>
-</p>
-@else
-	<div class="alert alert-danger text-center">
-		Silakan <a href="/login">Login</a> untuk input pertanyaan.
-	</div>
-@endif
-
-{!! Form::open(['url' => '/pertanyaan', 'method' => 'GET']) !!}
-	<div class="form-group">
-		<div class="input-group">
-			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search Pertanyaan" class="form-control">
-			<div class="input-group-addon"><i class="fa fa-search"></i></div>
-		</div>
-	</div>
-{!! Form::close() !!}
-
 <div class="list-group hidden-xs">
 	<a href="/pertanyaan?search=Aqidah" class="list-group-item"><i class="fa fa-hashtag"></i> Aqidah</a>
 	<a href="/pertanyaan?search=Aqiqah" class="list-group-item"><i class="fa fa-hashtag"></i> Aqiqah</a>

@@ -19,7 +19,7 @@
 		<div class="col-md-3">
 			@include('hadist._group')
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-9">
 			<h4 class="title"><i class="fa fa-list-alt"></i> HADIST</h4>
 				<div class="list-group">
 					@foreach ($hadists as $h)
@@ -34,9 +34,9 @@
 			</nav>
 
 		</div>
-		<div class="col-md-3">
+		<!-- <div class="col-md-3">
 			disini nanti ada slider random hadist
-		</div>
+		</div> -->
 	</div>
 
 @stop

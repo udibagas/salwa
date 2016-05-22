@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use Auth;
 
 class PertanyaanRequest extends Request
 {
@@ -14,7 +13,7 @@ class PertanyaanRequest extends Request
      */
     public function authorize()
     {
-        return Auth::check();
+        return auth()->check();
     }
 
     /**
@@ -28,6 +27,7 @@ class PertanyaanRequest extends Request
             'judul_pertanyaan'	=> 'required',
             'daerah_asal'		=> 'required',
             'ket_pertanyaan'	=> 'required',
+            'group_id'			=> 'required',
         ];
     }
 }

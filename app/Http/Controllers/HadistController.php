@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\HadistRequest;
-use Response;
-
 use App\Hadist;
 
 class HadistController extends Controller
@@ -23,10 +21,36 @@ class HadistController extends Controller
 
 		return view('hadist.index', [
 			'hadists' 	=> Hadist::when($request->group_id, function($query) use ($request) {
-							return $query->where('group_id', $request->group_id);
+							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%');
-						})->orderBy('updated', 'DESC')->paginate()
+						})->orderBy('hadist.updated', 'DESC')->paginate()
+		]);
+    }
+
+    public function indexDoa(Request $request)
+    {
+		$search = str_replace(' ', '%', $request->search);
+
+		return view('hadist.index', [
+			'hadists' 	=> Hadist::doa()->when($request->group_id, function($query) use ($request) {
+							return $query->where('hadist.group_id', $request->group_id);
+						})->when($search, function($query) use ($search) {
+							return $query->where('judul', 'like', '%'.$search.'%');
+						})->orderBy('hadist.updated', 'DESC')->paginate()
+		]);
+    }
+
+    public function indexDzikir(Request $request)
+    {
+		$search = str_replace(' ', '%', $request->search);
+
+		return view('hadist.index', [
+			'hadists' 	=> Hadist::dzikir()->when($request->group_id, function($query) use ($request) {
+							return $query->where('hadist.group_id', $request->group_id);
+						})->when($search, function($query) use ($search) {
+							return $query->where('judul', 'like', '%'.$search.'%');
+						})->orderBy('hadist.updated', 'DESC')->paginate()
 		]);
     }
 
@@ -50,7 +74,7 @@ class HadistController extends Controller
      */
     public function create()
     {
-        return view('hadist.create', ['hadist' => new Hadist(['hadist' => 'Hadist', 'penjelasan' => 'Penjelasan'])]);
+        return view('hadist.create', ['hadist' => new Hadist]);
     }
 
     /**

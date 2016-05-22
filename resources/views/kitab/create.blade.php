@@ -6,7 +6,7 @@
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'/kitab/admin' => 'INFORMASI',
+			'/kitab/admin' => 'KITAB & TERJEMAHAN',
 			'#' => 'New Kitab',
 		]
 	])

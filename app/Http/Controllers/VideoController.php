@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Requests\VideoRequest;
-
 use App\Video;
 
 class VideoController extends Controller
@@ -85,7 +83,6 @@ class VideoController extends Controller
         }
 
 		Video::create($data);
-
 		return redirect('/video/admin')->with('success', 'Video berhasil disimpan');
     }
 
@@ -139,7 +136,6 @@ class VideoController extends Controller
         }
 
 		$video->update($data);
-
         return redirect('/video/admin')->with('success', 'Video berhasil disimpan');
     }
 

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class VideoRequest extends Request
+class BukuRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,11 @@ class VideoRequest extends Request
     public function rules()
     {
         return [
-			'title'		=> 'required',
-			'user_id'	=> 'required',
-			// 'img'		=> 'required|image',
-			'url_video_youtube'		=> 'required',
+            'judul'		=> 'required',
+            'group_id'	=> 'required',
+            'penulis'	=> 'required',
+            'img'		=> 'image',
+            'file'		=> 'mimes:pdf',
         ];
     }
 }

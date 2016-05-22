@@ -1,10 +1,10 @@
 TODO
 
-1. Beresin kitab & terjemahan : CMS CRUD + Filter, Frontend
 2. Beresin CMS sunnah go (kajian)
 3. Frontend Forum (CRUD)
 4. halaman profile
-5. Halaman murottal
-6. Form pertanyaan kasih "asal", rapiin
+5. Halaman murottal (menu play & download)
 7. Ubah longtext beberapa field (decription post, pertanyaan, artikel, peduli, informasi, dsb)
 8. Add close di salwa peduli. Atau add archived di semua jenis post (peduli, informasi, video, audio, artikel)
+9. Hapus file kalau delete database
+10. SCRIPT INJECTION!!!!!!

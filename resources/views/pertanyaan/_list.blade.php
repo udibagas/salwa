@@ -19,7 +19,12 @@
 								<i class="fa fa-user"></i> {{ $p->user ? $p->user->name : '' }}
 								@if ($p->daerah_asal) ({{ $p->daerah_asal }}) @endif
 							</b><br>
-							<em><i class="fa fa-clock-o"></i> {{ $p->updated ? $p->updated->diffForHumans() : "" }}</em>
+							<em>
+								@if ($p->group)
+								<a href="/pertanyaan/?group_id={{ $p->group_id }}"><i class="fa fa-hashtag"></i> {{ $p->group->group_name }}</a>
+								@endif
+								<i class="fa fa-clock-o"></i> {{ $p->updated ? $p->updated->diffForHumans() : "" }}
+							</em>
 						</div>
 					</header>
 
@@ -30,7 +35,7 @@
 						<p>{!! nl2br($p->ket_pertanyaan) !!}</p>
 
 					</div>
-					@if (auth()->check() && auth()->user()->user_id == $p->user_id)
+					@if (auth()->check() && auth()->user()->user_id == $p->user_id && $p->jawaban == '')
 					<p class="text-right">
 						<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
 						<a href="/pertanyaan/{{$p->pertanyaan_id}}/delete" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>

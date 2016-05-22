@@ -37,7 +37,7 @@
 						<td>{{ $m->nama_surat }}</td>
 						<td style="width:200px;">
 							<a href="/{{ $m->file_mp3 }}" class="btn btn-info play"><span class="fa fa-play"></span> Play</a>
-							<a href="/{{ $m->file_mp3 }}" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
+							<a href="/murottal/{{ $m->murotal_id }}/download" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
 						</td>
 					</tr>
 					@endforeach

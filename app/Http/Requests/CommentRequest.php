@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use Auth;
 
 class CommentRequest extends Request
 {
@@ -14,7 +13,7 @@ class CommentRequest extends Request
      */
     public function authorize()
     {
-        return Auth::check();
+        return auth()->check();
     }
 
     /**

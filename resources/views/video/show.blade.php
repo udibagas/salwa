@@ -17,9 +17,7 @@
 
 <div class="row">
 	<div class="col-md-3">
-		@include('video._group', [
-			'groups' => \App\User::ustadz()->has('videos')->orderBy('name', 'ASC')->get()
-		])
+		@include('video._group')
 	</div>
 	<div class="col-md-9">
 		<h1>{{ $video->title }}</h1>

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Requests\ImageRequest;
-
 use App\SalwaImages;
 
 class ImageController extends Controller
@@ -91,7 +89,7 @@ class ImageController extends Controller
     {
         return view('image.show', [
 			'image' 	=> $image,
-			'terkait'	=> SalwaImages::limit(3)->get()
+			'terkait'	=> SalwaImages::where('group_id', $image->group_id)->orderByRaw('RAND()')->limit(3)->get()
 		]);
     }
 

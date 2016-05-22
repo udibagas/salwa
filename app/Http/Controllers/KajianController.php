@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use App\Http\Requests\KajianRequest;
 use App\Kajian;
-use Response;
 
 class KajianController extends Controller
 {
@@ -15,7 +14,7 @@ class KajianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function admin()
     {
         return view('kajian.admin', [
 			'kajians' => Kajian::when($request->id_lokasi, function($query) use($request) {
@@ -29,7 +28,7 @@ class KajianController extends Controller
 						})->when($request->today, function($query) {
 							return $query->whereRaw('DATE(kajian_dates) = '.date('Y-m-d'));
 						})->orderBy('created', 'ASC')->paginate()
-		])
+		]);
     }
 
     /**
@@ -131,7 +130,7 @@ class KajianController extends Controller
 	{
 		$kajian->delete();
 
-		return Response::json([
+		return response()->json([
 			'succes'	=> true,
 			'msg'		=> 'Data berhasil dihapus',
 			'error'		=> false,

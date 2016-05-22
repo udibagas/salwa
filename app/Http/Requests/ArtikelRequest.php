@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use App\User;
-use Auth;
 
 class ArtikelRequest extends Request
 {
@@ -15,7 +13,7 @@ class ArtikelRequest extends Request
      */
     public function authorize()
     {
-        return Auth::check() && Auth::user()->user_status == User::ROLE_ADMIN;
+        return auth()->check() && auth()->user()->isAdmin();
     }
 
     /**

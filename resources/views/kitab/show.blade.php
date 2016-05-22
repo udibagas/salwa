@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title') Kitab & Terjemahan @stop
+@section('title', 'Kitab & Terjemahan : '. $kitab->judul)
 
 @section('breadcrumbs')
 
@@ -15,13 +15,15 @@
 
 @section('content')
 
-
 	<div class="row">
+		<div class="col-md-3">
+			@include('kitab._group')
+		</div>
 		<div class="col-md-9">
 			<h4 class="title"><i class="fa fa-book"></i> KITAB & TERJEMAHAN</h4>
 			<div class="media">
 				<div class="media-left">
-					<img class="media-object" src="/{{ $kitab->img_buku }}" alt="..." style="width:200px;">
+					<img class="media-object" src="/{{ $kitab->img_buku }}" alt="" style="width:200px;">
 				</div>
 				<div class="media-body">
 					<h3 class="media-heading">{{ $kitab->judul }}</h3>
@@ -36,14 +38,17 @@
 
 				@include('layouts._share')
 
-				<a href="/{{ $kitab->file_pdf }}" class="btn btn-info"><span class="fa fa-download"></span> Download ({{ $kitab->didownload }}x)</a>
+				<a href="/kitab/{{ $kitab->buku_id }}/download" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
 
 			</div>
 
-		</div>
+			<hr>
 
-		<div class="col-md-3">
-			@include('home.sidebar')
+			<h4 class="title">KITAB TERKAIT</h4>
+			<div class="row no-gutter">
+				@each('kitab._list', $terkait, 'b')
+			</div>
+
 		</div>
 	</div>
 

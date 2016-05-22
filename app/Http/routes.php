@@ -11,66 +11,93 @@
 |
 */
 
+use App\User;
+
 Route::get('/', 'HomeController@index');
-Route::get('/forum/search', 'ForumController@search');
+Route::get('audio/{audio}/download', 'AudioController@download');
+Route::get('doa', 'HadistController@indexDoa');
+Route::get('dzikir', 'HadistController@indexDzikir');
+Route::get('forum/search', 'ForumController@search');
 Route::get('forum-category/{group}', 'ForumController@category');
-
-Route::get('/doa', 'HadistController@index');
-Route::get('/dzikir', 'HadistController@index');
-
-Route::auth();
+Route::get('kitab/{kitab}/download', 'KitabController@download');
+Route::get('murottal/{murottal}/download', 'MurottalController@download');
 
 Route::group(['middleware' => 'auth'], function() {
 
-	Route::resource('user', 'UserController');
-	Route::resource('group', 'GroupController');
-	Route::resource('lokasi', 'LokasiController');
-	Route::resource('area', 'AreaController');
+	Route::group(['middleware' => 'role:'.User::ROLE_ADMIN], function() {
 
+		Route::resource('area', 'AreaController');
+		Route::get('cms', 'CmsController@index');
+		Route::resource('group', 'GroupController');
+		Route::resource('lokasi', 'LokasiController');
+		Route::resource('user', 'UserController');
+
+		Route::get('artikel/admin', 'ArtikelController@admin');
+		Route::get('audio/admin', 'AudioController@admin');
+		Route::get('forum/admin', 'ForumController@admin');
+		Route::get('hadist/admin', 'HadistController@admin');
+		Route::get('image/admin', 'ImageController@admin');
+		Route::get('informasi/admin', 'InformasiController@admin');
+		Route::get('kajian/admin', 'KajianController@admin');
+		Route::get('kitab/admin', 'KitabController@admin');
+		Route::get('murottal/admin', 'MurottalController@admin');
+		Route::get('peduli/admin', 'PeduliController@admin');
+		Route::get('pertanyaan/admin', 'PertanyaanController@admin');
+		Route::get('ustadz/admin', 'UstadzController@admin');
+		Route::get('video/admin', 'VideoController@admin');
+
+		// khusus admin
+		Route::resource('artikel', 'ArtikelController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('audio', 'AudioController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('banner', 'BannerController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('hadist', 'HadistController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('image', 'ImageController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('informasi', 'InformasiController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('kitab', 'KitabController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('murottal', 'MurottalController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('peduli', 'PeduliController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('produk', 'ProdukController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('promo', 'PromoController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('ustadz', 'UstadzController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('video', 'VideoController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+	});
+
+	//  khusus ustadz: jawab pertanyaan, simpan jawaban
+	Route::group(['middleware' => 'role:'.User::ROLE_USTADZ], function() {
+		Route::get('pertanyaan/{pertanyaan}/jawab', 'PertanyaanController@jawab');
+		Route::put('pertanyaan/{pertanyaan}/simpan-jawaban', 'PertanyaanController@simpanJawaban');
+	});
+
+	Route::resource('forum', 'ForumController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 	Route::post('forum/comment/{forum}', 'ForumController@comment');
-	Route::put('pertanyaan/{pertanyaan}/simpan-jawaban', 'PertanyaanController@simpanJawaban');
-	Route::get('pertanyaan/jawab', 'PertanyaanController@jawab');
-
 	Route::get('me', 'UserController@me');
-	Route::get('cms', 'CmsController@index');
-	Route::get('pertanyaan/create', 'PertanyaanController@create');
-	Route::get('pertanyaan/admin', 'PertanyaanController@admin');
-	Route::get('artikel/admin', 'ArtikelController@admin');
-	Route::get('informasi/admin', 'InformasiController@admin');
-	Route::get('kajian/admin', 'KajianController@admin');
-	Route::get('peduli/admin', 'PeduliController@admin');
-	Route::get('kitab/admin', 'KitabController@admin');
-	Route::get('pertanyaan/{pertanyaan}/jawab', 'PertanyaanController@jawab');
-	Route::get('forum/admin', 'ForumController@admin');
-	Route::get('hadist/admin', 'HadistController@admin');
-	Route::get('video/admin', 'VideoController@admin');
-	Route::get('audio/admin', 'AudioController@admin');
-	Route::get('murottal/admin', 'MurottalController@admin');
-	Route::get('image/admin', 'ImageController@admin');
-	Route::get('ustadz/admin', 'UstadzController@admin');
+	Route::resource('pertanyaan', 'PertanyaanController', ['except' => ['index', 'show']]);
+
 });
 
-Route::resource('artikel', 'ArtikelController');
-Route::resource('banner', 'BannerController');
-Route::resource('forum', 'ForumController');
-Route::resource('hadist', 'HadistController');
-Route::resource('image', 'ImageController');
-Route::resource('informasi', 'InformasiController');
-Route::resource('kitab', 'KitabController');
-Route::resource('audio', 'AudioController');
-Route::resource('murottal', 'MurottalController');
-Route::resource('peduli', 'PeduliController');
-Route::resource('pertanyaan', 'PertanyaanController');
-Route::resource('produk', 'ProdukController');
-Route::resource('promo', 'PromoController');
-Route::resource('ustadz', 'UstadzController');
-Route::resource('video', 'VideoController');
+Route::resource('artikel', 'ArtikelController', ['only' => ['index', 'show']]);
+Route::resource('banner', 'BannerController', ['only' => ['index', 'show']]);
+Route::resource('forum', 'ForumController', ['only' => ['index', 'show']]);
+Route::resource('hadist', 'HadistController', ['only' => ['index', 'show']]);
+Route::resource('image', 'ImageController', ['only' => ['index', 'show']]);
+Route::resource('informasi', 'InformasiController', ['only' => ['index', 'show']]);
+Route::resource('kitab', 'KitabController', ['only' => ['index', 'show']]);
+Route::resource('audio', 'AudioController', ['only' => ['index', 'show']]);
+Route::resource('murottal', 'MurottalController', ['only' => ['index', 'show']]);
+Route::resource('peduli', 'PeduliController', ['only' => ['index', 'show']]);
+Route::resource('produk', 'ProdukController', ['only' => ['index', 'show']]);
+Route::resource('promo', 'PromoController', ['only' => ['index', 'show']]);
+Route::resource('ustadz', 'UstadzController', ['only' => ['index', 'show']]);
+Route::resource('video', 'VideoController', ['only' => ['index', 'show']]);
+Route::resource('pertanyaan', 'PertanyaanController', ['only' => ['index', 'show']]);
+
+Route::auth();
 
 Route::get('design', function() {
 	return '<img src="/images/design.jpg" style="width:100%" />';
 });
 
-Route::group(['prefix' => 'api'], function() {
+Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
 	Route::get('lokasi', 'LokasiController@apiIndex');
 	Route::get('area', 'AreaController@apiIndex');
 

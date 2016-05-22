@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use Auth;
-use App\User;
 
 class JawabanRequest extends Request
 {
@@ -15,7 +13,7 @@ class JawabanRequest extends Request
      */
     public function authorize()
     {
-        return Auth::check() && (Auth::user()->user_status == User::ROLE_USTADZ || Auth::user()->user_status == User::ROLE_ADMIN);
+        return auth()->check() && auth()->user()->isUstadz();
     }
 
     /**

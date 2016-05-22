@@ -27,7 +27,7 @@
 			@include('pertanyaan._jawaban', ['p' => $pertanyaan])
 		@else
 
-			@if (auth()->user()->user_status == \App\User::ROLE_ADMIN || auth()->user()->user_status == \App\User::ROLE_USTADZ)
+			@if (auth()->user() && auth()->user()->isUstadz())
 
 				<div class="row">
 					<div class="col-md-2 hidden-xs">
@@ -46,8 +46,9 @@
 				</div>
 
 			@else
+				<br>
 				<div class="alert alert-danger text-center">
-					Belum ada jawaban untuk pertanyaan terkait.
+					<strong>Belum ada jawaban untuk pertanyaan terkait.</strong>
 				</div>
 			@endif
 		@endif

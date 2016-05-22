@@ -31,6 +31,7 @@
 
 		<hr>
 		@include('layouts._share')
+		<a href="/audio/{{ $audio->mp3_download_id }}/download" class="btn btn-primary"><i class="fa fa-download"></i> Download</a>
 
 	</div>
 	<div class="col-md-3">

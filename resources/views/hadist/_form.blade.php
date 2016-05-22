@@ -35,7 +35,7 @@
 	<div class="form-group{{ $errors->has('hadist') ? ' has-error' : '' }}">
 		<label for="hadist" class="col-md-2 control-label">Hadist/Doa/Dzikir:</label>
 		<div class="col-md-10">
-			{{ Form::textarea('hadist', $hadist->hadist, ['class' => 'summernote', 'placeholder' => 'Hadist']) }}
+			{{ Form::textarea('hadist', $hadist->hadist, ['class' => 'form-control', 'rows' => '4', 'placeholder' => 'Hadist']) }}
 
 			@if ($errors->has('hadist'))
 			<span class="help-block">

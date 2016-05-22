@@ -30,10 +30,10 @@
 				</div>
 			@endif
 
-			@each('pertanyaan._list', $pertanyaans, 'p');
+			@each('pertanyaan._list', $pertanyaans, 'p')
 
 			<nav class="text-center">
-				{!! $pertanyaans->appends(['search' => request('search')])->links() !!}
+				{!! $pertanyaans->appends(['search' => request('search'),'group_id' => request('group_id')])->links() !!}
 			</nav>
 
 		</div>

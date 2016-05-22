@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use Auth;
 
 class PostRequest extends Request
 {
@@ -14,7 +13,7 @@ class PostRequest extends Request
      */
     public function authorize()
     {
-        return Auth::check();
+        return auth()->check();
     }
 
     /**

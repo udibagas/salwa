@@ -12,10 +12,12 @@
 <div class="list-group hidden-xs">
 	<a href="/kitab?search={{ request('search') }}" class="list-group-item @if (request('group_id') == null) active @endif">
 		<i class="fa fa-hashtag"></i> Semua Kategori
+		<span class="badge">{{ \App\Buku::count() }}</span>
 	</a>
 	@foreach (\App\Group::kitab()->orderBy('group_name', 'ASC')->get() as $g)
 	<a href="/kitab?search={{ request('search') }}&group_id={{ $g->group_id }}" class="list-group-item @if (request('group_id') == $g->group_id) active @endif">
-		<i class="fa fa-hashtag"></i> {{ $g->group_name }} <span class="pull-right label label-default">{{ $g->kitabs->count() }} info</span>
+		<i class="fa fa-hashtag"></i> {{ $g->group_name }}
+		<span class="badge">{{ $g->kitabs->count() }}</span>
 	</a>
 	@endforeach
 </div>

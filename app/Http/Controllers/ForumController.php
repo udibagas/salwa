@@ -7,13 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\ForumRequest;
-
 use App\Forum;
 use App\Group;
 use App\Post;
-use App\User;
-
-use Auth;
 
 class ForumController extends Controller
 {
@@ -92,7 +88,7 @@ class ForumController extends Controller
      */
     public function edit(Forum $forum)
     {
-		$view = auth()->user()->user_status == User::ROLE_ADMIN ? 'forum.edit-admin' : 'forum.edit';
+		$view = auth()->user()->isAdmin() ? 'forum.edit-admin' : 'forum.edit';
         return view($view, ['forum' => $forum]);
     }
 
@@ -116,7 +112,7 @@ class ForumController extends Controller
 			'updatedby'		=> auth()->user()->name,
 		]);
 
-		if (auth()->user()->user_status == User::ROLE_ADMIN) {
+		if (auth()->user()->isAdmin()) {
 			return redirect('forum/admin')->with('success', 'Forum berhasil disimpan');
 		} else {
 			return redirect()->action('ForumController@show', ['forum' => $forum])->with('success', 'Forum berhasil disimpan');

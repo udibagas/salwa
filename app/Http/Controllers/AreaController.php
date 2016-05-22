@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Requests\AreaRequest;
 use App\Area;
-use Response;
 
 class AreaController extends Controller
 {

@@ -20,7 +20,7 @@
 	<a class="list-group-item" href="/produk?search={{ request('search')}}">
 		<i class="fa fa-tags"></i> Produk
 	</a>
-	<a class="list-group-item" href="/hadist?search={{ request('search')}}">
+	<a class="list-group-item" href="/doa?search={{ request('search')}}">
 		<i class="fa fa-heartbeat"></i> Do'a
 	</a>
 	<a class="list-group-item" href="/dzikir?search={{ request('search')}}">

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\GroupRequest;
-
 use App\Group;
 
 class GroupController extends Controller
@@ -133,11 +132,10 @@ class GroupController extends Controller
 
 		if (count($group->forums) || count($group->artikels)
 		|| count($group->informasis) || count($group->hadists)
-		|| count($group->videos) || count($group->audios)
-		|| count($group->murottals) || count($group->pedulis)
-		|| count($group->pertanyaans) || count($group->kitabs)
-		|| count($group->produks) || count($group->images)
-		|| count($group->promos))
+		|| count($group->audios) || count($group->murottals)
+		|| count($group->pedulis) || count($group->pertanyaans)
+		|| count($group->kitabs) || count($group->produks)
+		|| count($group->images) || count($group->promos))
 		{
 			return redirect('/group')->with('error', 'Group gagal dihapus karena digunakan');
 		}

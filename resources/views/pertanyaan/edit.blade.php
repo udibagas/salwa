@@ -7,7 +7,7 @@
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
 			'/pertanyaan' => 'TANYA USTADZ',
-			'/pertanyaan/'.$model->pertanyaan_id => $model->judul_pertanyaan,
+			'/pertanyaan/'.$pertanyaan->pertanyaan_id => $pertanyaan->judul_pertanyaan,
 			'#' => 'Edit Pertanyaan'
 		]
 	])
@@ -18,17 +18,12 @@
 
 	<div class="row">
 		<div class="col-md-3">
-			@include('pertanyaan._hashtag')
+			@include('pertanyaan._group')
 		</div>
 		<div class="col-md-9">
 			<h4 class="title"><i class="fa fa-question-circle-o"></i> EDIT PERTANYAAN</h4>
-			@include('pertanyaan._form', ['url' => '/pertanyaan/'.$model->pertanyaan_id, 'method' => 'put'])
+			@include('pertanyaan._form', ['url' => '/pertanyaan/'.$pertanyaan->pertanyaan_id, 'method' => 'PUT'])
 		</div>
-
-		<!-- <div class="col-md-3">
-			include('home.sidebar')
-		</div> -->
-
 	</div>
 
 @stop

@@ -43,7 +43,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/me"><i class="fa fa-user"></i> Profile</a></li>
-			@if (auth()->user()->user_status == \App\User::ROLE_ADMIN)
+			@if (auth()->user()->isAdmin())
   		  <li class="@if (url()->current() == url('cms')) active @endif"><a href="/cms"><i class="fa fa-th"></i> CMS</a></li>
   		  @endif
             <!-- <li role="separator" class="divider"></li> -->

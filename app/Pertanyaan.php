@@ -13,7 +13,7 @@ class Pertanyaan extends Model
 	protected $dates = ['created', 'updated', 'tgl_tanya', 'tgl_jawab'];
 
 	protected $fillable = [
-		'judul_pertanyaan', 'ket_pertanyaan', 'jawaban', 'dijawab_oleh', 'status',
+		'judul_pertanyaan', 'ket_pertanyaan', 'jawaban', 'dijawab_oleh', 'status', 'group_id',
 		'tgl_tanya', 'tgl_jawab', 'user_id', 'kd_judul', 'daerah_asal', 'createdby', 'updatedby'
 	];
 

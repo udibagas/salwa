@@ -40,7 +40,7 @@
 						<td>{{ $m->updated->diffForHumans() }}</td>
 						<td style="width:200px;">
 							<a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}" class="btn btn-info"><i class="fa fa-play"></i> Play</a>
-							<a href="/{{ $m->file_mp3 }}" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
+							<a href="/audio/{{ $m->mp3_download_id }}/download" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
 						</td>
 					</tr>
 					@endforeach

@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Requests\PertanyaanRequest;
 use App\Http\Requests\JawabanRequest;
-
 use App\Pertanyaan;
-use App\User;
-use Auth;
 
 class PertanyaanController extends Controller
 {
@@ -21,11 +17,13 @@ class PertanyaanController extends Controller
      */
 	public function index(Request $request)
 	{
-		$search = str_replace(' ', '%', $request->search);
+		$search 	= str_replace(' ', '%', $request->search);
+		$showOnly 	= (auth()->guest() || (auth()->check() && !auth()->user()->isUstadz()));
 
 		return view('pertanyaan.index', [
-			'pertanyaans' => Pertanyaan::show()
-								->when($search, function($query) use ($search) {
+			'pertanyaans' => Pertanyaan::when($showOnly, function($query) {
+									return $query->where('status', 's');
+								})->when($search, function($query) use ($search) {
 									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
 								})->when($request->group_id, function($query) use ($request) {
 									return $query->where('group_id', $request->group_id);
@@ -65,7 +63,7 @@ class PertanyaanController extends Controller
      */
     public function create()
     {
-        return view('pertanyaan.create', ['model' => new Pertanyaan]);
+        return view('pertanyaan.create', ['pertanyaan' => new Pertanyaan]);
     }
 
     /**
@@ -77,6 +75,7 @@ class PertanyaanController extends Controller
     public function store(PertanyaanRequest $request)
     {
 		$data 				= $request->all();
+		$data['kd_judul']	= str_slug($request->judul_pertanyaan);
 		$data['user_id']	= auth()->user()->user_id;
 		$data['tgl_tanya'] 	= date('Y-m-d H:i:s');
 		$data['createdby'] 	= auth()->user()->name;
@@ -108,7 +107,8 @@ class PertanyaanController extends Controller
      */
     public function edit(Pertanyaan $pertanyaan)
     {
-        return view('pertanyaan.edit', ['pertanyaan' => $pertanyaan]);
+		$view = (auth()->user()->isAdmin()) ? 'pertanyaan.edit-admin' : 'pertanyaan.edit';
+        return view($view, ['pertanyaan' => $pertanyaan]);
     }
 
     public function jawab(Pertanyaan $pertanyaan)
@@ -118,18 +118,13 @@ class PertanyaanController extends Controller
 
 	public function simpanJawaban(JawabanRequest $request, Pertanyaan $pertanyaan)
 	{
-		$data = $request->all();
-		$data['dijawab_oleh'] = auth()->user()->user_id;
-		$data['tgl_jawab'] = date('Y-m-d H:i:s');
+		$data 					= $request->all();
+		$data['dijawab_oleh'] 	= auth()->user()->user_id;
+		$data['tgl_jawab'] 		= date('Y-m-d H:i:s');
+
 		$pertanyaan->update($data);
-
-		if (auth()->user()->user_status == User::ROLE_ADMIN) {
-			return redirect('/pertanyaan/admin')->with('success', 'Jawaban telah disimpan');
-		} else if (auth()->user()->user_status == User::ROLE_USTADZ) {
-			return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan])
-							->with('success', 'Jawaban telah disimpan');
-		}
-
+		return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan])
+						->with('success', 'Jawaban telah disimpan');
 	}
 
     /**
@@ -141,8 +136,17 @@ class PertanyaanController extends Controller
      */
     public function update(PertanyaanRequest $request, Pertanyaan $pertanyaan)
     {
-		$pertanyaan->update($request->all());
-		return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan]);
+		$data 				= $request->all();
+		$data['updatedby']	= auth()->user()->name;
+		$data['kd_judul']	= str_slug($request->judul_pertanyaan);
+
+		$pertanyaan->update($data);
+
+		if (auth()->user()->isAdmin()) {
+			return redirect('/pertanyaan/admin');
+		} else {
+			return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan]);
+		}
     }
 
     /**
@@ -154,6 +158,11 @@ class PertanyaanController extends Controller
     public function destroy(Pertanyaan $pertanyaan)
     {
         $pertanyaan->delete();
-		return redirect('/pertanyaan/admin');
+
+		if (auth()->user()->isAdmin()) {
+			return redirect('/pertanyaan/admin');
+		} else {
+			return redirect('/pertanyaan');
+		}
     }
 }

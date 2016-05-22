@@ -23,16 +23,21 @@
 
 	<div class="col-md-6">
 		<div class="well text-center">
-			<h2>{{ $hadist->judul }}</h2><hr />
+			<h2 class="text-primary">{{ $hadist->judul }}</h2><hr />
 
-			<div style="font-size:35px;" class="text-success">
+			<div style="font-size:30px;" class="text-danger">
 				{{ $hadist->hadist }}
 			</div>
-			<hr />
 
-			{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
+			<br>
 
-			<hr>
+			<div class="alert alert-info">
+				{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
+			</div>
+
+		</div>
+
+		<div class="text-center">
 			@include('layouts._share')
 		</div>
 

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Requests\AudioRequest;
-
 use App\Mp3;
 
 class AudioController extends Controller
@@ -145,4 +143,10 @@ class AudioController extends Controller
         $audio->delete();
 		return redirect('/audio/admin');
     }
+
+	public function download(Mp3 $audio)
+	{
+		return response()->download($audio->file_mp3);
+	}
+
 }

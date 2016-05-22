@@ -16,6 +16,6 @@
 @section('cms-content')
 
 	<h4 class="title"><i class="fa fa-edit"></i> Edit Kitab</h4>
-	@include('kitab._form', ['url' => '/kitab/'.$kitab->kitab_id, 'method' => 'PUT'])
+	@include('kitab._form', ['url' => '/kitab/'.$kitab->buku_id, 'method' => 'PUT'])
 
 @stop
