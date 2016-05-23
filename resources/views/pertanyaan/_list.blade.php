@@ -23,7 +23,7 @@
 								@if ($p->group)
 								<a href="/pertanyaan/?group_id={{ $p->group_id }}"><i class="fa fa-hashtag"></i> {{ $p->group->group_name }}</a>
 								@endif
-								<i class="fa fa-clock-o"></i> {{ $p->updated ? $p->updated->diffForHumans() : "" }}
+								<i class="fa fa-clock-o"></i> {{ $p->tgl_tanya ? $p->tgl_tanya->diffForHumans() : "" }}
 							</em>
 						</div>
 					</header>

@@ -98,6 +98,7 @@ Route::get('design', function() {
 });
 
 Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
+
 	Route::get('lokasi', 'LokasiController@apiIndex');
 	Route::get('area', 'AreaController@apiIndex');
 
@@ -108,11 +109,15 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
 	Route::get('hadits/{hadist}', 'HadistController@apiShow');
 
 	// kajian
-	Route::get('kajian', 'KajianController@apiIndex'); // list & search & today
-	Route::get('kajian/{kajian}', 'KajianController@apiShow'); // show detail
+	Route::get('kajian', 'KajianController@apiIndex');
+	Route::get('kajian/{kajian}', 'KajianController@apiShow');
 
 	// ustadz
 	Route::get('ustadz', 'UstadzController@apiIndex');
 	Route::get('ustadz/{ustadz}', 'UstadzController@apiShow');
+
+	// image
+	Route::get('image', 'ImageController@apiIndex');
+	Route::get('image/{image}', 'ImageController@apiShow');
 
 });

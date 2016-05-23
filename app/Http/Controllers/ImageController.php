@@ -144,4 +144,14 @@ class ImageController extends Controller
         $image->delete();
 		return redirect('image/admin');
     }
+
+	public function apiIndex()
+	{
+		return SalwaImages::paginate(5);
+	}
+
+	public function apiShow(SalwaImages $image)
+	{
+		return $image;
+	}
 }

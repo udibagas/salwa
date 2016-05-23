@@ -29,7 +29,7 @@
 		<hr>
 		@include('layouts._share')
 
-		@if ($forum->user_id == auth()->user()->user_id)
+		@if (auth()->check() && $forum->user_id == auth()->user()->user_id)
 		<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-primary"><i class="fa fa-edit" class="btn btn-primary"></i> Edit Forum</a>
 		@endif
 		<hr />
