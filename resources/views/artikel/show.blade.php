@@ -30,7 +30,6 @@
 		<img src="/{{ $artikel->img_artikel }}" style="margin-bottom:30px;" alt="" />
 		@endif
 
-		 <!-- preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags($artikel->isi, '<p><br><i><em><strong><hr><img>')) -->
 		{!! $artikel->isi !!}
 
 		<hr>

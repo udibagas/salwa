@@ -62,6 +62,7 @@ class PeduliController extends Controller
     public function store(PeduliRequest $request)
     {
 		$data 					= $request->all();
+		$data['isi']			= clean($request->isi);
 		$data['kd_judul'] 		= str_slug($request->judul);
 		$data['tgl_artikel'] 	= date('Y-m-d H:i:s');
 		$data['isi_mobile'] 	= $data['isi'];
@@ -120,6 +121,7 @@ class PeduliController extends Controller
     public function update(PeduliRequest $request, Peduli $peduli)
     {
 		$data 					= $request->all();
+		$data['isi']			= clean($request->isi);
 		$data['kd_judul'] 		= str_slug($request->judul);
 		$data['isi_mobile'] 	= $data['isi'];
 		$data['ringkasan'] 		= str_limit($data['isi'], 250);

@@ -56,7 +56,7 @@ class ForumController extends Controller
 
 		$forum->posts()->create([
 			'user_id'		=> auth()->user()->user_id,
-			'description'	=> $request->description,
+			'description'	=> clean($request->description),
 			'date'			=> date('Y-m-d H:i:s'),
 			'createdby'		=> auth()->user()->name
 		]);
@@ -108,7 +108,7 @@ class ForumController extends Controller
 		$forum->update($data);
 
 		$forum->post()->update([
-			'description'	=> $request->description,
+			'description'	=> clean($request->description),
 			'updatedby'		=> auth()->user()->name,
 		]);
 
@@ -179,6 +179,7 @@ class ForumController extends Controller
 	public function comment(CommentRequest $request, Forum $forum)
 	{
 		$data 				= $request->all();
+		$data['description']= clean($request->description);
 		$data['user_id'] 	= auth()->user()->user_id;
 		$data['createdby'] 	= auth()->user()->name;
 		$data['date']		= date('Y-m-d H:i:s');

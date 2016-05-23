@@ -31,7 +31,7 @@
 					<div class="comment-post">
 
 						<h3>Pertanyaan : {{ $p->judul_pertanyaan }}</h3>
-						<p>{!! nl2br($p->ket_pertanyaan) !!}</p>
+						{!! nl2br($p->ket_pertanyaan) !!}
 
 					</div>
 					@if (auth()->check() && auth()->user()->user_id == $p->user_id && $p->jawaban == null)

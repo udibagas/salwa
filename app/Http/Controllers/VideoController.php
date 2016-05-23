@@ -67,6 +67,7 @@ class VideoController extends Controller
     public function store(VideoRequest $request)
     {
 		$data 					= $request->all();
+		$data['desc']			= clean($request->desc);
 		$data['title_code'] 	= str_slug($request->title);
 		$data['date'] 			= date('Y-m-d H:i:s');
 		$data['createdby'] 		= auth()->user()->name;
@@ -121,6 +122,7 @@ class VideoController extends Controller
     public function update(VideoRequest $request, Video $video)
     {
 		$data 					= $request->all();
+		$data['desc']			= clean($request->desc);
 		$data['title_code'] 	= str_slug($request->title);
 		$data['updatedby'] 		= auth()->user()->name;
 

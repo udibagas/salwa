@@ -27,7 +27,7 @@
 
 					<div class="comment-post">
 						<h3> Jawaban: </h3>
-						<p>{!! nl2br($p->jawaban) !!}</p>
+						{!! nl2br($p->jawaban) !!}
 
 					</div>
 					@if (auth()->check() && auth()->user()->user_id == $p->dijawab_oleh)

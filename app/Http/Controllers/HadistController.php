@@ -86,6 +86,8 @@ class HadistController extends Controller
     public function store(HadistRequest $request)
     {
 		$data 					= $request->all();
+		$data['hadist']			= clean($request->hadist);
+		$data['penjelasan']		= clean($request->penjelasan);
 		$data['kd_judul'] 		= str_slug($request->judul);
 		$data['tanggal'] 		= date('Y-m-d H:i:s');
 		$data['ringkasan'] 		= str_limit($data['penjelasan'], 250);
@@ -141,6 +143,8 @@ class HadistController extends Controller
     public function update(HadistRequest $request, Hadist $hadist)
     {
 		$data 					= $request->all();
+		$data['hadist']			= clean($request->hadist);
+		$data['penjelasan']		= clean($request->penjelasan);
 		$data['kd_judul'] 		= str_slug($request->judul);
 		$data['ringkasan'] 		= str_limit($data['isi'], 250);
 		$data['updatedby'] 		= auth()->user()->name;

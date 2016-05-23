@@ -55,11 +55,11 @@
 					// [groupName, [list of button]]
 					['style', ['bold', 'italic', 'underline', 'clear']],
 					// ['font', ['strikethrough', 'superscript', 'subscript']],
-					['fontsize', ['fontsize']],
-					['color', ['color']],
+					['fontsize', ['fontsize', 'color']],
+					// ['color', ['color']],
 					['para', ['ul', 'ol', 'paragraph']],
 					['insert', ['picture', 'video', 'link', 'hr', 'table']],
-					['misc', ['codeview', 'fullscreen']]
+					['misc', ['undo', 'redo', 'fullscreen']],
 					// ['height', ['height']]
 				]
 			});

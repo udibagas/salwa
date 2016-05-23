@@ -62,6 +62,7 @@ class KitabController extends Controller
     public function store(BukuRequest $request)
     {
 		$data 					= $request->all();
+		$data['materi']			= clean($request->materi);
 		$data['kd_judul'] 		= str_slug($request->judul);
 		$data['createdby'] 		= auth()->user()->name;
 
@@ -126,6 +127,7 @@ class KitabController extends Controller
     public function update(BukuRequest $request, Buku $kitab)
     {
 		$data 					= $request->all();
+		$data['materi']			= clean($request->materi);
 		$data['kd_judul'] 		= str_slug($request->judul);
 		$data['updatedby'] 		= auth()->user()->name;
 

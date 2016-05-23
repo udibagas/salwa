@@ -49,10 +49,10 @@
 					<input type="text" name="ustadz_phone" value="{{ request('ustadz_phone') }}" class="form-control" placeholder="Phone">
 				</td>
 				<td>
-					{{ Form::select('ustadz_gender', ['P' => 'P', 'W' => 'W'], request('ustadz_gender'), ['class' => 'form-control', 'placeholder' => '-All-'])}}
+					{{ Form::select('ustadz_gender', ['P' => 'Pria', 'W' => 'Wanita'], request('ustadz_gender'), ['class' => 'form-control', 'placeholder' => '-All-'])}}
 				</td>
 				<td>
-					{{ Form::select('ustadz_status', ['A' => 'A', 'N' => 'N'], request('ustadz_status'), ['class' => 'form-control', 'placeholder' => '-All-'])}}
+					{{ Form::select('ustadz_status', ['A' => 'Aktif', 'N' => 'Nonaktif'], request('ustadz_status'), ['class' => 'form-control', 'placeholder' => '-All-'])}}
 				</td>
 				<td></td>
 				<td></td>
@@ -71,8 +71,8 @@
 					<td><a href="/ustadz/{{ $a->ustadz_id }}-{{ str_slug($a->ustadz_name) }}">{{ $a->ustadz_name }}</a></td>
 					<td>{{ $a->ustadz_address }}</td>
 					<td>{{ $a->ustadz_phone }}</td>
-					<td>{{ $a->ustadz_gender }}</td>
-					<td>{{ $a->ustadz_status }}</td>
+					<td>{{ $a->ustadz_gender == 'P' ? 'Pria' : 'Wanita' }}</td>
+					<td>{{ $a->ustadz_status == 'A' ? 'Aktif' : 'Nonaktif' }}</td>
 					<td>{{ $a->created }}</td>
 					<td>{{ $a->updated }}</td>
 					<td>

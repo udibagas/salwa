@@ -45,7 +45,7 @@
 		@endif
 
 		<br><br>
-		{{ $video->desc }}
+		{!! $video->desc !!}
 
 
 		<!-- if ($video->files)

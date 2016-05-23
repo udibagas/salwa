@@ -32,7 +32,7 @@
 						<h3>
 							<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">{{ $p->judul_pertanyaan }}</a>
 						</h3>
-						<p>{!! nl2br($p->ket_pertanyaan) !!}</p>
+						{!! nl2br($p->ket_pertanyaan) !!}
 
 					</div>
 					@if (auth()->check() && auth()->user()->user_id == $p->user_id && $p->jawaban == '')
