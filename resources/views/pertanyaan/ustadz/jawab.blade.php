@@ -6,7 +6,7 @@
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'/pertanyaan/' => 'TANYA USTADZ',
+			'/pertanyaan/admin-ustadz' => 'TANYA USTADZ',
 			'#' => 'Jawab',
 		]
 	])
@@ -38,7 +38,7 @@
 			{!! nl2br($pertanyaan->ket_pertanyaan) !!}
 		</div>
 
-		@include('pertanyaan._form-jawab')
+		@include('pertanyaan.ustadz._form-jawab')
 	</div>
 </div>
 

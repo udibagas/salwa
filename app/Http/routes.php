@@ -62,8 +62,10 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::resource('video', 'VideoController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 	});
 
+
 	//  khusus ustadz: jawab pertanyaan, simpan jawaban
 	Route::group(['middleware' => 'role:'.User::ROLE_USTADZ], function() {
+		Route::get('pertanyaan/admin-ustadz', 'PertanyaanController@adminUstadz');
 		Route::get('pertanyaan/{pertanyaan}/jawab', 'PertanyaanController@jawab');
 		Route::put('pertanyaan/{pertanyaan}/simpan-jawaban', 'PertanyaanController@simpanJawaban');
 	});

@@ -46,6 +46,9 @@
 			@if (auth()->user()->isAdmin())
   		  <li class="@if (url()->current() == url('cms')) active @endif"><a href="/cms"><i class="fa fa-th"></i> CMS</a></li>
   		  @endif
+			@if (auth()->user()->isUstadz())
+  		  <li class="@if (url()->current() == url('pertanyaan/admin-ustadz')) active @endif"><a href="/pertanyaan/admin-ustadz"><i class="fa fa-inbox"></i> Pertanyaan Masuk</a></li>
+  		  @endif
             <!-- <li role="separator" class="divider"></li> -->
             <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
           </ul>

@@ -56,6 +56,31 @@ class PertanyaanController extends Controller
 		]);
 	}
 
+	public function adminUstadz(Request $request)
+	{
+		return view('pertanyaan.ustadz.admin', [
+			'pertanyaans' => Pertanyaan::when($request->judul_pertanyaan, function($query) use ($request) {
+									return $query->where('judul_pertanyaan', 'like', '%'.$request->judul_pertanyaan.'%');
+								})->when($request->status, function($query) use ($request) {
+									return $query->where('status', $request->status);
+								})->when($request->jawaban == 'belum', function($query) use ($request) {
+									return $query->where('jawaban', NULL);
+								})->when($request->jawaban == 'sudah', function($query) use ($request) {
+									return $query->where('jawaban', '!=', '');
+								})->when($request->user, function($query) use ($request) {
+									return $query->join('users', 'users.user_id', '=', 'pertanyaan.user_id')
+												->where('users.name', 'like', '%'.$request->user.'%');
+								})->when($request->dijawab_oleh, function($query) use ($request) {
+									return $query->where('dijawab_oleh', $request->dijawab_oleh);
+								})->when($request->jenis_kelamin, function($query) use ($request) {
+									return $query->join('users as u', 'u.user_id', '=', 'pertanyaan.user_id')
+												->where('u.jenis_kelamin',  $request->jenis_kelamin);
+								})->when($request->group_id, function($query) use ($request) {
+									return $query->where('group_id', $request->group_id);
+								})->orderBy('pertanyaan.updated', 'DESC')->paginate(),
+		]);
+	}
+
     /**
      * Show the form for creating a new resource.
      *
@@ -114,7 +139,7 @@ class PertanyaanController extends Controller
 
     public function jawab(Pertanyaan $pertanyaan)
     {
-        return view('pertanyaan.jawab', ['pertanyaan' => $pertanyaan]);
+        return view('pertanyaan.ustadz.jawab', ['pertanyaan' => $pertanyaan]);
     }
 
 	public function simpanJawaban(JawabanRequest $request, Pertanyaan $pertanyaan)
@@ -147,6 +172,8 @@ class PertanyaanController extends Controller
 
 		if (auth()->user()->isAdmin()) {
 			return redirect('/pertanyaan/admin');
+		} elseif (auth()->user()->isUstadz()) {
+			return redirect('/pertanyaan/admin-ustadz');
 		} else {
 			return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan]);
 		}
@@ -164,6 +191,8 @@ class PertanyaanController extends Controller
 
 		if (auth()->user()->isAdmin()) {
 			return redirect('/pertanyaan/admin');
+		} elseif (auth()->user()->isUstadz()) {
+			return redirect('/pertanyaan/admin-ustadz');
 		} else {
 			return redirect('/pertanyaan');
 		}
