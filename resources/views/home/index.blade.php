@@ -13,7 +13,9 @@
 	<div class="clearfix"></div>
 
 	@include('home.video')
+	<br>
 	@include('home.promo')
+	<br>
 	@include('home._aktual')
 
 	<br>
@@ -25,6 +27,7 @@
 
 	<br>
 	<div class="clearfix"></div>
+	<h4 class="title"><i class="fa fa-book"></i> SALWA E-BOOK</h4>
 	@include('home._kitab')
 	<div class="clearfix"></div>
 	<br>
