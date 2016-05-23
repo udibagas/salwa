@@ -7,7 +7,7 @@
 		<div class="panel-body">
 
 			<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-				<input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
+				<input type="text" class="form-control" name="email" value="{{ old('email') }}" placeholder="Username/Email">
 
 				@if ($errors->has('email'))
 					<span class="help-block">
