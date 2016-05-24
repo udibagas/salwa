@@ -276,18 +276,19 @@ a.list-group-item {
 
 .thumbnail .caption {
 	position: absolute;
-    top: 0;
-    left: 0;
-	padding: 0 15px 0 15px;
+    /*top: 0;
+    left: 0;*/
+    bottom: 0;
+    right: 0;
+	/*padding: 0 15px 0 15px;*/
 	color: #FFFFFF;
+	background: rgb(41, 127, 185);
+	background: rgba(41, 127, 185, 0.7);
 }
 
-.thumbnail .caption {
-	position: absolute;
-    top: 0;
-    left: 0;
-	padding: 0 15px 0 15px;
-	color: #FFFFFF;
+.caption h2 {
+	font-size: 18px;
+	margin: 0 0 5px 0;
 }
 
 .video-block, .thumbnail-block {
