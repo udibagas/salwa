@@ -253,17 +253,17 @@ a.list-group-item {
 	border-bottom: none;
 }
 
-
-.col-md-4, .col-md-3 {
-    /*padding:1px;*/
-}
-
 .alert, .well {
 	border-radius: 0;
 }
 
 .thumbnail {
     margin-bottom:2px;
+}
+
+.thumbnail > a > img {
+	filter: brightness(80%);
+	-webkit-filter: brightness(80%);
 }
 
 .thumbnail, .img-thumbnail {
@@ -276,11 +276,8 @@ a.list-group-item {
 
 .thumbnail .caption {
 	position: absolute;
-    /*top: 0;
-    left: 0;*/
     bottom: 0;
     left: 0;
-	/*padding: 0 15px 0 15px;*/
 	color: #FFFFFF;
 	/*background: rgb(41, 127, 185);
 	background: rgba(41, 127, 185, 0.7);*/
