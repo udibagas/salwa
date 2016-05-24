@@ -57,11 +57,11 @@
 			@endif
 		</div>
 
-		<div class="form-group @if ($errors->has('img_user')) has-error @endif">
+		<div class="form-group @if ($errors->has('img')) has-error @endif">
 			<input type="file" name="img" class="form-control">
-			@if ($errors->has('img_user'))
+			@if ($errors->has('img'))
 				<span class="help-block">
-					<strong>{{ $errors->first('img_user') }}</strong>
+					<strong>{{ $errors->first('img') }}</strong>
 				</span>
 			@endif
 		</div>

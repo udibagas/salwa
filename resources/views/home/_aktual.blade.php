@@ -1,3 +1,4 @@
+<h4 class="title"><i class="fa fa-clock-o"></i> AKTUALITA</h4>
 <div id="myCarousel2" class="carousel slide carousel-promo" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">

@@ -279,7 +279,15 @@ a.list-group-item {
     top: 0;
     left: 0;
 	padding: 0 15px 0 15px;
-	color: #FFF;
+	color: #FFFFFF;
+}
+
+.thumbnail .caption {
+	position: absolute;
+    top: 0;
+    left: 0;
+	padding: 0 15px 0 15px;
+	color: #FFFFFF;
 }
 
 .video-block, .thumbnail-block {

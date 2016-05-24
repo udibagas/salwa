@@ -43,7 +43,7 @@
 
 @stop
 
-@section('script')
+@push('script')
 
 <script type="text/javascript">
 
@@ -71,4 +71,4 @@
 
 </script>
 
-@stop
+@endpush
