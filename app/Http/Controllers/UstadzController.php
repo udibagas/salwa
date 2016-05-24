@@ -110,9 +110,15 @@ class UstadzController extends Controller
 	// API
 	public function apiIndex(Request $request)
 	{
-		return Ustadz::when($request->ustadz_name, function($query) use ($request) {
+		$data = Ustadz::when($request->ustadz_name, function($query) use ($request) {
 						return $query->where('ustadz_name', 'like', '%'.$request->ustadz_name.'%');
 					})->orderBy('ustadz_name', 'ASC')->paginate(10);
+
+		return response()->json([
+			'results'	=> $data->items(),
+			'total'		=> $data->total(),
+			'pages'		=> $data->lastPage()
+		]);
 	}
 
 	public function apiShow(Ustadz $ustadz)

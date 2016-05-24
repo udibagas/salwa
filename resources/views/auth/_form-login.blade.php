@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<h3 class="panel-title">LOGIN</h3>
+		<h3 class="panel-title"><i class="fa fa-sign-in"></i> LOGIN</h3>
 	</div>
 	<form class="form-vertical" role="form" method="POST" action="{{ url('/login') }}">
 		{!! csrf_field() !!}
@@ -35,12 +35,14 @@
 			</div>
 		</div>
 
-		<div class="panel-footer">
+		<div class="panel-footer text-center">
 			<button type="submit" class="btn btn-primary">
 				<i class="fa fa-btn fa-sign-in"></i> Login
 			</button>
 
-			<a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+			<a class="btn btn-info" href="{{ url('/register') }}"><i class="fa fa-edit"></i> Daftar</a>
+			<br>
+			<a class="btn btn-link" href="{{ url('/password/reset') }}">Lupa Password?</a>
 		</div>
 	</form>
 </div>

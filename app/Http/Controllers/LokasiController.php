@@ -16,7 +16,12 @@ class LokasiController extends Controller
      */
     public function apiIndex()
     {
-        return Lokasi::orderBy('nama_lokasi', 'ASC')->get();
+        $data = Lokasi::orderBy('nama_lokasi', 'ASC')->get();
+
+		return response()->json([
+			'results'	=> $data,
+			'total'		=> $data->count(),
+		]);
     }
 
 	public function index(Request $request)

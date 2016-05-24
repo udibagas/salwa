@@ -136,6 +136,10 @@ class PeduliController extends Controller
 
             $data['img_artikel'] = 'uploads/dirimg_artikel/'.$fileName;
 
+			if ($peduli->img_artikel && file_exists($peduli->img_artikel)) {
+				unlink($peduli->img_artikel);
+			}
+
         }
 
 		$peduli->update($data);
@@ -151,6 +155,11 @@ class PeduliController extends Controller
     public function destroy(Peduli $peduli)
     {
 		$peduli->delete();
+
+		if ($peduli->img_artikel && file_exists($peduli->img_artikel)) {
+			unlink($peduli->img_artikel);
+		}
+		
         return redirect('/peduli/admin');
     }
 }

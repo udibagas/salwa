@@ -103,6 +103,10 @@ class UserController extends Controller
             $file->move('uploads/dirimg_user', $fileName);
 
             $data['img_user'] = 'uploads/dirimg_user/'.$fileName;
+
+			if ($user->img_user && file_exists($user->img_user)) {
+				unlink($user->img_user);
+			}
 		}
 
 		$user->update($data);
@@ -118,6 +122,11 @@ class UserController extends Controller
     public function destroy(User $user)
     {
 		$user->delete();
+
+		if ($user->img_user && file_exists($user->img_user)) {
+			unlink($user->img_user);
+		}
+		
 		return redirect('/user');
     }
 }

@@ -131,6 +131,10 @@ class InformasiController extends Controller
 
             $data['img_gambar'] = 'uploads/dirimg_gambarinformasi/'.$fileName;
 
+			if ($informasi->img_gambar && file_exists($informasi->img_gambar)) {
+				unlink($informasi->img_gambar);
+			}
+
         }
 
 		$informasi->update($data);
@@ -147,6 +151,11 @@ class InformasiController extends Controller
     public function destroy(Informasi $informasi)
     {
         $informasi->delete();
+
+		if ($informasi->img_gambar && file_exists($informasi->img_gambar)) {
+			unlink($informasi->img_gambar);
+		}
+		
 		return redirect('/informasi/admin');
     }
 }

@@ -69,7 +69,7 @@
 		{!! Form::close() !!}
 	</div>
 	<div class="col-md-3">
-		@if ($audio->file_mp3)
+		@if ($murottal->file_mp3)
 		<audio controls="controls" preload="none" style="width:100%"><source src="/{{ $murottal->file_mp3 }}" type="application/ogg"></source></audio>
 		@endif
 	</div>

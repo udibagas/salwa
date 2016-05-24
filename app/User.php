@@ -13,10 +13,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password', 'user_name', 'user_status', 'jenis_kelamin',
-		'active', 'createdby', 'updatedby', 'img_user', 'profile'
+		'active', 'createdby', 'updatedby', 'img_user', 'profile', 'last_login', 'login', 'ip'
     ];
 
 	protected $primaryKey = 'user_id';
+
+	protected $dates = ['created', 'updated', 'last_login'];
 
     /**
      * The attributes that should be hidden for arrays.

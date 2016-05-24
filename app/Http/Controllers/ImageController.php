@@ -126,6 +126,10 @@ class ImageController extends Controller
 
             $data['img_images'] = 'uploads/dirimg_images/'.$fileName;
 
+			if ($image->img_images && file_exists($image->img_images)) {
+				unlink($image->img_images);
+			}
+
         }
 
 		$image->update($data);
@@ -142,12 +146,23 @@ class ImageController extends Controller
     public function destroy(SalwaImages $image)
     {
         $image->delete();
+
+		if ($image->img_images && file_exists($image->img_images)) {
+			unlink($image->img_images);
+		}
+
 		return redirect('image/admin');
     }
 
 	public function apiIndex()
 	{
-		return SalwaImages::paginate(5);
+		$data = SalwaImages::paginate(5);
+
+		return response()->json([
+			'results'	=> $data->items(),
+			'total'		=> $data->total(),
+			'pages'		=> $data->lastPage()
+		]);
 	}
 
 	public function apiShow(SalwaImages $image)

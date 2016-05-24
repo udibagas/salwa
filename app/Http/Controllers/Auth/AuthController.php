@@ -91,11 +91,22 @@ class AuthController extends Controller
         // $credentials = $this->getCredentials($request);
 		$credentials = [
 			$field		=> $request->email,
+			// 'password'	=> crypt($request->password, 'mib'),
 			'password'	=> $request->password,
 			'active'	=> 'Y'
 		];
 
-        if (auth()->guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
+        if (auth()->guard($this->getGuard())->attempt($credentials, $request->has('remember')))
+		{
+			// update data user
+			$user = auth()->user();
+
+			$user->update([
+				'last_login'	=> date('Y-m-d H:i:s'),
+				'login'			=> 1,
+				'ip'			=> $_SERVER['REMOTE_ADDR']
+			]);
+
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
 

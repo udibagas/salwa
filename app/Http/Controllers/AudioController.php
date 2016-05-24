@@ -125,6 +125,10 @@ class AudioController extends Controller
 
             $data['file_mp3'] = 'uploads/dirfile_mp3/'.$fileName;
 
+			if ($audio->file_mp3 && file_exists($audio->file_mp3)) {
+				unlink($audio->file_mp3);
+			}
+
         }
 
 		$audio->update($data);
@@ -141,11 +145,20 @@ class AudioController extends Controller
     public function destroy(Mp3 $audio)
     {
         $audio->delete();
+
+		if ($audio->file_mp3 && file_exists($audio->file_mp3)) {
+			unlink($audio->file_mp3);
+		}
+		
 		return redirect('/audio/admin');
     }
 
 	public function download(Mp3 $audio)
 	{
+		if (!file_exists($audio->file_mp3)) {
+			return abort(404);
+		}
+
 		return response()->download($audio->file_mp3);
 	}
 

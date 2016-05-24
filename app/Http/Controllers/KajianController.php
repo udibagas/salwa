@@ -108,7 +108,7 @@ class KajianController extends Controller
 	// API
 	public function apiIndex(Request $request)
 	{
-		return Kajian::when($request->id_lokasi, function($query) use($request) {
+		$data = Kajian::when($request->id_lokasi, function($query) use($request) {
 					return $query->where('id_lokasi', $request->id_lokasi);
 				})->when($request->id_area, function($query) use($request) {
 					return $query->where('id_area', $request->id_area);
@@ -119,6 +119,14 @@ class KajianController extends Controller
 				})->when($request->today, function($query) {
 					return $query->whereRaw('DATE(kajian_dates) = '.date('Y-m-d'));
 				})->orderBy('created', 'ASC')->paginate(10);
+
+
+		return response()->json([
+			'results'	=> $data->items(),
+			'total'		=> $data->total(),
+			'pages'		=> $data->lastPage(),
+			'user'		=> auth()->guard('api')->user()->name
+		]);
 	}
 
 	public function apiShow(Kajian $kajian)
@@ -134,7 +142,6 @@ class KajianController extends Controller
 			'succes'	=> true,
 			'msg'		=> 'Data berhasil dihapus',
 			'error'		=> false,
-			'status'	=> delete
 		]);
 	}
 }

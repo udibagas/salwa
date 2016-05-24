@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'bagas@salamdakwah.com', 'name' => 'Bagas Udi Sahsangka'],
 
     /*
     |--------------------------------------------------------------------------

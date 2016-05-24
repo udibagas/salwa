@@ -133,6 +133,9 @@ class ArtikelController extends Controller
 
             $data['img_artikel'] = 'uploads/dirimg_artikel/'.$fileName;
 
+			if ($artikel->img_artikel && file_exists($artikel->img_artikel)) {
+				unlink($artikel->img_artikel);
+			}
         }
 
 		$artikel->update($data);
@@ -148,6 +151,11 @@ class ArtikelController extends Controller
     public function destroy(Artikel $artikel)
     {
         $artikel->delete();
+
+		if ($artikel->img_artikel && file_exists($artikel->img_artikel)) {
+			unlink($artikel->img_artikel);
+		}
+		
 		return redirect('/artikel/admin');
     }
 }

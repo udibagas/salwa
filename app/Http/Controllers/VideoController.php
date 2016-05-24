@@ -135,6 +135,10 @@ class VideoController extends Controller
 
             $data['img_video'] = 'uploads/dirimg_video/'.$fileName;
 
+			if ($video->img_video && file_exists($video->img_video)) {
+				unlink($video->img_video);
+			}
+
         }
 
 		$video->update($data);
@@ -150,6 +154,11 @@ class VideoController extends Controller
     public function destroy(Video $video)
     {
         $video->delete();
+
+		if ($video->img_video && file_exists($video->img_video)) {
+			unlink($video->img_video);
+		}
+		
 		return redirect('/video/admin');
     }
 }

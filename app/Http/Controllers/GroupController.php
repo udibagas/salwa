@@ -111,6 +111,10 @@ class GroupController extends Controller
 
             $data['img_group'] = 'uploads/dirimg_group/'.$fileName;
 
+			if ($group->img_group && file_exists($group->img_group)) {
+				unlink($group->img_group);
+			}
+
         }
 
 		$group->update($data);
@@ -141,6 +145,11 @@ class GroupController extends Controller
 		}
 
         $group->delete();
+
+		if ($group->img_group && file_exists($group->img_group)) {
+			unlink($group->img_group);
+		}
+		
 		return redirect('/group')->with('success', 'Data berhasil dihapus');
     }
 }

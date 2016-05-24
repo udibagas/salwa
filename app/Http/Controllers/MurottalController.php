@@ -123,6 +123,10 @@ class MurottalController extends Controller
 
             $data['file_mp3'] = 'uploads/dirfile_mp3/'.$fileName;
 
+			if ($murottal->file_mp3 && file_exists($murottal->file_mp3)) {
+				unlink($murottal->file_mp3);
+			}
+
         }
 
 		$murottal->update($data);
@@ -138,11 +142,20 @@ class MurottalController extends Controller
     public function destroy(Murottal $murottal)
     {
         $murottal->delete();
+
+		if ($murottal->file_mp3 && file_exists($murottal->file_mp3)) {
+			unlink($murottal->file_mp3);
+		}
+		
 		return redirect('/murottal/admin');
     }
 
 	public function download(Murottal $murottal)
 	{
+		if (!file_exists($audio->file_mp3)) {
+			return abort(404);
+		}
+
 		return response()->download($murottal->file_mp3);
 	}
 }

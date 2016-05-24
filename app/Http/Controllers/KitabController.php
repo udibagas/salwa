@@ -140,6 +140,10 @@ class KitabController extends Controller
 
             $data['img_buku'] = 'uploads/dirimg_buku/'.$fileName;
 
+			if ($kitab->img_buku && file_exists($kitab->img_buku)) {
+				unlink($kitab->img_buku);
+			}
+
         }
 
 		if ($request->hasFile('file')) {
@@ -150,6 +154,10 @@ class KitabController extends Controller
             $file->move('uploads/dirfile_pdf', $fileName);
 
             $data['file_pdf'] = 'uploads/dirfile_pdf/'.$fileName;
+
+			if ($kitab->file_pdf && file_exists($kitab->file_pdf)) {
+				unlink($kitab->file_pdf);
+			}
 
         }
 
@@ -166,11 +174,24 @@ class KitabController extends Controller
     public function destroy(Buku $kitab)
     {
         $kitab->delete();
+
+		if ($kitab->file_pdf && file_exists($kitab->file_pdf)) {
+			unlink($kitab->file_pdf);
+		}
+
+		if ($kitab->img_buku && file_exists($kitab->img_buku)) {
+			unlink($kitab->img_buku);
+		}
+
 		return redirect('/kitab/admin');
     }
 
 	public function download(Buku $kitab)
 	{
+		if (!file_exists($kitab->file_pdf)) {
+			return abort(404);
+		}
+
 		return response()->download($kitab->file_pdf);
 	}
 }

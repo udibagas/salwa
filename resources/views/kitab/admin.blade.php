@@ -67,7 +67,7 @@
 					<td>{{ $a->updated }}</td>
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/kitab/'.$a->buku_id]) !!}
-						<a href="/{{ $a->file_pdf }}" target="_blank" class="btn btn-warning btn-xs"><i class="fa fa-download"></i> Donwnload</a>
+						<a href="/kitab/{{ $a->buku_id }}/download" class="btn btn-warning btn-xs"><i class="fa fa-download"></i> Donwnload</a>
 						<a href="/kitab/{{ $a->buku_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>
 						<button type="submit" name="delete" class="btn btn-danger btn-xs delete"><i class="fa fa-trash"></i> Hapus</button>
 						{!! Form::close() !!}

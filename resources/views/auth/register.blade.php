@@ -9,7 +9,6 @@
 
         <div class="col-md-3">
 			@include('auth._form-register')
-			@include('auth._form-login')
         </div>
     </div>
 @endsection
