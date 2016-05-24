@@ -5,7 +5,7 @@
 			<img src="/{{ $video->img_video }}" style="width:100%;height:270px;" alt="">
 			@endif
 			<div class="video-block">
-		</div>
+			</div>
 				<div class="caption">
 					<h2>{{ $video->title }}</h2>
 					{{ $video->user ? $video->user->name : '' }}<br />

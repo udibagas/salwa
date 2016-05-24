@@ -286,7 +286,7 @@ a.list-group-item {
 	background: rgba(41, 127, 185, 0.7);
 }
 
-.caption h2 {
+.caption h2, .caption h3, .caption h4 {
 	font-size: 18px;
 	margin: 0 0 5px 0;
 }
