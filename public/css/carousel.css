@@ -38,15 +38,19 @@
   opacity: 0.8;
 }
 
-.tilecaption{
+.tilecaption {
     position: absolute;
-    top: 10px;
-	left: 10px;
-    /*color:#033AAE;*/
-    color:#FFF;
+    bottom: 5px;
+	left: 5px;
+    color:#FFFFFF;
 }
 
 .tilecaption a, .tilecaption a:hover {
 	color: yellow;
 	text-decoration: none;
+}
+
+.carousel-inner > .item > a > img {
+	filter: brightness(80%);
+	-webkit-filter: brightness(80%);
 }
