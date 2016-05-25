@@ -39,9 +39,6 @@
 			<button type="submit" class="btn btn-primary">
 				<i class="fa fa-btn fa-sign-in"></i> Login
 			</button>
-
-			<a class="btn btn-info" href="{{ url('/register') }}"><i class="fa fa-edit"></i> Daftar</a>
-			<br>
 			<a class="btn btn-link" href="{{ url('/password/reset') }}">Lupa Password?</a>
 		</div>
 	</form>

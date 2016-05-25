@@ -78,7 +78,6 @@
 	</div>
 	<div class="panel-footer">
 		<button type="submit" name="save" class="btn btn-primary"><i class="fa fa-edit"></i> Register</button>
-		<a class="btn btn-info" href="{{ url('/login') }}"><i class="fa fa-sign-in"></i> Login</a>
 	</div>
 	{!! Form::close() !!}
 </div>

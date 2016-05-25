@@ -37,7 +37,8 @@
 		  <li class="@if (url()->current() == url('produk')) active @endif"><a href="/produk">Salwa Market</a></li>
 		  <li class="@if (url()->current() == url('peduli')) active @endif"><a href="/peduli">Salwa Peduli</a></li>
 		  @if (auth()->guest())
-		  <li class="@if (url()->current() == url('register') || url()->current() == url('login')) active @endif"><a href="/login">Daftar/Masuk</a></li>
+		  <li class="@if (url()->current() == url('login')) active @endif"><a href="/login">Login</a></li>
+		  <li class="@if (url()->current() == url('register')) active @endif"><a href="/register">Register</a></li>
 		  @else
 		  <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>
