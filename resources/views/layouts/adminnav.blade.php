@@ -59,7 +59,7 @@
 	<a class="list-group-item @if (url()->current() == url('ustadz/admin')) active @endif" href="/ustadz/admin">
 		<i class="fa fa-users"></i> Ustadz
 	</a>
-	<a class="list-group-item @if (url()->current() == url('kajian')) active @endif" href="/kajian">
+	<a class="list-group-item @if (url()->current() == url('kajian')) active @endif" href="/kajian/admin">
 		<i class="fa fa-edit"></i> Kajian
 	</a>
 </div>

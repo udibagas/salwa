@@ -25,11 +25,48 @@ class Kajian extends Model
 
 	public function ustadz()
 	{
-		$this->belongsTo('App\Ustadz', 'ustadz_id', 'kajian_ustadz_id');
+		return $this->belongsTo('App\Ustadz', 'kajian_ustadz_id', 'ustadz_id');
+	}
+
+	public function pic1()
+	{
+		return $this->belongsTo('App\Pic', 'kajian_pic_id', 'pic_id');
+	}
+
+	public function pic2()
+	{
+		return $this->belongsTo('App\Pic', 'kajian_pic_id2', 'pic_id');
+	}
+
+	public function lokasi()
+	{
+		return $this->belongsTo('App\Lokasi', 'id_lokasi', 'id_lokasi');
+	}
+
+	public function area()
+	{
+		return $this->belongsTo('App\Area', 'id_area', 'id_area');
 	}
 
 	public function scopeToday($query)
 	{
 		return $query->whereRaw('DATE(kajian_dates) = '.date('Y-m-d'));
+	}
+
+	public static function jenisKajianList($index = 999)
+	{
+		$list = [
+			'1'	=> 'Sekali Waktu',
+			'2' => 'Pekanan',
+			'3'	=> 'Bulanan'
+		];
+
+		return isset($list[$index]) ? $list[$index] : $list;
+	}
+
+	public static function getHari($index = 999)
+	{
+		$list = ['Ahad', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu'];
+		return isset($list[$index]) ? $list[$index] : $list;
 	}
 }

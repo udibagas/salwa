@@ -1,8 +1,23 @@
 TODO
 
-2. Beresin CMS sunnah go (kajian)
+1. CMS Pic Kajian
+2. Beresin CMS sunnah go:
+	- kajian: sepertinya perlu redesign skema databasenya yang memungkinkan untuk input kajian rutin, atau perlu dibuatkan table kajian rutin sendiri. saya prefer table sendiri. skema sbb.
+
+	tema, ustadz, lokasi, area, tempat, siklus: pekanan/bulanan, hari= array hari (0-6), pekan: array pekan (1-5),
+	pic_ikhwan, pic_ikhwan_phone, pic_akhwat, pic_akhwat_phone
+
+	pekanan = sepekan x kali
+
 3. Frontend Forum (CRUD), max 3 file aja
 4. halaman profile
-5. Halaman murottal (menu play & download)
+5. Halaman murottal (menu play)
 7. Ubah longtext beberapa field (decription post, pertanyaan, artikel, peduli, informasi, dsb)
 8. Add close di salwa peduli. Atau add archived di semua jenis post (peduli, informasi, video, audio, artikel)
+9. Rich editor belum bisa insert image setelah di clean
+10. halaman promo / banner di CMS (CRUD)
+11. Produk (CMS - CRUD)
+12. Forget Password => pake email salamdakwah
+13. API sunnah go => create kajian
+14. cari group list yg cakep, koment yg cakep
+15. bikin modul komentar
