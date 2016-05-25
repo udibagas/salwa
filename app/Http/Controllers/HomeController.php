@@ -74,10 +74,9 @@ class HomeController extends Controller
 			'dzikir'	=> Hadist::limit(5)->dzikir()->orderByRaw('RAND()')->get(),
 			'promo'		=> Banner::limit(3)->orderBy('banner_id', 'DESC')->get(),
 			'infoHome'	=> Informasi::limit(3)->orderBy('updated', 'DESC')->get(),
-			'videoRandom' 	=> Video::limit(6)->orderByRaw('RAND()')->get(),
+			'videoRandom' 	=> Video::limit(9)->orderByRaw('RAND()')->get(),
 			'pertanyaan'	=> Pertanyaan::limit(5)->show()->dijawab()->orderBy('pertanyaan_id', 'DESC')->get(),
 			'forumKategori'	=> Group::forum()->has('forums')->get(),
-			'bukuterjemahan'	=> BukuTerjemahan::limit(4)->orderBy('terjamahan_id', 'DESC')->get(),
 		]);
     }
 }
