@@ -10,9 +10,9 @@
 
 	@include('home.linkIcon')
 
-	<div class="clearfix"></div>
-
-	@include('home.video')
+	@include('home._video')
+	<h4></h4>
+	<div style="clear:both;"></div>
 	<br>
 	@include('home.promo')
 	<br>

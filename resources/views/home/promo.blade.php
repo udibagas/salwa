@@ -12,7 +12,7 @@
 			<?php $i++ ?>
 			<div class="item @if ($i == 1) active @endif" style="max-height:118px;">
 				<a href="{{ $p->url }}" target="_blank">
-					<img class="first-slide" src="/{{ $p->img_banner }}" alt="" style="width:882px;height:118px;margin:auto;">
+					<img class="first-slide" src="http://www.salamdakwah.com/{{ $p->img_banner }}" alt="" style="width:882px;height:118px;margin:auto;">
 				</a>
 			</div>
 			@endforeach
