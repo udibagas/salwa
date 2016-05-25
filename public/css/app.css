@@ -256,7 +256,7 @@ a.list-group-item {
 }
 
 .alert, .well {
-	border-radius: 0;
+	/*border-radius: 0;*/
 }
 
 .thumbnail {
