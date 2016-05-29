@@ -22,6 +22,9 @@ Route::get('forum-category/{group}', 'ForumController@category');
 Route::get('kitab/{kitab}/download', 'KitabController@download');
 Route::get('murottal/{murottal}/download', 'MurottalController@download');
 Route::get('promo', 'BannerController@index');
+Route::get('kajian/{kajian}/download-file', 'KajianController@downloadFile');
+Route::get('kajian/{kajian}/download-audio', 'KajianController@downloadAudio');
+
 
 Route::group(['middleware' => 'auth'], function() {
 

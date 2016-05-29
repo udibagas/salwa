@@ -6,7 +6,10 @@ TODO
 	tema, ustadz, lokasi, area, tempat, siklus: pekanan/bulanan, hari= array hari (0-6), pekan: array pekan (1-5),
 	pic_ikhwan, pic_ikhwan_phone, pic_akhwat, pic_akhwat_phone
 
-	pekanan = sepekan x kali
+	pekanan = sepekan n kali
+
+	- kajian has many detail => description, waktu, audio, file, video
+
 
 3. Frontend Forum (CRUD), max 3 file aja (file lain kali aja.) ==> pending
 5. Halaman murottal (menu play)
@@ -19,4 +22,3 @@ TODO
 14. cari group list yg cakep, koment yg cakep ==> pending
 15. bikin modul komentar
 16. pake choosen
-17. di slider ada backgroud abu2 diilangin

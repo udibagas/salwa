@@ -147,6 +147,24 @@ class KajianController extends Controller
 		return redirect('/kajian/admin')->with('success', 'Data kajian telah dihapus');
     }
 
+	public function downloadFile(Kajian $kajian)
+	{
+		if (!file_exists($kajian->file)) {
+			return abort(404, 'File tidak ditemukan');
+		}
+
+		return response()->download($kajian->file);
+	}
+
+	public function downloadAudio(Kajian $kajian)
+	{
+		if (!file_exists($kajian->audio)) {
+			return abort(404, 'File tidak ditemukan');
+		}
+
+		return response()->download($kajian->audio);
+	}
+
 	public function apiIndex(Request $request)
 	{
 		$data = Kajian::when($request->id_lokasi, function($query) use($request) {

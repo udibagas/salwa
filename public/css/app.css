@@ -365,3 +365,7 @@ a:hover {
 .jumbotron {
 	background-color: #A2D2FF;
 }
+
+.carousel-control.right, .carousel-control.left {
+	background-image: none;
+}

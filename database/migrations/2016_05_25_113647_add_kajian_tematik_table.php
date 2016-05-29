@@ -18,8 +18,8 @@ class AddKajianTematikTable extends Migration
 			$table->text('description');
 			$table->string('brosur');
 			$table->integer('ustadz_id')->unsigned();
-			$table->json('pekan');
-			$table->json('waktu');
+			$table->text('pekan');
+			$table->text('waktu');
 			// $table->dateTime('waktu_mulai');
 			// $table->dateTime('waktu_selesai');
 			$table->integer('lokasi_id')->unsigned();
@@ -27,8 +27,8 @@ class AddKajianTematikTable extends Migration
 			$table->string('tempat');
 			// $table->decimal('lat', 6,3);
 			// $table->decimal('long', 6,3);
-			$table->json('position');
-			$table->json('cp');
+			$table->text('position');
+			$table->text('cp');
 			// $table->string('cp_ikhwan', 20);
 			// $table->string('cp_akhwat', 20);
 			// $table->string('cp_ikhwan_phone', 20);
