@@ -13,7 +13,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password', 'user_name', 'user_status', 'jenis_kelamin',
-		'active', 'createdby', 'updatedby', 'img_user', 'profile', 'last_login', 'login', 'ip'
+		'active', 'createdby', 'updatedby', 'img_user', 'profile', 'last_login', 'login', 'ip', 'api_token'
     ];
 
 	protected $primaryKey = 'user_id';
@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'api_token'
     ];
 
 	protected $appends = ['role'];

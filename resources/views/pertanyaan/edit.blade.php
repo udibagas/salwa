@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title') Tanya Ustadz : Edit Pertanyaan @stop
+@section('title', 'Tanya Ustadz : Edit Pertanyaan')
 
 @section('breadcrumbs')
 

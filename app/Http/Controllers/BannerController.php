@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Requests\BannerRequest;
 use App\Banner;
 
 class BannerController extends Controller
@@ -15,18 +16,12 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        return view('banner.index', ['banners' => Banner::orderBy('updated', 'DESC')->paginate()]);
     }
 
-	public function admin(Request $request)
+    public function admin()
     {
-		$search = str_replace(' ', '%', $request->search);
-
-        return view('mp3.admin', [
-			'audios' => Mp3::when($search, function($query) use ($search) {
-						return $query->where('judul', 'like', '%'.$search.'%');
-					})->orderBy('updated', 'DESC')->paginate()
-		]);
+        return view('banner.admin', ['banners' => Banner::orderBy('updated', 'DESC')->paginate()]);
     }
 
     /**
@@ -36,7 +31,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        return view('banner.create', ['banner' => new Banner]);
+		return view('banner.create', ['banner' => new Banner]);
     }
 
     /**
@@ -45,9 +40,24 @@ class BannerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BannerRequest $request)
     {
-        //
+		$data = $request->all();
+		$data['createdby'] = auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_banner', $fileName);
+
+            $data['img_banner'] = 'uploads/dirimg_banner/'.$fileName;
+
+        }
+
+		Banner::create($data);
+		return redirect('/banner/admin')->with('success', 'Banner berhasil disimpan');
     }
 
     /**
@@ -56,10 +66,10 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show(Banner $banner)
+    // {
+    //     return view('banner.show', ['banner' 	=> $banner]);
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -69,7 +79,7 @@ class BannerController extends Controller
      */
     public function edit(Banner $banner)
     {
-        return view('banner.create', ['banner' => new Banner]);
+        return view('banner.edit', ['banner' => $banner]);
     }
 
     /**
@@ -79,9 +89,24 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BannerRequest $request, Banner $banner)
     {
-        //
+		$data = $request->all();
+		$data['updatedby'] = auth()->user()->name;
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_banner', $fileName);
+
+            $data['img_banner'] = 'uploads/dirimg_banner/'.$fileName;
+
+        }
+
+		$banner->update($data);
+		return redirect('/banner/admin')->with('success', 'Banner berhasil disimpan');
     }
 
     /**
@@ -90,9 +115,14 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Banner $banner)
+	public function destroy(Banner $banner)
     {
-        $banner->delete();
-		return redirect('/banner/admin');
+		$banner->delete();
+
+		if ($banner->img_banner && file_exists($banner->img_banner)) {
+			unlink($banner->img_banner);
+		}
+
+		return redirect('/banner/admin')->with('success', 'Banner berhasil dihapus');
     }
 }

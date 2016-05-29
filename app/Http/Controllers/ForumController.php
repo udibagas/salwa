@@ -33,9 +33,7 @@ class ForumController extends Controller
      */
     public function create()
     {
-        return view('forum.create', [
-			'model' => new Forum
-		]);
+        return view('forum.create', ['forum' => new Forum]);
     }
 
     /**
@@ -88,7 +86,7 @@ class ForumController extends Controller
      */
     public function edit(Forum $forum)
     {
-		$view = auth()->user()->isAdmin() ? 'forum.edit-admin' : 'forum.edit';
+		$view = auth()->user()->isAdmin() && auth()->user()->user_id !== $forum->user_id ? 'forum.edit-admin' : 'forum.edit';
         return view($view, ['forum' => $forum]);
     }
 
@@ -112,7 +110,7 @@ class ForumController extends Controller
 			'updatedby'		=> auth()->user()->name,
 		]);
 
-		if (auth()->user()->isAdmin()) {
+		if (auth()->user()->isAdmin() && auth()->user()->user_id !== $forum->user_id) {
 			return redirect('forum/admin')->with('success', 'Forum berhasil disimpan');
 		} else {
 			return redirect()->action('ForumController@show', ['forum' => $forum])->with('success', 'Forum berhasil disimpan');

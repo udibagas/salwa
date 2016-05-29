@@ -27,6 +27,18 @@
 
 @section('content')
 
+@if (session('error'))
+	<div class="alert alert-danger text-center">
+		<strong>{{ session('error') }}</strong>
+	</div>
+@endif
+
+@if (session('success'))
+	<div class="alert alert-success text-center">
+		<strong>{{ session('success') }}</strong>
+	</div>
+@endif
+
 <div class="row">
 
 	<div class="col-md-12">
@@ -35,7 +47,7 @@
 			<li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">PROFILE</a></li>
 			<li role="presentation"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">PERTANYAAN</a></li>
 			<li role="presentation"><a href="#3" aria-controls="3" role="tab" data-toggle="tab">FORUM</a></li>
-			<li role="presentation"><a href="#4" aria-controls="4" role="tab" data-toggle="tab">DISKUSI</a></li>
+			<!-- <li role="presentation"><a href="#4" aria-controls="4" role="tab" data-toggle="tab">DISKUSI</a></li> -->
 		</ul>
 
 		<!-- Tab panes -->
@@ -43,18 +55,7 @@
 
 			<div role="tabpanel" class="tab-pane active" id="1">
 				<br />
-				<div class="row">
-					<div class="col-md-7">
-						@include('user._form', ['url' => '/user/'.$user->id, 'method' => 'PUT'])
-					</div>
-					<div class="col-md-2">
-						@if ($user->img_user)
-						<img class="img-responsive" src="/{{ $user->img_user }}" />
-						@else
-						<img class="img-responsive" src="/images/nobody.jpg" />
-						@endif
-					</div>
-				</div>
+				@include('user._form', ['url' => '/user/'.$user->user_id, 'method' => 'PUT'])
 			</div>
 
 			<div role="tabpanel" class="tab-pane" id="2">
@@ -67,10 +68,10 @@
 				@include('user._forum', ['forums' => $user->forums])
 			</div>
 
-			<div role="tabpanel" class="tab-pane" id="4">
+			<!-- <div role="tabpanel" class="tab-pane" id="4">
 				<br />
-				@include('user._post', ['posts' => $user->posts])
-			</div>
+				include('user._post', ['posts' => $user->posts])
+			</div> -->
 
 		</div>
 	</div>

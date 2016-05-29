@@ -50,22 +50,13 @@
 			</div>
 		</div>
 
-		<div class="form-group @if ($errors->has('email')) has-error @endif">
-			<label for="email" class="col-md-3 control-label">Role:</label>
-			<div class="col-md-9">
-				{!! Form::select('user_status', \App\User::roleList(),  $user->user_status, ['class' => 'form-control']) !!}
-				@if ($errors->has('user_status'))
-					<span class="help-block">
-						<strong>{{ $errors->first('user_status') }}</strong>
-					</span>
-				@endif
-			</div>
-		</div>
-
 		<div class="form-group @if ($errors->has('password')) has-error @endif">
 			<label for="password" class="col-md-3 control-label">Password:</label>
 			<div class="col-md-9">
 				{!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
+				<span class="help-block">
+					<strong>Kosongkan jika tidak berubah</strong>
+				</span>
 				@if ($errors->has('password'))
 					<span class="help-block">
 						<strong>{{ $errors->first('password') }}</strong>
@@ -74,13 +65,27 @@
 			</div>
 		</div>
 
-		<div class="form-group @if ($errors->has('confirm')) has-error @endif">
-			<label for="confirm" class="col-md-3 control-label">Confirm Password:</label>
+		<div class="form-group @if ($errors->has('password_confirmation')) has-error @endif">
+			<label for="password_confirmation" class="col-md-3 control-label">Confirm Password:</label>
 			<div class="col-md-9">
-				{!! Form::password('confirm', ['class' => 'form-control', 'placeholder' => 'Confirm Password']) !!}
-				@if ($errors->has('confirm'))
+				{!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm Password']) !!}
+				@if ($errors->has('password_confirmation'))
 					<span class="help-block">
-						<strong>{{ $errors->first('confirm') }}</strong>
+						<strong>{{ $errors->first('password_confirmation') }}</strong>
+					</span>
+				@endif
+			</div>
+		</div>
+
+		@if (auth()->user()->isAdmin())
+
+		<div class="form-group @if ($errors->has('user_status')) has-error @endif">
+			<label for="email" class="col-md-3 control-label">Role:</label>
+			<div class="col-md-9">
+				{!! Form::select('user_status', \App\User::roleList(),  $user->user_status, ['class' => 'form-control', 'placeholder' => '-- Pilih Role --']) !!}
+				@if ($errors->has('user_status'))
+					<span class="help-block">
+						<strong>{{ $errors->first('user_status') }}</strong>
 					</span>
 				@endif
 			</div>
@@ -98,14 +103,15 @@
 			</div>
 		</div>
 
+		@endif
 
-		<div class="form-group @if ($errors->has('img_user')) has-error @endif">
-			<label for="img_user" class="col-md-3 control-label">Profile Picture:</label>
+		<div class="form-group @if ($errors->has('img')) has-error @endif">
+			<label for="img" class="col-md-3 control-label">Profile Picture:</label>
 			<div class="col-md-9">
 				<input type="file" name="img" class="form-control">
-				@if ($errors->has('img_user'))
+				@if ($errors->has('img'))
 					<span class="help-block">
-						<strong>{{ $errors->first('img_user') }}</strong>
+						<strong>{{ $errors->first('img') }}</strong>
 					</span>
 				@endif
 			</div>
@@ -126,7 +132,7 @@
 		<hr>
 
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
+			<div class="col-md-offset-3 col-md-9">
 				<button type="submit" name="save" class="btn btn-info"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 		</div>
@@ -134,6 +140,10 @@
 		{!! Form::close() !!}
 	</div>
 	<div class="col-md-3">
-		<img src="/{{ $user->img_user }}" class="img-responsive" alt="" />
+		@if ($user->img_user)
+		<img class="img-responsive" src="/{{ $user->img_user }}" />
+		@else
+		<img class="img-responsive" src="/images/nobody.jpg" />
+		@endif
 	</div>
 </div>

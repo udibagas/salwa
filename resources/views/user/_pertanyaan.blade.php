@@ -7,10 +7,11 @@
 	<thead>
 		<tr>
 			<th>Judul Pertanyaan</th>
-			<th>Ket. Pertanyaan</th>
 			<th>Waktu Tanya</th>
 			<th>Status</th>
-			<th>Action</th>
+			<th>Waktu Jawab</th>
+			<th>Dijawab Oleh</th>
+			<th style="width:130px;">Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -21,8 +22,7 @@
 					{{ $p->judul_pertanyaan }}
 				</a>
 			</td>
-			<td>{{ $p->ket_pertanyaan }}</td>
-			<td>{{ $p->created->diffForHumans() }}</td>
+			<td>{{ $p->tgl_tanya ? $p->tgl_tanya->diffForHumans() : '' }}</td>
 			<td>
 				@if ($p->jawaban)
 					<span class="label label-success">Sudah dijawab</span>
@@ -30,6 +30,8 @@
 					<span class="label label-warning">Belum dijawab</span>
 				@endif
 			</td>
+			<td>{{ $p->tgl_jawab ? $p->tgl_jawab->diffForHumans() : '' }}</td>
+			<td>{{ $p->ustadz ? $p->ustadz->name : '' }}</td>
 			<td>
 				@if ($p->jawaban)
 					-

@@ -33,8 +33,9 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-		<div class="col-md-12">
-			{{ Form::textarea('description', nl2br($forum->post->description), ['class' => 'summernote', 'placeholder' => '']) }}
+		<label for="description" class="col-md-2 control-label">Decription:</label>
+		<div class="col-md-10">
+			{{ Form::textarea('description',  $forum->post ? nl2br($forum->post->description) : '', ['class' => 'summernote', 'placeholder' => '']) }}
 
 			@if ($errors->has('description'))
 			<span class="help-block">
@@ -47,7 +48,7 @@
 	<hr>
 
 	<div class="form-group">
-		<div class="col-sm-12">
+		<div class=" col-md-offset-2 col-md-10">
 			<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
 		</div>
 	</div>

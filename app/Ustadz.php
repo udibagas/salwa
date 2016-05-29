@@ -23,6 +23,6 @@ class Ustadz extends Model
 
 	public function kajians()
 	{
-		$this->hasMany('App\Kajian', 'kajian_ustadz_id', 'ustadz_id');
+		return $this->hasMany('App\Kajian', 'ustadz_id', 'ustadz_id');
 	}
 }

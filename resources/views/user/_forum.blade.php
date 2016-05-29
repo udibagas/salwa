@@ -26,7 +26,7 @@
 					{{ $f->group->group_name }}
 				</a>
 			</td>
-			<td>{{ $f->created->diffForHumans() }}</td>
+			<td>{{ $f->updated->diffForHumans() }}</td>
 			<td>{{ $f->posts()->count() }}</td>
 			<td>
 				@if ($f->close == 'Y')

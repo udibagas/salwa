@@ -13,7 +13,7 @@ class UserRequest extends Request
      */
     public function authorize()
     {
-        return auth()->check() && auth()->user()->isAdmin();
+        return auth()->check();
     }
 
     /**
@@ -23,14 +23,17 @@ class UserRequest extends Request
      */
     public function rules()
     {
+		$user = $this->route('user');
+
         return [
-            'user_name'	=> 'required|min:3',
+            'user_name'	=> 'required|min:3|unique:users,user_id,'.$user->user_id.',user_id',
 			'name'		=> 'required|min:3',
-			'email'		=> 'required|email',
-			'active'	=> 'required',
+			'email'		=> 'required|email|unique:users,user_id,'.$user->user_id.',user_id',
+			'active'	=> 'required|in:Y,N',
 			'img'		=> 'image',
-			'user_status'	=> 'required',
-			'jenis_kelamin'	=> 'required',
+			'password' 	=> 'min:6|confirmed',
+			'user_status'	=> 'required|in:1,2,3,4,5',
+			'jenis_kelamin'	=> 'required|in:p,w',
         ];
     }
 }

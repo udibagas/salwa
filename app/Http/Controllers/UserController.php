@@ -94,8 +94,16 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         $data = $request->all();
+		$data['profile'] = clean($request->profile);
 
-		if ($request->has('img'))
+		if ($request->password) {
+			$data['password']	= bcrypt($request->password);
+			$data['confirm']	= $request->password;
+		} else {
+			unset($data['password']);
+		}
+
+		if ($request->hasFile('img'))
 		{
 			$file = $request->file('img');
 
@@ -110,7 +118,13 @@ class UserController extends Controller
 		}
 
 		$user->update($data);
-		return redirect('/user');
+
+		if (auth()->user()->user_id == $user->user_id) {
+			return redirect('/me')->with('success', 'Data berhasil disimpan');
+		} else {
+			return redirect('/user')->with('success', 'Data berhasil disimpan');
+		}
+
     }
 
     /**
@@ -126,7 +140,7 @@ class UserController extends Controller
 		if ($user->img_user && file_exists($user->img_user)) {
 			unlink($user->img_user);
 		}
-		
+
 		return redirect('/user');
     }
 }

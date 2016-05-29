@@ -1,4 +1,3 @@
-<!-- <h4 class="title">Forum Category</h4> -->
 <div class="well">
 	@if (auth()->check())
 	<p>

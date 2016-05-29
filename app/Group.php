@@ -78,7 +78,7 @@ class Group extends Model
 		return $this->hasMany('App\SalwaImages', 'group_id', 'group_id');
 	}
 
-	public function promos()
+	public function banners()
 	{
 		return $this->hasMany('App\Banner', 'group_id', 'group_id');
 	}
@@ -138,9 +138,9 @@ class Group extends Model
 		return $query->where('type', 'image');
 	}
 
-	public function scopePromo($query)
+	public function scopeBanner($query)
 	{
-		return $query->where('type', 'promo');
+		return $query->where('type', 'banner');
 	}
 
 	public static function typeList()
@@ -148,6 +148,7 @@ class Group extends Model
 		return [
 			'artikel'	=> 'Artikel',
 			'audio'		=> 'Audio',
+			'banner'	=> 'Banner',
 			'forum'		=> 'Forum',
 			'hadist'	=> 'Hadist',
 			'informasi'	=> 'Informasi',
@@ -157,7 +158,6 @@ class Group extends Model
 			'peduli'	=> 'Peduli',
 			'pertanyaan'	=> 'Pertanyaan',
 			'produk'	=> 'Prduk',
-			'promo'		=> 'Promo',
 			'video'		=> 'Video',
 		];
 	}

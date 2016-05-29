@@ -16,4 +16,11 @@ class Banner extends Model
 
 	protected $primaryKey = 'banner_id';
 
+	protected $fillable = ['img_banner', 'url', 'createdby', 'updatedby', 'group_id'];
+
+	public function group()
+	{
+		return $this->belongsTo('App\Group', 'group_id', 'group_id');
+	}
+
 }

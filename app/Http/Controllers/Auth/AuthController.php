@@ -46,6 +46,8 @@ class AuthController extends Controller
 		$data 				= $request->all();
 		$data['confirm'] 	= $request->password;
 		$data['password'] 	= bcrypt($request->password);
+		$data['user_status']= User::ROLE_MEMBER;
+		$data['api_token']	= str_random(60);
 
 		if ($request->hasFile('img')) {
 

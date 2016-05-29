@@ -21,6 +21,7 @@ Route::get('forum/search', 'ForumController@search');
 Route::get('forum-category/{group}', 'ForumController@category');
 Route::get('kitab/{kitab}/download', 'KitabController@download');
 Route::get('murottal/{murottal}/download', 'MurottalController@download');
+Route::get('promo', 'BannerController@index');
 
 Route::group(['middleware' => 'auth'], function() {
 
@@ -30,10 +31,11 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('cms', 'CmsController@index');
 		Route::resource('group', 'GroupController');
 		Route::resource('lokasi', 'LokasiController');
-		Route::resource('user', 'UserController');
+		Route::resource('user', 'UserController', ['except' => ['update']]);
 
 		Route::get('artikel/admin', 'ArtikelController@admin');
 		Route::get('audio/admin', 'AudioController@admin');
+		Route::get('banner/admin', 'BannerController@admin');
 		Route::get('forum/admin', 'ForumController@admin');
 		Route::get('hadist/admin', 'HadistController@admin');
 		Route::get('image/admin', 'ImageController@admin');
@@ -58,7 +60,6 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::resource('murottal', 'MurottalController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('peduli', 'PeduliController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('produk', 'ProdukController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
-		Route::resource('promo', 'PromoController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('ustadz', 'UstadzController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('video', 'VideoController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 	});
@@ -74,6 +75,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('forum', 'ForumController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 	Route::post('forum/comment/{forum}', 'ForumController@comment');
 	Route::get('me', 'UserController@me');
+	Route::put('user/{user}', 'UserController@update');
 	Route::resource('pertanyaan', 'PertanyaanController', ['except' => ['index', 'show']]);
 
 });
@@ -90,7 +92,6 @@ Route::resource('audio', 'AudioController', ['only' => ['index', 'show']]);
 Route::resource('murottal', 'MurottalController', ['only' => ['index', 'show']]);
 Route::resource('peduli', 'PeduliController', ['only' => ['index', 'show']]);
 Route::resource('produk', 'ProdukController', ['only' => ['index', 'show']]);
-Route::resource('promo', 'PromoController', ['only' => ['index', 'show']]);
 Route::resource('ustadz', 'UstadzController', ['only' => ['index', 'show']]);
 Route::resource('video', 'VideoController', ['only' => ['index', 'show']]);
 Route::resource('pertanyaan', 'PertanyaanController', ['only' => ['index', 'show']]);

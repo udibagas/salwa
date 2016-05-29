@@ -146,14 +146,14 @@ class MurottalController extends Controller
 		if ($murottal->file_mp3 && file_exists($murottal->file_mp3)) {
 			unlink($murottal->file_mp3);
 		}
-		
+
 		return redirect('/murottal/admin');
     }
 
 	public function download(Murottal $murottal)
 	{
-		if (!file_exists($audio->file_mp3)) {
-			return abort(404);
+		if (!file_exists($murottal->file_mp3)) {
+			return abort(404, 'File tidak ditemukan');
 		}
 
 		return response()->download($murottal->file_mp3);

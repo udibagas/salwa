@@ -48,7 +48,7 @@
 			@endif
 		</div>
 
-		<div class="form-group @if ($errors->has('confirm')) has-error @endif">
+		<div class="form-group @if ($errors->has('password_confirmation')) has-error @endif">
 			{!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm Password']) !!}
 			@if ($errors->has('password_confirmation'))
 				<span class="help-block">

@@ -46,7 +46,6 @@
         <script src="/js/jquery.min.js"></script>
         <script src="/bootstrap/js/bootstrap.min.js"></script>
         <script src="/summernote/summernote.min.js"></script>
-		@stack('script')
 
 		<script type="text/javascript">
 			$('.summernote').summernote({
@@ -64,6 +63,8 @@
 				]
 			});
 		</script>
+
+		@stack('script')
 
     </body>
 </html>

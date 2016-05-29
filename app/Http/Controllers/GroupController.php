@@ -139,7 +139,7 @@ class GroupController extends Controller
 		|| count($group->audios) || count($group->murottals)
 		|| count($group->pedulis) || count($group->pertanyaans)
 		|| count($group->kitabs) || count($group->produks)
-		|| count($group->images) || count($group->promos))
+		|| count($group->images) || count($group->banners))
 		{
 			return redirect('/group')->with('error', 'Group gagal dihapus karena digunakan');
 		}
@@ -149,7 +149,7 @@ class GroupController extends Controller
 		if ($group->img_group && file_exists($group->img_group)) {
 			unlink($group->img_group);
 		}
-		
+
 		return redirect('/group')->with('success', 'Data berhasil dihapus');
     }
 }

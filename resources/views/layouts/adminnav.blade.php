@@ -32,7 +32,7 @@
 	<a class="list-group-item @if (url()->current() == url('murottal/admin')) active @endif" href="/murottal/admin">
 		<i class="fa fa-microphone"></i> Murottal Al Qur'an
 	</a>
-	<a class="list-group-item @if (url()->current() == url('promo/admin')) active @endif" href="/promo/admin">
+	<a class="list-group-item @if (url()->current() == url('banner/admin')) active @endif" href="/banner/admin">
 		<i class="fa fa-list"></i> Salwa Promo
 	</a>
 	<a class="list-group-item @if (url()->current() == url('produk/admin')) active @endif" href="/produk/admin">
@@ -61,5 +61,8 @@
 	</a>
 	<a class="list-group-item @if (url()->current() == url('kajian')) active @endif" href="/kajian/admin">
 		<i class="fa fa-edit"></i> Kajian
+	</a>
+	<a class="list-group-item @if (url()->current() == url('kajian-tematik')) active @endif" href="/kajian-tematik/admin">
+		<i class="fa fa-edit"></i> Kajian Tematik
 	</a>
 </div>
