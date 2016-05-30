@@ -390,3 +390,7 @@ a:hover {
 .carousel-control:hover {
 	color: #0084FF;
 }
+
+.badge {
+	background-color: #0084FF;
+}
