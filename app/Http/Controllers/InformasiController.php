@@ -158,10 +158,10 @@ class InformasiController extends Controller
 			foreach ($request->file('file') as $file) {
 
 				$fileName = time().'_'.$file->getClientOriginalName();
-				$file->move('uploads/dirfile_upload', str_slug($fileName));
+				$file->move('uploads/dirfile_upload', $fileName);
 
 				$informasi->files()->create([
-					'file_upload'	=> 'uploads/dirfile_upload/'.str_slug($fileName),
+					'file_upload'	=> 'uploads/dirfile_upload/'.$fileName,
 					'tipe' 			=> $file->getClientOriginalExtension()
 				]);
 			}

@@ -23,3 +23,6 @@ TODO
 17. files di informasi => CRUD di CMS
 18. kalender kajian
 19. Image di forum => crud untuk imagenya
+20. validasi upload file di forum dan informasi
+21. resize image on the fly
+22. caching pake memchaced

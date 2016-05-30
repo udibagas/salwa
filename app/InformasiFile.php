@@ -12,6 +12,8 @@ class InformasiFile extends Model
 
 	protected $primaryKey = 'file_id';
 
+	protected $fillable = ['file_upload', 'tipe', 'informasi_id'];
+
 	public function informasi()
 	{
 		return $this->belongsTo('App\Informasi', 'informasi_id', 'informasi_id');

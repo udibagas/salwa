@@ -64,10 +64,10 @@ class ForumController extends Controller
 			foreach ($request->file('img') as $file) {
 
 	            $fileName = time().'_'.$file->getClientOriginalName();
-	            $file->move('uploads/dirimg_image', str_slug($fileName));
+	            $file->move('uploads/dirimg_image', $fileName);
 
 				$post->images()->create([
-					'img_image'		=> 'uploads/dirimg_image/'.str_slug($fileName),
+					'img_image'		=> 'uploads/dirimg_image/'.$fileName,
 					'image_desc' 	=> $file->getClientOriginalName()
 				]);
 			}
@@ -129,10 +129,10 @@ class ForumController extends Controller
 			foreach ($request->file('img') as $file) {
 
 	            $fileName = time().'_'.$file->getClientOriginalName();
-	            $file->move('uploads/dirimg_image', str_slug($fileName));
+	            $file->move('uploads/dirimg_image', $fileName);
 
 				$forum->post->images()->create([
-					'img_image'		=> 'uploads/dirimg_image/'.str_slug($fileName),
+					'img_image'		=> 'uploads/dirimg_image/'.$fileName,
 					'image_desc' 	=> $file->getClientOriginalName()
 				]);
 			}

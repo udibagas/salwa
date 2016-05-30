@@ -2,9 +2,11 @@
 	<div id="myCarousel1" class="carousel slide carousel-promo" data-ride="carousel" style="max-height:118px;">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
-			<li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel1" data-slide-to="1"></li>
-			<li data-target="#myCarousel1" data-slide-to="2"></li>
+			<?php $i = 0; ?>
+			@foreach ($promo as $p)
+			<li data-target="#myCarousel1" data-slide-to="{{ $i }}" class="@if ($i == 0) active @endif"></li>
+			<?php $i++ ?>
+			@endforeach
 		</ol>
 		<div class="carousel-inner" role="listbox" style="max-height:118px;">
 			<?php $i = 0; ?>
