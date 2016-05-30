@@ -1,4 +1,4 @@
-<h4 class="title">DZIKIR</h4>
+<h4 class="title"><i class="fa fa-hand-stop-o"></i> DZIKIR</h4>
 <ul class="list-group">
 	@foreach ($dzikir as $d)
 	<li class="list-group-item">

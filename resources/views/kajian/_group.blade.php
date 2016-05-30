@@ -7,15 +7,15 @@
 		{!! Form::close() !!}
 	</span>
 	<a href="/kajian?tema={{ request('tema') }}&ustadz_id={{ request('ustadz_id') }}" class="list-group-item info @if (request('rutin') == null) active @endif">
-		<i class="fa fa-hashtag"></i> SEMUA KAJIAN
+		SEMUA KAJIAN
 		<span class="badge">{{ \App\Kajian::count() }}</span>
 	</a>
 	<a href="/kajian?tema={{ request('tema') }}&rutin=tematik&ustadz_id={{ request('ustadz_id') }}" class="list-group-item info @if (request('rutin') == 'tematik') active @endif">
-		<i class="fa fa-hashtag"></i> Kajian Tematik
+		Kajian Tematik
 		<span class="badge">{{ \App\Kajian::tematik()->count() }}</span>
 	</a>
 	<a href="/kajian?tema={{ request('tema') }}&rutin=rutin&ustadz_id={{ request('ustadz_id') }}" class="list-group-item info @if (request('rutin') == 'rutin') active @endif">
-		<i class="fa fa-hashtag"></i> Kajian Rutin
+		Kajian Rutin
 		<span class="badge">{{ \App\Kajian::rutin()->count() }}</span>
 	</a>
 </div>

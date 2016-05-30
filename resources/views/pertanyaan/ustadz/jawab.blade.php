@@ -29,7 +29,7 @@
 			</strong><br>
 			<em>
 				@if ($pertanyaan->group)
-				<a href="/pertanyaan/admin/?group_id={{ $pertanyaan->group_id }}"><i class="fa fa-hashtag"></i> {{ $pertanyaan->group->group_name }}</a>
+				<a href="/pertanyaan/admin/?group_id={{ $pertanyaan->group_id }}">{{ $pertanyaan->group->group_name }}</a>
 				@endif
 				<i class="fa fa-clock-o"></i> {{ $pertanyaan->created->diffForHumans() }}
 			</em>

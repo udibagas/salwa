@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="col-md-9">
-			<h4 class="title"><i class="fa fa-hashtag"></i> {{ $group->group_name }}</h4>
+			<h4 class="title">{{ $group->group_name }}</h4>
 
 			<div class="alert alert-info">
 				@if ($group->img_group)

@@ -6,11 +6,11 @@
 		{!! Form::close() !!}
 	</span>
 	<a href="/murottal?search={{ request('search') }}" class="list-group-item info @if (request('group_id') == null) active @endif">
-		<i class="fa fa-hashtag"></i> Semua Kategori <span class="badge">{{ \App\Murottal::count() }}</span>
+		SEMUA KATEGORI <span class="badge">{{ \App\Murottal::count() }}</span>
 	</a>
 	@foreach (\App\Group::murottal()->orderBy('group_name', 'ASC')->get() as $g)
 	<a href="/murottal?search={{ request('search') }}&group_id={{ $g->group_id }}" class="list-group-item info @if (request('group_id') == $g->group_id) active @endif">
-		<i class="fa fa-hashtag"></i> {{ $g->group_name }} <span class="badge">{{ $g->murottals->count() }}</span>
+		{{ $g->group_name }} <span class="badge">{{ $g->murottals->count() }}</span>
 	</a>
 	@endforeach
 </div>

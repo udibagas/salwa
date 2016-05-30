@@ -6,12 +6,12 @@
 		{!! Form::close() !!}
 	</div>
 	<a href="/video?search={{ request('search') }}" class="list-group-item info @if (request('user_id') == null) active @endif">
-		<i class="fa fa-hashtag"></i> SEMUA KATEGORI
+		SEMUA KATEGORI
 		<span class="badge">{{ \App\Video::count() }}</span>
 	</a>
 	@foreach (\App\User::ustadz()->has('videos')->orderBy('name', 'ASC')->get() as $g)
 	<a href="/video?search={{ request('search') }}&user_id={{ $g->user_id }}" class="list-group-item info @if (request('user_id') == $g->user_id) active @endif">
-		<i class="fa fa-hashtag"></i> {{ $g->name }}
+		{{ $g->name }}
 		<span class="badge">{{ $g->videos->count() }}</span>
 	</a>
 	@endforeach

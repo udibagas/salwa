@@ -18,7 +18,7 @@
 							<b><i class="fa fa-user"></i> {{ $p->ustadz ? $p->ustadz->name : '' }}</b><br>
 							<em>
 								@if ($p->group)
-								<a href="/pertanyaan/?group_id={{ $p->group_id }}"><i class="fa fa-hashtag"></i> {{ $p->group->group_name }}</a>
+								<a href="/pertanyaan/?group_id={{ $p->group_id }}">{{ $p->group->group_name }}</a>
 								@endif
 								<i class="fa fa-clock-o"></i> {{ $p->tgl_jawab ? $p->tgl_jawab->diffForHumans() : "" }}
 							</em>

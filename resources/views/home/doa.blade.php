@@ -1,4 +1,4 @@
-<h4 class="title">DO'A</h4>
+<h4 class="title"><i class="fa fa-heartbeat"></i> DO'A</h4>
 <ul class="list-group">
 	@foreach ($doa as $d)
 	<li class="list-group-item">
