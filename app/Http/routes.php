@@ -12,6 +12,11 @@
 */
 
 use App\User;
+// use Instagram;
+//
+// Route::get('/instagram', function() {
+// 	return Instagram::users()->get(30);
+// });
 
 Route::get('/', 'HomeController@index');
 Route::get('audio/{audio}/download', 'AudioController@download');

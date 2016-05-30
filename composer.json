@@ -10,7 +10,8 @@
 		"laravelcollective/html": "5.2.*",
 		"folklore/image": "0.3.*",
         "doctrine/dbal": "^2.5",
-        "mews/purifier": "^2.0"
+        "mews/purifier": "^2.0",
+        "vinkla/instagram": "^4.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

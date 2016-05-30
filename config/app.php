@@ -150,6 +150,7 @@ return [
 		Collective\Html\HtmlServiceProvider::class,
 		Folklore\Image\ImageServiceProvider::class,
 		Mews\Purifier\PurifierServiceProvider::class,
+		Vinkla\Instagram\InstagramServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -208,6 +209,7 @@ return [
 		'Html' => Collective\Html\HtmlFacade::class,
 		'Image' => Folklore\Image\Facades\Image::class,
 		'Purifier' => Mews\Purifier\Facades\Purifier::class,
+		'Instagram' => Vinkla\Instagram\Facades\Instagram::class,
     ],
 
 ];

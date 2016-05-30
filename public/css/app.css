@@ -323,10 +323,14 @@ a.list-group-item {
 	/*border-radius: 0;*/
 }
 
-.search-nav {
+.search-field {
 	border-radius:20px;
 	/*background-color: #032876;*/
-	border: none;
+	/*border: none;*/
+	background-image: url('https://instagramstatic-a.akamaihd.net/h1/images/glyphs/magnifier.png/c053547e0c66.png');
+	background-repeat: no-repeat;
+	background-position: 8px 49%;
+	padding-left: 25px;
 }
 
 .panel-link a:hover {

@@ -7,7 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\KajianRequest;
 use App\Kajian;
 
-class KajianController extends Controller
+class KKajianController extends Controller
 {
     /**
      * Display a listing of the resource.

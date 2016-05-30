@@ -26,7 +26,7 @@
     <div id="navbar" class="navbar-collapse collapse">
 
       <form class="navbar-form navbar-left" method="GET" action="/" style="margin-left:120px;">
-			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control search-nav" style="width:200px;">
+			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control search-field" style="width:200px;">
       </form>
 
       <ul class="nav navbar-nav navbar-right">
