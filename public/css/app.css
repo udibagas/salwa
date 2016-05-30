@@ -199,13 +199,13 @@ ul.link-icon > li {
 	border-radius: 0;
 }*/
 
-
 a.list-group-item {
 	color: #033AAE;
 }
 
 .list-group-item {
 	border-color: #8EC7FB;
+	background-color: #D9EDF7;
 }
 
 .panel-orange>.panel-heading {
