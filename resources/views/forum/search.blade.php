@@ -22,7 +22,7 @@
 
 		<div class="col-md-9">
 
-			<h4 class="title"><i class="fa fa-clock-o"></i> HASIL PENCARIAN "{{ request('search') }}"</h4>
+			<h4 class="title"><i class="fa fa-search"></i> HASIL PENCARIAN "{{ request('search') }}"</h4>
 
 			<div class="" style="padding:10px 20px;border:1px solid #8EC7FB;">
 				@if (count($forums) == 0)

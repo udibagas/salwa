@@ -21,7 +21,7 @@
 	<br>
 
 	<div style="border:1px solid #8EC7FB;">
-		<h4 class="title" style="margin:0;">FORUM</h4>
+		<h4 class="title" style="margin:0;"><i class="fa fa-comment"></i> FORUM</h4>
 		@each('forum._list', $forumKategori, 'group')
 	</div>
 

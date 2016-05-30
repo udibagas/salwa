@@ -16,9 +16,9 @@ TODO
 7. Ubah longtext beberapa field (decription post, pertanyaan, artikel, peduli, informasi, dsb)
 8. Add close di salwa peduli. Atau add archived di semua jenis post (peduli, informasi, video, audio, artikel) => pending
 9. Rich editor belum bisa insert image setelah di clean
-11. Produk (CMS - CRUD) => pending
+11. Produk (CMS - CRUD) => HARUS HARI INI!!!
 12. Forget Password => pake email salamdakwah, aktifkan secondary mail server di server baru
 13. API sunnah go => create kajian : tinggal halaman CMS
-14. cari group list yg cakep, koment yg cakep ==> pending
+14. koment yg cakep ==> pending
 15. bikin modul komentar
 16. pake choosen
