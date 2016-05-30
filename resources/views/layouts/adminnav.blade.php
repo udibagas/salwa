@@ -36,7 +36,7 @@
 		<i class="fa fa-list"></i> Salwa Promo
 	</a>
 	<a class="list-group-item info @if (url()->current() == url('produk/admin')) active @endif" href="/produk/admin">
-		<i class="fa fa-tags"></i> Produk
+		<i class="fa fa-tags"></i> Salwa Market
 	</a>
 	<a class="list-group-item info @if (url()->current() == url('image/admin')) active @endif" href="/image/admin">
 		<i class="fa fa-image"></i> Salwa Image

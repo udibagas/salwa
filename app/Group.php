@@ -157,7 +157,7 @@ class Group extends Model
 			'murottal'	=> 'Murottal',
 			'peduli'	=> 'Peduli',
 			'pertanyaan'	=> 'Pertanyaan',
-			'produk'	=> 'Prduk',
+			'produk'	=> 'Produk',
 			'video'		=> 'Video',
 		];
 	}

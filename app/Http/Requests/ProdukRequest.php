@@ -29,9 +29,9 @@ class ProdukRequest extends Request
 			'penulis'	=> 'required',
 			'penerbit'	=> 'required',
 			'sinopsis'	=> 'required',
-			'img'		=> 'required|image',
+			'img'		=> 'image',
 			'harga'		=> 'required|numeric',
-			'sinopsis_kecil'	=> 'required',
+			// 'sinopsis_kecil'	=> 'required',
         ];
     }
 }

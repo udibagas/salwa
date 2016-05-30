@@ -1,13 +1,13 @@
 @extends('layouts.cms')
 
-@section('title', 'Peduli : Edit Artikel')
+@section('title', 'Produk : Edit Produk')
 
 @section('breadcrumbs')
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'/peduli/admin' => 'PEDULI',
-			'#' => 'Edit Artikel',
+			'/produk/admin' => 'PRODUK',
+			'#' => 'Edit Produk',
 		]
 	])
 
@@ -15,7 +15,7 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-edit"></i> Edit Artikel</h4>
-	@include('peduli._form', ['url' => '/peduli/'.$peduli->peduli_id, 'method' => 'PUT'])
+	<h4 class="title"><i class="fa fa-edit"></i> Edit Produk</h4>
+	@include('produk._form', ['url' => '/produk/'.$produk->id_produk, 'method' => 'PUT'])
 
 @stop

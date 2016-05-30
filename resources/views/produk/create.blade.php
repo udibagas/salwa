@@ -1,13 +1,13 @@
 @extends('layouts.cms')
 
-@section('title', 'Peduli : Create New Artikel')
+@section('title', 'Salwa Market : Add New Product')
 
 @section('breadcrumbs')
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'/peduli/admin' => 'PEDULI',
-			'#' => 'New Artikel',
+			'/produk/admin' => 'PRODUK',
+			'#' => 'New Product',
 		]
 	])
 
@@ -15,7 +15,7 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-plus-circle"></i> Tambah Artikel Baru</h4>
-	@include('peduli._form', ['url' => '/peduli', 'method' => 'POST'])
+	<h4 class="title"><i class="fa fa-plus-circle"></i> Tambah Produk Baru</h4>
+	@include('produk._form', ['url' => '/produk', 'method' => 'POST'])
 
 @stop

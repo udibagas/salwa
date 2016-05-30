@@ -33,6 +33,10 @@
 							<td>: {{ $produk->penerbit }}</td>
 						</tr>
 						<tr>
+							<th>Penulis</th>
+							<td>: {{ $produk->penulis }}</td>
+						</tr>
+						<tr>
 							<th>Harga</th>
 							<td>: Rp. {{ $produk->harga }}</td>
 						</tr>

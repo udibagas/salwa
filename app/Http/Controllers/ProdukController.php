@@ -60,9 +60,7 @@ class ProdukController extends Controller
     {
 		$data 					= $request->all();
 		$data['kd_judul'] 		= str_slug($request->judul);
-		$data['tgl_artikel'] 	= date('Y-m-d H:i:s');
-		$data['isi_mobile'] 	= $data['isi'];
-		$data['ringkasan'] 		= str_limit($data['isi'], 250);
+		// $data['sinopsis_kecil']	= str_limit(clean($data['sinopsis']), 100);
 		$data['createdby'] 		= auth()->user()->name;
 
 		if ($request->hasFile('img')) {
@@ -70,9 +68,9 @@ class ProdukController extends Controller
             $file = $request->file('img');
 
             $fileName = time().'_'.$file->getClientOriginalName();
-            $file->move('uploads/dirimg_artikel', $fileName);
+            $file->move('uploads/dirimg_buku', $fileName);
 
-            $data['img_artikel'] = 'uploads/dirimg_artikel/'.$fileName;
+            $data['img_buku'] = 'uploads/dirimg_buku/'.$fileName;
 
         }
 
@@ -114,7 +112,24 @@ class ProdukController extends Controller
      */
     public function update(ProdukRequest $request, Produk $produk)
     {
+		$data 					= $request->all();
+		$data['kd_judul'] 		= str_slug($request->judul);
+		// $data['sinopsis_kecil']	= str_limit(clean($data['sinopsis']), 100);
+		$data['updatedby'] 		= auth()->user()->name;
 
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_buku', $fileName);
+
+            $data['img_buku'] = 'uploads/dirimg_buku/'.$fileName;
+
+        }
+
+		$produk->update($data);
+		return redirect('/produk/admin')->with('success', 'Produk berhasil disimpan');
     }
 
     /**
@@ -126,6 +141,11 @@ class ProdukController extends Controller
     public function destroy(Produk $produk)
     {
         $produk->delete();
+
+		if ($produk->img_buku && file_exists($produk->img_buku)) {
+			unlink($produk->img_buku);
+		}
+
 		return redirect('/produk/admin');
     }
 }

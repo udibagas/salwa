@@ -14,7 +14,7 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-heart-o"></i> SALWA MARKET</h4>
+	<h4 class="title"><i class="fa fa-shopping-cart"></i> SALWA MARKET</h4>
 
 	<div class="well well-sm" style="margin-bottom:10px;">
 		<a href="/produk/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Add Product</a>
@@ -32,8 +32,6 @@
 				<th>Penulis</th>
 				<th>Penerbit</th>
 				<th>Harga</th>
-				<th style="width:150px;">Created</th>
-				<th style="width:150px;">Updated</th>
 				<th style="width:170px;">Action</th>
 			</tr>
 			{!! Form::open(['method' => 'GET']) !!}
@@ -54,8 +52,6 @@
 				<td>
 					<input type="text" name="harga" value="{{ request('harga') }}" class="form-control" placeholder="Harga">
 				</td>
-				<td></td>
-				<td></td>
 				<td>
 					<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
 					<a href="/produk/admin" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
@@ -69,16 +65,13 @@
 				<tr>
 					<td>{{ $i++ }}</td>
 					<td><a href="/produk/{{ $a->produk_id }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
-					<td>{{ $a->judul }}</td>
 					<td>{{ $a->group ? $a->group->group_name : '' }}</td>
 					<td>{{ $a->penulis }}</td>
 					<td>{{ $a->penerbit }}</td>
 					<td>{{ $a->harga }}</td>
-					<td>{{ $a->created }}</td>
-					<td>{{ $a->updated }}</td>
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/produk/'.$a->produk_id]) !!}
-						<a href="/produk/{{ $a->produk_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>
+						<a href="/produk/{{ $a->id_produk }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>
 						<button type="submit" name="delete" class="btn btn-danger btn-xs delete"><i class="fa fa-trash"></i> Hapus</button>
 						{!! Form::close() !!}
 					</td>
@@ -88,7 +81,7 @@
 	</table>
 
 	<div class="text-center">
-		{!! $produks->appends(['judul' => request('judul'),'group_id' => request('group_id'),'user' => request('user')])->links() !!}
+		{!! $produks->appends(['judul' => request('judul'),'group_id' => request('group_id'),'penulis' => request('penulis'),'penerbit' => request('penerbit'),'harga' => request('harga')])->links() !!}
 	</div>
 
 @stop
