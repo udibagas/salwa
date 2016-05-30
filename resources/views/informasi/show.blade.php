@@ -30,6 +30,23 @@
 
 		{!! $informasi->content !!}
 
+		@if ($informasi->dokumens)
+		<div class="list-group">
+			@foreach ($informasi->dokumens as $d)
+			<a class="list-group-item" href="/{{ $d->file_upload }}" target="_blank">
+				<i class="fa fa-download"></i>
+				{{ $d->file_upload }}
+			</a>
+			@endforeach
+		</div>
+		@endif
+
+		@if ($informasi->images)
+		<div class="row no-gutter">
+			@each('informasi._images', $informasi->images, 'image')
+		</div>
+		@endif
+
 		<hr>
 		@include('layouts._share')
 		<hr>

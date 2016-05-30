@@ -32,4 +32,19 @@ class Informasi extends Model
 		return $this->belongsTo('App\Group', 'group_id', 'group_id');
 	}
 
+	public function files()
+	{
+		return $this->hasMany('App\InformasiFile', 'informasi_id', 'informasi_id');
+	}
+
+	public function images()
+	{
+		return $this->hasMany('App\InformasiFile', 'informasi_id', 'informasi_id', ['where' => 'tipe in ("jpg", "jpeg", "png", "gif", "bmp")']);
+	}
+
+	public function dokumens()
+	{
+		return $this->hasMany('App\InformasiFile', 'informasi_id', 'informasi_id', ['where' => 'tipe in ("doc", "docx", "xls", "xlsx", "pdf", "ods", "odt", "zip")']);
+	}
+
 }

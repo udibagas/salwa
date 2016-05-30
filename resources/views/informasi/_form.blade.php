@@ -3,8 +3,8 @@
 		{!! Form::model($informasi, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method, 'files' => true]) !!}
 
 			<div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
-				<label for="judul" class="col-md-3 control-label">Judul:</label>
-				<div class="col-md-9">
+				<label for="judul" class="col-md-2 control-label">Judul:</label>
+				<div class="col-md-10">
 					{{ Form::text('judul', $informasi->judul, ['class' => 'form-control', 'placeholder' => 'Judul Informasi']) }}
 
 					@if ($errors->has('judul'))
@@ -16,8 +16,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
-				<label for="group_id" class="col-md-3 control-label">Group:</label>
-				<div class="col-md-9">
+				<label for="group_id" class="col-md-2 control-label">Kategori:</label>
+				<div class="col-md-10">
 					{{ Form::select('group_id',
 						\App\Group::informasi()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
 						$informasi->group_id, [
@@ -35,8 +35,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-				<label for="img" class="col-md-3 control-label">Gambar:</label>
-				<div class="col-md-9">
+				<label for="img" class="col-md-2 control-label">Gambar:</label>
+				<div class="col-md-10">
 					<input type="file" name="img" class="form-control">
 
 					@if ($errors->has('img'))
@@ -47,8 +47,24 @@
 				</div>
 			</div>
 
+			<div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
+				<label for="file" class="col-md-2 control-label">File:</label>
+				<div class="col-md-10">
+					<input type="file" name="file[]" class="note-image-input form-control" multiple="multiple">
+					<span class="help-block">
+						<strong>Tekan ctrl + click untuk memilih lebih dari 1 file pada dialog file</strong>
+					</span>
+					@if ($errors->has('file'))
+						<span class="help-block">
+							<strong>{{ $errors->first('file') }}</strong>
+						</span>
+					@endif
+				</div>
+			</div>
+
 			<div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-				<div class="col-md-12">
+				<label for="content" class="col-md-2 control-label">Content:</label>
+				<div class="col-md-10">
 					{{ Form::textarea('content', $informasi->content, ['class' => 'summernote', 'placeholder' => '']) }}
 
 					@if ($errors->has('content'))
@@ -62,7 +78,7 @@
 			<hr>
 
 			<div class="form-group">
-				<div class="col-sm-12">
+				<div class="col-md-offset-2 col-md-10">
 					<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
 				</div>
 			</div>

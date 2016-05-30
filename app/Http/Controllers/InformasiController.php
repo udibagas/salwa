@@ -76,7 +76,21 @@ class InformasiController extends Controller
 
         }
 
-		Informasi::create($data);
+		$informasi = Informasi::create($data);
+
+		if ($request->hasFile('file')) {
+
+			foreach ($request->file('file') as $file) {
+
+				$fileName = time().'_'.$file->getClientOriginalName();
+				$file->move('uploads/dirfile_upload', str_slug($fileName));
+
+				$informasi->files()->create([
+					'file_upload'	=> 'uploads/dirfile_upload/'.str_slug($fileName),
+					'tipe' 			=> $file->getClientOriginalExtension()
+				]);
+			}
+		}
 
 		return redirect('/informasi/admin')->with('success', 'Informasi berhasil disimpan');
     }
@@ -139,6 +153,20 @@ class InformasiController extends Controller
 
 		$informasi->update($data);
 
+		if ($request->hasFile('file')) {
+
+			foreach ($request->file('file') as $file) {
+
+				$fileName = time().'_'.$file->getClientOriginalName();
+				$file->move('uploads/dirfile_upload', str_slug($fileName));
+
+				$informasi->files()->create([
+					'file_upload'	=> 'uploads/dirfile_upload/'.str_slug($fileName),
+					'tipe' 			=> $file->getClientOriginalExtension()
+				]);
+			}
+		}
+
         return redirect('/informasi/admin')->with('success', 'Informasi berhasil disimpan');
     }
 
@@ -155,7 +183,7 @@ class InformasiController extends Controller
 		if ($informasi->img_gambar && file_exists($informasi->img_gambar)) {
 			unlink($informasi->img_gambar);
 		}
-		
+
 		return redirect('/informasi/admin');
     }
 }

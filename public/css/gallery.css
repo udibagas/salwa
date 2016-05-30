@@ -3,7 +3,7 @@
 }
 .gal-item{
 	overflow: hidden;
-	padding: 3px;
+	padding-bottom: 2px;
 }
 .gal-item .box{
 	height: 200px;
