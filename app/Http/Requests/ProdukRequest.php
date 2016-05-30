@@ -26,9 +26,12 @@ class ProdukRequest extends Request
         return [
             'group_id'	=> 'required',
 			'judul'		=> 'required|min:3',
-			'isi'		=> 'required|min:3',
-			'user_id'	=> 'required',
-			'img'		=> 'image',
+			'penulis'	=> 'required',
+			'penerbit'	=> 'required',
+			'sinopsis'	=> 'required',
+			'img'		=> 'required|image',
+			'harga'		=> 'required|numeric',
+			'sinopsis_kecil'	=> 'required',
         ];
     }
 }

@@ -12,4 +12,19 @@ class Produk extends Model
 
     protected $dates = ['created', 'updated'];
 
+	const CREATED_AT = 'created';
+
+	const UPDATED_AT = 'updated';
+
+	protected $fillable = [
+		'judul', 'kd_judul', 'penulis', 'penerbit',
+		'sinopsis_kecil', 'sinopsis', 'img_buku', 'harga',
+		'createdby', 'updatedby', 'group_id', 'img_buku'
+	];
+
+	public function group()
+	{
+		return $this->belongsTo('App\Group', 'group_id', 'group_id');
+	}
+
 }

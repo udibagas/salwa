@@ -104,7 +104,7 @@ class PertanyaanController extends Controller
 		$data['user_id']	= auth()->user()->user_id;
 		$data['tgl_tanya'] 	= date('Y-m-d H:i:s');
 		$data['createdby'] 	= auth()->user()->name;
-		$data['ket_pertanyaan'] = clean($request->ket_pertanyaan);
+		$data['ket_pertanyaan'] = $request->ket_pertanyaan;
 
         $pertanyaan = Pertanyaan::create($data);
 		return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan]);
@@ -147,7 +147,7 @@ class PertanyaanController extends Controller
 		$data 					= $request->all();
 		$data['dijawab_oleh'] 	= auth()->user()->user_id;
 		$data['tgl_jawab'] 		= date('Y-m-d H:i:s');
-		$data['jawaban'] 		= clean($request->jawaban);
+		$data['jawaban'] 		= $request->jawaban;
 
 		$pertanyaan->update($data);
 		return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan])
@@ -166,7 +166,7 @@ class PertanyaanController extends Controller
 		$data 				= $request->all();
 		$data['updatedby']	= auth()->user()->name;
 		$data['kd_judul']	= str_slug($request->judul_pertanyaan);
-		$data['ket_pertanyaan'] = clean($request->ket_pertanyaan);
+		$data['ket_pertanyaan'] = $request->ket_pertanyaan;
 
 		$pertanyaan->update($data);
 

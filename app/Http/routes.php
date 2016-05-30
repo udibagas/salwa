@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('murottal/admin', 'MurottalController@admin');
 		Route::get('peduli/admin', 'PeduliController@admin');
 		Route::get('pertanyaan/admin', 'PertanyaanController@admin');
+		Route::get('produk/admin', 'ProdukController@admin');
 		Route::get('ustadz/admin', 'UstadzController@admin');
 		Route::get('video/admin', 'VideoController@admin');
 

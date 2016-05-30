@@ -29,14 +29,14 @@ class ProdukController extends Controller
 
     public function admin(Request $request)
     {
-		$search = str_replace(' ', '%', $request->search);
+		$judul = str_replace(' ', '%', $request->judul);
 
         return view('produk.admin', [
 			'produks' => Produk::when($request->group_id, function($query) use ($request) {
 								return $query->where('group_id', $request->group_id);
-							})->when($search, function($query) use ($search) {
-								return $query->where('judul', 'like', '%'.$search.'%');
-							})->orderBy('updated', 'DESC')->paginate(20)
+							})->when($judul, function($query) use ($judul) {
+								return $query->where('judul', 'like', '%'.$judul.'%');
+							})->orderBy('updated', 'DESC')->paginate()
 		]);
     }
 
