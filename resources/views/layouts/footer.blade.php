@@ -17,7 +17,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-2">
+	<div class="col-md-2 col-sm-6 col-xs-6">
 
 		<ul style="list-style:none;font-weight:bold;">
 			<li><a href="/"><i class="fa fa-home"></i> Home</a></li>
@@ -34,7 +34,7 @@
 
 	</div>
 
-	<div class="col-md-2">
+	<div class="col-md-2 col-sm-6 col-xs-6">
 
 		<ul style="list-style:none;font-weight:bold;">
 			<li><a href="/doa">Do'a</a></li>
@@ -48,7 +48,7 @@
 
 	</div>
 
-	<div class="col-md-2">
+	<div class="col-md-2 col-xs-12 col-sm-12">
 
 		<h4 class="">DOWNLOAD APP</h4>
 
