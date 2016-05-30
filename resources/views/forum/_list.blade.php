@@ -1,4 +1,4 @@
-<h4 class="sub-title"><i class="fa fa-hashtag"></i> {{ $group->group_name }}</h4>
+<h4 class="sub-title">{{ $group->group_name }}</h4>
 <div class="" style="padding:10px 20px;">
 	@foreach ($group->forums()->orderBy('updated', 'DESC')->limit(3)->get() as $f)
 		<div class="underlined">
