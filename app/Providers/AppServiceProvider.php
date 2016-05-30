@@ -18,13 +18,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share([
-			'info' 		=> Informasi::limit(3)->orderBy('informasi_id', 'DESC')->get(),
-			'hadist'	=> Hadist::where('group_id', 42)->orderBy('hadist_id', 'DESC')->first(),
-			'doa'		=> Hadist::where('group_id', 59)->orderBy('hadist_id', 'DESC')->first(),
-			'banner'	=> Banner::limit(3)->orderBy('banner_id', 'DESC')->get(),
-			'salwaImage'	=> SalwaImages::orderBy('id_salwaimages', 'DESC')->first(),
-		]);
+        // view()->share([
+		// 	'info' 		=> Informasi::limit(3)->orderBy('informasi_id', 'DESC')->get(),
+		// 	'hadist'	=> Hadist::where('group_id', 42)->orderBy('hadist_id', 'DESC')->first(),
+		// 	'doa'		=> Hadist::where('group_id', 59)->orderBy('hadist_id', 'DESC')->first(),
+		// 	'banner'	=> Banner::limit(3)->orderBy('banner_id', 'DESC')->get(),
+		// 	'salwaImage'	=> SalwaImages::orderBy('id_salwaimages', 'DESC')->first(),
+		// ]);
     }
 
     /**

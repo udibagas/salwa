@@ -3,10 +3,10 @@
 }
 .gal-item{
 	overflow: hidden;
-	/*padding: 3px;*/
+	padding: 3px;
 }
 .gal-item .box{
-	height: 270px;
+	height: 200px;
 	overflow: hidden;
 }
 .box img{
@@ -29,7 +29,7 @@
 	top: 3px;
 	bottom: 3px;
 	text-align: center;
-    line-height: 270px;
+    line-height: 200px;
     font-size: 30px;
     color: #fff;
     -webkit-transition: all 0.5s ease-in-out 0s;
@@ -81,7 +81,6 @@
 	padding: 10px 25px;
 	background-color: rgba(0,0,0,0.5);
 	color: #fff;
-	text-align: left;
 }
 .gal-container .description h4{
 	margin:0px;
@@ -118,7 +117,7 @@
 }
 @media (max-width: 768px) {
     .gal-container .modal-content{
-        height:270px;
+        height:200px;
     }
 }
 /* Footer Style */

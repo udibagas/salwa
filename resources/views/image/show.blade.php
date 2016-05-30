@@ -21,7 +21,7 @@
 	</div>
 	<div class="col-md-9">
 		<h1>{{ $image->judul }}</h1><hr />
-		<img src="/{{ $image->img_images }}" alt="" class="img-responsive" />
+		<img src="/{{ $image->img_images }}" alt="{{ $image->judul }}" class="img-responsive" />
 
 		<hr>
 		@include('layouts._share')

@@ -28,6 +28,8 @@
 			<li><a href="/informasi">Salwa Info</a></li>
 			<li><a href="/produk">Salwa Market</a></li>
 			<li><a href="/peduli">Salwa Peduli</a></li>
+			<li><a href="/promo">Salwa Promo</a></li>
+			<li><a href="/video">Salwa Video</a></li>
 		</ul>
 
 	</div>
@@ -35,13 +37,12 @@
 	<div class="col-md-2">
 
 		<ul style="list-style:none;font-weight:bold;">
-			<li><a href="/promo">Salwa Promo</a></li>
-			<li><a href="/video">Salwa Video</a></li>
 			<li><a href="/doa">Do'a</a></li>
 			<li><a href="/dzikir">Dzikir</a></li>
 			<li><a href="/hadist">Hadist</a></li>
+			<li><a href="/kajian">Kajian</a></li>
 			<li><a href="/kitab">Kitab & Terjemahan</a></li>
-			<li><a href="/murottal">Murottal AL Quran</a></li>
+			<li><a href="/murottal">Murottal Al Quran</a></li>
 			<li><a href="/pertanyaan">Tanya Ustadz</a></li>
 		</ul>
 

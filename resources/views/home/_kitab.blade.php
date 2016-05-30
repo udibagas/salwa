@@ -14,12 +14,9 @@
 				<div class="row no-gutter">
 					@foreach ($chunk as $b)
 					<div class="col-md-2">
-						<div class="thumbnail">
+						<div class="thumbnail" style="height:250px;">
 							<a href="/kitab/{{ $b->buku_id }}-{{ str_slug($b->judul) }}">
-
-
-								<img src="/{{ $b->img_buku }}" class="img-responsive" style="width:100%;height:250px;">
-
+								<img src="/{{ $b->img_buku }}" alt="{{ $b->judul }}">
 								<div class="thumbnail-block">
 									<div class="caption">
 										<strong>{{ $b->judul }}</strong><br />

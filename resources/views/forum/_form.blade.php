@@ -14,7 +14,7 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
-		<label for="group_id" class="col-md-2 control-label">Group:</label>
+		<label for="group_id" class="col-md-2 control-label">Kategori:</label>
 		<div class="col-md-10">
 			{{ Form::select('group_id',
 				\App\Group::forum()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
@@ -41,6 +41,21 @@
 			<span class="help-block">
 				<strong>{{ $errors->first('description') }}</strong>
 			</span>
+			@endif
+		</div>
+	</div>
+
+	<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
+		<label for="img" class="col-md-2 control-label">Gambar:</label>
+		<div class="col-md-10">
+			<input type="file" name="img[]" class="note-image-input form-control" multiple="multiple">
+			<span class="help-block">
+				<strong>Tekan ctrl + click untuk memilih lebih dari 1 file pada dialog file</strong>
+			</span>
+			@if ($errors->has('img'))
+				<span class="help-block">
+					<strong>{{ $errors->first('img') }}</strong>
+				</span>
 			@endif
 		</div>
 	</div>

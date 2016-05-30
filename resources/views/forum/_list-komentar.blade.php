@@ -22,7 +22,7 @@
 
 					<div class="comment-post">
 
-						<div class="row no-gutter">
+						<div class="row">
 							<br>
 							@foreach ($p->images as $image)
 							@include('forum._list-image')

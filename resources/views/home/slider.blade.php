@@ -11,7 +11,7 @@
   		<div class="item @if ($i == 0) active @endif">
 			<a href="/artikel/{{ $a->artikel_id }}-{{ str_slug($a->judul) }}">
 				@if ($a->img_artikel)
-				<img src="/{{ $a->img_artikel }}" class="img-responsive" style="height:100%" />
+				<img src="/{{ $a->img_artikel }}" class="cover" alt="{{ $a->judul }}" />
 				@endif
 				<div class="thumbnail-block">
 					<div class="tilecaption">
@@ -41,7 +41,7 @@
   		  <div class="item @if ($i == 0) active @endif">
   			 <a href="/image/{{ $image->id_salwaimages }}-{{ str_slug($image->judul) }}">
 				 <div class="thumbnail-block">
-					 <img src="/{{ $image->img_images }}" class="img-responsive"/>
+					 <img src="/{{ $image->img_images }}" class="cover" alt="{{ $image->judul }}" />
 				 </div>
 			 </a>
   		  </div>
@@ -63,7 +63,7 @@
 		  	  <div class="item @if ($i == 0) active @endif">
 				 <a href="/video/{{ $v->video_id }}-{{ str_slug($v->title) }}">
 				@if ($v->img_video)
-		  		 <img src="/{{ $v->img_video }}" class="img-responsive"/>
+		  		 <img src="/{{ $v->img_video }}" class="cover" alt="{{ $v->title }}" />
 				 @endif
 				 <div class="video-block">
 					 <div class="tilecaption">
@@ -122,7 +122,7 @@
   		<div class="item @if ($i == 0) active @endif">
 			<a href="/peduli/{{ $a->peduli_id }}-{{ str_slug($a->judul) }}">
 				@if ($a->img_artikel)
-				<img src="/{{ $a->img_artikel }}" class="img-responsive" style="width:100%"/>
+				<img src="/{{ $a->img_artikel }}" class="cover" alt=" {{ $a->judul }}" />
 				@endif
 				<div class="thumbnail-block">
 					<div class="tilecaption">
@@ -177,7 +177,7 @@
 		  	  <div class="item @if ($i == 0) active @endif">
 				  <a href="/informasi/{{ $a->informasi_id }}-{{ str_slug($a->judul) }}">
 				  @if ($a->img_gambar)
-				  <img src="/{{ $a->img_gambar }}" class="img-responsive" style="width:100%" />
+				  <img src="/{{ $a->img_gambar }}" class="cover" alt="$a->judul" />
 				  @endif
 				  <div class="thumbnail-block">
 					  <div class="tilecaption">

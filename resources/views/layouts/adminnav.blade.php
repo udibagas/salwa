@@ -62,7 +62,4 @@
 	<a class="list-group-item info @if (url()->current() == url('kajian')) active @endif" href="/kajian/admin">
 		<i class="fa fa-edit"></i> Kajian
 	</a>
-	<a class="list-group-item info @if (url()->current() == url('kajian-tematik')) active @endif" href="/kajian-tematik/admin">
-		<i class="fa fa-edit"></i> Kajian Tematik
-	</a>
 </div>

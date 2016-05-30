@@ -22,11 +22,11 @@
 
 <div class="list-group hidden-xs">
 	<a href="kajian?tema={{ request('tema') }}&rutin={{ request('rutin') }}" class="list-group-item info @if (request('ustadz_id') == null) active @endif">
-		<i class="fa fa-user"></i> SEMUA USTADZ
+		SEMUA USTADZ
 	</a>
 	@foreach (\App\Ustadz::has('kajians')->orderBy('ustadz_name', 'ASC')->get() as $ustadz)
 	<a class="list-group-item info @if (request('ustadz_id') == $ustadz->ustadz_id) active @endif" href="/kajian?tema={{ request('tema') }}&rutin={{ request('rutin') }}&ustadz_id={{ $ustadz->ustadz_id }}">
-		<i class="fa fa-user"></i> {{ $ustadz->ustadz_name }}
+		{{ $ustadz->ustadz_name }}
 	</a>
 	@endforeach
 </div>

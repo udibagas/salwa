@@ -52,12 +52,26 @@ class ForumController extends Controller
 
     	$forum = Forum::create($data);
 
-		$forum->posts()->create([
+		$post = $forum->posts()->create([
 			'user_id'		=> auth()->user()->user_id,
 			'description'	=> clean($request->description),
 			'date'			=> date('Y-m-d H:i:s'),
 			'createdby'		=> auth()->user()->name
 		]);
+
+		if ($request->hasFile('img')) {
+
+			foreach ($request->file('img') as $file) {
+
+	            $fileName = time().'_'.$file->getClientOriginalName();
+	            $file->move('uploads/dirimg_image', str_slug($fileName));
+
+				$post->images()->create([
+					'img_image'		=> 'uploads/dirimg_image/'.str_slug($fileName),
+					'image_desc' 	=> $file->getClientOriginalName()
+				]);
+			}
+        }
 
 		return redirect()->action('ForumController@show', ['forum' => $forum]);
     }
@@ -109,6 +123,20 @@ class ForumController extends Controller
 			'description'	=> clean($request->description),
 			'updatedby'		=> auth()->user()->name,
 		]);
+
+		if ($request->hasFile('img')) {
+
+			foreach ($request->file('img') as $file) {
+
+	            $fileName = time().'_'.$file->getClientOriginalName();
+	            $file->move('uploads/dirimg_image', str_slug($fileName));
+
+				$forum->post->images()->create([
+					'img_image'		=> 'uploads/dirimg_image/'.str_slug($fileName),
+					'image_desc' 	=> $file->getClientOriginalName()
+				]);
+			}
+        }
 
 		if (auth()->user()->isAdmin() && auth()->user()->user_id !== $forum->user_id) {
 			return redirect('forum/admin')->with('success', 'Forum berhasil disimpan');

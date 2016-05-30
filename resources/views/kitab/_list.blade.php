@@ -1,13 +1,10 @@
-<div class="col-md-4">
-	<div class="thumbnail">
+<div class="col-md-3">
+	<div class="thumbnail" style="height:275px;">
 		<a href="/kitab/{{ $b->buku_id }}-{{ str_slug($b->judul) }}">
-
-
-			<img src="/{{ $b->img_buku }}" class="img-responsive" style="width:100%;height:350px;">
-
+			<img src="/{{ $b->img_buku }}" alt="{{ $b->judul }}">
 			<div class="thumbnail-block">
 				<div class="caption">
-					<h3>{{ $b->judul }}</h3>
+					<strong>{{ $b->judul }}</strong><br>
 					{{ $b->penulis }}
 				</div>
 			</div>
