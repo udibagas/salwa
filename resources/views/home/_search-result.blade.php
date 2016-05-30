@@ -1,6 +1,5 @@
 <div class="col-md-6">
 	<h4 class="title"><i class="fa fa-video-camera"></i> Video</h4>
-
 	<ul class="list-group">
 		@foreach($videos as $v)
 
@@ -21,7 +20,6 @@
 		</li>
 
 	</ul>
-
 </div>
 <div class="col-md-6">
 	<h4 class="title"><i class="fa fa-file-text-o"></i> Artikel</h4>

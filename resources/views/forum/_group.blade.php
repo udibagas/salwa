@@ -12,7 +12,7 @@
 
 
 <div class="list-group">
-	<span class="list-group-item">
+	<span class="list-group-item info">
 		{!! Form::open(['url' => '/forum/search', 'method' => 'GET']) !!}
 			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search Forum" class="form-control search-field">
 
@@ -22,9 +22,9 @@
 
 		{!! Form::close() !!}
 	</span>
-	<a href="/forum" class="list-group-item @if ($group == null) active @endif"><i class="fa fa-clock-o"></i> Forum Terbaru</a>
+	<a href="/forum" class="list-group-item info @if ($group == null) active @endif"><i class="fa fa-clock-o"></i> Forum Terbaru</a>
 	@foreach ($groups as $g)
-	<a href="/forum-category/{{ $g->group_id }}-{{ str_slug($g->group_name) }}" class="list-group-item @if (isset($group) && $g->group_id == $group->group_id) active @endif">
+	<a href="/forum-category/{{ $g->group_id }}-{{ str_slug($g->group_name) }}" class="list-group-item info @if (isset($group) && $g->group_id == $group->group_id) active @endif">
 		<i class="fa fa-hashtag"></i> {{ $g->group_name }}
 		<span class="badge">{{ $g->forums->count() }}</span>
 	</a>

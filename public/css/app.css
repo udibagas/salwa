@@ -205,6 +205,9 @@ a.list-group-item {
 
 .list-group-item {
 	border-color: #8EC7FB;
+}
+
+.list-group-item.info:not(.active) {
 	background-color: #D9EDF7;
 }
 
@@ -359,11 +362,11 @@ a:hover {
 }
 
 .panel-blue {
-	border-color: #297FB9;
+	border-color: #0084FF;
 }
 
 .panel-blue .panel-heading {
-	background-color: #297FB9;
+	background-color: #0084FF;
 	color: #FFF;
 }
 
