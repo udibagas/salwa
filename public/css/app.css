@@ -227,15 +227,22 @@ a.list-group-item {
 }
 
 /* fix this */
-.dropdown-menu>li:hover,
-.navbar-default .navbar-nav>li:hover,
-.navbar-default .navbar-nav>li.active,
-.navbar-default .navbar-nav>.active>a,
-.navbar-default .navbar-nav>.active>a:focus,
-.navbar-default .navbar-nav>.active>a:hover
- {
+.dropdown-menu>li:not(.no-hover):hover,
+.navbar-default .navbar-nav>li:not(.no-hover):hover,
+.navbar-default .navbar-nav>li.active:not(.no-hover),
+.navbar-default .navbar-nav>.active>a:not(.no-hover),
+.navbar-default .navbar-nav>.active>a:not(.no-hover):focus,
+.navbar-default .navbar-nav>.active>a:not(.no-hover):hover
+{
 	background-color: #032876;
 	/*background-color: #0084FF;*/
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+	background-color: inherit;
+	color: #FFFFFF;
 }
 
 .nav-tabs>li>a {
