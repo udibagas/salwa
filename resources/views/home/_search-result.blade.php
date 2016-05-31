@@ -52,7 +52,7 @@
 		<li class="list-group-item" style="padding:5px">
 			<strong><a href="/informasi/{{ $v->informasi_id }}-{{ str_slug($v->judul) }}">{{ $v->judul }}</a></strong>
 			<br />
-			<em>{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}</em>
+			<em>{{ $v->updated->diffForHumans() }}</em>
 		</li>
 
 		@endforeach

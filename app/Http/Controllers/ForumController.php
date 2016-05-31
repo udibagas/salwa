@@ -10,6 +10,7 @@ use App\Http\Requests\ForumRequest;
 use App\Forum;
 use App\Group;
 use App\Post;
+use App\PostImage;
 
 class ForumController extends Controller
 {
@@ -154,7 +155,19 @@ class ForumController extends Controller
     public function destroy(Forum $forum)
     {
         $forum->delete();
-		Post::where('forum_id', $forum->forum_id)->delete();
+
+		// hapus semua post & image
+		foreach ($forum->posts as $post) {
+			$post->delete();
+
+			foreach ($post->images as $image) {
+				$image->delete();
+				if ($image->img_image && file_exists($image->img_image)) {
+					unlink($image->img_image);
+				}
+			}
+		}
+
 		return redirect('/forum/admin');
     }
 
@@ -212,5 +225,16 @@ class ForumController extends Controller
 
 		$forum->posts()->create($data);
 		return redirect()->action('ForumController@show', ['forum' => $forum]);
+	}
+
+	public function deleteImage(PostImage $image)
+	{
+		$image->delete();
+
+		if ($image->img_image && file_exists($image->img_image)) {
+			unlink($image->img_image);
+		}
+
+		return redirect('/forum/'.$image->post->forum_id.'/edit');
 	}
 }

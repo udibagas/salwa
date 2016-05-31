@@ -77,13 +77,10 @@
 
 			<div class="form-group">
 				<div class="col-md-offset-2 col-md-10">
-					@if ($informasi->files)
+					@if ($dokumens)
 					<ul class="list-group">
-						@foreach ($informasi->files as $d)
+						@foreach ($dokumens as $d)
 						<li class="list-group-item">
-							@if (in_array($d->tipe, ['png', 'jpg', 'jpeg', 'bmp', 'gif']))
-							<img src="/{{ $d->file_upload }}" alt="" style="width:80px;margin-right:10px;" />
-							@endif
 							<a href="/{{ $d->file_upload }}" target="_blank">
 								<i class="fa fa-download"></i>
 								{{ str_replace('uploads/dirfile_upload/', '' ,$d->file_upload) }}
@@ -92,6 +89,12 @@
 						</li>
 						@endforeach
 					</ul>
+					@endif
+
+					@if($images)
+					<div class="row no-gutter">
+						@each('informasi._images-edit', $images, 'image')
+					</div>
 					@endif
 				</div>
 			</div>

@@ -49,6 +49,7 @@
         <script src="/summernote/summernote.min.js"></script>
 
 		<script type="text/javascript">
+		
 			$('.summernote').summernote({
 				height: 200,
 				toolbar: [
@@ -63,6 +64,11 @@
 					// ['height', ['height']]
 				]
 			});
+
+			$('.delete').click(function() {
+				return confirm('Anda yakin?');
+			});
+
 		</script>
 
 		@stack('script')

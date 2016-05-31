@@ -60,6 +60,16 @@
 		</div>
 	</div>
 
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			@if ($forum->post->images)
+			<div class="row no-gutter">
+				@each('forum._list-image-edit', $forum->post->images, 'image')
+			</div>
+			@endif
+		</div>
+	</div>
+
 	<hr>
 
 	<div class="form-group">

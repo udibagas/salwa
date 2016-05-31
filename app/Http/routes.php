@@ -84,6 +84,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::resource('forum', 'ForumController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 	Route::post('forum/comment/{forum}', 'ForumController@comment');
+	Route::get('forum/delete-image/{image}', 'ForumController@deleteImage');
 	Route::get('me', 'UserController@me');
 	Route::put('user/{user}', 'UserController@update');
 	Route::resource('pertanyaan', 'PertanyaanController', ['except' => ['index', 'show']]);
