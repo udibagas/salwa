@@ -22,14 +22,16 @@
 
 					<div class="comment-post">
 
-						<div class="row no-gutter">
+						@if ($p->images)
+							<div class="row no-gutter">
+								<br>
+								@foreach ($p->images as $image)
+								@include('forum._list-image')
+								@endforeach
+							</div>
+							<div class="clearfix"></div>
 							<br>
-							@foreach ($p->images as $image)
-							@include('forum._list-image')
-							@endforeach
-						</div>
-
-						<div class="clearfix"></div>
+						@endif
 
 						{!! nl2br($p->description) !!}
 
