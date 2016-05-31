@@ -45,16 +45,16 @@
 		</div>
 	</div>
 
-	<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
+	<div class="form-group{{ $errors->has('img[0]') ? ' has-error' : '' }}">
 		<label for="img" class="col-md-2 control-label">Gambar:</label>
 		<div class="col-md-10">
 			<input type="file" name="img[]" class="note-image-input form-control" multiple="multiple">
 			<span class="help-block">
-				<strong>Tekan ctrl + click untuk memilih lebih dari 1 file pada dialog file</strong>
+				<strong>Tekan ctrl + click untuk memilih lebih dari 1 file pada dialog file. Hanya diperbolehkan upload gambar.</strong>
 			</span>
-			@if ($errors->has('img'))
+			@if ($errors->has('img[0]'))
 				<span class="help-block">
-					<strong>{{ $errors->first('img') }}</strong>
+					<strong>{{ $errors->first('img[0]') }}</strong>
 				</span>
 			@endif
 		</div>

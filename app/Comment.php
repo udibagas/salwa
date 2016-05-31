@@ -11,9 +11,19 @@ class Comment extends Model
 		return $this->belongsTo('App\User', 'user_id', 'user_id');
 	}
 
-    // public function post()
-	// {
-	// }
+    public function post()
+	{
+		$map = [
+			'video' 	=> 'App\Video',
+			'artikel'	=> 'App\Artikel',
+			'peduli'	=> 'App\Peduli',
+			'informasi'	=> 'App\Informsi',
+			'audio'		=> 'App\Mp3',
+			'produk'	=> 'App\Produk'
+		];
+
+		return $this->belongsTo($map[$this->type], 'post_id', );
+	}
 
     public function parent()
 	{

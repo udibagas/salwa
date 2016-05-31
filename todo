@@ -18,11 +18,10 @@ TODO
 12. Forget Password => pake email salamdakwah, aktifkan secondary mail server di server baru
 13. API sunnah go => create kajian : tinggal halaman CMS
 14. koment yg cakep ==> pending
-15. bikin modul komentar
+15. bikin modul komentar ==> HARUS HARI INI!!!
 16. pake choosen
-17. files di informasi => CRUD di CMS
 18. kalender kajian
-19. Image di forum => crud untuk imagenya
 20. validasi upload file di forum dan informasi
 21. resize image on the fly
 22. caching pake memchaced
+23. Pindahin mailbox salwa

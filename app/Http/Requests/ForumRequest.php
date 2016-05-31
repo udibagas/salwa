@@ -26,7 +26,7 @@ class ForumRequest extends Request
         return [
             'group_id'	=> 'required',
 			'title'		=> 'required|min:3',
-			// 'img'		=> 'image',
+			'img.*'		=> 'image',
 			'description'	=> 'required|min:3',
         ];
     }

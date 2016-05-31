@@ -49,7 +49,7 @@
         <script src="/summernote/summernote.min.js"></script>
 
 		<script type="text/javascript">
-		
+
 			$('.summernote').summernote({
 				height: 200,
 				toolbar: [

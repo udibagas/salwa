@@ -65,7 +65,7 @@
 				<div class="col-md-10">
 					<input type="file" name="file[]" class="note-image-input form-control" multiple="multiple">
 					<span class="help-block">
-						<strong>Tekan ctrl + click untuk memilih lebih dari 1 file pada dialog file</strong>
+						<strong>Tekan ctrl + click untuk memilih lebih dari 1 file pada dialog file. Hanya diperbolehkan upload file gambar, pdf, office, dan zip.</strong>
 					</span>
 					@if ($errors->has('file'))
 						<span class="help-block">

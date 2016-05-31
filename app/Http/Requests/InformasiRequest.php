@@ -28,6 +28,7 @@ class InformasiRequest extends Request
 			'judul'		=> 'required|min:3',
 			'content'	=> 'required|min:3',
 			'img'		=> 'image',
+			'file.*'	=> 'mimes:png,jpg,jpeg,bmp,gif,pdf,doc,docx,xls,xlsx,zip,odt,ods',
         ];
     }
 }
