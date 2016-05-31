@@ -60,7 +60,7 @@ class InformasiController extends Controller
 	public function store(InformasiRequest $request)
     {
         $data 					= $request->all();
-		$data['content']		= clean($request->content);
+		$data['content']		= $request->content;
 		$data['kd_judul'] 		= str_slug($request->judul);
 		$data['tanggal'] 		= date('Y-m-d H:i:s');
 		$data['summary'] 		= str_limit($data['content'], 250);
@@ -138,7 +138,7 @@ class InformasiController extends Controller
     public function update(InformasiRequest $request, Informasi $informasi)
     {
 		$data 					= $request->all();
-		$data['content']		= clean($request->content);
+		$data['content']		= $request->content;
 		$data['kd_judul'] 		= str_slug($request->judul);
 		$data['summary'] 		= str_limit($data['content'], 250);
 		$data['updatedby'] 		= auth()->user()->name;

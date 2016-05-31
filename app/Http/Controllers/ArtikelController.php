@@ -62,7 +62,7 @@ class ArtikelController extends Controller
     public function store(ArtikelRequest $request)
     {
         $data 					= $request->all();
-		$data['isi']			= clean($request->isi);
+		$data['isi']			= $request->isi;
 		$data['kd_judul'] 		= str_slug($request->judul);
 		$data['tgl_artikel'] 	= date('Y-m-d H:i:s');
 		$data['isi_mobile'] 	= $data['isi'];
@@ -119,7 +119,7 @@ class ArtikelController extends Controller
     public function update(ArtikelRequest $request, Artikel $artikel)
     {
 		$data 					= $request->all();
-		$data['isi']			= clean($request->isi);
+		$data['isi']			= $request->isi;
 		$data['kd_judul'] 		= str_slug($request->judul);
 		$data['isi_mobile'] 	= $data['isi'];
 		$data['ringkasan'] 		= str_limit($data['isi'], 250);
@@ -155,7 +155,7 @@ class ArtikelController extends Controller
 		if ($artikel->img_artikel && file_exists($artikel->img_artikel)) {
 			unlink($artikel->img_artikel);
 		}
-		
+
 		return redirect('/artikel/admin');
     }
 }
