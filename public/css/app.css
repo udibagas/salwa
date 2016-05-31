@@ -387,3 +387,7 @@ a:hover {
 .badge {
 	background-color: #0084FF;
 }
+
+.nav>li>a {
+	padding: 10px 10px;
+}

@@ -11,7 +11,6 @@
 	@include('home.linkIcon')
 
 	@include('home._video')
-	<h4></h4>
 	<div style="clear:both;"></div>
 	<br>
 	@include('home.promo')
@@ -20,10 +19,10 @@
 
 	<br>
 
-	<div style="border:1px solid #8EC7FB;">
-		<h4 class="title" style="margin:0;"><i class="fa fa-comment"></i> FORUM</h4>
-		@each('forum._list', $forumKategori, 'group')
-	</div>
+	<h4 class="title"><i class="fa fa-comment"></i> FORUM</h4>
+	@include('home._forum')
+
+		<!-- each('forum._list', $forumKategori, 'group') -->
 
 	<br>
 	<div class="clearfix"></div>
