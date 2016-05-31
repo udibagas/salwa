@@ -91,7 +91,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('me', 'UserController@me');
 	Route::put('user/{user}', 'UserController@update');
 	Route::resource('pertanyaan', 'PertanyaanController', ['except' => ['index', 'show']]);
-
+	Route::resource('comment', 'CommentController');
 });
 
 Route::resource('artikel', 'ArtikelController', ['only' => ['index', 'show']]);

@@ -1,48 +1,45 @@
-<section class="comment-list">
-	<article class="row">
-		<div class="col-md-2 col-sm-2 hidden-xs">
-			<figure class="thumbnail">
-				@if ($p->user->img_user)
-				<img class="img-responsive" src="/{{ $p->user->img_user }}" />
-				@else
-				<img class="img-responsive" src="/images/nobody.jpg" />
-				@endif
-				<figcaption class="text-center">{{ $p->user ? $p->user->name : '' }}</figcaption>
-			</figure>
+<div class="row">
+	<div class="col-md-1 col-sm-2 hidden-xs">
+		<div class="thumbnail">
+			@if ($p->user->img_user)
+			<img class="img-responsive" src="/{{ $p->user->img_user }}" />
+			@else
+			<img class="img-responsive" src="/images/nobody.jpg" />
+			@endif
 		</div>
-		<div class="col-md-10 col-sm-10">
-			<div class="panel panel-default arrow left">
-				<div class="panel-body">
-					<header class="text-left">
-						<div class="comment-user">
-							<b>
-								<i class="fa fa-user"></i> {{ $p->user ? $p->user->name : '' }}
-								@if ($p->daerah_asal) ({{ $p->daerah_asal }}) @endif
-							</b><br>
-							<em>
-								@if ($p->group)
-								<a href="/pertanyaan/?group_id={{ $p->group_id }}">{{ $p->group->group_name }}</a>
-								@endif
-								<i class="fa fa-clock-o"></i> {{ $p->tgl_tanya ? $p->tgl_tanya->diffForHumans() : "" }}
-							</em>
-						</div>
-					</header>
-
-					<div class="comment-post">
-						<h3>
-							<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">{{ $p->judul_pertanyaan }}</a>
-						</h3>
-						{!! nl2br($p->ket_pertanyaan) !!}
-
-					</div>
-					@if (auth()->check() && auth()->user()->user_id == $p->user_id && $p->jawaban == '')
-					<p class="text-right">
-						<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
-						<a href="/pertanyaan/{{$p->pertanyaan_id}}/delete" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
-					</p>
+	</div>
+	<div class="col-md-11 col-sm-10">
+		<div class="panel panel-info panel-comment">
+			<div class="panel-heading">
+				<strong>
+					{{ $p->user ? $p->user->name : '' }}
+					@if ($p->daerah_asal) ({{ $p->daerah_asal }}) @endif
+				</strong>
+				<span class="text-muted">
+					asked {{ $p->tgl_tanya ? $p->tgl_tanya->diffForHumans() : "" }}
+					@if ($p->group)
+					on <a href="/pertanyaan/?group_id={{ $p->group_id }}">{{ $p->group->group_name }}</a>
 					@endif
-				</div>
+				</span>
+			</div>
+			<div class="panel-body">
+				<h4 style="margin-top:0;">
+					<strong>
+						<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">
+							{{ $p->judul_pertanyaan }}
+						</a>
+					</strong>
+				</h4>
+
+				{!! nl2br($p->ket_pertanyaan) !!}
+
+				@if (auth()->check() && auth()->user()->user_id == $p->user_id && $p->jawaban == '')
+				<p class="text-right">
+					<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
+					<a href="/pertanyaan/{{$p->pertanyaan_id}}/delete" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+				</p>
+				@endif
 			</div>
 		</div>
-	</article>
-</section>
+	</div>
+</div>

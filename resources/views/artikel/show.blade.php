@@ -36,6 +36,12 @@
 		@include('layouts._share')
 		<hr>
 
+		@include('comment.index', ['comments' => $artikel->comments])
+
+		@if (auth()->check())
+		@include('comment.form', ['post_id' => $artikel->artikel_id, 'type' => 'artikel'])
+		@endif
+
 		<h4 class="title">ARTIKEL TERKAIT</h4>
 		<div class="row no-gutter">
 			@each('artikel._list', $terkait, 'artikel')

@@ -30,13 +30,11 @@
 		@include('layouts._share')
 
 		@if (auth()->check() && $forum->user_id == auth()->user()->user_id)
-		<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-primary"><i class="fa fa-edit" class="btn btn-primary"></i> Edit Forum</a>
+		<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info"><i class="fa fa-edit" class="btn btn-primary"></i> Edit Forum</a>
 		@endif
 		<hr />
 
-		@foreach ($posts as $p)
-			@include('forum._list-komentar')
-		@endforeach
+		@each('forum._list-komentar', $posts, 'p')
 
 		<!-- <nav class="text-center">
 			{ posts->links() }

@@ -1,4 +1,4 @@
-<div class="col-md-3 col-sm-6 co-xs-12 gal-item">
+<div class="col-md-2 col-sm-3 co-xs-6 gal-item">
 	<div class="box">
 		<a href="#" data-toggle="modal" data-target="#{{$image->image_id}}">
 			<img src="/{{ $image->img_image }}" alt="{{ $image->image_desc }}" />

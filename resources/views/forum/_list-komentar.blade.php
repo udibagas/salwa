@@ -1,49 +1,40 @@
-<section class="comment-list">
-	<article class="row">
-		<div class="col-md-2 col-sm-2 hidden-xs">
-			<figure class="thumbnail">
-				@if ($p->user && $p->user->img_user)
-				<img class="img-responsive" src="/{{ $p->user->img_user }}" />
-				@else
-				<img class="img-responsive" src="/images/nobody.jpg" />
-				@endif
-				<figcaption class="text-center">{{ $p->user ? $p->user->name : '' }}</figcaption>
-			</figure>
+<div class="row">
+	<div class="col-md-1 col-sm-2 hidden-xs">
+		<div class="thumbnail">
+			@if ($p->user && $p->user->img_user)
+			<img class="img-responsive" src="/{{ $p->user->img_user }}" />
+			@else
+			<img class="img-responsive" src="/images/nobody.jpg" />
+			@endif
 		</div>
-		<div class="col-md-10 col-sm-10">
-			<div class="panel panel-default arrow left">
-				<div class="panel-body">
-					<header class="text-left">
-						<div class="comment-user">
-							<b><i class="fa fa-user"></i> {{ $p->user ? $p->user->name : '' }}</b><br>
-							<em><i class="fa fa-clock-o"></i> Created: {{ $p->created ? $p->created->diffForHumans() : "" }} | Updated: {{ $p->updated ? $p->updated->diffForHumans() : "" }}</em>
-						</div>
-					</header>
+	</div>
+	<div class="col-md-11 col-sm-11">
+		<div class="panel panel-info panel-comment">
+			<div class="panel-heading">
+				<strong>{{ $p->user ? $p->user->name : '' }}</strong>
+				<span class="text-muted">posted {{ $p->updated ? $p->updated->diffForHumans() : '' }}</span>
+			</div>
+			<div class="panel-body">
 
-					<div class="comment-post">
+				{!! nl2br($p->description) !!}
 
-						@if ($p->images)
-							<div class="row no-gutter">
-								<br>
-								@foreach ($p->images as $image)
-								@include('forum._list-image')
-								@endforeach
-							</div>
-							<div class="clearfix"></div>
-							<br>
-						@endif
-
-						{!! nl2br($p->description) !!}
-
+				@if (count($p->images) > 0)
+					<div class="row no-gutter">
+						@foreach ($p->images as $image)
+						@include('forum._list-image')
+						@endforeach
 					</div>
-					@if (auth()->check() && auth()->user()->user_id == $p->user_id)
-					<p class="text-right">
-						<a href="/forum/edit-post/{{$p->post_id}}" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
-						<a href="/forum/delete-post/{{$p->post_id}}/" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Hapus</a>
-					</p>
-					@endif
-				</div>
+					<br>
+				@endif
+
+				@if (auth()->check() && auth()->user()->user_id == $p->user_id)
+				<p class="text-right">
+					<a href="/forum/edit-post/{{$p->post_id}}" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
+					<a href="/forum/delete-post/{{$p->post_id}}/" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Hapus</a>
+				</p>
+				@endif
+
 			</div>
 		</div>
-	</article>
-</section>
+	</div>
+</div>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CommentsRequest extends Request
+class CommentRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,9 @@ class CommentsRequest extends Request
         return [
             'title'		=> 'required',
 			'content'	=> 'required',
-			'star'		=> 'in|1,2,3,4,5'
+			'star'		=> 'in:1,2,3,4,5',
+			'type'		=> 'required|in:artikel,video,audio,informasi,peduli,produk',
+			'post_id'	=> 'required'
         ];
     }
 }

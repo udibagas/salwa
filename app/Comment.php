@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+	protected $fillable = ['user_id', 'post_id', 'title', 'content', 'star', 'type', 'parent_id'];
+
     public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'user_id');
@@ -14,15 +16,15 @@ class Comment extends Model
     public function post()
 	{
 		$map = [
-			'video' 	=> 'App\Video',
-			'artikel'	=> 'App\Artikel',
-			'peduli'	=> 'App\Peduli',
-			'informasi'	=> 'App\Informsi',
-			'audio'		=> 'App\Mp3',
-			'produk'	=> 'App\Produk'
+			'video' 	=> ['class' => 'App\Video', 'pk' => 'video_id'] ,
+			'artikel'	=> ['class' => 'App\Artikel', 'pk' => 'artikel_id'],
+			'peduli'	=> ['class' => 'App\Peduli', 'pk' => 'peduli_id'],
+			'informasi'	=> ['class' => 'App\Informsi', 'pk' => 'informasi_id'],
+			'audio'		=> ['class' => 'App\Mp3', 'pk' => 'mp3_download_id'],
+			'produk'	=> ['class' => 'App\Produk', 'pk' => 'id_produk']
 		];
 
-		return $this->belongsTo($map[$this->type], 'post_id', );
+		return $this->belongsTo($map[$this->type['class']], 'post_id', $map[$this->type['pk']]);
 	}
 
     public function parent()
