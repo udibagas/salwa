@@ -16,7 +16,7 @@
 		<br />
 		<ul class="list-group">
 			@foreach($f->forums()->orderBy('updated', 'DESC')->limit(5)->get() as $f)
-			<li class="list-group-item" style="padding:5px 0px 5px 10px;">
+			<li class="list-group-item">
 				<a href="/forum/{{$f->forum_id}}-{{str_slug($f->title)}}">
 					<strong>{{$f->title}}</strong>
 				</a><br />

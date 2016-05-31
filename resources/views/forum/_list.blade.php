@@ -1,14 +1,21 @@
-<h4 class="sub-title">{{ $group->group_name }}</h4>
-<div class="" style="padding:10px 20px;">
-	@foreach ($group->forums()->orderBy('updated', 'DESC')->limit(3)->get() as $f)
-		<div class="underlined">
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title">{{ $group->group_name }}</h3>
+	</div>
+	<ul class="list-group">
+
+		@if (count($group->forums) == 0)
+		<li class="list-group-item text-center"><strong>Belum ada thread.</strong></li>
+		@endif
+
+		@foreach ($group->forums()->orderBy('updated', 'DESC')->limit(5)->get() as $f)
+		<li class="list-group-item">
 			<a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">
-				<h4><i class="fa fa-comment-o"></i>  {{ $f->title }} </h4>
-			</a>
-			<span>
-				<i class="fa fa-user"></i> {{ $f->user ? $f->user->name : '' }}
-				<i class="fa fa-clock-o"></i> {{ $f->updated->diffForHumans() }}
-			</span>
-		</div>
-	@endforeach
+				<strong>{{ $f->title }} </strong>
+			</a><br>
+			<i class="fa fa-user"></i> {{ $f->user ? $f->user->name : '' }}
+			<i class="fa fa-clock-o"></i> {{ $f->updated->diffForHumans() }}
+		</li>
+		@endforeach
+	</ul>
 </div>

@@ -24,11 +24,9 @@
 
 			<h4 class="title"><i class="fa fa-clock-o"></i> FORUM TERBARU</h4>
 
-			<div style="border:1px solid #8EC7FB;">
-				@foreach ($groups as $g)
-					@include('forum._list', ['group' => $g])
-				@endforeach
-			</div>
+			@foreach ($groups as $g)
+				@include('forum._list', ['group' => $g])
+			@endforeach
 
 		</div>
 
