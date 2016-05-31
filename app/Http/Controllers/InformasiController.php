@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\InformasiRequest;
 use App\Informasi;
+use App\InformasiFile;
 
 class InformasiController extends Controller
 {
@@ -106,6 +107,8 @@ class InformasiController extends Controller
     {
         return view('informasi.show', [
 			'informasi' => $informasi,
+			'images'	=> InformasiFile::image()->where('informasi_id', $informasi->informasi_id)->get(),
+			'dokumens'	=> InformasiFile::dokumen()->where('informasi_id', $informasi->informasi_id)->get(),
 			'terkait'	=> Informasi::where('group_id', $informasi->group_id)->limit(4)->get()
 		]);
     }

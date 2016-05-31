@@ -30,20 +30,20 @@
 
 		{!! $informasi->content !!}
 
-		@if ($informasi->dokumens)
+		@if ($dokumens)
 		<div class="list-group">
-			@foreach ($informasi->dokumens as $d)
+			@foreach ($dokumens as $d)
 			<a class="list-group-item" href="/{{ $d->file_upload }}" target="_blank">
 				<i class="fa fa-download"></i>
-				{{ $d->file_upload }}
+				{{ str_replace('uploads/dirfile_upload/', '' ,$d->file_upload) }}
 			</a>
 			@endforeach
 		</div>
 		@endif
 
-		@if ($informasi->images)
+		@if ($images)
 		<div class="row no-gutter">
-			@each('informasi._images', $informasi->images, 'image')
+			@each('informasi._images', $images, 'image')
 		</div>
 		@endif
 
