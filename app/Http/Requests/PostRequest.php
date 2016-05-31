@@ -24,8 +24,7 @@ class PostRequest extends Request
     public function rules()
     {
         return [
-            'judul'		=> 'required',
-			'isi'		=> 'required'
+			'description'	=> 'required|min:10',
         ];
     }
 }

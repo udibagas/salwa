@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Requests\CommentRequest;
+use App\Http\Requests\PostRequest;
 use App\Http\Requests\ForumRequest;
 use App\Forum;
 use App\Group;
@@ -87,9 +87,9 @@ class ForumController extends Controller
     {
         return view('forum.show', [
 			'forum' 	=> $forum,
-			'posts'		=> $forum->posts()->orderBy('created', 'ASC')->paginate(),
+			'posts'		=> $forum->posts()->orderBy('created', 'ASC')->get(),
 			'terkait'	=> Forum::where('group_id', $forum->group_id)->limit(5)->orderByRaw('RAND()')->get(),
-			'model'		=> new Post
+			'post'		=> new Post
 		]);
     }
 
@@ -215,7 +215,7 @@ class ForumController extends Controller
 		]);
 	}
 
-	public function comment(CommentRequest $request, Forum $forum)
+	public function comment(PostRequest $request, Forum $forum)
 	{
 		$data 				= $request->all();
 		$data['description']= clean($request->description);
@@ -223,9 +223,68 @@ class ForumController extends Controller
 		$data['createdby'] 	= auth()->user()->name;
 		$data['date']		= date('Y-m-d H:i:s');
 
-		$forum->posts()->create($data);
+		$post = $forum->posts()->create($data);
+
+		if ($request->hasFile('img')) {
+
+			foreach ($request->file('img') as $file) {
+
+	            $fileName = time().'_'.$file->getClientOriginalName();
+	            $file->move('uploads/dirimg_image', $fileName);
+
+				$post->images()->create([
+					'img_image'		=> 'uploads/dirimg_image/'.$fileName,
+					'image_desc' 	=> $file->getClientOriginalName()
+				]);
+			}
+        }
+
 		return redirect()->action('ForumController@show', ['forum' => $forum]);
 	}
+
+	public function editPost(Post $post)
+	{
+		return view('forum.edit-post', ['post' => $post]);
+	}
+
+	public function updatePost(PostRequest $request, Post $post)
+	{
+		$data 				= $request->all();
+		$data['description']= clean($request->description);
+		$data['updatedby'] 	= auth()->user()->name;
+
+		$post->update($data);
+
+		if ($request->hasFile('img')) {
+
+			foreach ($request->file('img') as $file) {
+
+	            $fileName = time().'_'.$file->getClientOriginalName();
+	            $file->move('uploads/dirimg_image', $fileName);
+
+				$post->images()->create([
+					'img_image'		=> 'uploads/dirimg_image/'.$fileName,
+					'image_desc' 	=> $file->getClientOriginalName()
+				]);
+			}
+        }
+
+		return redirect()->action('ForumController@show', ['forum' => $post->forum]);
+	}
+
+	public function deletePost(Post $post)
+    {
+		$post->delete();
+
+		foreach ($post->images as $image) {
+			$image->delete();
+			if ($image->img_image && file_exists($image->img_image)) {
+				unlink($image->img_image);
+			}
+		}
+
+		return redirect('/forum/'.$post->forum_id);
+    }
 
 	public function deleteImage(PostImage $image)
 	{
@@ -235,6 +294,6 @@ class ForumController extends Controller
 			unlink($image->img_image);
 		}
 
-		return redirect('/forum/'.$image->post->forum_id.'/edit');
+		return redirect('/forum/edit-post/'.$image->post_id);
 	}
 }

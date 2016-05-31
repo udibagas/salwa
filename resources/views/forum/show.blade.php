@@ -38,9 +38,9 @@
 			@include('forum._list-komentar')
 		@endforeach
 
-		<nav class="text-center">
-			{{ $posts->links() }}
-		</nav>
+		<!-- <nav class="text-center">
+			{ posts->links() }
+		</nav> -->
 
 		@if (auth()->check())
 
@@ -49,7 +49,7 @@
 					<strong>Anda tidak dapat berkomentar di thread ini. Forum ini sudah ditutup.</strong>
 				</div>
 			@elseif ($forum->user && (auth()->user()->jenis_kelamin == $forum->user->jenis_kelamin))
-				@include('forum._form-komentar')
+				@include('forum._form-komentar', ['url' => '/forum/comment/'.$forum->forum_id, 'method' => 'POST'])
 			@else
 				<div class="alert alert-danger text-center">
 					<strong>Anda tidak dapat berkomentar di thread ini. Forum Akhwat dan Ikhwan kami pisahkan.</strong>

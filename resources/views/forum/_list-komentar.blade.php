@@ -38,8 +38,8 @@
 					</div>
 					@if (auth()->check() && auth()->user()->user_id == $p->user_id)
 					<p class="text-right">
-						<!-- <a href="/post/{{$p->post_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a> -->
-						<!-- <a href="/post/{{$p->post_id}}/delete" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a> -->
+						<a href="/forum/edit-post/{{$p->post_id}}" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
+						<a href="/forum/delete-post/{{$p->post_id}}/" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Hapus</a>
 					</p>
 					@endif
 				</div>

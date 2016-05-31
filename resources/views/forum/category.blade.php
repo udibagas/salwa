@@ -47,24 +47,23 @@
 			</div>
 
 
-
-			<div class="" style="padding:10px 20px;border:1px solid #8EC7FB;">
+			<ul class="list-group">
 				@if (count($forums) == 0)
-					<strong>Belum ada post</strong>
+					<li class="list-group-item">
+						<strong>Belum ada post</strong>
+					</li>
 				@endif
 
 				@foreach ($forums as $f)
-					<div class="underlined">
+					<li class="list-group-item">
 						<a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">
-							<h4><i class="fa fa-comment-o"></i>  {{ $f->title }} </h4>
-						</a>
-						<span>
-							<i class="fa fa-user"></i> {{ $f->user ? $f->user->name : '' }}
-							<i class="fa fa-clock-o"></i> {{ $f->updated->diffForHumans() }}
-						</span>
-					</div>
+							<strong>{{ $f->title }} </strong>
+						</a><br>
+						<i class="fa fa-user"></i> {{ $f->user ? $f->user->name : '' }}
+						<i class="fa fa-clock-o"></i> {{ $f->updated->diffForHumans() }}
+					</li>
 				@endforeach
-			</div>
+			</ul>
 
 			<nav class="text-center">
 				{!! $forums->links() !!}
