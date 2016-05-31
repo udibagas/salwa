@@ -121,7 +121,11 @@ class InformasiController extends Controller
      */
     public function edit(Informasi $informasi)
     {
-        return view('informasi.edit', ['informasi' => $informasi]);
+        return view('informasi.edit', [
+			'informasi' => $informasi,
+			'images'	=> InformasiFile::image()->where('informasi_id', $informasi->informasi_id)->get(),
+			'dokumens'	=> InformasiFile::dokumen()->where('informasi_id', $informasi->informasi_id)->get(),
+		]);
     }
 
     /**
@@ -183,10 +187,30 @@ class InformasiController extends Controller
     {
         $informasi->delete();
 
+		// hapus gambar thumbnail
 		if ($informasi->img_gambar && file_exists($informasi->img_gambar)) {
 			unlink($informasi->img_gambar);
 		}
 
+		// hapus semua file
+		foreach ($informasi->files as $file) {
+			$file->delete();
+			if ($file->file_upload && file_exists($file->file_upload)) {
+				unlink($file->file_upload);
+			}
+		}
+
 		return redirect('/informasi/admin');
     }
+
+	public function deleteFile(InformasiFile $file)
+	{
+		$file->delete();
+
+		if ($file->file_upload && file_exists($file->file_upload)) {
+			unlink($file->file_upload);
+		}
+
+		return redirect('/informasi/'.$file->informasi_id.'/edit');
+	}
 }

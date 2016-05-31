@@ -2,7 +2,6 @@
 
 @push('css')
 	<link href="/css/carousel.css" rel="stylesheet">
-	<link href="/css/gallery.css" rel="stylesheet">
 	<link href="/css/comment.css" rel="stylesheet">
 @endpush
 

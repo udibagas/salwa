@@ -47,6 +47,19 @@
 				</div>
 			</div>
 
+			<div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+				<label for="content" class="col-md-2 control-label">Content:</label>
+				<div class="col-md-10">
+					{{ Form::textarea('content', $informasi->content, ['class' => 'summernote', 'placeholder' => '']) }}
+
+					@if ($errors->has('content'))
+					<span class="help-block">
+						<strong>{{ $errors->first('content') }}</strong>
+					</span>
+					@endif
+				</div>
+			</div>
+
 			<div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
 				<label for="file" class="col-md-2 control-label">File:</label>
 				<div class="col-md-10">
@@ -62,15 +75,23 @@
 				</div>
 			</div>
 
-			<div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-				<label for="content" class="col-md-2 control-label">Content:</label>
-				<div class="col-md-10">
-					{{ Form::textarea('content', $informasi->content, ['class' => 'summernote', 'placeholder' => '']) }}
-
-					@if ($errors->has('content'))
-					<span class="help-block">
-						<strong>{{ $errors->first('content') }}</strong>
-					</span>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					@if ($informasi->files)
+					<ul class="list-group">
+						@foreach ($informasi->files as $d)
+						<li class="list-group-item">
+							@if (in_array($d->tipe, ['png', 'jpg', 'jpeg', 'bmp', 'gif']))
+							<img src="/{{ $d->file_upload }}" alt="" style="width:80px;margin-right:10px;" />
+							@endif
+							<a href="/{{ $d->file_upload }}" target="_blank">
+								<i class="fa fa-download"></i>
+								{{ str_replace('uploads/dirfile_upload/', '' ,$d->file_upload) }}
+							</a>
+							<a href="/informasi/delete-file/{{ $d->file_id }}" class="pull-right delete"><i class="fa fa-remove"></i></a>
+						</li>
+						@endforeach
+					</ul>
 					@endif
 				</div>
 			</div>

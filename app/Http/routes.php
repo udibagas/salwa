@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('hadist/admin', 'HadistController@admin');
 		Route::get('image/admin', 'ImageController@admin');
 		Route::get('informasi/admin', 'InformasiController@admin');
+		Route::get('informasi/delete-file/{file}', 'InformasiController@deleteFile');
 		Route::get('kajian/admin', 'KajianController@admin');
 		Route::get('kitab/admin', 'KitabController@admin');
 		Route::get('murottal/admin', 'MurottalController@admin');
