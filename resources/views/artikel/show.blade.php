@@ -36,10 +36,14 @@
 		@include('layouts._share')
 		<hr>
 
-		@include('comment.index', ['comments' => $artikel->comments])
+		@include('comment.index', ['comments' => $artikel->comments()->artikel()->get()])
 
 		@if (auth()->check())
-		@include('comment.form', ['post_id' => $artikel->artikel_id, 'type' => 'artikel'])
+			@include('comment.form', ['post_id' => $artikel->artikel_id, 'type' => 'artikel'])
+		@else
+			<div class="alert alert-danger text-center">
+				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>
+			</div>
 		@endif
 
 		<h4 class="title">ARTIKEL TERKAIT</h4>

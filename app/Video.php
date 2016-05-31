@@ -40,4 +40,9 @@ class Video extends Model
 	{
 		return $query->where('type', 'video');
 	}
+
+	public function comments()
+	{
+		return $this->hasMany('App\Comment', 'post_id', 'video_id');
+	}
 }

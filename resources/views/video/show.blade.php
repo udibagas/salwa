@@ -64,6 +64,16 @@
 		@include('layouts._share')
 		<hr>
 
+		@include('comment.index', ['comments' => $video->comments()->video()->get()])
+
+		@if (auth()->check())
+			@include('comment.form', ['post_id' => $video->video_id, 'type' => 'video'])
+		@else
+			<div class="alert alert-danger text-center">
+				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>
+			</div>
+		@endif
+
 		<h4 class="title">VIDEO TERKAIT</h4>
 		<div class="row no-gutter">
 			@foreach ($terkait as $t)

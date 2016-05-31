@@ -52,6 +52,16 @@
 		@include('layouts._share')
 		<hr>
 
+		@include('comment.index', ['comments' => $produk->comments()->produk()->get()])
+
+		@if (auth()->check())
+			@include('comment.form', ['post_id' => $produk->id_produk, 'type' => 'produk'])
+		@else
+			<div class="alert alert-danger text-center">
+				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>
+			</div>
+		@endif
+
 		<h4 class="title">PRODUK TERKAIT</h4>
 		<div class="row no-gutter">
 			@each('produk._list', $terkait, 'produk')

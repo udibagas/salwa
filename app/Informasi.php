@@ -47,4 +47,9 @@ class Informasi extends Model
 		return $this->hasMany('App\InformasiFile', 'informasi_id', 'informasi_id', ['where' => 'tipe in ("doc", "docx", "xls", "xlsx", "pdf", "ods", "odt", "zip")']);
 	}
 
+	public function comments()
+	{
+		return $this->hasMany('App\Comment', 'post_id', 'informasi_id');
+	}
+
 }

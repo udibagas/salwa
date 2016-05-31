@@ -34,6 +34,16 @@
 		@include('layouts._share')
 		<hr>
 
+		@include('comment.index', ['comments' => $peduli->comments()->peduli()->get()])
+
+		@if (auth()->check())
+			@include('comment.form', ['post_id' => $peduli->peduli_id, 'type' => 'peduli'])
+		@else
+			<div class="alert alert-danger text-center">
+				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>
+			</div>
+		@endif
+
 		<h4 class="title">SALWA PEDULI</h4>
 		<div class="row no-gutter">
 			@each('peduli._list', $terkait, 'peduli')

@@ -51,6 +51,16 @@
 		@include('layouts._share')
 		<hr>
 
+		@include('comment.index', ['comments' => $informasi->comments()->informasi()->get()])
+
+		@if (auth()->check())
+			@include('comment.form', ['post_id' => $informasi->informasi_id, 'type' => 'informasi'])
+		@else
+			<div class="alert alert-danger text-center">
+				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>
+			</div>
+		@endif
+
 		<h4 class="title">INFORMASI TERKAIT</h4>
 		<div class="row no-gutter">
 			@each('informasi._list', $terkait, 'informasi')
