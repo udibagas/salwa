@@ -152,6 +152,7 @@ return [
 		Mews\Purifier\PurifierServiceProvider::class,
 		Vinkla\Instagram\InstagramServiceProvider::class,
 		hisorange\BrowserDetect\Provider\BrowserDetectService::class,
+		Snowfire\Beautymail\BeautymailServiceProvider::class,
 
         /*
          * Application Service Providers...

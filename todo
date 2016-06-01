@@ -15,7 +15,7 @@ TODO
 7. Ubah longtext beberapa field (decription post, pertanyaan, artikel, peduli, informasi, dsb)
 8. Add close di salwa peduli. Atau add archived di semua jenis post (peduli, informasi, video, audio, artikel) => pending
 9. Rich editor belum bisa insert image setelah di clean
-12. Forget Password => pake email salamdakwah, aktifkan secondary mail server di server baru
+12. Forget Password => pake email salamdakwah, aktifkan secondary mail server di server baru, yg cantik,
 13. API sunnah go => create kajian : tinggal halaman CMS
 15. bikin modul komentar ==> TINGGAL CRUD di CMS & hapus di frontend
 16. pake choosen

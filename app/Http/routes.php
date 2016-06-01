@@ -19,6 +19,7 @@ use App\User;
 // });
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 Route::get('audio/{audio}/download', 'AudioController@download');
 Route::get('doa', 'HadistController@indexDoa');
 Route::get('dzikir', 'HadistController@indexDzikir');

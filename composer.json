@@ -12,7 +12,8 @@
         "doctrine/dbal": "^2.5",
         "mews/purifier": "^2.0",
         "vinkla/instagram": "^4.1",
-	"hisorange/browser-detect": "2.*"
+	"hisorange/browser-detect": "2.*",
+        "snowfire/beautymail": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
