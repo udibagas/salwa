@@ -26,10 +26,10 @@
 		<div class="row">
 			<div class="col-md-7">
 				<p>{!! $produk->sinopsis !!}</p>
-				<table class="table table-hover table-striped">
+				<table class="table table-hover table-striped table-bordered">
 					<tbody>
 						<tr>
-							<th>Penerbit</th>
+							<th style="width:150px;">Penerbit</th>
 							<td>: {{ $produk->penerbit }}</td>
 						</tr>
 						<tr>

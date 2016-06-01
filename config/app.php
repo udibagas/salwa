@@ -151,6 +151,7 @@ return [
 		Folklore\Image\ImageServiceProvider::class,
 		Mews\Purifier\PurifierServiceProvider::class,
 		Vinkla\Instagram\InstagramServiceProvider::class,
+		hisorange\BrowserDetect\Provider\BrowserDetectService::class,
 
         /*
          * Application Service Providers...
@@ -210,6 +211,7 @@ return [
 		'Image' => Folklore\Image\Facades\Image::class,
 		'Purifier' => Mews\Purifier\Facades\Purifier::class,
 		'Instagram' => Vinkla\Instagram\Facades\Instagram::class,
+		'BrowserDetect' => hisorange\BrowserDetect\Facade\Parser::class,
     ],
 
 ];

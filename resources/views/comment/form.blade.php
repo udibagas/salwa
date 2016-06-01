@@ -11,7 +11,7 @@
 				<strong>Tulis Komentar</strong>
 			</div>
 			<div class="panel-body">
-				{!! Form::open(['url' => 'comment', 'method' => 'POST']) !!}
+				{!! Form::open(['url' => 'comment', 'method' => 'POST', 'class' => 'comment']) !!}
 
 					{!! Form::hidden('post_id', $post_id) !!}
 					{!! Form::hidden('type', $type) !!}
@@ -47,5 +47,14 @@
 	</div>
 </div>
 
-<div class="clearfix"> </div>
+<div class="clearfix"></div>
 <br>
+
+@push('script')
+	<script type="text/javascript">
+	$('form.comment').submit(function(e) {
+		e.preventDefault();
+		// $.post(this.action,this.serialize);
+	});
+	</script>
+@endpush
