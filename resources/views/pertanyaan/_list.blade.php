@@ -21,6 +21,13 @@
 					on <a href="/pertanyaan/?group_id={{ $p->group_id }}">{{ $p->group->group_name }}</a>
 					@endif
 				</span>
+
+				@if (auth()->check() && auth()->user()->user_id == $p->user_id && $p->jawaban == '')
+				<div class="pull-right">
+					<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
+					<a href="/pertanyaan/{{$p->pertanyaan_id}}/delete" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+				</div>
+				@endif
 			</div>
 			<div class="panel-body">
 				<h4 style="margin-top:0;">
@@ -32,13 +39,6 @@
 				</h4>
 
 				{!! nl2br($p->ket_pertanyaan) !!}
-
-				@if (auth()->check() && auth()->user()->user_id == $p->user_id && $p->jawaban == '')
-				<p class="text-right">
-					<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
-					<a href="/pertanyaan/{{$p->pertanyaan_id}}/delete" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
-				</p>
-				@endif
 			</div>
 		</div>
 	</div>

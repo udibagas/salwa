@@ -16,7 +16,12 @@ class SalwaImages extends Model
 
 	const UPDATED_AT = 'updated';
 
-	protected $fillable = ['judul', 'kd_judul', 'tanggal', 'img_images', 'group_id', 'createdby', 'updatedby'];
+	protected $fillable = [
+		'judul', 'kd_judul', 'tanggal', 'img_images',
+		'group_id', 'createdby', 'updatedby'
+	];
+
+	protected $with = ['group'];
 
 	public function group()
 	{

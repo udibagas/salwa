@@ -35,7 +35,12 @@
 
 		<hr>
 
-		@include('comment.index', ['comments' => $audio->comments()->audio()->approved()->get()])
+		@include('comment.index', [
+		'comments' => $audio->comments()->ofType('audio')
+					->when(! auth()->user()->isAdmin(), function($query) {
+						return $query->approved();
+					})->get()
+		])
 
 		@if (auth()->check())
 			@include('comment.form', ['post_id' => $audio->mp3_download_id, 'type' => 'audio'])

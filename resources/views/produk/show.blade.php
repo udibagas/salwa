@@ -52,7 +52,12 @@
 		@include('layouts._share')
 		<hr>
 
-		@include('comment.index', ['comments' => $produk->comments()->produk()->approved()->get()])
+		@include('comment.index', [
+		'comments' => $produk->comments()->ofType('produk')
+					->when(! auth()->user()->isAdmin(), function($query) {
+						return $query->approved();
+					})->get()
+		])
 
 		@if (auth()->check())
 			@include('comment.form', ['post_id' => $produk->id_produk, 'type' => 'produk'])

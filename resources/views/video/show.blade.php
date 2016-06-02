@@ -51,7 +51,12 @@
 		@include('layouts._share')
 		<hr>
 
-		@include('comment.index', ['comments' => $video->comments()->video()->approved()->get()])
+		@include('comment.index', [
+		'comments' => $video->comments()->ofType('video')
+			->when(! auth()->user()->isAdmin(), function($query) {
+				return $query->approved();
+			})->get()
+		])
 
 		@if (auth()->check())
 			@include('comment.form', ['post_id' => $video->video_id, 'type' => 'video'])

@@ -36,7 +36,12 @@
 		@include('layouts._share')
 		<hr>
 
-		@include('comment.index', ['comments' => $artikel->comments()->artikel()->approved()->get()])
+		@include('comment.index', [
+		'comments' => $artikel->comments()->ofType('artikel')
+					->when(! auth()->user()->isAdmin(), function($query) {
+						return $query->approved();
+					})->get()
+		])
 
 		@if (auth()->check())
 			@include('comment.form', ['post_id' => $artikel->artikel_id, 'type' => 'artikel'])

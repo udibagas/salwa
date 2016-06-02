@@ -29,9 +29,9 @@
 		<hr>
 		@include('layouts._share')
 
-		@if (auth()->check() && $forum->user_id == auth()->user()->user_id)
+		@can('update-forum', $forum)
 		<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info"><i class="fa fa-edit" class="btn btn-primary"></i> Edit Forum</a>
-		@endif
+		@endcan
 		<hr />
 
 		@each('forum._list-komentar', $posts, 'p')

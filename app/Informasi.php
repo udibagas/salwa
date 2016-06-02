@@ -16,6 +16,8 @@ class Informasi extends Model
 
 	const UPDATED_AT = 'updated';
 
+	protected $with = ['user', 'group'];
+
 	protected $fillable = [
 		'judul', 'content', 'summary',
 		'kd_judul', 'updatedby', 'tanggal',

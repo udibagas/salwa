@@ -23,7 +23,7 @@ class ForumController extends Controller
     public function index()
     {
         return view('forum.index', [
-			'forums' => Forum::orderBy('updated', 'DESC')->paginate(),
+			'forums' => Forum::orderBy('created', 'DESC')->paginate(),
 			'groups' => Group::forum()->orderBy('group_name', 'ASC')->get()
 		]);
     }
@@ -206,7 +206,7 @@ class ForumController extends Controller
 								return $query->where('title', 'like', '%'.$search.'%');
 							})->when($group_id, function($query) use ($group_id) {
 								return $query->where('group_id', $group_id);
-							})->orderBy('updated', 'DESC')->paginate()
+							})->orderBy('created', 'DESC')->paginate()
 		]);
 	}
 

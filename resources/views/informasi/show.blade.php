@@ -51,7 +51,12 @@
 		@include('layouts._share')
 		<hr>
 
-		@include('comment.index', ['comments' => $informasi->comments()->informasi()->approved()->get()])
+		@include('comment.index', [
+		'comments' => $informasi->comments()->ofType('informasi')
+					->when(! auth()->user()->isAdmin(), function($query) {
+						return $query->approved();
+					})->get()
+		])
 
 		@if (auth()->check())
 			@include('comment.form', ['post_id' => $informasi->informasi_id, 'type' => 'informasi'])

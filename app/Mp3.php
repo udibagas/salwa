@@ -16,7 +16,12 @@ class Mp3 extends Model
 
 	const UPDATED_AT = 'updated';
 
-	protected $fillable = ['judul', 'kd_judul', 'file_mp3', 'group_id', 'createdby', 'updatedby', 'keterangan'];
+	protected $fillable = [
+		'judul', 'kd_judul', 'file_mp3', 'group_id',
+		'createdby', 'updatedby', 'keterangan'
+	];
+
+	protected $with = ['group'];
 
 	public function group()
 	{

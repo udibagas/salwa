@@ -8,10 +8,25 @@
 		</div>
 
 		<div class="col-md-11">
-			<div class="panel panel-info panel-comment">
+			<div class="panel @if ($c->approved) panel-info @else panel-danger @endif panel-comment">
 				<div class="panel-heading">
 					<strong>{{ $c->user ? $c->user->name : '' }}</strong>
 					<span class="text-muted">commented {{ $c->updated_at->diffForHumans() }}</span>
+
+					<div class="pull-right">
+						@can('delete-comment', $c)
+						{!! Form::open(['url' => '/comment/'.$c->id, 'method' => 'DELETE', 'class' => 'form-inline']) !!}
+							{!! Form::hidden('redirect', url()->current()) !!}
+
+							@if (auth()->user()->isAdmin() && !$c->approved)
+							<a href="/comment/{{$c->id}}/approve?redirect={{ url()->current() }}" class="btn btn-info btn-xs"><i class="fa fa-check"></i> Approve</a>
+							@endif
+
+							<button type="submit" name="delete" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Delete</button>
+						{!! Form::close() !!}
+						@endcan
+					</div>
+
 				</div>
 				<div class="panel-body">
 					<h4 style="margin-top:0;font-weight:bold;">{{ $c->title }}</h4>

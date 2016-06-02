@@ -22,6 +22,8 @@ class Peduli extends Model
 
 	const UPDATED_AT = 'updated';
 
+	protected $with = ['user', 'group'];
+
 	public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'user_id');

@@ -15,28 +15,28 @@
 					{{ $p->user ? $p->user->name : '' }}
 					@if ($p->daerah_asal) ({{ $p->daerah_asal }}) @endif
 				</strong>
+				
 				<span class="text-muted">
 					asked {{ $p->tgl_tanya ? $p->tgl_tanya->diffForHumans() : "" }}
 					@if ($p->group)
 					on <a href="/pertanyaan/?group_id={{ $p->group_id }}">{{ $p->group->group_name }}</a>
 					@endif
 				</span>
-			</div>
-			<div class="panel-body">
-				<h4 style="margin-top:0;font-weight:bold;">Pertanyaan : {{ $p->judul_pertanyaan }}</h4>
-
-				{!! $p->ket_pertanyaan !!}
 
 				@if (auth()->check() && auth()->user()->user_id == $p->user_id && $p->jawaban == null)
 				{!! Form::open(['url' => '/pertanyaan/'.$p->pertanyaan_id, 'method' => 'DELETE']) !!}
-				<p class="text-right">
+				<div class="pull-right">
 					<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
 					<button type="submit" name="delete" class="btn btn-xs btn-danger">
 						<i class="fa fa-trash"></i> Hapus
 					</button>
-				</p>
+				</div>
 				{!! Form::close() !!}
 				@endif
+			</div>
+			<div class="panel-body">
+				<h4 style="margin-top:0;font-weight:bold;">Pertanyaan : {{ $p->judul_pertanyaan }}</h4>
+				{!! $p->ket_pertanyaan !!}
 			</div>
 		</div>
 	</div>

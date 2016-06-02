@@ -15,7 +15,7 @@
 	<div role="tabpanel" class="tab-pane @if ($j==1) active @endif" id="{{$j}}">
 		<br />
 		<ul class="list-group">
-			@foreach($f->forums()->orderBy('updated', 'DESC')->limit(5)->get() as $f)
+			@foreach($f->forums()->orderBy('created', 'DESC')->limit(5)->get() as $f)
 			<li class="list-group-item">
 				<a href="/forum/{{$f->forum_id}}-{{str_slug($f->title)}}">
 					<strong>{{$f->title}}</strong>

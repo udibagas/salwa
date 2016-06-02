@@ -18,6 +18,8 @@ class Banner extends Model
 
 	protected $fillable = ['img_banner', 'url', 'createdby', 'updatedby', 'group_id'];
 
+	protected $with = ['group'];
+
 	public function group()
 	{
 		return $this->belongsTo('App\Group', 'group_id', 'group_id');

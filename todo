@@ -17,7 +17,6 @@ TODO
 9. Rich editor belum bisa insert image setelah di clean
 12. Forget Password => pake email salamdakwah, aktifkan secondary mail server di server baru, yg cantik,
 13. API sunnah go => create kajian : tinggal halaman CMS
-15. bikin modul komentar ==> TINGGAL CRUD di CMS & hapus di frontend
 16. pake choosen
 18. kalender kajian
 21. resize image on the fly
@@ -29,6 +28,7 @@ TODO
 27. comment via ajax
 28. timeline user
 29. add reply on comment & post ==> jangka panjang
-30. optimasi query dengan menambahkah "with"
 31. edit post masih masalah
-32. auth-nya pake policy
+32. auth-nya pake policy ==> perlu?? ga usah. orang cuma dikit doank. di define aja di auth service provider
+33. dynamic scope!!!
+34. member bisa saling lihat halaman profile user?

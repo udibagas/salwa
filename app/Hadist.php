@@ -16,6 +16,8 @@ class Hadist extends Model
 
 	const UPDATED_AT = 'updated';
 
+	protected $with = ['group'];
+
 	protected $hidden = ['created', 'updated', 'createdby', 'updatedby', 'dilihat'];
 
 	public function getTanggalAttribute($value)

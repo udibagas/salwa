@@ -161,4 +161,9 @@ class Group extends Model
 			'video'		=> 'Video',
 		];
 	}
+
+	public function scopeOfType($query, $type)
+	{
+		return $query->where('type', $type);
+	}
 }

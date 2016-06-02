@@ -14,6 +14,8 @@ class Video extends Model
 
 	const UPDATED_AT = 'updated';
 
+	protected $with = ['user'];
+
 	protected $fillable = [
 		'title', 'title_code', 'date', 'desc',
 		'updatedby', 'user_id', 'url_video_youtube',

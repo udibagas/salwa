@@ -12,11 +12,16 @@ class Post extends Model
 
 	protected $dates = ['created', 'updated', 'date'];
 
-	protected $fillable = ['user_id', 'forum_id', 'description', 'date', 'createdby', 'updatedby'];
+	protected $fillable = [
+		'user_id', 'forum_id', 'description',
+		'date', 'createdby', 'updatedby'
+	];
 
 	const CREATED_AT = 'created';
 
 	const UPDATED_AT = 'updated';
+
+	protected $with = ['user', 'forum'];
 
 	public function user()
 	{

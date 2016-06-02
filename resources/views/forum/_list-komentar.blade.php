@@ -13,25 +13,26 @@
 			<div class="panel-heading">
 				<strong>{{ $p->user ? $p->user->name : '' }}</strong>
 				<span class="text-muted">posted {{ $p->updated ? $p->updated->diffForHumans() : '' }}</span>
+
+				@can('update-post', $p)
+				<div class="pull-right">
+					<a href="/forum/edit-post/{{$p->post_id}}" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
+					<a href="/forum/delete-post/{{$p->post_id}}/" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Hapus</a>
+				</div>
+				@endcan
 			</div>
 			<div class="panel-body">
 
 				{!! $p->description !!}
 
 				@if (count($p->images) > 0)
+					<br>
 					<div class="row no-gutter">
 						@foreach ($p->images as $image)
 						@include('forum._list-image')
 						@endforeach
 					</div>
 					<br>
-				@endif
-
-				@if (auth()->check() && auth()->user()->user_id == $p->user_id)
-				<p class="text-right">
-					<a href="/forum/edit-post/{{$p->post_id}}" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
-					<a href="/forum/delete-post/{{$p->post_id}}/" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Hapus</a>
-				</p>
 				@endif
 
 			</div>

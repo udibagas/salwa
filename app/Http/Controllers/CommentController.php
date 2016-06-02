@@ -18,7 +18,7 @@ class CommentController extends Controller
     public function index(Request $request)
     {
         return view('comment.admin', [
-			'comments' => Comment::orderBy('id', 'DESC')->with('user')
+			'comments' => Comment::orderBy('id', 'DESC')
 							->when($request->type, function($query) use ($request) {
 								return $query->where('type', $request->type);
 							})->when($request->user, function($query) use ($request) {
@@ -106,10 +106,11 @@ class CommentController extends Controller
 		return redirect($request->redirect);
     }
 
-	public function approve(Comment $comment)
+	public function approve(Comment $comment, Request $request)
 	{
 		$comment->update(['approved' => 1]);
-		return redirect('/comment');
+		$redirect = $request->redirect ? $request->redirect : '/comment';
+		return redirect($redirect);
 	}
 
 	public function approveAll()

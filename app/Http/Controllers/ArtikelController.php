@@ -23,7 +23,7 @@ class ArtikelController extends Controller
 								return $query->where('group_id', $request->group_id);
 							})->when($search, function($query) use ($search) {
 								return $query->where('judul', 'like', '%'.$search.'%');
-							})->orderBy('updated', 'DESC')->with(['group', 'user'])->paginate(16)
+							})->orderBy('updated', 'DESC')->paginate(16)
 		]);
     }
 
@@ -39,7 +39,7 @@ class ArtikelController extends Controller
 							})->when($request->user, function($query) use ($request) {
 								return $query->join('users', 'users.user_id', '=', 'artikel.user_id')
 									->where('users.name', 'like', '%'.$request->user.'%');
-							})->orderBy('artikel.updated', 'DESC')->with(['group', 'user'])->paginate()
+							})->orderBy('artikel.updated', 'DESC')->paginate()
 		]);
     }
 

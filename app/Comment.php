@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-	protected $fillable = ['user_id', 'post_id', 'title', 'content', 'star', 'type', 'parent_id', 'approved'];
+	protected $fillable = [
+		'user_id', 'post_id', 'title', 'content',
+		'star', 'type', 'parent_id', 'approved'
+	];
+
+	protected $with = ['user'];
 
     public function user()
 	{
@@ -44,34 +49,9 @@ class Comment extends Model
 		return $this->belongsTo('App\Comment', 'parent_id', 'id');
 	}
 
-	public function scopeArtikel($query)
+	public function scopeOfType($query, $type)
 	{
-		return $query->where('type', 'artikel');
-	}
-
-	public function scopeVideo($query)
-	{
-		return $query->where('type', 'video');
-	}
-
-	public function scopeAudio($query)
-	{
-		return $query->where('type', 'audio');
-	}
-
-	public function scopeInformasi($query)
-	{
-		return $query->where('type', 'informasi');
-	}
-
-	public function scopePeduli($query)
-	{
-		return $query->where('type', 'peduli');
-	}
-
-	public function scopeProduk($query)
-	{
-		return $query->where('type', 'produk');
+		return $query->where('type', $type);
 	}
 
 	public function scopeApproved($query)

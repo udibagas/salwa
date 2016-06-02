@@ -16,6 +16,8 @@ class Artikel extends Model
 
 	const UPDATED_AT = 'updated';
 
+	protected $with = ['user', 'group'];
+
 	protected $fillable = [
 		'judul', 'isi', 'isi_mobile', 'ringkasan',
 		'kd_judul', 'updatedby', 'user_id',

@@ -123,4 +123,9 @@ class User extends Authenticatable
 		return $this->user_status == self::ROLE_MEMBER;
 	}
 
+	public function scopeOfRole($query, $role)
+	{
+		return $query->where('user_status', $role);
+	}
+
 }

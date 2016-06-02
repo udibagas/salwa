@@ -16,6 +16,8 @@ class Produk extends Model
 
 	const UPDATED_AT = 'updated';
 
+	protected $with = ['group'];
+
 	protected $fillable = [
 		'judul', 'kd_judul', 'penulis', 'penerbit',
 		'sinopsis_kecil', 'sinopsis', 'img_buku', 'harga',

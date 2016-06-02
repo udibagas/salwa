@@ -16,7 +16,12 @@ class Murottal extends Model
 
 	const UPDATED_AT = 'updated';
 
-	protected $fillable = ['nama_surat', 'kd_nama_surat', 'file_mp3', 'group_id', 'createdby', 'updatedby', 'keterangan'];
+	protected $with = ['group'];
+
+	protected $fillable = [
+		'nama_surat', 'kd_nama_surat', 'file_mp3',
+		'group_id', 'createdby', 'updatedby', 'keterangan'
+	];
 
 	public function group()
 	{
