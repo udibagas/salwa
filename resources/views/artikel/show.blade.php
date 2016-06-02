@@ -27,7 +27,7 @@
 		<hr>
 
 		@if ($artikel->img_artikel)
-		<img src="/{{ $artikel->img_artikel }}" style="margin-bottom:30px;" alt="" class="img-responsive" style="max-height:300px;" />
+		<img src="/{{ $artikel->img_artikel }}" style="margin-bottom:30px;" alt="" style="max-width:300px;" />
 		@endif
 
 		{!! $artikel->isi !!}
