@@ -52,9 +52,9 @@
 
 @push('script')
 	<script type="text/javascript">
-	$('form.comment').submit(function(e) {
-		e.preventDefault();
+	// $('form.comment').submit(function(e) {
+	// 	e.preventDefault();
 		// $.post(this.action,this.serialize);
-	});
+	// });
 	</script>
 @endpush

@@ -11,6 +11,7 @@ use App\Forum;
 use App\Group;
 use App\Post;
 use App\PostImage;
+use Gate;
 
 class ForumController extends Controller
 {
@@ -101,6 +102,10 @@ class ForumController extends Controller
      */
     public function edit(Forum $forum)
     {
+		if (Gate::denies('update-forum', $forum)) {
+			abort(403);
+		}
+
 		$view = auth()->user()->isAdmin() && auth()->user()->user_id !== $forum->user_id ? 'forum.edit-admin' : 'forum.edit';
         return view($view, ['forum' => $forum]);
     }
@@ -114,6 +119,10 @@ class ForumController extends Controller
      */
     public function update(ForumRequest $request, Forum $forum)
     {
+		if (Gate::denies('update-forum', $forum)) {
+			abort(403);
+		}
+
 		$data 				= $request->all();
 		$data['title_code']	= str_slug($request->title);
 		$data['updatedby'] 	= auth()->user()->name;
@@ -154,6 +163,10 @@ class ForumController extends Controller
      */
     public function destroy(Forum $forum)
     {
+		if (Gate::denies('delete-forum', $forum)) {
+			abort(403);
+		}
+
         $forum->delete();
 
 		// hapus semua post & image
@@ -244,11 +257,19 @@ class ForumController extends Controller
 
 	public function editPost(Post $post)
 	{
+		if (Gate::denies('update-post', $post)) {
+			abort(403);
+		}
+
 		return view('forum.edit-post', ['post' => $post]);
 	}
 
 	public function updatePost(PostRequest $request, Post $post)
 	{
+		if (Gate::denies('update-post', $post)) {
+			abort(403);
+		}
+
 		$data 				= $request->all();
 		$data['description']= clean($request->description);
 		$data['updatedby'] 	= auth()->user()->name;
@@ -274,6 +295,10 @@ class ForumController extends Controller
 
 	public function deletePost(Post $post)
     {
+		if (Gate::denies('delete-post', $post)) {
+			abort(403);
+		}
+
 		$post->delete();
 
 		foreach ($post->images as $image) {
@@ -288,6 +313,10 @@ class ForumController extends Controller
 
 	public function deleteImage(PostImage $image)
 	{
+		if (Gate::denies('delete-post', $image->post)) {
+			abort(403);
+		}
+
 		$image->delete();
 
 		if ($image->img_image && file_exists($image->img_image)) {

@@ -25,7 +25,7 @@
 			<div class="panel-body">
 				<h4 style="margin-top:0;font-weight:bold;">Pertanyaan : {{ $p->judul_pertanyaan }}</h4>
 
-				{!! nl2br($p->ket_pertanyaan) !!}
+				{!! $p->ket_pertanyaan !!}
 
 				@if (auth()->check() && auth()->user()->user_id == $p->user_id && $p->jawaban == null)
 				{!! Form::open(['url' => '/pertanyaan/'.$p->pertanyaan_id, 'method' => 'DELETE']) !!}

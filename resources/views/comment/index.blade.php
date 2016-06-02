@@ -1,4 +1,5 @@
 @foreach ($comments as $c)
+	<a name="comment-{{$c->id}}" class="comment-number"></a>
 	<div class="row">
 		<div class="col-md-1">
 			<div class="thumbnail">
@@ -13,10 +14,16 @@
 					<span class="text-muted">commented {{ $c->updated_at->diffForHumans() }}</span>
 				</div>
 				<div class="panel-body">
-					<h4 style="margin-top:0;"><strong>{{ $c->title }}</strong></h4>
-					{!! nl2br($c->content) !!}
+					<h4 style="margin-top:0;font-weight:bold;">{{ $c->title }}</h4>
+					{!! $c->content !!}
 				</div>
 			</div>
 		</div>
 	</div>
 @endforeach
+
+@if (session('success'))
+	<div class="alert alert-success text-bold text-center">
+		{{ session('success') }}
+	</div>
+@endif

@@ -55,6 +55,7 @@
 		  </a>
           <ul class="dropdown-menu">
             <li><a href="/me"><i class="fa fa-user"></i> Profile</a></li>
+            <!-- <li><a href="/message"><i class="fa fa-inbox"></i> Inbox <span class="badge">1</span></a></li> -->
 			@if (auth()->user()->isAdmin())
   		  <li class="@if (url()->current() == url('cms')) active @endif"><a href="/cms"><i class="fa fa-th"></i> CMS</a></li>
   		  @endif

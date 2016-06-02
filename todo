@@ -28,3 +28,7 @@ TODO
 26. bikin chatroom?
 27. comment via ajax
 28. timeline user
+29. add reply on comment & post ==> jangka panjang
+30. optimasi query dengan menambahkah "with"
+31. edit post masih masalah
+32. auth-nya pake policy

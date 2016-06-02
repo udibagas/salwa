@@ -31,7 +31,19 @@
 
 		<hr>
 		@include('layouts._share')
-		<a href="/audio/{{ $audio->mp3_download_id }}/download" class="btn btn-primary"><i class="fa fa-download"></i> Download</a>
+		<a href="/audio/{{ $audio->mp3_download_id }}/download" class="btn btn-info"><i class="fa fa-download"></i> Download</a>
+
+		<hr>
+
+		@include('comment.index', ['comments' => $audio->comments()->audio()->approved()->get()])
+
+		@if (auth()->check())
+			@include('comment.form', ['post_id' => $audio->mp3_download_id, 'type' => 'audio'])
+		@else
+			<div class="alert alert-danger text-center">
+				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>
+			</div>
+		@endif
 
 	</div>
 	<div class="col-md-3">

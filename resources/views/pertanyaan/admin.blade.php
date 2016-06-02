@@ -16,10 +16,8 @@
 
 <h4 class="title"><i class="fa fa-question-circle"></i> TANYA USTADZ</h4>
 
-<div class="well well-sm text-right" style="margin-bottom:10px;">
-	<b>
-		Showing {{ $pertanyaans->firstItem() }} to {{ $pertanyaans->lastItem() }} of {{ $pertanyaans->total() }} entries
-	</b>
+<div class="text-right text-bold" style="margin:10px;">
+	Showing {{ $pertanyaans->firstItem() }} to {{ $pertanyaans->lastItem() }} of {{ $pertanyaans->total() }} entries
 </div>
 
 <table class="table table-hover table-striped">

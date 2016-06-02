@@ -133,6 +133,10 @@ class PertanyaanController extends Controller
      */
     public function edit(Pertanyaan $pertanyaan)
     {
+		if (Gate::denies('update-pertanyaan', $pertanyaan)) {
+			abort(403);
+		}
+
 		$view = (auth()->user()->isAdmin()) ? 'pertanyaan.edit-admin' : 'pertanyaan.edit';
         return view($view, ['pertanyaan' => $pertanyaan]);
     }
@@ -163,6 +167,10 @@ class PertanyaanController extends Controller
      */
     public function update(PertanyaanRequest $request, Pertanyaan $pertanyaan)
     {
+		if (Gate::denies('update-pertanyaan', $pertanyaan)) {
+			abort(403);
+		}
+
 		$data 				= $request->all();
 		$data['updatedby']	= auth()->user()->name;
 		$data['kd_judul']	= str_slug($request->judul_pertanyaan);
@@ -187,6 +195,10 @@ class PertanyaanController extends Controller
      */
     public function destroy(Pertanyaan $pertanyaan)
     {
+		if (Gate::denies('delete-pertanyaan', $pertanyaan)) {
+			abort(403);
+		}
+
         $pertanyaan->delete();
 
 		if (auth()->user()->isAdmin()) {

@@ -34,7 +34,7 @@
 		@include('layouts._share')
 		<hr>
 
-		@include('comment.index', ['comments' => $peduli->comments()->peduli()->get()])
+		@include('comment.index', ['comments' => $peduli->comments()->peduli()->approved()->get()])
 
 		@if (auth()->check())
 			@include('comment.form', ['post_id' => $peduli->peduli_id, 'type' => 'peduli'])

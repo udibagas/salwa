@@ -45,6 +45,8 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('artikel/admin', 'ArtikelController@admin');
 		Route::get('audio/admin', 'AudioController@admin');
 		Route::get('banner/admin', 'BannerController@admin');
+		Route::get('comment/{comment}/approve', 'CommentController@approve');
+		Route::get('comment/approve-all', 'CommentController@approveAll');
 		Route::get('forum/admin', 'ForumController@admin');
 		Route::get('hadist/admin', 'HadistController@admin');
 		Route::get('image/admin', 'ImageController@admin');
@@ -63,6 +65,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::resource('artikel', 'ArtikelController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('audio', 'AudioController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('banner', 'BannerController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('comment', 'CommentController', ['only' => ['index']]);
 		Route::resource('hadist', 'HadistController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('image', 'ImageController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('informasi', 'InformasiController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
@@ -92,7 +95,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('me', 'UserController@me');
 	Route::put('user/{user}', 'UserController@update');
 	Route::resource('pertanyaan', 'PertanyaanController', ['except' => ['index', 'show']]);
-	Route::resource('comment', 'CommentController');
+	Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy']]);
 });
 
 Route::resource('artikel', 'ArtikelController', ['only' => ['index', 'show']]);

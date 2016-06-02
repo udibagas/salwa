@@ -26,6 +26,9 @@
 	<a class="list-group-item info @if (url()->current() == url('forum/admin')) active @endif" href="/forum/admin">
 		<i class="fa fa-comments-o"></i> Salwa Forum
 	</a>
+	<a class="list-group-item info @if (url()->current() == url('comment')) active @endif" href="/comment">
+		<i class="fa fa-comments-o"></i> Comments
+	</a>
 	<a class="list-group-item info @if (url()->current() == url('audio/admin')) active @endif" href="/audio/admin">
 		<i class="fa fa-music"></i> Salwa Audio
 	</a>

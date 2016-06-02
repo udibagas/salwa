@@ -22,4 +22,9 @@ class Mp3 extends Model
 	{
 		return $this->belongsTo('App\Group', 'group_id', 'group_id');
 	}
+
+	public function comments()
+	{
+		return $this->hasMany('App\Comment', 'post_id', 'mp3_download_id');
+	}
 }

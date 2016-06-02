@@ -16,7 +16,7 @@
 			</div>
 			<div class="panel-body">
 				<h4 style="margin-top:0;font-weight:bold;"> Jawaban: </h4>
-				{!! nl2br($p->jawaban) !!}
+				{!! $p->jawaban !!}
 
 				@if (auth()->check() && auth()->user()->user_id == $p->dijawab_oleh)
 				<p class="text-right">

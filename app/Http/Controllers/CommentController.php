@@ -15,9 +15,23 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('comment.admin', [
+			'comments' => Comment::orderBy('id', 'DESC')->with('user')
+							->when($request->type, function($query) use ($request) {
+								return $query->where('type', $request->type);
+							})->when($request->user, function($query) use ($request) {
+								return $query->join('users', 'users.user_id', '=', 'comments.user_id')
+											->where('users.name', 'like', '%'.$request->user.'%');
+							})->when($request->title, function($query) use ($request) {
+								return $query->where('title', 'like', '%'.$request->title.'%');
+							})->when($request->approved == 'yes', function($query) use ($request) {
+								return $query->where('approved', 1);
+							})->when($request->approved == 'no', function($query) use ($request) {
+								return $query->where('approved', 0);
+							})->paginate()
+		]);
     }
 
     /**
@@ -43,7 +57,7 @@ class CommentController extends Controller
 		$data['user_id']	= auth()->user()->user_id;
 
 		Comment::create($data);
-		return redirect($request->redirect);
+		return redirect($request->redirect)->with('success', 'Komentar Anda akan tampil setelah dimoderasi.');
     }
 
     /**
@@ -86,8 +100,21 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comment $comment, Request $request)
     {
-        //
+        $comment->delete();
+		return redirect($request->redirect);
     }
+
+	public function approve(Comment $comment)
+	{
+		$comment->update(['approved' => 1]);
+		return redirect('/comment');
+	}
+
+	public function approveAll()
+	{
+		Comment::where('approved', 0)->update(['approved' => 1]);
+		return redirect('/comment');
+	}
 }

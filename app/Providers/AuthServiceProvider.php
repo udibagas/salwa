@@ -26,8 +26,35 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-		// $gate->define('update-post', function ($user, $post) {
-        //     return $user->id === $post->user_id;
-        // });
+		$gate->before(function($user, $ability) {
+			if ($user->isAdmin()) {
+				return true;
+			}
+		});
+
+		$gate->define('update-post', function ($user, $post) {
+            return $user->user_id === $post->user_id;
+        });
+
+		$gate->define('delete-post', function ($user, $post) {
+            return $user->user_id === $post->user_id;
+        });
+
+		$gate->define('update-forum', function ($user, $forum) {
+            return $user->user_id === $forum->user_id;
+        });
+
+		$gate->define('delete-forum', function ($user, $forum) {
+            return $user->user_id === $forum->user_id;
+        });
+
+		$gate->define('update-pertanyaan', function ($user, $pertanyaan) {
+            return $user->user_id === $pertanyaan->user_id;
+        });
+
+		$gate->define('delete-pertanyaan', function ($user, $pertanyaan) {
+            return $user->user_id === $pertanyaan->user_id;
+        });
+
     }
 }

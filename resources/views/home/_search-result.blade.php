@@ -6,7 +6,7 @@
 		<li class="list-group-item" style="padding:5px">
 			<strong><a href="/video/{{ $v->video_id }}-{{ str_slug($v->title) }}">{{ $v->title }}</a></strong>
 			<br />
-			<em>{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}</em>
+			{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}
 		</li>
 
 		@endforeach
@@ -29,7 +29,7 @@
 		<li class="list-group-item" style="padding:5px">
 			<strong><a href="/artikel/{{ $v->artikel_id }}-{{ str_slug($v->judul) }}">{{ $v->judul }}</a></strong>
 			<br />
-			<em>{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}</em>
+			{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}
 		</li>
 
 		@endforeach
@@ -52,7 +52,7 @@
 		<li class="list-group-item" style="padding:5px">
 			<strong><a href="/informasi/{{ $v->informasi_id }}-{{ str_slug($v->judul) }}">{{ $v->judul }}</a></strong>
 			<br />
-			<em>{{ $v->updated->diffForHumans() }}</em>
+			{{ $v->updated->diffForHumans() }}
 		</li>
 
 		@endforeach
@@ -75,7 +75,7 @@
 		<li class="list-group-item" style="padding:5px">
 			<strong><a href="/peduli/{{ $v->peduli_id }}-{{ str_slug($v->judul) }}">{{ $v->judul }}</a></strong>
 			<br />
-			<em>{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}</em>
+			{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}
 		</li>
 
 		@endforeach
@@ -97,7 +97,7 @@
 		<li class="list-group-item" style="padding:5px">
 			<strong><a href="/forum/{{ $v->forum_id }}-{{ str_slug($v->title) }}">{{ $v->title }}</a></strong>
 			<br />
-			<em>{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}</em>
+			{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}
 		</li>
 
 		@endforeach
@@ -121,14 +121,14 @@
 		<li class="list-group-item" style="padding:5px">
 			<a href="/forum/{{ $v->forum->forum_id }}-{{ str_slug($v->forum->title) }}">{{ str_limit($v->description, 150) }}</a>
 			<br />
-			<em>{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}</em>
+			{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}
 		</li>
 
 		@endforeach
 
 		<li class="list-group-item text-center">
 			@if (count($posts))
-			<b><a href="/post?search={{ request('search') }}">More Results...</a></b>
+			<b><a href="/forum?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif
@@ -145,7 +145,7 @@
 		<li class="list-group-item" style="padding:5px">
 			<strong><a href="/pertanyaan/{{ $v->pertanyaan_id }}-{{ str_slug($v->judul_pertanyaan) }}">{{ $v->judul_pertanyaan }}</a></strong>
 			<br />
-			<em>{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}</em>
+			{{ $v->user ? $v->user->name : '' }} | {{ $v->updated->diffForHumans() }}
 		</li>
 
 		@endforeach
@@ -167,7 +167,7 @@
 		<li class="list-group-item" style="padding:5px">
 			<strong><a href="/kitab/{{ $v->buku_id }}-{{ str_slug($v->judul) }}">{{ $v->judul }}</a></strong>
 			<br />
-			<em>{{ $v->penulis }}</em>
+			{{ $v->penulis }}
 		</li>
 
 		@endforeach
@@ -254,7 +254,7 @@
 		<li class="list-group-item" style="padding:5px">
 			<strong><a href="/mp3/{{ $v->mp3_download_id }}-{{ str_slug($v->judul) }}">{{ $v->judul }}</a></strong>
 			<br />
-			<em>{{ $v->updated->diffForHumans() }}</em>
+			{{ $v->updated->diffForHumans() }}
 		</li>
 
 		@endforeach
@@ -300,7 +300,7 @@
 		<li class="list-group-item" style="padding:5px">
 			<strong><a href="/produk/{{ $v->id_produk }}-{{ str_slug($v->judul) }}">{{ $v->judul }}</a></strong>
 			<br />
-			<em>RP {{ number_format($v->harga) }}</em>
+			RP {{ number_format($v->harga) }}
 		</li>
 
 		@endforeach

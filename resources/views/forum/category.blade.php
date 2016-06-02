@@ -46,7 +46,6 @@
 				<div class="clearfix"></div>
 			</div>
 
-
 			<ul class="list-group">
 				@if (count($forums) == 0)
 					<li class="list-group-item">

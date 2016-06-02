@@ -36,7 +36,7 @@
 		@include('layouts._share')
 		<hr>
 
-		@include('comment.index', ['comments' => $artikel->comments()->artikel()->get()])
+		@include('comment.index', ['comments' => $artikel->comments()->artikel()->approved()->get()])
 
 		@if (auth()->check())
 			@include('comment.form', ['post_id' => $artikel->artikel_id, 'type' => 'artikel'])

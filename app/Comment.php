@@ -6,11 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-	protected $fillable = ['user_id', 'post_id', 'title', 'content', 'star', 'type', 'parent_id'];
+	protected $fillable = ['user_id', 'post_id', 'title', 'content', 'star', 'type', 'parent_id', 'approved'];
 
     public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'user_id');
+	}
+
+	public static function typeList()
+	{
+		return [
+			'artikel' 	=> 'artikel',
+			'audio'		=> 'audio',
+			'informasi' => 'informasi',
+			'peduli' 	=> 'peduli',
+			'produk'	=> 'produk',
+			'video' 	=> 'video',
+		];
 	}
 
     public function post()
@@ -60,5 +72,15 @@ class Comment extends Model
 	public function scopeProduk($query)
 	{
 		return $query->where('type', 'produk');
+	}
+
+	public function scopeApproved($query)
+	{
+		return $query->where('approved', 1);
+	}
+
+	public function scopeUnapproved($query)
+	{
+		return $query->where('approved', 0);
 	}
 }

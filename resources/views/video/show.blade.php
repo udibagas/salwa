@@ -47,24 +47,11 @@
 		<br><br>
 		{!! $video->desc !!}
 
-
-		<!-- if ($video->files)
-			<div class="row">
-				foreach ($video->files()->web()->get() as $f)
-				<div class="col-md-6">
-					<video width="100%" height="300" controls  poster="/{ $f->img_file }}" style="width:100%;height:300px;">
-						<source src="/{ $f->file_upload }}" type="video/flv">
-					</video>
-				</div>
-				endforeach
-			</div>
-		endif -->
-
 		<hr>
 		@include('layouts._share')
 		<hr>
 
-		@include('comment.index', ['comments' => $video->comments()->video()->get()])
+		@include('comment.index', ['comments' => $video->comments()->video()->approved()->get()])
 
 		@if (auth()->check())
 			@include('comment.form', ['post_id' => $video->video_id, 'type' => 'video'])

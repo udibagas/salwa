@@ -16,7 +16,7 @@
 			</div>
 			<div class="panel-body">
 
-				{!! nl2br($p->description) !!}
+				{!! $p->description !!}
 
 				@if (count($p->images) > 0)
 					<div class="row no-gutter">

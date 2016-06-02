@@ -52,7 +52,7 @@
 		@include('layouts._share')
 		<hr>
 
-		@include('comment.index', ['comments' => $produk->comments()->produk()->get()])
+		@include('comment.index', ['comments' => $produk->comments()->produk()->approved()->get()])
 
 		@if (auth()->check())
 			@include('comment.form', ['post_id' => $produk->id_produk, 'type' => 'produk'])

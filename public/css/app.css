@@ -387,3 +387,7 @@ a:hover {
 .badge {
 	background-color: #0084FF;
 }
+
+.text-bold {
+	font-weight: bold;
+}
