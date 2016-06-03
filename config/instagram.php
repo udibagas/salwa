@@ -38,10 +38,10 @@ return [
     'connections' => [
 
         'main' => [
-            'id' => '7c39848e6d4f473cb911f96480862259',
-            'secret' => 'f373021a01744f3b886cf1725002f6ac',
-            // 'code' => '37e6c56454c745848de4e41d06f53fb9',
-            'access_token' => '204497223.7c39848.eb13d21d29e64f6ea8d125a8efd740f0',
+            'id' => 'ee5ab4be1af04923a60366d7b3405286',
+            'secret' => '08dda4ffa0fd464f84a86ff9d9d88f77',
+            // 'code' => '4714371cadc24ba7a78f4690e66de024',
+            'access_token' => '515901229.ee5ab4b.c6ea0c8cb0664377ad055d079a0753b1',
         ],
 
         'alternative' => [

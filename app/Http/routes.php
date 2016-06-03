@@ -12,11 +12,11 @@
 */
 
 use App\User;
-// use Instagram;
-//
-// Route::get('/instagram', function() {
-// 	return Instagram::users()->get(30);
-// });
+use Instagram;
+
+Route::get('/instagram', function() {
+	return Instagram::users()->get(30);
+});
 
 Route::get('jajal', function() {
 	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);

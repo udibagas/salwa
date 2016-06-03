@@ -1,0 +1,20 @@
+
+CLIENT INFO
+CLIENT ID	ee5ab4be1af04923a60366d7b3405286
+CLIENT SECRET	08dda4ffa0fd464f84a86ff9d9d88f77
+WEBSITE URL	http://web.salamdakwah.com
+REDIRECT URI	http://web.salamdakwah.com
+SUPPORT EMAIL	udibagas@gmail.com
+
+code 4714371cadc24ba7a78f4690e66de024
+
+https://api.instagram.com/oauth/authorize/?client_id=ee5ab4be1af04923a60366d7b3405286&redirect_uri=http://web.salamdakwah.com&response_type=code
+
+curl -F 'client_id=ee5ab4be1af04923a60366d7b3405286' \
+    -F 'client_secret=08dda4ffa0fd464f84a86ff9d9d88f77' \
+    -F 'grant_type=authorization_code' \
+    -F 'redirect_uri=http://web.salamdakwah.com' \
+    -F 'code=4714371cadc24ba7a78f4690e66de024' \
+    https://api.instagram.com/oauth/access_token
+
+{"access_token": "515901229.ee5ab4b.c6ea0c8cb0664377ad055d079a0753b1", "user": {"username": "salamdakwah", "bio": "Mengikuti Al-Quran dan As-sunnah dengan pemahaman para Sahabat", "website": "http://www.salamdakwah.com", "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/10654976_738583196177242_1043294673_a.jpg", "full_name": "Salamdakwah", "id": "515901229"}}
