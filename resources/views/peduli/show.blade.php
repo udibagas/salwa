@@ -36,7 +36,7 @@
 
 		@include('comment.index', [
 		'comments' => $peduli->comments()->ofType('peduli')
-					->when(! auth()->user()->isAdmin(), function($query) {
+					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
 						return $query->approved();
 					})->get()
 		])

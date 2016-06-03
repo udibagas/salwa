@@ -54,7 +54,7 @@
 
 		@include('comment.index', [
 		'comments' => $produk->comments()->ofType('produk')
-					->when(! auth()->user()->isAdmin(), function($query) {
+					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
 						return $query->approved();
 					})->get()
 		])

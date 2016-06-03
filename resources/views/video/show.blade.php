@@ -53,7 +53,7 @@
 
 		@include('comment.index', [
 		'comments' => $video->comments()->ofType('video')
-			->when((auth->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
+			->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
 				return $query->approved();
 			})->get()
 		])

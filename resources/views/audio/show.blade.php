@@ -37,7 +37,7 @@
 
 		@include('comment.index', [
 		'comments' => $audio->comments()->ofType('audio')
-					->when(! auth()->user()->isAdmin(), function($query) {
+					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
 						return $query->approved();
 					})->get()
 		])
