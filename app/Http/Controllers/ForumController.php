@@ -23,7 +23,7 @@ class ForumController extends Controller
     public function index()
     {
         return view('forum.index', [
-			'forums' => Forum::orderBy('created', 'DESC')->paginate(),
+			'forums' => Forum::orderBy('forum_id', 'DESC')->paginate(),
 			'groups' => Group::forum()->orderBy('group_name', 'ASC')->get()
 		]);
     }
@@ -189,7 +189,7 @@ class ForumController extends Controller
 		return view('forum.category', [
 			'groups' 	=> Group::forum()->orderBy('group_name', 'ASC')->get(),
 			'group' 	=> $group,
-			'forums' 	=> $group->forums()->orderBy('updated', 'DESC')->paginate()
+			'forums' 	=> $group->forums()->orderBy('forum_id', 'DESC')->paginate()
 		]);
 	}
 
@@ -206,7 +206,7 @@ class ForumController extends Controller
 								return $query->where('title', 'like', '%'.$search.'%');
 							})->when($group_id, function($query) use ($group_id) {
 								return $query->where('group_id', $group_id);
-							})->orderBy('created', 'DESC')->paginate()
+							})->orderBy('forum_id', 'DESC')->paginate()
 		]);
 	}
 
@@ -224,7 +224,7 @@ class ForumController extends Controller
 											->where('users.name', 'like', '%'.$request->user.'%');
 											// ->orWhere('users.user_name', 'like', '%'.$request->user.'%')
 											// ->orWhere('users.email', 'like', '%'.$request->user.'%');
-							})->orderBy('forums.updated', 'DESC')->paginate()
+							})->orderBy('forums.forum_id', 'DESC')->paginate()
 		]);
 	}
 
