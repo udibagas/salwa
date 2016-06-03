@@ -10,7 +10,6 @@ use App\Peduli;
 use App\Pertanyaan;
 use App\Forum;
 use App\Buku;
-use App\BukuTerjemahan;
 use App\Produk;
 use App\Hadist;
 use App\Banner;
@@ -19,6 +18,7 @@ use App\SalwaImages;
 use App\Informasi;
 use App\Mp3;
 use App\Post;
+use Instagram;
 
 class HomeController extends Controller
 {
@@ -79,4 +79,9 @@ class HomeController extends Controller
 			'forumKategori'	=> Group::forum()->has('forums')->get(),
 		]);
     }
+
+	public function instagram()
+	{
+		return Instagram::users()->get(30);
+	}
 }

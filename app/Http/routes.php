@@ -12,11 +12,6 @@
 */
 
 use App\User;
-// use Instagram;
-//
-// Route::get('/instagram', function() {
-// 	return Instagram::users()->get(30);
-// });
 
 Route::get('jajal', function() {
 	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);
@@ -24,6 +19,7 @@ Route::get('jajal', function() {
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+Route::get('/instagram', 'HomeController@instagram');
 Route::get('audio/{audio}/download', 'AudioController@download');
 Route::get('doa', 'HadistController@indexDoa');
 Route::get('dzikir', 'HadistController@indexDzikir');
