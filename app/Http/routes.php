@@ -124,7 +124,7 @@ Route::get('design', function() {
 	return '<img src="/images/design.jpg" style="width:100%" />';
 });
 
-Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
+Route::group(['prefix' => 'api-v2', 'middleware' => 'auth:api'], function() {
 
 	Route::get('lokasi', 'LokasiController@apiIndex');
 	Route::get('area', 'AreaController@apiIndex');
