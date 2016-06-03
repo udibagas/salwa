@@ -11,7 +11,7 @@
 	</a>
 	@foreach (\App\User::ustadz()->has('videos')->orderBy('name', 'ASC')->get() as $g)
 	<a href="/video?search={{ request('search') }}&user_id={{ $g->user_id }}" class="list-group-item info @if (request('user_id') == $g->user_id) active @endif">
-		{{ $g->name }}
+		{{ str_limit($g->name, 35) }}
 		<span class="badge">{{ $g->videos->count() }}</span>
 	</a>
 	@endforeach
