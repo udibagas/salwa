@@ -18,7 +18,7 @@
 						{!! Form::open(['url' => '/comment/'.$c->id, 'method' => 'DELETE', 'class' => 'form-inline']) !!}
 							{!! Form::hidden('redirect', url()->current()) !!}
 
-							@if (auth()->user()->isAdmin() && !$c->approved)
+							@if (auth()->check() && auth()->user()->isAdmin() && !$c->approved)
 							<a href="/comment/{{$c->id}}/approve?redirect={{ url()->current() }}" class="btn btn-info btn-xs"><i class="fa fa-check"></i> Approve</a>
 							@endif
 

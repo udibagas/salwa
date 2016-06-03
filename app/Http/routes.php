@@ -18,6 +18,10 @@ use App\User;
 // 	return Instagram::users()->get(30);
 // });
 
+Route::get('jajal', function() {
+	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);
+});
+
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('audio/{audio}/download', 'AudioController@download');
