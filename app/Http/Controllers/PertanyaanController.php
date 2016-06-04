@@ -138,8 +138,7 @@ class PertanyaanController extends Controller
 			abort(403);
 		}
 
-		$view = (auth()->user()->isAdmin()) ? 'pertanyaan.edit-admin' : 'pertanyaan.edit';
-        return view($view, ['pertanyaan' => $pertanyaan]);
+        return view('pertanyaan.edit', ['pertanyaan' => $pertanyaan]);
     }
 
     public function jawab(Pertanyaan $pertanyaan)

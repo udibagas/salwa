@@ -42,7 +42,7 @@
 <div class="form-group{{ $errors->has('ket_pertanyaan') ? ' has-error' : '' }}">
 	<label for="ket_pertanyaan" class="control-label col-md-3">Keterangan Pertanyaan:</label>
 	<div class="col-md-9">
-		{{ Form::textarea('ket_pertanyaan', $pertanyaan->ket_pertanyaan, ['rows' => 7, 'class' => 'form-control', 'placeholder' => 'Tulis Pertanyaan']) }}
+		{{ Form::textarea('ket_pertanyaan', $pertanyaan->ket_pertanyaan, ['rows' => 7, 'class' => 'summernote', 'placeholder' => 'Tulis Pertanyaan']) }}
 
 		@if ($errors->has('ket_pertanyaan'))
 			<span class="help-block">
@@ -52,9 +52,36 @@
 	</div>
 </div>
 
+@if (auth()->check() && auth()->user()->isAdmin())
+<div class="form-group{{ $errors->has('jawaban') ? ' has-error' : '' }}">
+	<label for="jawaban" class="control-label col-md-3">Jawaban:</label>
+	<div class="col-md-9">
+		{{ Form::textarea('jawaban', $pertanyaan->jawaban, ['rows' => 10, 'class' => 'summernote', 'placeholder' => 'Tulis Jawaban']) }}
+
+		@if ($errors->has('jawaban'))
+		<span class="help-block">
+			<strong>{{ $errors->first('jawaban') }}</strong>
+		</span>
+		@endif
+	</div>
+</div>
+
+<div class="form-group @if ($errors->has('active')) has-error @endif">
+	<label for="status" class="control-label col-md-3">Status:</label>
+		<div class="col-md-9">
+		{!! Form::select('status', ['s' => 'Tampilkan', 'h' => 'Sembunyikan'], $pertanyaan->status, ['class' => 'form-control']) !!}
+		@if ($errors->has('status'))
+			<span class="help-block">
+				<strong>{{ $errors->first('status') }}</strong>
+			</span>
+		@endif
+	</div>
+</div>
+@endif
+
 <div class="form-group">
 	<div class="col-md-offset-3 col-md-9">
-		<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-send"></i> Kirim Pertanyaan</button>
+		<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan Pertanyaan</button>
 	</div>
 </div>
 
