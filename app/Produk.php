@@ -31,7 +31,7 @@ class Produk extends Model
 
 	public function comments()
 	{
-		return $this->hasMany('App\Comment', 'post_id', 'id_produk');
+		return $this->morphMany('App\Comment', 'commentable');
 	}
 
 }

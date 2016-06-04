@@ -27,40 +27,28 @@
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Name</th>
-				<th>Active</th>
-				<th>Banner</th>
+				<th style="width:150px;">Kategori</th>
+				<th style="width:350px;">Banner</th>
+				<th>URL</th>
+				<!-- <th style="width:150px;">Created At</th>
+				<th style="width:150px;">Updated At</th> -->
 				<th style="width:180px;">Action</th>
 			</tr>
-			{!! Form::open(['method' => 'GET']) !!}
-			<tr>
-				<td></td>
-				<td>
-					<input type="text" name="name" value="{{ request('name') }}" class="form-control" placeholder="Name">
-				</td>
-				<td>{!! Form::select('active', ['1' => 'No', '2' => 'Yes'], request('active'), ['class' => 'form-control', 'placeholder' => '-All-']) !!}</td>
-				<td></td>
-				<td>
-					<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
-					<a href="/area" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
-				</td>
-			</tr>
-			{!! Form::close() !!}
 		</thead>
 		<tbody>
 			<?php $i = $banners->firstItem(); ?>
 			@foreach ($banners as $a)
 				<tr>
 					<td>{{ $i++ }}</td>
-					<td>{{ $a->name }}</td>
-					<td>{{ $a->active == 1 ? 'No' : 'Yes' }}</td>
+					<td>{{ $a->group ? $a->group->group_name : '' }}</td>
+					<td><img src="/{{ $a->img_banner }}" alt="" class="img-responsive" /></td>
 					<td>
-						@foreach ($a->positions as $p)
-							<img src="/{{ $p->pivot->img_banner }}" alt="" style="width:200px;" /><br />
-							({{ $p->width }} x {{ $p->height }})<br>
-							<a href="{{ $p->pivot->url }}">{{ $p->pivot->url }}</a><br />
-						@endforeach
+						<a href="{{ $a->url }}" target="_blank">
+							{{ $a->url }}
+						</a>
 					</td>
+					<!-- <td>{{ $a->created }}</td>
+					<td>{{ $a->updated }}</td> -->
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/banner/'.$a->banner_id]) !!}
 						<a href="/banner/{{ $a->banner_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>

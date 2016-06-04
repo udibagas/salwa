@@ -12,11 +12,13 @@
 			<?php $i = 0; ?>
 			@foreach ($promo as $p)
 			<?php $i++ ?>
+			@if ($pos = $p->positions()->first())
 			<div class="item @if ($i == 1) active @endif" style="max-height:118px;">
-				<a href="{{ $p->url }}" target="_blank">
-					<img class="first-slide" src="/{{ $p->img_banner }}" alt="" style="width:882px;height:118px;margin:auto;">
+				<a href="{{ $pos->pivot->url }}" target="_blank">
+					<img class="first-slide" src="/{{ $pos->pivot->img_banner }}" alt="{{ $p->name }}" style="width:882px;height:118px;margin:auto;">
 				</a>
 			</div>
+			@endif
 			@endforeach
 		</div>
 		<a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev">

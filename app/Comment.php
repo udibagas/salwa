@@ -6,18 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-	protected $fillable = [
-		'user_id', 'post_id', 'title', 'content',
-		'star', 'type', 'parent_id', 'approved'
-	];
-
-	protected $with = ['user'];
-
-    public function user()
-	{
-		return $this->belongsTo('App\User', 'user_id', 'user_id');
-	}
-
 	public static function typeList()
 	{
 		return [
@@ -30,18 +18,21 @@ class Comment extends Model
 		];
 	}
 
-    public function post()
-	{
-		$map = [
-			'video' 	=> ['class' => 'App\Video', 'pk' => 'video_id'] ,
-			'artikel'	=> ['class' => 'App\Artikel', 'pk' => 'artikel_id'],
-			'peduli'	=> ['class' => 'App\Peduli', 'pk' => 'peduli_id'],
-			'informasi'	=> ['class' => 'App\Informsi', 'pk' => 'informasi_id'],
-			'audio'		=> ['class' => 'App\Mp3', 'pk' => 'mp3_download_id'],
-			'produk'	=> ['class' => 'App\Produk', 'pk' => 'id_produk']
-		];
+	protected $fillable = [
+		'user_id', 'commentable_id', 'title', 'content',
+		'star', 'commentable_type', 'parent_id', 'approved'
+	];
 
-		return $this->belongsTo($map[$this->type['class']], 'post_id', $map[$this->type['pk']]);
+	protected $with = ['user'];
+
+	public function commentable()
+	{
+		return $this->morphTo();
+	}
+
+    public function user()
+	{
+		return $this->belongsTo('App\User', 'user_id', 'user_id');
 	}
 
     public function parent()
@@ -51,7 +42,7 @@ class Comment extends Model
 
 	public function scopeOfType($query, $type)
 	{
-		return $query->where('type', $type);
+		return $query->where('commentable_type', $type);
 	}
 
 	public function scopeApproved($query)

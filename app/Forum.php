@@ -32,11 +32,6 @@ class Forum extends Model
 
 	public function posts()
 	{
-		return $this->hasMany('App\Post', 'forum_id', 'forum_id', ['orderBy' => 'created ASC']);
-	}
-
-	public function post()
-	{
-		return $this->hasOne('App\Post', 'forum_id', 'forum_id', ['orderBy' => 'created ASC', 'where' => 'forum.user_id = posts.user_id']);
+		return $this->hasMany('App\Post', 'forum_id', 'forum_id');
 	}
 }

@@ -36,7 +36,10 @@
 		<i class="fa fa-microphone"></i> Murottal Al Qur'an
 	</a>
 	<a class="list-group-item info @if (url()->current() == url('banner/admin')) active @endif" href="/banner/admin">
-		<i class="fa fa-list"></i> Salwa Promo
+		<i class="fa fa-list"></i> Banner
+	</a>
+	<a class="list-group-item info @if (url()->current() == url('position')) active @endif" href="/position">
+		<i class="fa fa-list"></i> Banner Position
 	</a>
 	<a class="list-group-item info @if (url()->current() == url('produk/admin')) active @endif" href="/produk/admin">
 		<i class="fa fa-tags"></i> Salwa Market
@@ -50,7 +53,7 @@
 	<a class="list-group-item info @if (url()->current() == url('user')) active @endif" href="/user">
 		<i class="fa fa-users"></i> Users
 	</a>
-	<a class="list-group-item info disabled text-center" href="#">
+	<a class="list-group-item info disabled" href="#">
 		<i class="fa fa-android"></i> SUNNAH GO
 	</a>
 	<a class="list-group-item info @if (url()->current() == url('lokasi')) active @endif" href="/lokasi">

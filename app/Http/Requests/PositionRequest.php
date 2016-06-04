@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class PertanyaanRequest extends Request
+class PositionRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class PertanyaanRequest extends Request
      */
     public function authorize()
     {
-        return auth()->check();
+        return auth()->check() && auth()->user()->isAdmin();
     }
 
     /**
@@ -24,10 +24,9 @@ class PertanyaanRequest extends Request
     public function rules()
     {
         return [
-            'judul_pertanyaan'	=> 'required',
-            // 'daerah_asal'		=> 'required',
-            'ket_pertanyaan'	=> 'required',
-            'group_id'			=> 'required',
+            'width'			=> 'required',
+            'height'		=> 'required',
+            'banner_type'	=> 'required',
         ];
     }
 }

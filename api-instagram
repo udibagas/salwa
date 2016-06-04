@@ -15,6 +15,7 @@ curl -F 'client_id=ee5ab4be1af04923a60366d7b3405286' \
     -F 'grant_type=authorization_code' \
     -F 'redirect_uri=http://web.salamdakwah.com' \
     -F 'code=4714371cadc24ba7a78f4690e66de024' \
+	-F 'scope=public_content' \
     https://api.instagram.com/oauth/access_token
 
 {"access_token": "515901229.ee5ab4b.c6ea0c8cb0664377ad055d079a0753b1", "user": {"username": "salamdakwah", "bio": "Mengikuti Al-Quran dan As-sunnah dengan pemahaman para Sahabat", "website": "http://www.salamdakwah.com", "profile_picture": "https://scontent.cdninstagram.com/t51.2885-19/10654976_738583196177242_1043294673_a.jpg", "full_name": "Salamdakwah", "id": "515901229"}}

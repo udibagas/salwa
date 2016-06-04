@@ -21,13 +21,8 @@
 		</div>
 
 		<div class="col-md-9">
-
 			<h4 class="title"><i class="fa fa-clock-o"></i> FORUM TERBARU</h4>
-
-			@foreach ($groups as $g)
-				@include('forum._list', ['group' => $g])
-			@endforeach
-
+			@each('forum._list', $groups, 'group')
 		</div>
 
 	</div>

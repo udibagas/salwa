@@ -35,7 +35,7 @@ class ForumController extends Controller
      */
     public function create()
     {
-        return view('forum.create', ['forum' => new Forum]);
+        return view('forum.create', ['forum' => new Forum, 'post' => null]);
     }
 
     /**
@@ -106,8 +106,11 @@ class ForumController extends Controller
 			abort(403);
 		}
 
-		$view = auth()->user()->isAdmin() && auth()->user()->user_id !== $forum->user_id ? 'forum.edit-admin' : 'forum.edit';
-        return view($view, ['forum' => $forum]);
+		$post = $forum->posts()
+				->where('user_id', $forum->user_id)
+				->orderBy('post_id', 'ASC')->first();
+
+        return view('forum.edit', ['forum' => $forum, 'post' => $post]);
     }
 
     /**
@@ -127,12 +130,22 @@ class ForumController extends Controller
 		$data['title_code']	= str_slug($request->title);
 		$data['updatedby'] 	= auth()->user()->name;
 
-		$forum->update($data);
-
-		$forum->post()->update([
+		$comment = [
 			'description'	=> clean($request->description),
 			'updatedby'		=> auth()->user()->name,
-		]);
+		];
+
+		$forum->update($data);
+
+		$post = $forum->posts()
+				->where('user_id', $forum->user_id)
+				->orderBy('post_id', 'ASC')->first();
+
+		if ($post) {
+			$post->update($comment);
+		} else {
+			$post = Post::create($comment);
+		}
 
 		if ($request->hasFile('img')) {
 
@@ -141,7 +154,7 @@ class ForumController extends Controller
 	            $fileName = time().'_'.$file->getClientOriginalName();
 	            $file->move('uploads/dirimg_image', $fileName);
 
-				$forum->post->images()->create([
+				$post->images()->create([
 					'img_image'		=> 'uploads/dirimg_image/'.$fileName,
 					'image_desc' 	=> $file->getClientOriginalName()
 				]);
@@ -311,7 +324,7 @@ class ForumController extends Controller
 		return redirect('/forum/'.$post->forum_id);
     }
 
-	public function deleteImage(PostImage $image)
+	public function deleteImage(PostImage $image, Request $request)
 	{
 		if (Gate::denies('delete-post', $image->post)) {
 			abort(403);
@@ -323,6 +336,6 @@ class ForumController extends Controller
 			unlink($image->img_image);
 		}
 
-		return redirect('/forum/edit-post/'.$image->post_id);
+		return redirect($request->redirect);
 	}
 }

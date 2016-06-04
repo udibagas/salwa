@@ -27,9 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies($gate);
 
 		$gate->before(function($user, $ability) {
-			if ($user->isAdmin()) {
-				return true;
-			}
+			return $user->isAdmin();
 		});
 
 		$gate->define('update-post', function ($user, $post) {
@@ -53,7 +51,16 @@ class AuthServiceProvider extends ServiceProvider
         });
 
 		$gate->define('delete-pertanyaan', function ($user, $pertanyaan) {
+
+			$gate->before(function($user, $ability) {
+				return $user->isUstadz();
+			});
+
             return $user->user_id === $pertanyaan->user_id;
+        });
+
+		$gate->define('jawab-pertanyaan', function ($user, $pertanyaan) {
+            return $user->isUstadz();
         });
 
 		$gate->define('delete-comment', function ($user, $comment) {

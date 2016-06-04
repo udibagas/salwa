@@ -52,14 +52,14 @@
 		<hr>
 
 		@include('comment.index', [
-		'comments' => $informasi->comments()->ofType('informasi')
+		'comments' => $informasi->comments()
 					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
 						return $query->approved();
 					})->get()
 		])
 
 		@if (auth()->check())
-			@include('comment.form', ['post_id' => $informasi->informasi_id, 'type' => 'informasi'])
+			@include('comment.form', ['commentable_id' => $informasi->informasi_id, 'commentable_type' => 'informasi'])
 		@else
 			<div class="alert alert-danger text-center">
 				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>

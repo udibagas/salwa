@@ -23,6 +23,7 @@ body {
 	padding-top: 80px;
 	padding-bottom: 0;
 	color: #5a5a5a;
+	/*background-color: #EEEEEE;*/
 }
 
 .navbar-fixed-top {
@@ -191,7 +192,8 @@ ul.link-icon > li {
 }
 
 a.list-group-item {
-	color: #033AAE;
+	color: #337ab7;
+	font-weight: bold;
 }
 
 .list-group-item {
@@ -211,6 +213,10 @@ a.list-group-item {
 .panel-orange {
 	border-color: #FF4E00;
 
+}
+
+.panel-title {
+	font-weight: bold;
 }
 
 .navbar-default .navbar-nav>li>a:hover,

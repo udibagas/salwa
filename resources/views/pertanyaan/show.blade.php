@@ -27,30 +27,14 @@
 			@include('pertanyaan._jawaban', ['p' => $pertanyaan])
 		@else
 
-			@if (auth()->user() && auth()->user()->isUstadz())
+			<div class="alert alert-danger text-center">
+				<strong>Belum ada jawaban untuk pertanyaan terkait.</strong>
+			</div>
 
-				<div class="row">
-					<div class="col-md-2 hidden-xs">
-						<figure class="thumbnail">
-							@if (auth()->user()->img_user)
-							<img class="img-responsive" src="/{{ auth()->user()->img_user }}" />
-							@else
-							<img class="img-responsive" src="/images/nobody.jpg" />
-							@endif
-							<figcaption class="text-center">{{ auth()->user()->name }}</figcaption>
-						</figure>
-					</div>
-					<div class="col-md-10">
-						@include('pertanyaan._form-jawab', ['pertanyaan' => $pertanyaan])
-					</div>
-				</div>
+			@can('jawab-pertanyaan', $pertanyaan)
+				@include('pertanyaan.ustadz._form-jawab', ['pertanyaan' => $pertanyaan])
+			@endcan
 
-			@else
-				<br>
-				<div class="alert alert-danger text-center">
-					<strong>Belum ada jawaban untuk pertanyaan terkait.</strong>
-				</div>
-			@endif
 		@endif
 
 		<hr>

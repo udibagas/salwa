@@ -36,7 +36,7 @@
 					@foreach ($audios as $m)
 					<tr>
 						<td>{{ $i++ }}</td>
-						<td><a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}">{{ $m->judul }}</a></td>
+						<td><strong><a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}">{{ $m->judul }}</a></strong></td>
 						<td>{{ $m->updated->diffForHumans() }}</td>
 						<td style="width:200px;">
 							<a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}" class="btn btn-info"><i class="fa fa-play"></i> Play</a>

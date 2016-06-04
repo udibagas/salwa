@@ -20,16 +20,16 @@ class CommentController extends Controller
         return view('comment.admin', [
 			'comments' => Comment::orderBy('id', 'DESC')
 							->when($request->type, function($query) use ($request) {
-								return $query->where('type', $request->type);
+								return $query->ofType($request->type);
 							})->when($request->user, function($query) use ($request) {
 								return $query->join('users', 'users.user_id', '=', 'comments.user_id')
 											->where('users.name', 'like', '%'.$request->user.'%');
 							})->when($request->title, function($query) use ($request) {
 								return $query->where('title', 'like', '%'.$request->title.'%');
 							})->when($request->approved == 'yes', function($query) use ($request) {
-								return $query->where('approved', 1);
+								return $query->approved();
 							})->when($request->approved == 'no', function($query) use ($request) {
-								return $query->where('approved', 0);
+								return $query->unapproved();
 							})->paginate()
 		]);
     }

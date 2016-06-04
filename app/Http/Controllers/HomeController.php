@@ -72,11 +72,11 @@ class HomeController extends Controller
 			'produk'	=> Produk::limit(3)->orderBy('id_produk', 'DESC')->get(),
 			'doa'		=> Hadist::limit(5)->doa()->orderByRaw('RAND()')->get(),
 			'dzikir'	=> Hadist::limit(5)->dzikir()->orderByRaw('RAND()')->get(),
-			'promo'		=> Banner::limit(5)->orderBy('banner_id', 'DESC')->get(),
+			'promo'		=> Banner::active()->has('positions')->orderBy('banner_id', 'DESC')->get(),
 			'infoHome'	=> Informasi::limit(3)->orderBy('updated', 'DESC')->get(),
 			'videoRandom' 	=> Video::limit(9)->orderByRaw('RAND()')->get(),
 			'pertanyaan'	=> Pertanyaan::limit(5)->show()->dijawab()->orderBy('pertanyaan_id', 'DESC')->get(),
-			'forumKategori'	=> Group::forum()->has('forums')->get(),
+			'forumKategori'	=> Group::forum()->has('forums')->limit(10)->get(),
 		]);
     }
 

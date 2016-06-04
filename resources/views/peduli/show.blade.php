@@ -35,14 +35,14 @@
 		<hr>
 
 		@include('comment.index', [
-		'comments' => $peduli->comments()->ofType('peduli')
+		'comments' => $peduli->comments()
 					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
 						return $query->approved();
 					})->get()
 		])
 
 		@if (auth()->check())
-			@include('comment.form', ['post_id' => $peduli->peduli_id, 'type' => 'peduli'])
+			@include('comment.form', ['commentable_id' => $peduli->peduli_id, 'commentable_type' => 'peduli'])
 		@else
 			<div class="alert alert-danger text-center">
 				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>

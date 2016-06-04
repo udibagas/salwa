@@ -52,14 +52,14 @@
 		<hr>
 
 		@include('comment.index', [
-		'comments' => $video->comments()->ofType('video')
+		'comments' => $video->comments()
 			->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
 				return $query->approved();
 			})->get()
 		])
 
 		@if (auth()->check())
-			@include('comment.form', ['post_id' => $video->video_id, 'type' => 'video'])
+			@include('comment.form', ['commentable_id' => $video->video_id, 'commentable_type' => 'video'])
 		@else
 			<div class="alert alert-danger text-center">
 				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>

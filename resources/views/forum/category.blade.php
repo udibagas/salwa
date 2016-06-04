@@ -48,7 +48,7 @@
 
 			<ul class="list-group">
 				@if (count($forums) == 0)
-					<li class="list-group-item">
+					<li class="list-group-item text-center">
 						<strong>Belum ada post</strong>
 					</li>
 				@endif
@@ -69,11 +69,6 @@
 			</nav>
 
 		</div>
-
-		<!-- <div class="col-md-3">
-			include('home.sidebar')
-		</div> -->
-
 	</div>
 
 @stop

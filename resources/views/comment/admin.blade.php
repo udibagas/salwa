@@ -59,12 +59,12 @@
 					<td>{{ $i++ }}</td>
 					<td>
 						<h4 style="margin-top:0;font-weight:bold;">
-							<a href="/{{$a->type}}/{{$a->post_id}}#comment-{{$a->id}}" target="_blank">{{ $a->title }}</a>
+							<a href="/{{$a->commentable_type}}/{{$a->commentable_id}}#comment-{{$a->id}}" target="_blank">{{ $a->title }}</a>
 						</h4>
 						{!! $a->content !!}
 					</td>
 					<td>{{ $a->user ? $a->user->name : '' }}</td>
-					<td>{{ $a->type }}</td>
+					<td>{{ $a->commentable_type }}</td>
 					<td>{!! $a->approved ? '<b class="text-success">Yes</b>' : '<b class="text-danger">No</b>' !!}</td>
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/comment/'.$a->id]) !!}

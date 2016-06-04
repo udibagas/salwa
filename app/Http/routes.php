@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::group(['middleware' => 'role:'.User::ROLE_ADMIN], function() {
 
 		Route::resource('area', 'AreaController');
+		Route::resource('position', 'PositionController');
 		Route::get('cms', 'CmsController@index');
 		Route::resource('group', 'GroupController');
 		Route::resource('lokasi', 'LokasiController');
@@ -78,12 +79,12 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::resource('video', 'VideoController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 	});
 
-
-	//  khusus ustadz: jawab pertanyaan, simpan jawaban
+	// pake policy, admin & ustadz bisa
+	Route::get('pertanyaan/{pertanyaan}/jawab', 'PertanyaanController@jawab');
+	Route::put('pertanyaan/{pertanyaan}/simpan-jawaban', 'PertanyaanController@simpanJawaban');
+	// ustadz only
 	Route::group(['middleware' => 'role:'.User::ROLE_USTADZ], function() {
 		Route::get('pertanyaan/admin-ustadz', 'PertanyaanController@adminUstadz');
-		Route::get('pertanyaan/{pertanyaan}/jawab', 'PertanyaanController@jawab');
-		Route::put('pertanyaan/{pertanyaan}/simpan-jawaban', 'PertanyaanController@simpanJawaban');
 	});
 
 	Route::resource('forum', 'ForumController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);

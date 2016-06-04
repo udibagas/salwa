@@ -53,14 +53,14 @@
 		<hr>
 
 		@include('comment.index', [
-		'comments' => $produk->comments()->ofType('produk')
+		'comments' => $produk->comments()
 					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
 						return $query->approved();
 					})->get()
 		])
 
 		@if (auth()->check())
-			@include('comment.form', ['post_id' => $produk->id_produk, 'type' => 'produk'])
+			@include('comment.form', ['commentable_id' => $produk->id_produk, 'commentable_type' => 'produk'])
 		@else
 			<div class="alert alert-danger text-center">
 				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>

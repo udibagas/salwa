@@ -13,8 +13,8 @@
 			<div class="panel-body">
 				{!! Form::open(['url' => 'comment', 'method' => 'POST', 'class' => 'comment']) !!}
 
-					{!! Form::hidden('post_id', $post_id) !!}
-					{!! Form::hidden('type', $type) !!}
+					{!! Form::hidden('commentable_id', $commentable_id) !!}
+					{!! Form::hidden('commentable_type', $commentable_type) !!}
 					{!! Form::hidden('redirect', url()->current()) !!}
 
 					<div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">

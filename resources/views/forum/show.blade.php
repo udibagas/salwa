@@ -59,7 +59,7 @@
 				<strong>Silakan <a href="/login">Login</a> untuk menulis komentar.</strong>
 			</div>
 		@endif
-		<br>
+
 		<h4 class="title">FORUM TERKAIT</h4>
 		<ul class="list-group">
 			@foreach ($terkait as $p)

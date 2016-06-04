@@ -30,6 +30,6 @@ class Mp3 extends Model
 
 	public function comments()
 	{
-		return $this->hasMany('App\Comment', 'post_id', 'mp3_download_id');
+		return $this->morphMany('App\Comment', 'commentable');
 	}
 }

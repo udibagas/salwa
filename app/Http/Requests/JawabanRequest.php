@@ -13,7 +13,7 @@ class JawabanRequest extends Request
      */
     public function authorize()
     {
-        return auth()->check() && auth()->user()->isUstadz();
+        return auth()->check() && (auth()->user()->isUstadz() || auth()->user()->isAdmin());
     }
 
     /**

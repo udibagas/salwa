@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\PertanyaanRequest;
 use App\Http\Requests\JawabanRequest;
 use App\Pertanyaan;
+use Gate;
 
 class PertanyaanController extends Controller
 {
@@ -18,7 +19,7 @@ class PertanyaanController extends Controller
 	public function index(Request $request)
 	{
 		$search 	= str_replace(' ', '%', $request->search);
-		$showOnly 	= (auth()->guest() || (auth()->check() && !auth()->user()->isUstadz()));
+		$showOnly 	= (auth()->guest() || (auth()->check() && !auth()->user()->isUstadz() && !auth()->user()->isAdmin()));
 
 		return view('pertanyaan.index', [
 			'pertanyaans' => Pertanyaan::when($showOnly, function($query) {
@@ -27,7 +28,7 @@ class PertanyaanController extends Controller
 									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
 								})->when($request->group_id, function($query) use ($request) {
 									return $query->where('group_id', $request->group_id);
-								})->orderBy('updated', 'DESC')->paginate(),
+								})->orderBy('created', 'DESC')->paginate(),
 		]);
 	}
 
@@ -52,7 +53,7 @@ class PertanyaanController extends Controller
 												->where('u.jenis_kelamin',  $request->jenis_kelamin);
 								})->when($request->group_id, function($query) use ($request) {
 									return $query->where('group_id', $request->group_id);
-								})->orderBy('pertanyaan.updated', 'DESC')->paginate(),
+								})->orderBy('pertanyaan.created', 'DESC')->paginate(),
 		]);
 	}
 
@@ -77,7 +78,7 @@ class PertanyaanController extends Controller
 												->where('u.jenis_kelamin',  $request->jenis_kelamin);
 								})->when($request->group_id, function($query) use ($request) {
 									return $query->where('group_id', $request->group_id);
-								})->orderBy('pertanyaan.updated', 'DESC')->paginate(),
+								})->orderBy('pertanyaan.created', 'DESC')->paginate(),
 		]);
 	}
 
@@ -143,11 +144,19 @@ class PertanyaanController extends Controller
 
     public function jawab(Pertanyaan $pertanyaan)
     {
+		if (Gate::denies('jawab-pertanyaan', $pertanyaan)) {
+			abort(403);
+		}
+
         return view('pertanyaan.ustadz.jawab', ['pertanyaan' => $pertanyaan]);
     }
 
 	public function simpanJawaban(JawabanRequest $request, Pertanyaan $pertanyaan)
 	{
+		if (Gate::denies('jawab-pertanyaan', $pertanyaan)) {
+			abort(403);
+		}
+
 		$data 					= $request->all();
 		$data['dijawab_oleh'] 	= auth()->user()->user_id;
 		$data['tgl_jawab'] 		= date('Y-m-d H:i:s');
@@ -193,20 +202,13 @@ class PertanyaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pertanyaan $pertanyaan)
+    public function destroy(Pertanyaan $pertanyaan, Request $request)
     {
 		if (Gate::denies('delete-pertanyaan', $pertanyaan)) {
 			abort(403);
 		}
 
         $pertanyaan->delete();
-
-		if (auth()->user()->isAdmin()) {
-			return redirect('/pertanyaan/admin');
-		} elseif (auth()->user()->isUstadz()) {
-			return redirect('/pertanyaan/admin-ustadz');
-		} else {
-			return redirect('/pertanyaan');
-		}
+		return redirect($request->redirect);
     }
 }

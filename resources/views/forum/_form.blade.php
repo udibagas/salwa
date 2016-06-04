@@ -35,7 +35,7 @@
 	<div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
 		<label for="description" class="col-md-2 control-label">Decription:</label>
 		<div class="col-md-10">
-			{{ Form::textarea('description',  $forum->post ? nl2br($forum->post->description) : '', ['class' => 'summernote', 'placeholder' => '']) }}
+			{{ Form::textarea('description',  $post ? nl2br($post->description) : '', ['class' => 'summernote', 'placeholder' => '']) }}
 
 			@if ($errors->has('description'))
 			<span class="help-block">
@@ -62,15 +62,13 @@
 
 	<div class="form-group">
 		<div class="col-md-offset-2 col-md-10">
-			@if ($forum->post->images)
+			@if ($post && $post->images)
 			<div class="row no-gutter">
-				@each('forum._list-image-edit', $forum->post->images, 'image')
+				@each('forum._list-image-edit', $post->images, 'image')
 			</div>
 			@endif
 		</div>
 	</div>
-
-	<hr>
 
 	<div class="form-group">
 		<div class=" col-md-offset-2 col-md-10">

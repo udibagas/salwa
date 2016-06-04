@@ -27,8 +27,8 @@ class CommentRequest extends Request
             'title'		=> 'required',
 			'content'	=> 'required',
 			'star'		=> 'in:1,2,3,4,5',
-			'type'		=> 'required|in:artikel,video,audio,informasi,peduli,produk',
-			'post_id'	=> 'required'
+			'commentable_type'	=> 'required|in:artikel,video,audio,informasi,peduli,produk',
+			'commentable_id'	=> 'required'
         ];
     }
 }

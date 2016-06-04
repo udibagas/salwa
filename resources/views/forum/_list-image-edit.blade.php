@@ -4,7 +4,7 @@
 	</div>
 
 	<div class="text-center">
-		<a href="/forum/delete-image/{{ $image->image_id}}" class="delete">
+		<a href="/forum/delete-image/{{ $image->image_id}}?redirect={{ url()->current() }}" class="delete">
 			<i class="fa fa-remove"></i> Delete
 		</a>
 	</div>

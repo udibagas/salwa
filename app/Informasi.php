@@ -51,7 +51,7 @@ class Informasi extends Model
 
 	public function comments()
 	{
-		return $this->hasMany('App\Comment', 'post_id', 'informasi_id');
+		return $this->morphMany('App\Comment', 'commentable');
 	}
 
 }

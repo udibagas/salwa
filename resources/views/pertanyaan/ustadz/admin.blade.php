@@ -16,10 +16,8 @@
 
 <h4 class="title"><i class="fa fa-question-circle"></i> PERTANYAAN MASUK</h4>
 
-<div class="well well-sm text-right" style="margin-bottom:10px;">
-	<b>
-		Showing {{ $pertanyaans->firstItem() }} to {{ $pertanyaans->lastItem() }} of {{ $pertanyaans->total() }} entries
-	</b>
+<div class="text-right text-bold" style="padding:10px;">
+	Showing {{ $pertanyaans->firstItem() }} to {{ $pertanyaans->lastItem() }} of {{ $pertanyaans->total() }} entries
 </div>
 
 <table class="table table-hover table-striped">
@@ -91,7 +89,8 @@
 			<td>{!! $p->status == 's' ? '<b class="text-success">Y</b>' : '<b class="text-danger">N</b>' !!}</td>
 			<td>
 				{!! Form::open(['method' => 'DELETE', 'url' => '/pertanyaan/'.$p->pertanyaan_id]) !!}
-				<a href="/pertanyaan/{{ $p->pertanyaan_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Jawab</a>
+				{!! Form::hidden('redirect', url()->current()) !!}
+				<a href="/pertanyaan/{{ $p->pertanyaan_id }}/jawab" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Jawab</a>
 				<button type="submit" name="delete" class="btn btn-danger btn-xs delete"><i class="fa fa-trash"></i> Hapus</button>
 				{!! Form::close() !!}
 

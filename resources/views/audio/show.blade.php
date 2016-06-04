@@ -36,14 +36,14 @@
 		<hr>
 
 		@include('comment.index', [
-		'comments' => $audio->comments()->ofType('audio')
+		'comments' => $audio->comments()
 					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
 						return $query->approved();
 					})->get()
 		])
 
 		@if (auth()->check())
-			@include('comment.form', ['post_id' => $audio->mp3_download_id, 'type' => 'audio'])
+			@include('comment.form', ['commentable_id' => $audio->mp3_download_id, 'commentable_type' => 'audio'])
 		@else
 			<div class="alert alert-danger text-center">
 				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>

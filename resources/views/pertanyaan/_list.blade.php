@@ -9,7 +9,7 @@
 		</div>
 	</div>
 	<div class="col-md-11 col-sm-10">
-		<div class="panel panel-info panel-comment">
+		<div class="panel @if ($p->status == 's') panel-info @else panel-danger @endif panel-comment">
 			<div class="panel-heading">
 				<strong>
 					{{ $p->user ? $p->user->name : '' }}
@@ -22,12 +22,20 @@
 					@endif
 				</span>
 
-				@if (auth()->check() && auth()->user()->user_id == $p->user_id && $p->jawaban == '')
 				<div class="pull-right">
+					{!! Form::open(['url' => '/pertanyaan/'.$p->pertanyaan_id, 'method' => 'DELETE']) !!}
+					@can('update-pertanyaan', $p)
 					<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
-					<a href="/pertanyaan/{{$p->pertanyaan_id}}/delete" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+					@endcan
+					@can('jawab-pertanyaan', $p)
+					<a href="/pertanyaan/{{$p->pertanyaan_id}}/jawab" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Jawab</a>
+					@endcan
+					@can('delete-pertanyaan', $p)
+					{!! Form::hidden('redirect', url()->current()) !!}
+					<button type="submit" name="submit" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Hapus</button>
+					@endcan
+					{!! Form::close() !!}
 				</div>
-				@endif
 			</div>
 			<div class="panel-body">
 				<h4 style="margin-top:0;">

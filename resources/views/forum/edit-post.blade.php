@@ -15,17 +15,9 @@
 
 @section('content')
 
-	<div class="row">
-		<div class="col-md-3">
-			@include('forum._group', [
-				'groups' => \App\Group::forum()->orderBy('group_name', 'ASC')->get(),
-				'group' => null
-			])
-		</div>
-		<div class="col-md-9">
-			<h4 class="title"><i class="fa fa-edit"></i> Edit Post</h4>
-			@include('forum._form-komentar', ['url' => '/forum/update-post/'.$post->post_id, 'method' => 'PUT'])
-		</div>
+	<div class="col-md-offset-2 col-md-8">
+		@include('forum._form-komentar', ['url' => '/forum/update-post/'.$post->post_id, 'method' => 'PUT'])
 	</div>
+	<div class="clearfix"></div>
 
 @stop

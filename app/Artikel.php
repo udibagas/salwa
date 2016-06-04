@@ -36,6 +36,6 @@ class Artikel extends Model
 
 	public function comments()
 	{
-		return $this->hasMany('App\Comment', 'post_id', 'artikel_id');
+		return $this->morphMany('App\Comment', 'commentable');
 	}
 }

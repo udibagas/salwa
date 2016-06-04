@@ -16,12 +16,18 @@ class BannerController extends Controller
      */
     public function index()
     {
-        return view('banner.index', ['banners' => Banner::orderBy('updated', 'DESC')->paginate()]);
+        return view('banner.index', ['banners' => Banner::active()->orderBy('banner_id', 'DESC')->paginate()]);
     }
 
-    public function admin()
+    public function admin(Request $request)
     {
-        return view('banner.admin', ['banners' => Banner::orderBy('updated', 'DESC')->paginate()]);
+        return view('banner.admin', [
+			'banners' => Banner::when($request->name, function($query) use ($request) {
+							return $query->where('name', 'like', '%'.$request->name.'%');
+						})->when($request->active, function($query) use ($request) {
+							return $query->where('active', $request->active);
+						})->orderBy('updated', 'DESC')->paginate()
+		]);
     }
 
     /**
@@ -66,10 +72,10 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show(Banner $banner)
-    // {
-    //     return view('banner.show', ['banner' 	=> $banner]);
-    // }
+    public function show(Banner $banner)
+    {
+        return view('banner.show', ['banner' 	=> $banner]);
+    }
 
     /**
      * Show the form for editing the specified resource.
