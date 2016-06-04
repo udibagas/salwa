@@ -7,7 +7,7 @@
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
 			'/pertanyaan/admin-ustadz' => 'TANYA USTADZ',
-			'' => str_limit($pertanyaan->judul_pertanyaan, 100),
+			'/pertanyaan/'.$pertanyaan->pertanyaan_id => str_limit($pertanyaan->judul_pertanyaan, 100),
 			'#' => 'Jawab',
 		]
 	])

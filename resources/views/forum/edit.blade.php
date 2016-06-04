@@ -7,6 +7,7 @@
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
 			'/forum' => 'FORUM',
+			'/forum/'.$forum->forum_id => $forum->title,
 			'#' => 'Edit Forum',
 		]
 	])

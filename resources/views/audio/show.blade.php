@@ -52,11 +52,15 @@
 
 	</div>
 	<div class="col-md-3">
-		<h4 class="title">AUDIO TERKAIT</h4>
-		<div class="list-group">
-			@foreach ($terkait as $t)
-			<a class="list-group-item @if ($t->mp3_download_id == $audio->mp3_download_id) active @endif" href="/audio/{{ $t->mp3_download_id }}-{{ str_slug($t->judul) }}">{{ $t->judul }}</a>
-			@endforeach
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h4 class="panel-title">AUDIO TERKAIT</h4>
+			</div>
+			<div class="list-group">
+				@foreach ($terkait as $t)
+				<a class="list-group-item @if ($t->mp3_download_id == $audio->mp3_download_id) active @endif" href="/audio/{{ $t->mp3_download_id }}-{{ str_slug($t->judul) }}">{{ $t->judul }}</a>
+				@endforeach
+			</div>
 		</div>
 	</div>
 </div>

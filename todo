@@ -28,10 +28,10 @@ TODO
 27. comment via ajax
 28. timeline user
 29. add reply on comment & post ==> jangka panjang
-31. edit forum masih masalah
 32. auth-nya pake policy ==> perlu?? ga usah. orang cuma dikit doank. di define aja di auth service provider
 33. dynamic scope!!! => di model sudah. tinggal di view & controller => user aja yg belum
 34. member bisa saling lihat halaman profile user?
+35. edit komentar
 
 KAJIAN PAKE YANG LAMA
 BANER!!!!

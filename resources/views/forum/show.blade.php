@@ -60,17 +60,20 @@
 			</div>
 		@endif
 
-		<h4 class="title">FORUM TERKAIT</h4>
-		<ul class="list-group">
-			@foreach ($terkait as $p)
-			<li class="list-group-item">
-				<b><a href="/forum/{{ $p->forum_id }}-{{ str_slug($p->title) }}">{{ $p->title }}</a></b><br>
-				<i class="fa fa-user"></i> {{ $p->user ? $p->user->name : '' }}
-				<i class="fa fa-clock-o"></i> {{ $p->updated->diffForHumans() }}
-			</li>
-			@endforeach
-		</ul>
-
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h4 class="panel-title">FORUM TERKAIT</h4>
+			</div>
+			<ul class="list-group">
+				@foreach ($terkait as $p)
+				<li class="list-group-item">
+					<b><a href="/forum/{{ $p->forum_id }}-{{ str_slug($p->title) }}">{{ $p->title }}</a></b><br>
+					<i class="fa fa-user"></i> {{ $p->user ? $p->user->name : '' }}
+					<i class="fa fa-clock-o"></i> {{ $p->updated->diffForHumans() }}
+				</li>
+				@endforeach
+			</ul>
+		</div>
 	</div>
 </div>
 

@@ -43,13 +43,17 @@
 
 	</div>
 	<div class="col-md-3">
-		<h4 class="title">TERKAIT</h4>
-		<div class="list-group">
-			@foreach ($terkait as $t)
-			<a class="list-group-item" href="/hadist/{{ $t->hadist_id }}-{{ str_slug($t->judul )}}">
-				{{ $t->judul }}
-			</a>
-			@endforeach
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h4 class="panel-title">HADIST TERKAIT</h4>
+			</div>
+			<div class="list-group">
+				@foreach ($terkait as $t)
+				<a class="list-group-item" href="/hadist/{{ $t->hadist_id }}-{{ str_slug($t->judul )}}">
+					{{ $t->judul }}
+				</a>
+				@endforeach
+			</div>
 		</div>
 	</div>
 </div>
