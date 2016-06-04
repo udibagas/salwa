@@ -56,3 +56,11 @@
 .panel-default.panel-comment>.panel-heading:before{
 	border-right-color:#E6E9ED;
 }
+
+.panel-blue.panel-comment>.panel-heading:after{
+	border-right-color:#3BAFDA;
+}
+
+.panel-blue.panel-comment>.panel-heading:before{
+	border-right-color:#3BAFDA;
+}

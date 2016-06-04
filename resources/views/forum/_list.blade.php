@@ -1,4 +1,4 @@
-<div class="panel panel-info">
+<div class="panel panel-blue">
 	<div class="panel-heading">
 		<h3 class="panel-title">{{ $group->group_name }}</h3>
 	</div>

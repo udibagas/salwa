@@ -361,11 +361,12 @@ a:hover {
 }
 
 .panel-blue {
-	border-color: #0084FF;
+	border-color: #3BAFDA;
 }
 
 .panel-blue .panel-heading {
-	background-color: #0084FF;
+	/*background-color: #0084FF;*/
+	background-color: #3BAFDA;
 	color: #FFF;
 }
 

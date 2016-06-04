@@ -41,7 +41,7 @@
 		@include('layouts._share')
 		<hr>
 
-		<div class="panel panel-info">
+		<div class="panel panel-blue">
 			<div class="panel-heading">
 				<h4 class="panel-title">PERTANYAAN TERKAIT</h4>
 			</div>

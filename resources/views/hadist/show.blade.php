@@ -43,7 +43,7 @@
 
 	</div>
 	<div class="col-md-3">
-		<div class="panel panel-info">
+		<div class="panel panel-blue">
 			<div class="panel-heading">
 				<h4 class="panel-title">HADIST TERKAIT</h4>
 			</div>
