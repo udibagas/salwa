@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\CommentRequest;
 use App\Comment;
+use Gate;
 
 class CommentController extends Controller
 {
@@ -77,9 +78,13 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comment $comment)
     {
-        //
+		if (Gate::denies('update-comment', $comment)) {
+			abort(403);
+		}
+
+        return view('comment.edit', ['comment' => $comment]);
     }
 
     /**
@@ -89,9 +94,16 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CommentRequest $request, Comment $comment)
     {
-        //
+		if (Gate::denies('update-comment', $comment)) {
+			abort(403);
+		}
+
+		$data = $request->all();
+		$data['content'] = clean($request->content);
+        $comment->update($data);
+		return redirect($comment->commentable_type.'/'.$comment->commentable_id);
     }
 
     /**

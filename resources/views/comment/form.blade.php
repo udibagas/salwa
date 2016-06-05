@@ -8,17 +8,17 @@
 	<div class="col-md-11">
 		<div class="panel panel-info panel-comment">
 			<div class="panel-heading">
-				<strong>Tulis Komentar</strong>
+				<strong>{{ $header or 'Tulis' }} Komentar</strong>
 			</div>
 			<div class="panel-body">
-				{!! Form::open(['url' => 'comment', 'method' => 'POST', 'class' => 'comment']) !!}
+				{!! Form::model($comment, ['url' => $url, 'method' => $method, 'class' => 'comment']) !!}
 
-					{!! Form::hidden('commentable_id', $commentable_id) !!}
-					{!! Form::hidden('commentable_type', $commentable_type) !!}
+					{!! Form::hidden('commentable_id', $comment->commentable_id) !!}
+					{!! Form::hidden('commentable_type', $comment->commentable_type) !!}
 					{!! Form::hidden('redirect', url()->current()) !!}
 
 					<div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-						{!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Judul Komentar']) !!}
+						{!! Form::text('title', $comment->title, ['class' => 'form-control', 'placeholder' => 'Judul Komentar']) !!}
 
 						@if ($errors->has('title'))
 						<span class="help-block">
@@ -28,7 +28,7 @@
 					</div>
 
 					<div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-						{!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 4, 'placeholder' => 'Komentar Anda']) !!}
+						{!! Form::textarea('content', $comment->content, ['class' => 'form-control', 'rows' => 4, 'placeholder' => 'Komentar Anda']) !!}
 
 						@if ($errors->has('content'))
 						<span class="help-block">

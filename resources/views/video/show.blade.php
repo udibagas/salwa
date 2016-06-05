@@ -59,7 +59,13 @@
 		])
 
 		@if (auth()->check())
-			@include('comment.form', ['commentable_id' => $video->video_id, 'commentable_type' => 'video'])
+			@include('comment.form', [
+				'url' => '/comment', 'method' => 'POST',
+				'comment' => new \App\Comment([
+					'commentable_id' => $video->video_id,
+					'commentable_type' => 'video'
+				])
+			])
 		@else
 			<div class="alert alert-danger text-center">
 				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>

@@ -19,8 +19,12 @@
 							{!! Form::hidden('redirect', url()->current()) !!}
 
 							@if (auth()->check() && auth()->user()->isAdmin() && !$c->approved)
-							<a href="/comment/{{$c->id}}/approve?redirect={{ url()->current() }}" class="btn btn-info btn-xs"><i class="fa fa-check"></i> Approve</a>
+								<a href="/comment/{{$c->id}}/approve?redirect={{ url()->current() }}" class="btn btn-info btn-xs"><i class="fa fa-check"></i> Approve</a>
 							@endif
+
+							@can('update-comment', $c)
+								<a href="/comment/{{$c->id}}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>
+							@endcan
 
 							<button type="submit" name="delete" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Delete</button>
 						{!! Form::close() !!}

@@ -63,6 +63,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isUstadz();
         });
 
+		$gate->define('update-comment', function ($user, $comment) {
+            return $user->user_id === $comment->user_id && !$comment->approved;
+        });
+
 		$gate->define('delete-comment', function ($user, $comment) {
             return $user->user_id === $comment->user_id;
         });

@@ -60,7 +60,13 @@
 		])
 
 		@if (auth()->check())
-			@include('comment.form', ['commentable_id' => $produk->id_produk, 'commentable_type' => 'produk'])
+			@include('comment.form', [
+				'url' => '/comment', 'method' => 'POST',
+				'comment' => new \App\Comment([
+					'commentable_id' => $produk->id_produk,
+					'commentable_type' => 'produk'
+				])
+			])
 		@else
 			<div class="alert alert-danger text-center">
 				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>
