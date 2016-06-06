@@ -25,7 +25,9 @@
 		<hr>
 
 		@if ($informasi->img_gambar)
-		<img src="/{{ $informasi->img_gambar }}" class="img-responsive" style="margin-bottom:30px;" alt="" />
+		<div style="width:600px;height:300px;margin-bottom:30px;" class="thumbnail">
+			<img src="/{{ $informasi->img_gambar }}" class="img-responsive cover" alt="{{ $informasi->judul }}" />
+		</div>
 		@endif
 
 		{!! $informasi->content !!}

@@ -30,7 +30,7 @@
 
 		@if ($artikel->img_artikel)
 		<div style="width:600px;height:300px;margin-bottom:30px;" class="thumbnail">
-			<img src="/{{ $artikel->img_artikel }}" alt="{{ $artikel->judul }}" class="cover" />
+			<img src="/{{ $artikel->img_artikel }}" alt="{{ $artikel->judul }}" class="img-responsive cover" />
 		</div>
 		@endif
 

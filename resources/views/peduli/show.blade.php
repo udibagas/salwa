@@ -25,7 +25,9 @@
 		<br /><br />
 
 		@if ($peduli->img_artikel)
-		<img src="/{{ $peduli->img_artikel }}" class="img-responsive" style="margin-bottom:30px;" alt="" />
+		<div style="width:600px;height:300px;margin-bottom:30px;" class="thumbnail">
+			<img src="/{{ $peduli->img_artikel }}" class="img-responsive cover" alt="{{ $peduli->judul }}" />
+		</div>
 		@endif
 
 		{!! $peduli->isi !!}
