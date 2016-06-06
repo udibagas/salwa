@@ -29,7 +29,7 @@
 		<hr>
 
 		@if ($artikel->img_artikel)
-		<div style="width:600px;height:300;margin-bottom:30px;" class="thumbnail">
+		<div style="width:600px;height:300px;margin-bottom:30px;" class="thumbnail">
 			<img src="/{{ $artikel->img_artikel }}" alt="{{ $artikel->judul }}" class="cover" />
 		</div>
 		@endif
