@@ -53,13 +53,13 @@ $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
 );
 
-use BrowserDetect;
-
-if (BrowserDetect::isMobile())
-{
-	header('Location: http://m.salamdakwah.com/');
-	exit();
-}
+// use BrowserDetect;
+//
+// if (BrowserDetect::isMobile())
+// {
+// 	header('Location: http://m.salamdakwah.com/');
+// 	exit();
+// }
 
 $response->send();
 

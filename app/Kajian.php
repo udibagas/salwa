@@ -6,94 +6,67 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kajian extends Model
 {
-    protected $table = 'kajians';
+    protected $table = 'tb_kajian';
 
-	protected $appends = ['waktuParsed', 'cpParsed', 'latLong'];
+	protected $dates = ['created', 'updated'];
+
+	protected $primaryKey = 'kajian_id';
+
+	const CREATED_AT = 'created';
+
+	const UPDATED_AT = 'updated';
 
 	protected $fillable = [
-		'tema', 'description', 'brosur', 'ustadz_id', 'pekan',
-		'waktu', 'lokasi_id', 'area_id', 'position',
-		'tempat', 'cp', 'peserta', 'user_id',
-		'transkrip', 'audio', 'video', 'fawaid', 'file', 'rutin'
+		'kajian_user_id', 'kajian_tema', 'kajian_ustadz_id', 'id_lokasi', 'id_area',
+		'kajian_tempat', 'kajian_pic_id', 'kajian_pic_id2', 'img_kajian_photo',
+		'jenis_kajian', 'setiap_hari', 'setiap_jam', 'setiap_tanggal', 'setiap_bulan',
+		'kajian_status', 'kajian_dates', 'createdby', 'updatedby'
 	];
-
-	public function getWaktuParsedAttribute()
-	{
-		// print_r(json_decode($this->waktu));
-
-		$return = '';
-		$waktu = json_decode($this->waktu);
-
-		if ($this->rutin)
-		{
-			foreach ($waktu as $hari => $jam) {
-				$return .= 'Pekan: '.implode(json_decode($this->pekan), ',').'<br />';
-				$return .= self::getDay($hari).': '.$jam->mulai.' - '.$jam->selesai.'<br />';
-			}
-
-		} else {
-
-			$return .= $waktu->mulai.' - '.$waktu->selesai;
-
-		}
-
-		return $return;
-	}
-
-	public function user()
-	{
-		return $this->belongsTo('App\User', 'user_id', 'user_id');
-	}
 
 	public function ustadz()
 	{
-		return $this->belongsTo('App\Ustadz', 'ustadz_id', 'ustadz_id');
+		return $this->belongsTo('App\Ustadz', 'kajian_ustadz_id', 'ustadz_id');
+	}
+
+	public function pic1()
+	{
+		return $this->belongsTo('App\Pic', 'kajian_pic_id', 'pic_id');
+	}
+
+	public function pic2()
+	{
+		return $this->belongsTo('App\Pic', 'kajian_pic_id2', 'pic_id');
 	}
 
 	public function lokasi()
 	{
-		return $this->belongsTo('App\Lokasi', 'lokasi_id', 'id_lokasi');
+		return $this->belongsTo('App\Lokasi', 'id_lokasi', 'id_lokasi');
 	}
 
 	public function area()
 	{
-		return $this->belongsTo('App\Area', 'area_id', 'id_area');
+		return $this->belongsTo('App\Area', 'id_area', 'id_area');
 	}
 
-	public function scopeTematik($query)
+	public function scopeToday($query)
 	{
-		return $query->where('rutin', 0);
+		return $query->whereRaw('DATE(kajian_dates) = '.date('Y-m-d'));
 	}
 
-	public function scopeRutin($query)
+	public static function jenisKajianList($index = 999)
 	{
-		return $query->where('rutin', 1);
-	}
-
-	public static function getPesertaList()
-	{
-		return [
-			'Umum' => 'Umum',
-			'Ikhwan' => 'Ikhwan',
-			'Akhwat' => 'Akhwat',
-			'Anak-anak (Umum)' => 'Anak-anak (Umum)',
-			'Anak-anak (Ikhwan)' => 'Anak-anak (Ikhwan)',
-			'Anak-anak (Akhwat)' => 'Anak-anak (Akhwat)',
-		];
-	}
-
-	public static function getDay($day = 999)
-	{
-		$days = [
-			'Sun' => 'Ahad',
-			'Mon' => 'Senin',
-			'Tue' => 'Selasa',
-			'Wed' => 'Rabu',
-			'Thu' => 'Kamis',
-			'Fri' => 'Jum\'at',
-			'Sat' => 'Sabtu'
+		$list = [
+			'1'	=> 'Sekali Waktu',
+			'2' => 'Pekanan',
+			'3'	=> 'Bulanan'
 		];
 
-		return isset($days[$day]) ? $days[$day] : $days;
+		return isset($list[$index]) ? $list[$index] : $list;
+	}
+
+	public static function getHari($index = 999)
+	{
+		$list = ['Ahad', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu'];
+		return isset($list[$index]) ? $list[$index] : $list;
 	}
 }
