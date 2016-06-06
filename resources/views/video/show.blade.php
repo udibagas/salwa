@@ -33,7 +33,7 @@
 		<div id="video"></div>
 		<script type="text/javascript">
 
-			var playlist =[@foreach ($video->files()->web()->get() as $f) {file:"/{{ $f->file_upload }}", image:"/{{ $f->img_file }}", title:"{{ $video->title }}"}, @endforeach];
+			var playlist =[@foreach ($video->files()->web()->get() as $f){file:"/{{ $f->file_upload }}", image:"/{{ $f->img_file }}", title:"{{ $video->title }}"},@endforeach];
 
 			jwplayer("video").setup({
 		        playlist: playlist,
