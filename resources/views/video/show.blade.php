@@ -31,6 +31,7 @@
 
 		@if (count($video->files))
 		<div id="video"></div>
+		@push('script')
 		<script type="text/javascript">
 
 			var playlist = {!! json_encode($video->files()->web()->selectRaw('concat("/",file_upload) as file, img_file as image, "'.$video->title.'" as title')->get(), JSON_UNESCAPED_SLASHES) !!};
@@ -42,6 +43,7 @@
 			});
 
         </script>
+		@endpush
 		@endif
 
 		<br><br>
