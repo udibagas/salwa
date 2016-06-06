@@ -47,6 +47,11 @@ class AuthServiceProvider extends ServiceProvider
         });
 
 		$gate->define('update-pertanyaan', function ($user, $pertanyaan) {
+
+			$gate->before(function($user, $ability) {
+				return $user->isUstadz();
+			});
+
             return $user->user_id === $pertanyaan->user_id;
         });
 
