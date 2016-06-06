@@ -38,7 +38,7 @@
 						<td>{{ $i++ }}</td>
 						<td><strong><a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}">{{ $m->judul }}</a></strong></td>
 						<td>
-							<audio controls="controls" preload="none" autoplay="autoplay"><source src="/{{ $m->file_mp3 }}" type="application/ogg"></source></audio>
+							<audio controls="controls" preload="none"><source src="/{{ $m->file_mp3 }}" type="application/ogg"></source></audio>
 						</td>
 						<td style="width:200px;">
 							<!-- <a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}" class="btn btn-info"><i class="fa fa-play"></i> Play</a> -->

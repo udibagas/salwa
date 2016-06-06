@@ -37,7 +37,7 @@
 						<td>{{ $i++ }}</td>
 						<td><strong>{{ $m->nama_surat }}</strong></td>
 						<td>
-							<audio controls="controls" preload="none" autoplay="autoplay"><source src="/{{ $m->file_mp3 }}" type="application/ogg"></source></audio>
+							<audio controls="controls" preload="none"><source src="/{{ $m->file_mp3 }}" type="application/ogg"></source></audio>
 						</td>
 						<td style="width:200px;">
 							<!-- <a href="/{{ $m->file_mp3 }}" class="btn btn-info play"><span class="fa fa-play"></span> Play</a> -->
