@@ -1,18 +1,17 @@
 <div class="row">
 	<div class="col-md-1 col-sm-2 hidden-xs">
 		<div class="thumbnail">
-			@if ($p->user->img_user)
-			<img class="img-responsive" src="/{{ $p->user->img_user }}" />
-			@else
 			<img class="img-responsive" src="/images/nobody.jpg" />
-			@endif
 		</div>
 	</div>
 	<div class="col-md-11 col-sm-10">
 		<div class="panel @if ($p->status == 's') panel-info @else panel-danger @endif panel-comment">
 			<div class="panel-heading">
 				<strong>
-					{{ $p->user ? $p->user->name : '' }}
+					@if ($p->user)
+					{{ $p->user->jenis_kelamin == 'p' ? 'Ikhwan' : 'Akhwat' }}
+					@endif
+
 					@if ($p->daerah_asal) ({{ $p->daerah_asal }}) @endif
 				</strong>
 				<span class="text-muted">
