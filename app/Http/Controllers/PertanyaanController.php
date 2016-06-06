@@ -143,18 +143,18 @@ class PertanyaanController extends Controller
 
     public function jawab(Pertanyaan $pertanyaan)
     {
-		if (Gate::denies('jawab-pertanyaan', $pertanyaan)) {
-			abort(403);
-		}
+		// if (Gate::denies('jawab-pertanyaan', $pertanyaan)) {
+		// 	abort(403);
+		// }
 
         return view('pertanyaan.ustadz.jawab', ['pertanyaan' => $pertanyaan]);
     }
 
 	public function simpanJawaban(JawabanRequest $request, Pertanyaan $pertanyaan)
 	{
-		if (Gate::denies('jawab-pertanyaan', $pertanyaan)) {
-			abort(403);
-		}
+		// if (Gate::denies('jawab-pertanyaan', $pertanyaan)) {
+		// 	abort(403);
+		// }
 
 		$data 					= $request->all();
 		$data['dijawab_oleh'] 	= auth()->user()->user_id;

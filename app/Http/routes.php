@@ -80,11 +80,11 @@ Route::group(['middleware' => 'auth'], function() {
 	});
 
 	// pake policy, admin & ustadz bisa
-	Route::get('pertanyaan/{pertanyaan}/jawab', 'PertanyaanController@jawab');
-	Route::put('pertanyaan/{pertanyaan}/simpan-jawaban', 'PertanyaanController@simpanJawaban');
 	// ustadz only
 	Route::group(['middleware' => 'role:'.User::ROLE_USTADZ], function() {
 		Route::get('pertanyaan/admin-ustadz', 'PertanyaanController@adminUstadz');
+		Route::get('pertanyaan/{pertanyaan}/jawab', 'PertanyaanController@jawab');
+		Route::put('pertanyaan/{pertanyaan}/simpan-jawaban', 'PertanyaanController@simpanJawaban');
 	});
 
 	Route::resource('forum', 'ForumController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
