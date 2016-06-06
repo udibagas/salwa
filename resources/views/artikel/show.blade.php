@@ -29,7 +29,9 @@
 		<hr>
 
 		@if ($artikel->img_artikel)
-		<img src="/{{ $artikel->img_artikel }}" style="margin-bottom:30px;" alt="" class="img-responsive" />
+		<div style="width:350px;height:350;margin-bottom:30px;" class="thumbnail">
+			<img src="{{ $artikel->img_artikel }}" alt="{{ $artikel->judul }}" class="cover" />
+		</div>
 		@endif
 
 		{!! $artikel->isi !!}
