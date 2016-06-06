@@ -8,7 +8,7 @@
 		<li class="list-group-item text-center"><strong>Belum ada thread.</strong></li>
 		@endif
 
-		@foreach ($group->forums()->orderBy('updated', 'DESC')->limit(5)->get() as $f)
+		@foreach ($group->forums()->orderBy('created', 'DESC')->limit(5)->get() as $f)
 		<li class="list-group-item">
 			<a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">
 				<strong>{{ $f->title }} </strong>

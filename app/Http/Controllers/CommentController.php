@@ -26,7 +26,10 @@ class CommentController extends Controller
 								return $query->join('users', 'users.user_id', '=', 'comments.user_id')
 											->where('users.name', 'like', '%'.$request->user.'%');
 							})->when($request->title, function($query) use ($request) {
-								return $query->where('title', 'like', '%'.$request->title.'%');
+								return $query->where(function($q) use ($request) {
+									return $q->where('title', 'like', '%'.$request->title.'%')
+											->orWhere('content', 'like', '%'.$request->title.'%');
+								});
 							})->when($request->approved == 'yes', function($query) use ($request) {
 								return $query->approved();
 							})->when($request->approved == 'no', function($query) use ($request) {

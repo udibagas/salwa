@@ -2,20 +2,34 @@
 	<div class="col-md-9">
 		{!! Form::model($banner, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method, 'files' => true]) !!}
 
-			<div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
-				<label for="group_id" class="col-md-2 control-label">Group:</label>
+			<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+				<label for="name" class="col-md-2 control-label">Name:</label>
 				<div class="col-md-10">
-					{{ Form::select('group_id',
-						\App\Group::banner()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
-						$banner->group_id, [
+					{{ Form::text('name', $banner->name, ['class' => 'form-control', 'placeholder' => 'Name']) }}
+
+					@if ($errors->has('name'))
+					<span class="help-block">
+						<strong>{{ $errors->first('name') }}</strong>
+					</span>
+					@endif
+				</div>
+			</div>
+
+			<div class="form-group{{ $errors->has('position_id') ? ' has-error' : '' }}">
+				<label for="position_id" class="col-md-2 control-label">Position:</label>
+				<div class="col-md-10">
+					{{ Form::select('position_id',
+						\App\Position::selectRaw('position_id, CONCAT(banner_type, ": ", width, " x ", height) as type')
+						->pluck('type', 'position_id'),
+						$banner->position_id, [
 							'class' => 'form-control',
-							'placeholder' => '-- Pilih Kategori Promo --'
+							'placeholder' => '-- Pilih Posisi --'
 						]
 					) }}
 
-					@if ($errors->has('group_id'))
+					@if ($errors->has('position_id'))
 						<span class="help-block">
-							<strong>{{ $errors->first('group_id') }}</strong>
+							<strong>{{ $errors->first('position_id') }}</strong>
 						</span>
 					@endif
 				</div>
@@ -47,6 +61,24 @@
 					@if ($banner->img_banner)
 					<br>
 					<img src="/{{ $banner->img_banner }}" alt="" />
+					@endif
+				</div>
+			</div>
+
+			<div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
+				<label for="active" class="col-md-2 control-label">Active:</label>
+				<div class="col-md-10">
+					{{ Form::select('active',
+						['1' => 'No', '2' => 'Yes'],
+						$banner->active, [
+							'class' => 'form-control',
+						]
+					) }}
+
+					@if ($errors->has('active'))
+						<span class="help-block">
+							<strong>{{ $errors->first('active') }}</strong>
+						</span>
 					@endif
 				</div>
 			</div>
