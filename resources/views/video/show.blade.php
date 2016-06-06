@@ -33,7 +33,7 @@
 		<div id="video"></div>
 		<script type="text/javascript">
 
-			var playlist = {!! json_encode($video->files()->web()->selectRaw('file_upload as file, img_file as image, "'.$video->title.'" as title')->get(), JSON_UNESCAPED_SLASHES) !!};
+			var playlist = {!! json_encode($video->files()->web()->selectRaw('concat("/",file_upload) as file, img_file as image, "'.$video->title.'" as title')->get(), JSON_UNESCAPED_SLASHES) !!};
 
 			jwplayer("video").setup({
 		        playlist: playlist,
