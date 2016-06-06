@@ -16,6 +16,12 @@
 		<link href="/css/app.css" rel="stylesheet">
 		<link href="/css/gallery.css" rel="stylesheet">
 		@stack('css')
+
+		<script type="text/javascript" src="/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/summernote/summernote.min.js"></script>
+		<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
+		<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
     </head>
 
     <body>
@@ -39,12 +45,6 @@
 			</div>
 
         </div>
-
-        <script type="text/javascript" src="/js/jquery.min.js"></script>
-        <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="/summernote/summernote.min.js"></script>
-		<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
-		<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
 
 		<script type="text/javascript">
 
