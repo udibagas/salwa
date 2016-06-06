@@ -27,8 +27,8 @@
 					<tr>
 						<th>#</th>
 						<th>Judul</th>
-						<th>Last Update</th>
-						<th>Action</th>
+						<th>Play</th>
+						<th>Download</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -37,9 +37,11 @@
 					<tr>
 						<td>{{ $i++ }}</td>
 						<td><strong><a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}">{{ $m->judul }}</a></strong></td>
-						<td>{{ $m->updated->diffForHumans() }}</td>
+						<td>
+							<audio controls="controls" preload="none" autoplay="autoplay"><source src="/{{ $m->file_mp3 }}" type="application/ogg"></source></audio>
+						</td>
 						<td style="width:200px;">
-							<a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}" class="btn btn-info"><i class="fa fa-play"></i> Play</a>
+							<!-- <a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}" class="btn btn-info"><i class="fa fa-play"></i> Play</a> -->
 							<a href="/audio/{{ $m->mp3_download_id }}/download" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
 						</td>
 					</tr>
@@ -60,25 +62,25 @@
 
 	<script type="text/javascript">
 
-		var audio;
+		// var audio;
 
-		$(document).on('click', '.fa-play', function() {
-			audio = new Audio(this.href);
-			audio.play();
-			$(this).removeClass('fa-play');
-			$(this).addClass('fa-stop');
-			$(this).text(' Stop');
-			return false;
-		});
+		// $(document).on('click', '.fa-play', function() {
+		// 	audio = new Audio(this.href);
+		// 	audio.play();
+		// 	$(this).removeClass('fa-play');
+		// 	$(this).addClass('fa-stop');
+		// 	$(this).text(' Stop');
+		// 	return false;
+		// });
 
-		$(document).on('click', '.fa-stop', function() {
-			// var audio = new Audio(this.href);
-			audio.stop();
-			$(this).removeClass('fa-stop');
-			$(this).addClass('fa-play');
-			$(this).text(' Play');
-			return false;
-		});
+		// $(document).on('click', '.fa-stop', function() {
+		// 	// var audio = new Audio(this.href);
+		// 	audio.stop();
+		// 	$(this).removeClass('fa-stop');
+		// 	$(this).addClass('fa-play');
+		// 	$(this).text(' Play');
+		// 	return false;
+		// });
 
 	</script>
 

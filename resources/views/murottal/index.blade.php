@@ -26,7 +26,8 @@
 					<tr>
 						<th>#</th>
 						<th>Nama Surat</th>
-						<th>Action</th>
+						<th>Play</th>
+						<th>Download</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -35,8 +36,11 @@
 					<tr>
 						<td>{{ $i++ }}</td>
 						<td><strong>{{ $m->nama_surat }}</strong></td>
+						<td>
+							<audio controls="controls" preload="none" autoplay="autoplay"><source src="/{{ $m->file_mp3 }}" type="application/ogg"></source></audio>
+						</td>
 						<td style="width:200px;">
-							<a href="/{{ $m->file_mp3 }}" class="btn btn-info play"><span class="fa fa-play"></span> Play</a>
+							<!-- <a href="/{{ $m->file_mp3 }}" class="btn btn-info play"><span class="fa fa-play"></span> Play</a> -->
 							<a href="/murottal/{{ $m->murotal_id }}/download" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
 						</td>
 					</tr>
