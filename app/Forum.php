@@ -12,7 +12,10 @@ class Forum extends Model
 
 	protected $dates = ['created', 'updated', 'date'];
 
-	protected $fillable = ['user_id', 'title', 'group_id', 'createdby', 'updatedby', 'date', 'title_code'];
+	protected $fillable = [
+		'user_id', 'title', 'group_id', 'createdby',
+		'updatedby', 'date', 'title_code', 'status', 'close'
+	];
 
 	const CREATED_AT = 'created';
 

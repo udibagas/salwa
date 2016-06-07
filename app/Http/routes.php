@@ -49,6 +49,10 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('comment/{comment}/approve', 'CommentController@approve');
 		Route::get('comment/approve-all', 'CommentController@approveAll');
 		Route::get('forum/admin', 'ForumController@admin');
+		Route::get('forum/{forum}/activate', 'ForumController@activate');
+		Route::get('forum/{forum}/deactivate', 'ForumController@deactivate');
+		Route::get('forum/{forum}/open', 'ForumController@open');
+		Route::get('forum/{forum}/close', 'ForumController@close');
 		Route::get('hadist/admin', 'HadistController@admin');
 		Route::get('image/admin', 'ImageController@admin');
 		Route::get('informasi/admin', 'InformasiController@admin');

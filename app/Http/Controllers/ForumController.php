@@ -338,4 +338,28 @@ class ForumController extends Controller
 
 		return redirect($request->redirect);
 	}
+
+	public function activate(Forum $forum, Request $request)
+	{
+		$forum->update(['status' => 'a']);
+		return redirect($request->redirect);
+	}
+
+	public function deactivate(Forum $forum, Request $request)
+	{
+		$forum->update(['status' => 'b']);
+		return redirect($request->redirect);
+	}
+
+	public function open(Forum $forum, Request $request)
+	{
+		$forum->update(['close' => 'N']);
+		return redirect($request->redirect);
+	}
+
+	public function close(Forum $forum, Request $request)
+	{
+		$forum->update(['close' => 'Y']);
+		return redirect($request->redirect);
+	}
 }

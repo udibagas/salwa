@@ -30,9 +30,9 @@
 				<th>Judul</th>
 				<th>User</th>
 				<th>Kategori</th>
-				<th style="width:150px;">Created At</th>
+				<!-- <th style="width:150px;">Created At</th> -->
 				<th style="width:150px;">Updated At</th>
-				<th style="width:170px;">Action</th>
+				<th style="width:245px;">Action</th>
 			</tr>
 			{!! Form::open(['method' => 'GET']) !!}
 			<tr>
@@ -53,7 +53,7 @@
 					) }}
 				</td>
 				<td> </td>
-				<td> </td>
+				<!-- <td> </td> -->
 				<td>
 					<button type="submit" name="submit" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
 					<a href="/forum/admin" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
@@ -64,17 +64,34 @@
 		<tbody>
 			<?php $i = $forums->firstItem(); ?>
 			@foreach ($forums as $a)
-				<tr>
+				<tr class="@if ($a->status == 'b') danger @endif">
 					<td>{{ $i++ }}</td>
 					<td><a href="/forum/{{ $a->forum_id }}-{{ str_slug($a->title) }}">{{ $a->title }}</a></td>
 					<td>{{ $a->user ? $a->user->name : '' }}</td>
 					<td>{{ $a->group ? $a->group->group_name : '' }}</td>
 					<td>{{ $a->created }}</td>
-					<td>{{ $a->updated }}</td>
+					<!-- <td>{{ $a->updated }}</td> -->
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/forum/'.$a->forum_id]) !!}
+
+						@if ($a->status == 'b')
+						<a href="/forum/{{ $a->forum_id }}/activate?redirect={{ url()->full() }}" class="btn btn-info btn-xs delete">Acticate</a>
+						@endif
+
+						@if ($a->status == 'a')
+						<a href="/forum/{{ $a->forum_id }}/deactivate?redirect={{ url()->full() }}" class="btn btn-info btn-xs delete">Deactivate</a>
+						@endif
+
+						@if ($a->close == 'Y')
+						<a href="/forum/{{ $a->forum_id }}/open?redirect={{ url()->full() }}" class="btn btn-primary btn-xs delete">Open</a>
+						@endif
+
+						@if ($a->close == 'N')
+						<a href="/forum/{{ $a->forum_id }}/close?redirect={{ url()->full() }}" class="btn btn-danger btn-xs delete">Close</a>
+						@endif
+
 						<a href="/forum/{{ $a->forum_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>
-						<button type="submit" name="delete" class="btn btn-danger btn-xs delete"><i class="fa fa-trash"></i> Hapus</button>
+						<button type="submit" name="delete" class="btn btn-danger btn-xs delete"><i class="fa fa-trash"></i> Delete</button>
 						{!! Form::close() !!}
 					</td>
 				</tr>
