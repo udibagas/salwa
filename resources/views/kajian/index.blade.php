@@ -22,6 +22,11 @@
 			<div class="row no-gutter">
 				@each('kajian._list', $kajians, 'kajian')
 			</div>
+
+			<nav class="text-center">
+				{!! $kajians->appends(['tema' => request('tema'),'ustadz_id' => request('ustadz_id'),'rutin' => request('rutin')])->links() !!}
+			</nav>
+
 		</div>
 	</div>
 

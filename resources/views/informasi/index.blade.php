@@ -28,7 +28,7 @@
 			</div>
 
 			<nav class="text-center">
-				{!! $informasis->links() !!}
+				{!! $informasis->appends(['search' => request('search'),'group_id' => request('group_id')])->links() !!}
 			</nav>
 		</div>
 	</div>

@@ -50,7 +50,7 @@ class Kajian extends Model
 
 	public function scopeToday($query)
 	{
-		return $query->whereRaw('DATE(kajian_dates) = '.date('Y-m-d'));
+		return $query->whereRaw('setiap_hari = (DAYOFWEEK(NOW()) - 1) OR DATE(kajian_dates) = '.date('Y-m-d'));
 	}
 
 	public static function jenisKajianList($index = 999)
@@ -78,5 +78,10 @@ class Kajian extends Model
 	public function scopeTematik($query)
 	{
 		return $query->where('jenis_kajian', 1);
+	}
+
+	public function scopeActive($query)
+	{
+		return $query->where('kajian_status', 'A');
 	}
 }

@@ -6,7 +6,7 @@
 			<input type="text" name="tema" value="{{ request('tema') }}" placeholder="Search Kajian" class="form-control search-field">
 		{!! Form::close() !!}
 	</span>
-	<a href="/kajian?tema={{ request('tema') }}&ustadz_id={{ request('ustadz_id') }}" class="list-group-item info @if (request('rutin') == null) active @endif">
+	<a href="/kajian" class="list-group-item info @if (request('rutin') == null) active @endif">
 		SEMUA KAJIAN
 		<span class="badge">{{ \App\Kajian::count() }}</span>
 	</a>

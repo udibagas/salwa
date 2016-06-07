@@ -1,15 +1,23 @@
-<div class="col-md-4 col-sm-6">
-	<div class="thumbnail" style="height:270px;">
-		<a href="/kajian/{{ $kajian->id }}-{{ str_slug($kajian->tema) }}">
-			@if ($kajian->brosur)
-			<img src="/{{ $kajian->brosur }}" alt="">
+<div class="col-md-3 col-sm-4">
+	<div class="thumbnail" style="height:200px;">
+		<a href="/kajian/{{ $kajian->kajian_id }}-{{ str_slug($kajian->kajian_tema) }}">
+			@if ($kajian->img_kajian_photo)
+			<img src="/{{ $kajian->img_kajian_photo }}" alt="">
 			@endif
 			<div class="thumbnail-block">
 			</div>
 			<div class="caption">
-				<h2>{{ $kajian->tema }}</h2>
+				<h2>{{ $kajian->kajian_tema }}</h2>
 				{{ $kajian->ustadz ? $kajian->ustadz->ustadz_name : '' }}<br />
-				<em>Waktu disini nanti</em>
+				<em>
+					@if ($kajian->jenis_kajian == 1)
+					{{ $kajian->kajian_dates }}
+					@elseif ($kajian->jenis_kajian == 2)
+					{{ \App\Kajian::getHari($kajian->setiap_hari) }}, {{ $kajian->setiap_jam }}
+					@else
+					{{ $kajian->setiap_tanggal }}
+					@endif
+				</em>
 			</div>
 		</a>
 	</div>

@@ -36,7 +36,7 @@
 		  <li class="@if (url()->current() == url('forum')) active @endif"><a href="/forum">Salwa Forum</a></li>
 		  <li class="@if (url()->current() == url('produk')) active @endif"><a href="/produk">Salwa Market</a></li>
 		  <li class="@if (url()->current() == url('peduli')) active @endif"><a href="/peduli">Salwa Peduli</a></li>
-		  <!-- <li class="@if (url()->current() == url('kajian')) active @endif"><a href="/kajian">Kajian</a></li> -->
+		  <li class="@if (url()->current() == url('kajian')) active @endif"><a href="/kajian">Kajian</a></li>
 		  @if (auth()->guest())
 		  <li class="@if (url()->current() == url('login')) active @endif"><a href="/login">Login</a></li>
 		  <li class="@if (url()->current() == url('register')) active @endif"><a href="/register">Register</a></li>

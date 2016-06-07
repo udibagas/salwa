@@ -15,7 +15,25 @@ class KajianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function admin(Request $request)
+	public function index(Request $request)
+	{
+		return view('kajian.index', [
+			'kajians' => Kajian::active()->when($request->rutin == 'rutin', function($query) use($request) {
+							return $query->rutin()->orderBy('setiap_hari', 'ASC');
+						})->when($request->rutin == 'tematik', function($query) use($request) {
+							return $query->tematik()->whereRaw('DATE(kajian_dates) >= DATE(NOW())');
+						})->when($request->tema, function($query) use($request) {
+							return $query->where('kajian_tema', 'like', '%'.$request->tema.'%');
+						})->when($request->ustadz_id, function($query) use($request) {
+							return $query->where('kajian_ustadz_id', $request->ustadz_id);
+						})->when($request->today, function($query) {
+							return $query->today();
+						})->orderBy('created', 'DESC')->paginate(16)
+		]);
+	}
+
+
+	public function admin(Request $request)
     {
         return view('kajian.admin', [
 			'kajians' => Kajian::when($request->tempat, function($query) use($request) {
