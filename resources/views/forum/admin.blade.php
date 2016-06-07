@@ -75,7 +75,7 @@
 						{!! Form::open(['method' => 'DELETE', 'url' => '/forum/'.$a->forum_id]) !!}
 
 						@if ($a->status == 'b')
-						<a href="/forum/{{ $a->forum_id }}/activate?redirect={{ url()->full() }}" class="btn btn-info btn-xs delete">Acticate</a>
+						<a href="/forum/{{ $a->forum_id }}/activate?redirect={{ url()->full() }}" class="btn btn-info btn-xs delete">Activate</a>
 						@endif
 
 						@if ($a->status == 'a')
