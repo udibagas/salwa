@@ -34,4 +34,24 @@ class Forum extends Model
 	{
 		return $this->hasMany('App\Post', 'forum_id', 'forum_id');
 	}
+
+	public function scopeActive($query)
+	{
+		return $query->where('status', 'a');
+	}
+
+	public function scopeNotActive($query)
+	{
+		return $query->where('status', 'b');
+	}
+
+	public function scopeClose($query)
+	{
+		return $query->where('close', 'Y');
+	}
+
+	public function scopeOpen($query)
+	{
+		return $query->where('close', 'N');
+	}
 }

@@ -26,7 +26,7 @@
 	@foreach ($groups as $g)
 	<a href="/forum-category/{{ $g->group_id }}-{{ str_slug($g->group_name) }}" class="list-group-item info @if (isset($group) && $g->group_id == $group->group_id) active @endif">
 		{{ $g->group_name }}
-		<span class="badge">{{ $g->forums->count() }}</span>
+		<span class="badge">{{ $g->forums()->active()->count() }}</span>
 	</a>
 	@endforeach
 </div>

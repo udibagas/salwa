@@ -23,7 +23,7 @@ class ForumController extends Controller
     public function index()
     {
         return view('forum.index', [
-			'forums' => Forum::orderBy('forum_id', 'DESC')->paginate(),
+			'forums' => Forum::active()->orderBy('forum_id', 'DESC')->paginate(),
 			'groups' => Group::forum()->orderBy('group_name', 'ASC')->get()
 		]);
     }
