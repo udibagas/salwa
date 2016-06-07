@@ -215,7 +215,7 @@ class ForumController extends Controller
 			'groups' 	=> Group::forum()->orderBy('group_name', 'ASC')->get(),
 			'group'		=> Group::find($group_id),
 			'search'	=> $request->search,
-			'forums' 	=> Forum::when($search, function($query) use ($search) {
+			'forums' 	=> Forum::active()->when($search, function($query) use ($search) {
 								return $query->where('title', 'like', '%'.$search.'%');
 							})->when($group_id, function($query) use ($group_id) {
 								return $query->where('group_id', $group_id);
