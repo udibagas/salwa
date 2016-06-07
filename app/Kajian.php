@@ -50,7 +50,7 @@ class Kajian extends Model
 
 	public function scopeToday($query)
 	{
-		return $query->whereRaw('setiap_hari = (DAYOFWEEK(NOW()) - 1) OR DATE(kajian_dates) = '.date('Y-m-d'));
+		return $query->whereRaw('(jenis_kajian = 2 AND setiap_hari = (DAYOFWEEK(NOW()) - 1)) OR (jenis_kajian = 1 AND DATE(kajian_dates) = '.date('Y-m-d').')');
 	}
 
 	public static function jenisKajianList($index = 999)
