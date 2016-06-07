@@ -66,7 +66,7 @@
 			</div>
 
 			@if ($kajian->img_kajian_photo)
-			<img src="/{{ $kajian->img_kajian_photo}}" alt="{{ $kajian->kajian_tema }}" />
+			<img src="/{{ $kajian->img_kajian_photo}}" alt="{{ $kajian->kajian_tema }}" class="img-responsive" style="width:100%" />
 			@endif
 		</div>
 	</div>
