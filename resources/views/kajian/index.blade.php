@@ -19,6 +19,12 @@
 			@include('kajian._group')
 		</div>
 		<div class="col-md-9">
+
+			@include('kajian._today', ['today' => \App\Kajian::active()->today()->get()])
+
+			<br>
+
+			<h4 class="title"><i class="fa fa-edit"></i> JADWAL KAJIAN</h4>
 			<div class="row no-gutter">
 				@each('kajian._list', $kajians, 'kajian')
 			</div>

@@ -109,6 +109,7 @@
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/kajian/'.$a->kajian_id]) !!}
 						<a href="/kajian/{{ $a->kajian_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>
+						{!! Form::hidden('redirect', url()->full()) !!}
 						<button type="submit" name="delete" class="btn btn-danger btn-xs delete"><i class="fa fa-trash"></i> Hapus</button>
 						{!! Form::close() !!}
 					</td>

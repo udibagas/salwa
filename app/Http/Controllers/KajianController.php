@@ -172,7 +172,7 @@ class KajianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kajian $kajian)
+    public function destroy(Kajian $kajian, Request $request)
     {
         $kajian->delete();
 
@@ -180,7 +180,7 @@ class KajianController extends Controller
 			unlink($kajian->img_kajian_photo);
 		}
 
-		return redirect('kajian/admin')->with('success', 'Data berhasil dihapus');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 
 	// API
