@@ -87,8 +87,10 @@ class KajianController extends Controller
 			'pic_phone' => $request->pic_phone_akhwat,
 		]);
 
-		$kajian->kajian_pic_id = $pic1->pic_id;
-		$kajian->kajian_pic_id2 = $pic2->pic_id;
+		$kajian->update([
+			'kajian_pic_id' => $pic1->pic_id,
+			'kajian_pic_id2' => $pic2->pic_id
+		]);
 
 		return redirect('kajian/admin')->with('success', 'Data berhasil disimpan');
     }

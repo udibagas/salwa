@@ -69,4 +69,14 @@ class Kajian extends Model
 		$list = ['Ahad', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu'];
 		return isset($list[$index]) ? $list[$index] : $list;
 	}
+
+	public function scopeRutin($query)
+	{
+		return $query->where('jenis_kajian', 2);
+	}
+
+	public function scopeTematik($query)
+	{
+		return $query->where('jenis_kajian', 1);
+	}
 }
