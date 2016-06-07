@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\Forum;
 use App\Post;
+use App\PostImage;
+use Gate;
 
 class PostController extends Controller
 {
@@ -15,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('post.index', ['posts' => Post::paginate()]);
+        return view('post.admin', ['posts' => Post::orderBy('created', 'DESC')->paginate()]);
     }
 
     /**
@@ -36,8 +39,30 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        Post::create($request->all());
-		return redirect('/post');
+		$data 				= $request->all();
+		$data['description']= clean($request->description);
+		$data['user_id'] 	= auth()->user()->user_id;
+		$data['createdby'] 	= auth()->user()->name;
+		$data['date']		= date('Y-m-d H:i:s');
+
+		$forum 	= Forum::find($request->forum_id);
+		$post 	= $forum->posts()->create($data);
+
+		if ($request->hasFile('img')) {
+
+			foreach ($request->file('img') as $file) {
+
+	            $fileName = time().'_'.$file->getClientOriginalName();
+	            $file->move('uploads/dirimg_image', $fileName);
+
+				$post->images()->create([
+					'img_image'		=> 'uploads/dirimg_image/'.$fileName,
+					'image_desc' 	=> $file->getClientOriginalName()
+				]);
+			}
+        }
+
+		return redirect()->action('ForumController@show', ['forum' => $forum]);
     }
 
     /**
@@ -59,6 +84,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+		if (Gate::denies('update-post', $post)) {
+			abort(403);
+		}
+
         return view('post.edit', ['post' => $post]);
     }
 
@@ -71,8 +100,31 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        $post->update($request->all());
-		return redirect('/post');
+		if (Gate::denies('update-post', $post)) {
+			abort(403);
+		}
+
+		$data 				= $request->all();
+		$data['description']= clean($request->description);
+		$data['updatedby'] 	= auth()->user()->name;
+
+		$post->update($data);
+
+		if ($request->hasFile('img')) {
+
+			foreach ($request->file('img') as $file) {
+
+	            $fileName = time().'_'.$file->getClientOriginalName();
+	            $file->move('uploads/dirimg_image', $fileName);
+
+				$post->images()->create([
+					'img_image'		=> 'uploads/dirimg_image/'.$fileName,
+					'image_desc' 	=> $file->getClientOriginalName()
+				]);
+			}
+        }
+
+		return redirect()->action('ForumController@show', ['forum' => $post->forum]);
     }
 
     /**
@@ -81,9 +133,36 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post, Request $request)
     {
-        $post->delete();
-		return redirect('/post');
+		if (Gate::denies('delete-post', $post)) {
+			abort(403);
+		}
+
+		$post->delete();
+
+		foreach ($post->images as $image) {
+			$image->delete();
+			if ($image->img_image && file_exists($image->img_image)) {
+				unlink($image->img_image);
+			}
+		}
+
+		return redirect($request->redirect);
     }
+
+	public function deleteImage(PostImage $image, Request $request)
+	{
+		if (Gate::denies('delete-post', $image->post)) {
+			abort(403);
+		}
+
+		$image->delete();
+
+		if ($image->img_image && file_exists($image->img_image)) {
+			unlink($image->img_image);
+		}
+
+		return redirect($request->redirect);
+	}
 }

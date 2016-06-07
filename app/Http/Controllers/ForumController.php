@@ -10,7 +10,6 @@ use App\Http\Requests\ForumRequest;
 use App\Forum;
 use App\Group;
 use App\Post;
-use App\PostImage;
 use Gate;
 
 class ForumController extends Controller
@@ -90,7 +89,7 @@ class ForumController extends Controller
 			'forum' 	=> $forum,
 			'posts'		=> $forum->posts()->orderBy('created', 'ASC')->get(),
 			'terkait'	=> Forum::where('group_id', $forum->group_id)->limit(5)->orderByRaw('RAND()')->get(),
-			'post'		=> new Post
+			'post'		=> new Post(['forum_id' => $forum->forum_id])
 		]);
     }
 
@@ -239,104 +238,6 @@ class ForumController extends Controller
 											// ->orWhere('users.email', 'like', '%'.$request->user.'%');
 							})->orderBy('forums.forum_id', 'DESC')->paginate()
 		]);
-	}
-
-	public function comment(PostRequest $request, Forum $forum)
-	{
-		$data 				= $request->all();
-		$data['description']= clean($request->description);
-		$data['user_id'] 	= auth()->user()->user_id;
-		$data['createdby'] 	= auth()->user()->name;
-		$data['date']		= date('Y-m-d H:i:s');
-
-		$post = $forum->posts()->create($data);
-
-		if ($request->hasFile('img')) {
-
-			foreach ($request->file('img') as $file) {
-
-	            $fileName = time().'_'.$file->getClientOriginalName();
-	            $file->move('uploads/dirimg_image', $fileName);
-
-				$post->images()->create([
-					'img_image'		=> 'uploads/dirimg_image/'.$fileName,
-					'image_desc' 	=> $file->getClientOriginalName()
-				]);
-			}
-        }
-
-		return redirect()->action('ForumController@show', ['forum' => $forum]);
-	}
-
-	public function editPost(Post $post)
-	{
-		if (Gate::denies('update-post', $post)) {
-			abort(403);
-		}
-
-		return view('forum.edit-post', ['post' => $post]);
-	}
-
-	public function updatePost(PostRequest $request, Post $post)
-	{
-		if (Gate::denies('update-post', $post)) {
-			abort(403);
-		}
-
-		$data 				= $request->all();
-		$data['description']= clean($request->description);
-		$data['updatedby'] 	= auth()->user()->name;
-
-		$post->update($data);
-
-		if ($request->hasFile('img')) {
-
-			foreach ($request->file('img') as $file) {
-
-	            $fileName = time().'_'.$file->getClientOriginalName();
-	            $file->move('uploads/dirimg_image', $fileName);
-
-				$post->images()->create([
-					'img_image'		=> 'uploads/dirimg_image/'.$fileName,
-					'image_desc' 	=> $file->getClientOriginalName()
-				]);
-			}
-        }
-
-		return redirect()->action('ForumController@show', ['forum' => $post->forum]);
-	}
-
-	public function deletePost(Post $post)
-    {
-		if (Gate::denies('delete-post', $post)) {
-			abort(403);
-		}
-
-		$post->delete();
-
-		foreach ($post->images as $image) {
-			$image->delete();
-			if ($image->img_image && file_exists($image->img_image)) {
-				unlink($image->img_image);
-			}
-		}
-
-		return redirect('/forum/'.$post->forum_id);
-    }
-
-	public function deleteImage(PostImage $image, Request $request)
-	{
-		if (Gate::denies('delete-post', $image->post)) {
-			abort(403);
-		}
-
-		$image->delete();
-
-		if ($image->img_image && file_exists($image->img_image)) {
-			unlink($image->img_image);
-		}
-
-		return redirect($request->redirect);
 	}
 
 	public function activate(Forum $forum, Request $request)

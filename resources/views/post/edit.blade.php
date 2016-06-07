@@ -1,12 +1,14 @@
 @extends('layouts.main')
 
-@section('title') Edit Komentar @stop
+@section('title', 'Forum : Edit Post')
 
 @section('breadcrumbs')
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'#' => 'EDIT KOMENTAR',
+			'/forum' => 'FORUM',
+			'/forum/'.$post->forum_id => $post->forum->title,
+			'#' => 'Edit Post',
 		]
 	])
 
@@ -14,19 +16,9 @@
 
 @section('content')
 
-	<div class="row">
-		<div class="col-md-3">
-			@include('forum.list-category', [
-				'group' => $post->forum->group,
-				'groups' => \App\Group::forum()->orderBy('group_name', 'ASC')->get()
-			])
-		</div>
-		<div class="col-md-9">
-			<h4 class="title">EDIT KOMENTAR</h4><hr>
-			include('post._form', ['url' => '/post/'.$model->id, 'method' => 'PATCH'])
-		</div>
+	<div class="col-md-offset-2 col-md-8">
+		@include('post._form', ['url' => '/post/'.$post->post_id, 'method' => 'PUT'])
 	</div>
+	<div class="clearfix"></div>
 
-
-
-@endsection
+@stop

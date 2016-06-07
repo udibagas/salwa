@@ -16,8 +16,11 @@
 
 				@can('update-post', $p)
 				<div class="pull-right">
-					<a href="/forum/edit-post/{{$p->post_id}}" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
-					<a href="/forum/delete-post/{{$p->post_id}}/" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Hapus</a>
+					{!! Form::open(['url' => '/post/'.$p->post_id, 'method' => 'DELETE']) !!}
+					<a href="/post/{{$p->post_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
+					{!! Form::hidden('redirect', url()->full()) !!}
+					<button name="delete" type="submit" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Hapus</button>
+					{!! Form::close() !!}
 				</div>
 				@endcan
 			</div>
@@ -28,9 +31,7 @@
 				@if (count($p->images) > 0)
 					<br>
 					<div class="row no-gutter">
-						@foreach ($p->images as $image)
-						@include('forum._list-image')
-						@endforeach
+						@each('post._image', $p->images, 'image')
 					</div>
 					<br>
 				@endif
