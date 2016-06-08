@@ -93,6 +93,18 @@ class ForumController extends Controller
 		]);
     }
 
+    public function baca($slug)
+    {
+		$forum = Forum::where('title_code', $slug)->firstOrFail();
+		
+        return view('forum.show', [
+			'forum' 	=> $forum,
+			'posts'		=> $forum->posts()->orderBy('created', 'ASC')->get(),
+			'terkait'	=> Forum::where('group_id', $forum->group_id)->limit(5)->orderByRaw('RAND()')->get(),
+			'post'		=> new Post(['forum_id' => $forum->forum_id])
+		]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
