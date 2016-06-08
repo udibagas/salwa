@@ -103,6 +103,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::get('baca-artikel/{slug}.html', 'ArtikelController@baca');
 Route::get('baca-forum/{slug}.html', 'ForumController@baca');
+Route::get('baca-hadist/{slug}.html', 'HadistController@baca');
 Route::get('baca-pertanyaan/{slug}.html', 'PertanyaanController@baca');
 Route::get('videos-detail/{slug}.html', 'VideoController@lihat');
 

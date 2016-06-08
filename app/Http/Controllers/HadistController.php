@@ -121,6 +121,26 @@ class HadistController extends Controller
 		]);
     }
 
+    public function baca($slug)
+    {
+		$hadist = Hadist::where('kd_judul', $slug)->firstOrFail();
+
+		if ($hadist->group->group_name == 'Dzikir') {
+			$url = 'dzikir';
+		} else if ($hadist->group->group_name == 'Doa') {
+			$url = 'doa';
+		} else {
+			$url = 'hadist';
+		}
+
+        return view('hadist.show', [
+			'url'		=> $url,
+			'groupName'	=> $hadist->group->group_name,
+			'hadist' 	=> $hadist,
+			'terkait'	=> Hadist::where('group_id', $hadist->group_id)->orderByRaw('RAND()')->limit(10)->get()
+		]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
