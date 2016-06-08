@@ -28,10 +28,10 @@
 			<th>Penanya</th>
 			<th>Gender</th>
 			<th>Tgl Tanya</th>
-			<th>Dijawab</th>
+			<!-- <th>Dijawab</th> -->
 			<th>Tgl Jawab</th>
 			<th>Penjawab</th>
-			<th>Show</th>
+			<!-- <th>Show</th> -->
 			<th style="width:170px;">Action</th>
 		</tr>
 		{!! Form::open(['method' => 'GET']) !!}
@@ -67,7 +67,7 @@
 	<tbody>
 		<?php $i = $pertanyaans->firstItem(); ?>
 		@foreach ($pertanyaans as $p)
-		<tr>
+		<tr class="{{ @if ($p->status == 'h') danger @endif }}">
 			<td>{{ $i++ }}</td>
 			<td>
 				<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">
@@ -77,16 +77,16 @@
 			<td>{{ $p->user->name }}</td>
 			<td>{{ $p->user->jenis_kelamin == 'p' ? 'Pria' : 'Wanita' }}</td>
 			<td>{{ $p->tgl_tanya }}</td>
-			<td>
+			<!-- <td>
 				@if ($p->jawaban)
 					<span class="label label-success">Sudah</span>
 				@else
 					<span class="label label-default">Belum</span>
 				@endif
-			</td>
+			</td> -->
 			<td>{{ $p->tgl_jawab }}</td>
 			<td>{{ $p->ustadz ? $p->ustadz->name : '' }}</td>
-			<td>{!! $p->status == 's' ? '<b class="text-success">Y</b>' : '<b class="text-danger">N</b>' !!}</td>
+			<!-- <td>{!! $p->status == 's' ? '<b class="text-success">Y</b>' : '<b class="text-danger">N</b>' !!}</td> -->
 			<td>
 				{!! Form::open(['method' => 'DELETE', 'url' => '/pertanyaan/'.$p->pertanyaan_id]) !!}
 				{!! Form::hidden('redirect', url()->current()) !!}
