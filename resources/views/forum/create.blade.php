@@ -15,7 +15,7 @@
 
 @section('content')
 
-	<div class="col-md-offset-2 col-md-8">
+	<div class="col-md-offset-2 col-md-8 col-xs-12">
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<h3 class="panel-title">Buat Thread Baru</h3>

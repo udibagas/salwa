@@ -16,7 +16,7 @@
 
 @section('content')
 
-	<div class="col-md-offset-2 col-md-8">
+	<div class="col-md-offset-2 col-md-8 col-xs-12">
 		@include('post._form', ['url' => '/post/'.$post->post_id, 'method' => 'PUT'])
 	</div>
 	<div class="clearfix"></div>

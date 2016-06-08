@@ -15,7 +15,7 @@
 
 @section('content')
 
-	<div class="col-md-offset-2 col-md-8">
+	<div class="col-md-offset-2 col-md-8 col-xs-12">
 		@include('comment.form', [
 			'url' => '/comment/'.$comment->id, 'method' => 'PUT',
 			'header' => 'Edit'

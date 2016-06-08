@@ -5,7 +5,7 @@
 @section('content')
 <br>
     <div class="row">
-		<div class="col-md-9">
+		<div class="col-md-9 hidden-xs">
 			@include('auth._promo')
 		</div>
 
