@@ -15,6 +15,8 @@
 		<link href="/summernote/summernote.css" rel="stylesheet">
 		<link href="/css/app.css" rel="stylesheet">
 		<link href="/css/gallery.css" rel="stylesheet">
+		<link href="/css/comment.css" rel="stylesheet">
+		
 		@stack('css')
 
 		<script type="text/javascript" src="/js/jquery.min.js"></script>

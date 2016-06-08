@@ -21,7 +21,8 @@ class PostController extends Controller
         return view('post.admin', [
 			'posts' => Post::when($request->forum_id, function($query) use ($request) {
 						return $query->where('forum_id', $request->forum_id);
-					})->orderBy('created', 'DESC')->paginate()
+					})->orderBy('created', 'DESC')->paginate(),
+			'forum' => Forum::find($request->forum_id)
 		]);
     }
 
