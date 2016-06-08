@@ -1,4 +1,4 @@
-<div class="row footer">
+<div class="row footer hidden-xs">
 
 	<div class="col-md-6">
 		<h4 class="">TENTANG SALWA</h4>
