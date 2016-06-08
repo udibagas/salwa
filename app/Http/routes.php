@@ -101,6 +101,9 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy', 'edit', 'update']]);
 });
 
+Route::get('baca-artikel/{slug}.html', 'ArtikelController@baca');
+Route::get('videos-detail/{slug}.html', 'VideoController@lihat');
+
 Route::resource('artikel', 'ArtikelController', ['only' => ['index', 'show']]);
 Route::resource('banner', 'BannerController', ['only' => ['index', 'show']]);
 Route::resource('forum', 'ForumController', ['only' => ['index', 'show']]);

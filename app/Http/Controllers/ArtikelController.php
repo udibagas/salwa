@@ -98,6 +98,16 @@ class ArtikelController extends Controller
 		]);
     }
 
+    public function baca($slug)
+    {
+		$artikel = Artikel::where('kd_judul', $slug)->firstOrFail();
+
+        return view('artikel.show', [
+			'artikel' 	=> $artikel,
+			'terkait'	=> Artikel::where('group_id', $artikel->group_id)->orderByRaw('RAND()')->limit(4)->get()
+		]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

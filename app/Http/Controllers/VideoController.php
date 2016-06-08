@@ -101,6 +101,16 @@ class VideoController extends Controller
 		]);
     }
 
+	public function lihat($slug)
+    {
+		$video = Video::where('title_code', $slug)->firstOrFail();
+
+        return view('video.show', [
+			'video' 	=> $video,
+			'terkait'	=> Video::where('user_id', $video->user_id)->orderByRaw('RAND()')->limit(6)->get()
+		]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -158,7 +168,7 @@ class VideoController extends Controller
 		if ($video->img_video && file_exists($video->img_video)) {
 			unlink($video->img_video);
 		}
-		
+
 		return redirect('/video/admin');
     }
 }

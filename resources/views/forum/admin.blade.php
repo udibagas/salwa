@@ -30,8 +30,8 @@
 				<th>Judul</th>
 				<th>User</th>
 				<th>Kategori</th>
-				<!-- <th style="width:150px;">Created At</th> -->
-				<th style="width:150px;">Updated At</th>
+				<th style="width:150px;">Created At</th>
+				<!-- <th style="width:150px;">Updated At</th> -->
 				<th style="width:245px;">Action</th>
 			</tr>
 			{!! Form::open(['method' => 'GET']) !!}
@@ -66,7 +66,7 @@
 			@foreach ($forums as $a)
 				<tr class="@if ($a->status == 'b') danger @endif">
 					<td>{{ $i++ }}</td>
-					<td><a href="/forum/{{ $a->forum_id }}-{{ str_slug($a->title) }}">{{ $a->title }}</a></td>
+					<td><a href="/post/?forum_id={{ $a->forum_id }}">{{ $a->title }}</a></td>
 					<td>{{ $a->user ? $a->user->name : '' }}</td>
 					<td>{{ $a->group ? $a->group->group_name : '' }}</td>
 					<td>{{ $a->created }}</td>
