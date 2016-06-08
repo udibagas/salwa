@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-1">
+	<div class="col-md-1 hidden-xs">
 		<div class="thumbnail">
 			<img class="img-responsive user-photo" @if (auth()->user()->img_user) src="/{{auth()->user()->img_user}}" @else src="/images/nobody.png" @endif">
 		</div>
