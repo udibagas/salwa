@@ -31,7 +31,7 @@
 			<!-- <th>Dijawab</th> -->
 			<th>Tgl Jawab</th>
 			<th>Penjawab</th>
-			<!-- <th>Show</th> -->
+			<th>Show</th>
 			<th style="width:170px;">Action</th>
 		</tr>
 		{!! Form::open(['method' => 'GET']) !!}
@@ -54,9 +54,9 @@
 			<td>
 				{{ Form::select('dijawab_oleh', App\User::ustadz()->orderBy('name')->pluck('name', 'user_id'), request('dijawab_oleh'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
 			</td>
-			<!-- <td>
+			<td>
 				{{ Form::select('status', ['s' => 'Yes', 'h' => 'No'], request('status'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
-			</td> -->
+			</td>
 			<td>
 				<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
 				<a href="/pertanyaan/admin-ustadz" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
@@ -86,7 +86,7 @@
 			</td> -->
 			<td>{{ $p->tgl_jawab }}</td>
 			<td>{{ $p->ustadz ? $p->ustadz->name : '' }}</td>
-			<!-- <td>{!! $p->status == 's' ? '<b class="text-success">Y</b>' : '<b class="text-danger">N</b>' !!}</td> -->
+			<td>{!! $p->status == 's' ? '<b class="text-success">Y</b>' : '<b class="text-danger">N</b>' !!}</td>
 			<td>
 				{!! Form::open(['method' => 'DELETE', 'url' => '/pertanyaan/'.$p->pertanyaan_id]) !!}
 				{!! Form::hidden('redirect', url()->current()) !!}
