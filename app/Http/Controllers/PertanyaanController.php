@@ -126,6 +126,17 @@ class PertanyaanController extends Controller
 		]);
     }
 
+    public function baca($slug)
+    {
+		$pertanyaan = Pertanyaan::where('kd_judul', $slug)->firstOrFail();
+
+        return view('pertanyaan.show', [
+			'pertanyaan' 	=> $pertanyaan,
+			'terkait'		=> Pertanyaan::where('group_id', $pertanyaan->group_id)
+									->show()->orderByRaw('RAND()')->limit(5)->get()
+		]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
