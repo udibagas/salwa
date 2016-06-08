@@ -25,7 +25,7 @@
 	</div>
 
 	<div class="col-md-9">
-		<h1>{{ $forum->title }}</h1>
+		<h2>{{ $forum->title }}</h2>
 		<hr>
 		@include('layouts._share')
 

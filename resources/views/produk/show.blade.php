@@ -21,7 +21,7 @@
 	</div>
 
 	<div class="col-md-9">
-		<h1>{{ $produk->judul }}</h1><hr />
+		<h2>{{ $produk->judul }}</h2><hr />
 
 		<div class="row">
 			<div class="col-md-7">

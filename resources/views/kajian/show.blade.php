@@ -19,9 +19,9 @@
 			@include('kajian._group')
 		</div>
 		<div class="col-md-9">
-			<h1>{{ $kajian->kajian_tema }}</h1>
+			<h2>{{ $kajian->kajian_tema }}</h2>
 			<br>
-			<div class="alert alert-info">
+			<div class="">
 				<p>
 					Pemateri:<br />
 					<strong>{{ $kajian->ustadz ? $kajian->ustadz->ustadz_name : ''}}</strong>

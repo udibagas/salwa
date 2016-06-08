@@ -20,7 +20,7 @@
 		@include('informasi._group')
 	</div>
 	<div class="col-md-9">
-		<h1>{{ $informasi->judul }}</h1>
+		<h2>{{ $informasi->judul }}</h2>
 		<i class="fa fa-clock-o"></i> {{ $informasi->updated->diffForHumans() }}
 		<hr>
 

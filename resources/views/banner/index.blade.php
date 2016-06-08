@@ -16,10 +16,11 @@
 
 	<div class="row">
 		<div class="col-md-12">
+
 			@foreach ($banners as $p)
-				@foreach ($p->positions as $a)
-				<p><a href="{{ $a->url }}" target="_blank"><img src="/{{ $a->img_banner }}" alt="{{ $p->name }}" class="img-responsive" style="width:100%" /></a></p>
-				@endforeach
+				@if ($pos = $p->positions()->first())
+				<p><a href="{{ $pos->pivot->url }}" target="_blank"><img src="/{{ $pos->pivot->img_banner }}" alt="{{ $p->name }}" class="img-responsive" style="max-width:100%" /></a></p>
+				@endif
 			@endforeach
 
 			<nav class="text-center">

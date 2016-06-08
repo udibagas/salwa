@@ -20,7 +20,7 @@
 		@include('peduli._group')
 	</div>
 	<div class="col-md-9">
-		<h1>{{ $peduli->judul }}</h1>
+		<h2>{{ $peduli->judul }}</h2>
 		<i class="fa fa-clock-o"></i> {{ $peduli->updated->diffForHumans() }}
 		<br /><br />
 

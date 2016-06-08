@@ -22,7 +22,7 @@
 	<div class="col-md-9">
 		<!-- include('home.promo', ['promo' => \App\Banner::active()->get()]) -->
 
-		<h1>{{ $artikel->judul }}</h1>
+		<h2>{{ $artikel->judul }}</h2>
 
 		<i class="fa fa-user"></i> {{ $artikel->user ? $artikel->user->name : '' }}
 		<i class="fa fa-clock-o"></i> {{ $artikel->updated->diffForHumans() }}

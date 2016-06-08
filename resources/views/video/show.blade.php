@@ -20,7 +20,7 @@
 		@include('video._group')
 	</div>
 	<div class="col-md-9">
-		<h1>{{ $video->title }}</h1>
+		<h2>{{ $video->title }}</h2>
 		<i class="fa fa-user"></i> {{ $video->user ? $video->user->name : '' }}
 		<i class="fa fa-clock-o"></i> {{ $video->updated->diffForHumans() }}
 		<hr />
