@@ -6,7 +6,7 @@
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'#' => 'TANYA USTADZ',
+			'#' => 'PERTANYAAN MASUK',
 		]
 	])
 
@@ -14,7 +14,7 @@
 
 @section('content')
 
-<h4 class="title"><i class="fa fa-question-circle"></i> PERTANYAAN MASUK</h4>
+<!-- <h4 class="title"><i class="fa fa-question-circle"></i> PERTANYAAN MASUK</h4> -->
 
 <div class="text-right text-bold" style="padding:10px;">
 	Showing {{ $pertanyaans->firstItem() }} to {{ $pertanyaans->lastItem() }} of {{ $pertanyaans->total() }} entries
