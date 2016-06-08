@@ -47,16 +47,16 @@
 				{{ Form::select('jenis_kelamin', ['p' => 'Pria', 'w' => 'Wanita'], request('jenis_kelamin'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
 			</td>
 			<td></td>
-			<td>
+			<!-- <td>
 				{{ Form::select('jawaban', ['belum' => 'Belum', 'sudah' => 'Sudah'], request('status'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
-			</td>
+			</td> -->
 			<td></td>
 			<td>
 				{{ Form::select('dijawab_oleh', App\User::ustadz()->orderBy('name')->pluck('name', 'user_id'), request('dijawab_oleh'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
 			</td>
-			<td>
+			<!-- <td>
 				{{ Form::select('status', ['s' => 'Yes', 'h' => 'No'], request('status'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
-			</td>
+			</td> -->
 			<td>
 				<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
 				<a href="/pertanyaan/admin-ustadz" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
@@ -67,7 +67,7 @@
 	<tbody>
 		<?php $i = $pertanyaans->firstItem(); ?>
 		@foreach ($pertanyaans as $p)
-		<tr class="">
+		<tr class="@if ($p->status == 'h') danger @endif">
 			<td>{{ $i++ }}</td>
 			<td>
 				<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">
