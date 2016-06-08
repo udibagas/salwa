@@ -34,11 +34,11 @@
 		@push('script')
 		<script type="text/javascript">
 
-			// var playlist = [{file:"/uploads/dirfile_upload/mib_201112191256457757_ubjumatan1AFLV.flv",image:"/uploads/dirimg_file/mib_201111041505263076_1.jpg",title:"Khutbah Jumat - Keutamaan 10 hari bulan Dzulhijjah"},{file:"/uploads/dirfile_upload/mib_201112191256454036_ubjumatan1BFLV.flv",image:"/uploads/dirimg_file/mib_201111041505262181_2.jpg",title:"Khutbah Jumat - Keutamaan 10 hari bulan Dzulhijjah"},{file:"/uploads/dirfile_upload/mib_201112191256455148_ubjumatan1CFLV.flv",image:"/uploads/dirimg_file/mib_201111041505267596_3.jpg",title:"Khutbah Jumat - Keutamaan 10 hari bulan Dzulhijjah"},{file:"/uploads/dirfile_upload/mib_201112191256456719_ubjumatan1DFLV.flv",image:"/uploads/dirimg_file/mib_201111041505268832_4.jpg",title:"Khutbah Jumat - Keutamaan 10 hari bulan Dzulhijjah"}];
-
 			var playlist = {!! json_encode($video->files()->web()->selectRaw('concat("/",file_upload) as file, img_file as image, "'.$video->title.'" as title')->get(), JSON_UNESCAPED_SLASHES) !!};
 
-			jwplayer("video").setup({
+			var player = jwplayer('video');
+
+			player.setup({
 		        playlist: playlist,
 				width: 600,
 				height: 300
