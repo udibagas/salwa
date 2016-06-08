@@ -67,7 +67,7 @@
 	<tbody>
 		<?php $i = $pertanyaans->firstItem(); ?>
 		@foreach ($pertanyaans as $p)
-		<tr class="{{ @if ($p->status == 'h') danger @endif }}">
+		<tr class="">
 			<td>{{ $i++ }}</td>
 			<td>
 				<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">
