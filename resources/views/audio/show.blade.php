@@ -16,11 +16,11 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-3 hidden-xs">
 		@include('audio._group')
 	</div>
 	<div class="col-md-6">
-		<h1>{{ $audio->judul }}</h1>
+		<h2>{{ $audio->judul }}</h2>
 		<i class="fa fa-clock-o"></i> {{ $audio->updated->diffForHumans() }}
 		<hr>
 

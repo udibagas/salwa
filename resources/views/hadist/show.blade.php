@@ -17,7 +17,7 @@
 
 <div class="row">
 
-	<div class="col-md-3">
+	<div class="col-md-3 hidden-xs">
 		@include('hadist._group')
 	</div>
 
@@ -42,7 +42,7 @@
 		</div>
 
 	</div>
-	<div class="col-md-3">
+	<div class="col-md-3 hidden-xs">
 		<div class="panel panel-blue">
 			<div class="panel-heading">
 				<h4 class="panel-title">HADIST TERKAIT</h4>
