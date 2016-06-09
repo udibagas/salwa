@@ -8,7 +8,7 @@
 		'breadcrumbs' => [
 			'/forum' => 'FORUM',
 			'/forum-category/'.$forum->group_id.'-'.str_slug($forum->group->group_name) => $forum->group->group_name,
-			'#' => $forum->title
+			'#' => str_limit($forum->title)
 		]
 	])
 

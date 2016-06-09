@@ -7,7 +7,7 @@
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
 			'/informasi' => 'INFORMASI',
-			'#' => $informasi->judul
+			'#' => str_limit($informasi->judul)
 		]
 	])
 

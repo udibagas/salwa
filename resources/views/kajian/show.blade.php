@@ -6,7 +6,8 @@
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'/kajian' => 'KAJIAN'
+			'/kajian' => 'KAJIAN',
+			'#' => str_limit($kajian->kajian_tema)
 		]
 	])
 

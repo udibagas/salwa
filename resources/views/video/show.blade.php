@@ -7,7 +7,7 @@
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
 			'/video' => 'VIDEO',
-			'#' => $video->title
+			'#' => str_limit($video->title)
 		]
 	])
 
