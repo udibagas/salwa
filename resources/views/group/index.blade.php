@@ -31,6 +31,7 @@
 					<th style="width:220px;">Name</th>
 					<th>Type</th>
 					<th>Description</th>
+					<th>Deleted</th>
 					<th style="width:170px;">Action</th>
 				</tr>
 				{!! Form::open(['method' => 'GET']) !!}
@@ -40,10 +41,13 @@
 						<input type="text" name="group_name" value="{{ request('group_name') }}" placeholder="Name" class="form-control">
 					</td>
 					<td>
-						{{ Form::select('type', \App\Group::typeList(), request('type'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
+						{{ Form::select('type', \App\Group::active()->typeList(), request('type'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
 					</td>
 					<td>
 						<input type="text" name="description" value="{{ request('description') }}" placeholder="Description" class="form-control">
+					</td>
+					<td>
+						{!! Form::select('delete', ['Y' => 'Y', 'N' => 'N'], request('delete'), ['class' => 'form-control', 'placeholder' => '-All-']) !!}
 					</td>
 					<td>
 						<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
@@ -55,11 +59,12 @@
 			<tbody>
 				<?php $i = $groups->firstItem(); ?>
 				@foreach ($groups as $g)
-				<tr>
+				<tr class="@if ($g->delete == 'Y') danger @endif">
 					<td>{{ $i++ }}</td>
 					<td>{{ $g->group_name }}</td>
 					<td>{{ $g->type }}</td>
 					<td>{{ $g->description }}</td>
+					<td>{{ $g->delete }}</td>
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/group/'.$g->group_id]) !!}
 						<a href="/group/{{ $g->group_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>

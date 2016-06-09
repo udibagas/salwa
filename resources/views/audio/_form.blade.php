@@ -19,7 +19,7 @@
 				<label for="group_id" class="col-md-2 control-label">Group:</label>
 				<div class="col-md-10">
 					{{ Form::select('group_id',
-						\App\Group::audio()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
+						\App\Group::active()->audio()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
 						$audio->group_id, [
 							'class' => 'form-control',
 							'placeholder' => '-- Pilih Kategori Audio --'

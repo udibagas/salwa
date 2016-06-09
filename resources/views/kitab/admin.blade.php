@@ -44,7 +44,7 @@
 					<input type="text" name="penulis" value="{{ request('penulis') }}" class="form-control" placeholder="Penulis">
 				</td>
 				<td>
-					{!! Form::select('group_id', \App\Group::kitab()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'), request('group_id'), ['class' => 'form-control', 'placeholder' => '-All-']) !!}
+					{!! Form::select('group_id', \App\Group::active()->kitab()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'), request('group_id'), ['class' => 'form-control', 'placeholder' => '-All-']) !!}
 				</td>
 				<td></td>
 				<td></td>

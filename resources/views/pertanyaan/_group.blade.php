@@ -20,7 +20,7 @@
 		SEMUA KATEGORI
 		<span class="badge">{{ \App\Pertanyaan::count() }}</span>
 	</a>
-	@foreach (\App\Group::pertanyaan()->orderBy('group_name', 'ASC')->get() as $g)
+	@foreach (\App\Group::active()->pertanyaan()->orderBy('group_name', 'ASC')->get() as $g)
 	<a href="/pertanyaan?search={{ request('search') }}&group_id={{ $g->group_id }}" class="list-group-item info @if (request('group_id') == $g->group_id) active @endif">
 		{{ $g->group_name }}
 		<span class="badge">{{ $g->pertanyaans->count() }}</span>

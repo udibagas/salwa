@@ -45,7 +45,7 @@
 				</td>
 				<td>
 					{{ Form::select('group_id',
-						\App\Group::forum()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
+						\App\Group::active()->forum()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
 						request('group_id'), [
 							'class' => 'form-control',
 							'placeholder' => '-- All --'

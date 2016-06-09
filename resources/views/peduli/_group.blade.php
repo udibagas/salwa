@@ -9,7 +9,7 @@
 		SEMUA KATEGORI
 		<span class="badge">{{ \App\Peduli::count() }}</span>
 	</a>
-	@foreach (\App\Group::peduli()->orderBy('group_name', 'ASC')->get() as $g)
+	@foreach (\App\Group::active()->peduli()->orderBy('group_name', 'ASC')->get() as $g)
 	<a href="/peduli?search={{ request('search') }}&group_id={{ $g->group_id }}" class="list-group-item info @if (request('group_id') == $g->group_id) active @endif">
 		{{ $g->group_name }} <span class="badge">{{ $g->pedulis->count() }}</span>
 	</a>

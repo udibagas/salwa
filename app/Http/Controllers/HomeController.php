@@ -76,7 +76,7 @@ class HomeController extends Controller
 			'infoHome'	=> Informasi::limit(3)->orderBy('updated', 'DESC')->get(),
 			'videoRandom' 	=> Video::limit(9)->orderByRaw('RAND()')->get(),
 			'pertanyaan'	=> Pertanyaan::limit(5)->show()->dijawab()->orderBy('pertanyaan_id', 'DESC')->get(),
-			'forumKategori'	=> Group::forum()->has('forums')->limit(10)->get(),
+			'forumKategori'	=> Group::active()->ofType('forum')->has('forums')->limit(10)->get(),
 		]);
     }
 

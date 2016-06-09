@@ -20,7 +20,7 @@
 	<div class="col-md-3 hidden-xs">
 		@include('forum._group', [
 			'group' => $forum->group,
-			'groups' => \App\Group::forum()->orderBy('group_name', 'ASC')->get()
+			'groups' => \App\Group::active()->forum()->orderBy('group_name', 'ASC')->get()
 		])
 	</div>
 

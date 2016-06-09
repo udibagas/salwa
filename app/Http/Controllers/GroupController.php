@@ -132,23 +132,21 @@ class GroupController extends Controller
     {
 		// if (count($group->forums) || count($group->artikels)
 		// || count($group->informasis) || count($group->hadists)
-		// || count($group->pedulis) || count($group->produks))
+		// || count($group->audios) || count($group->murottals)
+		// || count($group->pedulis) || count($group->pertanyaans)
+		// || count($group->kitabs) || count($group->produks)
+		// || count($group->images) || count($group->banners))
+		// {
+		// 	return redirect('/group')->with('error', 'Group gagal dihapus karena digunakan');
+		// }
 
-		if (count($group->forums) || count($group->artikels)
-		|| count($group->informasis) || count($group->hadists)
-		|| count($group->audios) || count($group->murottals)
-		|| count($group->pedulis) || count($group->pertanyaans)
-		|| count($group->kitabs) || count($group->produks)
-		|| count($group->images) || count($group->banners))
-		{
-			return redirect('/group')->with('error', 'Group gagal dihapus karena digunakan');
-		}
+        // $group->delete();
 
-        $group->delete();
+		// if ($group->img_group && file_exists($group->img_group)) {
+		// 	unlink($group->img_group);
+		// }
 
-		if ($group->img_group && file_exists($group->img_group)) {
-			unlink($group->img_group);
-		}
+		$group->update(['delete' => 'Y']);
 
 		return redirect('/group')->with('success', 'Data berhasil dihapus');
     }

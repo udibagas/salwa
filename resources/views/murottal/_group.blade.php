@@ -8,7 +8,7 @@
 	<a href="/murottal?search={{ request('search') }}" class="list-group-item info @if (request('group_id') == null) active @endif">
 		SEMUA KATEGORI <span class="badge">{{ \App\Murottal::count() }}</span>
 	</a>
-	@foreach (\App\Group::murottal()->orderBy('group_name', 'ASC')->get() as $g)
+	@foreach (\App\Group::active()->murottal()->orderBy('group_name', 'ASC')->get() as $g)
 	<a href="/murottal?search={{ request('search') }}&group_id={{ $g->group_id }}" class="list-group-item info @if (request('group_id') == $g->group_id) active @endif">
 		{{ $g->group_name }} <span class="badge">{{ $g->murottals->count() }}</span>
 	</a>

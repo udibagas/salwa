@@ -17,7 +17,7 @@
 		<label for="group_id" class="col-md-2 control-label">Kategori:</label>
 		<div class="col-md-10">
 			{{ Form::select('group_id',
-				\App\Group::forum()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
+				\App\Group::active()->forum()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
 				$forum->group_id, [
 					'class' => 'form-control',
 					'placeholder' => '-- Pilih Kategori --'

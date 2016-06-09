@@ -41,7 +41,7 @@
 					<input type="text" name="judul" value="{{ request('judul') }}" class="form-control" placeholder="Judul">
 				</td>
 				<td>
-					{!! Form::select('group_id', \App\Group::produk()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'), request('group_id'), ['class' => 'form-control', 'placeholder' => '-All-']) !!}
+					{!! Form::select('group_id', \App\Group::active()->produk()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'), request('group_id'), ['class' => 'form-control', 'placeholder' => '-All-']) !!}
 				</td>
 				<td>
 					<input type="text" name="penulis" value="{{ request('penulis') }}" class="form-control" placeholder="Penulis">

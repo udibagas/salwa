@@ -44,7 +44,7 @@
 					<input type="text" name="user" value="{{ request('user') }}" class="form-control" placeholder="User">
 				</td>
 				<td>
-					{!! Form::select('group_id', \App\Group::artikel()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'), request('group_id'), ['class' => 'form-control', 'placeholder' => '-All-']) !!}
+					{!! Form::select('group_id', \App\Group::active()->artikel()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'), request('group_id'), ['class' => 'form-control', 'placeholder' => '-All-']) !!}
 				</td>
 				<td></td>
 				<td></td>

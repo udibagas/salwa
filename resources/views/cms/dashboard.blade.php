@@ -39,7 +39,7 @@
 					</h3>
 				</div>
 				<div class="panel-body">
-					<h1>{{ \App\Group::count() }}</h1>
+					<h1>{{ \App\Group::active()->count() }}</h1>
 				</div>
 			</div>
 		</a>

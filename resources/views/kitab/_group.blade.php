@@ -9,7 +9,7 @@
 		SEMUA KATEGORI
 		<span class="badge">{{ \App\Buku::count() }}</span>
 	</a>
-	@foreach (\App\Group::kitab()->orderBy('group_name', 'ASC')->get() as $g)
+	@foreach (\App\Group::active()->kitab()->orderBy('group_name', 'ASC')->get() as $g)
 	<a href="/kitab?search={{ request('search') }}&group_id={{ $g->group_id }}" class="list-group-item info @if (request('group_id') == $g->group_id) active @endif">
 		{{ $g->group_name }}
 		<span class="badge">{{ $g->kitabs->count() }}</span>

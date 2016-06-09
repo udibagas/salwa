@@ -19,7 +19,7 @@
 				<label for="group_id" class="col-md-3 control-label">Kategori:</label>
 				<div class="col-md-9">
 					{{ Form::select('group_id',
-						\App\Group::produk()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
+						\App\Group::active()->produk()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
 						$produk->group_id, [
 							'class' => 'form-control',
 							'placeholder' => '-- Pilih Kategori --'

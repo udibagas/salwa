@@ -32,7 +32,7 @@
 				<label for="group_id" class="col-md-3 control-label">Kategori:</label>
 				<div class="col-md-9">
 					{{ Form::select('group_id',
-						\App\Group::kitab()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
+						\App\Group::active()->kitab()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
 						$kitab->group_id, [
 							'class' => 'form-control',
 							'placeholder' => '-- Pilih Kategori --'

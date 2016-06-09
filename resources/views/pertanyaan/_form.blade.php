@@ -16,7 +16,7 @@
 <div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
 	<label for="group_id" class="control-label col-md-3">Kategori Pertanyaan:</label>
 	<div class="col-md-9">
-		{{ Form::select('group_id', \App\Group::pertanyaan()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'), $pertanyaan->group_id, ['class' => 'form-control', 'placeholder' => '-- Kategori Pertanyaan --']) }}
+		{{ Form::select('group_id', \App\Group::active()->pertanyaan()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'), $pertanyaan->group_id, ['class' => 'form-control', 'placeholder' => '-- Kategori Pertanyaan --']) }}
 
 		@if ($errors->has('group_id'))
 		<span class="help-block">

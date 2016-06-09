@@ -9,7 +9,7 @@
 		SEMUA KATEGORI
 		<span class="pull-right badge">{{ \App\Hadist::count() }}</span>
 	</a>
-	@foreach (\App\Group::hadist()->orderBy('group_name', 'ASC')->get() as $g)
+	@foreach (\App\Group::active()->hadist()->orderBy('group_name', 'ASC')->get() as $g)
 	<a href="/hadist?search={{ request('search') }}&group_id={{ $g->group_id }}" class="list-group-item info @if (request('group_id') == $g->group_id) active @endif">
 		{{ $g->group_name }}
 		<span class="pull-right badge">{{ $g->hadists->count() }}</span>
