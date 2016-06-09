@@ -41,7 +41,7 @@
 						<input type="text" name="group_name" value="{{ request('group_name') }}" placeholder="Name" class="form-control">
 					</td>
 					<td>
-						{{ Form::select('type', \App\Group::active()->typeList(), request('type'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
+						{{ Form::select('type', \App\Group::typeList(), request('type'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
 					</td>
 					<td>
 						<input type="text" name="description" value="{{ request('description') }}" placeholder="Description" class="form-control">
@@ -76,7 +76,7 @@
 			</tbody>
 		</table>
 		<div class="panel-footer text-center">
-			{!! $groups->appends(['group_name' => request('group_name'),'type' => request('type'),'description' => request('description')])->links() !!}
+			{!! $groups->appends(['group_name' => request('group_name'),'type' => request('type'),'description' => request('description'),'delete' => request('delete')])->links() !!}
 		</div>
 	</div>
 

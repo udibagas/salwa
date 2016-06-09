@@ -18,10 +18,12 @@ class GroupController extends Controller
     public function index(Request $request)
     {
         return view('group.index', [
-			'groups' => Group::when($request->group_name, function($query) use ($request) {
+			'groups' => Group::active()->when($request->group_name, function($query) use ($request) {
 							return $query->where('group_name', 'like', '%'.$request->group_name.'%');
 						})->when($request->description, function($query) use ($request) {
 							return $query->where('description', 'like', '%'.$request->description.'%');
+						})->when($request->delete, function($query) use ($request) {
+							return $query->where('delete', $request->delete);
 						})->when($request->type, function($query) use ($request) {
 							return $query->where('type', $request->type);
 						})->orderBy('group_name', 'ASC')->paginate()
@@ -62,7 +64,7 @@ class GroupController extends Controller
 
         }
 
-		Group::create($data);
+		Group::active()->create($data);
 
 		return redirect('/group')->with('success', 'Data berhasil disimpan');
     }
