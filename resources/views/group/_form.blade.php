@@ -17,7 +17,7 @@
 			<div class="form-group @if ($errors->has('type')) has-error @endif">
 				<label for="type" class="col-md-3 control-label">Type:</label>
 				<div class="col-md-9">
-					{!! Form::select('type', \App\Group::active()->typeList(), $group->type, ['class' => 'form-control', 'placeholder' => '- Type -']) !!}
+					{!! Form::select('type', \App\Group::typeList(), $group->type, ['class' => 'form-control', 'placeholder' => '- Type -']) !!}
 					@if ($errors->has('type'))
 						<span class="help-block">
 							<strong>{{ $errors->first('type') }}</strong>
