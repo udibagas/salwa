@@ -103,9 +103,9 @@ class LokasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lokasi $lokasi)
+    public function destroy(Lokasi $lokasi, Request $request)
     {
         $lokasi->delete();
-		return redirect('/lokasi')->with('success', 'Data berhasil disimpan');
+		return redirect($request->redirect)->with('success', 'Data berhasil disimpan');
     }
 }

@@ -106,9 +106,9 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Area $area)
+    public function destroy(Area $area, Request $request)
     {
 		$area->delete();
-		return redirect('/area')->with('success', 'Data berhasil disimpan');
+		return redirect($request->redirect)->with('success', 'Data berhasil disimpan');
     }
 }

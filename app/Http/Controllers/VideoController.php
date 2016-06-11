@@ -27,6 +27,25 @@ class VideoController extends Controller
 		]);
     }
 
+    public function apiIndex(Request $request)
+    {
+		$search = str_replace(' ', '%', $request->search);
+
+        $data = Video::selectRaw('video_id AS id, title, url_video_youtube AS yotube_id, img_video AS image, videos.created, users.name AS category')
+				->join('users', 'users.user_id', '=', 'videos.user_id')
+				->video()->when($search, function($query) use ($search) {
+					return $query->where('title', 'like', '%'.$search.'%');
+				})->when($request->user_id, function($query) use ($request) {
+					return $query->where('user_id', $request->user_id);
+				})->orderBy('videos.created', 'DESC')->paginate(10);
+
+		return response()->json([
+			'results'	=> $data->items(),
+			'total'		=> $data->total(),
+			'pages'		=> $data->lastPage(),
+		]);
+    }
+
     public function admin(Request $request)
     {
 		$title = str_replace(' ', '%', $request->title);
@@ -101,6 +120,11 @@ class VideoController extends Controller
 		]);
     }
 
+    public function apiShow(Video $video)
+    {
+        return $video;
+    }
+
 	public function lihat($slug)
     {
 		$video = Video::where('title_code', $slug)->firstOrFail();
@@ -161,7 +185,7 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Video $video)
+    public function destroy(Video $video, Request $request)
     {
         $video->delete();
 
@@ -169,6 +193,6 @@ class VideoController extends Controller
 			unlink($video->img_video);
 		}
 
-		return redirect('/video/admin');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 }

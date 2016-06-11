@@ -133,7 +133,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $user, Request $request)
     {
 		$user->delete();
 
@@ -141,6 +141,6 @@ class UserController extends Controller
 			unlink($user->img_user);
 		}
 
-		return redirect('/user');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 }

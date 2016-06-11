@@ -29,11 +29,11 @@ class AudioController extends Controller
 
     public function admin(Request $request)
     {
-		$search = str_replace(' ', '%', $request->search);
+		$judul = str_replace(' ', '%', $request->judul);
 
         return view('audio.admin', [
-			'audios' => Mp3::when($search, function($query) use ($search) {
-						return $query->where('judul', 'like', '%'.$search.'%');
+			'audios' => Mp3::when($judul, function($query) use ($judul) {
+						return $query->where('judul', 'like', '%'.$judul.'%');
 					})->when($request->group_id, function($query) use ($request) {
 						return $query->where('group_id', $request->group_id);
 					})->orderBy('updated', 'DESC')->paginate()
@@ -142,15 +142,15 @@ class AudioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mp3 $audio)
+    public function destroy(Mp3 $audio, Request $request)
     {
         $audio->delete();
 
 		if ($audio->file_mp3 && file_exists($audio->file_mp3)) {
 			unlink($audio->file_mp3);
 		}
-		
-		return redirect('/audio/admin');
+
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 
 	public function download(Mp3 $audio)

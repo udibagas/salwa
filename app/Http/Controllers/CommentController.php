@@ -118,7 +118,7 @@ class CommentController extends Controller
     public function destroy(Comment $comment, Request $request)
     {
         $comment->delete();
-		return redirect($request->redirect);
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 
 	public function approve(Comment $comment, Request $request)

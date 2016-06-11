@@ -22,14 +22,6 @@
 		<div class="col-md-9">
 			<h4 class="title"><i class="fa fa-microphone"></i> MUROTTAL QURAN</h4>
 			<table class="table table-hover table-striped">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Nama Surat</th>
-						<th>Play</th>
-						<th>Download</th>
-					</tr>
-				</thead>
 				<tbody>
 					<?php $i = $murottals->firstItem(); ?>
 					@foreach ($murottals as $m)
@@ -39,8 +31,7 @@
 						<td>
 							<audio controls="controls" preload="none"><source src="/{{ $m->file_mp3 }}" type="application/ogg"></source></audio>
 						</td>
-						<td style="width:200px;">
-							<!-- <a href="/{{ $m->file_mp3 }}" class="btn btn-info play"><span class="fa fa-play"></span> Play</a> -->
+						<td class="text-right">
 							<a href="/murottal/{{ $m->murotal_id }}/download" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
 						</td>
 					</tr>
@@ -55,31 +46,3 @@
 	</div>
 
 @stop
-
-@push('script')
-
-	<script type="text/javascript">
-
-
-		$(document).on('click', '.fa-play', function() {
-			var audio = new Audio(this.href);
-			audio.play();
-			$(this).removeClass('fa-play');
-			$(this).addClass('fa-pause');
-		});
-
-		$(document).on('click', '.fa-pause', function() {
-			var audio = new Audio(this.href);
-			audio.pause();
-			$(this).removeClass('fa-pause');
-			$(this).addClass('fa-play');
-		});
-
-		// $('.play').click(function(e) {
-		// 	e.preventDefault();
-		//
-		// 	audio.play();
-		// });
-	</script>
-
-@endpush

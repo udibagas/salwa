@@ -179,10 +179,10 @@ class HadistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hadist $hadist)
+    public function destroy(Hadist $hadist, Request $request)
     {
         $hadist->delete();
-		return redirect('/hadist/admin');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 
 	// API

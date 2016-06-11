@@ -29,11 +29,11 @@ class ImageController extends Controller
 
 	public function admin(Request $request)
     {
-		$search = str_replace(' ', '%', $request->search);
+		$judul = str_replace(' ', '%', $request->judul);
 
         return view('image.admin', [
-			'images' => SalwaImages::when($search, function($query) use ($search) {
-						return $query->where('judul', 'like', '%'.$search.'%');
+			'images' => SalwaImages::when($judul, function($query) use ($judul) {
+						return $query->where('judul', 'like', '%'.$judul.'%');
 					})->when($request->group_id, function($query) use ($request) {
 						return $query->where('group_id', $request->group_id);
 					})->orderBy('updated', 'DESC')->paginate()
@@ -143,7 +143,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SalwaImages $image)
+    public function destroy(SalwaImages $image, Request $request)
     {
         $image->delete();
 
@@ -151,7 +151,7 @@ class ImageController extends Controller
 			unlink($image->img_images);
 		}
 
-		return redirect('image/admin');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 
 	public function apiIndex()

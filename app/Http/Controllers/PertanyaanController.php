@@ -219,6 +219,6 @@ class PertanyaanController extends Controller
 		}
 
         $pertanyaan->delete();
-		return redirect($request->redirect);
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 }

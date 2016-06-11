@@ -171,7 +171,7 @@ class KitabController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Buku $kitab)
+    public function destroy(Buku $kitab, Request $request)
     {
         $kitab->delete();
 
@@ -183,7 +183,7 @@ class KitabController extends Controller
 			unlink($kitab->img_buku);
 		}
 
-		return redirect('/kitab/admin');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 
 	public function download(Buku $kitab)

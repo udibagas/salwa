@@ -89,7 +89,7 @@
 			<td>{!! $p->status == 's' ? '<b class="text-success">Y</b>' : '<b class="text-danger">N</b>' !!}</td>
 			<td>
 				{!! Form::open(['method' => 'DELETE', 'url' => '/pertanyaan/'.$p->pertanyaan_id]) !!}
-				{!! Form::hidden('redirect', url()->current()) !!}
+				{!! Form::hidden('redirect', url()->full()) !!}
 				<a href="/pertanyaan/{{ $p->pertanyaan_id }}/jawab" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Jawab</a>
 				<button type="submit" name="delete" class="btn btn-danger btn-xs delete"><i class="fa fa-trash"></i> Hapus</button>
 				{!! Form::close() !!}

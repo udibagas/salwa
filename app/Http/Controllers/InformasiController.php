@@ -183,7 +183,7 @@ class InformasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Informasi $informasi)
+    public function destroy(Informasi $informasi, Request $request)
     {
         $informasi->delete();
 
@@ -200,7 +200,7 @@ class InformasiController extends Controller
 			}
 		}
 
-		return redirect('/informasi/admin');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 
 	public function deleteFile(InformasiFile $file)

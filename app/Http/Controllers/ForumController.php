@@ -96,7 +96,7 @@ class ForumController extends Controller
     public function baca($slug)
     {
 		$forum = Forum::where('title_code', $slug)->firstOrFail();
-		
+
         return view('forum.show', [
 			'forum' 	=> $forum,
 			'posts'		=> $forum->posts()->orderBy('created', 'ASC')->get(),
@@ -185,7 +185,7 @@ class ForumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Forum $forum)
+    public function destroy(Forum $forum, Request $request)
     {
 		if (Gate::denies('delete-forum', $forum)) {
 			abort(403);
@@ -205,7 +205,7 @@ class ForumController extends Controller
 			}
 		}
 
-		return redirect('/forum/admin');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 
 	public function category(Group $group)

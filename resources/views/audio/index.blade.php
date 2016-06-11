@@ -23,14 +23,6 @@
 		<div class="col-md-9">
 			<h4 class="title"><i class="fa fa-music"></i> SALWA AUDIO</h4>
 			<table class="table table-hover table-striped">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Judul</th>
-						<th>Play</th>
-						<th>Download</th>
-					</tr>
-				</thead>
 				<tbody>
 					<?php $i = $audios->firstItem(); ?>
 					@foreach ($audios as $m)
@@ -40,8 +32,7 @@
 						<td>
 							<audio controls="controls" preload="none"><source src="/{{ $m->file_mp3 }}" type="application/ogg"></source></audio>
 						</td>
-						<td style="width:200px;">
-							<!-- <a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}" class="btn btn-info"><i class="fa fa-play"></i> Play</a> -->
+						<td class="text-right">
 							<a href="/audio/{{ $m->mp3_download_id }}/download" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
 						</td>
 					</tr>

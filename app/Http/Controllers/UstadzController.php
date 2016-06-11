@@ -101,10 +101,10 @@ class UstadzController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ustadz $ustadz)
+    public function destroy(Ustadz $ustadz, Request $request)
     {
 		$ustadz->delete();
-		return redirect('/ustadz/admin')->with('success', 'Data berhasil disimpan');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 
 	// API

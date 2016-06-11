@@ -138,7 +138,7 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produk $produk)
+    public function destroy(Produk $produk, Request $request)
     {
         $produk->delete();
 
@@ -146,6 +146,6 @@ class ProdukController extends Controller
 			unlink($produk->img_buku);
 		}
 
-		return redirect('/produk/admin');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 }

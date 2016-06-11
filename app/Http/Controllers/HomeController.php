@@ -19,6 +19,7 @@ use App\Informasi;
 use App\Mp3;
 use App\Post;
 use Instagram;
+use BrowserDetect;
 
 class HomeController extends Controller
 {
@@ -39,6 +40,11 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+		if (BrowserDetect::isMobile())
+		{
+			return ['aaa' => 'aaa'];
+		}
+
 		if ($request->search)
 		{
 			$search = str_replace(' ', '%', $request->search);

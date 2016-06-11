@@ -27,6 +27,23 @@ class ArtikelController extends Controller
 		]);
     }
 
+    public function apiIndex(Request $request)
+    {
+		$search = str_replace(' ', '%', $request->search);
+
+    	$data = Artikel::when($request->group_id, function($query) use ($request) {
+					return $query->where('group_id', $request->group_id);
+				})->when($search, function($query) use ($search) {
+					return $query->where('judul', 'like', '%'.$search.'%');
+				})->orderBy('updated', 'DESC')->paginate(10);
+
+		return response()->json([
+			'results'	=> $data->items(),
+			'total'		=> $data->total(),
+			'pages'		=> $data->lastPage(),
+		]);
+    }
+
     public function admin(Request $request)
     {
 		$judul = str_replace(' ', '%', $request->judul);
@@ -98,6 +115,11 @@ class ArtikelController extends Controller
 		]);
     }
 
+	public function apiShow(Artikel $artikel)
+	{
+		return $artikel;
+	}
+
     public function baca($slug)
     {
 		$artikel = Artikel::where('kd_judul', $slug)->firstOrFail();
@@ -158,7 +180,7 @@ class ArtikelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Artikel $artikel)
+    public function destroy(Artikel $artikel, Request $request)
     {
         $artikel->delete();
 
@@ -166,6 +188,6 @@ class ArtikelController extends Controller
 			unlink($artikel->img_artikel);
 		}
 
-		return redirect('/artikel/admin');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 }

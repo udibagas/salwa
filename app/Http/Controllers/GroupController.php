@@ -130,7 +130,7 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Group $group)
+    public function destroy(Group $group, Request $request)
     {
 		// if (count($group->forums) || count($group->artikels)
 		// || count($group->informasis) || count($group->hadists)
@@ -149,7 +149,6 @@ class GroupController extends Controller
 		// }
 
 		$group->update(['delete' => 'Y']);
-
-		return redirect('/group')->with('success', 'Data berhasil dihapus');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 }

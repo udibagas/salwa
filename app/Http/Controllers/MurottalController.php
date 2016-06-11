@@ -29,11 +29,11 @@ class MurottalController extends Controller
 
 	public function admin(Request $request)
     {
-		$search = str_replace(' ', '%', $request->search);
+		$nama_surat = str_replace(' ', '%', $request->nama_surat);
 
         return view('murottal.admin', [
-			'murottals' => Murottal::when($search, function($query) use ($search) {
-							return $query->where('nama_surat', 'like', '%'.$search.'%');
+			'murottals' => Murottal::when($nama_surat, function($query) use ($nama_surat) {
+							return $query->where('nama_surat', 'like', '%'.$nama_surat.'%');
 						})->when($request->group_id, function($query) use ($request) {
 							return $query->where('group_id', $request->group_id);
 						})->orderBy('nama_surat', 'ASC')->paginate()
@@ -139,7 +139,7 @@ class MurottalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Murottal $murottal)
+    public function destroy(Murottal $murottal, Request $request)
     {
         $murottal->delete();
 
@@ -147,7 +147,7 @@ class MurottalController extends Controller
 			unlink($murottal->file_mp3);
 		}
 
-		return redirect('/murottal/admin');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 
 	public function download(Murottal $murottal)

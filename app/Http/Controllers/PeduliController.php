@@ -152,7 +152,7 @@ class PeduliController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Peduli $peduli)
+    public function destroy(Peduli $peduli, Request $request)
     {
 		$peduli->delete();
 
@@ -160,6 +160,6 @@ class PeduliController extends Controller
 			unlink($peduli->img_artikel);
 		}
 
-        return redirect('/peduli/admin');
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 }
