@@ -22,7 +22,7 @@ TODO
 21. resize image on the fly
 22. caching pake memchaced => nunggu kalau sudah live
 23. Pindahin mailbox salwa
-24. banner!!!
+24. banner!!! tinggal cms
 25. inbox ke antar member = messages : id, sender_id, message, timestamps => recipients = message_id, recipient_id, read
 26. bikin chatroom?
 27. comment via ajax
@@ -37,3 +37,8 @@ TODO
 KAJIAN PAKE YANG LAMA
 BANER!!!!
 INSTAGRAM!!!
+
+MOBILE
+- halaman produk
+- kitab
+- home belum ada kitab & promo

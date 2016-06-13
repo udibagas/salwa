@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\AudioRequest;
 use App\Mp3;
+use BrowserDetect;
 
 class AudioController extends Controller
 {
@@ -16,9 +17,10 @@ class AudioController extends Controller
      */
     public function index(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'audio.mobile.index' : 'audio.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('audio.index', [
+        return view($view, [
 			'audios' => Mp3::when($search, function($query) use ($search) {
 						return $query->where('judul', 'like', '%'.$search.'%');
 					})->when($request->group_id, function($query) use ($request) {
@@ -86,7 +88,9 @@ class AudioController extends Controller
      */
     public function show(Mp3 $audio)
     {
-        return view('audio.show', [
+		$view = BrowserDetect::isMobile() ? 'audio.mobile.show' : 'audio.show';
+		
+        return view($view, [
 			'audio' 	=> $audio,
 			'terkait'	=> Mp3::where('group_id', $audio->group_id)->orderBy('created', 'ASC')->get()
 		]);

@@ -1,21 +1,11 @@
-@if (auth()->check())
-<p>
-	<a href="/pertanyaan/create" class="btn btn-info form-control"><i class="fa fa-plus-circle"></i> Input Pertanyaan</a>
-</p>
-
-@else
-<div class="alert alert-danger text-center">
-	Silakan <a href="/login">Login</a> untuk input pertanyaan.
-</div>
-@endif
-
-<div class="list-group hidden-xs">
+<div class="list-group" id="sidr-right">
 	<span class="list-group-item info">
 		{!! Form::open(['url' => '/pertanyaan', 'method' => 'GET']) !!}
 		{!! Form::hidden('group_id', request('group_id')) !!}
 			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search Pertanyaan" class="form-control search-field">
 		{!! Form::close() !!}
 	</span>
+	<a href="/pertanyaan/create" class="list-group-item info"><i class="fa fa-plus"></i> INPUT PERTANYAAN</a>
 	<a href="/pertanyaan?search={{ request('search') }}" class="list-group-item info @if (request('group_id') == null) active @endif">
 		SEMUA KATEGORI
 		<span class="badge">{{ \App\Pertanyaan::count() }}</span>

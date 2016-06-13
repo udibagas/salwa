@@ -50,11 +50,11 @@
 		<a class="list-group-item info" href="/image">
 			<i class="fa fa-image"></i> Salwa Image
 		</a>
-		<a class="list-group-item info" href="/informasi">
+		<a class="list-group-item info" href="/informasi" style="border-radius:0;">
 			<i class="fa fa-newspaper-o"></i> Salwa Info
 		</a>
-		<a class="list-group-item info" href="/promo" style="border-radius:0;">
+		<!-- <a class="list-group-item info" href="/promo" style="border-radius:0;">
 			<i class="fa fa-tags"></i> Salwa Promo
-		</a>
+		</a> -->
 	</div>
 </div>

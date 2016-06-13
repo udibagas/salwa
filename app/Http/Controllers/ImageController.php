@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\ImageRequest;
 use App\SalwaImages;
+use BrowserDetect;
 
 class ImageController extends Controller
 {
@@ -16,9 +17,10 @@ class ImageController extends Controller
      */
     public function index(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'image.mobile.index' : 'image.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('image.index', [
+        return view($view, [
 			'images' => SalwaImages::when($search, function($query) use ($search) {
 						return $query->where('judul', 'like', '%'.$search.'%');
 					})->when($request->group_id, function($query) use ($request) {
@@ -87,7 +89,9 @@ class ImageController extends Controller
      */
     public function show(SalwaImages $image)
     {
-        return view('image.show', [
+		$view = BrowserDetect::isMobile() ? 'image.mobile.show' : 'image.show';
+
+        return view($view, [
 			'image' 	=> $image,
 			'terkait'	=> SalwaImages::where('group_id', $image->group_id)->orderByRaw('RAND()')->limit(3)->get()
 		]);

@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\InformasiRequest;
 use App\Informasi;
 use App\InformasiFile;
+use BrowserDetect;
 
 class InformasiController extends Controller
 {
@@ -17,9 +18,10 @@ class InformasiController extends Controller
      */
     public function index(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'informasi.mobile.index' : 'informasi.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('informasi.index', [
+        return view($view, [
 			'informasis' => Informasi::when($search, function($query) use ($search) {
 								return $query->where('judul', 'like', '%'.$search.'%');
 							})->when($request->group_id, function($query) use ($request) {
@@ -105,7 +107,9 @@ class InformasiController extends Controller
      */
     public function show(Informasi $informasi)
     {
-        return view('informasi.show', [
+		$view = BrowserDetect::isMobile() ? 'informasi.mobile.show' : 'informasi.show';
+
+        return view($view, [
 			'informasi' => $informasi,
 			'images'	=> InformasiFile::image()->where('informasi_id', $informasi->informasi_id)->get(),
 			'dokumens'	=> InformasiFile::dokumen()->where('informasi_id', $informasi->informasi_id)->get(),

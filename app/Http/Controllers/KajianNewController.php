@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\KajianRequest;
 use App\Kajian;
+use BrowserDetect;
 
 class KajianNewController extends Controller
 {
@@ -16,6 +17,7 @@ class KajianNewController extends Controller
      */
     public function index(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'kajian.mobile.index' : 'kajian.index';
         return view('kajian.index', [
 			'kajians' => Kajian::when($request->tema, function($query) use ($request) {
 							return $query->where('tema', 'like', '%'.$request->tema.'%');

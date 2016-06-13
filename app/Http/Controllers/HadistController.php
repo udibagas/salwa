@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\HadistRequest;
 use App\Hadist;
+use BrowserDetect;
 
 class HadistController extends Controller
 {
@@ -16,10 +17,12 @@ class HadistController extends Controller
      */
     public function index(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'hadist.mobile.index' : 'hadist.index';
 		$search = str_replace(' ', '%', $request->search);
 
-		return view('hadist.index', [
-			'hadists' 	=> Hadist::when($request->group_id, function($query) use ($request) {
+		return view($view, [
+			'groupName'	=> 'Hadist',
+			'hadists' 	=> Hadist::hadist()->when($request->group_id, function($query) use ($request) {
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%');
@@ -29,9 +32,11 @@ class HadistController extends Controller
 
     public function indexDoa(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'hadist.mobile.index' : 'hadist.index';
 		$search = str_replace(' ', '%', $request->search);
 
-		return view('hadist.index', [
+		return view($view, [
+			'groupName'	=> 'Doa',
 			'hadists' 	=> Hadist::doa()->when($request->group_id, function($query) use ($request) {
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
@@ -42,9 +47,11 @@ class HadistController extends Controller
 
     public function indexDzikir(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'hadist.mobile.index' : 'hadist.index';
 		$search = str_replace(' ', '%', $request->search);
 
-		return view('hadist.index', [
+		return view($view, [
+			'groupName'	=> 'Dzikir',
 			'hadists' 	=> Hadist::dzikir()->when($request->group_id, function($query) use ($request) {
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
@@ -105,6 +112,8 @@ class HadistController extends Controller
      */
     public function show(Hadist $hadist)
     {
+		$view = BrowserDetect::isMobile() ? 'hadist.mobile.show' : 'hadist.show';
+
 		if ($hadist->group->group_name == 'Dzikir') {
 			$url = 'dzikir';
 		} else if ($hadist->group->group_name == 'Doa') {
@@ -113,7 +122,7 @@ class HadistController extends Controller
 			$url = 'hadist';
 		}
 
-        return view('hadist.show', [
+        return view($view, [
 			'url'		=> $url,
 			'groupName'	=> $hadist->group->group_name,
 			'hadist' 	=> $hadist,

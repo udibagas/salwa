@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\KajianRequest;
 use App\Kajian;
 use App\Pic;
+use BrowserDetect;
 
 class KajianController extends Controller
 {
@@ -17,7 +18,8 @@ class KajianController extends Controller
      */
 	public function index(Request $request)
 	{
-		return view('kajian.index', [
+		$view = BrowserDetect::isMobile() ? 'kajian.mobile.index' : 'kajian.index';
+		return view($view, [
 			'kajians' => Kajian::active()->when($request->rutin == 'rutin', function($query) use($request) {
 							return $query->rutin()->orderBy('setiap_hari', 'ASC');
 						})->when($request->rutin == 'tematik', function($query) use($request) {
@@ -121,7 +123,8 @@ class KajianController extends Controller
      */
     public function show(Kajian $kajian)
     {
-        return view('kajian.show', ['kajian' => $kajian]);
+		$view = BrowserDetect::isMobile() ? 'kajian.mobile.show' : 'kajian.show';
+        return view($view, ['kajian' => $kajian]);
     }
 
     /**

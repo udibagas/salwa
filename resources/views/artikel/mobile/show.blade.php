@@ -2,20 +2,7 @@
 
 @section('title', 'Aktual : {{ $artikel->judul }}')
 
-@section('breadcrumbs')
-
-	@include('layouts._breadcrumbs', [
-		'breadcrumbs' => [
-			'/artikel' => 'AKTUAL',
-			'#' => str_limit($artikel->judul)
-		]
-	])
-
-@stop
-
 @section('content')
-
-@include('artikel._group')
 
 <div class="row-post">
 	<h3>{{ $artikel->judul }}</h3>
@@ -39,9 +26,7 @@
 	<br>
 </div>
 
-<br>
-
-@include('comment.index', [
+@include('comment.mobile.index', [
 'comments' => $artikel->comments()
 			->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
 				return $query->approved();
@@ -49,7 +34,7 @@
 ])
 
 @if (auth()->check())
-	@include('comment.form', [
+	@include('comment.mobile.form', [
 		'url' => '/comment', 'method' => 'POST',
 		'comment' => new \App\Comment([
 			'commentable_id' => $artikel->artikel_id,
@@ -64,5 +49,7 @@
 
 <h4 class="title">ARTIKEL TERKAIT</h4>
 @each('artikel.mobile._list', $terkait, 'a')
+
+@include('artikel._group')
 
 @stop

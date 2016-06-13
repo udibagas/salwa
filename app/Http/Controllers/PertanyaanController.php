@@ -8,6 +8,7 @@ use App\Http\Requests\PertanyaanRequest;
 use App\Http\Requests\JawabanRequest;
 use App\Pertanyaan;
 use Gate;
+use BrowserDetect;
 
 class PertanyaanController extends Controller
 {
@@ -18,10 +19,11 @@ class PertanyaanController extends Controller
      */
 	public function index(Request $request)
 	{
+		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.index' : 'pertanyaan.index';
 		$search 	= str_replace(' ', '%', $request->search);
 		$showOnly 	= (auth()->guest() || (auth()->check() && !auth()->user()->isUstadz() && !auth()->user()->isAdmin()));
 
-		return view('pertanyaan.index', [
+		return view($view, [
 			'pertanyaans' => Pertanyaan::when($showOnly, function($query) {
 									return $query->where('status', 's');
 								})->when($search, function($query) use ($search) {
@@ -89,7 +91,8 @@ class PertanyaanController extends Controller
      */
     public function create()
     {
-        return view('pertanyaan.create', ['pertanyaan' => new Pertanyaan]);
+		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.create' : 'pertanyaan.create';
+        return view($view, ['pertanyaan' => new Pertanyaan]);
     }
 
     /**
@@ -119,7 +122,9 @@ class PertanyaanController extends Controller
      */
     public function show(Pertanyaan $pertanyaan)
     {
-        return view('pertanyaan.show', [
+		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.show' : 'pertanyaan.show';
+
+		return view($view, [
 			'pertanyaan' 	=> $pertanyaan,
 			'terkait'		=> Pertanyaan::where('group_id', $pertanyaan->group_id)
 									->show()->orderByRaw('RAND()')->limit(5)->get()

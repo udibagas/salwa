@@ -17,7 +17,7 @@ body {
 	padding-top: 0;
 	padding-bottom: 0;
 	color: #5a5a5a;
-	background-color: #eee;
+	background-color: #DDDDDD;
 }
 
 td.td-label {
@@ -29,14 +29,14 @@ td.td-label {
 	background-color: #0084FF;
 	padding: 5px;
 	color: #FFFFFF;
-	margin:5px -12px 0 -12px;
+	margin:5px -10px 0 -10px;
 }
 
 .sub-title {
 	background-color: #A2D2FF;
 	padding:5px;
 	color: #134A80;
-	margin:5px -12px 0 -12px;
+	margin:5px -10px 0 -10px;
 }
 
 .text-blue {
@@ -89,8 +89,6 @@ a.list-group-item {
 }
 
 .thumbnail > a > img {
-	filter: brightness(80%);
-	-webkit-filter: brightness(80%);
 	height: 100%;
 	width: 100%;
 	object-fit:cover;
@@ -134,13 +132,12 @@ img.cover {
   opacity: 0.8;
 }
 
-.row.no-gutter {
-  margin-left: 0;
-  margin-right: 0;
+.row-post.no-gutter {
+  margin:4px -10px;
 }
 
-.row.no-gutter [class*='col-']:not(:first-child),
-.row.no-gutter [class*='col-']:not(:last-child) {
+.row-post.no-gutter [class*='col-']:not(:first-child),
+.row-post.no-gutter [class*='col-']:not(:last-child) {
   padding-right: 1px;
   padding-left: 1px;
 }
@@ -200,10 +197,13 @@ a:hover {
 }
 
 .row-post {
-	background-color:#fff;
-	padding:5px;
-	margin:3px -12px;
-	min-height:70px;
+	background-color:#FFFFFF;
+	padding:10px;
+	margin:4px -10px;
+}
+
+.alert {
+	margin:4px -10px;
 }
 
 img.media-object {

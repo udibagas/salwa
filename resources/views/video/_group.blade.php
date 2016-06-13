@@ -1,4 +1,4 @@
-<div class="list-group hidden-xs">
+<div class="list-group" id="sidr-right">
 	<div class="list-group-item info">
 		{!! Form::open(['url' => '/video', 'method' => 'GET', 'style' => 'margin-bottom:0;']) !!}
 		{!! Form::hidden('user_id', request('user_id')) !!}
@@ -11,7 +11,7 @@
 	</a>
 	@foreach (\App\User::ustadz()->has('videos')->orderBy('name', 'ASC')->get() as $g)
 	<a href="/video?search={{ request('search') }}&user_id={{ $g->user_id }}" class="list-group-item info @if (request('user_id') == $g->user_id) active @endif">
-		{{ str_limit($g->name, 33) }}
+		{{ str_limit($g->name, 30) }}
 		<span class="badge">{{ $g->videos->count() }}</span>
 	</a>
 	@endforeach

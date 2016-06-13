@@ -44,9 +44,10 @@ class HomeController extends Controller
 
 		if ($request->search)
 		{
+			$view = BrowserDetect::isMobile() ? 'home.mobile.search' : 'home.search';
 			$search = str_replace(' ', '%', $request->search);
 
-			return view('home.search', [
+			return view($view, [
 				'videos'	=> Video::where('title', 'like', '%'.$search.'%')->orderBy('created', 'DESC')->limit(10)->get(),
 				'forums'	=> Forum::active()->where('title', 'like', '%'.$search.'%')->orderBy('created', 'DESC')->limit(10)->get(),
 				'posts'		=> Post::where('description', 'like', '%'.$search.'%')->orderBy('created', 'DESC')->limit(10)->get(),

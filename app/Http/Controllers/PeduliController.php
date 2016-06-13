@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\PeduliRequest;
 use App\Peduli;
+use BrowserDetect;
 
 class PeduliController extends Controller
 {
@@ -16,9 +17,10 @@ class PeduliController extends Controller
      */
     public function index(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'peduli.mobile.index' : 'peduli.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('peduli.index', [
+        return view($view, [
 			'pedulis' => Peduli::when($search, function($query) use ($search) {
 								return $query->where('judul', 'like', '%'.$search.'%');
 							})->when($request->group_id, function($query) use ($request) {
@@ -93,7 +95,9 @@ class PeduliController extends Controller
      */
     public function show(Peduli $peduli)
     {
-        return view('peduli.show', [
+		$view = BrowserDetect::isMobile() ? 'peduli.mobile.show' : 'peduli.show';
+
+        return view($view, [
 			'peduli' => $peduli,
 			'terkait'	=> Peduli::where('group_id', $peduli->group_id)
 							->orderBy('updated', 'DESC')->limit(4)->get()

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\BukuRequest;
 use App\Buku;
+use BrowserDetect;
 
 class KitabController extends Controller
 {
@@ -16,9 +17,10 @@ class KitabController extends Controller
      */
     public function index(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'kitab.mobile.index' : 'kitab.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('kitab.index', [
+        return view($view, [
 			'kitabs' => Buku::when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%')
 									->orWhere('penulis', 'like', '%'.$search.'%');
@@ -100,7 +102,8 @@ class KitabController extends Controller
      */
     public function show(Buku $kitab)
     {
-        return view('kitab.show', [
+		$view = BrowserDetect::isMobile() ? 'kitab.mobile.show' : 'kitab.show';
+        return view($view, [
 			'kitab' 	=> $kitab,
 			'terkait'	=> Buku::where('group_id', $kitab->group_id)->limit(3)->orderByRaw('RAND()')->get()
 		]);

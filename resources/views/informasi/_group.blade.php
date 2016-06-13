@@ -1,4 +1,4 @@
-<div class="list-group hidden-xs">
+<div class="list-group" id="sidr-right">
 	<span class="list-group-item info">
 		{!! Form::open(['url' => '/informasi', 'method' => 'GET']) !!}
 		{!! Form::hidden('group_id', request('group_id')) !!}

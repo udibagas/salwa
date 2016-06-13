@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\MurottalRequest;
 use App\Murottal;
+use BrowserDetect;
 
 class MurottalController extends Controller
 {
@@ -16,9 +17,10 @@ class MurottalController extends Controller
      */
     public function index(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'murottal.mobile.index' : 'murottal.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('murottal.index', [
+        return view($view, [
 			'murottals' => Murottal::when($search, function($query) use ($search) {
 							return $query->where('nama_surat', 'like', '%'.$search.'%');
 						})->when($request->group_id, function($query) use ($request) {
@@ -85,7 +87,9 @@ class MurottalController extends Controller
      */
     public function show(Murottal $murottal)
     {
-        return view('murottal.show', [
+		$view = BrowserDetect::isMobile() ? 'murottal.mobile.show' : 'murottal.show';
+
+        return view($view, [
 			'murottal' 	=> $murottal,
 		]);
     }

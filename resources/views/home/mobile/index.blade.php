@@ -5,6 +5,7 @@
 @section('content')
 
 	@include('home.mobile._artikel')
+	@include('home.mobile._promo')
 	@include('home.mobile._video')
 	@include('home.mobile._pertanyaan')
 	@each('home.mobile._forum', $forumKategori, 'group')

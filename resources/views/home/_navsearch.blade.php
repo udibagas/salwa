@@ -32,7 +32,7 @@
 	<a class="list-group-item info" href="/video?search={{ request('search')}}">
 		<i class="fa fa-video-camera"></i> Salwa Video
 	</a>
-	<a class="list-group-item info" href="/mp3?search={{ request('search')}}">
+	<a class="list-group-item info" href="/audio?search={{ request('search')}}">
 		<i class="fa fa-music"></i> Salwa Audio
 	</a>
 	<a class="list-group-item info" href="/image?search={{ request('search')}}">

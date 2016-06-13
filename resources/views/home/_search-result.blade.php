@@ -252,7 +252,7 @@
 		@foreach($audios as $v)
 
 		<li class="list-group-item" style="padding:5px">
-			<strong><a href="/mp3/{{ $v->mp3_download_id }}-{{ str_slug($v->judul) }}">{{ $v->judul }}</a></strong>
+			<strong><a href="/audio/{{ $v->mp3_download_id }}-{{ str_slug($v->judul) }}">{{ $v->judul }}</a></strong>
 			<br />
 			{{ $v->updated->diffForHumans() }}
 		</li>
@@ -261,7 +261,7 @@
 
 		<li class="list-group-item text-center">
 			@if (count($audios))
-			<b><a href="/mp3?search={{ request('search') }}">More Results...</a></b>
+			<b><a href="/audio?search={{ request('search') }}">More Results...</a></b>
 			@else
 			<b>No Result</b>
 			@endif

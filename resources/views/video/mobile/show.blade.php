@@ -2,20 +2,7 @@
 
 @section('title') Video : {{ $video->title }} @stop
 
-@section('breadcrumbs')
-
-	@include('layouts._breadcrumbs', [
-		'breadcrumbs' => [
-			'/video' => 'VIDEO',
-			'#' => str_limit($video->title)
-		]
-	])
-
-@stop
-
 @section('content')
-
-@include('video._group')
 
 <div class="row-post">
 	<h3>{{ $video->title }}</h3>
@@ -62,7 +49,7 @@
 
 <br>
 
-@include('comment.index', [
+@include('comment.mobile.index', [
 'comments' => $video->comments()
 	->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
 		return $query->approved();
@@ -70,7 +57,7 @@
 ])
 
 @if (auth()->check())
-	@include('comment.form', [
+	@include('comment.mobile.form', [
 		'url' => '/comment', 'method' => 'POST',
 		'comment' => new \App\Comment([
 			'commentable_id' => $video->video_id,
@@ -85,5 +72,7 @@
 
 <h4 class="title">VIDEO TERKAIT</h4>
 @each('video.mobile._list', $terkait, 'a')
+
+@include('video._group')
 
 @endsection

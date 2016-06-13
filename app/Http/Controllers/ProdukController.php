@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\ProdukRequest;
 use App\Produk;
+use BrowserDetect;
 
 class ProdukController extends Controller
 {
@@ -16,9 +17,10 @@ class ProdukController extends Controller
      */
     public function index(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'produk.mobile.index' : 'produk.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('produk.index', [
+        return view($view, [
 			'produks' => Produk::when($request->group_id, function($query) use ($request) {
 								return $query->where('group_id', $request->group_id);
 							})->when($search, function($query) use ($search) {
@@ -86,7 +88,9 @@ class ProdukController extends Controller
      */
     public function show(Produk $produk)
     {
-        return view('produk.show', [
+		$view = BrowserDetect::isMobile() ? 'produk.mobile.show' : 'produk.show';
+
+        return view($view, [
 			'produk' => $produk,
 			'terkait'	=> Produk::where('group_id', $produk->group_id)->limit(3)->get()
 		]);

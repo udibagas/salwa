@@ -41,7 +41,6 @@
 
 		@if ($isMobile)
 	        @include('layouts.navMobile')
-			@include('layouts.menu')
 		@else
 			@include('layouts.nav')
 		@endif
@@ -64,6 +63,10 @@
 
         </div>
 
+		@if ($isMobile)
+			@include('layouts.menu')
+		@endif
+
 		<script type="text/javascript">
 
 			@if ($isMobile)
@@ -75,23 +78,36 @@
 				});
 
 				$('#menu').sidr({name:'sidr-main',timing:'ease-in-out',speed:300});
+				$('#menu-right').sidr({name:'sidr-right',timing:'ease-in-out',speed:300,side:'right'});
 
 			@endif
 
-			$('.summernote').summernote({
-				height: 200,
-				toolbar: [
-					// [groupName, [list of button]]
-					['style', ['bold', 'italic', 'underline', 'clear']],
-					// ['font', ['strikethrough', 'superscript', 'subscript']],
-					['fontsize', ['fontsize', 'color']],
-					// ['color', ['color']],
-					['para', ['ul', 'ol', 'paragraph']],
-					['insert', ['picture', 'video', 'link', 'hr', 'table']],
-					['misc', ['undo', 'redo', 'fullscreen']],
-					// ['height', ['height']]
-				]
-			});
+			@if ($isMobile)
+				$('.summernote').summernote({
+					height: 200,
+					toolbar: [
+						['style', ['bold', 'italic', 'underline',]],
+						['fontsize', ['fontsize', 'color']],
+						['para', ['ul', 'ol', 'paragraph']],
+						['insert', ['picture', 'video', 'link']],
+					]
+				});
+			@else
+				$('.summernote').summernote({
+					height: 200,
+					toolbar: [
+						// [groupName, [list of button]]
+						['style', ['bold', 'italic', 'underline', 'clear']],
+						// ['font', ['strikethrough', 'superscript', 'subscript']],
+						['fontsize', ['fontsize', 'color']],
+						// ['color', ['color']],
+						['para', ['ul', 'ol', 'paragraph']],
+						['insert', ['picture', 'video', 'link', 'hr', 'table']],
+						['misc', ['undo', 'redo', 'fullscreen']],
+						// ['height', ['height']]
+					]
+				});
+			@endif
 
 			$('.delete').click(function() {
 				return confirm('Anda yakin?');

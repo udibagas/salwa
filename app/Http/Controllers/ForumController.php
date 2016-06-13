@@ -11,6 +11,7 @@ use App\Forum;
 use App\Group;
 use App\Post;
 use Gate;
+use BrowserDetect;
 
 class ForumController extends Controller
 {
@@ -21,9 +22,10 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return view('forum.index', [
+		$view = BrowserDetect::isMobile() ? 'forum.mobile.index' : 'forum.index';
+        return view($view, [
 			'forums' => Forum::active()->orderBy('forum_id', 'DESC')->simplePaginate(),
-			'groups' => Group::forum()->orderBy('group_name', 'ASC')->get()
+			'groups' => Group::forum()->active()->orderBy('group_name', 'ASC')->get()
 		]);
     }
 
@@ -34,7 +36,8 @@ class ForumController extends Controller
      */
     public function create()
     {
-        return view('forum.create', ['forum' => new Forum, 'post' => null]);
+		$view = BrowserDetect::isMobile() ? 'forum.mobile.create' : 'forum.create';
+        return view($view, ['forum' => new Forum, 'post' => null]);
     }
 
     /**
@@ -85,7 +88,9 @@ class ForumController extends Controller
      */
     public function show(Forum $forum)
     {
-        return view('forum.show', [
+		$view = BrowserDetect::isMobile() ? 'forum.mobile.show' : 'forum.show';
+
+        return view($view, [
 			'forum' 	=> $forum,
 			'posts'		=> $forum->posts()->orderBy('created', 'ASC')->get(),
 			'terkait'	=> Forum::where('group_id', $forum->group_id)->limit(5)->orderByRaw('RAND()')->get(),
@@ -210,8 +215,10 @@ class ForumController extends Controller
 
 	public function category(Group $group)
 	{
-		return view('forum.category', [
-			'groups' 	=> Group::forum()->orderBy('group_name', 'ASC')->get(),
+		$view = BrowserDetect::isMobile() ? 'forum.mobile.category' : 'forum.category';
+
+		return view($view, [
+			'groups' 	=> Group::forum()->active()->orderBy('group_name', 'ASC')->get(),
 			'group' 	=> $group,
 			'forums' 	=> $group->forums()->orderBy('forum_id', 'DESC')->simplePaginate()
 		]);
@@ -219,11 +226,13 @@ class ForumController extends Controller
 
 	public function search(Request $request)
 	{
+		$view = BrowserDetect::isMobile() ? 'forum.mobile.search' : 'forum.search';
+
 		$group_id	= $request->group_id;
 		$search		= str_replace(' ', '%', $request->search);
 
-		return view('forum.search', [
-			'groups' 	=> Group::forum()->orderBy('group_name', 'ASC')->get(),
+		return view($view, [
+			'groups' 	=> Group::forum()->active()->orderBy('group_name', 'ASC')->get(),
 			'group'		=> Group::find($group_id),
 			'search'	=> $request->search,
 			'forums' 	=> Forum::active()->when($search, function($query) use ($search) {
