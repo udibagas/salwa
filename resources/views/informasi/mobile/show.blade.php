@@ -13,13 +13,13 @@
 	<br>
 	<br>
 
-	@if ($informasi->img_informasi)
+	@if ($informasi->img_gambar)
 	<img class="img-responsive" src="/{{ $informasi->img_gambar }}" alt="{{ $informasi->judul }}">
 	@endif
 
 	<br>
 
-	{!! $informasi->isi !!}
+	{!! $informasi->content !!}
 
 	@if ($dokumens)
 	<div class="list-group">
