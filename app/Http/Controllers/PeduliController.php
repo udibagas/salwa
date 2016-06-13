@@ -23,7 +23,7 @@ class PeduliController extends Controller
 								return $query->where('judul', 'like', '%'.$search.'%');
 							})->when($request->group_id, function($query) use ($request) {
 								return $query->where('group_id', $request->group_id);
-							})->orderBy('updated', 'DESC')->paginate(16)
+							})->orderBy('updated', 'DESC')->simplePaginate(16)
 		]);
     }
 
@@ -39,7 +39,7 @@ class PeduliController extends Controller
 							})->when($request->user, function($query) use ($request) {
 								return $query->join('users', 'users.user_id', '=', 'peduli.user_id')
 									->where('users.name', 'like', '%'.$request->user.'%');
-							})->orderBy('peduli.updated', 'DESC')->paginate()
+							})->orderBy('peduli.updated', 'DESC')->simplePaginate()
 		]);
     }
 

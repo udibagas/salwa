@@ -34,7 +34,7 @@ class CommentController extends Controller
 								return $query->approved();
 							})->when($request->approved == 'no', function($query) use ($request) {
 								return $query->unapproved();
-							})->paginate()
+							})->simplePaginate()
 		]);
     }
 

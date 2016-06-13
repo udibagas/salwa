@@ -16,7 +16,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        return view('banner.index', ['banners' => Banner::active()->orderBy('banner_id', 'DESC')->paginate()]);
+        return view('banner.index', ['banners' => Banner::active()->orderBy('banner_id', 'DESC')->simplePaginate()]);
     }
 
     public function admin(Request $request)
@@ -26,7 +26,7 @@ class BannerController extends Controller
 							return $query->where('name', 'like', '%'.$request->name.'%');
 						})->when($request->active, function($query) use ($request) {
 							return $query->where('active', $request->active);
-						})->orderBy('updated', 'DESC')->paginate()
+						})->orderBy('updated', 'DESC')->simplePaginate()
 		]);
     }
 

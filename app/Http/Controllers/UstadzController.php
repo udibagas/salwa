@@ -28,7 +28,7 @@ class UstadzController extends Controller
 								$query->where('ustadz_gender', $request->ustadz_gender);
 							})->when($request->ustadz_status, function($query) use ($request) {
 								$query->where('ustadz_status', $request->ustadz_status);
-							})->paginate()
+							})->simplePaginate()
 		]);
     }
 
@@ -112,7 +112,7 @@ class UstadzController extends Controller
 	{
 		$data = Ustadz::when($request->ustadz_name, function($query) use ($request) {
 						return $query->where('ustadz_name', 'like', '%'.$request->ustadz_name.'%');
-					})->orderBy('ustadz_name', 'ASC')->paginate(10);
+					})->orderBy('ustadz_name', 'ASC')->simplePaginate(10);
 
 		return response()->json([
 			'results'	=> $data->items(),

@@ -28,7 +28,7 @@ class KajianController extends Controller
 							return $query->where('kajian_ustadz_id', $request->ustadz_id);
 						})->when($request->today, function($query) {
 							return $query->today();
-						})->orderBy('created', 'DESC')->paginate(16)
+						})->orderBy('created', 'DESC')->simplePaginate(16)
 		]);
 	}
 
@@ -51,7 +51,7 @@ class KajianController extends Controller
 									->where('tb_ustadz.ustadz_name', 'like', '%'.$request->ustadz.'%');
 						})->when($request->today, function($query) {
 							return $query->whereRaw('DATE(kajian_dates) = '.date('Y-m-d'));
-						})->orderBy('tb_kajian.created', 'ASC')->paginate()
+						})->orderBy('tb_kajian.created', 'ASC')->simplePaginate()
 		]);
     }
 
@@ -196,7 +196,7 @@ class KajianController extends Controller
 					return $query->where('kajian_ustadz_id', $request->kajian_ustadz_id);
 				})->when($request->today, function($query) {
 					return $query->whereRaw('DATE(kajian_dates) = '.date('Y-m-d'));
-				})->orderBy('created', 'ASC')->paginate(10);
+				})->orderBy('created', 'ASC')->simplePaginate(10);
 
 
 		return response()->json([

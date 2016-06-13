@@ -23,7 +23,7 @@ class ProdukController extends Controller
 								return $query->where('group_id', $request->group_id);
 							})->when($search, function($query) use ($search) {
 								return $query->where('judul', 'like', '%'.$search.'%');
-							})->orderBy('updated', 'DESC')->paginate(16)
+							})->orderBy('updated', 'DESC')->simplePaginate(16)
 		]);
     }
 
@@ -36,7 +36,7 @@ class ProdukController extends Controller
 								return $query->where('group_id', $request->group_id);
 							})->when($judul, function($query) use ($judul) {
 								return $query->where('judul', 'like', '%'.$judul.'%');
-							})->orderBy('updated', 'DESC')->paginate()
+							})->orderBy('updated', 'DESC')->simplePaginate()
 		]);
     }
 

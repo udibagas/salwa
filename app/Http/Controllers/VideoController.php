@@ -39,7 +39,7 @@ class VideoController extends Controller
 					return $query->where('title', 'like', '%'.$search.'%');
 				})->when($request->user_id, function($query) use ($request) {
 					return $query->where('user_id', $request->user_id);
-				})->orderBy('videos.created', 'DESC')->paginate(10);
+				})->orderBy('videos.created', 'DESC')->simplePaginate(10);
 
 		return response()->json([
 			'results'	=> $data->items(),
@@ -60,13 +60,13 @@ class VideoController extends Controller
 						})->when($request->user, function($query) use ($request) {
 							return $query->join('users', 'users.user_id', '=', 'videos.user_id')
 								->where('users.name', 'like', '%'.$request->user.'%');
-						})->orderBy('videos.updated', 'DESC')->paginate()
+						})->orderBy('videos.updated', 'DESC')->simplePaginate()
 		]);
     }
 
     public function indexAudio()
     {
-        return view('video.indexAudio', ['audios' => Video::audio()->orderBy('updated', 'DESC')->paginate()]);
+        return view('video.indexAudio', ['audios' => Video::audio()->orderBy('updated', 'DESC')->simplePaginate()]);
     }
 
     /**

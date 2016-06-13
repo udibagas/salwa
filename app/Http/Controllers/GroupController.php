@@ -26,7 +26,7 @@ class GroupController extends Controller
 							return $query->where('delete', $request->delete);
 						})->when($request->type, function($query) use ($request) {
 							return $query->where('type', $request->type);
-						})->orderBy('group_name', 'ASC')->paginate()
+						})->orderBy('group_name', 'ASC')->simplePaginate()
 		]);
     }
 

@@ -23,7 +23,7 @@ class HadistController extends Controller
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%');
-						})->orderBy('hadist.updated', 'DESC')->paginate()
+						})->orderBy('hadist.updated', 'DESC')->simplePaginate()
 		]);
     }
 
@@ -36,7 +36,7 @@ class HadistController extends Controller
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%');
-						})->orderBy('hadist.updated', 'DESC')->paginate()
+						})->orderBy('hadist.updated', 'DESC')->simplePaginate()
 		]);
     }
 
@@ -49,7 +49,7 @@ class HadistController extends Controller
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%');
-						})->orderBy('hadist.updated', 'DESC')->paginate()
+						})->orderBy('hadist.updated', 'DESC')->simplePaginate()
 		]);
     }
 
@@ -62,7 +62,7 @@ class HadistController extends Controller
 							return $query->where('group_id', $request->group_id);
 						})->when($judul, function($query) use ($judul) {
 							return $query->where('judul', 'like', '%'.$judul.'%');
-						})->orderBy('updated', 'DESC')->paginate()
+						})->orderBy('updated', 'DESC')->simplePaginate()
 		]);
     }
 
@@ -191,7 +191,7 @@ class HadistController extends Controller
 		$data = Hadist::select('hadist_id', 'judul', 'tanggal')
 				->hadist()->when($request->judul, function($query) use ($request) {
 					return $query->where('judul', 'like', '%'.$request->judul.'%');
-				})->orderBy('hadist.updated', 'DESC')->paginate(10);
+				})->orderBy('hadist.updated', 'DESC')->simplePaginate(10);
 
 		return response()->json([
 			'results'	=> $data->items(),
@@ -205,7 +205,7 @@ class HadistController extends Controller
 		$data = Hadist::select('hadist_id', 'judul', 'tanggal')
 				->doa()->when($request->judul, function($query) use ($request) {
 					return $query->where('judul', 'like', '%'.$request->judul.'%');
-				})->orderBy('hadist.updated', 'DESC')->paginate(10);
+				})->orderBy('hadist.updated', 'DESC')->simplePaginate(10);
 
 		return response()->json([
 			'results'	=> $data->items(),
@@ -219,7 +219,7 @@ class HadistController extends Controller
 		$data = Hadist::select('hadist_id', 'judul', 'tanggal')
 				->dzikir()->when($request->judul, function($query) use ($request) {
 					return $query->where('judul', 'like', '%'.$request->judul.'%');
-				})->orderBy('hadist.updated', 'DESC')->paginate(10);
+				})->orderBy('hadist.updated', 'DESC')->simplePaginate(10);
 
 		return response()->json([
 			'results'	=> $data->items(),

@@ -23,7 +23,7 @@ class ImageController extends Controller
 						return $query->where('judul', 'like', '%'.$search.'%');
 					})->when($request->group_id, function($query) use ($request) {
 						return $query->where('group_id', $request->group_id);
-					})->orderBy('updated', 'DESC')->paginate()
+					})->orderBy('updated', 'DESC')->simplePaginate()
 		]);
     }
 
@@ -36,7 +36,7 @@ class ImageController extends Controller
 						return $query->where('judul', 'like', '%'.$judul.'%');
 					})->when($request->group_id, function($query) use ($request) {
 						return $query->where('group_id', $request->group_id);
-					})->orderBy('updated', 'DESC')->paginate()
+					})->orderBy('updated', 'DESC')->simplePaginate()
 		]);
     }
 

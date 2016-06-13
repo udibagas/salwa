@@ -30,7 +30,7 @@ class LokasiController extends Controller
 			'lokasis' => Lokasi::orderBy('nama_lokasi', 'ASC')
 						->when($request->nama_lokasi, function($query) use ($request) {
 							return $query->where('nama_lokasi', 'like', '%'.$request->nama_lokasi.'%');
-						})->paginate()
+						})->simplePaginate()
 		]);
 	}
 

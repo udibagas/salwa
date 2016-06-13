@@ -28,7 +28,7 @@ class PertanyaanController extends Controller
 									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
 								})->when($request->group_id, function($query) use ($request) {
 									return $query->where('group_id', $request->group_id);
-								})->orderBy('created', 'DESC')->paginate(),
+								})->orderBy('created', 'DESC')->simplePaginate(),
 		]);
 	}
 
@@ -53,7 +53,7 @@ class PertanyaanController extends Controller
 												->where('u.jenis_kelamin',  $request->jenis_kelamin);
 								})->when($request->group_id, function($query) use ($request) {
 									return $query->where('group_id', $request->group_id);
-								})->orderBy('pertanyaan.created', 'DESC')->paginate(),
+								})->orderBy('pertanyaan.created', 'DESC')->simplePaginate(),
 		]);
 	}
 
@@ -78,7 +78,7 @@ class PertanyaanController extends Controller
 												->where('u.jenis_kelamin',  $request->jenis_kelamin);
 								})->when($request->group_id, function($query) use ($request) {
 									return $query->where('group_id', $request->group_id);
-								})->orderBy('pertanyaan.created', 'DESC')->paginate(),
+								})->orderBy('pertanyaan.created', 'DESC')->simplePaginate(),
 		]);
 	}
 
