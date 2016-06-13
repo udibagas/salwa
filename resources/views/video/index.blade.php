@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title') Video @stop
+@section('title', 'Video')
 
 @section('breadcrumbs')
 

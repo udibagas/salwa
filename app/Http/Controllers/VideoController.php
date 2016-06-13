@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\VideoRequest;
 use App\Video;
+use BrowserDetect;
 
 class VideoController extends Controller
 {
@@ -16,14 +17,15 @@ class VideoController extends Controller
      */
     public function index(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'video.mobile.index' : 'video.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('video.index', [
+        return view($view, [
 			'videos' => Video::video()->when($search, function($query) use ($search) {
 							return $query->where('title', 'like', '%'.$search.'%');
 						})->when($request->user_id, function($query) use ($request) {
 							return $query->where('user_id', $request->user_id);
-						})->orderBy('updated', 'DESC')->paginate()
+						})->orderBy('updated', 'DESC')->simplePaginate()
 		]);
     }
 
@@ -114,7 +116,9 @@ class VideoController extends Controller
      */
     public function show(Video $video)
     {
-        return view('video.show', [
+		$view = BrowserDetect::isMobile() ? 'video.mobile.show' : 'video.show';
+
+        return view($view, [
 			'video' 	=> $video,
 			'terkait'	=> Video::where('user_id', $video->user_id)->orderByRaw('RAND()')->limit(6)->get()
 		]);

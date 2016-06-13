@@ -35,10 +35,10 @@
 	{!! $artikel->isi !!}
 	<div class="text-center">
 		@include('layouts._share')
-		<br>
-		<br>
 	</div>
+	<br>
 </div>
+
 <br>
 
 @include('comment.index', [
