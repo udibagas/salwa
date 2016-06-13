@@ -19,9 +19,9 @@
 			Kajian Rutin
 			<span class="badge">{{ \App\Kajian::rutin()->count() }}</span>
 		</a>
-	</div>
+	<!-- </div>
 
-	<div class="list-group">
+	<div class="list-group"> -->
 		<a href="kajian?tema={{ request('tema') }}&rutin={{ request('rutin') }}" class="list-group-item info @if (request('ustadz_id') == null) active @endif">
 			SEMUA USTADZ
 		</a>
