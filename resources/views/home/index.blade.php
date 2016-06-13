@@ -22,8 +22,6 @@
 	<h4 class="title"><i class="fa fa-comment"></i> FORUM</h4>
 	@include('home._forum')
 
-	<!-- each('forum._list', $forumKategori, 'group') -->
-
 	<h4 class="title"><i class="fa fa-book"></i> SALWA E-BOOK</h4>
 	@include('home._kitab')
 	<div class="clearfix"></div>

@@ -32,6 +32,7 @@
 		<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
 		@if ($isMobile)
 		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
+		<script type="text/javascript" src="/js/jquery.touchSwipe.min.js"></script>
 		@endif
 		<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
     </head>
@@ -39,9 +40,10 @@
     <body>
 
 		@if ($isMobile)
-        @include('layouts.navMobile')
+	        @include('layouts.navMobile')
+			@include('layouts.menu')
 		@else
-		@include('layouts.nav')
+			@include('layouts.nav')
 		@endif
 
 		<div class="hidden-xs">
@@ -63,6 +65,18 @@
         </div>
 
 		<script type="text/javascript">
+
+			@if ($isMobile)
+
+				$('body').swipe( {
+					swipeLeft: function () {$.sidr('close', 'sidr-main');},
+					swipeRight: function () {$.sidr('open', 'sidr-main');},
+					threshold: 75
+				});
+
+				$('#menu').sidr({name:'sidr-main',timing:'ease-in-out',speed:300});
+
+			@endif
 
 			$('.summernote').summernote({
 				height: 200,

@@ -1,10 +1,13 @@
-<div id="sidr">
+<div id="sidr-main">
 	<div class="list-group">
 		<span class="list-group-item info" style="border-radius:0;">
 			{!! Form::open(['url' => '/home', 'method' => 'GET']) !!}
 				<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control search-field">
 			{!! Form::close() !!}
 		</span>
+		<a class="list-group-item info" href="/">
+			<i class="fa fa-home"></i> HOME
+		</a>
 		<a class="list-group-item info" href="/video">
 			<i class="fa fa-video-camera"></i> Salwa Video
 		</a>

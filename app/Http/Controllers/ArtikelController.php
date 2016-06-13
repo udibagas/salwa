@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\ArtikelRequest;
 use App\Artikel;
+use BrowserDetect;
 
 class ArtikelController extends Controller
 {
@@ -16,14 +17,15 @@ class ArtikelController extends Controller
      */
     public function index(Request $request)
     {
+		$view = BrowserDetect::isMobile() ? 'artikel.mobile.index' : 'artikel.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view('artikel.index', [
+        return view($view, [
 			'artikels' => Artikel::when($request->group_id, function($query) use ($request) {
 								return $query->where('group_id', $request->group_id);
 							})->when($search, function($query) use ($search) {
 								return $query->where('judul', 'like', '%'.$search.'%');
-							})->orderBy('updated', 'DESC')->paginate(16)
+							})->orderBy('updated', 'DESC')->simplePaginate(16)
 		]);
     }
 
@@ -109,7 +111,9 @@ class ArtikelController extends Controller
      */
     public function show(Artikel $artikel)
     {
-        return view('artikel.show', [
+		$view = BrowserDetect::isMobile() ? 'artikel.mobile.show' : 'artikel.show';
+
+        return view($view, [
 			'artikel' 	=> $artikel,
 			'terkait'	=> Artikel::where('group_id', $artikel->group_id)->orderByRaw('RAND()')->limit(4)->get()
 		]);
