@@ -2,14 +2,14 @@
 @foreach ($pertanyaan as $a)
 <div class="row-post">
 	<div class="media">
-		<div class="media-left media-middle">
+		<div class="media-left">
 			<div class="thumbnail" style="height:60px;width:60px;">
-				<img class="media-object cover" src="/images/logo.png" alt="{{ $a->judul_pertanyaan }}">
+				<img class="media-object cover" src="/images/logo-padding.png" alt="{{ $a->judul_pertanyaan }}">
 			</div>
 		</div>
 		<div class="media-body">
 			<a href="/pertanyaan/{{ $a->pertanyaan_id }}-{{ $a->kd_judul }}" class="text-bold">
-				{{ str_limit($a->judul_pertanyaan, 55) }}
+				{{ $a->judul_pertanyaan }}
 			</a>
 			<br>
 			<small>

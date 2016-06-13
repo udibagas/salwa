@@ -107,8 +107,6 @@ img.cover {
 .thumbnail, .img-thumbnail {
 	border: none;
 	padding: 0;
-	background: rgb(71,193,228);
-	border-radius: 0;
 }
 
 .thumbnail .caption {
@@ -205,5 +203,10 @@ a:hover {
 	background-color:#fff;
 	padding:5px;
 	margin:3px -12px;
-	height:70px;
+	min-height:70px;
+}
+
+img.media-object {
+	border-radius: 50%;
+	border: 1px solid #D9EDF7;
 }
