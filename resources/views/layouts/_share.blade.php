@@ -1,5 +1,5 @@
 <div class="btn-group">
-	<span class="btn btn-warning">Share</span>
+	<span class="btn btn-warning"><i class="fa fa-share-alt"></i></span>
 	<a href="https://www.facebook.com/sharer.php?u={{ url()->current() }}" class="btn btn-info" target="_blank"><i class="fa fa-facebook"></i></a>
 	<a href="https://twitter.com/share?url={{ url()->current() }}" class="btn btn-info"><i class="fa fa-twitter" target="_blank"></i></a>
 	<a href="https://plus.google.com/share?url={{ url()->current() }}" class="btn btn-info"><i class="fa fa-google-plus" target="_blank"></i></a>

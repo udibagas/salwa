@@ -13,8 +13,8 @@
 				<a href="/kajian/{{ $a->kajian_id }}-{{ str_slug($a->kajian_tema) }}">{{ $a->kajian_tema }}</a>
 			</strong>
 			<br>
-			<strong>{{ $a->ustadz ? $a->ustadz->ustadz_name : '' }}</strong><br />
-			<em>
+			<i class="fa fa-user"></i> <strong>{{ $a->ustadz ? $a->ustadz->ustadz_name : '' }}</strong><br>
+			<i class="fa fa-clock-o"></i> <em>
 				@if ($a->jenis_kajian == 1)
 				{{ $a->kajian_dates }}
 				@elseif ($a->jenis_kajian == 2)
@@ -22,7 +22,8 @@
 				@else
 				{{ $a->setiap_tanggal }}
 				@endif
-			</em>
+			</em><br>
+			<i class="fa fa-map-marker"></i> {{ $a->kajian_tempat }}
 		</div>
 	</div>
 </div>
