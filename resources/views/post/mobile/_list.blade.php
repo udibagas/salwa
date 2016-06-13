@@ -20,13 +20,12 @@
 		<hr style="margin-top:5px;">
 
 		{!! $p->description !!}
-
-		@if (count($p->images) > 0)
-			<br>
-			<div class="row no-gutter">
-				@each('post._image', $p->images, 'image')
-			</div>
-			<br>
-		@endif
 	</div>
 </div>
+
+@if (count($p->images) > 0)
+<div class="row-post no-gutter">
+	@each('post._image', $p->images, 'image')
+	<div class="clearfix"></div>
+</div>
+@endif

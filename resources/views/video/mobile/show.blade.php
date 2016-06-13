@@ -38,16 +38,12 @@
 
 	<br><br>
 	{!! $video->desc !!}
-	<br><br>
-
-	<div class="text-center">
-		@include('layouts._share')
-	</div>
-	<br>
 
 </div>
 
-<br>
+<div class="row-post text-center">
+	@include('layouts._share')
+</div>
 
 @include('comment.mobile.index', [
 'comments' => $video->comments()

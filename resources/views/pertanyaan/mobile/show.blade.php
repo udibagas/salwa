@@ -45,12 +45,10 @@
 	@else
 	<strong class="text-danger">Belum ada jawaban untuk pertanyaan terkait.</strong>
 	@endif
+</div>
 
-	<br><br>
-	<div class="text-center">
-		@include('layouts._share')
-	</div>
-	<br>
+<div class="row-post text-center">
+	@include('layouts._share')
 </div>
 
 <h3 class="title">Pertanyaan Terkait</h3>

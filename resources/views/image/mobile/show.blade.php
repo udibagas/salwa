@@ -7,7 +7,9 @@
 <div class="row-post text-center">
 	<h3>{{ $image->judul }}</h3>
 	<img src="/{{ $image->img_images }}" alt="{{ $image->judul }}" class="img-responsive" />
-	<br>
+</div>
+
+<div class="row-post text-center">
 	@include('layouts._share')
 </div>
 

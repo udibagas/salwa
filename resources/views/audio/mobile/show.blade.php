@@ -14,13 +14,14 @@
 	<br><br>
 	{!! $audio->keterangan !!}
 
-	<br><br>
+	<br>
 
 	<a href="/audio/{{ $audio->mp3_download_id }}/download" class="btn btn-info"><i class="fa fa-download"></i> Download</a>
 
-	<hr>
-	@include('layouts._share')
+</div>
 
+<div class="row-post text-center">
+	@include('layouts._share')
 </div>
 
 @include('comment.mobile.index', [

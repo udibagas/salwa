@@ -23,11 +23,11 @@
 				<a href="/kitab/{{ $kitab->buku_id }}/download" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
 
 			</div>
-
-			<hr>
-
-			@include('layouts._share')
 		</div>
+	</div>
+
+	<div class="row-post text-center">
+		@include('layouts._share')
 	</div>
 
 	<h4 class="title">KITAB TERKAIT</h4>

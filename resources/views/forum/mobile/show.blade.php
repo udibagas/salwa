@@ -5,13 +5,11 @@
 @section('content')
 
 	<div class="row-post">
-		<h3>{{ $forum->title }}</h3>
+		<h3 style="margin-top:0px;">{{ $forum->title }}</h3>
+	</div>
 
-		<hr style="margin-bottom:5px;">
-
-		<div class="text-center">
-			@include('layouts._share')
-		</div>
+	<div class="row-post text-center">
+		@include('layouts._share')
 	</div>
 
 	@each('post.mobile._list', $posts, 'p')

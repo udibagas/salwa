@@ -31,20 +31,18 @@
 		@endforeach
 	</div>
 	@endif
-
-	@if ($images)
-	<div class="row no-gutter">
-		@each('informasi._images', $images, 'image')
-	</div>
-	@endif
-
-	<div class="text-center">
-		@include('layouts._share')
-	</div>
-	<br>
 </div>
 
-<br>
+@if (count($images))
+<div class="row-post no-gutter">
+	@each('informasi._images', $images, 'image')
+	<div class="clearfix"></div>
+</div>
+@endif
+
+<div class="row-post text-center">
+	@include('layouts._share')
+</div>
 
 @include('comment.mobile.index', [
 'comments' => $informasi->comments()

@@ -15,9 +15,9 @@
 	<div class="">
 		{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
 	</div>
+</div>
 
-	<br>
-
+<div class="row-post text-center">
 	@include('layouts._share')
 </div>
 

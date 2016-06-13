@@ -20,10 +20,11 @@
 	<br>
 
 	{!! $peduli->isi !!}
-	<div class="text-center">
-		@include('layouts._share')
-	</div>
-	<br>
+
+</div>
+
+<div class="row-post text-center">
+	@include('layouts._share')
 </div>
 
 @include('comment.mobile.index', [
