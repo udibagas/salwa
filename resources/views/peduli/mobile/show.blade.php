@@ -13,8 +13,8 @@
 	<br>
 	<br>
 
-	@if ($peduli->img_peduli)
-	<img class="img-responsive" src="/{{ $peduli->img_gambar }}" alt="{{ $peduli->judul }}">
+	@if ($peduli->img_artikel)
+	<img class="img-responsive" src="/{{ $peduli->img_artikel }}" alt="{{ $peduli->judul }}">
 	@endif
 
 	<br>
