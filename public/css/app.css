@@ -3,27 +3,20 @@
     src: url("/fonts/Nirmala_0.ttf");
 }
 
-@font-face {
-    font-family: "Gotham";
-    src: url("/fonts/Gotham-Book.ttf");
-}
-
-@font-face {
-    font-family: "Gotham";
-    src: url("/fonts/Gotham-Bold.ttf");
+/*@font-face {
+    font-family: "Nirmala UI";
+    src: url("/fonts/NirmalaB_0.ttf");
 	font-weight: bold;
-}
+}*/
 
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 body {
 	font-family: "Nirmala UI", sans-serif;
-	/*font-family: "Gotham", sans-serif;*/
 	padding-top: 80px;
 	padding-bottom: 0;
 	color: #5a5a5a;
-	/*background-color: #EEEEEE;*/
 }
 
 .navbar-fixed-top {
@@ -35,10 +28,8 @@ body {
 -------------------------------------------------- */
 
 .navbar-default {
-	/*background-color: #033AAE;*/
 	background-color: #297FB9;
 	border-color: #032876;
-	/*border: none;*/
 }
 
 .dropdown-menu {

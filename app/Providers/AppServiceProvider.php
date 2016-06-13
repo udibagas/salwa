@@ -5,10 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
-// use App\SalwaImages;
-// use App\Informasi;
-// use App\Hadist;
-// use App\Banner;
+use BrowserDetect;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
 			'produk'	=> \App\Produk::class,
 			'video' 	=> \App\Video::class,
 		]);
+
+		view()->share(['isMobile' => BrowserDetect::isMobile()]);
 
         // view()->share([
 		// 	'info' 		=> Informasi::limit(3)->orderBy('informasi_id', 'DESC')->get(),

@@ -40,10 +40,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-		if (BrowserDetect::isMobile())
-		{
-			return ['aaa' => 'aaa'];
-		}
+		$view = BrowserDetect::isMobile() ? 'home.mobile.index' : 'home.index';
 
 		if ($request->search)
 		{
@@ -67,13 +64,13 @@ class HomeController extends Controller
 			]);
 		}
 
-        return view('home.index', [
+        return view($view, [
 			'videos' 	=> Video::limit(6)->orderBy('video_id', 'DESC')->get(),
 			'images' 	=> SalwaImages::limit(5)->orderByRaw('RAND()')->get(),
 			'slider' 	=> Video::limit(3)->orderBy('video_id', 'DESC')->get(),
 			'artikel' 	=> Artikel::limit(12)->orderBy('artikel_id', 'DESC')->get(),
 			'peduli' 	=> Peduli::limit(3)->orderBy('peduli_id', 'DESC')->get(),
-			'forum'		=> Forum::active()->limit(3)->orderBy('forum_id', 'DESC')->get(),
+			'forum'		=> Forum::active()->limit(5)->orderBy('forum_id', 'DESC')->get(),
 			'buku'		=> Buku::limit(18)->orderByRaw('RAND()')->get(),
 			'produk'	=> Produk::limit(3)->orderBy('id_produk', 'DESC')->get(),
 			'doa'		=> Hadist::limit(5)->doa()->orderByRaw('RAND()')->get(),

@@ -18,7 +18,7 @@ class GroupController extends Controller
     public function index(Request $request)
     {
         return view('group.index', [
-			'groups' => Group::active()->when($request->group_name, function($query) use ($request) {
+			'groups' => Group::when($request->group_name, function($query) use ($request) {
 							return $query->where('group_name', 'like', '%'.$request->group_name.'%');
 						})->when($request->description, function($query) use ($request) {
 							return $query->where('description', 'like', '%'.$request->description.'%');

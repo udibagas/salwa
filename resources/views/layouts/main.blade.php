@@ -22,6 +22,10 @@
 
 @endpush
 
+@if ($isMobile)
+
 @section('footer')
 	@include('layouts.footer')
 @endsection
+
+@endif

@@ -30,8 +30,6 @@
 				<th style="width:110px;">Image</th>
 				<th>Judul</th>
 				<th>Kategori</th>
-				<th style="width:150px;">Created At</th>
-				<th style="width:150px;">Updated At</th>
 				<th style="width:180px;">Action</th>
 			</tr>
 			{!! Form::open(['method' => 'GET']) !!}
@@ -44,8 +42,6 @@
 				<td>
 					{!! Form::select('group_id', \App\Group::active()->image()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'), request('group_id'), ['class' => 'form-control', 'placeholder' => '-All-']) !!}
 				</td>
-				<td></td>
-				<td></td>
 				<td>
 					<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
 					<a href="/artikel/admin" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
@@ -61,8 +57,6 @@
 					<td><img src="/{{ $a->img_images }}" alt="" style="width:100px;" /></td>
 					<td><a href="/image/{{ $a->id_salwaimages }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
 					<td>{{ $a->group ? $a->group->group_name : '' }}</td>
-					<td>{{ $a->created }}</td>
-					<td>{{ $a->updated }}</td>
 					<td>
 						{!! Form::open(['method' => 'DELETE', 'url' => '/image/'.$a->id_salwaimages]) !!}
 						{!! Form::hidden('redirect', url()->full()) !!}

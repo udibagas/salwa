@@ -13,22 +13,36 @@
         <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
 		<link href="/css/breadcrumb.css" rel="stylesheet">
 		<link href="/summernote/summernote.css" rel="stylesheet">
+
+		@if ($isMobile)
+		<link href="/css/appMobile.css" rel="stylesheet">
+		<link href="/sidr/dist/stylesheets/jquery.sidr.bare.css" rel="stylesheet">
+		@else
 		<link href="/css/app.css" rel="stylesheet">
+		@endif
+
 		<link href="/css/gallery.css" rel="stylesheet">
 		<link href="/css/comment.css" rel="stylesheet">
-		
+
 		@stack('css')
 
 		<script type="text/javascript" src="/js/jquery.min.js"></script>
         <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/summernote/summernote.min.js"></script>
 		<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
+		@if ($isMobile)
+		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
+		@endif
 		<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
     </head>
 
     <body>
 
-        @include('layouts.nav')
+		@if ($isMobile)
+        @include('layouts.navMobile')
+		@else
+		@include('layouts.nav')
+		@endif
 
 		<div class="hidden-xs">
 			@yield('breadcrumbs')
