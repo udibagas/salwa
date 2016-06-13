@@ -45,9 +45,7 @@
 			@include('layouts.nav')
 		@endif
 
-		<div class="hidden-xs">
-			@yield('breadcrumbs')
-		</div>
+		@yield('breadcrumbs')
 
 		@yield('slider')
 
