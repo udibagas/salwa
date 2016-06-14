@@ -25,7 +25,10 @@ class AppServiceProvider extends ServiceProvider
 			'video' 	=> \App\Video::class,
 		]);
 
-		view()->share(['isMobile' => BrowserDetect::isMobile()]);
+		view()->share([
+			'isMobile' => BrowserDetect::isMobile(),
+			'isTablet' => BrowserDetect::isTablet(),
+		]);
 
         // view()->share([
 		// 	'info' 		=> Informasi::limit(3)->orderBy('informasi_id', 'DESC')->get(),

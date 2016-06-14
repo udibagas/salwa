@@ -16,13 +16,13 @@
 
 		@if ($isMobile)
 		<link href="/css/appMobile.css" rel="stylesheet">
-		<link href="/sidr/dist/stylesheets/jquery.sidr.bare.css" rel="stylesheet">
 		@else
 		<link href="/css/app.css" rel="stylesheet">
 		@endif
 
 		<link href="/css/gallery.css" rel="stylesheet">
 		<link href="/css/comment.css" rel="stylesheet">
+		<link href="/sidr/dist/stylesheets/jquery.sidr.bare.css" rel="stylesheet">
 
 		@stack('css')
 

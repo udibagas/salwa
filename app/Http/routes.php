@@ -17,8 +17,8 @@ Route::get('jajal', function() {
 	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);
 });
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/home', ['as' => 'home1', 'uses' => 'HomeController@index']);
 Route::get('/instagram', 'HomeController@instagram');
 Route::get('audio/{audio}/download', 'AudioController@download');
 Route::get('doa', 'HadistController@indexDoa');

@@ -15,23 +15,31 @@
 	<br>
 	@include('home.promo')
 	<br>
-	@include('home._aktual')
-
+	@if ($isTablet)
+		@include('home.tablet._aktual')
+		<br>
+	@else
+		@include('home._aktual')
+	@endif
 	<br>
 
 	<h4 class="title"><i class="fa fa-comment"></i> FORUM</h4>
 	@include('home._forum')
 
 	<h4 class="title"><i class="fa fa-book"></i> SALWA E-BOOK</h4>
-	@include('home._kitab')
+	@if ($isTablet)
+		@include('home.tablet._kitab')
+	@else
+		@include('home._kitab')
+	@endif
 	<div class="clearfix"></div>
 	<br>
 
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-6 col-sm-6">
 			@include('home.doa')
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 col-sm-6">
 			@include('home.dzikir')
 		</div>
 	</div>

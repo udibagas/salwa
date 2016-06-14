@@ -24,7 +24,7 @@
 		<h2>{{ $produk->judul }}</h2><hr />
 
 		<div class="row">
-			<div class="col-md-7">
+			<div class="col-md-7 col-sm-8">
 				<p>{!! $produk->sinopsis !!}</p>
 				<table class="table table-hover table-striped table-bordered">
 					<tbody>
@@ -43,7 +43,7 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="col-md-5">
+			<div class="col-md-5 col-sm-4">
 				<img src="/{{ $produk->img_buku }}" style="width:100%;margin-bottom:30px;" alt="" />
 			</div>
 		</div>

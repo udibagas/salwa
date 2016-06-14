@@ -8,7 +8,7 @@
 		'breadcrumbs' => [
 			'/forum' => 'FORUM',
 			'/forum-category/'.$forum->group_id.'-'.str_slug($forum->group->group_name) => $forum->group->group_name,
-			'#' => str_limit($forum->title)
+			'#' => str_limit($forum->title, 60)
 		]
 	])
 
@@ -24,7 +24,7 @@
 		])
 	</div>
 
-	<div class="col-md-9">
+	<div class="col-md-9 col-sm-12">
 		<h2>{{ $forum->title }}</h2>
 		<hr>
 		@include('layouts._share')

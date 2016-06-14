@@ -17,7 +17,16 @@ class VideoController extends Controller
      */
     public function index(Request $request)
     {
-		$view = BrowserDetect::isMobile() ? 'video.mobile.index' : 'video.index';
+		$view = 'video.index';
+
+		if (BrowserDetect::isMobile()) {
+			$view =  'video.mobile.index';
+		}
+
+		// if (BrowserDetect::isTablet()) {
+		// 	$view =  'video.tablet.index';
+		// }
+
 		$search = str_replace(' ', '%', $request->search);
 
         return view($view, [
@@ -116,7 +125,15 @@ class VideoController extends Controller
      */
     public function show(Video $video)
     {
-		$view = BrowserDetect::isMobile() ? 'video.mobile.show' : 'video.show';
+		$view = 'video.show';
+
+		if (BrowserDetect::isMobile()) {
+			$view =  'video.mobile.show';
+		}
+
+		// if (BrowserDetect::isTablet()) {
+		// 	$view =  'video.tablet.show';
+		// }
 
         return view($view, [
 			'video' 	=> $video,

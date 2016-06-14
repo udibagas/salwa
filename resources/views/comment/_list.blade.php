@@ -1,12 +1,12 @@
 <a name="comment-{{$c->id}}" class="comment-number"></a>
 <div class="row">
-	<div class="col-md-1 hidden-xs">
+	<div class="col-md-1 col-sm-2 hidden-xs">
 		<div class="thumbnail">
 			<img class="img-responsive user-photo" @if ($c->user->img_user) src="/{{$c->user->img_user}}" @else src="/images/nobody.png" @endif">
 		</div>
 	</div>
 
-	<div class="col-md-11">
+	<div class="col-md-11 col-sm-10">
 		<div class="panel @if ($c->approved) panel-info @else panel-danger @endif panel-comment">
 			<div class="panel-heading">
 				<strong>{{ $c->user ? $c->user->name : '' }}</strong>

@@ -1,6 +1,6 @@
 <div class="jumbotron">
 	<h2>Mari bergabung bersama SalamDakwah untuk mendapatkan manfaat lebih.</h2>
-	<span class="pull-right"><img src="/images/logo.png" alt="" /></span>
+	<span class="pull-right hidden-sm"><img src="/images/logo.png" alt="" /></span>
 	<hr style="border-color: #777;">
 	<ul>
 		<li>Tanya langsung masalah keislaman dengan narasumber yang berkompeten di bidangnya</li>

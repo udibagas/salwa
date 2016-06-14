@@ -8,7 +8,7 @@
 			@endif
 		</div>
 	</div>
-	<div class="col-md-11 col-sm-11">
+	<div class="col-md-11 col-sm-10">
 		<div class="panel panel-info panel-comment">
 			<div class="panel-heading">
 				<strong>{{ $p->user ? $p->user->name : '' }}</strong>

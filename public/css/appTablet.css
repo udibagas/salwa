@@ -1,0 +1,351 @@
+@font-face {
+    font-family: "Nirmala UI";
+    src: url("/fonts/Nirmala_0.ttf");
+}
+
+/*@font-face {
+    font-family: "Nirmala UI";
+    src: url("/fonts/NirmalaB_0.ttf");
+	font-weight: bold;
+}*/
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+body {
+	font-family: "Nirmala UI", sans-serif;
+	padding-top: 0px;
+	padding-bottom: 0;
+	color: #5a5a5a;
+}
+
+.navbar-fixed-top {
+	top: 30px;
+	border-width: 0;
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+.navbar-default {
+	background-color: #297FB9;
+	border-color: #032876;
+}
+
+.dropdown-menu {
+	background-color: #297FB9;
+}
+
+.dropdown-menu > li > a:hover {
+	background-color: #032876;
+}
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper > .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+.navbar-wrapper .navbar {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.navbar-wrapper .navbar .container {
+  width: auto;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+}
+
+td.td-label {
+    width: 150px;
+    font-weight: bold;
+}
+
+thead {
+	background-color: #d9edf7;
+}
+
+.navbar-nav>li {
+	border-left: 1px solid #032876;
+}
+
+.navbar-nav>li:first-of-type {
+	border-left: none;
+}
+
+ul.link-icon {
+	list-style: none;
+	margin: 15px auto 0px;
+}
+
+ul.link-icon > li {
+	display: inline-block;
+}
+
+.link-icon > li > a {
+	color: #555;
+	font-size: 12px;
+}
+
+.link-icon > li {
+	border-right: 1px solid #555;
+	padding: 0px 3px;
+	color: #555;
+	width: 122px;
+	margin-bottom: 15px;
+}
+
+.link-icon > li > a > i {
+	font-size: 25px;
+}
+
+.link-icon > li:last-of-type {
+	border-right: none;
+}
+
+.navbar-brand {
+	/*padding: 5px;*/
+	position: fixed;
+	top: -10px;
+}
+
+.title {
+	background-color: #0084FF;
+	padding: 10px;
+	color: #FFFFFF;
+	margin-top: 0;
+}
+
+.sub-title {
+	background-color: #A2D2FF;
+	padding: 10px;
+	color: #134A80;
+	/*margin: 0;*/
+}
+
+.text-orange {
+	color: #FF4E00;
+}
+
+.text-blue {
+	color: #0077FA;
+}
+
+.btn-orange {
+	background-color: #FF4E00;
+	color: #fff;
+}
+
+.btn-blue {
+	background-color: #0077FA;
+	color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a, .dropdown-menu>li>a {
+	color: #FFFFFF;
+}
+
+a.list-group-item {
+	color: #337ab7;
+	font-weight: bold;
+}
+
+.list-group-item {
+	border-color: #8EC7FB;
+}
+
+.list-group-item.info:not(.active) {
+	background-color: #D9EDF7;
+}
+
+.panel-orange>.panel-heading {
+	background-color: #FF4E00;
+	color: #fff;
+	border-color: #FF4E00;
+}
+
+.panel-orange {
+	border-color: #FF4E00;
+
+}
+
+.panel-title {
+	font-weight: bold;
+}
+
+.nav-tabs>li>a {
+	font-weight: bold;
+}
+
+.table > tbody > tr > td {
+	vertical-align: middle;
+}
+
+.thumbnail {
+    margin-bottom:2px;
+}
+
+.thumbnail > a > img {
+	filter: brightness(80%);
+	-webkit-filter: brightness(80%);
+	height: 100%;
+	width: 100%;
+	object-fit:cover;
+	-o-object-fit:cover;
+}
+
+img.cover {
+	height: 100%;
+	width: 100%;
+	object-fit:cover;
+	-o-object-fit:cover;
+}
+
+.thumbnail, .img-thumbnail {
+	border: none;
+	padding: 0;
+	background: rgb(71,193,228);
+	border-radius: 0;
+}
+
+.thumbnail .caption {
+	position: absolute;
+    bottom: 0;
+    left: 0;
+	color: #FFFFFF;
+}
+
+.caption h2, .caption h3, .caption h4 {
+	font-size: 18px;
+	margin: 0 0 5px 0;
+}
+
+.video-block, .thumbnail-block {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.video-block:hover  {
+  background: #333 url('/images/play-icon.png') no-repeat center;
+  opacity: 0.8;
+}
+
+.thumbnail-block:hover  {
+  background: #333;
+  opacity: 0.8;
+}
+
+.row.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.no-gutter [class*='col-']:not(:first-child),
+.row.no-gutter [class*='col-']:not(:last-child) {
+  padding-right: 1px;
+  padding-left: 1px;
+}
+
+.search-field {
+	border-radius:20px;
+	background-image: url('https://instagramstatic-a.akamaihd.net/h1/images/glyphs/magnifier.png/c053547e0c66.png');
+	background-repeat: no-repeat;
+	background-position: 8px 49%;
+	padding-left: 25px;
+}
+
+.panel-link a:hover {
+	text-decoration: none;
+}
+
+.badge {
+	font-weight: normal;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #800000;
+}
+
+.form-horizontal .modal-body  .form-group {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.panel-blue {
+	border-color: #3BAFDA;
+}
+
+.panel-blue .panel-heading {
+	background-color: #3BAFDA;
+	color: #FFF;
+}
+
+.footer {
+	background-color: #efefef;
+	padding: 40px 0 40px 0;
+	margin-top: 20px;
+}
+
+.jumbotron {
+	background-color: #A2D2FF;
+}
+
+.carousel-control.right, .carousel-control.left {
+	background-image: none;
+}
+
+.carousel-control {
+	color: #000;
+}
+.carousel-control:hover {
+	color: #0084FF;
+}
+
+.badge {
+	background-color: #337AB7;
+}
+
+.text-bold {
+	font-weight: bold;
+}
