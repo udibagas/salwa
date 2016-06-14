@@ -1,5 +1,20 @@
 <div id="sidr-main">
 	<div class="list-group">
+		@if (auth()->guest())
+		<a class="list-group-item info" href="/login">
+			<i class="fa fa-sign-in"></i> LOGIN
+		</a>
+		<a class="list-group-item info" href="/register">
+			<i class="fa fa-edit"></i> REGISTER
+		</a>
+		@else
+		<a class="list-group-item info" href="/me">
+			<i class="fa fa-user"></i> PROFILE
+		</a>
+		<a class="list-group-item info" href="/logout">
+			<i class="fa fa-sign-out"></i> LOGOUT
+		</a>
+		@endif
 		<span class="list-group-item info" style="border-radius:0;">
 			{!! Form::open(['url' => '/home', 'method' => 'GET']) !!}
 				<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control search-field">

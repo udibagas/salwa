@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 use App\User;
+use BrowserDetect;
 
 class UserController extends Controller
 {
@@ -70,7 +71,8 @@ class UserController extends Controller
 
 	public function me()
 	{
-		return view('user.profile', ['user' => auth()->user()]);
+		$view = BrowserDetect::isMobile() ? 'user.mobile.profile' : 'user.profile';
+		return view($view, ['user' => auth()->user()]);
 	}
 
     /**
