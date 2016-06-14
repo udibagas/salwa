@@ -26,7 +26,7 @@ class BannerController extends Controller
 							return $query->where('name', 'like', '%'.$request->name.'%');
 						})->when($request->active, function($query) use ($request) {
 							return $query->where('active', $request->active);
-						})->orderBy('updated', 'DESC')->simplePaginate()
+						})->orderBy('updated', 'DESC')->paginate()
 		]);
     }
 

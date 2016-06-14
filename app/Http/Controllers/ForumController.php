@@ -257,7 +257,7 @@ class ForumController extends Controller
 											->where('users.name', 'like', '%'.$request->user.'%');
 											// ->orWhere('users.user_name', 'like', '%'.$request->user.'%')
 											// ->orWhere('users.email', 'like', '%'.$request->user.'%');
-							})->orderBy('forums.forum_id', 'DESC')->simplePaginate()
+							})->orderBy('forums.forum_id', 'DESC')->paginate()
 		]);
 	}
 

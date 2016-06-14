@@ -38,7 +38,7 @@ class MurottalController extends Controller
 							return $query->where('nama_surat', 'like', '%'.$nama_surat.'%');
 						})->when($request->group_id, function($query) use ($request) {
 							return $query->where('group_id', $request->group_id);
-						})->orderBy('nama_surat', 'ASC')->simplePaginate()
+						})->orderBy('nama_surat', 'ASC')->paginate()
 		]);
     }
 

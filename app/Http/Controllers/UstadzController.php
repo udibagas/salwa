@@ -28,7 +28,7 @@ class UstadzController extends Controller
 								$query->where('ustadz_gender', $request->ustadz_gender);
 							})->when($request->ustadz_status, function($query) use ($request) {
 								$query->where('ustadz_status', $request->ustadz_status);
-							})->simplePaginate()
+							})->paginate()
 		]);
     }
 

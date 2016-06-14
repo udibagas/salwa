@@ -53,7 +53,7 @@ class KajianController extends Controller
 									->where('tb_ustadz.ustadz_name', 'like', '%'.$request->ustadz.'%');
 						})->when($request->today, function($query) {
 							return $query->whereRaw('DATE(kajian_dates) = '.date('Y-m-d'));
-						})->orderBy('tb_kajian.created', 'ASC')->simplePaginate()
+						})->orderBy('tb_kajian.created', 'ASC')->paginate()
 		]);
     }
 

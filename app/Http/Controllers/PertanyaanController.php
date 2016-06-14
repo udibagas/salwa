@@ -55,7 +55,7 @@ class PertanyaanController extends Controller
 												->where('u.jenis_kelamin',  $request->jenis_kelamin);
 								})->when($request->group_id, function($query) use ($request) {
 									return $query->where('group_id', $request->group_id);
-								})->orderBy('pertanyaan.created', 'DESC')->simplePaginate(),
+								})->orderBy('pertanyaan.created', 'DESC')->paginate(),
 		]);
 	}
 

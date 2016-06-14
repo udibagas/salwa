@@ -33,7 +33,7 @@ class AreaController extends Controller
 							return $query->where('id_lokasi', $request->id_lokasi);
 						})->when($request->nama_area, function($query) use ($request) {
 							return $query->where('nama_area', 'like', '%'.$request->nama_area.'%');
-						})->orderBy('nama_area', 'ASC')->simplePaginate()
+						})->orderBy('nama_area', 'ASC')->paginate()
 		]);
     }
 

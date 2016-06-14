@@ -32,7 +32,7 @@ class UserController extends Controller
 							return $query->where('active', $request->active);
 						})->when($request->user_status, function($query) use ($request) {
 							return $query->where('user_status', $request->user_status);
-						})->simplePaginate()
+						})->paginate()
 		]);
     }
 

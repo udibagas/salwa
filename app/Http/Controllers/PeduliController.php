@@ -41,7 +41,7 @@ class PeduliController extends Controller
 							})->when($request->user, function($query) use ($request) {
 								return $query->join('users', 'users.user_id', '=', 'peduli.user_id')
 									->where('users.name', 'like', '%'.$request->user.'%');
-							})->orderBy('peduli.updated', 'DESC')->simplePaginate()
+							})->orderBy('peduli.updated', 'DESC')->paginate()
 		]);
     }
 
