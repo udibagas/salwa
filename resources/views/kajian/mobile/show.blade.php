@@ -9,16 +9,16 @@
 
 		<div class="">
 			<p>
-				Pemateri:<br />
+				<i class="fa fa-user"></i> Pemateri:<br />
 				<strong>{{ $kajian->ustadz ? $kajian->ustadz->ustadz_name : ''}}</strong>
 			</p>
 			<p>
-				Jenis Kajian:<br />
+				<i class="fa fa-edit"></i> Jenis Kajian:<br />
 				<strong>{{ $kajian->jenis_kajian == '1' ? 'Tematik' : 'Rutin' }}</strong>
 			</p>
 
 			<p>
-				Waktu:<br />
+				<i class="fa fa-clock-o"></i> Waktu:<br />
 				<strong>
 					@if ($kajian->jenis_kajian == 1)
 					{{ $kajian->kajian_dates }}
@@ -30,7 +30,7 @@
 				</strong>
 			</p>
 			<p>
-				Tempat:<br />
+				<i class="fa fa-map-marker"></i> Tempat:<br />
 				<strong>
 					{{ $kajian->kajian_tempat }}<br>
 					{{ $kajian->area ? $kajian->area->nama_area : '' }} - {{ $kajian->lokasi ? $kajian->lokasi->nama_lokasi : '' }}
@@ -38,7 +38,7 @@
 			</p>
 
 			<p>
-				Contact Person:<br />
+				<i class="fa fa-mobile"></i> Contact Person:<br />
 				<strong>
 					@if ($kajian->pic1)
 					{{ $kajian->pic1->pic_name }} - {{ $kajian->pic1->pic_phone }} <br />

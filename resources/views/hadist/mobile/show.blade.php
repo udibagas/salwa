@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', '{{ $groupName }} : {{ $hadist->judul }}')
+@section('title', $groupName.' : '.$hadist->judul)
 
 @section('content')
 
