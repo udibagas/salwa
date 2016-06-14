@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Audio : {{ $audio->judul }}')
+@section('title', 'Audio : '.$audio->judul)
 
 @section('content')
 

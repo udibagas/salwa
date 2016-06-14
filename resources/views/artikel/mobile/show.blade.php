@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Aktual : {{ $artikel->judul }}')
+@section('title', 'Aktual : '.$artikel->judul)
 
 @section('content')
 
