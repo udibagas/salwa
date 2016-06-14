@@ -50,6 +50,18 @@
 				</div>
 			</div>
 
+			<div class="form-group @if ($errors->has('delete')) has-error @endif">
+				<label for="delete" class="col-md-3 control-label">Deleted:</label>
+				<div class="col-md-9">
+					{!! Form::select('delete', ['Y' => 'Y', 'N' => 'N'], $group->delete, ['class' => 'form-control', 'placeholder' => '- Deleted -']) !!}
+					@if ($errors->has('delete'))
+						<span class="help-block">
+							<strong>{{ $errors->first('delete') }}</strong>
+						</span>
+					@endif
+				</div>
+			</div>
+
 			<hr>
 
 			<div class="form-group">
