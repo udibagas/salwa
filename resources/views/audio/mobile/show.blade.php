@@ -46,7 +46,7 @@
 @endif
 
 <h4 class="title">AUDIO TERKAIT</h4>
-@each('audio.mobile._list', $terkait, 'a')
+@each('audio.mobile._list', $terkait->take(5), 'a')
 @include('audio._group')
 
 @stop
