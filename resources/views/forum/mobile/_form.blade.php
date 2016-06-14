@@ -64,7 +64,7 @@
 		<div class="col-md-offset-2 col-md-10">
 			@if ($post && $post->images)
 			<div class="row no-gutter">
-				@each('forum._list-image-edit', $post->images, 'image')
+				@each('post._image-edit', $post->images, 'image')
 			</div>
 			@endif
 		</div>
