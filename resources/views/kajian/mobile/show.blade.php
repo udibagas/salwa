@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Kajian : {{ $kajian->kajian_tema }}')
+@section('title', 'Kajian : '.$kajian->kajian_tema)
 
 @section('content')
 
