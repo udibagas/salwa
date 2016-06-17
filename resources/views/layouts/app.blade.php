@@ -72,11 +72,11 @@
 				$('body').swipe( {
 					swipeLeft: function () {$.sidr('close', 'sidr-main');},
 					swipeRight: function () {$.sidr('open', 'sidr-main');},
-					threshold: 30
+					threshold: 75
 				});
 
-				$('#menu').sidr({name:'sidr-main',timing:'ease-in-out',speed:300});
-				$('#menu-right').sidr({name:'sidr-right',timing:'ease-in-out',speed:300,side:'right'});
+				$('#menu').sidr({name:'sidr-main',timing:'ease-in-out',speed:200});
+				$('#menu-right').sidr({name:'sidr-right',timing:'ease-in-out',speed:200,side:'right'});
 
 			@endif
 

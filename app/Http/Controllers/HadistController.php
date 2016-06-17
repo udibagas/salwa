@@ -22,7 +22,7 @@ class HadistController extends Controller
 
 		return view($view, [
 			'groupName'	=> 'Hadist',
-			'hadists' 	=> Hadist::hadist()->when($request->group_id, function($query) use ($request) {
+			'hadists' 	=> Hadist::when($request->group_id, function($query) use ($request) {
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%');
