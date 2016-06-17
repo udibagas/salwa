@@ -50,6 +50,7 @@
 				</div>
 			</div>
 
+			@if ($group->group_id > 0)
 			<div class="form-group @if ($errors->has('delete')) has-error @endif">
 				<label for="delete" class="col-md-3 control-label">Deleted:</label>
 				<div class="col-md-9">
@@ -61,6 +62,7 @@
 					@endif
 				</div>
 			</div>
+			@endif
 
 			<hr>
 

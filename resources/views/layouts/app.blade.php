@@ -30,11 +30,11 @@
         <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/summernote/summernote.min.js"></script>
 		<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
+		<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
 		@if ($isMobile)
 		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.touchSwipe.min.js"></script>
 		@endif
-		<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
     </head>
 
     <body>
