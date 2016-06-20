@@ -64,7 +64,7 @@ class GroupController extends Controller
 
         }
 
-		Group::active()->create($data);
+		Group::create($data);
 
 		return redirect('/group')->with('success', 'Data berhasil disimpan');
     }
