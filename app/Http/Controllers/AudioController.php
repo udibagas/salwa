@@ -166,4 +166,9 @@ class AudioController extends Controller
 		return response()->download($audio->file_mp3);
 	}
 
+	public function playlist()
+	{
+		return view('audio.mobile.playlist', ['audios' => Mp3::all()]);
+	}
+
 }

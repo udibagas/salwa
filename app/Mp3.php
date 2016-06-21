@@ -21,7 +21,7 @@ class Mp3 extends Model
 		'createdby', 'updatedby', 'keterangan'
 	];
 
-	protected $with = ['group'];
+	// protected $with = ['group'];
 
 	public function group()
 	{

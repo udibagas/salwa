@@ -17,6 +17,8 @@ Route::get('jajal', function() {
 	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);
 });
 
+Route::get('audio/playlist', 'AudioController@playlist');
+
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/home', ['as' => 'home1', 'uses' => 'HomeController@index']);
 Route::get('/instagram', 'HomeController@instagram');
@@ -86,8 +88,8 @@ Route::group(['middleware' => 'auth'], function() {
 
 	// pake policy, admin & ustadz bisa
 	// ustadz only
-	Route::get('pertanyaan/admin-ustadz', 'PertanyaanController@adminUstadz');
 	Route::group(['middleware' => 'role:'.User::ROLE_USTADZ], function() {
+		Route::get('pertanyaan/admin-ustadz', 'PertanyaanController@adminUstadz');
 		Route::get('pertanyaan/{pertanyaan}/jawab', 'PertanyaanController@jawab');
 		Route::put('pertanyaan/{pertanyaan}/simpan-jawaban', 'PertanyaanController@simpanJawaban');
 	});

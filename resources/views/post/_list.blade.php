@@ -26,15 +26,14 @@
 			</div>
 			<div class="panel-body">
 
-				{!! $p->description !!}
-
 				@if (count($p->images) > 0)
-					<br>
-					<div class="row no-gutter">
-						@each('post._image', $p->images, 'image')
-					</div>
-					<br>
+				<div class="row no-gutter">
+					@each('post._image', $p->images, 'image')
+				</div>
+				<br>
 				@endif
+
+				{!! $p->description !!}
 
 			</div>
 		</div>

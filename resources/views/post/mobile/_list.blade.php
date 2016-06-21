@@ -1,4 +1,4 @@
-<div class="row-post">
+<div class="row-post no-gutter">
 	<div class="media">
 		<div class="media-left media-middle">
 			<div class="thumbnail" style="height:40px;width:40px;">
@@ -20,15 +20,14 @@
 			</span>
 		</div>
 
+		@if (count($p->images) > 0)
+			<br>
+			@each('post._image', $p->images, 'image')
+			<div class="clearfix"></div>
+		@endif
+
 		<br>
 
 		{!! $p->description !!}
 	</div>
 </div>
-
-@if (count($p->images) > 0)
-<div class="row-post no-gutter">
-	@each('post._image', $p->images, 'image')
-	<div class="clearfix"></div>
-</div>
-@endif
