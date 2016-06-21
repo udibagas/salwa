@@ -2,7 +2,11 @@
 	<div class="media">
 		<div class="media-left">
 			<div class="thumbnail" style="width:100px;height:120px;">
-				<img class="media-object cover no-round" src="/{{ $a->img_buku }}" alt="" style="width:200px;">
+				@if ($a->img_buku)
+				<img class="media-object cover no-round" src="/{{ $a->img_buku }}" alt="">
+				@else
+				<img class="media-object profile no-round" data-name="{{ $a->judul }}" data-width="100" data-height="120">
+				@endif
 			</div>
 		</div>
 		<div class="media-body">

@@ -5,7 +5,7 @@
 				@if ($a->img_artikel)
 				<img class="media-object cover" src="/{{ $a->img_artikel }}" alt="{{ $a->judul }}">
 				@else
-				<img class="media-object cover" src="/images/logo-padding.png" alt="{{ $a->judul }}">
+				<img class="media-object profile" data-name="{{ $a->judul }}" alt="{{ $a->judul }}">
 				@endif
 			</div>
 		</div>

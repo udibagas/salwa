@@ -34,6 +34,7 @@
 		@if ($isMobile)
 		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.touchSwipe.min.js"></script>
+		<script type="text/javascript" src="/initialjs/dist/initial.min.js"></script>
 		@endif
     </head>
 
@@ -90,6 +91,9 @@
 						['insert', ['picture', 'video', 'link']],
 					]
 				});
+
+				$('.profile').initial({charCount:1, height:60, width:60,fontSize:25});
+
 			@else
 				$('.summernote').summernote({
 					height: 200,
