@@ -4,10 +4,8 @@
 			<div class="thumbnail" style="height:40px;width:40px;">
 				@if ($a->user && $a->user->img_user)
 				<img class="media-object cover" src="/{{ $a->user->img_user }}" alt="{{ $a->user->name }}">
-				@elseif ($a->user)
-				<img class="media-object profile" data-name="{{ $a->user->name }}" alt="{{ $a->user->name }}" />
 				@else
-				<img class="media-object profile" data-name="{{ $a->judul }}" alt="{{ $a->judul }}">
+				<img class="media-object profile" data-name="{{ $a->title }}" alt="{{ $a->title }}">
 				@endif
 			</div>
 		</div>
