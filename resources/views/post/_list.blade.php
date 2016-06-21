@@ -23,11 +23,11 @@
 			<br>
 
 			@if (count($p->images) > 0)
-				<br>
 				<div class="row no-gutter">
 					@each('post._image', $p->images, 'image')
 					<div class="clearfix"></div>
 				</div>
+				<br>
 			@endif
 
 			{!! $p->description !!}
