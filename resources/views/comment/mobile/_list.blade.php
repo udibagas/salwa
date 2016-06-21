@@ -5,7 +5,7 @@
 				<img class="media-object @if ($c->user->img_user) cover @else profile @endif" @if ($c->user->img_user) src="/{{$c->user->img_user}}" @else data-name="{{$c->user->name}}" @endif>
 			</div>
 		</div>
-		<div class="media-body" style="padding-top:0px;">
+		<div class="media-body">
 			<strong>
 				{{ $c->user ? $c->user->name : '' }}
 			</strong><br>
