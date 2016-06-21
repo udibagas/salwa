@@ -2,7 +2,7 @@
 	<div class="media">
 		<div class="media-left">
 			<div class="thumbnail" style="width:80px;height:100px;">
-				<img class="media-object cover no-round" src="/{{ $a->img_buku }}" alt="" style="width:200px;">
+				<img class="media-object cover no-round" src="/{{ $a->img_buku }}" alt="{{ $a->judul }}">
 			</div>
 		</div>
 		<div class="media-body">

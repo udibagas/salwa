@@ -18,7 +18,28 @@
 
 <h4 class="title">PROFILE</h4>
 <div class="row-post">
-	@include('user._form', ['url' => '/user/'.$user->user_id, 'method' => 'PUT'])
+	<div class="media">
+		<div class="media-left">
+			<div class="thumbnail" style="width:70px;height:70px;">
+				@if ($user->img_user)
+				<img class="img-responsive img-circle cover" src="/{{ $user->img_user }}" />
+				@else
+				<img class="img-responsive img-circle" src="/images/nobody.jpg" />
+				@endif
+			</div>
+		</div>
+		<div class="media-body">
+			<h4 class="text-bold">{{ $user->name }}</h4>
+			<b>({{ $user->user_name }})</b>
+			<!-- <hr>
+			{{ $user->email }}<br /> -->
+
+		</div>
+	</div>
+</div>
+
+<div class="row-post">
+	@include('user.mobile._form', ['url' => '/user/'.$user->user_id, 'method' => 'PUT'])
 </div>
 
 <h4 class="title">PERTANYAAN</h4>
