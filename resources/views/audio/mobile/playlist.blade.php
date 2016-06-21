@@ -64,9 +64,9 @@ var supportsAudio = !!document.createElement('audio').canPlayType;
 if (supportsAudio) {
 	var index = 0,
 		playing = false,
-		mediaPath = '//archive.org/download/mythium/',
+		mediaPath = 'http://www.salamdakwah.com/',
 		extension = '',
-		tracks = {!! json_encode(\App\Mp3::selectRaw('mp3_download_id as track, judul as name, concat("/", file_mp3) as file')->get(), JSON_UNESCAPED_SLASHES) !!},
+		tracks = {!! json_encode(\App\Mp3::selectRaw('mp3_download_id as track, judul as name, file_mp3 as file')->get(), JSON_UNESCAPED_SLASHES) !!},
 		trackCount = tracks.length,
 		npAction = $('#npAction'),
 		npTitle = $('#npTitle'),
@@ -131,7 +131,8 @@ if (supportsAudio) {
 			loadTrack(id);
 			audio.play();
 		};
-	extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
+	extension = '';
+	// extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
 	loadTrack(index);
 }
 });
