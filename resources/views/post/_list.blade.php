@@ -1,41 +1,36 @@
-<div class="row">
-	<div class="col-md-1 col-sm-2 hidden-xs">
-		<div class="thumbnail">
-			@if ($p->user && $p->user->img_user)
-			<img class="img-responsive" src="/{{ $p->user->img_user }}" />
-			@else
-			<img class="img-responsive" src="/images/nobody.jpg" />
-			@endif
-		</div>
-	</div>
-	<div class="col-md-11 col-sm-10">
-		<div class="panel panel-info panel-comment">
-			<div class="panel-heading">
-				<strong>{{ $p->user ? $p->user->name : '' }}</strong>
-				<span class="text-muted">posted {{ $p->updated ? $p->updated->diffForHumans() : '' }}</span>
-
-				@can('update-post', $p)
-				<div class="pull-right">
-					{!! Form::open(['url' => '/post/'.$p->post_id, 'method' => 'DELETE']) !!}
-					<a href="/post/{{$p->post_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
-					{!! Form::hidden('redirect', url()->full()) !!}
-					<button name="delete" type="submit" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Hapus</button>
-					{!! Form::close() !!}
+<div class="panel panel-info">
+	<div class="panel-body">
+		<div class="media">
+			<div class="media-left media-middle">
+				<div style="height:40px;width:40px;">
+					@if ($p->user && $p->user->img_user)
+					<img class="media-object cover img-circle" src="/{{ $p->user->img_user }}" alt="{{ $p->user->name }}">
+					@elseif ($p->user)
+					<img class="media-object profile img-circle" data-name="{{ $p->user->name }}" alt="{{ $p->user->name }}" data-height="40" data-width="40">
+					@else
+					<img class="media-object cover img-circle" src="/images/logo-padding.png" alt="{{ $p->user->name }}">
+					@endif
 				</div>
-				@endcan
 			</div>
-			<div class="panel-body">
+			<div class="media-body">
+				<strong>
+					{{ $p->user ? $p->user->name : '' }}
+				</strong><br>
+				<span class="text-muted">
+					{{ $p-> created ? $p->created->diffForHumans() : '' }}
+				</span>
+			</div>
+			<br>
 
-				@if (count($p->images) > 0)
+			@if (count($p->images) > 0)
+				<br>
 				<div class="row no-gutter">
 					@each('post._image', $p->images, 'image')
+					<div class="clearfix"></div>
 				</div>
-				<br>
-				@endif
+			@endif
 
-				{!! $p->description !!}
-
-			</div>
+			{!! $p->description !!}
 		</div>
 	</div>
 </div>

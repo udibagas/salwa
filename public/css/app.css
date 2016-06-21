@@ -389,3 +389,8 @@ a:hover {
 .text-bold {
 	font-weight: bold;
 }
+
+.panel {
+	border-radius: 0;
+	margin: 5px 0;
+}

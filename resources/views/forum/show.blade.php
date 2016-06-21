@@ -32,7 +32,8 @@
 		@can('update-forum', $forum)
 		<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info"><i class="fa fa-edit" class="btn btn-primary"></i> Edit Forum</a>
 		@endcan
-		<hr />
+		<br />
+		<br />
 
 		@each('post._list', $posts, 'p')
 

@@ -31,10 +31,10 @@
         <script type="text/javascript" src="/summernote/summernote.min.js"></script>
 		<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
 		<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
+		<script type="text/javascript" src="/initialjs/dist/initial.min.js"></script>
 		@if ($isMobile)
 		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.touchSwipe.min.js"></script>
-		<script type="text/javascript" src="/initialjs/dist/initial.min.js"></script>
 		@endif
     </head>
 
@@ -92,8 +92,6 @@
 					]
 				});
 
-				$('.profile').initial({charCount:1, height:60, width:60,fontSize:25});
-
 			@else
 				$('.summernote').summernote({
 					height: 200,
@@ -110,6 +108,8 @@
 					]
 				});
 			@endif
+
+			$('.profile').initial({charCount:1, height:60, width:60,fontSize:25});
 
 			$('.delete').click(function() {
 				return confirm('Anda yakin?');
