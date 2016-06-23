@@ -8,7 +8,7 @@
 					@elseif ($p->user)
 					<img class="media-object profile img-circle" data-name="{{ $p->user->name }}" alt="{{ $p->user->name }}" data-height="40" data-width="40">
 					@else
-					<img class="media-object cover img-circle" src="/images/logo-padding.png" alt="{{ $p->user->name }}">
+					<img class="media-object cover img-circle" src="/images/logo-padding.png">
 					@endif
 				</div>
 			</div>
