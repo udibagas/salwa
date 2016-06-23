@@ -101,6 +101,9 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('pertanyaan', 'PertanyaanController', ['except' => ['index', 'show']]);
 	Route::resource('post', 'PostController', ['except' => ['index', 'show', 'create']]);
 	Route::resource('comment', 'CommentController', ['only' => ['store', 'destroy', 'edit', 'update']]);
+
+	Route::get('pertanyaan-saya', 'PertanyaanController@mine');
+	Route::get('forum-saya', 'ForumController@mine');
 });
 
 Route::get('baca-artikel/{slug}.html', 'ArtikelController@baca');

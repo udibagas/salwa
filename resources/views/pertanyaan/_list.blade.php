@@ -36,9 +36,7 @@
 				</div>
 			</div>
 
-			<br>
-
-			<h4 class="text-bold">
+			<h4>
 					<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">
 						{{ $p->judul_pertanyaan }}
 					</a>

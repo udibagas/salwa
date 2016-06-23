@@ -15,17 +15,21 @@
 
 @section('content')
 
-	<div class="col-md-offset-2 col-md-8">
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="panel-title"><i class="fa fa-question-circle-o"></i> INPUT PERTANYAAN</h3>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title"><i class="fa fa-question-circle-o"></i> INPUT PERTANYAAN</h3>
+				</div>
+				<div class="panel-body">
+					@include('pertanyaan._form', ['url' => '/pertanyaan', 'method' => 'post'])
+				</div>
 			</div>
-			<div class="panel-body">
-				@include('pertanyaan._form', ['url' => '/pertanyaan', 'method' => 'post'])
-			</div>
-		</div>
 
+		</div>
+		<div class="col-md-4">
+			@include('pertanyaan._panduan')
+		</div>
 	</div>
-	<div class="clearfix"></div>
 
 @endsection

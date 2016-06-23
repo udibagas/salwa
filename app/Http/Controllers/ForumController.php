@@ -29,6 +29,14 @@ class ForumController extends Controller
 		]);
     }
 
+    public function mine()
+    {
+		$view = BrowserDetect::isMobile() ? 'forum.mobile.mine' : 'forum.mine';
+        return view($view, [
+			'forums' => Forum::where('user_id', auth()->user()->user_id)->active()->orderBy('forum_id', 'DESC')->simplePaginate(),
+		]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

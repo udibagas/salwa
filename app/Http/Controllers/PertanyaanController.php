@@ -34,6 +34,21 @@ class PertanyaanController extends Controller
 		]);
 	}
 
+	public function mine(Request $request)
+	{
+		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.mine' : 'pertanyaan.mine';
+		$search 	= str_replace(' ', '%', $request->search);
+
+		return view($view, [
+			'pertanyaans' => Pertanyaan::where('user_id', auth()->user()->user_id)
+								->when($search, function($query) use ($search) {
+									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
+								})->when($request->group_id, function($query) use ($request) {
+									return $query->where('group_id', $request->group_id);
+								})->orderBy('created', 'DESC')->simplePaginate(),
+		]);
+	}
+
 	public function admin(Request $request)
 	{
 		return view('pertanyaan.admin', [
