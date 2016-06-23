@@ -6,7 +6,7 @@
 						@if ($p->ustadz && $p->ustadz->img_user)
 						<img class="media-object img-circle cover" src="/{{ $p->ustadz->img_user }}" />
 						@else
-						<img class="media-object img-circle cover" src="/images/logo-padding.png" />
+						<img class="media-object img-circle cover" src="/images/logo-padding.png" style="border: 1px solid #D9EDF7;" />
 						@endif
 					</div>
 				</div>
