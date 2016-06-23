@@ -1,25 +1,10 @@
-<div class="row">
-	<div class="col-md-1 col-sm-2 hidden-xs">
-		<div class="thumbnail">
-			<img class="img-responsive" src="/images/nobody.jpg" />
-		</div>
-	</div>
-	<div class="col-md-11 col-sm-10">
-		<div class="panel @if ($p->status == 's') panel-info @else panel-danger @endif panel-comment">
-			<div class="panel-heading">
-				<strong>
-					@if ($p->user)
-					{{ $p->user->jenis_kelamin == 'p' ? 'Ikhwan' : 'Akhwat' }}
-					@endif
-
-					@if ($p->daerah_asal) ({{ $p->daerah_asal }}) @endif
-				</strong>
-				<span class="text-muted">
-					asked {{ $p->tgl_tanya ? $p->tgl_tanya->diffForHumans() : "" }}
-					@if ($p->group)
-					on <a href="/pertanyaan/?group_id={{ $p->group_id }}">{{ $p->group->group_name }}</a>
-					@endif
-				</span>
+<div class="panel @if ($p->status == 'h') panel-danger @else panel-blue @endif">
+	<div class="panel-body">
+		<div class="media">
+			<div class="media-left">
+				<img class="profile media-object img-circle" data-name="{{ $p->user->jenis_kelamin == 'p' ? 'Ikhwan' : 'Akhwat' }}" data-width="40" data-height="40" />
+			</div>
+			<div class="media-body">
 
 				<div class="pull-right">
 					{!! Form::open(['url' => '/pertanyaan/'.$p->pertanyaan_id, 'method' => 'DELETE']) !!}
@@ -35,18 +20,32 @@
 					@endcan
 					{!! Form::close() !!}
 				</div>
-			</div>
-			<div class="panel-body">
-				<h4 style="margin-top:0;">
-					<strong>
-						<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">
-							{{ $p->judul_pertanyaan }}
-						</a>
-					</strong>
-				</h4>
 
-				{!! nl2br($p->ket_pertanyaan) !!}
+				<strong>
+					@if ($p->user)
+					{{ $p->user->jenis_kelamin == 'p' ? 'Ikhwan' : 'Akhwat' }}
+					@endif
+
+					@if ($p->daerah_asal) ({{ $p->daerah_asal }}) @endif
+				</strong>
+				<div class="text-muted">
+					{{ $p->tgl_tanya ? $p->tgl_tanya->diffForHumans() : "" }}
+					@if ($p->group)
+					on <a href="/pertanyaan/?group_id={{ $p->group_id }}">{{ $p->group->group_name }}</a>
+					@endif
+				</div>
 			</div>
+
+			<br>
+
+			<h4 class="text-bold">
+					<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">
+						{{ $p->judul_pertanyaan }}
+					</a>
+			</h4>
+
+			{!! nl2br($p->ket_pertanyaan) !!}
+
 		</div>
 	</div>
 </div>

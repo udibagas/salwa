@@ -1,31 +1,31 @@
-<div class="row">
-	<div class="col-md-1 col-sm-2 hidden-xs">
-		<div class="thumbnail">
-			@if ($p->ustadz && $p->ustadz->img_user)
-			<img class="img-responsive" src="/{{ $p->ustadz->img_user }}" />
-			@else
-			<img class="img-responsive" src="/images/nobody.jpg" />
-			@endif
-		</div>
-	</div>
-	<div class="col-md-11 col-sm-10">
-		<div class="panel panel-info panel-comment">
-			<div class="panel-heading">
-				
-				<strong>{{ $p->ustadz ? $p->ustadz->name : '' }}</strong>
-				<span class="text-muted">answered {{ $p->tgl_jawab ? $p->tgl_jawab->diffForHumans() : "" }}</span>
-
-				@if (auth()->check() && auth()->user()->user_id == $p->dijawab_oleh)
-				<div class="pull-right">
-					<a href="/pertanyaan/{{$p->pertanyaan_id}}/jawab" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit Jawaban</a>
+	<div class="panel panel-blue">
+		<div class="panel-body">
+			<div class="media">
+				<div class="media-left">
+					<div style="width:40px;height:40px;">
+						@if ($p->ustadz && $p->ustadz->img_user)
+						<img class="media-object img-circle cover" src="/{{ $p->ustadz->img_user }}" />
+						@else
+						<img class="media-object img-circle cover" src="/images/logo-padding.png" />
+						@endif
+					</div>
 				</div>
-				@endif
+				<div class="media-body">
 
+					@if (auth()->check() && auth()->user()->user_id == $p->dijawab_oleh)
+					<div class="pull-right">
+						<a href="/pertanyaan/{{$p->pertanyaan_id}}/jawab" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit Jawaban</a>
+					</div>
+					@endif
+
+					<strong>{{ $p->ustadz ? $p->ustadz->name : '' }}</strong>
+					<div class="text-muted">
+						{{ $p->tgl_jawab ? $p->tgl_jawab->diffForHumans() : "" }}
+					</div>
+
+				</div>
 			</div>
-			<div class="panel-body">
-				<h4 style="margin-top:0;font-weight:bold;"> Jawaban: </h4>
-				{!! $p->jawaban !!}
-			</div>
+			<br>
+			{!! $p->jawaban !!}
 		</div>
 	</div>
-</div>

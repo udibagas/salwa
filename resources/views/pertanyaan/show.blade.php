@@ -16,10 +16,34 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-3 hidden-xs">
+	<div class="col-md-3">
 		@include('pertanyaan._group')
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-6">
+
+		<h2 style="margin-top:0;">{{ $pertanyaan->judul_pertanyaan }}</h2>
+		<hr>
+		@include('layouts._share')
+
+		<div class="pull-right">
+			{!! Form::open(['url' => '/pertanyaan/'.$pertanyaan->pertanyaan_id, 'method' => 'DELETE']) !!}
+
+			@can('update-pertanyaan')
+			<a href="/pertanyaan/{{$pertanyaan->pertanyaan_id}}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
+			@endcan
+
+			@can('delete-pertanyaan', $pertanyaan)
+			{!! Form::hidden('redirect', '/pertanyaan') !!}
+			<button type="submit" name="delete" class="btn btn-danger delete">
+				<i class="fa fa-trash"></i> Hapus
+			</button>
+			@endcan
+
+			{!! Form::close() !!}
+		</div>
+
+		<br>
+		<br>
 
 		@include('pertanyaan._pertanyaan', ['p' => $pertanyaan])
 
@@ -37,10 +61,8 @@
 
 		@endif
 
-		<hr>
-		@include('layouts._share')
-		<hr>
-
+	</div>
+	<div class="col-md-3">
 		<div class="panel panel-blue">
 			<div class="panel-heading">
 				<h4 class="panel-title">PERTANYAAN TERKAIT</h4>
@@ -48,14 +70,22 @@
 			<ul class="list-group">
 				@foreach ($terkait as $p)
 				<li class="list-group-item">
-					<b><a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">{{ $p->judul_pertanyaan }}</a></b><br>
-					<i class="fa fa-user"></i> {{ $p->user ? $p->user->name : '' }}
-					<i class="fa fa-clock-o"></i> {{ $p->updated->diffForHumans() }}
+					<div class="media">
+						<div class="media-left">
+							<img class="profile media-object img-circle" data-name="{{ $p->judul_pertanyaan }}" data-width="30" data-height="30" data-font-size="17" />
+						</div>
+						<div class="media-body">
+							<b><a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">{{ $p->judul_pertanyaan }}</a></b>
+							<div class="text-muted">
+								{{ ($p->user && $p->user->jenis_kelamin == 'p') ? 'Ikhwan - ' : 'Akhwat - ' }}
+								{{ $p->updated->diffForHumans() }}
+							</div>
+						</div>
+					</div>
 				</li>
 				@endforeach
 			</ul>
 		</div>
-
 	</div>
 </div>
 
