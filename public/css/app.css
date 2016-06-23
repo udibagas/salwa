@@ -395,6 +395,6 @@ a:hover {
 	margin: 5px 0;
 }
 
-.panel-heading {
+.panel-heading, .alert {
 	border-radius: 0;
 }

@@ -22,25 +22,21 @@
 
 		<div class="col-md-9">
 
-			<h4 class="title"><i class="fa fa-search"></i> HASIL PENCARIAN "{{ request('search') }}"</h4>
+			<div class="panel panel-blue">
+				<div class="panel-heading">
+					<h3 class="panel-title"><i class="fa fa-search"></i> HASIL PENCARIAN "{{ request('search') }}"</h3>
 
-			<ul class="list-group">
-				@if (count($forums) == 0)
+				</div>
+				<ul class="list-group">
+					@if (count($forums) == 0)
 					<li class="list-group-item text-center">
 						<strong>Belum ada post</strong>
 					</li>
-				@endif
+					@endif
 
-				@foreach ($forums as $f)
-					<li class="list-group-item">
-						<a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">
-							<strong>{{ $f->title }} </strong>
-						</a><br>
-						<i class="fa fa-user"></i> {{ $f->user ? $f->user->name : '' }}
-						<i class="fa fa-clock-o"></i> {{ $f->updated->diffForHumans() }}
-					</li>
-				@endforeach
-			</ul>
+					@each('forum._item', $forums, 'f')
+				</ul>
+			</div>
 
 			<nav class="text-center">
 				{!! $forums->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}

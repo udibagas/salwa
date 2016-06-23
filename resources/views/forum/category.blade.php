@@ -53,15 +53,7 @@
 					</li>
 				@endif
 
-				@foreach ($forums as $f)
-					<li class="list-group-item">
-						<a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">
-							<strong>{{ $f->title }} </strong>
-						</a><br>
-						<i class="fa fa-user"></i> {{ $f->user ? $f->user->name : '' }}
-						<i class="fa fa-clock-o"></i> {{ $f->updated->diffForHumans() }}
-					</li>
-				@endforeach
+				@each('forum._item', $forums, 'f')
 			</ul>
 
 			<nav class="text-center">
