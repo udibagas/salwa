@@ -26,7 +26,7 @@
 					{{ $p->user ? $p->user->name : '' }}
 				</strong><br>
 				<span class="text-muted">
-					{{ $p-> created ? $p->created->diffForHumans() : '' }}
+					{{ $p->created ? $p->created->diffForHumans() : '' }}
 				</span>
 
 			</div>
