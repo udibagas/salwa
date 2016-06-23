@@ -1,4 +1,4 @@
-<div class="panel panel-info">
+<div class="panel panel-blue">
 	<div class="panel-body">
 		<div class="media">
 			<div class="media-left media-middle">
@@ -13,12 +13,22 @@
 				</div>
 			</div>
 			<div class="media-body">
+				@can('update-post', $p)
+				<div class="pull-right">
+					{!! Form::open(['url' => '/post/'.$p->post_id, 'method' => 'DELETE']) !!}
+					{!! Form::hidden('redirect', url()->current()) !!}
+					<a href="/post/{{ $p->post_id }}/edit" class="btn btn-info btn-xs">Edit</a>
+					<button type="submit" name="delete" class="btn btn-danger btn-xs delete">Delete</button>
+					{!! Form::close() !!}
+				</div>
+				@endcan
 				<strong>
 					{{ $p->user ? $p->user->name : '' }}
 				</strong><br>
 				<span class="text-muted">
 					{{ $p-> created ? $p->created->diffForHumans() : '' }}
 				</span>
+
 			</div>
 			<br>
 

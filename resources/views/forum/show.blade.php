@@ -17,21 +17,28 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-3 hidden-xs">
+	<div class="col-md-3">
 		@include('forum._group', [
 			'group' => $forum->group,
 			'groups' => \App\Group::active()->forum()->orderBy('group_name', 'ASC')->get()
 		])
 	</div>
 
-	<div class="col-md-9 col-sm-12">
-		<h2>{{ $forum->title }}</h2>
+	<div class="col-md-6">
+		<h2 style="margin-top:0;">{{ $forum->title }}</h2>
 		<hr>
 		@include('layouts._share')
 
 		@can('update-forum', $forum)
-		<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info"><i class="fa fa-edit" class="btn btn-primary"></i> Edit Forum</a>
+		<div class="pull-right">
+			{!! Form::open(['url' => '/forum/'.$forum->forum_id, 'method' => 'DELETE']) !!}
+			{!! Form::hidden('redirect', '/forum') !!}
+			<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info"><i class="fa fa-edit" class="btn btn-primary"></i> Edit Forum</a>
+			<button type="submit" name="delete" class="delete btn btn-danger"><i class="fa fa-trash"></i> Delete Forum</button>
+			{!! Form::close() !!}
+		</div>
 		@endcan
+
 		<br />
 		<br />
 
@@ -60,7 +67,9 @@
 				<strong>Silakan <a href="/login">Login</a> untuk menulis komentar.</strong>
 			</div>
 		@endif
+	</div>
 
+	<div class="col-md-3">
 		<div class="panel panel-blue">
 			<div class="panel-heading">
 				<h4 class="panel-title">FORUM TERKAIT</h4>
@@ -68,9 +77,18 @@
 			<ul class="list-group">
 				@foreach ($terkait as $p)
 				<li class="list-group-item">
-					<b><a href="/forum/{{ $p->forum_id }}-{{ str_slug($p->title) }}">{{ $p->title }}</a></b><br>
-					<i class="fa fa-user"></i> {{ $p->user ? $p->user->name : '' }}
-					<i class="fa fa-clock-o"></i> {{ $p->updated->diffForHumans() }}
+				<div class="media">
+					<div class="media-left">
+						<img class="media-object profile img-circle" data-name="{{ $p->title }}" data-width="30" data-height="30" data-font-size="15" />
+					</div>
+					<div class="media-body">
+						<b><a href="/forum/{{ $p->forum_id }}-{{ str_slug($p->title) }}">{{ $p->title }}</a></b><br>
+						<div class="text-muted">
+							{{ $p->user ? $p->user->name.' - ' : '' }}
+							{{ $p->updated->diffForHumans() }}
+						</div>
+					</div>
+				</div>
 				</li>
 				@endforeach
 			</ul>
