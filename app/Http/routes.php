@@ -88,8 +88,8 @@ Route::group(['middleware' => 'auth'], function() {
 
 	// pake policy, admin & ustadz bisa
 	// ustadz only
-	Route::get('pertanyaan/admin-ustadz', 'PertanyaanController@adminUstadz');
 	Route::group(['middleware' => 'role:'.User::ROLE_USTADZ], function() {
+		Route::get('pertanyaan/admin-ustadz', 'PertanyaanController@adminUstadz');
 		Route::get('pertanyaan/{pertanyaan}/jawab', 'PertanyaanController@jawab');
 		Route::put('pertanyaan/{pertanyaan}/simpan-jawaban', 'PertanyaanController@simpanJawaban');
 	});

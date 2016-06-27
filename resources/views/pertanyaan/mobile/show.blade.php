@@ -9,6 +9,30 @@
 <div class="row-post text-center">
 	@include('layouts._share')
 </div>
+
+<div class="row-post text-center">
+	{!! Form::open(['url' => '/pertanyaan/'.$pertanyaan->pertanyaan_id, 'method' => 'DELETE']) !!}
+
+	<div class="btn-group">
+		@can('update-pertanyaan')
+		<a href="/pertanyaan/{{$pertanyaan->pertanyaan_id}}/edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+		@endcan
+
+		@can('update-pertanyaan')
+		<a href="/pertanyaan/{{$pertanyaan->pertanyaan_id}}/jawab" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit Jawaban</a>
+		@endcan
+
+		@can('delete-pertanyaan', $pertanyaan)
+		<button type="submit" name="delete" class="btn btn-danger delete btn-xs">
+			<i class="fa fa-trash"></i> Hapus
+		</button>
+		@endcan
+	</div>
+
+	{!! Form::hidden('redirect', '/pertanyaan') !!}
+	{!! Form::close() !!}
+</div>
+
 <div class="row-post">
 	<div class="media">
 		<div class="media-left">
@@ -48,12 +72,6 @@
 				</div>
 			</div>
 			<div class="media-body">
-
-				@if (auth()->check() && auth()->user()->user_id == $pertanyaan->dijawab_oleh)
-				<div class="pull-right">
-					<a href="/pertanyaan/{{$pertanyaan->pertanyaan_id}}/jawab" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit Jawaban</a>
-				</div>
-				@endif
 
 				<strong>{{ $pertanyaan->ustadz ? $pertanyaan->ustadz->name : '' }}</strong>
 				<div class="text-muted">
