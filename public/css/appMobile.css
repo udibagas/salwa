@@ -207,3 +207,7 @@ img.media-object:not(.no-round) {
 .panel-heading, .panel-body, .panel-footer, .panel {
 	border-radius: 0;
 }
+
+#sidr-main {
+	-webkit-overflow-scrolling: touch;
+}
