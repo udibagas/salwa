@@ -76,7 +76,8 @@ class PertanyaanController extends Controller
 
 	public function adminUstadz(Request $request)
 	{
-		return view('pertanyaan.ustadz.admin', [
+		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.ustadz.admin' : 'pertanyaan.ustadz.admin';
+		return view($view, [
 			'pertanyaans' => Pertanyaan::when($request->judul_pertanyaan, function($query) use ($request) {
 									return $query->where('judul_pertanyaan', 'like', '%'.$request->judul_pertanyaan.'%');
 								})->when($request->status, function($query) use ($request) {
