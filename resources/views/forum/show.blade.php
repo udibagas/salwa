@@ -33,7 +33,7 @@
 		<div class="pull-right">
 			{!! Form::open(['url' => '/forum/'.$forum->forum_id, 'method' => 'DELETE']) !!}
 			{!! Form::hidden('redirect', '/forum') !!}
-			<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info"><i class="fa fa-edit" class="btn btn-primary"></i> Edit Forum</a>
+			<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Edit Forum</a>
 			<button type="submit" name="delete" class="delete btn btn-danger"><i class="fa fa-trash"></i> Delete Forum</button>
 			{!! Form::close() !!}
 		</div>

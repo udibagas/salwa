@@ -6,17 +6,16 @@
 
 	<div class="row-post">
 		<h3>{{ $forum->title }}</h3>
+		@can('update-forum', $forum)
+			{!! Form::open(['url' => '/forum/'.$forum->forum_id, 'method' => 'DELETE']) !!}
+			{!! Form::hidden('redirect', '/forum') !!}
+			<div class="btn-group">
+				<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit Forum</a>
+				<button type="submit" name="delete" class="delete btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete Forum</button>
+			</div>
+			{!! Form::close() !!}
+		@endcan
 	</div>
-
-	@can('update-forum', $forum)
-	<div class="row-post text-center">
-		{!! Form::open(['url' => '/forum/'.$forum->forum_id, 'method' => 'DELETE']) !!}
-		{!! Form::hidden('redirect', '/forum') !!}
-		<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info"><i class="fa fa-edit" class="btn btn-primary"></i> Edit Forum</a>
-		<button type="submit" name="delete" class="delete btn btn-danger"><i class="fa fa-trash"></i> Delete Forum</button>
-		{!! Form::close() !!}
-	</div>
-	@endcan
 
 	<div class="row-post text-center">
 		@include('layouts._share')
