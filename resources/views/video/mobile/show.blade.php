@@ -30,7 +30,7 @@
 			        playlist: playlist,
 					width: 300,
 					height: 200,
-					primary: 'html5',
+					// primary: 'html5',
 					// modes: [
 					// 	{ type: "html5" },
 						// { type: "flash", src: "jwplayer.flash.swf" }
