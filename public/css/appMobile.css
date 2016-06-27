@@ -27,16 +27,16 @@ td.td-label {
 
 .title {
 	background-color: #0084FF;
-	padding: 5px;
+	padding: 10px 15px;
 	color: #FFFFFF;
-	margin:5px -10px 0 -10px;
+	margin:0 -15px;
 }
 
 .sub-title {
 	background-color: #A2D2FF;
-	padding:5px;
+	padding: 10px 15px;
 	color: #134A80;
-	margin:5px -10px 0 -10px;
+	margin:0 -15px;
 }
 
 .text-blue {
@@ -114,24 +114,6 @@ img.cover {
 	color: #FFFFFF;
 }
 
-.video-block, .thumbnail-block {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
-.video-block:hover  {
-  background: #333 url('/images/play-icon.png') no-repeat center;
-  opacity: 0.8;
-}
-
-.thumbnail-block:hover  {
-  background: #333;
-  opacity: 0.8;
-}
-
 .row-post.no-gutter {
   margin:4px -10px;
 }
@@ -144,7 +126,7 @@ img.cover {
 
 .search-field {
 	border-radius:20px;
-	background-image: url('https://instagramstatic-a.akamaihd.net/h1/images/glyphs/magnifier.png/c053547e0c66.png');
+	background-image: url('/images/loop.png');
 	background-repeat: no-repeat;
 	background-position: 8px 49%;
 	padding-left: 25px;
@@ -199,7 +181,7 @@ a:hover {
 .row-post {
 	background-color:#FFFFFF;
 	padding:10px;
-	margin:4px -10px;
+	margin:1px -15px;
 }
 
 .alert {

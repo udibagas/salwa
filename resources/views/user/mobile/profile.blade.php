@@ -42,10 +42,4 @@
 	@include('user.mobile._form', ['url' => '/user/'.$user->user_id, 'method' => 'PUT'])
 </div>
 
-<h4 class="title">PERTANYAAN</h4>
-@each('pertanyaan.mobile._list', $user->pertanyaans->take(10), 'a')
-
-<h4 class="title">FORUM</h4>
-@each('forum.mobile._list', $user->forums->take(10), 'a')
-
 @stop

@@ -5,7 +5,7 @@
 				<img class="media-object profile" alt="{{ $a->judul_pertanyaan }}" data-name="{{ $a->judul_pertanyaan }}">
 			</div>
 		</div>
-		<div class="media-body">
+		<div class="media-body danger">
 			<a href="/pertanyaan/{{ $a->pertanyaan_id }}-{{ $a->kd_judul }}" class="text-bold">
 				{{ $a->judul_pertanyaan }}
 			</a>

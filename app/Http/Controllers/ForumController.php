@@ -34,6 +34,7 @@ class ForumController extends Controller
 		$view = BrowserDetect::isMobile() ? 'forum.mobile.mine' : 'forum.mine';
         return view($view, [
 			'forums' => Forum::where('user_id', auth()->user()->user_id)->active()->orderBy('forum_id', 'DESC')->simplePaginate(),
+			'groups' => Group::forum()->active()->orderBy('group_name', 'ASC')->get(),
 		]);
     }
 

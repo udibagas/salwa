@@ -325,9 +325,7 @@ img.cover {
 
 .search-field {
 	border-radius:20px;
-	/*background-color: #032876;*/
-	/*border: none;*/
-	background-image: url('https://instagramstatic-a.akamaihd.net/h1/images/glyphs/magnifier.png/c053547e0c66.png');
+	background-image: url('/images/loop.png');
 	background-repeat: no-repeat;
 	background-position: 8px 49%;
 	padding-left: 25px;
@@ -356,7 +354,6 @@ a:hover {
 }
 
 .panel-blue .panel-heading {
-	/*background-color: #0084FF;*/
 	background-color: #3BAFDA;
 	color: #FFF;
 }

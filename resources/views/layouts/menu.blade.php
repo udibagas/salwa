@@ -11,6 +11,17 @@
 		<a class="list-group-item info active" href="/me" style="border-radius:0;">
 			<i class="fa fa-user"></i> PROFILE
 		</a>
+		<a class="list-group-item info active" href="/pertanyaan-saya">
+			<i class="fa fa-question-circle"></i> PERTANYAAN SAYA
+		</a>
+		<a class="list-group-item info active" href="/forum-saya">
+			<i class="fa fa-comments"></i> FORUM SAYA
+		</a>
+		@if (auth()->user()->isUstadz())
+		<a class="list-group-item info active" href="/pertanyaan/admin-ustadz">
+			<i class="fa fa-inbox"></i> PERTANYAAN MASUK
+		</a>
+		@endif
 		<a class="list-group-item info active" href="/logout">
 			<i class="fa fa-sign-out"></i> LOGOUT
 		</a>
