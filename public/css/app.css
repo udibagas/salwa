@@ -40,6 +40,10 @@ body {
 	background-color: #032876;
 }
 
+.dropdown-menu > li {
+	padding: 5px 0px;
+}
+
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
   position: absolute;
