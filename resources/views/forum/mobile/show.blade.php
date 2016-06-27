@@ -5,7 +5,7 @@
 @section('content')
 
 	<div class="row-post">
-		<h3 style="margin-top:0px;">{{ $forum->title }}</h3>
+		<h3>{{ $forum->title }}</h3>
 	</div>
 
 	<div class="row-post text-center">
