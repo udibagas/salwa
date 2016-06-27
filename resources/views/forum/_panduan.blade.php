@@ -9,6 +9,7 @@
 			<li>
 				Sebelum posting forum gunakan fasilitas pencarian (search) di halaman <a href="/forum">Forum</a> terlebih dahulu untuk memastikan judul thread yang akan Anda posting belum pernah diposting sebelumnya oleh user lain.
 			</li>
+			<li>Thread yang sudah pernah di posting oleh member lain akan dihapus oleh redaksi.</li>
 			<li>Pilih kategori forum sesuai dengan tema forum.</li>
 			<li>Dilarang posting yang mengandung pornografi, provokasi, perjudian, jual beli yang tidak sesuai syariat baik dari segi barang/jasa maupun akadnya, dan hal - hal yang tidak sesuai syariat lainnya.</li>
 			<li>Forum terlebih dahulu akan dimoderasi oleh team redaksi SalamDakwah.</li>
