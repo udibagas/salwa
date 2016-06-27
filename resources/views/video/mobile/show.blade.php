@@ -30,6 +30,10 @@
 			        playlist: playlist,
 					width: 300,
 					height: 200,
+					modes: [
+						{ type: "html5" },
+						{ type: "flash", src: "jwplayer.flash.swf" }
+					]
 				});
 
 		    </script>
