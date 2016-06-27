@@ -59,8 +59,8 @@
 
 </div>
 
+@if ($pertanyaan->jawaban)
 <div class="row-post">
-	@if ($pertanyaan->jawaban)
 		<div class="media">
 			<div class="media-left">
 				<div style="width:40px;height:40px;">
@@ -82,10 +82,19 @@
 		</div>
 		<br>
 		{!! $pertanyaan->jawaban !!}
-	@else
-	<strong class="text-danger">Belum ada jawaban untuk pertanyaan terkait.</strong>
-	@endif
 </div>
+
+@else
+<div class="row-post">
+	<strong class="text-danger">Belum ada jawaban untuk pertanyaan terkait.</strong>
+	<br>
+	<br>
+
+	@can('jawab-pertanyaan', $pertanyaan)
+	@include('pertanyaan.ustadz._form-jawab')
+	@endcan
+</div>
+@endif
 
 <h3 class="title">Pertanyaan Terkait</h3>
 @each('pertanyaan.mobile._list', $terkait, 'a')
