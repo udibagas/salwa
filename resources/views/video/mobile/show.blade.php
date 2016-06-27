@@ -29,7 +29,8 @@
 				player.setup({
 			        playlist: playlist,
 					width: 300,
-					height: 200
+					height: 200,
+					mode: 'html5'
 				});
 
 		    </script>
