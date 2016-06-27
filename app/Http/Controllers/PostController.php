@@ -8,6 +8,7 @@ use App\Forum;
 use App\Post;
 use App\PostImage;
 use Gate;
+use BrowserDetect;
 
 class PostController extends Controller
 {
@@ -93,7 +94,8 @@ class PostController extends Controller
 			abort(403);
 		}
 
-        return view('post.edit', ['post' => $post]);
+		$view = BrowserDetect::isMobile() ? 'post.mobile.edit' : 'post.edit';
+        return view($view, ['post' => $post]);
     }
 
     /**

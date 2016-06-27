@@ -198,3 +198,12 @@ img.media-object:not(.no-round) {
 	border-radius: 50%;
 	border: 1px solid #D9EDF7;
 }
+
+.panel:not(.note-editor) {
+	margin: 0 -15px;
+	border: none;
+}
+
+.panel-heading, .panel-body, .panel-footer, .panel {
+	border-radius: 0;
+}

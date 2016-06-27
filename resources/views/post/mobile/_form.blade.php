@@ -1,5 +1,5 @@
 <h4 class="title">Tulis Komentar</h4>
-<div class="row-post">
+<div class="row-post no-gutter">
 	{{ Form::model($post, ['method' => $method, 'url' => $url, 'files' => true]) }}
 
 		{!! Form::hidden('forum_id', $post->forum_id) !!}
@@ -28,9 +28,8 @@
 
 		<div class="form-group">
 			@if ($post->images)
-			<div class="row no-gutter">
 				@each('post._image-edit', $post->images, 'image')
-			</div>
+				<div class="clearfix"></div>
 			@endif
 		</div>
 
