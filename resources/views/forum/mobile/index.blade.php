@@ -12,7 +12,7 @@
 	@include('forum._group', ['group' => null])
 
 	<a href="/forum/create">
-		<img class="profile img-circle" data-width="40" data-height="40" data-name="+" style="position:fixed;bottom:20px;right:20px;" />
+		<img class="profile img-circle" data-name="+" style="position:fixed;bottom:20px;right:20px;" data-font-size="40" />
 	</a>
 
 @stop
