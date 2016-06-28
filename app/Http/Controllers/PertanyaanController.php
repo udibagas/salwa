@@ -21,7 +21,8 @@ class PertanyaanController extends Controller
 	{
 		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.index' : 'pertanyaan.index';
 		$search 	= str_replace(' ', '%', $request->search);
-		$showOnly 	= (auth()->guest() || (auth()->check() && !auth()->user()->isUstadz() && !auth()->user()->isAdmin()));
+		// $showOnly 	= (auth()->guest() || (auth()->check() && !auth()->user()->isUstadz() && !auth()->user()->isAdmin()));
+		$showOnly 	= true;
 
 		return view($view, [
 			'pertanyaans' => Pertanyaan::when($showOnly, function($query) {
