@@ -1,4 +1,4 @@
-{!! Form::model($pertanyaan, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method]) !!}
+{!! Form::model($pertanyaan, ['url' => $url, 'method' => $method]) !!}
 
 <div class="form-group{{ $errors->has('daerah_asal') ? ' has-error' : '' }}">
 	<label for="daerah_asal" class="control-label col-md-3">Daerah Asal:</label>

@@ -1,4 +1,4 @@
-{!! Form::model($forum, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method, 'files' => true]) !!}
+{!! Form::model($forum, ['url' => $url, 'method' => $method, 'files' => true]) !!}
 
 	<div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
 		<label for="title" class="col-md-2 control-label">Judul:</label>

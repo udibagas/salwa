@@ -7,7 +7,7 @@
 				@elseif ($p->user)
 				<img class="media-object profile" data-name="{{ $p->user->name }}" alt="{{ $p->user->name }}">
 				@else
-				<img class="media-object cover" src="/images/logo-padding.png" alt="{{ $p->user->name }}">
+				<img class="media-object cover" src="/images/logo-padding.png" alt="">
 				@endif
 			</div>
 		</div>

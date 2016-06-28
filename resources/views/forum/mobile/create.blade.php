@@ -5,7 +5,7 @@
 @section('content')
 
 <h4 class="title">Buat Thread Baru</h4>
-<div class="row-post">
+<div class="row-post no-gutter">
 	@include('forum.mobile._form', ['method' => 'POST', 'url' => '/forum'])
 </div>
 
