@@ -14,4 +14,8 @@
 
 @include('pertanyaan._group')
 
+<a href="/pertanyaan/create">
+	<img class="profile img-circle" data-width="40" data-height="40" data-name="+" style="position:fixed;bottom:20px;right:20px;" />
+</a>
+
 @stop
