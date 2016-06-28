@@ -53,9 +53,7 @@
 </div>
 
 <div class="form-group">
-	<div class="col-md-offset-3 col-md-9">
-		<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan Pertanyaan</button>
-	</div>
+	<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan Pertanyaan</button>
 </div>
 
 {!! Form::close() !!}
