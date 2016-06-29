@@ -5,7 +5,7 @@
 @section('content')
 
 <h4 class="title text-center">SALWA RADIO</h4>
-<div class="row-post text-center" style="height:100%;">
+<div class="row-post text-center" style="padding:140px 0;">
 	<div class="fa fa-pause fa-5x text-info" id="btn"></div><br>
 	Now Playing : <span id="title"></span>
 </div>
