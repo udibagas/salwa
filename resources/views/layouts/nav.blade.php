@@ -43,6 +43,7 @@
 				  <span class="caret"></span>
 			  </a>
 		      <ul class="dropdown-menu">
+		        <li><a href="/radio"><i class="fa fa-microphone"></i> Salwa Radio</a></li>
 		        <li><a href="/kitab"><i class="fa fa-book"></i> Kitab & Terjemahan</a></li>
 				<li><a href="/kajian"><i class="fa fa-edit"></i> Kajian</a></li>
 		        <li><a href="/doa"><i class="fa fa-hand-stop-o"></i> Doa</a></li>

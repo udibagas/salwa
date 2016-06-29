@@ -18,6 +18,7 @@ Route::get('jajal', function() {
 });
 
 Route::get('audio/playlist', 'AudioController@playlist');
+Route::get('radio', 'RadioController@index');
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/home', ['as' => 'home1', 'uses' => 'HomeController@index']);
