@@ -209,6 +209,9 @@ img.media-object:not(.no-round) {
 	border-radius: 0;
 }
 
-#sidr-main {
-	-webkit-overflow-scrolling: touch;
+.mobile-nav {
+	background-color:#297FB9;
+	height:50px;
+	position:fixed;
+	right:0;left:0;
 }

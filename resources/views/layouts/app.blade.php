@@ -72,14 +72,33 @@
 
 			@if ($isMobile)
 
-				$('body').swipe( {
-					swipeLeft: function () {$.sidr('close', 'sidr-main');},
-					swipeRight: function () {$.sidr('open', 'sidr-main');},
-					threshold: 75
+				// $('body').swipe( {
+				// 	swipeLeft: function () {$.sidr('close', 'sidr-main');},
+				// 	swipeRight: function () {$.sidr('open', 'sidr-main');},
+				// 	threshold: 75
+				// });
+
+				$('#menu').sidr({
+					name:'sidr-main',timing:'ease-in-out',speed:200,
+					onOpen: function() {
+						$('.mobile-nav').css('left', '275px');
+					},
+					onClose: function() {
+						$('.mobile-nav').css('left', '0');
+					}
 				});
 
-				$('#menu').sidr({name:'sidr-main',timing:'ease-in-out',speed:200});
-				$('#menu-right').sidr({name:'sidr-right',timing:'ease-in-out',speed:200,side:'right'});
+				$('#menu-right').sidr({
+					name:'sidr-right',timing:'ease-in-out',speed:200,side:'right',
+					onOpen: function() {
+						$('.mobile-nav').css('left', '-275px');
+						$('.mobile-nav').css('right', '275px');
+					},
+					onClose: function() {
+						$('.mobile-nav').css('right', '0');
+						$('.mobile-nav').css('left', '0');
+					}
+				});
 
 			@endif
 
