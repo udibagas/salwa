@@ -38,7 +38,7 @@
 			<i class="fa fa-video-camera"></i> SALWA VIDEO
 		</a>
 		<a class="list-group-item info active" href="/radio">
-			<i class="fa fa-video-camera"></i> SALWA RADIO
+			<i class="fa fa-video-microphone"></i> SALWA RADIO
 		</a>
 		<a class="list-group-item info active" href="/artikel">
 			<i class="fa fa-file-text"></i> SALWA AKTUAL
