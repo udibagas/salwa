@@ -2,10 +2,23 @@
 
 @section('title', 'Salwa Radio')
 
+@section('breadcrumbs')
+
+	@include('layouts._breadcrumbs', [
+		'breadcrumbs' => [
+			'#' => 'SALWA RADIO',
+		]
+	])
+
+@stop
+
 @section('content')
 
-<div class="fa fa-pause fa-5x text-info" id="btn"></div><br>
-Now Playing :<span id="title"></span>
+<div class="text-center" style="padding:100px 0;">
+	<div class="fa fa-pause fa-5x text-info" id="btn"></div><br>
+	<!-- Now Playing :<span id="title"></span> -->
+</div>
+
 
 @endsection
 
@@ -26,6 +39,8 @@ Now Playing :<span id="title"></span>
 			$(this).removeClass('fa-pause');
 			$(this).addClass('fa-play');
 		});
+
+		audio.play();
 
 		$.ajax({
 			crossOrigin: true,
