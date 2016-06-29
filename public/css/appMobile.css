@@ -14,7 +14,7 @@
 /* Padding below the footer and lighter body text */
 body {
 	font-family: "Nirmala UI", sans-serif;
-	padding-top: 0;
+	padding-top: 50px;
 	padding-bottom: 0;
 	color: #5a5a5a;
 	background-color: #EEEEEE;
@@ -213,5 +213,7 @@ img.media-object:not(.no-round) {
 	background-color:#297FB9;
 	height:50px;
 	position:fixed;
-	right:0;left:0;
+	top:0;
+	right:0;
+	width:100%;
 }
