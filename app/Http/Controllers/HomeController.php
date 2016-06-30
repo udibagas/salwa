@@ -66,7 +66,7 @@ class HomeController extends Controller
 		}
 
         return view($view, [
-			'videos' 	=> Video::limit(6)->orderBy('video_id', 'DESC')->get(),
+			'videos' 	=> Video::limit(6)->orderBy('updated', 'DESC')->get(),
 			'images' 	=> SalwaImages::limit(5)->orderByRaw('RAND()')->get(),
 			'slider' 	=> Video::limit(3)->orderBy('video_id', 'DESC')->get(),
 			'artikel' 	=> Artikel::limit(12)->orderBy('artikel_id', 'DESC')->get(),
