@@ -22,6 +22,6 @@
 			</div>
 		</div>
 		<br>
-		{!! nl2br($p->ket_pertanyaan) !!}
+		{!! $p->ket_pertanyaan !!}
 	</div>
 </div>
