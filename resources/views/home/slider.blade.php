@@ -91,6 +91,7 @@
   			  @foreach ($pertanyaan as $v)
   			<div class="item @if ($i == 0) active @endif">
 				<a href="/pertanyaan/{{ $v->pertanyaan_id }}-{{ str_slug($v->judul_pertanyaan) }}">
+					<img src="/images/tanya-ustadz.jpg" style="height:100%" alt="Tanya Ustadz" />
 					<div class="thumbnail-block">
 						<div class="tilecaption">
 							<h3><i class="fa fa-question-circle"></i> TANYA USTADZ</h3>

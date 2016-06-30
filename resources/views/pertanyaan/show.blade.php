@@ -41,7 +41,6 @@
 
 			{!! Form::close() !!}
 		</div>
-
 		<br>
 		<br>
 
