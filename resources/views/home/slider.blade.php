@@ -14,12 +14,12 @@
 				<img src="/{{ $a->img_artikel }}" class="cover" alt="{{ $a->judul }}" />
 				@endif
 				<div class="thumbnail-block">
-					<div class="tilecaption">
-						<h3><i class="fa fa-clock-o"></i> SALWA AKTUAL</h3>
-						<h4>{{ $a->judul }}</h4>
-						{{ $a->user ? $a->user->name : '' }}<br>
-						<em>{{ $a->updated->diffForHumans() }}</em>
-					</div>
+				</div>
+				<div class="tilecaption">
+					<h3><i class="fa fa-clock-o"></i> SALWA AKTUAL</h3>
+					<h4>{{ $a->judul }}</h4>
+					{{ $a->user ? $a->user->name : '' }}<br>
+					<em>{{ $a->updated->diffForHumans() }}</em>
 				</div>
 			</a>
   		</div>
@@ -66,12 +66,12 @@
 		  		 <img src="/{{ $v->img_video }}" class="cover" alt="{{ $v->title }}" />
 				 @endif
 				 <div class="video-block">
-					 <div class="tilecaption">
-						 <h3><i class="fa fa-video-camera"></i> SALWA VIDEO</h3>
-						 <h3>{{ $v->title }}</h3>
-						 {{ $v->user->name }}<br>
-						 <em>{{ $v->updated->diffForHumans() }}</em>
-					 </div>
+				 </div>
+				 <div class="tilecaption">
+					 <h3><i class="fa fa-video-camera"></i> SALWA VIDEO</h3>
+					 <h3>{{ $v->title }}</h3>
+					 {{ $v->user->name }}<br>
+					 <em>{{ $v->updated->diffForHumans() }}</em>
 				 </div>
 				 </a>
 		  	  </div>
@@ -92,12 +92,12 @@
   			<div class="item @if ($i == 0) active @endif">
 				<a href="/pertanyaan/{{ $v->pertanyaan_id }}-{{ str_slug($v->judul_pertanyaan) }}">
 					<div class="thumbnail-block">
-						<div class="tilecaption">
-							<h3><i class="fa fa-question-circle"></i> TANYA USTADZ</h3>
-							<h3>{{ $v->judul_pertanyaan }}</h3>
-							{{ $v->user->jenis_kelamin == 'p' ? 'Ikhwan' : 'Akhwat' }}<br>
-							<em>{{ $v->updated->diffForHumans() }}</em>
-						</div>
+					</div>
+					<div class="tilecaption">
+						<h3><i class="fa fa-question-circle"></i> TANYA USTADZ</h3>
+						<h3>{{ $v->judul_pertanyaan }}</h3>
+						{{ $v->user->jenis_kelamin == 'p' ? 'Ikhwan' : 'Akhwat' }}<br>
+						<em>{{ $v->updated->diffForHumans() }}</em>
 					</div>
 			   </a>
   			</div>
@@ -122,11 +122,11 @@
   		<div class="item @if ($i == 0) active @endif">
 			<a href="/peduli/{{ $a->peduli_id }}-{{ str_slug($a->judul) }}">
 				<div class="thumbnail-block">
-					<div class="tilecaption">
-						<h3><i class="fa fa-heart"></i> SALWA PEDULI</h3>
-						<h3>{{ $a->judul }}</h3>
-						{{ $a->updated->diffForHumans() }}
-					</div>
+				</div>
+				<div class="tilecaption">
+					<h3><i class="fa fa-heart"></i> SALWA PEDULI</h3>
+					<h3>{{ $a->judul }}</h3>
+					{{ $a->updated->diffForHumans() }}
 				</div>
 	   		</a>
   		</div>
@@ -153,12 +153,12 @@
 				<img src="/images/salwa-forum.jpg" style="height:100%" alt="{{ $f->title }}" />
   				@endif
 			  <div class="thumbnail-block">
-				  <div class="tilecaption">
-					  <h3><i class="fa fa-comment"></i> {{ $f->group->group_name or 'FORUM' }}</h3>
-					  <h3>{{ $f->title }}</h3>
-					  {{ $f->user->name }}<br>
-					  <em>{{ $f->updated->diffForHumans() }}</em>
-				  </div>
+			  </div>
+			  <div class="tilecaption">
+				  <h3><i class="fa fa-comment"></i> {{ $f->group->group_name or 'FORUM' }}</h3>
+				  <h3>{{ $f->title }}</h3>
+				  {{ $f->user->name }}<br>
+				  <em>{{ $f->updated->diffForHumans() }}</em>
 			  </div>
 			  </a>
   		  </div>
@@ -179,11 +179,11 @@
 		  	  <div class="item @if ($i == 0) active @endif">
 				  <a href="/informasi/{{ $a->informasi_id }}-{{ str_slug($a->judul) }}">
 				  <div class="thumbnail-block">
-					  <div class="tilecaption">
-						  <h3><i class="fa fa-info-circle"></i> SALWA INFO</h3>
-						  <h3>{{ $a->judul }}</h3>
-						  {{ $a->updated->diffForHumans() }}
-					  </div>
+				  </div>
+				  <div class="tilecaption">
+					  <h3><i class="fa fa-info-circle"></i> SALWA INFO</h3>
+					  <h3>{{ $a->judul }}</h3>
+					  {{ $a->updated->diffForHumans() }}
 				  </div>
 				  </a>
 		  	  </div>
