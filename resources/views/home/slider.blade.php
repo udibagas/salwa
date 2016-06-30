@@ -124,6 +124,8 @@
 			<a href="/peduli/{{ $a->peduli_id }}-{{ str_slug($a->judul) }}">
 				@if ($a->img_artikel)
 				<img src="/{{ $a->img_artikel }}" class="cover" alt=" {{ $a->judul }}" />
+				@else
+				<img src="/images/salwa-peduli.jpg" style="height:100%" alt=" {{ $a->judul }}" />
 				@endif
 				<div class="thumbnail-block">
 					<div class="tilecaption">
