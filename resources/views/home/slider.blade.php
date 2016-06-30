@@ -91,12 +91,11 @@
   			  @foreach ($pertanyaan as $v)
   			<div class="item @if ($i == 0) active @endif">
 				<a href="/pertanyaan/{{ $v->pertanyaan_id }}-{{ str_slug($v->judul_pertanyaan) }}">
-					<img src="/images/tanya-ustadz.jpg" style="height:100%" alt="Tanya Ustadz" />
 					<div class="thumbnail-block">
 						<div class="tilecaption">
 							<h3><i class="fa fa-question-circle"></i> TANYA USTADZ</h3>
 							<h3>{{ $v->judul_pertanyaan }}</h3>
-							{{ $v->user->name }}<br>
+							{{ $v->user->jenis_kelamin == 'p' ? 'Ikhwan' : 'Akhwat' }}<br>
 							<em>{{ $v->updated->diffForHumans() }}</em>
 						</div>
 					</div>
@@ -122,11 +121,6 @@
   		  @foreach ($peduli as $a)
   		<div class="item @if ($i == 0) active @endif">
 			<a href="/peduli/{{ $a->peduli_id }}-{{ str_slug($a->judul) }}">
-				@if ($a->img_artikel)
-				<img src="/{{ $a->img_artikel }}" class="cover" alt=" {{ $a->judul }}" />
-				@else
-				<img src="/images/salwa-peduli.jpg" style="height:100%" alt=" {{ $a->judul }}" />
-				@endif
 				<div class="thumbnail-block">
 					<div class="tilecaption">
 						<h3><i class="fa fa-heart"></i> SALWA PEDULI</h3>
@@ -184,11 +178,6 @@
 		  		@foreach ($infoHome as $a)
 		  	  <div class="item @if ($i == 0) active @endif">
 				  <a href="/informasi/{{ $a->informasi_id }}-{{ str_slug($a->judul) }}">
-				  @if ($a->img_gambar)
-				  <img src="/{{ $a->img_gambar }}" class="cover" alt="$a->judul" />
-				  @else
-				  <img src="/images/salwa-info.jpg" style="height:100%" alt="$a->judul" />
-				  @endif
 				  <div class="thumbnail-block">
 					  <div class="tilecaption">
 						  <h3><i class="fa fa-info-circle"></i> SALWA INFO</h3>

@@ -15,22 +15,26 @@
     padding:0.5px;
 }
 
-#tile4 {
-	background: rgb(71,193,228);
-	background: #66cc00;
+.tile {
+    background: rgb(50,93,233);
 }
 
-#tile8 {
-	background-color: #0084FF;
+#tile4 {
+	background-image: url('/images/tanya-ustadz.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#tile7 {
+	background-image: url('/images/salwa-peduli.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 #tile10 {
-	/*background: rgb(175,26,63);*/
-	background-color: #ff9900;
-}
-
-.tile {
-    background: rgb(50,93,233);
+	background-image: url('/images/salwa-info.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .tile:hover  {
