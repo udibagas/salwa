@@ -42,7 +42,7 @@
 					</a>
 			</h4>
 
-			{!! nl2br($p->ket_pertanyaan) !!}
+			{!! $p->ket_pertanyaan !!}
 
 		</div>
 	</div>
