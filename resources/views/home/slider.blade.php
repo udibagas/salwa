@@ -151,9 +151,12 @@
   			@foreach ($forum as $f)
   		  <div class="item @if ($i == 0) active @endif">
 			  <a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">
+				 @if ($f->group && $f->group->img_group)
+  				<img src="http://www.salamdakwah.com/{{ $f->group->img_group }}" class="cover" alt="{{ $f->title }}" />
+  				@endif
 			  <div class="thumbnail-block">
 				  <div class="tilecaption">
-					  <h3><i class="fa fa-comment"></i> FORUM</h3>
+					  <h3><i class="fa fa-comment"></i> {{ $f->group->group_name or 'FORUM' }}</h3>
 					  <h3>{{ $f->title }}</h3>
 					  {{ $f->user->name }}<br>
 					  <em>{{ $f->updated->diffForHumans() }}</em>
