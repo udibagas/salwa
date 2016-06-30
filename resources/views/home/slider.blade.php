@@ -152,7 +152,9 @@
   		  <div class="item @if ($i == 0) active @endif">
 			  <a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">
 				 @if ($f->group && $f->group->img_group)
-  				<img src="http://www.salamdakwah.com/{{ $f->group->img_group }}" class="cover" alt="{{ $f->title }}" />
+  				<img src="/{{ $f->group->img_group }}" class="cover" alt="{{ $f->title }}" />
+				@else
+				<img src="/images/salwa-forum.jpg" style="height:100%" alt="{{ $f->title }}" />
   				@endif
 			  <div class="thumbnail-block">
 				  <div class="tilecaption">
@@ -182,6 +184,8 @@
 				  <a href="/informasi/{{ $a->informasi_id }}-{{ str_slug($a->judul) }}">
 				  @if ($a->img_gambar)
 				  <img src="/{{ $a->img_gambar }}" class="cover" alt="$a->judul" />
+				  @else
+				  <img src="/images/salwa-info.jpg" style="height:100%" alt="$a->judul" />
 				  @endif
 				  <div class="thumbnail-block">
 					  <div class="tilecaption">
