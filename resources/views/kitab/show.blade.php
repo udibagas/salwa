@@ -19,8 +19,7 @@
 		<div class="col-md-3 hidden-xs">
 			@include('kitab._group')
 		</div>
-		<div class="col-md-9">
-			<h4 class="title"><i class="fa fa-book"></i> KITAB & TERJEMAHAN</h4>
+		<div class="col-md-6">
 			<div class="media">
 				<div class="media-left">
 					<img class="media-object" src="/{{ $kitab->img_buku }}" alt="" style="width:200px;">
@@ -44,11 +43,10 @@
 
 			<hr>
 
+		</div>
+		<div class="col-md-3">
 			<h4 class="title">KITAB TERKAIT</h4>
-			<div class="row no-gutter">
-				@each('kitab._list', $terkait, 'b')
-			</div>
-
+			@each('kitab._list-side', $terkait, 'b')
 		</div>
 	</div>
 
