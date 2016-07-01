@@ -26,13 +26,13 @@
 		</div>
 		<hr>
 
-		<div style="width:100%;height:300px;margin-bottom:30px;" class="thumbnail">
-			@if ($peduli->img_artikel)
-			<img src="/{{ $peduli->img_artikel }}" class="img-responsive cover" alt="{{ $peduli->judul }}" />
-			@else
-			<img src="/images/salwa-peduli.jpg" class="img-responsive cover" alt="{{ $peduli->judul }}" />
-			@endif
-		</div>
+		@if ($peduli->img_artikel)
+		<img src="/{{ $peduli->img_artikel }}" class="img-responsive" alt="{{ $peduli->judul }}" />
+		@else
+		<img src="/images/salwa-peduli.jpg" class="img-responsive" alt="{{ $peduli->judul }}" />
+		@endif
+
+		<br>
 
 		{!! $peduli->isi !!}
 

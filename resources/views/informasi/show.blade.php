@@ -26,13 +26,13 @@
 		</div>
 		<hr>
 
-		<div style="width:100%;height:300px;margin-bottom:30px;" class="thumbnail">
-			@if ($informasi->img_gambar)
-			<img src="/{{ $informasi->img_gambar }}" class="img-responsive cover" alt="{{ $informasi->judul }}" />
-			@else
-			<img src="/images/salwa-info.jpg" class="img-responsive cover" alt="{{ $informasi->judul }}" />
-			@endif
-		</div>
+		@if ($informasi->img_gambar)
+		<img src="/{{ $informasi->img_gambar }}" class="img-responsive" alt="{{ $informasi->judul }}" />
+		@else
+		<img src="/images/salwa-info.jpg" class="img-responsive" alt="{{ $informasi->judul }}" />
+		@endif
+
+		<br>
 
 		{!! $informasi->content !!}
 
