@@ -115,7 +115,7 @@ class ArtikelController extends Controller
 
         return view($view, [
 			'artikel' 	=> $artikel,
-			'terkait'	=> Artikel::where('group_id', $artikel->group_id)->orderByRaw('RAND()')->limit(4)->get()
+			'terkait'	=> Artikel::where('group_id', $artikel->group_id)->orderByRaw('RAND()')->limit(10)->get()
 		]);
     }
 

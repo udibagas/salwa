@@ -19,14 +19,16 @@
 	<div class="col-md-3 hidden-xs">
 		@include('video._group')
 	</div>
-	<div class="col-md-9">
-		<h2>{{ $video->title }}</h2>
-		<i class="fa fa-user"></i> {{ $video->user ? $video->user->name : '' }}
-		<i class="fa fa-clock-o"></i> {{ $video->updated->diffForHumans() }}
+	<div class="col-md-6">
+		<h2 style="margin-top:0;">{{ $video->title }}</h2>
+		<div class="text-muted">
+			{{ $video->user ? $video->user->name.' - ' : '' }}
+			{{ $video->updated->diffForHumans() }}
+		</div>
 		<hr />
 
 		@if ($video->url_video_youtube)
-		<iframe width="600" height="300" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
+		<iframe width="100%" height="300" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
 		@endif
 
 		@if (count($video->files))
@@ -40,7 +42,7 @@
 
 			player.setup({
 		        playlist: playlist,
-				width: 600,
+				width: 500,
 				height: 300
 			});
 
@@ -76,12 +78,11 @@
 			</div>
 		@endif
 
+
+	</div>
+	<div class="col-md-3">
 		<h4 class="title">VIDEO TERKAIT</h4>
-		<div class="row no-gutter">
-			@foreach ($terkait as $t)
-				@include('video._list', ['video' => $t])
-			@endforeach
-		</div>
+		@each('video._list-side', $terkait, 'video')
 	</div>
 
 </div>

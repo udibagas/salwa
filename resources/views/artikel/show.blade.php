@@ -19,17 +19,20 @@
 	<div class="col-md-3 hidden-xs">
 		@include('artikel._group')
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-6">
 		<!-- include('home.promo', ['promo' => \App\Banner::active()->get()]) -->
 
-		<h2>{{ $artikel->judul }}</h2>
+		<h2 style="margin-top:0;">{{ $artikel->judul }}</h2>
 
-		<i class="fa fa-user"></i> {{ $artikel->user ? $artikel->user->name : '' }}
-		<i class="fa fa-clock-o"></i> {{ $artikel->updated->diffForHumans() }}
+		<div class="text-muted">
+			{{ $artikel->user ? $artikel->user->name.' - ' : '' }}
+			{{ $artikel->updated->diffForHumans() }}
+		</div>
+
 		<hr>
 
 		@if ($artikel->img_artikel)
-		<div style="width:600px;height:300px;margin-bottom:30px;" class="thumbnail">
+		<div style="height:300px;margin-bottom:30px;" class="thumbnail">
 			<img src="/{{ $artikel->img_artikel }}" alt="{{ $artikel->judul }}" class="img-responsive cover" />
 		</div>
 		@endif
@@ -60,12 +63,10 @@
 				<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>
 			</div>
 		@endif
-
+	</div>
+	<div class="col-md-3">
 		<h4 class="title">ARTIKEL TERKAIT</h4>
-		<div class="row no-gutter">
-			@each('artikel._list', $terkait, 'artikel')
-		</div>
-
+		@each('artikel._list-side', $terkait, 'artikel')
 	</div>
 </div>
 

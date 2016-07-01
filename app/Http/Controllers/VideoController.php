@@ -137,7 +137,7 @@ class VideoController extends Controller
 
         return view($view, [
 			'video' 	=> $video,
-			'terkait'	=> Video::where('user_id', $video->user_id)->orderByRaw('RAND()')->limit(6)->get()
+			'terkait'	=> Video::where('user_id', $video->user_id)->orderByRaw('RAND()')->limit(10)->get()
 		]);
     }
 

@@ -17,7 +17,7 @@
 		</div>
 		<br>
 
-		<h4 class="text-bold">{{ $c->title }}</h4>
+		<strong>{{ $c->title }}</strong><br>
 		{!! $c->content !!}
 	</div>
 </div>
