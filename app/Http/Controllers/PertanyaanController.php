@@ -180,7 +180,11 @@ class PertanyaanController extends Controller
 
     public function jawab(Pertanyaan $pertanyaan)
     {
-		if (Gate::denies('jawab-pertanyaan', $pertanyaan)) {
+		// if (Gate::denies('jawab-pertanyaan', $pertanyaan)) {
+		// 	abort(403);
+		// }
+
+		if (!auth()->user()->isAdmin() && !auth()->user()->isUstadz()) {
 			abort(403);
 		}
 
@@ -189,7 +193,11 @@ class PertanyaanController extends Controller
 
 	public function simpanJawaban(JawabanRequest $request, Pertanyaan $pertanyaan)
 	{
-		if (Gate::denies('jawab-pertanyaan', $pertanyaan)) {
+		// if (Gate::denies('jawab-pertanyaan', $pertanyaan)) {
+		// 	abort(403);
+		// }
+
+		if (!auth()->user()->isAdmin() && !auth()->user()->isUstadz()) {
 			abort(403);
 		}
 
