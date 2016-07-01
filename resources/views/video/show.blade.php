@@ -42,7 +42,7 @@
 
 			player.setup({
 		        playlist: playlist,
-				width: 500,
+				width: 600,
 				height: 300
 			});
 

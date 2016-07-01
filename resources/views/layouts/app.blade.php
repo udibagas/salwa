@@ -12,7 +12,6 @@
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
 		<link href="/css/breadcrumb.css" rel="stylesheet">
-		<link href="/summernote/summernote.css" rel="stylesheet">
 
 		@if ($isMobile)
 		<link href="/css/appMobile.css" rel="stylesheet">
@@ -28,7 +27,7 @@
 
 		<script type="text/javascript" src="/js/jquery.min.js"></script>
         <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="/summernote/summernote.min.js"></script>
+        <script type="text/javascript" src="/tinymce/js/tinymce/tinymce.min.js"></script>
 		<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
 		<script type="text/javascript" src="/jwplayer/jwplayer.html5.js"></script>
 		<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
@@ -38,6 +37,29 @@
 		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.touchSwipe.min.js"></script>
 		@endif
+
+		<script type="text/javascript">
+		// Prevent Bootstrap dialog from blocking focusin
+			$(document).on('focusin', function(e) {
+				if ($(e.target).closest(".mce-window").length) {
+				e.stopImmediatePropagation();
+				}
+			});
+			tinymce.init({
+				selector: '.summernote',
+				height: 300,
+				plugins: [
+					'advlist autolink lists link image charmap print preview anchor',
+					'searchreplace visualblocks code fullscreen',
+					'insertdatetime media table contextmenu paste code'
+				],
+				toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+				content_css: [
+					'//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+					'//www.tinymce.com/css/codepen.min.css'
+				]
+			});
+		</script>
     </head>
 
     <body>
@@ -100,34 +122,6 @@
 					}
 				});
 
-			@endif
-
-			@if ($isMobile)
-				$('.summernote').summernote({
-					height: 200,
-					toolbar: [
-						['style', ['bold', 'italic', 'underline',]],
-						['fontsize', ['fontsize', 'color']],
-						['para', ['ul', 'ol', 'paragraph']],
-						['insert', ['picture', 'video', 'link']],
-					]
-				});
-
-			@else
-				$('.summernote').summernote({
-					height: 200,
-					toolbar: [
-						// [groupName, [list of button]]
-						['style', ['bold', 'italic', 'underline', 'clear']],
-						// ['font', ['strikethrough', 'superscript', 'subscript']],
-						['fontsize', ['fontsize', 'color']],
-						// ['color', ['color']],
-						['para', ['ul', 'ol', 'paragraph']],
-						['insert', ['picture', 'video', 'link', 'hr', 'table']],
-						['misc', ['undo', 'redo', 'fullscreen']],
-						// ['height', ['height']]
-					]
-				});
 			@endif
 
 			$('.profile').initial({charCount:1, height:60, width:60,fontSize:25});
