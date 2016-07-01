@@ -148,9 +148,15 @@ class VideoController extends Controller
 
 	public function lihat($slug)
     {
+		$view = 'video.show';
+
+		if (BrowserDetect::isMobile()) {
+			$view =  'video.mobile.show';
+		}
+
 		$video = Video::where('title_code', $slug)->firstOrFail();
 
-        return view('video.show', [
+        return view($view, [
 			'video' 	=> $video,
 			'terkait'	=> Video::where('user_id', $video->user_id)->orderByRaw('RAND()')->limit(6)->get()
 		]);
