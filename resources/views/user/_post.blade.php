@@ -14,7 +14,7 @@
 				<a href="/forum/{{ $p->forum_id }}-{{ str_slug($p->forum->title) }}">
 					<h5>{{ $p->forum->title }}</h5>
 				</a>
-				{!! nl2br($p->description) !!}
+				{!! $p->description !!}
 			</td>
 			<td>
 				<a href="/forum-category/{{ $p->forum->group_id }}-{{ str_slug($p->forum->group->group_name) }}">
