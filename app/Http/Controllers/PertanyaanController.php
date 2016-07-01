@@ -77,7 +77,7 @@ class PertanyaanController extends Controller
 
 	public function adminUstadz(Request $request)
 	{
-		if (!auth()->user()->isAdmin() || !auth()->user()->isUstadz()) {
+		if (!auth()->user()->isAdmin() && !auth()->user()->isUstadz()) {
 			abort(403);
 		}
 
