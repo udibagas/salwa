@@ -77,10 +77,10 @@ class PertanyaanController extends Controller
 
 	public function adminUstadz(Request $request)
 	{
-		if (Gate::denies('jawab-pertanyaan', $pertanyaan)) {
+		if (!auth()->user()->isAdmin() && !auth()->user()->isUstadz()) {
 			abort(403);
 		}
-		
+
 		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.ustadz.admin' : 'pertanyaan.ustadz.admin';
 		return view($view, [
 			'pertanyaans' => Pertanyaan::when($request->judul_pertanyaan, function($query) use ($request) {
