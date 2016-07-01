@@ -19,16 +19,20 @@
 	<div class="col-md-3 hidden-xs">
 		@include('informasi._group')
 	</div>
-	<div class="col-md-9">
-		<h2>{{ $informasi->judul }}</h2>
-		<i class="fa fa-clock-o"></i> {{ $informasi->updated->diffForHumans() }}
+	<div class="col-md-6">
+		<h2 style="margin-top:0;">{{ $informasi->judul }}</h2>
+		<div class="text-muted">
+			{{ $informasi->updated->diffForHumans() }}
+		</div>
 		<hr>
 
-		@if ($informasi->img_gambar)
-		<div style="width:600px;height:300px;margin-bottom:30px;" class="thumbnail">
+		<div style="width:100%;height:300px;margin-bottom:30px;" class="thumbnail">
+			@if ($informasi->img_gambar)
 			<img src="/{{ $informasi->img_gambar }}" class="img-responsive cover" alt="{{ $informasi->judul }}" />
+			@else
+			<img src="/images/salwa-info.jpg" class="img-responsive cover" alt="{{ $informasi->judul }}" />
+			@endif
 		</div>
-		@endif
 
 		{!! $informasi->content !!}
 
@@ -74,11 +78,10 @@
 			</div>
 		@endif
 
+	</div>
+	<div class="col-md-3">
 		<h4 class="title">INFORMASI TERKAIT</h4>
-		<div class="row no-gutter">
-			@each('informasi._list', $terkait, 'informasi')
-		</div>
-
+		@each('informasi._list-side', $terkait, 'informasi')
 	</div>
 </div>
 

@@ -1,6 +1,33 @@
 <h4 class="title">Jawab Pertanyaan</h4>
+<p>
+	<strong>Penanya :
+		{{ $pertanyaan->user ? $pertanyaan->user->name : '' }}
+		@if ($pertanyaan->daerah_asal) ({{ $pertanyaan->daerah_asal }}) @endif
+	</strong>
+</p>
 
 {!! Form::model($pertanyaan, ['url' => '/pertanyaan/'.$pertanyaan->pertanyaan_id.'/simpan-jawaban', 'class' => 'form-vertical', 'method' => 'PUT']) !!}
+
+
+<div class="form-group{{ $errors->has('judul_pertanyaan') ? ' has-error' : '' }}">
+	{{ Form::text('judul_pertanyaan', $pertanyaan->judul_pertanyaan, ['class' => 'form-control', 'placeholder' => 'Judul Pertanyaan']) }}
+
+	@if ($errors->has('judul_pertanyaan'))
+	<span class="help-block">
+		<strong>{{ $errors->first('judul_pertanyaan') }}</strong>
+	</span>
+	@endif
+</div>
+
+<div class="form-group{{ $errors->has('ket_pertanyaan') ? ' has-error' : '' }}">
+	{{ Form::textarea('ket_pertanyaan', $pertanyaan->ket_pertanyaan, ['rows' => 10, 'class' => 'summernote', 'placeholder' => 'Keterangan Pertanyaan']) }}
+
+	@if ($errors->has('ket_pertanyaan'))
+	<span class="help-block">
+		<strong>{{ $errors->first('ket_pertanyaan') }}</strong>
+	</span>
+	@endif
+</div>
 
 <div class="form-group{{ $errors->has('jawaban') ? ' has-error' : '' }}">
 	{{ Form::textarea('jawaban', $pertanyaan->jawaban, ['rows' => 10, 'class' => 'summernote', 'placeholder' => 'Tulis Jawaban']) }}

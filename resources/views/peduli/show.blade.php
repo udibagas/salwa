@@ -19,16 +19,20 @@
 	<div class="col-md-3 hidden-xs">
 		@include('peduli._group')
 	</div>
-	<div class="col-md-9">
-		<h2>{{ $peduli->judul }}</h2>
-		<i class="fa fa-clock-o"></i> {{ $peduli->updated->diffForHumans() }}
-		<br /><br />
-
-		@if ($peduli->img_artikel)
-		<div style="width:600px;height:300px;margin-bottom:30px;" class="thumbnail">
-			<img src="/{{ $peduli->img_artikel }}" class="img-responsive cover" alt="{{ $peduli->judul }}" />
+	<div class="col-md-6">
+		<h2 style="margin-top:0;">{{ $peduli->judul }}</h2>
+		<div class="text-muted">
+			{{ $peduli->updated->diffForHumans() }}
 		</div>
-		@endif
+		<hr>
+
+		<div style="width:100%;height:300px;margin-bottom:30px;" class="thumbnail">
+			@if ($peduli->img_artikel)
+			<img src="/{{ $peduli->img_artikel }}" class="img-responsive cover" alt="{{ $peduli->judul }}" />
+			@else
+			<img src="/images/salwa-peduli.jpg" class="img-responsive cover" alt="{{ $peduli->judul }}" />
+			@endif
+		</div>
 
 		{!! $peduli->isi !!}
 
@@ -57,11 +61,10 @@
 			</div>
 		@endif
 
-		<h4 class="title">SALWA PEDULI</h4>
-		<div class="row no-gutter">
-			@each('peduli._list', $terkait, 'peduli')
-		</div>
-
+	</div>
+	<div class="col-md-3">
+		<h4 class="title">TERKAIT</h4>
+		@each('peduli._list-side', $terkait, 'peduli')
 	</div>
 </div>
 

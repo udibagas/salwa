@@ -47,7 +47,10 @@
 			});
 			tinymce.init({
 				selector: '.summernote',
-				height: 300,
+				// file_browser_callback: function(field_name, url, type, win) {
+					// win.document.getElementById(field_name).value = 'my browser value';
+				// },
+				height: 250,
 				plugins: [
 					'advlist autolink lists link image charmap print preview anchor',
 					'searchreplace visualblocks code fullscreen',

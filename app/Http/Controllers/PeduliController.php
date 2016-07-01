@@ -100,7 +100,7 @@ class PeduliController extends Controller
         return view($view, [
 			'peduli' => $peduli,
 			'terkait'	=> Peduli::where('group_id', $peduli->group_id)
-							->orderBy('updated', 'DESC')->limit(4)->get()
+							->orderBy('updated', 'DESC')->limit(10)->get()
 		]);
     }
 

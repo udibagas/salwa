@@ -113,7 +113,7 @@ class InformasiController extends Controller
 			'informasi' => $informasi,
 			'images'	=> InformasiFile::image()->where('informasi_id', $informasi->informasi_id)->get(),
 			'dokumens'	=> InformasiFile::dokumen()->where('informasi_id', $informasi->informasi_id)->get(),
-			'terkait'	=> Informasi::where('group_id', $informasi->group_id)->limit(4)->get()
+			'terkait'	=> Informasi::where('group_id', $informasi->group_id)->limit(10)->get()
 		]);
     }
 
