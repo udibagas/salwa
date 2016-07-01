@@ -15,4 +15,6 @@
 	@include('home.mobile._dzikir')
 	@include('home.mobile._doa')
 
+	@include('home._popup')
+
 @stop
