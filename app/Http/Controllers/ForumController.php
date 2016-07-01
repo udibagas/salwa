@@ -109,9 +109,10 @@ class ForumController extends Controller
 
     public function baca($slug)
     {
+		$view = BrowserDetect::isMobile() ? 'forum.mobile.show' : 'forum.show';
 		$forum = Forum::where('title_code', $slug)->firstOrFail();
 
-        return view('forum.show', [
+        return view($view, [
 			'forum' 	=> $forum,
 			'posts'		=> $forum->posts()->orderBy('created', 'ASC')->get(),
 			'terkait'	=> Forum::where('group_id', $forum->group_id)->limit(5)->orderByRaw('RAND()')->get(),

@@ -154,9 +154,10 @@ class PertanyaanController extends Controller
 
     public function baca($slug)
     {
+		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.show' : 'pertanyaan.show';
 		$pertanyaan = Pertanyaan::where('kd_judul', $slug)->firstOrFail();
 
-        return view('pertanyaan.show', [
+        return view($view, [
 			'pertanyaan' 	=> $pertanyaan,
 			'terkait'		=> Pertanyaan::where('group_id', $pertanyaan->group_id)
 									->show()->orderByRaw('RAND()')->limit(5)->get()
