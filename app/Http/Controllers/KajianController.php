@@ -124,7 +124,10 @@ class KajianController extends Controller
     public function show(Kajian $kajian)
     {
 		$view = BrowserDetect::isMobile() ? 'kajian.mobile.show' : 'kajian.show';
-        return view($view, ['kajian' => $kajian]);
+        return view($view, [
+			'kajian' => $kajian,
+			'terkait' => Kajian::where('kajian_ustadz_id', $kajian->kajian_ustadz_id)->orderBy('kajian_id', 'DESC')->limit(5)->get()
+		]);
     }
 
     /**

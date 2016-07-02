@@ -42,7 +42,7 @@
 <div class="form-group{{ $errors->has('ket_pertanyaan') ? ' has-error' : '' }}">
 	<label for="ket_pertanyaan" class="control-label col-md-3">Keterangan Pertanyaan:</label>
 	<div class="col-md-9">
-		{{ Form::textarea('ket_pertanyaan', $pertanyaan->ket_pertanyaan, ['rows' => 7, 'class' => 'summernote', 'placeholder' => 'Tulis Pertanyaan']) }}
+		{{ Form::textarea('ket_pertanyaan', $pertanyaan->ket_pertanyaan, ['rows' => 7, 'class' => 'form-control', 'placeholder' => 'Tulis Pertanyaan']) }}
 
 		@if ($errors->has('ket_pertanyaan'))
 			<span class="help-block">

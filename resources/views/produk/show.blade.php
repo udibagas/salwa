@@ -20,10 +20,13 @@
 		@include('produk._group')
 	</div>
 
-	<div class="col-md-9">
-		<h2>{{ $produk->judul }}</h2><hr />
+	<div class="col-md-6">
+		<h2 style="margin-top:0;">{{ $produk->judul }}</h2><hr />
 
 		<div class="row">
+			<div class="col-md-5 col-sm-4">
+				<img src="/{{ $produk->img_buku }}" style="width:100%;margin-bottom:30px;" alt="" />
+			</div>
 			<div class="col-md-7 col-sm-8">
 				<p>{!! $produk->sinopsis !!}</p>
 				<table class="table table-hover table-striped table-bordered">
@@ -42,9 +45,6 @@
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<div class="col-md-5 col-sm-4">
-				<img src="/{{ $produk->img_buku }}" style="width:100%;margin-bottom:30px;" alt="" />
 			</div>
 		</div>
 
@@ -73,11 +73,10 @@
 			</div>
 		@endif
 
+	</div>
+	<div class="col-md-3">
 		<h4 class="title">PRODUK TERKAIT</h4>
-		<div class="row no-gutter">
-			@each('produk._list', $terkait, 'produk')
-		</div>
-
+		@each('produk._list-side', $terkait, 'produk')
 	</div>
 </div>
 
