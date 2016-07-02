@@ -132,11 +132,12 @@ class ForumController extends Controller
 			abort(403);
 		}
 
+		$view = BrowserDetect::isMobile() ? 'forum.mobile.edit' : 'forum.edit';
 		$post = $forum->posts()
 				->where('user_id', $forum->user_id)
 				->orderBy('post_id', 'ASC')->first();
 
-        return view('forum.edit', ['forum' => $forum, 'post' => $post]);
+        return view($view, ['forum' => $forum, 'post' => $post]);
     }
 
     /**

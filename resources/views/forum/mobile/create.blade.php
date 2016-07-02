@@ -9,6 +9,8 @@
 	@include('forum.mobile._form', ['method' => 'POST', 'url' => '/forum'])
 </div>
 
+@include('forum._panduan')
+
 @include('forum._group', ['group' => null, 'groups' => \App\Group::forum()->active()->orderBy('group_name', 'ASC')->get()])
 
 @endsection

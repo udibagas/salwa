@@ -3,7 +3,6 @@
 @section('title', 'Login')
 
 @section('content')
-<br>
     <div class="row">
 		<div class="col-md-9 col-sm-8 hidden-xs">
 			@include('auth._promo')

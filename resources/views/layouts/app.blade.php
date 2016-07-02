@@ -107,24 +107,24 @@
 
 				$('#menu').sidr({
 					name:'sidr-main',timing:'ease-in-out',speed:200,
-					onOpen: function() {
-						$('.mobile-nav').css('left', '275px');
-					},
-					onClose: function() {
-						$('.mobile-nav').css('left', '0');
-					}
+					// onOpen: function() {
+					// 	$('.mobile-nav').css('left', '275px');
+					// },
+					// onClose: function() {
+					// 	$('.mobile-nav').css('left', '0');
+					// }
 				});
 
 				$('#menu-right').sidr({
 					name:'sidr-right',timing:'ease-in-out',speed:200,side:'right',
-					onOpen: function() {
-						$('.mobile-nav').css('left', '-275px');
-						$('.mobile-nav').css('right', '275px');
-					},
-					onClose: function() {
-						$('.mobile-nav').css('right', '0');
-						$('.mobile-nav').css('left', '0');
-					}
+					// onOpen: function() {
+					// 	$('.mobile-nav').css('left', '-275px');
+					// 	$('.mobile-nav').css('right', '275px');
+					// },
+					// onClose: function() {
+					// 	$('.mobile-nav').css('right', '0');
+					// 	$('.mobile-nav').css('left', '0');
+					// }
 				});
 
 			@endif

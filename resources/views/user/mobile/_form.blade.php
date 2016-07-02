@@ -99,7 +99,7 @@
 
 <div class="form-group @if ($errors->has('profile')) has-error @endif">
 	<label for="profile" class="control-label">Profile:</label>
-	{!! Form::textarea('profile', $user->profile, ['class' => 'summernote', 'placeholder' => 'Profile', 'rows' => 4]) !!}
+	{!! Form::textarea('profile', strip_tags($user->profile), ['class' => 'form-control', 'placeholder' => 'Profile', 'rows' => 4]) !!}
 	@if ($errors->has('profile'))
 		<span class="help-block">
 			<strong>{{ $errors->first('profile') }}</strong>

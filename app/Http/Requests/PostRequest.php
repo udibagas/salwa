@@ -24,7 +24,7 @@ class PostRequest extends Request
     public function rules()
     {
         return [
-			'description'	=> 'required|min:10',
+			'description'	=> 'required',
         ];
     }
 }
