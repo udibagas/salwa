@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h4 class="title">{{ $group->group_name }}</h4>
+	<h4 class="title">{{ strtoupper($group->group_name) }}</h4>
 	@each('forum.mobile._list', $forums, 'a')
 
 	<div class="text-center">
