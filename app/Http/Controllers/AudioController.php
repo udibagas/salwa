@@ -49,7 +49,8 @@ class AudioController extends Controller
      */
     public function create()
     {
-        return view('audio.create', ['audio' => new Mp3]);
+		$view = BrowserDetect::isMobile() ? 'audio.mobile.create' : 'audio.create';
+        return view($view, ['audio' => new Mp3]);
     }
 
     /**
@@ -75,9 +76,9 @@ class AudioController extends Controller
 
         }
 
-		Mp3::create($data);
+		$audio = Mp3::create($data);
 
-		return redirect('/audio/admin')->with('success', 'Audio berhasil disimpan');
+		return redirect('/audio/'.$audio->mp3_download_id)->with('success', 'Audio berhasil disimpan');
     }
 
     /**
@@ -104,7 +105,8 @@ class AudioController extends Controller
      */
     public function edit(Mp3 $audio)
     {
-        return view('audio.edit', ['audio' => $audio]);
+		$view = BrowserDetect::isMobile() ? 'audio.mobile.edit' : 'audio.edit';
+        return view($view, ['audio' => $audio]);
     }
 
     /**
@@ -137,7 +139,7 @@ class AudioController extends Controller
 
 		$audio->update($data);
 
-		return redirect('/audio/admin')->with('success', 'Audio berhasil disimpan');
+		return redirect('/audio/'.$audio->mp3_download_id)->with('success', 'Audio berhasil disimpan');
     }
 
     /**

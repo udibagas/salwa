@@ -50,7 +50,12 @@
 @include('audio._group')
 
 @if (auth()->check() && auth()->user()->isAdmin())
-<a href="/artikel/create">@include('layouts.add-btn-mobile')</a>
+	{!! Form::open(['method' => 'DELETE']) !!}
+		{!! Form::hidden('redirect', '/audio') !!}
+		@include('layouts.delete-btn-mobile')
+		@include('layouts.edit-btn-mobile')
+		<a href="/audio/create">@include('layouts.add-btn-mobile')</a>
+	{!! Form::close() !!}
 @endif
 
 @stop

@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h4 class="title"><i class="fa fa-music"></i> SALWA AUDIO</h4>
+	<h4 class="title">SALWA AUDIO</h4>
 	@each('audio.mobile._list', $audios, 'a')
 	<div class="text-center">
 		{!! $audios->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
@@ -12,7 +12,7 @@
 	@include('audio._group')
 
 	@if (auth()->check() && auth()->user()->isAdmin())
-	<a href="/artikel/create">@include('layouts.add-btn-mobile')</a>
+	<a href="/audio/create">@include('layouts.add-btn-mobile')</a>
 	@endif
 
 @stop
