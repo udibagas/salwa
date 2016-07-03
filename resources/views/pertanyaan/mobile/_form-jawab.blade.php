@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('ket_pertanyaan') ? ' has-error' : '' }}">
-		{{ Form::textarea('ket_pertanyaan', $pertanyaan->ket_pertanyaan, ['rows' => 10, 'class' => 'form-control', 'placeholder' => 'Keterangan Pertanyaan']) }}
+		{{ Form::textarea('ket_pertanyaan', strip_tags($pertanyaan->ket_pertanyaan), ['rows' => 10, 'class' => 'form-control', 'placeholder' => 'Keterangan Pertanyaan']) }}
 
 		@if ($errors->has('ket_pertanyaan'))
 		<span class="help-block">
