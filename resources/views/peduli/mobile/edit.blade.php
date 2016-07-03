@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h4 class="title">Edit Artikel</h4>
+	<h4 class="title">EDIT SPEDULI</h4>
 	@include('peduli.mobile._form', ['url' => '/peduli/'.$peduli->peduli_id, 'method' => 'PUT'])
 
 @stop

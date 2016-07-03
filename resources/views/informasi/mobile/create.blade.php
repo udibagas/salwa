@@ -5,7 +5,7 @@
 
 @section('content')
 
-	<h4 class="title">Tambah Informasi Baru</h4>
+	<h4 class="title">TAMBAH INFORMASI</h4>
 	@include('informasi.mobile._form', ['url' => '/informasi', 'method' => 'POST'])
 
 @stop

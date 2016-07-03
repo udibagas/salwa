@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h4 class="title">Tambah Video Baru</h4>
+	<h4 class="title">TAMBAH VIDEO</h4>
 	@include('video.mobile._form', ['url' => '/video', 'method' => 'POST'])
 
 @stop

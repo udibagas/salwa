@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h4 class="title"><i class="fa fa-edit"></i> Edit Informasi</h4>
+	<h4 class="title">EDIT INFORMASI</h4>
 	@include('informasi.mobile._form', ['url' => '/informasi/'.$informasi->informasi_id, 'method' => 'PUT'])
 
 @stop

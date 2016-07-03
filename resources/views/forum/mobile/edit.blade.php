@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h4 class="title"><i class="fa fa-edit"></i> Edit Forum</h4>
+<h4 class="title">EDIT FORUM</h4>
 <div class="row-post no-gutter">
 	@include('forum.mobile._form', ['url' => '/forum/'.$forum->forum_id, 'method' => 'PUT'])
 </div>
