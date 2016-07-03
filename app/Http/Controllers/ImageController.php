@@ -49,7 +49,8 @@ class ImageController extends Controller
      */
     public function create()
     {
-        return view('image.create', ['image' => new SalwaImages]);
+		$view = BrowserDetect::isMobile() ? 'image.mobile.create' : 'image.create';
+        return view($view, ['image' => new SalwaImages]);
     }
 
     /**
@@ -76,9 +77,9 @@ class ImageController extends Controller
 
         }
 
-		SalwaImages::create($data);
+		$image = SalwaImages::create($data);
 
-		return redirect('/image/admin')->with('success', 'Image berhasil disimpan');
+		return redirect('/image/'.$image->id_salwaimages)->with('success', 'Image berhasil disimpan');
     }
 
     /**
@@ -105,7 +106,8 @@ class ImageController extends Controller
      */
     public function edit(SalwaImages $image)
     {
-        return view('image.edit', ['image' => $image]);
+		$view = BrowserDetect::isMobile() ? 'image.mobile.edit' : 'image.edit';
+        return view($view, ['image' => $image]);
     }
 
     /**
@@ -138,7 +140,7 @@ class ImageController extends Controller
 
 		$image->update($data);
 
-		return redirect('/image/admin')->with('success', 'Image berhasil disimpan');
+		return redirect('/image/'.$image->id_salwaimages)->with('success', 'Image berhasil disimpan');
     }
 
     /**
