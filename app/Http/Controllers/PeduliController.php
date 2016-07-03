@@ -52,7 +52,8 @@ class PeduliController extends Controller
      */
     public function create()
     {
-        return view('peduli.create', ['peduli' => new Peduli]);
+		$view = BrowserDetect::isMobile() ? 'peduli.mobile.create' : 'peduli.create';
+        return view($view, ['peduli' => new Peduli]);
     }
 
     /**
@@ -84,7 +85,7 @@ class PeduliController extends Controller
         }
 
 		Peduli::create($data);
-		return redirect('/peduli/admin')->with('success', 'Data berhasil disimpan');
+		return redirect('/peduli/'.$peduli->peduli_id)->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -112,7 +113,8 @@ class PeduliController extends Controller
      */
     public function edit(Peduli $peduli)
     {
-        return view('peduli.edit', ['peduli' => $peduli]);
+		$view = BrowserDetect::isMobile() ? 'peduli.mobile.edit' : 'peduli.edit';
+        return view($view, ['peduli' => $peduli]);
     }
 
     /**
@@ -147,7 +149,7 @@ class PeduliController extends Controller
         }
 
 		$peduli->update($data);
-        return redirect('/peduli/admin')->with('success', 'Data berhasil disimpan');
+        return redirect('/peduli/'.$peduli->peduli_id)->with('success', 'Data berhasil disimpan');
     }
 
     /**

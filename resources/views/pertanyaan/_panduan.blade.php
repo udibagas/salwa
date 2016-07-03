@@ -3,7 +3,7 @@
 		<h3 class="panel-title">PANDUAN MEMBUAT PERTANYAAN</h3>
 	</div>
 	<div class="panel-body text-bold">
-		<ol>
+		<ol style="padding-left:15px;">
 			<li>Ini adalah halaman untuk input pertanyaan seputar Islam.</li>
 			<li>Jangan mem-posting pertanyaan di halaman forum.</li>
 			<li>

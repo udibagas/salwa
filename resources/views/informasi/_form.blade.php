@@ -77,7 +77,7 @@
 
 			<div class="form-group">
 				<div class="col-md-offset-2 col-md-10">
-					@if ($dokumens)
+					@if (isset($dokumens) && $dokumens->count())
 					<ul class="list-group">
 						@foreach ($dokumens as $d)
 						<li class="list-group-item">
@@ -91,7 +91,7 @@
 					</ul>
 					@endif
 
-					@if($images)
+					@if(isset($images) && $images->count())
 					<div class="row no-gutter">
 						@each('informasi._images-edit', $images, 'image')
 					</div>

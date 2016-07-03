@@ -54,10 +54,6 @@
 				<strong>Belum ada jawaban untuk pertanyaan terkait.</strong>
 			</div>
 
-			@can('jawab-pertanyaan', $pertanyaan)
-				@include('pertanyaan.ustadz._form-jawab', ['pertanyaan' => $pertanyaan])
-			@endcan
-
 		@endif
 
 	</div>

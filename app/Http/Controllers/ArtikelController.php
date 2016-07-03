@@ -101,7 +101,7 @@ class ArtikelController extends Controller
         }
 
 		Artikel::create($data);
-		return redirect('/artikel/admin')->with('success', 'Artikel berhasil disimpan');
+		return redirect('/artikel/'.$artikel->artikel_id)->with('success', 'Artikel berhasil disimpan');
     }
 
     /**
@@ -177,7 +177,7 @@ class ArtikelController extends Controller
         }
 
 		$artikel->update($data);
-        return redirect('/artikel/admin')->with('success', 'Artikel berhasil disimpan');
+        return redirect('/artikel/'.$artikel->artikel_id)->with('success', 'Artikel berhasil disimpan');
     }
 
     /**

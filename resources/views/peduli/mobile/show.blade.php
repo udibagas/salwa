@@ -54,7 +54,12 @@
 @include('peduli._group')
 
 @if (auth()->check() && auth()->user()->isAdmin())
-<a href="/peduli/create">@include('layouts.add-btn-mobile')</a>
+	{!! Form::open(['method' => 'DELETE']) !!}
+		{!! Form::hidden('redirect', '/peduli') !!}
+		@include('layouts.delete-btn-mobile')
+		@include('layouts.edit-btn-mobile')
+		<a href="/peduli/create">@include('layouts.add-btn-mobile')</a>
+	{!! Form::close() !!}
 @endif
 
 @stop

@@ -6,15 +6,6 @@
 
 	<div class="row-post">
 		<h3>{{ $forum->title }}</h3>
-		@can('update-forum', $forum)
-			{!! Form::open(['url' => '/forum/'.$forum->forum_id, 'method' => 'DELETE']) !!}
-			{!! Form::hidden('redirect', '/forum') !!}
-			<div class="btn-group">
-				<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit Forum</a>
-				<button type="submit" name="delete" class="delete btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete Forum</button>
-			</div>
-			{!! Form::close() !!}
-		@endcan
 	</div>
 
 	<div class="row-post text-center">
@@ -51,6 +42,14 @@
 		'groups' => \App\Group::active()->forum()->orderBy('group_name', 'ASC')->get()
 	])
 
-	<a href="/forum/create">@include('layouts.add-btn-mobile')</a>
+	{!! Form::open(['method' => 'DELETE']) !!}
+		{!! Form::hidden('redirect', '/forum') !!}
+		@can('update-forum', $forum)
+			@include('layouts.delete-btn-mobile')
+			@include('layouts.edit-btn-mobile')
+		@endcan
+		<a href="/forum/create">@include('layouts.add-btn-mobile')</a>
+	{!! Form::close() !!}
+
 
 @stop

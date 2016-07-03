@@ -176,7 +176,8 @@ class PertanyaanController extends Controller
 			abort(403);
 		}
 
-        return view('pertanyaan.edit', ['pertanyaan' => $pertanyaan]);
+		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.edit' : 'pertanyaan.edit';
+        return view($view, ['pertanyaan' => $pertanyaan]);
     }
 
     public function jawab(Pertanyaan $pertanyaan)
@@ -189,7 +190,8 @@ class PertanyaanController extends Controller
 			abort(403);
 		}
 
-        return view('pertanyaan.ustadz.jawab', ['pertanyaan' => $pertanyaan]);
+		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.jawab' : 'pertanyaan.jawab';
+        return view($view, ['pertanyaan' => $pertanyaan]);
     }
 
 	public function simpanJawaban(JawabanRequest $request, Pertanyaan $pertanyaan)

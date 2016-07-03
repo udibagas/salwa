@@ -77,7 +77,12 @@
 @include('video._group')
 
 @if (auth()->check() && auth()->user()->isAdmin())
-<a href="/video/create">@include('layouts.add-btn-mobile')</a>
+	{!! Form::open(['method' => 'DELETE']) !!}
+		{!! Form::hidden('redirect', '/video') !!}
+		@include('layouts.delete-btn-mobile')
+		@include('layouts.edit-btn-mobile')
+		<a href="/video/create">@include('layouts.add-btn-mobile')</a>
+	{!! Form::close() !!}
 @endif
 
 @endsection

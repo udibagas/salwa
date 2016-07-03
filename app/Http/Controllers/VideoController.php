@@ -85,7 +85,8 @@ class VideoController extends Controller
      */
     public function create()
     {
-        return view('video.create', ['video' => new Video(['desc' => 'Description'])]);
+		$view = BrowserDetect::isMobile() ? 'video.mobile.create' : 'video.create';
+        return view($view, ['video' => new Video]);
     }
 
     /**
@@ -114,7 +115,7 @@ class VideoController extends Controller
         }
 
 		Video::create($data);
-		return redirect('/video/admin')->with('success', 'Video berhasil disimpan');
+		return redirect('/video/'.$video->video_id)->with('success', 'Video berhasil disimpan');
     }
 
     /**
@@ -170,7 +171,8 @@ class VideoController extends Controller
      */
     public function edit(Video $video)
     {
-		return view('video.edit', ['video' => $video]);
+		$view = BrowserDetect::isMobile() ? 'video.mobile.edit' : 'video.edit';
+		return view($view, ['video' => $video]);
     }
 
     /**
@@ -203,7 +205,7 @@ class VideoController extends Controller
         }
 
 		$video->update($data);
-        return redirect('/video/admin')->with('success', 'Video berhasil disimpan');
+        return redirect('/video/'.$video->video_id)->with('success', 'Video berhasil disimpan');
     }
 
     /**

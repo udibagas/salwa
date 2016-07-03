@@ -224,3 +224,7 @@ img.media-object:not(.no-round) {
 	width:100%;
 	z-index: 998;
 }
+
+img {
+	max-width: 100%;
+}

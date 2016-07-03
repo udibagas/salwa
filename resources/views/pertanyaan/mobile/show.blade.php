@@ -10,29 +10,6 @@
 	@include('layouts._share')
 </div>
 
-<div class="row-post text-center">
-	{!! Form::open(['url' => '/pertanyaan/'.$pertanyaan->pertanyaan_id, 'method' => 'DELETE']) !!}
-
-	<div class="btn-group">
-		@can('update-pertanyaan')
-		<a href="/pertanyaan/{{$pertanyaan->pertanyaan_id}}/edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
-		@endcan
-
-		@can('update-pertanyaan')
-		<a href="/pertanyaan/{{$pertanyaan->pertanyaan_id}}/jawab" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit Jawaban</a>
-		@endcan
-
-		@can('delete-pertanyaan', $pertanyaan)
-		<button type="submit" name="delete" class="btn btn-danger delete btn-xs">
-			<i class="fa fa-trash"></i> Hapus
-		</button>
-		@endcan
-	</div>
-
-	{!! Form::hidden('redirect', '/pertanyaan') !!}
-	{!! Form::close() !!}
-</div>
-
 <div class="row-post">
 	<div class="media">
 		<div class="media-left">
@@ -86,13 +63,9 @@
 
 @else
 <div class="row-post">
+<p class="text-center">
 	<strong class="text-danger">Belum ada jawaban untuk pertanyaan terkait.</strong>
-	<br>
-	<br>
-
-	@can('jawab-pertanyaan', $pertanyaan)
-	@include('pertanyaan.ustadz._form-jawab')
-	@endcan
+</p>
 </div>
 @endif
 
@@ -101,6 +74,17 @@
 
 @include('pertanyaan._group')
 
-<a href="/pertanyaan/create">@include('layouts.add-btn-mobile')</a>
+
+{!! Form::open(['method' => 'DELETE']) !!}
+	{!! Form::hidden('redirect', '/pertanyaan') !!}
+	@can('update-pertanyaan', $pertanyaan)
+		<a href="{{ url()->current() }}/jawab">
+			<img data-name="JAWAB" class="profile img-circle" data-width="60" data-height="60" data-char-count="5" data-font-size="12" style="position:fixed;bottom:230px;right:20px;" />
+		</a>
+		@include('layouts.delete-btn-mobile')
+		@include('layouts.edit-btn-mobile')
+	@endcan
+	<a href="/pertanyaan/create">@include('layouts.add-btn-mobile')</a>
+{!! Form::close() !!}
 
 @stop

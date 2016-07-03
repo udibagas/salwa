@@ -50,7 +50,8 @@ class InformasiController extends Controller
      */
     public function create()
     {
-        return view('informasi.create', ['informasi' => new Informasi]);
+		$view = BrowserDetect::isMobile() ? 'informasi.mobile.create' : 'informasi.create';
+        return view($view, ['informasi' => new Informasi]);
     }
 
     /**
@@ -95,7 +96,7 @@ class InformasiController extends Controller
 			}
 		}
 
-		return redirect('/informasi/admin')->with('success', 'Informasi berhasil disimpan');
+		return redirect('/informasi/'.$informasi->informasi_id)->with('success', 'Informasi berhasil disimpan');
     }
 
 
@@ -125,7 +126,8 @@ class InformasiController extends Controller
      */
     public function edit(Informasi $informasi)
     {
-        return view('informasi.edit', [
+		$view = BrowserDetect::isMobile() ? 'informasi.mobile.edit' : 'informasi.edit';
+        return view($view, [
 			'informasi' => $informasi,
 			'images'	=> InformasiFile::image()->where('informasi_id', $informasi->informasi_id)->get(),
 			'dokumens'	=> InformasiFile::dokumen()->where('informasi_id', $informasi->informasi_id)->get(),
@@ -178,7 +180,7 @@ class InformasiController extends Controller
 			}
 		}
 
-        return redirect('/informasi/admin')->with('success', 'Informasi berhasil disimpan');
+        return redirect('/informasi/'.$informasi->informasi_id)->with('success', 'Informasi berhasil disimpan');
     }
 
     /**

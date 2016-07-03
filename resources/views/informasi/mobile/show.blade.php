@@ -71,7 +71,12 @@
 @include('informasi._group')
 
 @if (auth()->check() && auth()->user()->isAdmin())
-<a href="/informasi/create">@include('layouts.add-btn-mobile')</a>
+	{!! Form::open(['method' => 'DELETE']) !!}
+		{!! Form::hidden('redirect', '/informasi') !!}
+		@include('layouts.delete-btn-mobile')
+		@include('layouts.edit-btn-mobile')
+		<a href="/informasi/create">@include('layouts.add-btn-mobile')</a>
+	{!! Form::close() !!}
 @endif
 
 @stop
