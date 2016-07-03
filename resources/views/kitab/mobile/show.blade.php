@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h4 class="title"><i class="fa fa-book"></i> KITAB & TERJEMAHAN</h4>
+	<h4 class="title">KITAB & TERJEMAHAN</h4>
 	<div class="row-post">
 		<div class="media">
 			<div class="media-left">
@@ -35,7 +35,12 @@
 	@include('kitab._group')
 
 	@if (auth()->check() && auth()->user()->isAdmin())
-	<a href="/kitab/create">@include('layouts.add-btn-mobile')</a>
+		{!! Form::open(['method' => 'DELETE']) !!}
+			{!! Form::hidden('redirect', '/kitab') !!}
+			@include('layouts.delete-btn-mobile')
+			@include('layouts.edit-btn-mobile')
+			<a href="/kitab/create">@include('layouts.add-btn-mobile')</a>
+		{!! Form::close() !!}
 	@endif
 
 @stop

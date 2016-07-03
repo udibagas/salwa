@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h4 class="title"><i class="fa fa-book"></i> KITAB & TERJEMAHAN</h4>
+	<h4 class="title">KITAB & TERJEMAHAN</h4>
 	@each('kitab.mobile._list', $kitabs, 'a')
 
 	<div class="text-center">

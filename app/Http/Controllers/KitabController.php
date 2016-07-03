@@ -52,7 +52,8 @@ class KitabController extends Controller
      */
     public function create()
     {
-        return view('kitab.create', ['kitab' => new Buku]);
+		$view = BrowserDetect::isMobile() ? 'kitab.mobile.create' : 'kitab.create';
+        return view($view, ['kitab' => new Buku]);
     }
 
     /**
@@ -90,8 +91,8 @@ class KitabController extends Controller
 
         }
 
-		Buku::create($data);
-		return redirect('/kitab/admin')->with('success', 'Buku berhasil disimpan');
+		$buku = Buku::create($data);
+		return redirect('/kitab/'.$buku->buku_id)->with('success', 'Buku berhasil disimpan');
     }
 
     /**
@@ -117,7 +118,8 @@ class KitabController extends Controller
      */
     public function edit(Buku $kitab)
     {
-        return view('kitab.edit', ['kitab' => $kitab]);
+		$view = BrowserDetect::isMobile() ? 'kitab.mobile.edit' : 'kitab.edit';
+        return view($view, ['kitab' => $kitab]);
     }
 
     /**
@@ -165,7 +167,7 @@ class KitabController extends Controller
         }
 
 		$kitab->update($data);
-		return redirect('/kitab/admin')->with('success', 'Buku berhasil disimpan');
+		return redirect('/kitab/'.$kitab->buku_id)->with('success', 'Buku berhasil disimpan');
     }
 
     /**

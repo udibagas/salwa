@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h4 class="title"><i class="fa fa-list-alt"></i> {{ $groupName or "Hadist" }}</h4>
+	<h4 class="title">{{ $groupName or "HADIST" }}</h4>
 	@each('hadist.mobile._list', $hadists, 'a')
 
 	<div class="text-center">

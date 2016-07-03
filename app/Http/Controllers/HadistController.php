@@ -21,7 +21,7 @@ class HadistController extends Controller
 		$search = str_replace(' ', '%', $request->search);
 
 		return view($view, [
-			'groupName'	=> 'Hadist',
+			'groupName'	=> 'HADIST',
 			'hadists' 	=> Hadist::when($request->group_id, function($query) use ($request) {
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
@@ -36,7 +36,7 @@ class HadistController extends Controller
 		$search = str_replace(' ', '%', $request->search);
 
 		return view($view, [
-			'groupName'	=> 'Doa',
+			'groupName'	=> 'DO\'A',
 			'hadists' 	=> Hadist::doa()->when($request->group_id, function($query) use ($request) {
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
@@ -51,7 +51,7 @@ class HadistController extends Controller
 		$search = str_replace(' ', '%', $request->search);
 
 		return view($view, [
-			'groupName'	=> 'Dzikir',
+			'groupName'	=> 'DZIKIR',
 			'hadists' 	=> Hadist::dzikir()->when($request->group_id, function($query) use ($request) {
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
