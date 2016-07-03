@@ -20,7 +20,6 @@
 		@endif
 
 		<link href="/css/gallery.css" rel="stylesheet">
-		<link href="/css/comment.css" rel="stylesheet">
 		<link href="/sidr/dist/stylesheets/jquery.sidr.bare.css" rel="stylesheet">
 
 		@stack('css')
