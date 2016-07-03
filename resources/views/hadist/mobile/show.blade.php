@@ -25,7 +25,12 @@
 @include('hadist._group')
 
 @if (auth()->check() && auth()->user()->isAdmin())
-<a href="/hadist/create">@include('layouts.add-btn-mobile')</a>
+	{!! Form::open(['method' => 'DELETE']) !!}
+		{!! Form::hidden('redirect', '/hadist') !!}
+		@include('layouts.delete-btn-mobile')
+		@include('layouts.edit-btn-mobile')
+		<a href="/hadist/create">@include('layouts.add-btn-mobile')</a>
+	{!! Form::close() !!}
 @endif
 
 @stop

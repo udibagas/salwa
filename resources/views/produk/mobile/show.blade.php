@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h4 class="title"><i class="fa fa-book"></i> SALWA MARKET</h4>
+	<h4 class="title">SALWA MARKET</h4>
 	<div class="row-post">
 		<div class="media">
 			<div class="media-left">
@@ -21,10 +21,8 @@
 
 	<div class="row-post">
 		<p>{!! $produk->sinopsis !!}</p>
-	</div>
 
-	<div class="row-post">
-		<table class="table table-hover table-striped table-bordered">
+		<table class="table table-hover table-striped table-bordered table-condensed">
 			<tbody>
 				<tr>
 					<th>Penerbit</th>
@@ -51,6 +49,11 @@
 	@include('produk._group')
 
 	@if (auth()->check() && auth()->user()->isAdmin())
-	<a href="/produk/create">@include('layouts.add-btn-mobile')</a>
+		{!! Form::open(['method' => 'DELETE']) !!}
+			{!! Form::hidden('redirect', '/produk') !!}
+			@include('layouts.delete-btn-mobile')
+			@include('layouts.edit-btn-mobile')
+			<a href="/produk/create">@include('layouts.add-btn-mobile')</a>
+		{!! Form::close() !!}
 	@endif
 @stop

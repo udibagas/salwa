@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h4 class="title"><i class="fa fa-shopping-cart"></i> SALWA MARKET</h4>
+	<h4 class="title">SALWA MARKET</h4>
 	@each('produk.mobile._list', $produks, 'a')
 
 	<div class="text-center">

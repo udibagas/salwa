@@ -49,7 +49,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        return view('produk.create', ['produk' => new Produk]);
+		$view = BrowserDetect::isMobile() ? 'produk.mobile.create' : 'produk.create';
+        return view($view, ['produk' => new Produk]);
     }
 
     /**
@@ -76,8 +77,8 @@ class ProdukController extends Controller
 
         }
 
-		Produk::create($data);
-		return redirect('/produk/admin')->with('success', 'Produk berhasil disimpan');
+		$produk = Produk::create($data);
+		return redirect('/produk/'.$produk->id_produk)->with('success', 'Produk berhasil disimpan');
     }
 
     /**
@@ -104,7 +105,8 @@ class ProdukController extends Controller
      */
     public function edit(Produk $produk)
     {
-        return view('produk.edit', ['produk' => $produk]);
+		$view = BrowserDetect::isMobile() ? 'produk.mobile.edit' : 'produk.edit';
+        return view($view, ['produk' => $produk]);
     }
 
     /**
@@ -133,7 +135,7 @@ class ProdukController extends Controller
         }
 
 		$produk->update($data);
-		return redirect('/produk/admin')->with('success', 'Produk berhasil disimpan');
+		return redirect('/produk/'.$produk->id_produk)->with('success', 'Produk berhasil disimpan');
     }
 
     /**

@@ -80,7 +80,8 @@ class HadistController extends Controller
      */
     public function create()
     {
-        return view('hadist.create', ['hadist' => new Hadist]);
+		$view = BrowserDetect::isMobile() ? 'hadist.mobile.create' : 'hadist.create';
+        return view($view, ['hadist' => new Hadist]);
     }
 
     /**
@@ -99,9 +100,9 @@ class HadistController extends Controller
 		$data['ringkasan'] 		= str_limit($data['penjelasan'], 250);
 		$data['createdby'] 		= auth()->user()->name;
 
-		Hadist::create($data);
+		$hadist = Hadist::create($data);
 
-        return redirect('/hadist/admin')->with('success', 'Hadist berhasil disimpan');
+        return redirect('/hadist/'.$hadist->hadist_id)->with('success', 'Hadist berhasil disimpan');
     }
 
     /**
@@ -158,7 +159,8 @@ class HadistController extends Controller
      */
     public function edit(Hadist $hadist)
     {
-        return view('hadist.create', ['hadist' => $hadist]);
+		$view = BrowserDetect::isMobile() ? 'hadist.mobile.edit' : 'hadist.edit';
+        return view($view, ['hadist' => $hadist]);
     }
 
     /**
@@ -174,12 +176,12 @@ class HadistController extends Controller
 		$data['hadist']			= $request->hadist;
 		$data['penjelasan']		= $request->penjelasan;
 		$data['kd_judul'] 		= str_slug($request->judul);
-		$data['ringkasan'] 		= str_limit($data['isi'], 250);
+		$data['ringkasan'] 		= str_limit($data['penjelasan'], 250);
 		$data['updatedby'] 		= auth()->user()->name;
 
 		$hadist->update($data);
 
-        return redirect('/hadist/admin')->with('success', 'Hadist berhasil disimpan');
+        return redirect('/hadist/'.$hadist->hadist_id)->with('success', 'Hadist berhasil disimpan');
     }
 
     /**

@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h4 class="title"><i class="fa fa-video-camera"></i> SALWA VIDEO</h4>
+	<h4 class="title">SALWA VIDEO</h4>
 	@each('video.mobile._list', $videos, 'a')
 
 	<nav class="text-center">
