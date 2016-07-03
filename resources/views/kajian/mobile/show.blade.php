@@ -64,4 +64,8 @@
 
 	@include('kajian._group')
 
+	@if (auth()->check() && auth()->user()->isAdmin())
+	<a href="/kajian/create">@include('layouts.add-btn-mobile')</a>
+	@endif
+
 @stop

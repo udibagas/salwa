@@ -101,8 +101,6 @@
 
 @include('pertanyaan._group')
 
-<a href="/pertanyaan/create">
-	<img class="profile img-circle" data-name="+" style="position:fixed;bottom:20px;right:20px;" data-font-size="40" />
-</a>
+<a href="/pertanyaan/create">@include('layouts.add-btn-mobile')</a>
 
 @stop

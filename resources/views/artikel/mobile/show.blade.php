@@ -52,4 +52,13 @@
 
 @include('artikel._group')
 
+@if (auth()->check() && auth()->user()->isAdmin())
+{!! Form::open(['method' => 'DELETE']) !!}
+{!! Form::hidden('redirect', '/artikel') !!}
+<button type="sumbit" name="delete" class="delete">@include('layouts.delete-btn-mobile')</button>
+<a href="{{ url()->current() }}/edit">@include('layouts.edit-btn-mobile')</a>
+<a href="/artikel/create">@include('layouts.add-btn-mobile')</a>
+{!! Form::close() !!}
+@endif
+
 @stop

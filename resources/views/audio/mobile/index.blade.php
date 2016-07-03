@@ -11,4 +11,8 @@
 	</div>
 	@include('audio._group')
 
+	@if (auth()->check() && auth()->user()->isAdmin())
+	<a href="/artikel/create">@include('layouts.add-btn-mobile')</a>
+	@endif
+
 @stop

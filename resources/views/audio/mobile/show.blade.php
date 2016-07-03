@@ -49,4 +49,8 @@
 @each('audio.mobile._list', $terkait->take(5), 'a')
 @include('audio._group')
 
+@if (auth()->check() && auth()->user()->isAdmin())
+<a href="/artikel/create">@include('layouts.add-btn-mobile')</a>
+@endif
+
 @stop

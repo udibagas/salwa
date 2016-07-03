@@ -53,4 +53,8 @@
 
 @include('peduli._group')
 
+@if (auth()->check() && auth()->user()->isAdmin())
+<a href="/peduli/create">@include('layouts.add-btn-mobile')</a>
+@endif
+
 @stop

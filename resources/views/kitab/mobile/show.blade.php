@@ -33,4 +33,9 @@
 	<h4 class="title">KITAB TERKAIT</h4>
 	@each('kitab.mobile._list', $terkait, 'a')
 	@include('kitab._group')
+
+	@if (auth()->check() && auth()->user()->isAdmin())
+	<a href="/kitab/create">@include('layouts.add-btn-mobile')</a>
+	@endif
+
 @stop

@@ -70,4 +70,8 @@
 
 @include('informasi._group')
 
+@if (auth()->check() && auth()->user()->isAdmin())
+<a href="/informasi/create">@include('layouts.add-btn-mobile')</a>
+@endif
+
 @stop

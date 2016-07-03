@@ -76,4 +76,8 @@
 
 @include('video._group')
 
+@if (auth()->check() && auth()->user()->isAdmin())
+<a href="/video/create">@include('layouts.add-btn-mobile')</a>
+@endif
+
 @endsection

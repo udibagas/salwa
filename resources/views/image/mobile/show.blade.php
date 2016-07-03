@@ -15,4 +15,8 @@
 
 @include('image._group')
 
+@if (auth()->check() && auth()->user()->isAdmin())
+<a href="/image/create">@include('layouts.add-btn-mobile')</a>
+@endif
+
 @stop

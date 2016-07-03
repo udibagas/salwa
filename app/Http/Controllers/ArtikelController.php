@@ -69,7 +69,8 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        return view('artikel.create', ['artikel' => new Artikel]);
+		$view = BrowserDetect::isMobile() ? 'artikel.mobile.create' : 'artikel.create';
+        return view($view, ['artikel' => new Artikel]);
     }
 
     /**
@@ -142,7 +143,8 @@ class ArtikelController extends Controller
      */
     public function edit(Artikel $artikel)
     {
-        return view('artikel.edit', ['artikel' => $artikel]);
+		$view = BrowserDetect::isMobile() ? 'artikel.mobile.edit' : 'artikel.edit';
+        return view($view, ['artikel' => $artikel]);
     }
 
     /**

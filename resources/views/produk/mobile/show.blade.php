@@ -49,4 +49,8 @@
 	<h4 class="title">PRODUK TERKAIT</h4>
 	@each('produk.mobile._list', $terkait, 'a')
 	@include('produk._group')
+
+	@if (auth()->check() && auth()->user()->isAdmin())
+	<a href="/produk/create">@include('layouts.add-btn-mobile')</a>
+	@endif
 @stop
