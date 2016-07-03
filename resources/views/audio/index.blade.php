@@ -16,7 +16,7 @@
 
 
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-3 hidden-xs">
 			@include('audio._group')
 		</div>
 
