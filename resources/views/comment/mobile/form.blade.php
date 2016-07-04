@@ -1,4 +1,4 @@
-<h4 class="title">Tulis Komentar</h4>
+<h4 class="title">TULIS KOMENTAR</h4>
 <div class="row-post">
 	{!! Form::model($comment, ['url' => $url, 'method' => $method]) !!}
 

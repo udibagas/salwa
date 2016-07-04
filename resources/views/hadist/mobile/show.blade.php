@@ -4,23 +4,24 @@
 
 @section('content')
 
-<div class="row-post text-center">
-	<h3 style="margin-top:5px;">{{ $hadist->judul }}</h3>
-</div>
-
-<div class="row-post text-center" style="font-size:27px;">
-	{{ $hadist->hadist }}
-</div>
-
 <div class="row-post">
+	<h3 class="text-center">{{ $hadist->judul }}</h3>
+	<br>
+
+	<div class="text-center" style="font-size:27px;">
+		{{ $hadist->hadist }}
+	</div>
+	<br>
+
 	{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
+
+	<br>
+	<div class="text-center">
+		@include('layouts._share')
+	</div>
 </div>
 
-<div class="row-post text-center">
-	@include('layouts._share')
-</div>
-
-<h4 class="title">Hadist Terkait</h4>
+<h4 class="title">HADIST TERKAIT</h4>
 @each('hadist.mobile._list', $terkait->take(5), 'a')
 @include('hadist._group')
 
