@@ -30,14 +30,14 @@
 					<div class="media">
 						<div class="media-left">
 							@if ($group->img_group)
-							<img src="/{{ $group->img_group }}" class="cover media-object" />
+							<div style="width:100px;height:100px;">
+								<img src="/{{ $group->img_group }}" class="cover media-object" />
+							</div>
 							@endif
 						</div>
 						<div class="media-body">
 							@if ($group->description)
-							<p>
-								<strong>{{ $group->description }}</strong>
-							</p>
+							<h4>{{ $group->description }}</h4>
 							@endif
 						</div>
 					</div>
