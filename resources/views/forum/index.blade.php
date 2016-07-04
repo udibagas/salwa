@@ -20,9 +20,12 @@
 			@include('forum._group', ['group' => null])
 		</div>
 
-		<div class="col-md-9">
-			<h4 class="title"><i class="fa fa-clock-o"></i> FORUM TERBARU</h4>
+		<div class="col-md-6">
 			@each('forum._list', $groups, 'group')
+		</div>
+
+		<div class="col-md-3">
+			@include('forum._panduan')
 		</div>
 
 	</div>

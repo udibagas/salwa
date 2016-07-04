@@ -19,17 +19,17 @@
 	<div class="col-md-3 hidden-xs">
 		@include('image._group')
 	</div>
-	<div class="col-md-9">
-		<h2>{{ $image->judul }}</h2><hr />
+	<div class="col-md-6">
+		<h2 style="margin-top:0;">{{ $image->judul }}</h2><hr />
 		<img src="/{{ $image->img_images }}" alt="{{ $image->judul }}" class="img-responsive" />
 
 		<hr>
 		@include('layouts._share')
-		<hr>
-
+	</div>
+	<div class="col-md-3">
 		<h4 class="title">IMAGE TERKAIT</h4>
 		<div class="row no-gutter">
-			@each('image._list', $terkait, 'image')
+			@each('image._list-side', $terkait, 'image')
 		</div>
 	</div>
 </div>

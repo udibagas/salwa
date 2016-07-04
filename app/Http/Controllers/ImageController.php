@@ -94,7 +94,7 @@ class ImageController extends Controller
 
         return view($view, [
 			'image' 	=> $image,
-			'terkait'	=> SalwaImages::where('group_id', $image->group_id)->orderByRaw('RAND()')->limit(3)->get()
+			'terkait'	=> SalwaImages::where('group_id', $image->group_id)->orderByRaw('RAND()')->limit(6)->get()
 		]);
     }
 

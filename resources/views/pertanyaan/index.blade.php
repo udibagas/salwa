@@ -20,9 +20,9 @@
 			@include('pertanyaan._group')
 		</div>
 
-		<div class="col-md-9">
+		<div class="col-md-6">
 
-			<h4 class="title"><i class="fa fa-question-circle-o"></i> TANYA USTADZ</h4>
+			<!-- <h4 class="title"><i class="fa fa-question-circle-o"></i> TANYA USTADZ</h4> -->
 
 			@if (count($pertanyaans) == 0)
 				<div class="alert alert-warning text-center">
@@ -36,6 +36,10 @@
 				{!! $pertanyaans->appends(['search' => request('search'),'group_id' => request('group_id')])->links() !!}
 			</nav>
 
+		</div>
+
+		<div class="col-md-3">
+			@include('pertanyaan._panduan')
 		</div>
 
 	</div>
