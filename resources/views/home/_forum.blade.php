@@ -15,15 +15,7 @@
 	<div role="tabpanel" class="tab-pane @if ($j==1) active @endif" id="{{$j}}">
 		<br />
 		<ul class="list-group">
-			@foreach($f->forums()->active()->orderBy('created', 'DESC')->limit(5)->get() as $f)
-			<li class="list-group-item">
-				<a href="/forum/{{$f->forum_id}}-{{str_slug($f->title)}}">
-					<strong>{{$f->title}}</strong>
-				</a><br />
-				<i class="fa fa-user"></i> {{ $f->user ? $f->user->name : '' }}
-				<i class="fa fa-clock-o"></i> {{ $f->updated->diffForHumans() }}
-			</li>
-			@endforeach
+			@each('forum._item', $f->forums()->active()->orderBy('created', 'DESC')->limit(5)->get(), 'f')
 		</ul>
 	</div>
 	@endforeach

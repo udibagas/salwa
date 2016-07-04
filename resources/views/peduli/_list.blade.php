@@ -6,12 +6,11 @@
 			<img src="/{{ $peduli->img_artikel }}" alt="">
 			@endif
 
-			<div class="thumbnail-block">
-				<div class="caption">
-					<h4>{{ $peduli->judul }}</h4>
-					{{ $peduli->user ? $peduli->user->name : '' }}<br />
-					<em>{{ $peduli->updated->diffForHumans() }}</em>
-				</div>
+			<div class="thumbnail-block"></div>
+			<div class="caption">
+				<h4>{{ $peduli->judul }}</h4>
+				{{ $peduli->user ? $peduli->user->name : '' }}<br />
+				<em>{{ $peduli->updated->diffForHumans() }}</em>
 			</div>
 		</a>
 	</div>
