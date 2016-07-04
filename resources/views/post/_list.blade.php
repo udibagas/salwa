@@ -17,8 +17,10 @@
 				<div class="pull-right">
 					{!! Form::open(['url' => '/post/'.$p->post_id, 'method' => 'DELETE']) !!}
 					{!! Form::hidden('redirect', url()->current()) !!}
-					<a href="/post/{{ $p->post_id }}/edit" class="btn btn-info btn-xs">Edit</a>
-					<button type="submit" name="delete" class="btn btn-danger btn-xs delete">Delete</button>
+					<div class="btn-group">
+						<a href="/post/{{ $p->post_id }}/edit" class="btn btn-info btn-xs">Edit</a>
+						<button type="submit" name="delete" class="btn btn-danger btn-xs delete">Delete</button>
+					</div>
 					{!! Form::close() !!}
 				</div>
 				@endcan

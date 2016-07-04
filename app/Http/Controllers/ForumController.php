@@ -24,7 +24,7 @@ class ForumController extends Controller
     {
 		$view = BrowserDetect::isMobile() ? 'forum.mobile.index' : 'forum.index';
         return view($view, [
-			'forums' => Forum::active()->orderBy('forum_id', 'DESC')->simplePaginate(),
+			'forums' => Forum::active()->orderBy('updated', 'DESC')->simplePaginate(),
 			'groups' => Group::forum()->active()->orderBy('group_name', 'ASC')->get()
 		]);
     }
@@ -33,7 +33,7 @@ class ForumController extends Controller
     {
 		$view = BrowserDetect::isMobile() ? 'forum.mobile.mine' : 'forum.mine';
         return view($view, [
-			'forums' => Forum::where('user_id', auth()->user()->user_id)->active()->orderBy('forum_id', 'DESC')->simplePaginate(),
+			'forums' => Forum::where('user_id', auth()->user()->user_id)->active()->orderBy('updated', 'DESC')->simplePaginate(),
 			'groups' => Group::forum()->active()->orderBy('group_name', 'ASC')->get(),
 		]);
     }
@@ -231,7 +231,7 @@ class ForumController extends Controller
 		return view($view, [
 			'groups' 	=> Group::forum()->active()->orderBy('group_name', 'ASC')->get(),
 			'group' 	=> $group,
-			'forums' 	=> $group->forums()->orderBy('forum_id', 'DESC')->simplePaginate()
+			'forums' 	=> $group->forums()->orderBy('updated', 'DESC')->simplePaginate()
 		]);
 	}
 

@@ -62,14 +62,12 @@
 </div>
 
 @else
-<div class="row-post">
-<p class="text-center">
-	<strong class="text-danger">Belum ada jawaban untuk pertanyaan terkait.</strong>
-</p>
+<div class="row-post text-center text-bold text-danger">
+	Belum ada jawaban untuk pertanyaan terkait.
 </div>
 @endif
 
-<h3 class="title">Pertanyaan Terkait</h3>
+<h3 class="title">PERTANYAAN TERKAIT</h3>
 @each('pertanyaan.mobile._list', $terkait, 'a')
 
 @include('pertanyaan._group')

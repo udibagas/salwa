@@ -53,6 +53,8 @@ class PostController extends Controller
 
 		$forum 	= Forum::find($request->forum_id);
 		$post 	= $forum->posts()->create($data);
+		$forum->updated = date('Y-m-d H:i:s');
+		$forum->save();
 
 		if ($request->hasFile('img')) {
 
@@ -131,7 +133,11 @@ class PostController extends Controller
 			}
         }
 
-		return redirect()->action('ForumController@show', ['forum' => $post->forum]);
+		$forum = $post->forum;
+		$forum->updated = date('Y-m-d H:i:s');
+		$forum->save();
+
+		return redirect()->action('ForumController@show', ['forum' => $forum]);
     }
 
     /**

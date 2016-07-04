@@ -34,7 +34,7 @@
 		</div>
 
 		<div class="form-group">
-			<button type="submit" name="button" class="btn btn-info"><span class="fa fa-send"></span> Kirim Komentar</button>
+			<button type="submit" name="button" class="btn btn-info">KIRIM KOMENTAR</button>
 		</div>
 
 	{{ Form::close() }}

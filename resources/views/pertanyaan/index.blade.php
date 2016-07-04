@@ -22,8 +22,6 @@
 
 		<div class="col-md-6">
 
-			<!-- <h4 class="title"><i class="fa fa-question-circle-o"></i> TANYA USTADZ</h4> -->
-
 			@if (count($pertanyaans) == 0)
 				<div class="alert alert-warning text-center">
 					<strong>Tidak ada hasil untuk pencarian terkait.</strong>
