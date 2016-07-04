@@ -190,7 +190,7 @@ class PertanyaanController extends Controller
 			abort(403);
 		}
 
-		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.jawab' : 'pertanyaan.jawab';
+		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.jawab' : 'pertanyaan.ustadz.jawab';
         return view($view, ['pertanyaan' => $pertanyaan]);
     }
 
