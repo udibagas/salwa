@@ -65,7 +65,12 @@
 	@include('kajian._group')
 
 	@if (auth()->check() && auth()->user()->isAdmin())
-	<a href="/kajian/create">@include('layouts.add-btn-mobile')</a>
+		{!! Form::open(['method' => 'DELETE']) !!}
+			{!! Form::hidden('redirect', '/kajian') !!}
+			@include('layouts.delete-btn-mobile')
+			@include('layouts.edit-btn-mobile')
+			<a href="/kajian/create">@include('layouts.add-btn-mobile')</a>
+		{!! Form::close() !!}
 	@endif
 
 @stop

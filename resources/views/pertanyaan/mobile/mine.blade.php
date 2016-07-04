@@ -5,7 +5,7 @@
 @section('content')
 
 
-<h4 class="title"><i class="fa fa-question-circle"></i> PERTANYAAN SAYA</h4>
+<h4 class="title">PERTANYAAN SAYA</h4>
 @each('pertanyaan.mobile._list', $pertanyaans, 'a')
 
 <div class="text-center">

@@ -159,7 +159,7 @@
 					{{ Form::text('pic_nama_ikhwan',
 						$kajian->pic_nama_ikhwan, [
 							'class' => 'form-control',
-							'placeholder' => 'CP Ikhwan'
+							'placeholder' => 'Name CP Ikhwan'
 						]
 					) }}
 
@@ -190,12 +190,12 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('pic_nama_akhwat') ? ' has-error' : '' }}">
-				<label for="pic_nama_akhwat" class="col-md-3 control-label">Name CP Ikhwan:</label>
+				<label for="pic_nama_akhwat" class="col-md-3 control-label">Name CP Akhwat:</label>
 				<div class="col-md-9">
 					{{ Form::text('pic_nama_akhwat',
 						$kajian->pic_nama_akhwat, [
 							'class' => 'form-control',
-							'placeholder' => 'Name CP Ikhwan'
+							'placeholder' => 'Name CP Akhwat'
 						]
 					) }}
 
@@ -261,7 +261,7 @@
 
 			<div class="form-group">
 				<div class="col-md-offset-3 col-sm-9">
-					<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+					<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
 				</div>
 			</div>
 

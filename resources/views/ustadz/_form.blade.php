@@ -82,7 +82,7 @@
 
 			<div class="form-group">
 				<div class="col-sm-12">
-					<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+					<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
 				</div>
 			</div>
 

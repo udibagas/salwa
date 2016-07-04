@@ -12,7 +12,7 @@
 	{{ $hadist->hadist }}
 </div>
 
-<div class="row-post text-center">
+<div class="row-post">
 	{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
 </div>
 

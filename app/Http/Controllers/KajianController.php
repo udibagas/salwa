@@ -64,7 +64,8 @@ class KajianController extends Controller
      */
     public function create()
     {
-        return view('kajian.create', ['kajian' => new Kajian]);
+		$view = BrowserDetect::isMobile() ? 'kajian.mobile.create' : 'kajian.create';
+        return view($view, ['kajian' => new Kajian]);
     }
 
     /**
@@ -138,7 +139,8 @@ class KajianController extends Controller
      */
     public function edit(Kajian $kajian)
     {
-        return view('kajian.edit', ['kajian' => $kajian]);
+		$view = BrowserDetect::isMobile() ? 'kajian.mobile.edit' : 'kajian.edit';
+        return view($view, ['kajian' => $kajian]);
     }
 
     /**

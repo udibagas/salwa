@@ -81,7 +81,7 @@
 
 <div class="form-group">
 	<div class="col-md-offset-2 col-md-10">
-		<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan Pertanyaan</button>
+		<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
 	</div>
 </div>
 

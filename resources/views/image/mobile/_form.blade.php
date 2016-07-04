@@ -43,7 +43,7 @@
 		</div>
 
 		<div class="form-group">
-			<button type="submit" name="submit" class="btn btn-info"><i class="fa fa-save"></i> Simpan</button>
+			<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
 		</div>
 
 	{!! Form::close() !!}

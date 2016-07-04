@@ -1,4 +1,4 @@
-<h4 class="title"><i class="fa fa-video-camera"></i> Video</h4>
+<h4 class="title">VIDEO</h4>
 @each('video.mobile._list', $videos, 'a')
 
 <div class="row-post text-center">
@@ -9,7 +9,7 @@
 	@endif
 </div>
 
-<h4 class="title"><i class="fa fa-file-text-o"></i> Artikel</h4>
+<h4 class="title">ARTIKEL</h4>
 
 	@each('artikel.mobile._list', $artikels, 'a')
 
@@ -21,7 +21,7 @@
 		@endif
 	</div>
 
-<h4 class="title"><i class="fa fa-newspaper-o"></i> Informasi</h4>
+<h4 class="title">INFORMASI</h4>
 @each('informasi.mobile._list', $informasis, 'a')
 <div class="row-post text-center">
 	@if (count($informasis))
@@ -32,7 +32,7 @@
 </div>
 
 
-<h4 class="title"><i class="fa fa-heart-o"></i> Peduli</h4>
+<h4 class="title">PEDULI</h4>
 @each('peduli.mobile._list', $pedulis, 'a')
 <div class="row-post text-center">
 	@if (count($pedulis))
@@ -42,7 +42,7 @@
 	@endif
 </div>
 
-<h4 class="title"><i class="fa fa-comments-o"></i> Forum</h4>
+<h4 class="title">FORUM</h4>
 @each('forum.mobile._list', $forums, 'a')
 <div class="row-post text-center">
 	@if (count($forums))
@@ -63,7 +63,7 @@ each('post.mobile._list', $posts, 'p')
 	@endif
 </div> -->
 
-<h4 class="title"><i class="fa fa-question"></i> Tanya Ustadz</h4>
+<h4 class="title">TANYA USTADZ</h4>
 @each('pertanyaan.mobile._list', $pertanyaan, 'a')
 <div class="row-post text-center">
 	@if (count($pertanyaan))
@@ -74,7 +74,7 @@ each('post.mobile._list', $posts, 'p')
 </div>
 
 
-<h4 class="title"><i class="fa fa-book"></i> Kitab</h4>
+<h4 class="title">KITAB</h4>
 
 @foreach($buku as $v)
 
@@ -96,7 +96,7 @@ each('post.mobile._list', $posts, 'p')
 
 
 
-<h4 class="title"><i class="fa fa-heartbeat"></i> Doa</h4>
+<h4 class="title">DO'A</h4>
 @each('hadist.mobile._list', $doa, 'a')
 
 <div class="row-post text-center">
@@ -108,7 +108,7 @@ each('post.mobile._list', $posts, 'p')
 </div>
 
 
-<h4 class="title"><i class="fa fa-hand-stop-o"></i> Dzikir</h4>
+<h4 class="title">DZIKIR</h4>
 @each('hadist.mobile._list', $dzikir, 'a')
 
 <div class="row-post text-center">
@@ -120,7 +120,7 @@ each('post.mobile._list', $posts, 'p')
 </div>
 
 
-<h4 class="title"><i class="fa fa-list-alt"></i> Hadist</h4>
+<h4 class="title">HADIST</h4>
 @each('hadist.mobile._list', $hadist, 'a')
 
 <div class="row-post text-center">
@@ -132,7 +132,7 @@ each('post.mobile._list', $posts, 'p')
 </div>
 
 
-<h4 class="title"><i class="fa fa-music"></i> Audio</h4>
+<h4 class="title">AUDIO</h4>
 @each('audio.mobile._list', $audios, 'a')
 
 <div class="row-post text-center">
@@ -143,7 +143,7 @@ each('post.mobile._list', $posts, 'p')
 	@endif
 </div>
 
-<h4 class="title"><i class="fa fa-image"></i> Images</h4>
+<h4 class="title">IMAGES</h4>
 
 @foreach($images as $v)
 
@@ -161,7 +161,7 @@ each('post.mobile._list', $posts, 'p')
 	@endif
 </div>
 
-<h4 class="title"><i class="fa fa-shopping-cart"></i> Market</h4>
+<h4 class="title">PRODUK</h4>
 
 @foreach($produks as $v)
 

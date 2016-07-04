@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h4 class="title"><i class="fa fa-edit"></i> JADWAL KAJIAN</h4>
+	<h4 class="title">JADWAL KAJIAN</h4>
 	@each('kajian.mobile._list', $kajians, 'a')
 
 	<div class="text-center">
