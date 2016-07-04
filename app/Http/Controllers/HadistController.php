@@ -26,7 +26,8 @@ class HadistController extends Controller
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%');
-						})->orderBy('hadist.updated', 'DESC')->simplePaginate()
+						})->orderBy('hadist.updated', 'DESC')->simplePaginate(20),
+			'hadist'	=> Hadist::hadist()->orderByRaw('RAND()')->first()
 		]);
     }
 
@@ -41,7 +42,8 @@ class HadistController extends Controller
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%');
-						})->orderBy('hadist.updated', 'DESC')->simplePaginate()
+						})->orderBy('hadist.updated', 'DESC')->simplePaginate(20),
+			'hadist'	=> Hadist::doa()->orderByRaw('RAND()')->first()
 		]);
     }
 
@@ -56,7 +58,8 @@ class HadistController extends Controller
 							return $query->where('hadist.group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%');
-						})->orderBy('hadist.updated', 'DESC')->simplePaginate()
+						})->orderBy('hadist.updated', 'DESC')->simplePaginate(20),
+			'hadist'	=> Hadist::dzikir()->orderByRaw('RAND()')->first()
 		]);
     }
 

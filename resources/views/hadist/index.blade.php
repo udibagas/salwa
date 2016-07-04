@@ -19,24 +19,53 @@
 		<div class="col-md-3 hidden-xs">
 			@include('hadist._group')
 		</div>
-		<div class="col-md-9">
-			<h4 class="title"><i class="fa fa-list-alt"></i> HADIST</h4>
-				<div class="list-group">
-					@foreach ($hadists as $h)
-					<a href="/hadist/{{ $h->hadist_id }}-{{ str_slug($h->judul) }}" class="list-group-item">
-						<i class="fa fa-heartbeat"></i> {{ $h->judul }}
-					</a>
-					@endforeach
+		<div class="col-md-6">
+			<div class="panel panel-blue">
+				<div class="panel-heading">
+					<h4 class="panel-title"><i class="fa fa-list-alt"></i> HADIST</h4>
 				</div>
+				<ul class="list-group">
+
+					@foreach ($hadists as $a)
+					<li class="list-group-item">
+						<div class="media">
+							<div class="media-left media-middle">
+								<div class="" style="height:30px;width:30px;">
+									<img class="media-object profile img-circle cover" alt="{{ $a->judul }}" data-name="{{ $a->judul }}">
+								</div>
+							</div>
+							<div class="media-body">
+								<strong>
+									<a href="/hadist/{{ $a->hadist_id }}-{{ $a->kd_judul }}">{{ $a->judul }}</a>
+								</strong>
+							</div>
+						</div>
+					</li>
+					@endforeach
+				</ul>
+			</div>
 
 			<nav class="text-center">
 				{!! $hadists->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
 			</nav>
 
 		</div>
-		<!-- <div class="col-md-3">
-			disini nanti ada slider random hadist
-		</div> -->
+		<div class="col-md-3">
+			<div class="panel panel-blue">
+				<div class="panel-body">
+					<h3 class="text-center">{{ $hadist->judul }}</h3><br>
+
+					<div style="font-size:20px;" class="text-right">
+						{{ $hadist->hadist }}
+					</div>
+
+					<br>
+
+					{!! $hadist->penjelasan !!}
+
+				</div>
+			</div>
+		</div>
 	</div>
 
 @stop

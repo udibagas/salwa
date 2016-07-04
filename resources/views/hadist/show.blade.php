@@ -32,7 +32,8 @@
 			<br>
 
 			<div class="alert alert-info">
-				{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
+				{!! $hadist->penjelasan !!}
+				<!-- {!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!} -->
 			</div>
 
 		</div>
@@ -47,13 +48,24 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">HADIST TERKAIT</h4>
 			</div>
-			<div class="list-group">
-				@foreach ($terkait as $t)
-				<a class="list-group-item" href="/hadist/{{ $t->hadist_id }}-{{ str_slug($t->judul )}}">
-					{{ $t->judul }}
-				</a>
+			<ul class="list-group">
+				@foreach ($terkait as $a)
+				<li class="list-group-item">
+					<div class="media">
+						<div class="media-left media-middle">
+							<div class="" style="height:30px;width:30px;">
+								<img class="media-object profile img-circle cover" alt="{{ $a->judul }}" data-name="{{ $a->judul }}">
+							</div>
+						</div>
+						<div class="media-body">
+							<strong>
+								<a href="/hadist/{{ $a->hadist_id }}-{{ $a->kd_judul }}">{{ $a->judul }}</a>
+							</strong>
+						</div>
+					</div>
+				</li>
 				@endforeach
-			</div>
+			</ul>
 		</div>
 	</div>
 </div>

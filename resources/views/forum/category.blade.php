@@ -21,45 +21,47 @@
 			@include('forum._group')
 		</div>
 
-		<div class="col-md-9">
-			<h4 class="title">{{ $group->group_name }}</h4>
+		<div class="col-md-6">
+			<div class="panel panel-blue">
+				<div class="panel-heading">
+					<h4 class="panel-title">{{ strtoupper($group->group_name) }}</h4>
+				</div>
+				<div class="panel-body">
+					<div class="media">
+						<div class="media-left">
+							@if ($group->img_group)
+							<img src="/{{ $group->img_group }}" class="cover media-object" />
+							@endif
+						</div>
+						<div class="media-body">
+							@if ($group->description)
+							<p>
+								<strong>{{ $group->description }}</strong>
+							</p>
+							@endif
+						</div>
+					</div>
+				</div>
 
-			<div class="alert alert-info">
-				@if ($group->img_group)
-				<img src="/{{ $group->img_group }}" style="height:100px;float:left;margin:0 10px 10px 0;" alt="" />
-				@endif
+				<ul class="list-group">
+					@if (count($forums) == 0)
+						<li class="list-group-item text-center">
+							<strong>Belum ada post</strong>
+						</li>
+					@endif
 
-				@if ($group->description)
-				<p>
-					<strong>{{ $group->description }}</strong>
-				</p>
-				<br>
-				@endif
-
-
-				@if (auth()->check())
-				<a href="/forum/create" class="btn btn-info">
-					<i class="fa fa-plus-circle"></i> Buat Thread Baru
-				</a>
-				@endif
-
-				<div class="clearfix"></div>
+					@each('forum._item', $forums, 'f')
+				</ul>
 			</div>
-
-			<ul class="list-group">
-				@if (count($forums) == 0)
-					<li class="list-group-item text-center">
-						<strong>Belum ada post</strong>
-					</li>
-				@endif
-
-				@each('forum._item', $forums, 'f')
-			</ul>
 
 			<nav class="text-center">
 				{!! $forums->links() !!}
 			</nav>
 
+		</div>
+
+		<div class="col-md-3">
+			@include('forum._panduan')
 		</div>
 	</div>
 

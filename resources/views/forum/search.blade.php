@@ -20,7 +20,7 @@
 			@include('forum._group')
 		</div>
 
-		<div class="col-md-9">
+		<div class="col-md-6">
 
 			<div class="panel panel-blue">
 				<div class="panel-heading">
@@ -42,6 +42,10 @@
 				{!! $forums->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
 			</nav>
 
+		</div>
+
+		<div class="col-md-3">
+			@include('forum._panduan')
 		</div>
 	</div>
 
