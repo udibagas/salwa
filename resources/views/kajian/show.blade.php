@@ -76,7 +76,7 @@
 			</div>
 		</div>
 		<div class="col-md-3">
-			<h4 class="title">Kajian Terkait</h4>
+			<h4 class="title">KAJIAN TERKAIT</h4>
 			@each('kajian._list-side', $terkait, 'kajian')
 		</div>
 	</div>

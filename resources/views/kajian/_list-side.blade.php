@@ -1,12 +1,16 @@
 <div class="media">
 	<div class="media-left">
 		<div style="width:70px;height:80px;">
+			@if ($kajian->img_kajian_photo)
 			<img class="media-object cover" src="/{{ $kajian->img_kajian_photo }}" alt="{{ $kajian->kajian_tema }}">
+			@else
+			<img class="media-object profile cover" data-name="{{ $kajian->kajian_tema }}" alt="{{ $kajian->kajian_tema }}">
+			@endif
 		</div>
 	</div>
 	<div class="media-body">
 		<strong>
-			<a href="/kitab/{{ $kajian->kajian_id }}-{{ str_slug($kajian->kajian_tema) }}">
+			<a href="/kajian/{{ $kajian->kajian_id }}-{{ str_slug($kajian->kajian_tema) }}">
 				{{ $kajian->kajian_tema }}
 			</a>
 		</strong><br>
