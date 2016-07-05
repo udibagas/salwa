@@ -10,6 +10,8 @@
 		<meta property="og:description" content="@yield('description')" />
 		<meta property="og:image" content="@yield('image')" />
 
+		<link rel="image_src" href="@yield('image')" />
+
 		<meta name="author" content="Salamdakwah" />
 		<meta name="description" content="video kajian, audio kajian, forum islami, jadwal kajian dan artikel, yang berdasarkan Al-Quran dan As-Sunnah sebagaimana pemahaman para sahabat Rosululloh Shallallahu Alaihi Wasallam" />
 		<meta name="keyword" content="video kajian,audio kajian,forum islami,jadwal kajian,artikel,Al-Quran,Sunnah,sahabat,Rosululloh,islam,muslim,muhammad" />
