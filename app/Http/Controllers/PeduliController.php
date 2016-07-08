@@ -32,7 +32,12 @@ class PeduliController extends Controller
 				$html .= view('peduli.mobile._list', ['a' => $a]);
 			}
 
-			return response()->json(['html' => $html, 'nextPageUrl' => $pedulis->nextPageUrl()]);
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $pedulis->nextPageUrl(),
+				'currentPage'	=> $pedulis->currentPage(),
+				'lastPage'		=> $pedulis->lastPage(),
+			]);
 		}
 
         return view($view, ['pedulis' => $pedulis]);

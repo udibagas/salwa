@@ -33,7 +33,12 @@ class VideoController extends Controller
 				$html .= view('video.mobile._list', ['a' => $a]);
 			}
 
-			return response()->json(['html' => $html, 'nextPageUrl' => $videos->nextPageUrl()]);
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $videos->nextPageUrl(),
+				'currentPage'	=> $videos->currentPage(),
+				'lastPage'		=> $videos->lastPage(),
+			]);
 		}
 
         return view($view, ['videos' => $videos]);

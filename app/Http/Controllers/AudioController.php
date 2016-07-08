@@ -33,7 +33,12 @@ class AudioController extends Controller
 				$html .= view('audio.mobile._list', ['a' => $a]);
 			}
 
-			return response()->json(['html' => $html, 'nextPageUrl' => $audios->nextPageUrl()]);
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $audios->nextPageUrl(),
+				'currentPage'	=> $audios->currentPage(),
+				'lastPage'		=> $audios->lastPage(),
+			]);
 		}
 
         return view($view, ['audios' => $audios]);

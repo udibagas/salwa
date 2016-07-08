@@ -38,7 +38,12 @@ class PertanyaanController extends Controller
 				$html .= view('pertanyaan.mobile._list', ['a' => $a]);
 			}
 
-			return response()->json(['html' => $html, 'nextPageUrl' => $pertanyaans->nextPageUrl()]);
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $pertanyaans->nextPageUrl(),
+				'currentPage'	=> $pertanyaans->currentPage(),
+				'lastPage'		=> $pertanyaans->lastPage(),
+			]);
 		}
 
 		return view($view, ['pertanyaans' => $pertanyaans]);

@@ -33,7 +33,12 @@ class ArtikelController extends Controller
 				$html .= view('artikel.mobile._list', ['a' => $a]);
 			}
 
-			return response()->json(['html' => $html, 'nextPageUrl' => $artikels->nextPageUrl()]);
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $artikels->nextPageUrl(),
+				'currentPage'	=> $artikels->currentPage(),
+				'lastPage'		=> $artikels->lastPage(),
+			]);
 		}
 
         return view($view, ['artikels' => $artikels]);

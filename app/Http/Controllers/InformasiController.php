@@ -33,7 +33,12 @@ class InformasiController extends Controller
 				$html .= view('informasi.mobile._list', ['a' => $a]);
 			}
 
-			return response()->json(['html' => $html, 'nextPageUrl' => $informasis->nextPageUrl()]);
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $informasis->nextPageUrl(),
+				'currentPage'	=> $informasis->currentPage(),
+				'lastPage'		=> $informasis->lastPage(),
+			]);
 		}
 
         return view($view, ['informasis' => $informasis]);

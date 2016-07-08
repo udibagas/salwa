@@ -38,7 +38,12 @@ class KajianController extends Controller
 				$html .= view('kajian.mobile._list', ['a' => $a]);
 			}
 
-			return response()->json(['html' => $html, 'nextPageUrl' => $kajians->nextPageUrl()]);
+			return response()->json([
+				'html'			=> $html,
+				'nextPageUrl' 	=> $kajians->nextPageUrl(),
+				'currentPage'	=> $kajians->currentPage(),
+				'lastPage'		=> $kajians->lastPage(),
+			]);
 		}
 
 		return view($view, ['kajians' => $kajians]);

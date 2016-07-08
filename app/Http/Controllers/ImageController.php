@@ -32,7 +32,12 @@ class ImageController extends Controller
 				$html .= view('image.mobile._list', ['a' => $a]);
 			}
 
-			return response()->json(['html' => $html, 'nextPageUrl' => $images->nextPageUrl()]);
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $images->nextPageUrl(),
+				'currentPage'	=> $images->currentPage(),
+				'lastPage'		=> $images->lastPage(),
+			]);
 		}
 
         return view($view, ['images' => $images]);

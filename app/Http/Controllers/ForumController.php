@@ -236,7 +236,12 @@ class ForumController extends Controller
 				$html .= view('forum.mobile._list', ['a' => $a]);
 			}
 
-			return response()->json(['html' => $html, 'nextPageUrl' => $forums->nextPageUrl()]);
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $forums->nextPageUrl(),
+				'currentPage'	=> $forums->currentPage(),
+				'lastPage'		=> $forums->lastPage(),
+			]);
 		}
 
 		return view($view, [

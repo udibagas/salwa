@@ -33,7 +33,12 @@ class HadistController extends Controller
 				$html .= view('hadist.mobile._list', ['a' => $a]);
 			}
 
-			return response()->json(['html' => $html, 'nextPageUrl' => $hadists->nextPageUrl()]);
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $hadists->nextPageUrl(),
+				'currentPage'	=> $hadists->currentPage(),
+				'lastPage'		=> $hadists->lastPage(),
+			]);
 		}
 
 		return view($view, [

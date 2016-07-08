@@ -33,7 +33,12 @@ class KitabController extends Controller
 				$html .= view('kitab.mobile._list', ['a' => $a]);
 			}
 
-			return response()->json(['html' => $html, 'nextPageUrl' => $kitabs->nextPageUrl()]);
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $kitabs->nextPageUrl(),
+				'currentPage'	=> $kitabs->currentPage(),
+				'lastPage'		=> $kitabs->lastPage(),
+			]);
 		}
 
         return view($view, ['kitabs' => $kitabs]);
