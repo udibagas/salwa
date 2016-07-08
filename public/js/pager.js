@@ -16,8 +16,8 @@ nextBtn.on('click', function() {
 			} else {
 				nextBtn.parent().html('<br /><a href="#" class="back-to-top">BACK TO TOP</a><br /><br />');
 
-				$('body').on("click", ".back-top-top", function() {
-					$("html, body").animate({scrollTop: 0}, 3000);
+				$('body').on("click", ".back-to-top", function() {
+					$("html, body").animate({scrollTop: 0}, 700);
 					return false;
 				});
 			}
