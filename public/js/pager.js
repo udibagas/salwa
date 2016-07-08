@@ -1,5 +1,5 @@
-var nextBtn = $('.next-page');
-nextBtn.on('click', function() {
+var lastPage = false;
+var loadMore = function() {
 	$.ajax({
 		url: url,
 		dataType: 'json',
@@ -14,17 +14,29 @@ nextBtn.on('click', function() {
 			if (json.currentPage < json.lastPage) {
 				nextBtn.show();
 			} else {
+				lastPage = true;
 				nextBtn.parent().html('<br /><a href="#" class="back-to-top">BACK TO TOP</a><br /><br />');
-
-				$('body').on("click", ".back-to-top", function() {
-					$("html, body").animate({scrollTop: 0}, 700);
-					return false;
-				});
 			}
-
-			url = json.nextPageUrl;
 			$('.profile').initial({charCount:1, height:50, width:50,fontSize:25});
+			url = json.nextPageUrl;
 		}
 	});
-	return false;
+};
+
+$(window).scroll(function() {
+	if($(window).scrollTop() + $(window).height() == $(document).height() && lastPage == false) {
+	   loadMore();
+	}
+});
+
+
+var nextBtn = $('.next-page');
+nextBtn.on('click', function(e) {
+	e.preventDefault();
+	loadMore();
+});
+
+$('body').on("click", ".back-to-top", function(e) {
+	e.preventDefault()
+	$("html, body").animate({scrollTop: 0}, 700);
 });
