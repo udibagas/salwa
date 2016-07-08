@@ -198,7 +198,7 @@ a:hover {
 	margin:4px -10px;
 }
 
-img.media-object {
+img.media-object:not(.profile) {
 	border: 1px solid #D9EDF7;
 }
 

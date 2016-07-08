@@ -13,8 +13,8 @@
 <div class="row-post">
 	<div class="media">
 		<div class="media-left">
-			<div class="thumbnail" style="height:50px;width:50px;">
-				<img class="media-object profile" alt="{{ $pertanyaan->judul_pertanyaan }}" data-name="{{ $pertanyaan->judul_pertanyaan }}">
+			<div class="initial-container">
+				<img class="media-object profile img-circle" alt="{{ $pertanyaan->judul_pertanyaan }}" data-name="{{ $pertanyaan->judul_pertanyaan }}">
 			</div>
 		</div>
 		<div class="media-body">
@@ -40,7 +40,7 @@
 <div class="row-post">
 		<div class="media">
 			<div class="media-left">
-				<div style="width:50px;height:50px;">
+				<div class="initial-container">
 					@if ($pertanyaan->ustadz && $pertanyaan->ustadz->img_user)
 					<img class="media-object img-circle cover" src="/{{ $pertanyaan->ustadz->img_user }}" />
 					@else
