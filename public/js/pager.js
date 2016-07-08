@@ -2,6 +2,7 @@ var lastPage = false;
 var loadMore = function() {
 	$.ajax({
 		url: url,
+		data: {search: search, group_id: group_id, user_id: user_id},
 		dataType: 'json',
 		beforeSend: function() {
 			nextBtn.hide();
@@ -17,6 +18,7 @@ var loadMore = function() {
 				lastPage = true;
 				nextBtn.parent().html('<br /><a href="#" class="back-to-top">BACK TO TOP</a><br /><br />');
 			}
+
 			$('.profile').initial({charCount:1, height:50, width:50,fontSize:25});
 			url = json.nextPageUrl;
 		}

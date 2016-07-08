@@ -4,12 +4,17 @@
 
 @section('content')
 
-	<h4 class="title"><i class="fa fa-search"></i> HASIL PENCARIAN "{{ request('search') }}"</h4>
-	@each('forum.mobile._list', $forums, 'a')
-
-	<div class="text-center">
-		{!! $forums->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
+	<h4 class="title">HASIL PENCARIAN "{{ request('search') }}"</h4>
+	<div id="post-list">
+		@each('forum.mobile._list', $forums, 'a')
 	</div>
+
+	@if ($forums->lastPage() > 1)
+		<div class="text-center text-bold">
+			<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+			<a href="{{ $forums->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
+		</div>
+	@endif
 
 	@include('forum._group')
 
@@ -18,3 +23,14 @@
 	</a>
 
 @stop
+
+@push('script')
+
+<script type="text/javascript">
+var url = '{{ $forums->nextPageUrl() }}';
+var search = '{{ request("search") }}';
+var group_id = '{{ request("group_id") }}';
+var user_id = '{{ request("user_id") }}';
+</script>
+
+@endpush

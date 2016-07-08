@@ -29,11 +29,28 @@ class ForumController extends Controller
 		]);
     }
 
-    public function mine()
+    public function mine(Request $request)
     {
 		$view = BrowserDetect::isMobile() ? 'forum.mobile.mine' : 'forum.mine';
+		$forums = Forum::where('user_id', auth()->user()->user_id)->active()->orderBy('updated', 'DESC')->paginate();
+
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($forums as $a) {
+				$html .= view('forum.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $forums->nextPageUrl(),
+				'currentPage'	=> $forums->currentPage(),
+				'lastPage'		=> $forums->lastPage(),
+			]);
+		}
+
         return view($view, [
-			'forums' => Forum::where('user_id', auth()->user()->user_id)->active()->orderBy('updated', 'DESC')->paginate(),
+			'forums' => $forums,
 			'groups' => Group::forum()->active()->orderBy('group_name', 'ASC')->get(),
 		]);
     }
@@ -254,19 +271,34 @@ class ForumController extends Controller
 	public function search(Request $request)
 	{
 		$view = BrowserDetect::isMobile() ? 'forum.mobile.search' : 'forum.search';
+		$group_id = $request->group_id;
+		$search = str_replace(' ', '%', $request->search);
+		$forums = Forum::active()->when($search, function($query) use ($search) {
+							return $query->where('title', 'like', '%'.$search.'%');
+						})->when($group_id, function($query) use ($group_id) {
+							return $query->where('group_id', $group_id);
+						})->orderBy('forum_id', 'DESC')->paginate();
 
-		$group_id	= $request->group_id;
-		$search		= str_replace(' ', '%', $request->search);
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($forums as $a) {
+				$html .= view('forum.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $forums->nextPageUrl(),
+				'currentPage'	=> $forums->currentPage(),
+				'lastPage'		=> $forums->lastPage(),
+			]);
+		}
 
 		return view($view, [
 			'groups' 	=> Group::forum()->active()->orderBy('group_name', 'ASC')->get(),
 			'group'		=> Group::find($group_id),
 			'search'	=> $request->search,
-			'forums' 	=> Forum::active()->when($search, function($query) use ($search) {
-								return $query->where('title', 'like', '%'.$search.'%');
-							})->when($group_id, function($query) use ($group_id) {
-								return $query->where('group_id', $group_id);
-							})->orderBy('forum_id', 'DESC')->paginate()
+			'forums' 	=> $forums
 		]);
 	}
 

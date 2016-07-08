@@ -6,11 +6,16 @@
 
 
 <h4 class="title">PERTANYAAN SAYA</h4>
-@each('pertanyaan.mobile._list', $pertanyaans, 'a')
-
-<div class="text-center">
-	{!! $pertanyaans->links() !!}
+<div id="post-list">
+	@each('pertanyaan.mobile._list', $pertanyaans, 'a')
 </div>
+
+@if ($pertanyaans->lastPage() > 1)
+	<div class="text-center text-bold">
+		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+		<a href="{{ $pertanyaans->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
+	</div>
+@endif
 
 @include('pertanyaan._group')
 
