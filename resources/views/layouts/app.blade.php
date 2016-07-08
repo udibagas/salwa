@@ -151,7 +151,7 @@
 
 			@endif
 
-			$('.profile').initial({charCount:1, height:60, width:60,fontSize:25});
+			$('.profile').initial({charCount:1, height:50, width:50,fontSize:25});
 
 			$('.delete').click(function() {
 				return confirm('Anda yakin?');
@@ -160,6 +160,8 @@
 		</script>
 
 		@stack('script')
+
+		<script type="text/javascript" src="/js/pager.js"></script>
 
     </body>
 </html>

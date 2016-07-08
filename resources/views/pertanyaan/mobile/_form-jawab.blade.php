@@ -42,7 +42,7 @@
 	</div>
 
 	<div class="form-group">
-		<button type="submit" name="submit" class="btn btn-info"><i class="fa fa-send"></i> Kirim Jawaban</button>
+		<button type="submit" name="submit" class="btn btn-info">KIRIM JAWABAN</button>
 	</div>
 
 	{!! Form::close() !!}

@@ -1,15 +1,19 @@
 @extends('layouts.main')
 
-@section('title', 'Video')
+@section('title', 'Salwa Video')
 
 @section('content')
 
 	<h4 class="title">SALWA VIDEO</h4>
-	@each('video.mobile._list', $videos, 'a')
+	<div id="post-list">
+		@each('video.mobile._list', $videos, 'a')
+	</div>
 
-	<nav class="text-center">
-		{{ $videos->appends(['search' => request('search'), 'user_id' => request('user_id')])->links() }}
-	</nav>
+	<div class="text-center text-bold">
+		<br>
+		<img src="/images/loading.png" alt="" class="loading hidden" style="width:40px;" /><br>
+		<a href="{{ $videos->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
+	</div>
 
 	@include('video._group')
 
@@ -18,3 +22,11 @@
 	@endif
 
 @stop
+
+@push('script')
+
+<script type="text/javascript">
+var url = '{{ $videos->nextPageUrl() }}';
+</script>
+
+@endpush

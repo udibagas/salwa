@@ -1,7 +1,7 @@
 <div class="row-post">
 	<div class="media">
 		<div class="media-left">
-			<div class="thumbnail" style="height:40px;width:40px;">
+			<div class="thumbnail" style="height:50px;width:50px;">
 				<img class="media-object profile" alt="{{ $a->judul_pertanyaan }}" data-name="{{ $a->judul_pertanyaan }}">
 			</div>
 		</div>

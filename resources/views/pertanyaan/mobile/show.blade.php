@@ -13,7 +13,7 @@
 <div class="row-post">
 	<div class="media">
 		<div class="media-left">
-			<div class="thumbnail" style="height:40px;width:40px;">
+			<div class="thumbnail" style="height:50px;width:50px;">
 				<img class="media-object profile" alt="{{ $pertanyaan->judul_pertanyaan }}" data-name="{{ $pertanyaan->judul_pertanyaan }}">
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 <div class="row-post">
 		<div class="media">
 			<div class="media-left">
-				<div style="width:40px;height:40px;">
+				<div style="width:50px;height:50px;">
 					@if ($pertanyaan->ustadz && $pertanyaan->ustadz->img_user)
 					<img class="media-object img-circle cover" src="/{{ $pertanyaan->ustadz->img_user }}" />
 					@else
@@ -77,7 +77,7 @@
 	{!! Form::hidden('redirect', '/pertanyaan') !!}
 	@can('update-pertanyaan', $pertanyaan)
 		<a href="{{ url()->current() }}/jawab">
-			<img data-name="JAWAB" class="profile img-circle" data-width="60" data-height="60" data-char-count="5" data-font-size="12" style="position:fixed;bottom:230px;right:20px;" />
+			<img data-name="JAWAB" class="profile img-circle" data-width="50" data-height="50" data-char-count="5" data-font-size="12" style="position:fixed;bottom:185px;right:20px;" />
 		</a>
 		@include('layouts.delete-btn-mobile')
 		@include('layouts.edit-btn-mobile')

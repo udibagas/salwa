@@ -17,25 +17,26 @@ class VideoController extends Controller
      */
     public function index(Request $request)
     {
-		$view = 'video.index';
-
-		if (BrowserDetect::isMobile()) {
-			$view =  'video.mobile.index';
-		}
-
-		// if (BrowserDetect::isTablet()) {
-		// 	$view =  'video.tablet.index';
-		// }
-
+		$view = BrowserDetect::isMobile() ? 'video.mobile.index' : 'video.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view($view, [
-			'videos' => Video::video()->when($search, function($query) use ($search) {
-							return $query->where('title', 'like', '%'.$search.'%');
-						})->when($request->user_id, function($query) use ($request) {
-							return $query->where('user_id', $request->user_id);
-						})->orderBy('updated', 'DESC')->simplePaginate()
-		]);
+		$videos = Video::video()->when($search, function($query) use ($search) {
+						return $query->where('title', 'like', '%'.$search.'%');
+					})->when($request->user_id, function($query) use ($request) {
+						return $query->where('user_id', $request->user_id);
+					})->orderBy('updated', 'DESC')->simplePaginate();
+
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($videos as $a) {
+				$html .= view('video.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $videos->nextPageUrl()]);
+		}
+
+        return view($view, ['videos' => $videos]);
     }
 
     public function apiIndex(Request $request)

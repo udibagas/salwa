@@ -27,7 +27,7 @@
 		</div>
 
 		<div class="form-group">
-			<button type="submit" name="submit" class="btn btn-info"><i class="fa fa-send"></i> Kirim Komentar</button>
+			<button type="submit" name="submit" class="btn btn-info">KIRIM KOMENTAR</button>
 		</div>
 
 	{!! Form::close() !!}

@@ -12,15 +12,12 @@
 </div>
 
 <h4 class="title">IMAGE TERKAIT</h4>
-<div class="row-post no-gutter">
+<div class="row-post">
 	@foreach ($terkait as $image)
-	<div class="col-xs-6" style="height:150px;">
 		<a href="/informasi/{{ $image->id_salwaimages }}-{{ str_slug($image->judul) }}">
-			<img class="cover" src="/{{ $image->img_images }}" alt="{{ $image->judul }}">
+			<img class="img-responsive" src="/{{ $image->img_images }}" alt="{{ $image->judul }}">
 		</a>
-	</div>
 	@endforeach
-	<div class="clearfix"></div>
 </div>
 
 @include('image._group')

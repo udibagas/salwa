@@ -5,14 +5,14 @@
 @section('content')
 
 <h4 class="title">SALWA AKTUAL</h4>
-<div id="artikel-list">
+<div id="post-list">
 	@each('artikel.mobile._list', $artikels, 'a')
 </div>
 
-<div class="row-post text-center text-bold">
-	<img src="/images/loading.png" alt="" class="loading hidden" style="width:30px;" />
-	<a href="{{ $artikels->nextPageUrl() }}" rel="next">LOAD MORE</a>
-	<!-- {!! $artikels->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!} -->
+<div class="text-center text-bold">
+	<br>
+	<img src="/images/loading.png" alt="" class="loading hidden" style="width:40px;" /><br>
+	<a href="{{ $artikels->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
 </div>
 
 @include('artikel._group')
@@ -27,21 +27,6 @@
 
 <script type="text/javascript">
 var url = '{{ $artikels->nextPageUrl() }}';
-$('a[rel="next"]').on('click', function() {
-	$.ajax({
-		url: url,
-		dataType: 'json',
-		beforeSend: function() {
-			$('.loading').removeClass('hidden');
-		},
-		success: function(json) {
-			$('.loading').addClass('hidden');
-			$('#artikel-list').append(json.html);
-			url = json.nextPageUrl;
-		}
-	});
-	return false;
-});
 </script>
 
 @endpush

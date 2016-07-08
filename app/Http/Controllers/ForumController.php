@@ -224,14 +224,25 @@ class ForumController extends Controller
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 
-	public function category(Group $group)
+	public function category(Group $group, Request $request)
 	{
 		$view = BrowserDetect::isMobile() ? 'forum.mobile.category' : 'forum.category';
+		$forums = $group->forums()->orderBy('updated', 'DESC')->simplePaginate();
+
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($forums as $a) {
+				$html .= view('forum.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $forums->nextPageUrl()]);
+		}
 
 		return view($view, [
 			'groups' 	=> Group::forum()->active()->orderBy('group_name', 'ASC')->get(),
 			'group' 	=> $group,
-			'forums' 	=> $group->forums()->orderBy('updated', 'DESC')->simplePaginate()
+			'forums' 	=> $forums
 		]);
 	}
 

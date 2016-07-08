@@ -1,7 +1,7 @@
 <div class="row-post">
 	<div class="media">
 		<div class="media-left">
-			<div class="thumbnail" style="height:60px;width:60px;">
+			<div class="thumbnail" style="height:50px;width:50px;">
 				@if ($a->img_video)
 				<img class="media-object cover" src="/{{ $a->img_video }}" alt="{{ $a->title }}">
 				@else

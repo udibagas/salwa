@@ -1,7 +1,7 @@
 <div class="row-post no-gutter">
 	<div class="media">
 		<div class="media-left media-middle">
-			<div class="thumbnail" style="height:40px;width:40px;">
+			<div class="thumbnail" style="height:50px;width:50px;">
 				@if ($p->user && $p->user->img_user)
 				<img class="media-object cover" src="/{{ $p->user->img_user }}" alt="{{ $p->user->name }}">
 				@elseif ($p->user)
