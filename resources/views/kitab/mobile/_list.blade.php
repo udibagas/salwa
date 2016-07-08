@@ -3,7 +3,7 @@
 		<div class="media-left">
 			<div style="width:100px;height:120px;">
 				@if ($a->img_buku)
-				<img class="media-object cover" src="/{{ $a->img_buku }}" alt="">
+				<img class="media-object cover" src="{{ Image::url($a->img_buku,100,120,['crop']) }}" alt="">
 				@else
 				<img class="media-object profile" data-name="{{ $a->judul }}" data-width="100" data-height="120">
 				@endif

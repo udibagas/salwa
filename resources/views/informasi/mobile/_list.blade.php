@@ -3,7 +3,7 @@
 		<div class="media-left">
 			<div class="initial-container">
 				@if ($a->img_gambar)
-				<img class="media-object cover img-circle" src="/{{ $a->img_gambar }}" alt="{{ $a->judul }}">
+				<img class="media-object cover img-circle" src="{{ Image::url($a->img_gambar,50,50,['crop']) }}" alt="{{ $a->judul }}">
 				@else
 				<img class="media-object profile img-circle" data-name="{{ $a->judul }}" alt="{{ $a->judul }}">
 				@endif

@@ -2,7 +2,7 @@
 	<div class="media">
 		<div class="media-left">
 			<div style="width:80px;height:100px;">
-				<img class="media-object cover" src="/{{ $a->img_buku }}" alt="{{ $a->judul }}">
+				<img class="media-object cover" src="{{ Image::url($a->img_buku,80,100,['crop']) }}" alt="{{ $a->judul }}">
 			</div>
 		</div>
 		<div class="media-body">

@@ -3,7 +3,7 @@
 		<div class="media-left media-middle">
 			<div class="initial-container">
 				@if ($p->user && $p->user->img_user)
-				<img class="media-object cover img-circle" src="/{{ $p->user->img_user }}" alt="{{ $p->user->name }}">
+				<img class="media-object cover img-circle" src="{{ Image::url($p->user->img_user,50,50,['crop']) }}" alt="{{ $p->user->name }}">
 				@elseif ($p->user)
 				<img class="media-object profile img-circle" data-name="{{ $p->user->name }}" alt="{{ $p->user->name }}">
 				@else
