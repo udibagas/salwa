@@ -20,13 +20,23 @@ class ArtikelController extends Controller
 		$view = BrowserDetect::isMobile() ? 'artikel.mobile.index' : 'artikel.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view($view, [
-			'artikels' => Artikel::when($request->group_id, function($query) use ($request) {
-								return $query->where('group_id', $request->group_id);
-							})->when($search, function($query) use ($search) {
-								return $query->where('judul', 'like', '%'.$search.'%');
-							})->orderBy('updated', 'DESC')->simplePaginate(16)
-		]);
+		$artikels = Artikel::when($request->group_id, function($query) use ($request) {
+							return $query->where('group_id', $request->group_id);
+						})->when($search, function($query) use ($search) {
+							return $query->where('judul', 'like', '%'.$search.'%');
+						})->orderBy('updated', 'DESC')->simplePaginate(16);
+
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($artikels as $a) {
+				$html .= view('artikel.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $artikels->nextPageUrl()]);
+		}
+
+        return view($view, ['artikels' => $artikels]);
     }
 
     public function apiIndex(Request $request)
