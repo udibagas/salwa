@@ -4,15 +4,17 @@
 
 @section('content')
 
-	<h4 class="title"><i class="fa fa-image"></i> SALWA IMAGES</h4>
+	<h4 class="title">SALWA IMAGES</h4>
 	<div class="row-post" id="post-list">
 		@each('image.mobile._list', $images, 'a')
 	</div>
 
-	<div class="text-center text-bold">
-		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
-		<a href="{{ $images->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
-	</div>
+	@if ($images->lastPage() > 1)
+		<div class="text-center text-bold">
+			<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+			<a href="{{ $images->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
+		</div>
+	@endif
 
 	@include('image._group')
 

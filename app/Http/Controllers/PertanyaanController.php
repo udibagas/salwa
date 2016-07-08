@@ -29,7 +29,7 @@ class PertanyaanController extends Controller
 								return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
 							})->when($request->group_id, function($query) use ($request) {
 								return $query->where('group_id', $request->group_id);
-							})->orderBy('created', 'DESC')->simplePaginate();
+							})->orderBy('created', 'DESC')->paginate();
 
 		if ($request->ajax()) {
 			$html = '';
@@ -55,7 +55,7 @@ class PertanyaanController extends Controller
 									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
 								})->when($request->group_id, function($query) use ($request) {
 									return $query->where('group_id', $request->group_id);
-								})->orderBy('created', 'DESC')->simplePaginate(),
+								})->orderBy('created', 'DESC')->paginate(),
 		]);
 	}
 

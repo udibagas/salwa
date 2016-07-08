@@ -9,10 +9,12 @@
 	@each('informasi.mobile._list', $informasis, 'a')
 </div>
 
-<div class="text-center text-bold">
-	<img src="/images/loading.png" alt="" class="loading hidden" /><br>
-	<a href="{{ $informasis->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
-</div>
+@if ($informasis->lastPage() > 1)
+	<div class="text-center text-bold">
+		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+		<a href="{{ $informasis->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
+	</div>
+@endif
 
 @include('informasi._group')
 

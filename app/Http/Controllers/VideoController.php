@@ -24,7 +24,7 @@ class VideoController extends Controller
 						return $query->where('title', 'like', '%'.$search.'%');
 					})->when($request->user_id, function($query) use ($request) {
 						return $query->where('user_id', $request->user_id);
-					})->orderBy('updated', 'DESC')->simplePaginate();
+					})->orderBy('updated', 'DESC')->paginate();
 
 		if ($request->ajax()) {
 			$html = '';
@@ -76,7 +76,7 @@ class VideoController extends Controller
 
     public function indexAudio()
     {
-        return view('video.indexAudio', ['audios' => Video::audio()->orderBy('updated', 'DESC')->simplePaginate()]);
+        return view('video.indexAudio', ['audios' => Video::audio()->orderBy('updated', 'DESC')->paginate()]);
     }
 
     /**

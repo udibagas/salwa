@@ -10,10 +10,12 @@
 		@each('hadist.mobile._list', $hadists, 'a')
 	</div>
 
-	<div class="text-center text-bold">
-		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
-		<a href="{{ $hadists->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
-	</div>
+	@if ($hadists->lastPage() > 1)
+		<div class="text-center text-bold">
+			<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+			<a href="{{ $hadists->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
+		</div>
+	@endif
 
 	@include('hadist._group')
 

@@ -9,11 +9,12 @@
 		@each('forum.mobile._list', $forums, 'a')
 	</div>
 
-	<div class="text-center text-bold">
-		<br>
-		<img src="/images/loading.png" alt="" class="loading hidden" style="width:40px;" /><br>
-		<a href="{{ $forums->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
-	</div>
+	@if ($forums->lastPage() > 1)
+		<div class="text-center text-bold">
+			<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+			<a href="{{ $forums->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
+		</div>
+	@endif
 
 	@include('forum._group')
 

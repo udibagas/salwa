@@ -9,10 +9,12 @@
 		@each('kajian.mobile._list', $kajians, 'a')
 	</div>
 
-	<div class="text-center text-bold">
-		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
-		<a href="{{ $kajians->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
-	</div>
+	@if ($kajians->lastPage() > 1)
+		<div class="text-center text-bold">
+			<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+			<a href="{{ $kajians->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
+		</div>
+	@endif
 
 	@include('kajian._group')
 

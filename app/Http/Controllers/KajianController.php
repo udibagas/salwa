@@ -29,7 +29,7 @@ class KajianController extends Controller
 						return $query->where('kajian_ustadz_id', $request->ustadz_id);
 					})->when($request->today, function($query) {
 						return $query->today();
-					})->orderBy('created', 'DESC')->simplePaginate(16);
+					})->orderBy('created', 'DESC')->paginate(16);
 
 		if ($request->ajax()) {
 			$html = '';
@@ -214,7 +214,7 @@ class KajianController extends Controller
 					return $query->where('kajian_ustadz_id', $request->kajian_ustadz_id);
 				})->when($request->today, function($query) {
 					return $query->whereRaw('DATE(kajian_dates) = '.date('Y-m-d'));
-				})->orderBy('created', 'ASC')->simplePaginate(10);
+				})->orderBy('created', 'ASC')->paginate(10);
 
 
 		return response()->json([

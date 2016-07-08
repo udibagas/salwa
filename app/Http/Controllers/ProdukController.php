@@ -23,7 +23,7 @@ class ProdukController extends Controller
 							return $query->where('group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%');
-						})->orderBy('updated', 'DESC')->simplePaginate(16);
+						})->orderBy('updated', 'DESC')->paginate(16);
 
 		if ($request->ajax()) {
 			$html = '';
@@ -32,7 +32,12 @@ class ProdukController extends Controller
 				$html .= view('produk.mobile._list', ['a' => $a]);
 			}
 
-			return response()->json(['html' => $html, 'nextPageUrl' => $produks->nextPageUrl()]);
+			return response()->json([
+				'html'			=> $html,
+				'nextPageUrl'	=> $produks->nextPageUrl(),
+				'currentPage'	=> $produks->currentPage(),
+				'lastPage'		=> $produks->lastPage(),
+			]);
 		}
 
         return view($view, ['produks' => $produks]);

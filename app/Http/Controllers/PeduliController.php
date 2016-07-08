@@ -23,7 +23,7 @@ class PeduliController extends Controller
 							return $query->where('judul', 'like', '%'.$search.'%');
 						})->when($request->group_id, function($query) use ($request) {
 							return $query->where('group_id', $request->group_id);
-						})->orderBy('updated', 'DESC')->simplePaginate(16);
+						})->orderBy('updated', 'DESC')->paginate(16);
 
 		if ($request->ajax()) {
 			$html = '';

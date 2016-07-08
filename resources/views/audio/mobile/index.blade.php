@@ -9,10 +9,12 @@
 		@each('audio.mobile._list', $audios, 'a')
 	</div>
 
-	<div class="text-center text-bold">
-		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
-		<a href="{{ $audios->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
-	</div>
+	@if ($audios->lastPage() > 1)
+		<div class="text-center text-bold">
+			<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+			<a href="{{ $audios->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
+		</div>
+	@endif
 
 	@include('audio._group')
 

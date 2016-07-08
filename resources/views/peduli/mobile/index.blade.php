@@ -9,10 +9,12 @@
 		@each('peduli.mobile._list', $pedulis, 'a')
 	</div>
 
-	<div class="text-center text-bold">
-		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
-		<a href="{{ $pedulis->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
-	</div>
+	@if ($pedulis->lastPage() > 1)
+		<div class="text-center text-bold">
+			<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+			<a href="{{ $pedulis->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
+		</div>
+	@endif
 
 	@include('peduli._group')
 

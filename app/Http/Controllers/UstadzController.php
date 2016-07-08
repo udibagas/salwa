@@ -112,7 +112,7 @@ class UstadzController extends Controller
 	{
 		$data = Ustadz::when($request->ustadz_name, function($query) use ($request) {
 						return $query->where('ustadz_name', 'like', '%'.$request->ustadz_name.'%');
-					})->orderBy('ustadz_name', 'ASC')->simplePaginate(10);
+					})->orderBy('ustadz_name', 'ASC')->paginate(10);
 
 		return response()->json([
 			'results'	=> $data->items(),

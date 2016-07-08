@@ -24,7 +24,7 @@ class HadistController extends Controller
 						return $query->where('hadist.group_id', $request->group_id);
 					})->when($search, function($query) use ($search) {
 						return $query->where('judul', 'like', '%'.$search.'%');
-					})->orderBy('hadist.updated', 'DESC')->simplePaginate(20);
+					})->orderBy('hadist.updated', 'DESC')->paginate(20);
 
 		if ($request->ajax()) {
 			$html = '';
@@ -51,7 +51,7 @@ class HadistController extends Controller
 						return $query->where('hadist.group_id', $request->group_id);
 					})->when($search, function($query) use ($search) {
 						return $query->where('judul', 'like', '%'.$search.'%');
-					})->orderBy('hadist.updated', 'DESC')->simplePaginate(20);
+					})->orderBy('hadist.updated', 'DESC')->paginate(20);
 
 		if ($request->ajax()) {
 			$html = '';
@@ -78,7 +78,7 @@ class HadistController extends Controller
 						return $query->where('hadist.group_id', $request->group_id);
 					})->when($search, function($query) use ($search) {
 						return $query->where('judul', 'like', '%'.$search.'%');
-					})->orderBy('hadist.updated', 'DESC')->simplePaginate(20);
+					})->orderBy('hadist.updated', 'DESC')->paginate(20);
 
 		if ($request->ajax()) {
 			$html = '';
@@ -239,7 +239,7 @@ class HadistController extends Controller
 		$data = Hadist::select('hadist_id', 'judul', 'tanggal')
 				->hadist()->when($request->judul, function($query) use ($request) {
 					return $query->where('judul', 'like', '%'.$request->judul.'%');
-				})->orderBy('hadist.updated', 'DESC')->simplePaginate(10);
+				})->orderBy('hadist.updated', 'DESC')->paginate(10);
 
 		return response()->json([
 			'results'	=> $data->items(),
@@ -253,7 +253,7 @@ class HadistController extends Controller
 		$data = Hadist::select('hadist_id', 'judul', 'tanggal')
 				->doa()->when($request->judul, function($query) use ($request) {
 					return $query->where('judul', 'like', '%'.$request->judul.'%');
-				})->orderBy('hadist.updated', 'DESC')->simplePaginate(10);
+				})->orderBy('hadist.updated', 'DESC')->paginate(10);
 
 		return response()->json([
 			'results'	=> $data->items(),
@@ -267,7 +267,7 @@ class HadistController extends Controller
 		$data = Hadist::select('hadist_id', 'judul', 'tanggal')
 				->dzikir()->when($request->judul, function($query) use ($request) {
 					return $query->where('judul', 'like', '%'.$request->judul.'%');
-				})->orderBy('hadist.updated', 'DESC')->simplePaginate(10);
+				})->orderBy('hadist.updated', 'DESC')->paginate(10);
 
 		return response()->json([
 			'results'	=> $data->items(),

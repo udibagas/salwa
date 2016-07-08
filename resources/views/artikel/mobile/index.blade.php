@@ -9,10 +9,12 @@
 	@each('artikel.mobile._list', $artikels, 'a')
 </div>
 
-<div class="text-center text-bold">
-	<img src="/images/loading.png" alt="" class="loading hidden" /><br>
-	<a href="{{ $artikels->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
-</div>
+@if ($artikels->lastPage() > 1)
+	<div class="text-center text-bold">
+		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+		<a href="{{ $artikels->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
+	</div>
+@endif
 
 @include('artikel._group')
 

@@ -24,7 +24,7 @@ class ArtikelController extends Controller
 							return $query->where('group_id', $request->group_id);
 						})->when($search, function($query) use ($search) {
 							return $query->where('judul', 'like', '%'.$search.'%');
-						})->orderBy('updated', 'DESC')->simplePaginate(16);
+						})->orderBy('updated', 'DESC')->paginate(16);
 
 		if ($request->ajax()) {
 			$html = '';
@@ -47,7 +47,7 @@ class ArtikelController extends Controller
 					return $query->where('group_id', $request->group_id);
 				})->when($search, function($query) use ($search) {
 					return $query->where('judul', 'like', '%'.$search.'%');
-				})->orderBy('updated', 'DESC')->simplePaginate(10);
+				})->orderBy('updated', 'DESC')->paginate(10);
 
 		return response()->json([
 			'results'	=> $data->items(),

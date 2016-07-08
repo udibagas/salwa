@@ -16,7 +16,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        return view('banner.index', ['banners' => Banner::active()->orderBy('banner_id', 'DESC')->simplePaginate()]);
+        return view('banner.index', ['banners' => Banner::active()->orderBy('banner_id', 'DESC')->paginate()]);
     }
 
     public function admin(Request $request)

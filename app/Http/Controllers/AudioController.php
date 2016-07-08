@@ -24,7 +24,7 @@ class AudioController extends Controller
 					return $query->where('judul', 'like', '%'.$search.'%');
 				})->when($request->group_id, function($query) use ($request) {
 					return $query->where('group_id', $request->group_id);
-				})->orderBy('updated', 'DESC')->simplePaginate();
+				})->orderBy('updated', 'DESC')->paginate();
 
 		if ($request->ajax()) {
 			$html = '';

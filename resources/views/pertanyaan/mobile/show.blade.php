@@ -14,7 +14,7 @@
 	<div class="media">
 		<div class="media-left">
 			<div class="initial-container">
-				<img class="media-object profile img-circle" alt="{{ $pertanyaan->judul_pertanyaan }}" data-name="{{ $pertanyaan->judul_pertanyaan }}">
+				<img class="media-object profile img-circle" data-name="{{ $pertanyaan->user ? $pertanyaan->user->jenis_kelamin == 'p' ? 'I' : 'A' : '' }}">
 			</div>
 		</div>
 		<div class="media-body">
