@@ -19,19 +19,29 @@ class KajianController extends Controller
 	public function index(Request $request)
 	{
 		$view = BrowserDetect::isMobile() ? 'kajian.mobile.index' : 'kajian.index';
-		return view($view, [
-			'kajians' => Kajian::active()->when($request->rutin == 'rutin', function($query) use($request) {
-							return $query->rutin()->orderBy('setiap_hari', 'ASC');
-						})->when($request->rutin == 'tematik', function($query) use($request) {
-							return $query->tematik()->whereRaw('DATE(kajian_dates) >= DATE(NOW())');
-						})->when($request->tema, function($query) use($request) {
-							return $query->where('kajian_tema', 'like', '%'.$request->tema.'%');
-						})->when($request->ustadz_id, function($query) use($request) {
-							return $query->where('kajian_ustadz_id', $request->ustadz_id);
-						})->when($request->today, function($query) {
-							return $query->today();
-						})->orderBy('created', 'DESC')->simplePaginate(16)
-		]);
+		$kajians = Kajian::active()->when($request->rutin == 'rutin', function($query) use($request) {
+						return $query->rutin()->orderBy('setiap_hari', 'ASC');
+					})->when($request->rutin == 'tematik', function($query) use($request) {
+						return $query->tematik()->whereRaw('DATE(kajian_dates) >= DATE(NOW())');
+					})->when($request->tema, function($query) use($request) {
+						return $query->where('kajian_tema', 'like', '%'.$request->tema.'%');
+					})->when($request->ustadz_id, function($query) use($request) {
+						return $query->where('kajian_ustadz_id', $request->ustadz_id);
+					})->when($request->today, function($query) {
+						return $query->today();
+					})->orderBy('created', 'DESC')->simplePaginate(16);
+
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($kajians as $a) {
+				$html .= view('kajian.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $kajians->nextPageUrl()]);
+		}
+
+		return view($view, ['kajians' => $kajians]);
 	}
 
 

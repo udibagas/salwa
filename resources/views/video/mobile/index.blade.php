@@ -10,8 +10,7 @@
 	</div>
 
 	<div class="text-center text-bold">
-		<br>
-		<img src="/images/loading.png" alt="" class="loading hidden" style="width:40px;" /><br>
+		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
 		<a href="{{ $videos->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
 	</div>
 

@@ -1,11 +1,11 @@
 <div class="row-post">
 	<div class="media">
 		<div class="media-left">
-			<div class="thumbnail" style="height:50px;width:50px;">
+			<div class="initial-container">
 				@if ($a->img_gambar)
-				<img class="media-object cover" src="/{{ $a->img_gambar }}" alt="{{ $a->judul }}">
+				<img class="media-object cover img-circle" src="/{{ $a->img_gambar }}" alt="{{ $a->judul }}">
 				@else
-				<img class="media-object profile" data-name="{{ $a->judul }}" alt="{{ $a->judul }}">
+				<img class="media-object profile img-circle" data-name="{{ $a->judul }}" alt="{{ $a->judul }}">
 				@endif
 			</div>
 		</div>

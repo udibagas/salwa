@@ -20,14 +20,23 @@ class InformasiController extends Controller
     {
 		$view = BrowserDetect::isMobile() ? 'informasi.mobile.index' : 'informasi.index';
 		$search = str_replace(' ', '%', $request->search);
+		$informasis = Informasi::when($search, function($query) use ($search) {
+							return $query->where('judul', 'like', '%'.$search.'%');
+						})->when($request->group_id, function($query) use ($request) {
+							return $query->where('group_id', $request->group_id);
+						})->orderBy('updated', 'DESC')->simplePaginate(16);
 
-        return view($view, [
-			'informasis' => Informasi::when($search, function($query) use ($search) {
-								return $query->where('judul', 'like', '%'.$search.'%');
-							})->when($request->group_id, function($query) use ($request) {
-								return $query->where('group_id', $request->group_id);
-							})->orderBy('updated', 'DESC')->simplePaginate(16)
-		]);
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($informasis as $a) {
+				$html .= view('informasi.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $informasis->nextPageUrl()]);
+		}
+
+        return view($view, ['informasis' => $informasis]);
     }
 
     public function admin(Request $request)

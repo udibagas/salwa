@@ -191,9 +191,6 @@ a:hover {
     margin-bottom: 0;
     margin-right: -15px;
     margin-left: -15px;
-}
-
-.row-post:not(:last-of-type) {
 	border-bottom:1px solid #EEE;
 }
 
@@ -201,8 +198,7 @@ a:hover {
 	margin:4px -10px;
 }
 
-img.media-object:not(.no-round) {
-	border-radius: 50%;
+img.media-object {
 	border: 1px solid #D9EDF7;
 }
 
@@ -229,7 +225,14 @@ img {
 	max-width: 100%;
 }
 
+.initial-container {
+	height:50px;
+	width:50px;
+}
+
 .loading {
+	width:40px;
+	margin-top:10px;
 	-webkit-animation:spin 2s linear infinite;
 	-moz-animation:spin 2s linear infinite;
 	animation:spin 2s linear infinite;

@@ -5,10 +5,14 @@
 @section('content')
 
 	<h4 class="title">{{ $groupName or "HADIST" }}</h4>
-	@each('hadist.mobile._list', $hadists, 'a')
 
-	<div class="text-center">
-		{!! $hadists->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
+	<div id="post-list">
+		@each('hadist.mobile._list', $hadists, 'a')
+	</div>
+
+	<div class="text-center text-bold">
+		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+		<a href="{{ $hadists->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
 	</div>
 
 	@include('hadist._group')
@@ -18,3 +22,11 @@
 	@endif
 
 @stop
+
+@push('script')
+
+<script type="text/javascript">
+var url = '{{ $hadists->nextPageUrl() }}';
+</script>
+
+@endpush

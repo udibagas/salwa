@@ -5,10 +5,13 @@
 @section('content')
 
 	<h4 class="title">SALWA PEDULI</h4>
-	@each('peduli.mobile._list', $pedulis, 'a')
+	<div id="post-list">
+		@each('peduli.mobile._list', $pedulis, 'a')
+	</div>
 
-	<div class="text-center">
-		{!! $pedulis->links() !!}
+	<div class="text-center text-bold">
+		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+		<a href="{{ $pedulis->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
 	</div>
 
 	@include('peduli._group')
@@ -18,3 +21,11 @@
 	@endif
 
 @stop
+
+@push('script')
+
+<script type="text/javascript">
+var url = '{{ $pedulis->nextPageUrl() }}';
+</script>
+
+@endpush

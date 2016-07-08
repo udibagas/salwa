@@ -20,13 +20,25 @@ class HadistController extends Controller
 		$view = BrowserDetect::isMobile() ? 'hadist.mobile.index' : 'hadist.index';
 		$search = str_replace(' ', '%', $request->search);
 
+		$hadists = Hadist::when($request->group_id, function($query) use ($request) {
+						return $query->where('hadist.group_id', $request->group_id);
+					})->when($search, function($query) use ($search) {
+						return $query->where('judul', 'like', '%'.$search.'%');
+					})->orderBy('hadist.updated', 'DESC')->simplePaginate(20);
+
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($hadists as $a) {
+				$html .= view('hadist.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $hadists->nextPageUrl()]);
+		}
+
 		return view($view, [
 			'groupName'	=> 'HADIST',
-			'hadists' 	=> Hadist::when($request->group_id, function($query) use ($request) {
-							return $query->where('hadist.group_id', $request->group_id);
-						})->when($search, function($query) use ($search) {
-							return $query->where('judul', 'like', '%'.$search.'%');
-						})->orderBy('hadist.updated', 'DESC')->simplePaginate(20),
+			'hadists' 	=> $hadists,
 			'hadist'	=> Hadist::hadist()->orderByRaw('RAND()')->first()
 		]);
     }
@@ -35,14 +47,25 @@ class HadistController extends Controller
     {
 		$view = BrowserDetect::isMobile() ? 'hadist.mobile.index' : 'hadist.index';
 		$search = str_replace(' ', '%', $request->search);
+		$hadists = Hadist::doa()->when($request->group_id, function($query) use ($request) {
+						return $query->where('hadist.group_id', $request->group_id);
+					})->when($search, function($query) use ($search) {
+						return $query->where('judul', 'like', '%'.$search.'%');
+					})->orderBy('hadist.updated', 'DESC')->simplePaginate(20);
+
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($hadists as $a) {
+				$html .= view('hadist.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $hadists->nextPageUrl()]);
+		}
 
 		return view($view, [
 			'groupName'	=> 'DO\'A',
-			'hadists' 	=> Hadist::doa()->when($request->group_id, function($query) use ($request) {
-							return $query->where('hadist.group_id', $request->group_id);
-						})->when($search, function($query) use ($search) {
-							return $query->where('judul', 'like', '%'.$search.'%');
-						})->orderBy('hadist.updated', 'DESC')->simplePaginate(20),
+			'hadists' 	=> $hadists,
 			'hadist'	=> Hadist::doa()->orderByRaw('RAND()')->first()
 		]);
     }
@@ -51,14 +74,25 @@ class HadistController extends Controller
     {
 		$view = BrowserDetect::isMobile() ? 'hadist.mobile.index' : 'hadist.index';
 		$search = str_replace(' ', '%', $request->search);
+		$hadists = Hadist::dzikir()->when($request->group_id, function($query) use ($request) {
+						return $query->where('hadist.group_id', $request->group_id);
+					})->when($search, function($query) use ($search) {
+						return $query->where('judul', 'like', '%'.$search.'%');
+					})->orderBy('hadist.updated', 'DESC')->simplePaginate(20);
+
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($hadists as $a) {
+				$html .= view('hadist.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $hadists->nextPageUrl()]);
+		}
 
 		return view($view, [
 			'groupName'	=> 'DZIKIR',
-			'hadists' 	=> Hadist::dzikir()->when($request->group_id, function($query) use ($request) {
-							return $query->where('hadist.group_id', $request->group_id);
-						})->when($search, function($query) use ($search) {
-							return $query->where('judul', 'like', '%'.$search.'%');
-						})->orderBy('hadist.updated', 'DESC')->simplePaginate(20),
+			'hadists' 	=> $hadists,
 			'hadist'	=> Hadist::dzikir()->orderByRaw('RAND()')->first()
 		]);
     }

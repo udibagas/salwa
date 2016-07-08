@@ -19,14 +19,23 @@ class ProdukController extends Controller
     {
 		$view = BrowserDetect::isMobile() ? 'produk.mobile.index' : 'produk.index';
 		$search = str_replace(' ', '%', $request->search);
+		$produks = Produk::when($request->group_id, function($query) use ($request) {
+							return $query->where('group_id', $request->group_id);
+						})->when($search, function($query) use ($search) {
+							return $query->where('judul', 'like', '%'.$search.'%');
+						})->orderBy('updated', 'DESC')->simplePaginate(16);
 
-        return view($view, [
-			'produks' => Produk::when($request->group_id, function($query) use ($request) {
-								return $query->where('group_id', $request->group_id);
-							})->when($search, function($query) use ($search) {
-								return $query->where('judul', 'like', '%'.$search.'%');
-							})->orderBy('updated', 'DESC')->simplePaginate(16)
-		]);
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($produks as $a) {
+				$html .= view('produk.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $produks->nextPageUrl()]);
+		}
+
+        return view($view, ['produks' => $produks]);
     }
 
     public function admin(Request $request)

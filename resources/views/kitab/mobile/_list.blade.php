@@ -1,11 +1,11 @@
 <div class="row-post">
 	<div class="media">
 		<div class="media-left">
-			<div class="thumbnail" style="width:100px;height:120px;">
+			<div style="width:100px;height:120px;">
 				@if ($a->img_buku)
-				<img class="media-object cover no-round" src="/{{ $a->img_buku }}" alt="">
+				<img class="media-object cover" src="/{{ $a->img_buku }}" alt="">
 				@else
-				<img class="media-object profile no-round" data-name="{{ $a->judul }}" data-width="100" data-height="120">
+				<img class="media-object profile" data-name="{{ $a->judul }}" data-width="100" data-height="120">
 				@endif
 			</div>
 		</div>

@@ -1,7 +1,7 @@
 <div class="row-post">
 	<div class="media">
 		<div class="media-left">
-			<div class="thumbnail" style="width:50px;height:50px;">
+			<div class="initial-container">
 				<img class="media-object profile img-circle" alt="{{ $a->judul }}" data-name="{{ $a->judul }}" />
 			</div>
 		</div>

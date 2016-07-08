@@ -19,14 +19,23 @@ class ImageController extends Controller
     {
 		$view = BrowserDetect::isMobile() ? 'image.mobile.index' : 'image.index';
 		$search = str_replace(' ', '%', $request->search);
+		$images = SalwaImages::when($search, function($query) use ($search) {
+					return $query->where('judul', 'like', '%'.$search.'%');
+				})->when($request->group_id, function($query) use ($request) {
+					return $query->where('group_id', $request->group_id);
+				})->orderBy('updated', 'DESC')->simplePaginate();
 
-        return view($view, [
-			'images' => SalwaImages::when($search, function($query) use ($search) {
-						return $query->where('judul', 'like', '%'.$search.'%');
-					})->when($request->group_id, function($query) use ($request) {
-						return $query->where('group_id', $request->group_id);
-					})->orderBy('updated', 'DESC')->simplePaginate()
-		]);
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($images as $a) {
+				$html .= view('image.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $images->nextPageUrl()]);
+		}
+
+        return view($view, ['images' => $images]);
     }
 
 	public function admin(Request $request)

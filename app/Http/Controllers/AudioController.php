@@ -20,13 +20,23 @@ class AudioController extends Controller
 		$view = BrowserDetect::isMobile() ? 'audio.mobile.index' : 'audio.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view($view, [
-			'audios' => Mp3::when($search, function($query) use ($search) {
-						return $query->where('judul', 'like', '%'.$search.'%');
-					})->when($request->group_id, function($query) use ($request) {
-						return $query->where('group_id', $request->group_id);
-					})->orderBy('updated', 'DESC')->simplePaginate()
-		]);
+		$audios = Mp3::when($search, function($query) use ($search) {
+					return $query->where('judul', 'like', '%'.$search.'%');
+				})->when($request->group_id, function($query) use ($request) {
+					return $query->where('group_id', $request->group_id);
+				})->orderBy('updated', 'DESC')->simplePaginate();
+
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($audios as $a) {
+				$html .= view('audio.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $audios->nextPageUrl()]);
+		}
+
+        return view($view, ['audios' => $audios]);
     }
 
     public function admin(Request $request)

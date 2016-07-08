@@ -1,13 +1,13 @@
 <div class="row-post no-gutter">
 	<div class="media">
 		<div class="media-left media-middle">
-			<div class="thumbnail" style="height:50px;width:50px;">
+			<div class="initial-container">
 				@if ($p->user && $p->user->img_user)
-				<img class="media-object cover" src="/{{ $p->user->img_user }}" alt="{{ $p->user->name }}">
+				<img class="media-object cover img-circle" src="/{{ $p->user->img_user }}" alt="{{ $p->user->name }}">
 				@elseif ($p->user)
-				<img class="media-object profile" data-name="{{ $p->user->name }}" alt="{{ $p->user->name }}">
+				<img class="media-object profile img-circle" data-name="{{ $p->user->name }}" alt="{{ $p->user->name }}">
 				@else
-				<img class="media-object cover" src="/images/logo-padding.png" alt="">
+				<img class="media-object cover img-circle" src="/images/logo-padding.png" alt="">
 				@endif
 			</div>
 		</div>

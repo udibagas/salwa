@@ -5,10 +5,13 @@
 @section('content')
 
 <h4 class="title">SALWA INFO</h4>
-@each('informasi.mobile._list', $informasis, 'a')
+<div id="post-list">
+	@each('informasi.mobile._list', $informasis, 'a')
+</div>
 
-<div class="text-center">
-	{!! $informasis->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
+<div class="text-center text-bold">
+	<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+	<a href="{{ $informasis->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
 </div>
 
 @include('informasi._group')
@@ -18,3 +21,11 @@
 @endif
 
 @stop
+
+@push('script')
+
+<script type="text/javascript">
+var url = '{{ $informasis->nextPageUrl() }}';
+</script>
+
+@endpush

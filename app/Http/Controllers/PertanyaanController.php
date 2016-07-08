@@ -23,16 +23,25 @@ class PertanyaanController extends Controller
 		$search 	= str_replace(' ', '%', $request->search);
 		// $showOnly 	= (auth()->guest() || (auth()->check() && !auth()->user()->isUstadz() && !auth()->user()->isAdmin()));
 		$showOnly 	= true;
+		$pertanyaans = Pertanyaan::when($showOnly, function($query) {
+								return $query->where('status', 's');
+							})->when($search, function($query) use ($search) {
+								return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
+							})->when($request->group_id, function($query) use ($request) {
+								return $query->where('group_id', $request->group_id);
+							})->orderBy('created', 'DESC')->simplePaginate();
 
-		return view($view, [
-			'pertanyaans' => Pertanyaan::when($showOnly, function($query) {
-									return $query->where('status', 's');
-								})->when($search, function($query) use ($search) {
-									return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
-								})->when($request->group_id, function($query) use ($request) {
-									return $query->where('group_id', $request->group_id);
-								})->orderBy('created', 'DESC')->simplePaginate(),
-		]);
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($pertanyaans as $a) {
+				$html .= view('pertanyaan.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $pertanyaans->nextPageUrl()]);
+		}
+
+		return view($view, ['pertanyaans' => $pertanyaans]);
 	}
 
 	public function mine(Request $request)

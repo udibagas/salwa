@@ -1,8 +1,8 @@
 <div class="row-post">
 	<div class="media">
 		<div class="media-left media-middle">
-			<div class="thumbnail" style="height:50px;width:50px;">
-				<img class="media-object profile" alt="{{ $a->judul }}" data-name="{{ $a->judul }}">
+			<div class="initial-container">
+				<img class="media-object profile img-circle" alt="{{ $a->judul }}" data-name="{{ $a->judul }}">
 			</div>
 		</div>
 		<div class="media-body">

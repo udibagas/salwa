@@ -5,12 +5,13 @@
 @section('content')
 
 	<h4 class="title"><i class="fa fa-image"></i> SALWA IMAGES</h4>
-	<div class="row-post">
+	<div class="row-post" id="post-list">
 		@each('image.mobile._list', $images, 'a')
 	</div>
 
-	<div class="text-center">
-		{{ $images->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() }}
+	<div class="text-center text-bold">
+		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+		<a href="{{ $images->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
 	</div>
 
 	@include('image._group')
@@ -20,3 +21,11 @@
 	@endif
 
 @stop
+
+@push('script')
+
+<script type="text/javascript">
+var url = '{{ $images->nextPageUrl() }}';
+</script>
+
+@endpush

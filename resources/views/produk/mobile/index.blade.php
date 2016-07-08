@@ -5,10 +5,13 @@
 @section('content')
 
 	<h4 class="title">SALWA MARKET</h4>
-	@each('produk.mobile._list', $produks, 'a')
+	<div id="post-list">
+		@each('produk.mobile._list', $produks, 'a')
+	</div>
 
-	<div class="text-center">
-		{!! $produks->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
+	<div class="text-center text-bold">
+		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+		<a href="{{ $produks->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
 	</div>
 
 	@include('produk._group')
@@ -18,3 +21,11 @@
 	@endif
 
 @stop
+
+@push('script')
+
+<script type="text/javascript">
+var url = '{{ $produks->nextPageUrl() }}';
+</script>
+
+@endpush

@@ -1,11 +1,11 @@
 <div class="row-post">
 	<div class="media">
 		<div class="media-left">
-			<div class="thumbnail" style="height:50px;width:50px;">
+			<div class="initial-container">
 				@if ($a->user && $a->user->img_user)
-				<img class="media-object cover" src="/{{ $a->user->img_user }}" alt="{{ $a->user->name }}">
+				<img class="media-object cover img-circle" src="/{{ $a->user->img_user }}" alt="{{ $a->user->name }}">
 				@else
-				<img class="media-object profile" data-name="{{ $a->title }}" alt="{{ $a->title }}">
+				<img class="media-object profile img-circle" data-name="{{ $a->title }}" alt="{{ $a->title }}">
 				@endif
 			</div>
 		</div>

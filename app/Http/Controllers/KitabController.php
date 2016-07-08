@@ -19,15 +19,24 @@ class KitabController extends Controller
     {
 		$view = BrowserDetect::isMobile() ? 'kitab.mobile.index' : 'kitab.index';
 		$search = str_replace(' ', '%', $request->search);
+		$kitabs = Buku::when($search, function($query) use ($search) {
+						return $query->where('judul', 'like', '%'.$search.'%')
+								->orWhere('penulis', 'like', '%'.$search.'%');
+					})->when($request->group_id, function($query) use ($request) {
+						return $query->where('group_id', $request->group_id);
+					})->orderBy('updated', 'DESC')->simplePaginate(16);
 
-        return view($view, [
-			'kitabs' => Buku::when($search, function($query) use ($search) {
-							return $query->where('judul', 'like', '%'.$search.'%')
-									->orWhere('penulis', 'like', '%'.$search.'%');
-						})->when($request->group_id, function($query) use ($request) {
-							return $query->where('group_id', $request->group_id);
-						})->orderBy('updated', 'DESC')->simplePaginate(16)
-		]);
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($kitabs as $a) {
+				$html .= view('kitab.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $kitabs->nextPageUrl()]);
+		}
+
+        return view($view, ['kitabs' => $kitabs]);
     }
 
     public function admin(Request $request)

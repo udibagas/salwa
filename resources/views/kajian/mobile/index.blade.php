@@ -5,10 +5,13 @@
 @section('content')
 
 	<h4 class="title">JADWAL KAJIAN</h4>
-	@each('kajian.mobile._list', $kajians, 'a')
+	<div id="post-list">
+		@each('kajian.mobile._list', $kajians, 'a')
+	</div>
 
-	<div class="text-center">
-		{!! $kajians->appends(['tema' => request('tema'),'ustadz_id' => request('ustadz_id'),'rutin' => request('rutin')])->links() !!}
+	<div class="text-center text-bold">
+		<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+		<a href="{{ $kajians->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
 	</div>
 
 	@include('kajian._group')
@@ -18,3 +21,11 @@
 	@endif
 
 @stop
+
+@push('script')
+
+<script type="text/javascript">
+var url = '{{ $kajians->nextPageUrl() }}';
+</script>
+
+@endpush

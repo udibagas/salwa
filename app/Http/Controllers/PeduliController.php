@@ -19,14 +19,23 @@ class PeduliController extends Controller
     {
 		$view = BrowserDetect::isMobile() ? 'peduli.mobile.index' : 'peduli.index';
 		$search = str_replace(' ', '%', $request->search);
+		$pedulis = Peduli::when($search, function($query) use ($search) {
+							return $query->where('judul', 'like', '%'.$search.'%');
+						})->when($request->group_id, function($query) use ($request) {
+							return $query->where('group_id', $request->group_id);
+						})->orderBy('updated', 'DESC')->simplePaginate(16);
 
-        return view($view, [
-			'pedulis' => Peduli::when($search, function($query) use ($search) {
-								return $query->where('judul', 'like', '%'.$search.'%');
-							})->when($request->group_id, function($query) use ($request) {
-								return $query->where('group_id', $request->group_id);
-							})->orderBy('updated', 'DESC')->simplePaginate(16)
-		]);
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($pedulis as $a) {
+				$html .= view('peduli.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json(['html' => $html, 'nextPageUrl' => $pedulis->nextPageUrl()]);
+		}
+
+        return view($view, ['pedulis' => $pedulis]);
     }
 
     public function admin(Request $request)
