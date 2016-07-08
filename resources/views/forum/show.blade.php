@@ -18,10 +18,7 @@
 
 <div class="row">
 	<div class="col-md-3 hidden-xs">
-		@include('forum._group', [
-			'group' => $forum->group,
-			'groups' => \App\Group::active()->forum()->orderBy('group_name', 'ASC')->get()
-		])
+		@include('forum._group', ['group' => $forum->group])
 	</div>
 
 	<div class="col-md-6">

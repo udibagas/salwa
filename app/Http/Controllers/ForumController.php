@@ -24,7 +24,6 @@ class ForumController extends Controller
     {
 		$view = BrowserDetect::isMobile() ? 'forum.mobile.index' : 'forum.index';
         return view($view, [
-			'forums' => Forum::active()->orderBy('updated', 'DESC')->paginate(),
 			'groups' => Group::forum()->active()->orderBy('group_name', 'ASC')->get()
 		]);
     }
@@ -49,10 +48,7 @@ class ForumController extends Controller
 			]);
 		}
 
-        return view($view, [
-			'forums' => $forums,
-			'groups' => Group::forum()->active()->orderBy('group_name', 'ASC')->get(),
-		]);
+        return view($view, ['forums' => $forums]);
     }
 
     /**
@@ -262,7 +258,6 @@ class ForumController extends Controller
 		}
 
 		return view($view, [
-			'groups' 	=> Group::forum()->active()->orderBy('group_name', 'ASC')->get(),
 			'group' 	=> $group,
 			'forums' 	=> $forums
 		]);
@@ -272,12 +267,15 @@ class ForumController extends Controller
 	{
 		$view = BrowserDetect::isMobile() ? 'forum.mobile.search' : 'forum.search';
 		$group_id = $request->group_id;
+		$user_id = $request->user_id;
 		$search = str_replace(' ', '%', $request->search);
 		$forums = Forum::active()->when($search, function($query) use ($search) {
 							return $query->where('title', 'like', '%'.$search.'%');
 						})->when($group_id, function($query) use ($group_id) {
 							return $query->where('group_id', $group_id);
-						})->orderBy('forum_id', 'DESC')->paginate();
+						})->when($user_id, function($query) use ($user_id) {
+							return $query->where('user_id', $user_id);
+						})->orderBy('updated', 'DESC')->paginate();
 
 		if ($request->ajax()) {
 			$html = '';
@@ -295,7 +293,6 @@ class ForumController extends Controller
 		}
 
 		return view($view, [
-			'groups' 	=> Group::forum()->active()->orderBy('group_name', 'ASC')->get(),
 			'group'		=> Group::find($group_id),
 			'search'	=> $request->search,
 			'forums' 	=> $forums

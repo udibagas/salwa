@@ -1,5 +1,7 @@
 <div class="panel panel-blue">
-	<div class="panel-heading"><i class="fa fa-edit"></i> REGISTER</div>
+	<div class="panel-heading">
+		<h3 class="panel-title">REGISTER</h3>
+	</div>
 	{!! Form::open(['class' => 'form-vertical', 'files' => 'true', 'url' => '/register', 'method' => 'POST']) !!}
 	<div class="panel-body">
 
@@ -77,7 +79,7 @@
 
 	</div>
 	<div class="panel-footer">
-		<button type="submit" name="save" class="btn btn-info"><i class="fa fa-edit"></i> Register</button>
+		<button type="submit" name="save" class="btn btn-info">REGISTER</button>
 	</div>
 	{!! Form::close() !!}
 </div>

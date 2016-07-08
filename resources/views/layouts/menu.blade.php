@@ -1,32 +1,6 @@
 <div id="sidr-main">
 	<div class="list-group">
-		@if (auth()->guest())
-		<a class="list-group-item info active" href="/login" style="border-radius:0;">
-			<i class="fa fa-sign-in"></i> LOGIN
-		</a>
-		<a class="list-group-item info active" href="/register">
-			<i class="fa fa-edit"></i> REGISTER
-		</a>
-		@else
-		<a class="list-group-item info active" href="/me" style="border-radius:0;">
-			<i class="fa fa-user"></i> PROFILE
-		</a>
-		<a class="list-group-item info active" href="/pertanyaan-saya">
-			<i class="fa fa-question-circle"></i> PERTANYAAN SAYA
-		</a>
-		<a class="list-group-item info active" href="/forum-saya">
-			<i class="fa fa-comments"></i> FORUM SAYA
-		</a>
-		@if (auth()->user()->isUstadz())
-		<a class="list-group-item info active" href="/pertanyaan/admin-ustadz">
-			<i class="fa fa-inbox"></i> PERTANYAAN MASUK
-		</a>
-		@endif
-		<a class="list-group-item info active" href="/logout">
-			<i class="fa fa-sign-out"></i> LOGOUT
-		</a>
-		@endif
-		<span class="list-group-item info active">
+		<span class="list-group-item info active" style="border-radius:0;">
 			{!! Form::open(['url' => '/home', 'method' => 'GET']) !!}
 				<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control search-field">
 			{!! Form::close() !!}

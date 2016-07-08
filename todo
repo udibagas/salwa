@@ -19,7 +19,7 @@ TODO
 13. API sunnah go => create kajian : tinggal halaman CMS
 16. pake choosen
 18. kalender kajian
-21. resize image on the fly
+21. resize image on the fly => mobile sudah, desktop belum
 22. caching pake memchaced => nunggu kalau sudah live
 23. Pindahin mailbox salwa
 24. banner!!! tinggal cms
@@ -28,10 +28,7 @@ TODO
 27. comment via ajax
 28. timeline user
 29. add reply on comment & post ==> jangka panjang
-32. auth-nya pake policy ==> perlu?? ga usah. orang cuma dikit doank. di define aja di auth service provider
-33. dynamic scope!!! => user aja yg belum
 34. member bisa saling lihat halaman profile user?
-35. edit komentar ==> belum beres. baru admin doank yg bisa. user terkait blm bisa
 36. banner dimunculkan di beberapa sub view ???
 
 KAJIAN PAKE YANG LAMA
@@ -39,4 +36,4 @@ BANER!!!!
 INSTAGRAM!!!
 
 - Tampilan halaman kajian kurang informatif
-- forum diurutkan dari yag paling akhir post (update), waktu comment jadi up
+- search forum saya & pertanyaan saya

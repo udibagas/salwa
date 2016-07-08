@@ -37,10 +37,7 @@
 	<h4 class="title">FORUM TERKAIT</h4>
 	@each('forum.mobile._list', $terkait, 'a')
 
-	@include('forum._group', [
-		'group' => $forum->group,
-		'groups' => \App\Group::active()->forum()->orderBy('group_name', 'ASC')->get()
-	])
+	@include('forum._group', ['group' => $forum->group])
 
 	{!! Form::open(['method' => 'DELETE']) !!}
 		{!! Form::hidden('redirect', '/forum') !!}

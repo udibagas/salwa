@@ -29,6 +29,8 @@ class PertanyaanController extends Controller
 								return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
 							})->when($request->group_id, function($query) use ($request) {
 								return $query->where('group_id', $request->group_id);
+							})->when($request->user_id, function($query) use ($request) {
+								return $query->where('user_id', $request->user_id);
 							})->orderBy('created', 'DESC')->paginate();
 
 		if ($request->ajax()) {
