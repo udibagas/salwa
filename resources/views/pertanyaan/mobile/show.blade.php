@@ -67,7 +67,7 @@
 </div>
 @endif
 
-<h3 class="title">PERTANYAAN TERKAIT</h3>
+<h4 class="title">PERTANYAAN TERKAIT</h4>
 @each('pertanyaan.mobile._list', $terkait, 'a')
 
 @include('pertanyaan._group')
