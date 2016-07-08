@@ -24,7 +24,7 @@ var loadMore = function() {
 };
 
 $(window).scroll(function() {
-	if($(window).scrollTop() + $(window).height() == $(document).height() && lastPage == false) {
+	if($(window).scrollTop() + $(window).height() == $(document).height() && lastPage == false && url != '') {
 	   loadMore();
 	}
 });
