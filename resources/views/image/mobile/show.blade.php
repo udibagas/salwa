@@ -13,11 +13,7 @@
 
 <h4 class="title">IMAGE TERKAIT</h4>
 <div class="row-post">
-	@foreach ($terkait as $image)
-		<a href="/informasi/{{ $image->id_salwaimages }}-{{ str_slug($image->judul) }}">
-			<img class="img-responsive" src="/{{ $image->img_images }}" alt="{{ $image->judul }}">
-		</a>
-	@endforeach
+	@each('image.mobile._list', $terkait, 'a')
 </div>
 
 @include('image._group')
