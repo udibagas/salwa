@@ -157,6 +157,10 @@
 				return confirm('Anda yakin?');
 			});
 
+			var search = '{{ request("search") }}';
+			var group_id = '{{ request("group_id") }}';
+			var user_id = '{{ request("user_id") }}';
+
 		</script>
 
 		@stack('script')

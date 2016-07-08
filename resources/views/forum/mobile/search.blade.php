@@ -28,9 +28,6 @@
 
 <script type="text/javascript">
 var url = '{{ $forums->nextPageUrl() }}';
-var search = '{{ request("search") }}';
-var group_id = '{{ request("group_id") }}';
-var user_id = '{{ request("user_id") }}';
 </script>
 
 @endpush
