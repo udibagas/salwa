@@ -11,7 +11,7 @@
 
 	@if ($audios->lastPage() > 1)
 		<div class="text-center text-bold">
-			<img src="/images/loading.png" alt="" class="loading hidden" /><br>
+			<br /><img src="/images/loading.png" alt="" class="loading hidden" />
 			<a href="{{ $audios->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
 		</div>
 	@endif

@@ -137,17 +137,20 @@
 					}
 				});
 
-				$('#menu-right').sidr({
-					name:'sidr-right',timing:'ease-in-out',speed:200,side:'right',
-					onOpen: function() {
-						$('.mobile-nav').css('left', '-275px');
-						$('.mobile-nav').css('right', '275px');
-					},
-					onClose: function() {
-						$('.mobile-nav').css('right', '0');
-						$('.mobile-nav').css('left', '0');
-					}
-				});
+				if ($('#sidr-right').length) {
+					$('#menu-right').removeClass('hidden').sidr({
+						name:'sidr-right',timing:'ease-in-out',speed:200,side:'right',
+						onOpen: function() {
+							$('.mobile-nav').css('left', '-275px');
+							$('.mobile-nav').css('right', '275px');
+						},
+						onClose: function() {
+							$('.mobile-nav').css('right', '0');
+							$('.mobile-nav').css('left', '0');
+						}
+					});
+				}
+
 
 			@endif
 
