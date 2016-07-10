@@ -20,6 +20,7 @@ use App\Mp3;
 use App\Post;
 use Instagram;
 use BrowserDetect;
+use App\SalwaSearch;
 
 class HomeController extends Controller
 {
@@ -87,5 +88,43 @@ class HomeController extends Controller
 	public function instagram()
 	{
 		return Instagram::users()->get(30);
+	}
+
+	public function search(Request $request)
+	{
+		$view = BrowserDetect::isMobile() ? 'search.mobile.index' : 'search.index';
+
+		$timeStart = microtime(true);
+		$micro = null;
+
+		$posts = SalwaSearch::when($request->q, function($query) use ($request) {
+					$q = str_replace(' ', '%', $request->q);
+					return $query->where('judul', 'like', '%'.$q.'%')
+								 ->orWhere('isi', 'like', '%'.$q.'%');
+				})->orderBy('tanggal', 'DESC')->paginate();
+
+	    $diff = microtime(true) - $timeStart;
+	    $sec = intval($diff);
+	    $micro = $diff - $sec;
+
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($posts as $p) {
+				$html .= view('search.mobile._item', ['p' => $p]);
+			}
+
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $posts->nextPageUrl(),
+				'currentPage'	=> $posts->currentPage(),
+				'lastPage'		=> $posts->lastPage(),
+			]);
+		}
+
+		return view($view, [
+			'posts' => $posts,
+			'time' => round($micro * 1000, 4)
+		]);
 	}
 }

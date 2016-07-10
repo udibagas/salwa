@@ -17,6 +17,14 @@ Route::get('jajal', function() {
 	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);
 });
 
+Route::get('search', 'HomeController@search');
+
+Route::get('quran', 'QuranController@index');
+Route::get('quran/search', 'QuranController@search');
+Route::get('quran/{surah}:{from}-{to}', 'QuranController@ayah');
+Route::get('quran/{surah}:{from}', 'QuranController@ayah');
+Route::get('quran/{surah}', 'QuranController@surah');
+
 Route::get('audio/playlist', 'AudioController@playlist');
 Route::get('radio', 'RadioController@index');
 
@@ -118,6 +126,7 @@ Route::get('videos-detail/{slug}.html', 'VideoController@lihat');
 Route::resource('artikel', 'ArtikelController', ['only' => ['index', 'show']]);
 Route::resource('banner', 'BannerController', ['only' => ['index', 'show']]);
 Route::resource('forum', 'ForumController', ['only' => ['index', 'show']]);
+Route::resource('forums', 'ForumController', ['only' => ['index', 'show']]);
 Route::resource('hadist', 'HadistController', ['only' => ['index', 'show']]);
 Route::resource('image', 'ImageController', ['only' => ['index', 'show']]);
 Route::resource('informasi', 'InformasiController', ['only' => ['index', 'show']]);

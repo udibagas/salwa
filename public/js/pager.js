@@ -2,7 +2,7 @@ var lastPage = false;
 var loadMore = function() {
 	$.ajax({
 		url: url,
-		data: {search: search, group_id: group_id, user_id: user_id},
+		data: {search: search, group_id: group_id, user_id: user_id, q: q},
 		dataType: 'json',
 		beforeSend: function() {
 			nextBtn.hide();

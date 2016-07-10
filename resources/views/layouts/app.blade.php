@@ -6,16 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<meta property="og:title" content="SalamDakwah | @yield('title')" />
+		<!-- <meta property="og:title" content="SalamDakwah | @yield('title')" />
 		<meta property="og:description" content="@yield('description')" />
-		<meta property="og:image" content="@yield('image')" />
+		<meta property="og:image" content="@yield('image')" /> -->
 
-		<link rel="image_src" href="@yield('image')" />
+		<!-- <link rel="image_src" href="@yield('image')" /> -->
 
-		<meta name="author" content="Salamdakwah" />
+		<meta name="author" content="SalamDakwah" />
 		<meta name="description" content="video kajian, audio kajian, forum islami, jadwal kajian dan artikel, yang berdasarkan Al-Quran dan As-Sunnah sebagaimana pemahaman para sahabat Rosululloh Shallallahu Alaihi Wasallam" />
 		<meta name="keyword" content="video kajian,audio kajian,forum islami,jadwal kajian,artikel,Al-Quran,Sunnah,sahabat,Rosululloh,islam,muslim,muhammad" />
-		<meta name="copyright" content="Copyrright {{ date('Y') }} by SalamDakwah.Com" />
+		<meta name="copyright" content="Copyright {{ date('Y') }} by SalamDakwah.Com" />
 		<meta name="language" content="id" />
 		<meta name="distribution" content="Global" />
 		<meta name="rating" content="General" />
@@ -57,7 +57,6 @@
 		<script type="text/javascript" src="/initialjs/dist/initial.min.js"></script>
 		@if ($isMobile)
 		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
-		<script type="text/javascript" src="/js/jquery.touchSwipe.min.js"></script>
 		@endif
 
 		<script type="text/javascript">
@@ -121,12 +120,6 @@
 
 			@if ($isMobile)
 
-				// $('body').swipe( {
-				// 	swipeLeft: function () {$.sidr('close', 'sidr-main');},
-				// 	swipeRight: function () {$.sidr('open', 'sidr-main');},
-				// 	threshold: 75
-				// });
-
 				$('#menu').sidr({
 					name:'sidr-main',timing:'ease-in-out',speed:200,
 					onOpen: function() {
@@ -163,6 +156,7 @@
 			var search = '{{ request("search") }}';
 			var group_id = '{{ request("group_id") }}';
 			var user_id = '{{ request("user_id") }}';
+			var q = '{{ request("q") }}';
 
 		</script>
 
