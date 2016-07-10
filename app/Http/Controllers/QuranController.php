@@ -19,6 +19,24 @@ class QuranController extends Controller
 			return redirect('/quran/'.$request->q);
 		}
 
+		if (count(explode(':', $request->q) == 2))
+		{
+			$keywords = explode(':',$request->q);
+
+			if (is_numeric($keywords[0]) && is_numeric($keywords[1])) {
+				return redirect('/quran/'.$keywords[0].':'.$keywords[1]);
+			}
+
+			elseif (is_numeric($keywords[0]))
+			{
+				$ayatRange = explode('-', $keywords[1]);
+				
+				if (is_numeric($ayatRange[0]) && is_numeric($ayatRange[1])) {
+					return redirect('/quran/'.$keywords[0].':'.$keywords[1]);
+				}
+			}
+		}
+
 		$ayats = Ayah::when($request->q, function($query) use ($request) {
 					$keyword = str_replace(' ', '%', $request->q);
 					return $query->where('ayat_text', 'LIKE', '%'.$keyword.'%')
