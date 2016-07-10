@@ -100,7 +100,13 @@ class HomeController extends Controller
 		$posts = SalwaSearch::when($request->q, function($query) use ($request) {
 					$q = str_replace(' ', '%', $request->q);
 					return $query->where('judul', 'like', '%'.$q.'%')
-								 ->orWhere('isi', 'like', '%'.$q.'%');
+								 ->orWhere('isi', 'like', '%'.$q.'%')
+								 ->orWhere('judul', 'like', '%'.strtolower($q).'%')
+								 ->orWhere('isi', 'like', '%'.strtolower($q).'%')
+								 ->orWhere('judul', 'like', '%'.strtoupper($q).'%')
+								 ->orWhere('isi', 'like', '%'.strtoupper($q).'%')
+								 ->orWhere('judul', 'like', '%'.ucfirst($q).'%')
+								 ->orWhere('isi', 'like', '%'.ucfirst($q).'%');
 				})->orderBy('tanggal', 'DESC')->paginate();
 
 	    $diff = microtime(true) - $timeStart;
