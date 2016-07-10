@@ -11,27 +11,7 @@ use BrowserDetect;
 
 class QuranController extends Controller
 {
-    public function index()
-	{
-		return redirect('/quran/1');
-	}
-
-    public function surah(Surah $surah, Request $request)
-	{
-		$view = BrowserDetect::isMobile() ? 'quran.mobile.surah' : 'quran.surah';
-		$ayats = $surah->ayats()->paginate();
-
-		if ($request->ajax()) {
-			return $this->getAyatsJson($ayats);
-		}
-
-		return view($view, [
-			'surah' => $surah,
-			'ayats' => $ayats
-		]);
-	}
-
-    public function search(Request $request)
+	public function index(Request $request)
 	{
 		$view = BrowserDetect::isMobile() ? 'quran.mobile.ayah' : 'quran.ayah';
 
@@ -70,6 +50,21 @@ class QuranController extends Controller
 		// }
 
 		return view($view, ['ayats' => $ayats]);
+	}
+
+    public function surah(Surah $surah, Request $request)
+	{
+		$view = BrowserDetect::isMobile() ? 'quran.mobile.surah' : 'quran.surah';
+		$ayats = $surah->ayats()->paginate();
+
+		if ($request->ajax()) {
+			return $this->getAyatsJson($ayats);
+		}
+
+		return view($view, [
+			'surah' => $surah,
+			'ayats' => $ayats
+		]);
 	}
 
     public function ayah(Request $request, Surah $surah, $from, $to = 0)
