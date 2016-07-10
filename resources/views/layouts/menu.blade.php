@@ -1,8 +1,8 @@
 <div id="sidr-main">
 	<div class="list-group">
 		<span class="list-group-item info active" style="border-radius:0;">
-			{!! Form::open(['url' => '/home', 'method' => 'GET']) !!}
-				<input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control search-field">
+			{!! Form::open(['url' => '/search', 'method' => 'GET']) !!}
+				<input type="text" name="q" value="{{ request('q') }}" placeholder="Search" class="form-control search-field">
 			{!! Form::close() !!}
 		</span>
 		<a class="list-group-item info active" href="/">
