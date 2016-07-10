@@ -28,7 +28,13 @@
 @push('script')
 
 <script type="text/javascript">
-var url = '{{ $ayats->nextPageUrl() }}';
+	if (q.length > 0) {
+		$('#post-list .terjemahan').each(function(index, element) {
+			text = $(this).html().replace(RegExp(q, "gi"),'<b><i>'+q+'</i></b>');
+			$(this).html(text);
+		});
+	}
+	var url = '{{ $ayats->nextPageUrl() }}';
 </script>
 
 @endpush

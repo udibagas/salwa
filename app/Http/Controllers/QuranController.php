@@ -15,12 +15,12 @@ class QuranController extends Controller
 	{
 		$view = BrowserDetect::isMobile() ? 'quran.mobile.ayah' : 'quran.ayah';
 
-		if (is_numeric($request->search)) {
-			return redirect('/quran/'.$request->search);
+		if (is_numeric($request->q)) {
+			return redirect('/quran/'.$request->q);
 		}
 
-		$ayats = Ayah::when($request->search, function($query) use ($request) {
-					$keyword = str_replace(' ', '%', $request->search);
+		$ayats = Ayah::when($request->q, function($query) use ($request) {
+					$keyword = str_replace(' ', '%', $request->q);
 					return $query->where('ayat_text', 'LIKE', '%'.$keyword.'%')
 								->orWhere('terjemahan', 'LIKE', '%'.$keyword.'%');
 				})->paginate();

@@ -7,6 +7,10 @@
 	@include('quran.mobile._search-form')
 
 	<div id="post-list" style="margin-top:55px;">
+		<h4 class="title text-center">
+			{{ $surah->nama }}/{{ $surah->arab }} ({{ $surah->arti }})<br />
+			<small style="color:#fff;">{{ $surah->ayat }} Ayat - {{ $surah->jenis }}</small>
+		</h4>
 		@each('quran.mobile._ayat', $ayats, 'a')
 	</div>
 

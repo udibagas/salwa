@@ -31,3 +31,15 @@
 	</div>
 
 @stop
+
+@push('script')
+<script type="text/javascript">
+	if (q.length > 0) {
+		$('.list-group .terjemahan').each(function(index, element) {
+			text = $(this).html().replace(RegExp(q, "gi"),'<b><i>'+q+'</i></b>');
+			$(this).html(text);
+		});
+	}
+
+</script>
+@endpush

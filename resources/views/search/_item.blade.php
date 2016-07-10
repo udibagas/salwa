@@ -24,7 +24,17 @@
 		<h4>{{ $p->judul }}</h4>
 	</a>
 	@endif
-	<p>{{ str_limit(strip_tags($p->isi), 200) }}</p>
+
+	<?php
+		$text = strip_tags($p->isi);
+		$pos = stripos($text,request('q'));
+		$start_pos = $pos-74;
+		if($start_pos < 0) $start_pos = 0;
+		$pot_text = substr($text,$start_pos,150);
+	?>
+
+	<p>{{ $pot_text }}</p>
+
 	<div class="text-muted">
 		{{ $p->tanggal->diffForHumans() }}
 		in

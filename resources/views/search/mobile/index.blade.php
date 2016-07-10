@@ -11,7 +11,7 @@
 
 	<div id="post-list" style="margin-top:55px;">
 		<div class="row-post text-center">
-			<h4>{{ $posts->total() }} results for '{{ request('q') }}'</h4>
+			<h4>{{ $posts->total() }} results for {{ request('q') }}</h4>
 		</div>
 		@each('search.mobile._item', $posts, 'p')
 	</div>
@@ -27,7 +27,14 @@
 @push('script')
 
 <script type="text/javascript">
-var url = '{{ $posts->nextPageUrl() }}';
+
+	$('#post-list h4, #post-list p').each(function(index, element) {
+		text = $(this).html().replace(RegExp(q, "gi"),'<b><i>'+q+'</i></b>');
+		$(this).html(text);
+	});
+
+	var url = '{{ $posts->nextPageUrl() }}';
+
 </script>
 
 @endpush

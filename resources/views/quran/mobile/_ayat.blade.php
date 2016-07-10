@@ -3,7 +3,7 @@
 		{{ $a->ayat_text }}
 	</div>
 	<br>
-	<div>
+	<div class="terjemahan">
 		<a href="/quran/{{ $a->surat_id}}:{{$a->ayat_id}}">
 			<b>[{{ $a->surat_id}}:{{ $a->ayat_id }}]</b>
 		</a>
