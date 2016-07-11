@@ -26,9 +26,19 @@
 
 	<div class="row-post no-gutter" style="margin-top:65px;">
 		@foreach($posts->take(4) as $p)
+
 			<div class="col-xs-6">
-				<div style="height:150px;">
-					<img src="/{{ $p->img_video }}" alt="{{ $p->title }}" class="img-responsive cover" />
+				<div class="thumbnail" style="height:150px;">
+					<a href="/video/{{ $p->video_id }}-{{ str_slug($p->title) }}">
+						@if ($p->img_video)
+						<img src="/{{ $p->img_video }}" alt="{{ $p->title }}">
+						@endif
+						<div class="video-block">
+						</div>
+						<div class="caption">
+							<h2>{{ $p->title }}</h2>
+						</div>
+					</a>
 				</div>
 			</div>
 		@endforeach
