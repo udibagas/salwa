@@ -47,7 +47,7 @@
 
             @yield('content')
 
-			<div class="row text-center" style="padding:20px;">
+			<div class="row text-center" style="padding:10px;">
 				<small>&copy; {{date('Y')}} - <a href="http://www.salamdakwah.com">Www.SalamDakwah.Com</a></small>
 			</div>
 
