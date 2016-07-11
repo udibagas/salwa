@@ -4,16 +4,14 @@
 
 @section('content')
 
-	<div style="height:35px;position:fixed;top:0;left:0;right:0;background-color:#D9EDF7;">
+	<div style="height:50px;position:fixed;top:0;left:0;right:0;background-color:#032876;z-index:998;">
 		<a href="/salwa.id">
-			<img src="/images/salwa-id.png" alt="Salwa.id" class="img-responsive" style="height:25px;display:block;margin:10px auto 0;" />
+			<img src="/images/salwa-id.png" alt="Salwa.id" class="img-responsive" style="height:30px;display:block;margin:10px auto;" />
 		</a>
 	</div>
 
-	<div class="row-post" style="height:55px;position:fixed;top:35px;left:10px;right:10px;background-color:#D9EDF7;">
-		{!! Form::open(['method' => 'GET', 'url' => '/salwa.id']) !!}
-		{!! Form::text('q', request('q'), ['class' => 'form-control search-field', 'placeholder' => 'Search']) !!}
-		{!! Form::close() !!}
+	<div class="row-post" style="height:55px;position:fixed;top:50px;left:10px;right:10px;background-color:#D9EDF7;z-index:998;">
+		@include('salwa-id._form')
 	</div>
 
 	@if (request('q'))
@@ -23,6 +21,20 @@
 			</div>
 			@each('salwa-id.mobile._item', $posts, 'p')
 		</div>
+
+	@else
+
+	<div class="row-post no-gutter" style="margin-top:65px;">
+		@foreach($posts->take(4) as $p)
+			<div class="col-xs-6">
+				<div style="height:150px;">
+					<img src="/{{ $p->img_video }}" alt="{{ $p->title }}" class="img-responsive cover" />
+				</div>
+			</div>
+		@endforeach
+		<div class="clearfix"></div>
+	</div>
+
 	@endif
 
 	@if (request('q') && $posts->lastPage() > 1)

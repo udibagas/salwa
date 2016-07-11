@@ -22,7 +22,7 @@ var loadMore = function() {
 			$('.profile').initial({charCount:1, height:50, width:50,fontSize:25});
 			if (q.length > 0) {
 				$('#post-list h4, #post-list p, #post-list .terjemahan').each(function(index, element) {
-					text = $(this).html().replace(RegExp(q, "gi"),'<i>'+q+'</b>');
+					text = $(this).html().replace(RegExp(q, "gi"),'<b>'+q+'</b>');
 					$(this).html(text);
 				});
 			}

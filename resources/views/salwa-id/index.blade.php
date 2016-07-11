@@ -14,9 +14,7 @@
 	<div class="col-md-10 col-md-offset-1">
 
 		<div class="" style="margin-bottom:20px;">
-			{!! Form::open(['method' => 'GET', 'url' => '/salwa.id']) !!}
-			{!! Form::text('q', request('q'), ['class' => 'form-control search-field', 'placeholder' => 'Search']) !!}
-			{!! Form::close() !!}
+			@include('salwa-id._form')
 		</div>
 
 		@if (request('q'))

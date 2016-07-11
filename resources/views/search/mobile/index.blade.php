@@ -4,9 +4,7 @@
 
 @section('content')
 	<div class="row-post" style="height:55px;position:fixed;top:50px;left:10px;right:10px;background-color:#D9EDF7;z-index:998;">
-		{!! Form::open(['method' => 'GET', 'url' => '/search']) !!}
-		{!! Form::text('q', request('q'), ['class' => 'form-control search-field', 'placeholder' => 'Search']) !!}
-		{!! Form::close() !!}
+		@include('search._form')
 	</div>
 
 	<div id="post-list" style="margin-top:55px;">
@@ -29,7 +27,7 @@
 <script type="text/javascript">
 
 	$('#post-list h4, #post-list p').each(function(index, element) {
-		text = $(this).html().replace(RegExp(q, "gi"),'<b><i>'+q+'</i></b>');
+		text = $(this).html().replace(RegExp(q, "gi"),'<b>'+q+'</b>');
 		$(this).html(text);
 	});
 
