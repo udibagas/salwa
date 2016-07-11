@@ -18,6 +18,7 @@ Route::get('jajal', function() {
 });
 
 Route::get('search', 'HomeController@search');
+Route::get('salwa.id', 'HomeController@salwaId');
 
 Route::get('quran', 'QuranController@index');
 Route::get('quran/search', 'QuranController@search');

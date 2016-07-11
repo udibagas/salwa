@@ -35,7 +35,10 @@
         <title>SalamDakwah | @yield('title')</title>
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
+
+		@if (!$isMobile)
 		<link href="/css/breadcrumb.css" rel="stylesheet">
+		@endif
 
 		@if ($isMobile)
 		<link href="/css/appMobile.css" rel="stylesheet">

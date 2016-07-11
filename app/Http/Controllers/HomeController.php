@@ -133,4 +133,56 @@ class HomeController extends Controller
 			'time' => round($micro * 1000, 4)
 		]);
 	}
+
+	public function salwaId(Request $request)
+	{
+		$view = BrowserDetect::isMobile() ? 'salwa-id.mobile.index' : 'salwa-id.index';
+
+		$timeStart = microtime(true);
+		$micro = null;
+
+		if ($request->q)
+		{
+			$posts = SalwaSearch::when($request->q, function($query) use ($request) {
+				$q = str_replace(' ', '%', $request->q);
+				return $query->where('judul', 'like', '%'.$q.'%')
+				->orWhere('isi', 'like', '%'.$q.'%')
+				->orWhere('judul', 'like', '%'.strtolower($q).'%')
+				->orWhere('isi', 'like', '%'.strtolower($q).'%')
+				->orWhere('judul', 'like', '%'.strtoupper($q).'%')
+				->orWhere('isi', 'like', '%'.strtoupper($q).'%')
+				->orWhere('judul', 'like', '%'.ucfirst($q).'%')
+				->orWhere('isi', 'like', '%'.ucfirst($q).'%');
+			})->orderBy('tanggal', 'DESC')->paginate();
+		}
+
+		else {
+			$posts = Video::orderBy('updated', 'DESC')->limit(9)->get();
+		}
+
+
+	    $diff = microtime(true) - $timeStart;
+	    $sec = intval($diff);
+	    $micro = $diff - $sec;
+
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($posts as $p) {
+				$html .= view('salwa-id.mobile._item', ['p' => $p]);
+			}
+
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $posts->nextPageUrl(),
+				'currentPage'	=> $posts->currentPage(),
+				'lastPage'		=> $posts->lastPage(),
+			]);
+		}
+
+		return view($view, [
+			'posts' => $posts,
+			'time' => round($micro * 1000, 4)
+		]);
+	}
 }
