@@ -145,4 +145,18 @@ class UserController extends Controller
 
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
+
+
+	public function deletePp(User $user, Request $request)
+	{
+		$user->img_user = '';
+		
+		if ($user->img_user && file_exists($user->img_user)) {
+			unlink($user->img_user);
+		}
+
+		$user->save();
+
+		return redirect($request->redirect)->with('success', 'Profile picture berhasil dihapus');
+	}
 }

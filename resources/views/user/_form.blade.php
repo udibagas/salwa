@@ -139,9 +139,10 @@
 
 		{!! Form::close() !!}
 	</div>
-	<div class="col-md-3 col-sm-3 col-sm-2">
+	<div class="col-md-3 col-sm-3 col-sm-2 text-center">
 		@if ($user->img_user)
-		<img class="img-responsive" src="/{{ $user->img_user }}" />
+		<img class="img-responsive" src="/{{ $user->img_user }}" /><br>
+		<a href="/user/{{ $user->user_id }}/delete-pp?redirect={{ url()->current() }}" class="delete text-danger text-bold"><i class="fa fa-remove"></i> Delete Profile Picture</a>
 		@else
 		<img class="img-responsive" src="/images/nobody.jpg" />
 		@endif

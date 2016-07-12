@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::resource('group', 'GroupController');
 		Route::resource('lokasi', 'LokasiController');
 		Route::resource('post', 'PostController', ['only' => ['index']]);
+		Route::resource('user/{user}/delete-pp', 'UserController@deletePp');
 		Route::resource('user', 'UserController', ['except' => ['update']]);
 
 		Route::get('artikel/admin', 'ArtikelController@admin');
