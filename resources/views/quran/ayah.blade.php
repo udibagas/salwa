@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<div class="col-md-3">
-			@include('quran._detail-ayah')
+			@include('quran._detail-surah')
 		</div>
 	</div>
 

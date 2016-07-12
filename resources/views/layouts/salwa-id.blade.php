@@ -35,6 +35,8 @@
 
 		<script type="text/javascript" src="/js/jquery.min.js"></script>
         <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/initialjs/dist/initial.min.js"></script>
+		
 		@if ($isMobile)
 		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
 		@endif

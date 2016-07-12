@@ -2,6 +2,7 @@
 /node_modules
 /public/storage
 /public/uploads
+/public/quran_audio
 Homestead.yaml
 Homestead.json
 .env

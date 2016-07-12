@@ -9,4 +9,9 @@
 		</a>
 		{{ $a->terjemahan }}
 	</div>
+
+	<br>
+
+	<audio controls="controls" preload="none" style="width:100%"><source src="/quran_audio/misyari/{{ $a->surat_id }}/{{ $a->ayat_id }}.mp3" type="application/ogg"></source></audio>
+
 </span>

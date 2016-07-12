@@ -99,7 +99,7 @@ class ForumController extends Controller
 			}
         }
 
-		return redirect()->action('ForumController@show', ['forum' => $forum]);
+		return redirect('/forum/'.$forum->forum_id.'-'.str_slug($forum->title));
     }
 
     /**
@@ -201,11 +201,7 @@ class ForumController extends Controller
 			}
         }
 
-		if (auth()->user()->isAdmin() && auth()->user()->user_id !== $forum->user_id) {
-			return redirect('forum/admin')->with('success', 'Forum berhasil disimpan');
-		} else {
-			return redirect()->action('ForumController@show', ['forum' => $forum])->with('success', 'Forum berhasil disimpan');
-		}
+		return redirect('/forum/'.$forum->forum_id.'-'.str_slug($forum->title))->with('success', 'Forum berhasil disimpan');
     }
 
     /**

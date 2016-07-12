@@ -5,8 +5,9 @@
 @section('content')
 
 <h4 class="title text-center">SALWA RADIO</h4>
-<div class="row-post text-center" style="padding:140px 0;">
-	<div class="fa fa-pause fa-5x text-info" id="btn"></div><br>
+<div class="row-post text-center" style="padding:140px 15px;">
+	<audio controls="controls" preload="none" style="width:100%" autoplay="autoplay"><source src="{!!$radio!!}" type="application/ogg"></source></audio>
+	<!-- <div class="fa fa-pause fa-5x text-info" id="btn"></div><br> -->
 	<!-- Now Playing : <span id="title"></span> -->
 
 </div>
@@ -17,37 +18,37 @@
 
 <script type="text/javascript">
 
-		var audio = new Audio('{!! $radio !!}');
+		// var audio = new Audio('{!! $radio !!}');
+		//
+		// $(document).on('click', '.fa-play', function() {
+		// 	audio.play();
+		// 	$(this).removeClass('fa-play');
+		// 	$(this).addClass('fa-pause');
+		// });
+		//
+		// $(document).on('click', '.fa-pause', function() {
+		// 	audio.pause();
+		// 	$(this).removeClass('fa-pause');
+		// 	$(this).addClass('fa-play');
+		// });
 
-		$(document).on('click', '.fa-play', function() {
-			audio.play();
-			$(this).removeClass('fa-play');
-			$(this).addClass('fa-pause');
-		});
+		// audio.play();
 
-		$(document).on('click', '.fa-pause', function() {
-			audio.pause();
-			$(this).removeClass('fa-pause');
-			$(this).addClass('fa-play');
-		});
-
-		audio.play();
-
-		$.ajax({
-			crossOrigin: true,
-			url: '{!! $radio !!}',
-			success: function(html) {
-				var contentRegex = /<body>(.*)<\/body>/;
-				var content = html.match(contentRegex)[1];
-				var parts = content.split(',');
-				if (parts.length < 7 || !parts[6]) {
-					var title = null;
-				}
-				var title = parts[6];
-
-				$('#title').text(title);
-			}
-		});
+		// $.ajax({
+		// 	crossOrigin: true,
+		// 	url: '{!! $radio !!}',
+		// 	success: function(html) {
+		// 		var contentRegex = /<body>(.*)<\/body>/;
+		// 		var content = html.match(contentRegex)[1];
+		// 		var parts = content.split(',');
+		// 		if (parts.length < 7 || !parts[6]) {
+		// 			var title = null;
+		// 		}
+		// 		var title = parts[6];
+		//
+		// 		$('#title').text(title);
+		// 	}
+		// });
 
 	</script>
 
