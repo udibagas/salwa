@@ -18,10 +18,6 @@
 			</div>
 
 			<div class="text-center">
-				@include('layouts._share')
-			</div>
-
-			<div class="text-center">
 				{!! $ayats->links() !!}
 			</div>
 		</div>

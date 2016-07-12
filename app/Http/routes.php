@@ -20,6 +20,7 @@ Route::get('jajal', function() {
 Route::get('search', 'HomeController@search');
 Route::get('salwa.id', 'HomeController@salwaId');
 
+Route::get('quran/image', 'QuranController@image');
 Route::get('quran', 'QuranController@index');
 Route::get('quran/search', 'QuranController@search');
 Route::get('quran/{surah}:{from}-{to}', 'QuranController@ayah');

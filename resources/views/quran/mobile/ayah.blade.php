@@ -10,10 +10,6 @@
 		@each('quran.mobile._ayat', $ayats, 'a')
 	</div>
 
-	<div class="row-post text-center">
-		@include('layouts._share')
-	</div>
-
 	@if ($ayats->lastPage() > 1)
 		<div class="text-center text-bold">
 			<br /><img src="/images/loading.png" alt="" class="loading hidden" />

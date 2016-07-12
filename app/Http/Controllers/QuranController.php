@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 use App\Http\Requests;
 use App\Ayah;
@@ -30,7 +31,7 @@ class QuranController extends Controller
 			elseif (is_numeric($keywords[0]))
 			{
 				$ayatRange = explode('-', $keywords[1]);
-				
+
 				if (is_numeric($ayatRange[0]) && is_numeric($ayatRange[1])) {
 					return redirect('/quran/'.$keywords[0].':'.$keywords[1]);
 				}
@@ -67,8 +68,38 @@ class QuranController extends Controller
 		// 	return redirect('/quran/'.$matches3[0]);
 		// }
 
-		return view($view, ['ayats' => $ayats]);
+		return view($view, ['ayats' => $ayats, 'surah' => Surah::find(1)]);
 	}
+
+	public function image(Request $request)
+	{
+		$view = BrowserDetect::isMobile() ? 'quran.mobile.image' : 'quran.image';
+
+		if (!$request->page) {
+			$request->page = 1;
+		}
+
+		$nextPage = $request->page + 1;
+
+		if ($request->ajax())
+		{
+			// $html = view('quran.mobile._image', ['page' => $request->page]);
+			$html = '<img src="/quran_image/'.sprintf("%03d", $request->page).'.jpg" class="img-responsive" alt="" />';
+
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> url()->current().'?page='.$nextPage,
+				'currentPage'	=> $request->page,
+				'lastPage'		=> 114,
+			]);
+		}
+
+		return view($view, [
+			'page' => $request->page,
+			'nextPageUrl' => url()->current().'?page='.$nextPage
+		]);
+	}
+
 
     public function surah(Surah $surah, Request $request)
 	{
