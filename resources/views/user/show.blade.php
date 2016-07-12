@@ -1,6 +1,6 @@
 @extends('layouts.cms')
 
-@section('title', 'Profile : '.{{ $user->name }})
+@section('title', 'Profile : '.$user->name)
 
 @push('css')
 	<link href="/DataTables/datatables.min.css" rel="stylesheet">
@@ -43,15 +43,8 @@
 			<div role="tabpanel" class="tab-pane active" id="1">
 				<br>
 				<div class="row">
-					<div class="col-md-7">
-						@include('user._form', ['url' => '/user/'.$user->id, 'method' => 'PUT'])
-					</div>
-					<div class="col-md-2">
-						@if ($user->img_user)
-						<img class="img-responsive" src="/{{ $user->img_user }}" />
-						@else
-						<img class="img-responsive" src="/images/nobody.jpg" />
-						@endif
+					<div class="col-md-9">
+						@include('user._form', ['url' => '/user/'.$user->user_id, 'method' => 'PUT'])
 					</div>
 				</div>
 			</div>
