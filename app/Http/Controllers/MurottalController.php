@@ -20,13 +20,28 @@ class MurottalController extends Controller
 		$view = BrowserDetect::isMobile() ? 'murottal.mobile.index' : 'murottal.index';
 		$search = str_replace(' ', '%', $request->search);
 
-        return view($view, [
-			'murottals' => Murottal::when($search, function($query) use ($search) {
-							return $query->where('nama_surat', 'like', '%'.$search.'%');
-						})->when($request->group_id, function($query) use ($request) {
-							return $query->where('group_id', $request->group_id);
-						})->orderBy('nama_surat', 'ASC')->paginate()
-		]);
+		$murottals = Murottal::when($search, function($query) use ($search) {
+						return $query->where('nama_surat', 'like', '%'.$search.'%');
+					})->when($request->group_id, function($query) use ($request) {
+						return $query->where('group_id', $request->group_id);
+					})->orderBy('nama_surat', 'ASC')->paginate();
+
+		if ($request->ajax()) {
+			$html = '';
+
+			foreach ($murottals as $a) {
+				$html .= view('murottal.mobile._list', ['a' => $a]);
+			}
+
+			return response()->json([
+				'html' 			=> $html,
+				'nextPageUrl' 	=> $murottals->nextPageUrl(),
+				'currentPage'	=> $murottals->currentPage(),
+				'lastPage'		=> $murottals->lastPage(),
+			]);
+		}
+
+        return view($view, ['murottals' => $murottals]);
     }
 
 	public function admin(Request $request)
@@ -49,7 +64,8 @@ class MurottalController extends Controller
      */
     public function create()
     {
-        return view('murottal.create', ['murottal' => new Murottal]);
+		$view = BrowserDetect::isMobile() ? 'murottal.mobile.create' : 'murottal.create';
+        return view($view, ['murottal' => new Murottal]);
     }
 
     /**
@@ -102,7 +118,8 @@ class MurottalController extends Controller
      */
     public function edit(Murottal $murottal)
     {
-        return view('murottal.edit', ['murottal' => $murottal]);
+		$view = BrowserDetect::isMobile() ? 'murottal.mobile.edit' : 'murottal.edit';
+        return view($view, ['murottal' => $murottal]);
     }
 
     /**
