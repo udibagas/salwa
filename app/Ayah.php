@@ -14,6 +14,6 @@ class Ayah extends Model
 
 	public function surat()
 	{
-		return $this->belongsTo('App\Surah', 'ayat_id', 'id');
+		return $this->belongsTo('App\Surah', 'surat_id', 'id');
 	}
 }

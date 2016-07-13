@@ -6,7 +6,7 @@
 
 	@include('quran.mobile._search-form')
 
-	<div id="post-list" style="margin-top:55px;">
+	<div id="post-list" style="margin-top:90px;">
 		<h4 class="title text-center">
 			{{ $surah->nama }}/{{ $surah->arab }} ({{ $surah->arti }})<br />
 			<small style="color:#fff;">{{ $surah->ayat }} Ayat - {{ $surah->jenis }}</small>

@@ -165,7 +165,9 @@
 
 		@stack('script')
 
-		<script type="text/javascript" src="/js/pager.js"></script>
+		@if ($isMobile)
+			<script type="text/javascript" src="/js/pager.js"></script>
+		@endif
 
     </body>
 </html>

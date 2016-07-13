@@ -8,6 +8,9 @@
 		<a class="list-group-item info active" href="/">
 			<i class="fa fa-home"></i> HOME
 		</a>
+		<a class="list-group-item info active" href="/quran">
+			<i class="fa fa-book"></i> AL QURAN <sup>BETA</sup>
+		</a>
 		<a class="list-group-item info active" href="/video">
 			<i class="fa fa-video-camera"></i> SALWA VIDEO
 		</a>

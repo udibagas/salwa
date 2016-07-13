@@ -30,30 +30,32 @@
       </form>
 
       <ul class="nav navbar-nav navbar-right">
-          <li class="@if (url()->current() == url('video')) active @endif"><a href="/video">Salwa Video</a></li>
-		  <li class="@if (url()->current() == url('artikel')) active @endif"><a href="/artikel">Salwa Aktual</a></li>
-		  <li class="@if (url()->current() == url('pertanyaan')) active @endif"><a href="/pertanyaan">Tanya Ustadz</a></li>
-		  <li class="@if (url()->current() == url('forum')) active @endif"><a href="/forum">Salwa Forum</a></li>
-		  <li class="@if (url()->current() == url('produk')) active @endif"><a href="/produk">Salwa Market</a></li>
-		  <li class="@if (url()->current() == url('peduli')) active @endif"><a href="/peduli">Salwa Peduli</a></li>
+          <li class="@if (url()->current() == url('video')) active @endif"><a href="/video">SALWA VIDEO</a></li>
+		  <li class="@if (url()->current() == url('artikel')) active @endif"><a href="/artikel">SALWA AKTUAL</a></li>
+		  <li class="@if (url()->current() == url('pertanyaan')) active @endif"><a href="/pertanyaan">TANYA USTADZ</a></li>
+		  <li class="@if (url()->current() == url('forum')) active @endif"><a href="/forum">SALWA FORUM</a></li>
+		  <li class="@if (url()->current() == url('informasi')) active @endif"><a href="/informasi">SALWA INFO</a></li>
+		  <li class="@if (url()->current() == url('quran')) active @endif"><a href="/quran">AL QURAN <sup>BETA</sup></a></li>
 		  <!-- <li class="@if (url()->current() == url('kajian')) active @endif"><a href="/kajian">Kajian</a></li> -->
 		  <li class="dropdown no-hover">
 		      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-				  More...
-				  <span class="caret"></span>
+				  <!-- &bull; &bull; &bull; -->
+				  <i class="fa fa-bars"></i>
+				  <!-- MORE -->
+				  <!-- <span class="caret"></span> -->
 			  </a>
 		      <ul class="dropdown-menu">
-		        <li><a href="/radio"><i class="fa fa-microphone"></i> Salwa Radio</a></li>
-		        <li><a href="/kitab"><i class="fa fa-book"></i> Kitab & Terjemahan</a></li>
-				<li><a href="/kajian"><i class="fa fa-edit"></i> Kajian</a></li>
-		        <li><a href="/doa"><i class="fa fa-hand-stop-o"></i> Doa</a></li>
-		        <li><a href="/dzikir"><i class="fa fa-heartbeat"></i> Dzikir</a></li>
-				<li><a href="/hadist"><i class="fa fa-list-alt"></i> Hadist</a></li>
-				<li><a href="/audio"><i class="fa fa-music"></i> Salwa Audio</a></li>
-		        <li><a href="/murottal"><i class="fa fa-microphone"></i> Murottal</a></li>
-		        <li><a href="/image"><i class="fa fa-image"></i> Salwa Image</a></li>
-		        <li><a href="/informasi"><i class="fa fa-info-circle"></i> Salwa Info</a></li>
-		        <!-- <li><a href="/promo"><i class="fa fa-tags"></i> Salwa Promo</a></li> -->
+		        <li><a href="/radio">SALWA RADIO</a></li>
+		        <li><a href="/kitab">KITAB & TERJEMAHAN</a></li>
+				<li><a href="/kajian">KAJIAN</a></li>
+		        <li><a href="/doa">DOA</a></li>
+		        <li><a href="/dzikir">DZIKIR</a></li>
+				<li><a href="/hadist">HADIST</a></li>
+				<li><a href="/audio">SALWA AUDIO</a></li>
+		        <li><a href="/murottal">MUROTTAL</a></li>
+		        <li><a href="/image">SALWA IMAGE</a></li>
+				<li class="@if (url()->current() == url('peduli')) active @endif"><a href="/peduli">SALWA PEDULI</a></li>
+				<li class="@if (url()->current() == url('produk')) active @endif"><a href="/produk">SALWA MARKET</a></li>
 		      </ul>
         </li>
 		  @if (auth()->guest())
@@ -63,13 +65,13 @@
 			  @if (auth()->user()->img_user)
 			  <li class="no-hover">
 				  <a href="/me" style="padding:5px 0 0 10px;">
-					  <span style="background-image:url('/{{ auth()->user()->img_user }}');width:40px;height:40px;border-radius:5px;background-size:40px;background-repeat:no-repeat;display:inline-block;"></span>
+					  <span style="background-image:url('/{{ auth()->user()->img_user }}');width:40px;height:40px;border-radius:50%;background-size:40px;background-repeat:no-repeat;display:inline-block;"></span>
 				  </a>
 			  </li>
 			  @endif
 		  <li class="dropdown no-hover" style="border-left:none;">
 		      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-				  {{ str_limit(auth()->user()->name, 15) }}
+				  {{ explode(' ', auth()->user()->name)[0] }}
 				  <span class="caret"></span>
 			  </a>
 		      <ul class="dropdown-menu">

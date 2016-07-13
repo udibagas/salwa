@@ -399,3 +399,25 @@ a:hover {
 .panel-heading, .alert {
 	border-radius: 0;
 }
+
+#track-title {
+	-webkit-animation:matrix 2s linear infinite;
+	-moz-animation:matrix 2s linear infinite;
+	animation:matrix 2s linear infinite;
+}
+
+@-moz-keyframes matrix { 100% {
+	-moz-transform: matrix();
+	}
+}
+
+@-webkit-keyframes matrix { 100% {
+	-webkit-transform: matrix();
+	}
+}
+
+@keyframes matrix { 100% {
+	-webkit-transform: matrix();
+	transform: matrix();
+	}
+}

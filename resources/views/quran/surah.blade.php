@@ -16,6 +16,7 @@
 				<span class="list-group-item info">
 					@include('quran._search-form')
 				</span>
+				@include('quran._player')
 				@each('quran._ayat', $ayats, 'a')
 			</div>
 
