@@ -11,9 +11,15 @@
 	<a href="#" class="btn btn-info btn-sm next">
 		<i class="fa fa-step-forward"></i>
 	</a>
+
+	<div class="progress" style="margin:10px 0;height:7px;">
+		<div class="progress-bar progress-bar-striped progress-bar-info active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10" style="width:0;">
+			<span class="sr-only">0%</span>
+		</div>
+	</div>
+	<span class="text-center text-bold text-danger track-title"></span>
 </span>
 
-<span class="list-group-item text-danger track-title"></span>
 
 @push('script')
 
@@ -24,40 +30,23 @@
 
 	var audio = new Audio('/quran_audio/misyari/{{ $ayats->first()->surat_id }}/{{ $ayats->first()->ayat_id }}.mp3');
 
-	$('.track').first().addClass('info');
-	$('.track-title').html($('.track.info').html());
+	$('.track').first().addClass('warning');
 
 	$('.play').click(function(e) {
 		e.preventDefault();
 		audio.pause();
-		audio.play();
-		$(this).hide();
-		$('.pause').show();
+		playAudio(audio, $('.track.warning'));
 	});
 
-	$('.track').click(function(e) {
-		// e.preventDefault();
+	$('.track').click(function() {
 		audio.pause();
 		audio = new Audio($(this).attr('audiourl'));
-		$('.track').removeClass('info');
-		$(this).addClass('info');
-		$('.track-title').html($('.track.info').html());
-		audio.play();
-
-		$('.play').hide();
-		$('.pause').show();
-	});
-
-	$('.pause').click(function(e) {
-		e.preventDefault();
-		audio.pause();
-		$(this).hide();
-		$('.play').show();
+		playAudio(audio, $(this));
 	});
 
 	$('.next').click(function(e) {
 		e.preventDefault();
-		var next = $('.track.info').next();
+		var next = $('.track.warning').next();
 
 		if (next.length == 0) {
 			return;
@@ -65,17 +54,12 @@
 
 		audio.pause();
 		audio = new Audio($(next).attr('audiourl'));
-		$('.track-title').html($(next).html());
-		$('.track').removeClass('info');
-		next.addClass('info');
-		audio.play();
-		$('.play').hide();
-		$('.pause').show();
+		playAudio(audio, next);
 	});
 
 	$('.prev').click(function(e) {
 		e.preventDefault();
-		var prev = $('.track.info').prev('.track');
+		var prev = $('.track.warning').prev('.track');
 
 		if (prev.length == 0) {
 			return;
@@ -83,13 +67,43 @@
 
 		audio.pause();
 		audio = new Audio($(prev).attr('audiourl'));
-		$('.track-title').html($(prev).html());
-		$('.track').removeClass('info');
-		prev.addClass('info');
-		audio.play();
+		playAudio(audio, prev);
+	});
+
+	$('.pause').click(function(e) {
+		e.preventDefault();
+		stopAudio();
+	});
+
+	var stopAudio = function() {
+		audio.pause();
+		$('.pause').hide();
+		$('.play').show();
+		$('.progress-bar').removeClass('active');
+	};
+
+	var playAudio = function(a, e) {
+		$('.progress-bar').attr('aria-valuemax', a.duration);
+		$('.track').removeClass('warning');
+
+		if (e.length) {
+			$(e).addClass('warning');
+		}
+
+		$('.track-title').html($('.track.warning').attr('audio-title'));
+		a.play();
+
 		$('.play').hide();
 		$('.pause').show();
-	});
+
+		audio.addEventListener('timeupdate',function (){
+	        var curtime = parseInt(audio.currentTime, 10);
+	        $('.progress-bar').css('width', curtime+"%").attr('aria-valuenow', curtime);
+			if (audio.ended) {
+				stopAudio();
+			}
+	    });
+	};
 
 </script>
 

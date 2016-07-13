@@ -199,6 +199,14 @@ a.list-group-item {
 	background-color: #D9EDF7;
 }
 
+.list-group-item.warning {
+	background-color: #fcf8e3;
+}
+
+.list-group-item.danger {
+	background-color: #f2dede;
+}
+
 .panel-orange>.panel-heading {
 	background-color: #FF4E00;
 	color: #fff;
