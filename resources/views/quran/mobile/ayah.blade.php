@@ -6,7 +6,7 @@
 
 	@include('quran.mobile._search-form')
 
-	<div id="post-list" style="margin-top:66px;">
+	<div id="post-list" style="margin-top:55px;">
 		@each('quran.mobile._ayat', $ayats, 'a')
 	</div>
 
@@ -26,7 +26,7 @@
 <script type="text/javascript">
 	if (q.length > 0) {
 		$('#post-list .terjemahan').each(function(index, element) {
-			text = $(this).html().replace(RegExp(q, "gi"),'<b><i>'+q+'</i></b>');
+			text = $(this).html().replace(RegExp(q, "gi"),'<b>'+q+'</b>');
 			$(this).html(text);
 		});
 	}
