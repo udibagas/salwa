@@ -115,7 +115,7 @@
 
 		a.addEventListener('timeupdate',function (){
 	        var progress = parseInt(a.currentTime, 10)/duration*100;
-	        $('.progress-bar').css('width', progress+"%");
+			$('.progress-bar').css('width', progress+"%").attr('aria-valuenow', progress);
 			if (a.ended) {
 				stopAudio();
 			}
