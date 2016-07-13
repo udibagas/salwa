@@ -93,16 +93,23 @@
 		$('.track-title').html($('.track.warning').attr('audio-title'));
 		a.play();
 
-		$('.play').hide();
-		$('.pause').show();
+		var duration = 0;
 
-		audio.addEventListener('timeupdate',function (){
-	        var curtime = parseInt(audio.currentTime, 10);
-	        $('.progress-bar').css('width', curtime+"%").attr('aria-valuenow', curtime);
-			if (audio.ended) {
+		a.addEventListener('loadedmetadata', function() {
+			duration = parseInt(a.duration, 10);
+
+		});
+
+		a.addEventListener('timeupdate',function (){
+	        var progress = parseInt(a.currentTime, 10)/duration*100;
+	        $('.progress-bar').css('width', progress+"%");
+			if (a.ended) {
 				stopAudio();
 			}
 	    });
+
+		$('.play').hide();
+		$('.pause').show();
 	};
 
 </script>

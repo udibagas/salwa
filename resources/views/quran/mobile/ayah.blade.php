@@ -6,7 +6,7 @@
 
 	@include('quran.mobile._search-form')
 
-	<div id="post-list" style="margin-top:55px;">
+	<div id="post-list" style="margin-top:66px;">
 		@each('quran.mobile._ayat', $ayats, 'a')
 	</div>
 
