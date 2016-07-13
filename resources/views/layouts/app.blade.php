@@ -150,9 +150,11 @@
 
 			@endif
 
-			$('.profile').initial({charCount:1, height:50, width:50,fontSize:25});
+			// $(document).on('load', '.profile', function() {
+				$('.profile').initial({charCount:1, height:50, width:50,fontSize:25});
+			// });
 
-			$('.delete').click(function() {
+			$(document).on('click', '.delete', function() {
 				return confirm('Anda yakin?');
 			});
 

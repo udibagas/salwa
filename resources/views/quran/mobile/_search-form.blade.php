@@ -43,8 +43,7 @@
 		$('.pause').show();
 	});
 
-	$('.track').click(function(e) {
-		// e.preventDefault();
+	$(document).on('click', '.track', function() {
 		audio.pause();
 		audio = new Audio($(this).attr('audiourl'));
 		$('.track').removeClass('warning');
