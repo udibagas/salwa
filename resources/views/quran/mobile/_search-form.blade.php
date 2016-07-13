@@ -1,24 +1,26 @@
-<div class="row-post info text-center" style="height:90px;position:fixed;top:50px;left:10px;right:10px;z-index:998;">
-	{!! Form::open(['method' => 'GET', 'url' => '/quran']) !!}
-	{!! Form::text('q', request('q'), ['class' => 'form-control search-field', 'placeholder' => 'Search']) !!}
-	{!! Form::close() !!}
-
-	<div style="margin-top:7px;">
-		<a href="#" class="btn btn-info btn-sm prev">
-			<i class="fa fa-step-backward"></i>
-		</a>
-		<a href="#" class="btn btn-info btn-sm pause">
-			<i class="fa fa-pause"></i>
-		</a>
-		<a href="/quran_audio/misyari/{{ $ayats->first()->surat_id }}/{{ $ayats->first()->ayat_id }}.mp3" class="btn btn-info btn-sm play">
-			<i class="fa fa-play"></i>
-		</a>
-		<a href="#" class="btn btn-info btn-sm next">
-			<i class="fa fa-step-forward"></i>
-		</a>
+<div class="row-post no-gutter info" style="height:55px;position:fixed;top:50px;left:10px;right:10px;z-index:998;">
+	<div class="col-xs-8">
+		{!! Form::open(['method' => 'GET', 'url' => '/quran']) !!}
+		{!! Form::text('q', request('q'), ['class' => 'form-control search-field', 'placeholder' => 'Search']) !!}
+		{!! Form::close() !!}
 	</div>
 
-
+	<div class="col-xs-4">
+		<div class="text-right" style="margin-top:2px;">
+			<a href="#" class="btn btn-info btn-sm prev">
+				<i class="fa fa-step-backward"></i>
+			</a>
+			<a href="#" class="btn btn-info btn-sm pause">
+				<i class="fa fa-pause"></i>
+			</a>
+			<a href="/quran_audio/misyari/{{ $ayats->first()->surat_id }}/{{ $ayats->first()->ayat_id }}.mp3" class="btn btn-info btn-sm play">
+				<i class="fa fa-play"></i>
+			</a>
+			<a href="#" class="btn btn-info btn-sm next">
+				<i class="fa fa-step-forward"></i>
+			</a>
+		</div>
+	</div>
 </div>
 
 @push('script')
@@ -76,7 +78,7 @@
 		next.addClass('warning');
 
 		$('html, body').animate({
-	        scrollTop: $(".track.warning").offset().top - 140
+	        scrollTop: $(".track.warning").offset().top - 105
 	    }, 700);
 
 		audio.play();
@@ -99,7 +101,7 @@
 		prev.addClass('warning');
 
 		$('html, body').animate({
-	        scrollTop: $(".track.warning").offset().top - 140
+	        scrollTop: $(".track.warning").offset().top - 105
 	    }, 700);
 
 		audio.play();
