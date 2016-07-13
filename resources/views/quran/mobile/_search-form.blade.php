@@ -48,6 +48,11 @@
 		audio = new Audio($(this).attr('audiourl'));
 		$('.track').removeClass('warning');
 		$(this).addClass('warning');
+
+		$('html, body').animate({
+	        scrollTop: $(this).offset().top - 105
+	    }, 700);
+
 		$('.track-title').html($('.track.warning').html());
 		audio.play();
 
