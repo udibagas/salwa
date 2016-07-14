@@ -57,16 +57,35 @@
 
 <script type="text/javascript">
 	$('.select-all').click(function() {
+		var t = this;
 		if(this.checked) {
-			$(':checkbox').each(function() {
+			$(':checkbox[name="id"]').each(function() {
 				this.checked = true;
+				var tr = $(this).parent().parent();
+				tr.addClass('info');
+				if (tr.hasClass('danger')) {
+					tr.addClass('dgr').removeClass('danger');
+				}
 			});
 		} else {
-			$(':checkbox').each(function() {
+			$(':checkbox[name="id"]').each(function() {
 				this.checked = false;
+				var tr = $(this).parent().parent();
+				tr.removeClass('info');
+				if (tr.hasClass('dgr')) {
+					tr.addClass('danger').removeClass('dgr');
+				}
 			});
 		}
 	});
+
+	$('body').keypress(function(e) {
+		console.log(e.key);
+	});
+
+	// $("tbody tr").shiftKeypress(function() {
+	//     $(this).find(':checkbox').checked(true);
+	// });
 
 	$('body').on('submit', 'form.action', function(e) {
 
@@ -96,7 +115,7 @@
 		$.ajax({
 			url : action,
 			type: 'GET',
-			data: {selection:selection,page:{{request('page') or 1}}},
+			data: {selection:selection,page:{{request('page', 1)}}},
 			dataType: 'json',
 			success: function(j) {
 				$('#table').html(j.table);
