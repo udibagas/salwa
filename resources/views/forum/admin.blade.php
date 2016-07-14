@@ -23,7 +23,7 @@
 			<h3 class="panel-title">MANAGE FORUM</h3>
 		</div>
 		<div class="panel-body">
-			{!! Form::open(['class' => 'form-inline action']) !!}
+			{!! Form::open(['class' => 'form-inline']) !!}
 
 				{!! Form::select('action', [
 						'/forum/activate' 	=> 'Activate',
@@ -36,7 +36,7 @@
 					['class' => 'form-control', 'placeholder' => '--Select Action--']
 				) !!}
 
-				<button type="submit" name="submit" class="btn btn-info">SUBMIT</button>
+				<button type="submit" name="submit" class="btn btn-info action">SUBMIT</button>
 				<div class="pull-right text-bold">
 					Showing {{ $forums->firstItem() }} to {{ $forums->lastItem() }} of {{ $forums->total() }} entries
 				</div>
@@ -57,17 +57,42 @@
 
 <script type="text/javascript">
 
-	$('#pagination').on('click', 'a', function(e) {
-		e.preventDefault();
+	var page = {{ $forums->currentPage() }};
+
+	var loadData = function(url, data) {
 		$.ajax({
-			url : this.href,
+			url : url,
 			type: 'GET',
+			data: data,
 			dataType: 'json',
 			success: function(j) {
 				$('#table').html(j.table);
 				$('#pagination').html(j.pagination);
+				page = j.page;
 			}
 		});
+	}
+
+	$('#pagination').on('click', 'a', function(e) {
+		e.preventDefault();
+		loadData(this.href, null);
+	});
+
+	$('body').on('click', '.search', function(e) {
+		e.preventDefault();
+		var url = '{{url()->current()}}';
+		var data = {
+			title:$('[name=title]').val(),
+			user:$('[name=user]').val(),
+			group_id:$('[name=group_id]').val(),
+			close:$('[name=close]').val()
+		};
+		loadData(url, data);
+	});
+
+	$('body').on('click', '.refresh', function(e) {
+		e.preventDefault();
+		loadData('{{url()->current()}}', data);
 	});
 
 	$('body').on('click', '.select-all', function() {
@@ -93,21 +118,13 @@
 		}
 	});
 
-	$('body').keypress(function(e) {
-		console.log(e.key);
-	});
-
-	// $("tbody tr").shiftKeypress(function() {
-	//     $(this).find(':checkbox').checked(true);
+	// $('body').keypress(function(e) {
+	// 	console.log(e.key);
 	// });
 
-	$('body').on('submit', 'form.action', function(e) {
+	$('form').on('click', '.action', function(e) {
 
 		e.preventDefault();
-
-		if (!confirm('Apakah Anda yakin?')) {
-			return;
-		}
 
 		var action = $('select[name="action"]').val();
 		var selection = [];
@@ -126,17 +143,11 @@
 			return;
 		}
 
-		$.ajax({
-			url : action,
-			type: 'GET',
-			data: {selection:selection,page:{{request('page', 1)}}},
-			dataType: 'json',
-			success: function(j) {
-				$('#table').html(j.table);
-				$('#pagination').html(j.pagination);
-			}
-		});
+		if (!confirm('Apakah Anda yakin?')) {
+			return;
+		}
 
+		loadData(action, {selection:selection, page: page});
 	});
 
 </script>

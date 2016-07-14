@@ -42,8 +42,8 @@
 			<td> </td>
 			<!-- <td> </td> -->
 			<td style="padding-top:10px;" class="text-right">
-				<button type="submit" name="submit" class="btn btn-xs btn-info"><i class="fa fa-filter"></i></button>
-				<a href="/forum/admin" class="btn btn-xs btn-info"><i class="fa fa-refresh"></i></a>
+				<button type="submit" name="submit" class="btn btn-xs btn-info search"><i class="fa fa-filter"></i></button>
+				<a href="/forum/admin" class="btn btn-xs btn-info refresh"><i class="fa fa-refresh"></i></a>
 			</td>
 		</tr>
 		{!! Form::close() !!}

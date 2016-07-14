@@ -302,6 +302,8 @@ class ForumController extends Controller
 							return $query->where('title', 'like', '%'.$title.'%');
 						})->when($request->group_id, function($query) use ($request) {
 							return $query->where('group_id', $request->group_id);
+						})->when($request->close, function($query) use ($request) {
+							return $query->where('close', $request->close);
 						})->when($request->user, function($query) use ($request) {
 							return $query->join('users', 'users.user_id', '=', 'forums.user_id')
 										->where('users.name', 'like', '%'.$request->user.'%');
@@ -310,7 +312,8 @@ class ForumController extends Controller
 		if ($request->ajax()) {
 			return response()->json([
 				'table'			=> " ".view('forum._table', ['forums' => $forums]),
-				'pagination'	=> " ".$forums->appends(['title' => request('title'),'user' => request('user'),'group_id' => request('group_id')])->links()
+				'pagination'	=> " ".$forums->appends(['title' => request('title'),'user' => request('user'),'group_id' => request('group_id')])->links(),
+				'page'			=> $forums->currentPage()
 			]);
 		}
 
@@ -324,7 +327,9 @@ class ForumController extends Controller
 		Forum::whereIn('forum_id', $request->selection)->update(['status' => 'a']);
 
 		if ($request->ajax()) {
-			return $this->getForumList();
+			$forums = Forum::orderBy('forum_id', 'DESC')->paginate();
+			$forums->setPath('/forum/admin');
+			return $this->getForumList($forums);
 		}
 
 		return redirect($request->redirect);
@@ -335,7 +340,9 @@ class ForumController extends Controller
 		Forum::whereIn('forum_id', $request->selection)->update(['status' => 'b']);
 
 		if ($request->ajax()) {
-			return $this->getForumList();
+			$forums = Forum::orderBy('forum_id', 'DESC')->paginate();
+			$forums->setPath('/forum/admin');
+			return $this->getForumList($forums);
 		}
 
 		return redirect($request->redirect);
@@ -346,7 +353,9 @@ class ForumController extends Controller
 		Forum::whereIn('forum_id', $request->selection)->update(['close' => 'N']);
 
 		if ($request->ajax()) {
-			return $this->getForumList();
+			$forums = Forum::orderBy('forum_id', 'DESC')->paginate();
+			$forums->setPath('/forum/admin');
+			return $this->getForumList($forums);
 		}
 
 		return redirect($request->redirect);
@@ -357,7 +366,9 @@ class ForumController extends Controller
 		Forum::whereIn('forum_id', $request->selection)->update(['close' => 'Y']);
 
 		if ($request->ajax()) {
-			return $this->getForumList();
+			$forums = Forum::orderBy('forum_id', 'DESC')->paginate();
+			$forums->setPath('/forum/admin');
+			return $this->getForumList($forums);
 		}
 
 		return redirect($request->redirect);
@@ -384,20 +395,20 @@ class ForumController extends Controller
 		}
 
 		if ($request->ajax()) {
-			return $this->getForumList();
+			$forums = Forum::orderBy('forum_id', 'DESC')->paginate();
+			$forums->setPath('/forum/admin');
+			return $this->getForumList($forums);
 		}
 
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 
-	protected function getForumList()
+	protected function getForumList($forums)
 	{
-		$forums = Forum::orderBy('forum_id', 'DESC')->paginate();
-		$forums->setPath('/forum/admin');
-
 		return response()->json([
 			'table' 		=> " ".view('forum._table', ['forums' => $forums]),
-			'pagination'	=> " ".$forums->links()
+			'pagination'	=> " ".$forums->links(),
+			'page'			=> $forums->currentPage()
 		]);
 	}
 }

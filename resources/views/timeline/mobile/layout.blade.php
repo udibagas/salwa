@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="SalamDakwah" />
+		<meta name="description" content="video kajian, audio kajian, forum islami, jadwal kajian dan artikel, yang berdasarkan Al-Quran dan As-Sunnah sebagaimana pemahaman para sahabat Rosululloh Shallallahu Alaihi Wasallam" />
+		<meta name="keyword" content="video kajian,audio kajian,forum islami,jadwal kajian,artikel,Al-Quran,Sunnah,sahabat,Rosululloh,islam,muslim,muhammad" />
+		<meta name="copyright" content="Copyright {{ date('Y') }} by SalamDakwah.Com" />
+		<meta name="language" content="id" />
+		<meta name="distribution" content="Global" />
+		<meta name="rating" content="General" />
+		<meta name="robots" content="index,follow" />
+		<meta name="googlebot" content="index,follow" />
+
+		<meta name="revisit-after" content="1 days" />
+		<meta name="expires" content="never" />
+		<meta name="dc.title" content="SalamDakwah.Com" />
+		<meta name="dc.creator.e-mail" content="udibagas@gmail.com" />
+		<meta name="dc.creator.name" content="SalamDakwah" />
+		<meta name="dc.creator.website" content="http://www.salamdakwah.com" />
+		<meta name="tgn.name" content="Jakarta" />
+		<meta name="tgn.nation" content="Indonesia" />
+
+        <link rel="icon" href="/images/logo.png">
+        <title>Salwa Timeline</title>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/fa/css/font-awesome.min.css" rel="stylesheet">
+		<link href="/css/timeline.css" rel="stylesheet">
+		<link href="/sidr/dist/stylesheets/jquery.sidr.bare.css" rel="stylesheet">
+
+		@stack('css')
+
+		<script type="text/javascript" src="/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/initialjs/dist/initial.min.js"></script>
+
+		@if ($isMobile)
+		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
+		@endif
+
+    </head>
+
+    <body>
+
+		<div style="height:105px;position:fixed;top:0;left:0;right:0;background-color:#032876;z-index:998;padding:0 10px;">
+			<a href="/timeline">
+				<img src="/images/logo.png" alt="Salwa Timeline" class="img-responsive" style="height:30px;display:block;margin:10px auto;" />
+			</a>
+			@include('timeline._form')
+		</div>
+
+        <div class="container">
+
+            @yield('content')
+
+			<div class="row text-center" style="padding:10px;">
+				<small>&copy; {{date('Y')}} - <a href="http://www.salamdakwah.com">Www.SalamDakwah.Com</a></small>
+			</div>
+
+        </div>
+
+		<script type="text/javascript">
+			var search = '{{ request("search") }}';
+			var group_id = '{{ request("group_id") }}';
+			var user_id = '{{ request("user_id") }}';
+			var q = '{{ request("q") }}';
+
+			$('.profile').initial({charCount:1, height:40, width:40,fontSize:20});
+
+			var lastPage = false;
+			var loadMore = function() {
+				$.ajax({
+					url: url,
+					data: {search: search, group_id: group_id, user_id: user_id, q: q},
+					dataType: 'json',
+					beforeSend: function() {
+						nextBtn.hide();
+						$('.loading').removeClass('hidden');
+					},
+					success: function(json) {
+						$('.loading').addClass('hidden');
+						$('#post-list').append(json.html);
+
+						if (json.currentPage < json.lastPage) {
+							nextBtn.show();
+						} else {
+							lastPage = true;
+							nextBtn.parent().html('<br /><a href="#" class="back-to-top"><i class="fa fa-arrow-circle-up"></i> BACK TO TOP</a><br /><br />');
+						}
+
+						$('.profile').initial({charCount:1, height:40, width:40,fontSize:20});
+						if (q.length > 0) {
+							$('#post-list h4, #post-list p, #post-list .terjemahan').each(function(index, element) {
+								text = $(this).html().replace(RegExp(q, "gi"),'<b>'+q+'</b>');
+								$(this).html(text);
+							});
+						}
+						url = json.nextPageUrl;
+					}
+				});
+			};
+
+			$(window).scroll(function() {
+				if($(window).scrollTop() + $(window).height() == $(document).height() && lastPage == false && url != '') {
+				   loadMore();
+				}
+			});
+
+
+			var nextBtn = $('.next-page');
+			nextBtn.on('click', function(e) {
+				e.preventDefault();
+				loadMore();
+			});
+
+			$('body').on("click", ".back-to-top", function(e) {
+				e.preventDefault()
+				$("html, body").animate({scrollTop: 0}, 700);
+			});
+
+
+		</script>
+
+		@stack('script')
+
+    </body>
+</html>

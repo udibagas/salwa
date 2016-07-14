@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class SalwaTimeline extends Model
 {
-    public $table = 'salwa_timeline';
+    public $table = 'salwa_search';
 
-	public $dates = ['created', 'updated'];
+	public $dates = ['tanggal'];
 
-	public function user()
-	{
-		return $this->belongsTo('App\User', 'user_id', 'user_id');
-	}
+	// public function user()
+	// {
+	// 	return $this->belongsTo('App\User', 'user_id', 'user_id');
+	// }
 }

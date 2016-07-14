@@ -1,55 +1,35 @@
 <div class="row-post">
-	@if ($p->nama_tabel == 'forums')
-	<a href="/forum/{{ $p->id }}-{{ str_slug($p->judul) }}">
-		<h4>{{ $p->judul }}</h4>
-	</a>
-	@elseif ($p->nama_tabel == 'videos')
-	<a href="/video/{{ $p->id }}-{{ str_slug($p->judul) }}">
-		<h4>{{ $p->judul }}</h4>
-	</a>
-	@elseif ($p->nama_tabel == 'mp3_download')
-	<a href="/audio/{{ $p->id }}-{{ str_slug($p->judul) }}">
-		<h4>{{ $p->judul }}</h4>
-	</a>
-	@elseif ($p->nama_tabel == 'murotal')
-	<a href="/murottal/{{ $p->id }}-{{ str_slug($p->judul) }}">
-		<h4>{{ $p->judul }}</h4>
-	</a>
-	@elseif ($p->nama_tabel == 'salwaimages')
-	<a href="/image/{{ $p->id }}-{{ str_slug($p->judul) }}">
-		<h4>{{ $p->judul }}</h4>
-	</a>
-	@else
-	<a href="/{{ $p->nama_tabel }}/{{ $p->id }}-{{ str_slug($p->judul) }}">
-		<h4>{{ $p->judul }}</h4>
-	</a>
-	@endif
+	<div class="media">
+		<div class="media-left">
+			<div class="" style="width:40px;width;40px;">
+				<img class="media-object img-circle cover profile" data-name="{{ $p->judul }}" />
+			</div>
+		</div>
+		<div class="media-body">
+			<strong>Ini Nama saya</strong><br>
+			<small class="text-muted">
+				{{ $p->tanggal->diffForHumans() }}
+				in {{ $p->nama_tabel }}
+			</small>
+		</div>
+	</div>
 
-	<?php
-		$text = strip_tags($p->isi);
-		$pos = stripos($text,request('q'));
-		$start_pos = $pos-74;
-		if($start_pos < 0) $start_pos = 0;
-		$pot_text = substr($text,$start_pos,150);
-	?>
+	<h4>{{ $p->judul }}</h4>
+	<p>{!! str_limit(strip_tags($p->isi), 200) !!}</p>
+</div>
+<div class="row-post">
+	<div class="col-xs-4">
+		<a href="#">5 <i class="fa fa-heart"></i></a>
+	</div>
+	<div class="col-xs-4  text-center">
+		<a href="#">10 <i class="fa fa-comments"></i></a>
+	</div>
+	<div class="col-xs-4  text-right">
+		<a href="#">65 <i class="fa fa-share-alt"></i></a>
+	</div>
 
-	<p>{{ $pot_text }}</p>
+	<div class="clearfix">
 
-	<div class="text-muted">
-		{{ $p->tanggal->diffForHumans() }}
-		in
-		@if ($p->nama_tabel == 'forums')
-		<a href="/forum/search?search={{ request('q') }}">forum</a>
-		@elseif ($p->nama_tabel == 'videos')
-		<a href="/video?search={{ request('q') }}">video</a>
-		@elseif ($p->nama_tabel == 'mp3_download')
-		<a href="/audio?search={{ request('q') }}">audio</a>
-		@elseif ($p->nama_tabel == 'murotal')
-		<a href="/murottal?search={{ request('q') }}">murottal</a>
-		@elseif ($p->nama_tabel == 'salwaimages')
-		<a href="/image?search={{ request('q') }}">image</a>
-		@else
-		<a href="/{{ $p->nama_tabel }}?search={{ request('q') }}">{{ $p->nama_tabel }}</a>
-		@endif
 	</div>
 </div>
+<br>
