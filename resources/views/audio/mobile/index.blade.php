@@ -4,7 +4,9 @@
 
 @section('content')
 
-	<h4 class="title">SALWA AUDIO</h4>
+	@include('audio.mobile._player')
+	
+	<h4 class="title" style="margin-top:55px;">SALWA AUDIO</h4>
 	<div id="post-list">
 		@each('audio.mobile._list', $audios, 'a')
 	</div>
@@ -27,7 +29,86 @@
 @push('script')
 
 <script type="text/javascript">
-var url = '{{ $audios->nextPageUrl() }}';
+
+	$('.pause').hide();
+
+	var audio = new Audio('{{ $audios->count() ? $audios->first()->file_mp3 : '' }}');
+
+	$('.track').first().addClass('warning');
+
+	$('.play').click(function(e) {
+		e.preventDefault();
+		audio.pause();
+		playAudio(audio, $('.track.warning'));
+	});
+
+	$(document).on('click', '.track', function() {
+		audio.pause();
+		audio = new Audio($(this).attr('audiourl'));
+		playAudio(audio, $(this));
+	});
+
+	$('.next').click(function(e) {
+		e.preventDefault();
+		var next = $('.track.warning').next();
+
+		if (next.length == 0) {
+			return;
+		}
+
+		audio.pause();
+		audio = new Audio($(next).attr('audiourl'));
+		playAudio(audio, next);
+	});
+
+	$('.prev').click(function(e) {
+		e.preventDefault();
+		var prev = $('.track.warning').prev('.track');
+
+		if (prev.length == 0) {
+			return;
+		}
+
+		audio.pause();
+		audio = new Audio($(prev).attr('audiourl'));
+		playAudio(audio, prev);
+	});
+
+	$('.pause').click(function(e) {
+		e.preventDefault();
+		stopAudio();
+	});
+
+	var stopAudio = function() {
+		audio.pause();
+		$('.pause').hide();
+		$('.play').show();
+	};
+
+	var playAudio = function(a, e) {
+		$('.track').removeClass('warning');
+
+		if (e.length) {
+			$(e).addClass('warning');
+		}
+
+		$('html, body').animate({
+	        scrollTop: $(".track.warning").offset().top - 105
+	    }, 500);
+
+		a.play();
+		$('.play').hide();
+		$('.pause').show();
+
+		a.addEventListener('timeupdate',function (){
+			if (a.ended) {
+				stopAudio();
+			}
+	    });
+	};
+
+	var url = '{{ $audios->nextPageUrl() }}';
+
 </script>
 
 @endpush
