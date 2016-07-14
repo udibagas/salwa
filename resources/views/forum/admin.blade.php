@@ -69,7 +69,13 @@
 	});
 
 	$('body').on('submit', 'form.action', function(e) {
+
 		e.preventDefault();
+
+		if (!confirm('Apakah Anda yakin?')) {
+			return;
+		}
+
 		var action = $('select[name="action"]').val();
 		var selection = [];
 
@@ -90,13 +96,14 @@
 		$.ajax({
 			url : action,
 			type: 'GET',
-			data: {selection:selection,page:{{request('page')}}},
+			data: {selection:selection,page:{{request('page') or 1}}},
 			dataType: 'json',
 			success: function(j) {
 				$('#table').html(j.table);
 				$('#pagination').html(j.pagination);
 			}
 		});
+
 	});
 
 </script>
