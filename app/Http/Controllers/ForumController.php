@@ -313,27 +313,85 @@ class ForumController extends Controller
 		]);
 	}
 
-	public function activate(Forum $forum, Request $request)
+	public function activate(Request $request)
 	{
-		$forum->update(['status' => 'a']);
+		Forum::whereIn('forum_id', $request->selection)->update(['status' => 'a']);
+
+		if ($request->ajax()) {
+			return $this->getForumList();
+		}
+
 		return redirect($request->redirect);
 	}
 
-	public function deactivate(Forum $forum, Request $request)
+	public function deactivate(Request $request)
 	{
-		$forum->update(['status' => 'b']);
+		Forum::whereIn('forum_id', $request->selection)->update(['status' => 'b']);
+
+		if ($request->ajax()) {
+			return $this->getForumList();
+		}
+
 		return redirect($request->redirect);
 	}
 
-	public function open(Forum $forum, Request $request)
+	public function open(Request $request)
 	{
-		$forum->update(['close' => 'N']);
+		Forum::whereIn('forum_id', $request->selection)->update(['close' => 'N']);
+
+		if ($request->ajax()) {
+			return $this->getForumList();
+		}
+
 		return redirect($request->redirect);
 	}
 
-	public function close(Forum $forum, Request $request)
+	public function close(Request $request)
 	{
-		$forum->update(['close' => 'Y']);
+		Forum::whereIn('forum_id', $request->selection)->update(['close' => 'Y']);
+
+		if ($request->ajax()) {
+			return $this->getForumList();
+		}
+
 		return redirect($request->redirect);
+	}
+
+	public function delete(Request $request)
+    {
+		$forums = Forum::whereIn('forum_id', $request->selection)->get();
+
+		foreach ($forums as $forum)
+		{
+			$forum->delete();
+
+			foreach ($forum->posts as $post) {
+				$post->delete();
+
+				foreach ($post->images as $image) {
+					$image->delete();
+					if ($image->img_image && file_exists($image->img_image)) {
+						unlink($image->img_image);
+					}
+				}
+			}
+		}
+
+		if ($request->ajax()) {
+			return $this->getForumList();
+		}
+
+		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
+    }
+
+	protected function getForumList()
+	{
+		$forums = Forum::orderBy('forum_id', 'DESC')->paginate();
+		$forums->setPath('/forum/admin');
+
+		return response()->json([
+			'table' 		=> " ".view('forum._table', ['forums' => $forums]),
+			'pagination'	=> " ".$forums->links()
+		]);
 	}
 }

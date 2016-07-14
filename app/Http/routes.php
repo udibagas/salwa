@@ -17,6 +17,8 @@ Route::get('jajal', function() {
 	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);
 });
 
+Route::get('timeline', 'TimelineController@index');
+
 Route::get('search', 'HomeController@search');
 Route::get('salwa.id', 'HomeController@salwaId');
 
@@ -63,10 +65,11 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('comment/{comment}/approve', 'CommentController@approve');
 		Route::get('comment/approve-all', 'CommentController@approveAll');
 		Route::get('forum/admin', 'ForumController@admin');
-		Route::get('forum/{forum}/activate', 'ForumController@activate');
-		Route::get('forum/{forum}/deactivate', 'ForumController@deactivate');
-		Route::get('forum/{forum}/open', 'ForumController@open');
-		Route::get('forum/{forum}/close', 'ForumController@close');
+		Route::get('forum/activate', 'ForumController@activate');
+		Route::get('forum/deactivate', 'ForumController@deactivate');
+		Route::get('forum/open', 'ForumController@open');
+		Route::get('forum/close', 'ForumController@close');
+		Route::get('forum/delete', 'ForumController@delete');
 		Route::get('hadist/admin', 'HadistController@admin');
 		Route::get('image/admin', 'ImageController@admin');
 		Route::get('informasi/admin', 'InformasiController@admin');
