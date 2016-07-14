@@ -31,7 +31,7 @@
 
 	$('.pause').hide();
 
-	var audio = new Audio('{{ $murottals->first()->file_mp3 }}');
+	var audio = new Audio('{{ $murottals->count() ? $murottals->first()->file_mp3 : '' }}');
 
 	$('.track').first().addClass('warning');
 

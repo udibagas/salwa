@@ -40,33 +40,16 @@ class QuranController extends Controller
 
 		$ayats = Ayah::when($request->q, function($query) use ($request) {
 					$keyword = str_replace(' ', '%', $request->q);
-					return $query->where('ayat_text', 'LIKE', '%'.$keyword.'%')
-								->orWhere('terjemahan', 'LIKE', '%'.$keyword.'%');
+					return $query->join('surah', 'surah.id', '=', 'ayah.surat_id')
+								->where('ayat_text', 'LIKE', '%'.$keyword.'%')
+								->orWhere('terjemahan', 'LIKE', '%'.$keyword.'%')
+								->orWhere('surah.nama', 'LIKE', '%'.$keyword.'%')
+								->orWhere('surah.arti', 'LIKE', '%'.$keyword.'%');
 				})->paginate();
 
 		if ($request->ajax()) {
 			return $this->getAyatsJson($ayats);
 		}
-
-		// $pattern1 = '/[1]/';
-		// $pattern2 = '/[0-9](:[0-9])/';
-		// $pattern3 = '/[0-9](:[0-9](-[0-9]))/';
-		//
-		// $a = preg_match($pattern3, $request->search, $matches1);
-		// $b = preg_match($pattern2, $request->search, $matches2);
-		// $c = preg_match($pattern1, $request->search, $matches3);
-
-		// if ($a) {
-		// 	return redirect('/quran/'.$matches1[0]);
-		// }
-		//
-		// if ($b) {
-		// 	return redirect('/quran/'.$matches2[0]);
-		// }
-		//
-		// if ($c) {
-		// 	return redirect('/quran/'.$matches3[0]);
-		// }
 
 		return view($view, ['ayats' => $ayats, 'surah' => Surah::find(1)]);
 	}
@@ -83,7 +66,6 @@ class QuranController extends Controller
 
 		if ($request->ajax())
 		{
-			// $html = view('quran.mobile._image', ['page' => $request->page]);
 			$html = '<img src="/quran_image/'.sprintf("%03d", $request->page).'.jpg" class="img-responsive" alt="" />';
 
 			return response()->json([

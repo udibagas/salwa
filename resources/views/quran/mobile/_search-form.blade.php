@@ -12,7 +12,7 @@
 		<a href="#" class="btn btn-info btn-sm pause">
 			<i class="fa fa-pause"></i>
 		</a>
-		<a href="/quran_audio/misyari/{{ $ayats->first()->surat_id }}/{{ $ayats->first()->ayat_id }}.mp3" class="btn btn-info btn-sm play">
+		<a href="@if ($ayats->count()) /quran_audio/misyari/{{ $ayats->first()->surat_id }}/{{ $ayats->first()->ayat_id }}.mp3 @endif" class="btn btn-info btn-sm play">
 			<i class="fa fa-play"></i>
 		</a>
 		<a href="#" class="btn btn-info btn-sm next">
@@ -28,7 +28,7 @@
 	// hide pause and stop at the beginning
 	$('.pause').hide();
 
-	var audio = new Audio('/quran_audio/misyari/{{ $ayats->first()->surat_id }}/{{ $ayats->first()->ayat_id }}.mp3');
+	var audio = new Audio('@if ($ayats->count()) /quran_audio/misyari/{{ $ayats->first()->surat_id }}/{{ $ayats->first()->ayat_id }}.mp3 @endif');
 
 	$('.track').first().addClass('warning');
 
