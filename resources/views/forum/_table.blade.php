@@ -6,6 +6,7 @@
 			<th>Judul</th>
 			<th>User</th>
 			<th>Kategori</th>
+			<th>Close</th>
 			<th style="width:150px;">Created At</th>
 			<!-- <th style="width:150px;">Updated At</th> -->
 			<th>Action</th>
@@ -29,6 +30,15 @@
 					]
 				) }}
 			</td>
+			<td>
+				{{ Form::select('close',
+					['Y' => 'Y', 'N' => 'N'],
+					request('close'), [
+						'class' => 'form-control',
+						'placeholder' => '-All-'
+					]
+				) }}
+			</td>
 			<td> </td>
 			<!-- <td> </td> -->
 			<td style="padding-top:10px;" class="text-right">
@@ -47,6 +57,7 @@
 				<td><a href="/post/?forum_id={{ $a->forum_id }}">{{ $a->title }}</a></td>
 				<td>{{ $a->user ? $a->user->name : '' }}</td>
 				<td>{{ $a->group ? $a->group->group_name : '' }}</td>
+				<td>{{ $a->close }}</td>
 				<td>{{ $a->created->diffForHumans() }}</td>
 				<!-- <td>{{ $a->updated }}</td> -->
 				<td class="text-right">

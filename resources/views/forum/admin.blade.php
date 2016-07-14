@@ -56,7 +56,21 @@
 @push('script')
 
 <script type="text/javascript">
-	$('.select-all').click(function() {
+
+	$('#pagination').on('click', 'a', function(e) {
+		e.preventDefault();
+		$.ajax({
+			url : this.href,
+			type: 'GET',
+			dataType: 'json',
+			success: function(j) {
+				$('#table').html(j.table);
+				$('#pagination').html(j.pagination);
+			}
+		});
+	});
+
+	$('body').on('click', '.select-all', function() {
 		var t = this;
 		if(this.checked) {
 			$(':checkbox[name="id"]').each(function() {
