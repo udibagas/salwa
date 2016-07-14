@@ -5,21 +5,19 @@
 		{!! Form::close() !!}
 	</div>
 
-	<div class="col-xs-4">
-		<div class="text-right" style="margin-top:2px;">
-			<a href="#" class="btn btn-info btn-sm prev">
-				<i class="fa fa-step-backward"></i>
-			</a>
-			<a href="#" class="btn btn-info btn-sm pause">
-				<i class="fa fa-pause"></i>
-			</a>
-			<a href="/quran_audio/misyari/{{ $ayats->first()->surat_id }}/{{ $ayats->first()->ayat_id }}.mp3" class="btn btn-info btn-sm play">
-				<i class="fa fa-play"></i>
-			</a>
-			<a href="#" class="btn btn-info btn-sm next">
-				<i class="fa fa-step-forward"></i>
-			</a>
-		</div>
+	<div class="text-right" style="margin-top:2px;">
+		<a href="#" class="btn btn-info btn-sm prev">
+			<i class="fa fa-step-backward"></i>
+		</a>
+		<a href="#" class="btn btn-info btn-sm pause">
+			<i class="fa fa-pause"></i>
+		</a>
+		<a href="/quran_audio/misyari/{{ $ayats->first()->surat_id }}/{{ $ayats->first()->ayat_id }}.mp3" class="btn btn-info btn-sm play">
+			<i class="fa fa-play"></i>
+		</a>
+		<a href="#" class="btn btn-info btn-sm next">
+			<i class="fa fa-step-forward"></i>
+		</a>
 	</div>
 </div>
 

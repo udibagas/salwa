@@ -4,7 +4,8 @@
 
 @section('content')
 
-	<h4 class="title">MUROTTAL</h4>
+	@include('murottal.mobile._player')
+	<h4 class="title" style="margin-top:55px;">MUROTTAL</h4>
 	<div id="post-list">
 		@each('murottal.mobile._list', $murottals, 'a')
 	</div>
@@ -31,6 +32,8 @@
 	$('.pause').hide();
 
 	var audio = new Audio('{{ $murottals->first()->file_mp3 }}');
+
+	$('.track').first().addClass('warning');
 
 	$('.play').click(function(e) {
 		e.preventDefault();
@@ -77,8 +80,8 @@
 
 	var stopAudio = function() {
 		audio.pause();
-		// $('.pause').hide();
-		// $('.play').show();
+		$('.pause').hide();
+		$('.play').show();
 	};
 
 	var playAudio = function(a, e) {
@@ -89,12 +92,12 @@
 		}
 
 		$('html, body').animate({
-	        scrollTop: $(".track.warning").offset().top - 50
-	    }, 700);
+	        scrollTop: $(".track.warning").offset().top - 105
+	    }, 500);
 
 		a.play();
-		// $('.play').hide();
-		// $('.pause').show();
+		$('.play').hide();
+		$('.pause').show();
 
 		a.addEventListener('timeupdate',function (){
 			if (a.ended) {
