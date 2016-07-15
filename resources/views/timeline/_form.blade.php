@@ -1,4 +1,5 @@
 {!! Form::open(['method' => 'GET', 'url' => '/timeline', 'class' => 'form-inline']) !!}
+	{!! Form::hidden('type', request('type')) !!}
 	<span class="pull-right">
 		<a href="#" style="color:#fff;font-size:22px;" id="menu"><i class="fa fa-bars"></i></a>
 	</span>

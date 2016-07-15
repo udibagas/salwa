@@ -18,10 +18,12 @@ class TimelineController extends Controller
 		$micro = null;
 
 		$posts = SalwaTimeline::when($request->q, function($query) use ($request) {
-			$q = str_replace(' ', '%', $request->q);
-			return $query->where('title', 'like', '%'.$q.'%')
-						->orWhere('content', 'like', '%'.$q.'%');
-		})->orderBy('time', 'DESC')->paginate();
+					$q = str_replace(' ', '%', $request->q);
+					return $query->where('title', 'like', '%'.$q.'%')
+								->orWhere('content', 'like', '%'.$q.'%');
+				})when($request->type, function($query) use ($query) {
+					return $query->where('type', $request->type);
+				})->orderBy('time', 'DESC')->paginate();
 
 
 	    $diff = microtime(true) - $timeStart;
