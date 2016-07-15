@@ -21,7 +21,7 @@ class TimelineController extends Controller
 					$q = str_replace(' ', '%', $request->q);
 					return $query->where('title', 'like', '%'.$q.'%')
 								->orWhere('content', 'like', '%'.$q.'%');
-				})when($request->type, function($query) use ($query) {
+				})->when($request->type, function($query) use ($request) {
 					return $query->where('type', $request->type);
 				})->orderBy('time', 'DESC')->paginate();
 
