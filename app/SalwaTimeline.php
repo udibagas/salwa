@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class SalwaTimeline extends Model
 {
-    public $table = 'salwa_search';
+    public $table = 'salwa_timeline';
 
-	public $dates = ['tanggal'];
+	public $dates = ['time'];
 
 	// public function user()
 	// {

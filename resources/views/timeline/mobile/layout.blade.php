@@ -45,10 +45,7 @@
 
     <body>
 
-		<div style="height:105px;position:fixed;top:0;left:0;right:0;background-color:#032876;z-index:998;padding:0 10px;">
-			<a href="/timeline">
-				<img src="/images/logo.png" alt="Salwa Timeline" class="img-responsive" style="height:30px;display:block;margin:10px auto;" />
-			</a>
+		<div class="top">
 			@include('timeline._form')
 		</div>
 
@@ -56,19 +53,42 @@
 
             @yield('content')
 
-			<div class="row text-center" style="padding:10px;">
-				<small>&copy; {{date('Y')}} - <a href="http://www.salamdakwah.com">Www.SalamDakwah.Com</a></small>
+			<div class="row text-center" style="padding:10px;background-color:#032876;color:#fff;">
+				<small>&copy; {{date('Y')}} - <a href="http://www.salamdakwah.com" style="color:#fff;">Www.SalamDakwah.Com</a></small>
 			</div>
+
+			@include('timeline._menu')
+
+			<a href="#" class="back-to-top">
+				<img class="profile img-circle" data-name="&uarr;" style="position:fixed;bottom:65px;right:20px;" data-font-size="17" />
+			</a>
+
+			<a href="#">
+				<img class="profile img-circle" data-name="+" style="position:fixed;bottom:20px;right:20px;" data-font-size="28" />
+			</a>
 
         </div>
 
 		<script type="text/javascript">
+
 			var search = '{{ request("search") }}';
 			var group_id = '{{ request("group_id") }}';
 			var user_id = '{{ request("user_id") }}';
 			var q = '{{ request("q") }}';
 
-			$('.profile').initial({charCount:1, height:40, width:40,fontSize:20});
+			$('#menu').sidr({
+				name:'sidr',timing:'ease-in-out',speed:200,side:'right',
+				onOpen: function() {
+					$('.top').css('left', '-275px');
+					$('.top').css('right', '275px');
+				},
+				onClose: function() {
+					$('.top').css('right', '0');
+					$('.top').css('left', '0');
+				}
+			});
+
+			$('.profile').initial({charCount:1, height:40, width:40,fontSize:17});
 
 			var lastPage = false;
 			var loadMore = function() {
@@ -88,10 +108,10 @@
 							nextBtn.show();
 						} else {
 							lastPage = true;
-							nextBtn.parent().html('<br /><a href="#" class="back-to-top"><i class="fa fa-arrow-circle-up"></i> BACK TO TOP</a><br /><br />');
+							nextBtn.parent().html('<br /><a href="#" class="back-to-top">&uarr; BACK TO TOP</a><br /><br />');
 						}
 
-						$('.profile').initial({charCount:1, height:40, width:40,fontSize:20});
+						$('.profile').initial({charCount:1, height:40, width:40,fontSize:17});
 						if (q.length > 0) {
 							$('#post-list h4, #post-list p, #post-list .terjemahan').each(function(index, element) {
 								text = $(this).html().replace(RegExp(q, "gi"),'<b>'+q+'</b>');

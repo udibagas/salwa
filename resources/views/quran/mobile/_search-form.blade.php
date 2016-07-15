@@ -5,7 +5,7 @@
 		{!! Form::close() !!}
 	</div>
 
-	<div class="text-right" style="margin-top:2px;">
+	<div class="pull-right" style="margin-top:2px;">
 		<a href="#" class="btn btn-info btn-sm prev">
 			<i class="fa fa-step-backward"></i>
 		</a>

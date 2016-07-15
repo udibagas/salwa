@@ -8,7 +8,7 @@
 /* Padding below the footer and lighter body text */
 body {
 	font-family: "Nirmala UI", sans-serif;
-	padding-top: 105px;
+	padding-top: 50px;
 	padding-bottom: 0;
 	color: #5a5a5a;
 }
@@ -92,6 +92,15 @@ img.cover {
 	padding-left: 25px;
 }
 
+.search-field-salwa {
+	border-radius:20px;
+	background-image: url('/images/logo.png');
+	background-size: 30px;
+	background-repeat: no-repeat;
+	background-position: 8px 49%;
+	padding-left: 45px;
+}
+
 a:hover {
 	text-decoration: none;
 	color: #800000;
@@ -158,4 +167,15 @@ a:hover {
 	-webkit-transform:rotate(360deg);
 	transform:rotate(360deg);
 	}
+}
+
+.top {
+	height:50px;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	background-color:#032876;
+	z-index:998;
+	padding:10px;
 }
