@@ -32,7 +32,7 @@ AS
 		`pertanyaan`.`ket_pertanyaan` AS `content`,
 		NULL AS `img`,
 		NULL AS `file`,
-		`users`.`jenis_kelamin` AS `user`,
+		'Tanya Ustadz' AS `user`,
 		NULL AS `img_user`,
 		'pertanyaan' AS `type`
 	FROM (`pertanyaan` JOIN `users` ON ((`users`.`user_id` = `pertanyaan`.`user_id`)))
@@ -56,7 +56,7 @@ AS
 		`produk`.`sinopsis` AS `content`,
 		`produk`.`img_buku` AS `img`,
 		NULL AS `file`,
-		'Redaksi SalamDakwah' AS `user`,
+		'Salwa Market' AS `user`,
 		'images/logo-padding.png' AS `img_user`,
 		'produk' AS `type`
 	FROM `produk`
@@ -67,7 +67,7 @@ AS
 		`peduli`.`isi` AS `content`,
 		`peduli`.`img_artikel` AS `img`,
 		NULL AS `file`,
-		'Redaksi SalamDakwah' AS `user`,
+		'Salwa Peduli' AS `user`,
 		'images/logo-padding.png' AS `img_user`,
 		'peduli' AS `type`
 	FROM (`peduli` JOIN `users` ON ((`users`.`user_id` = `peduli`.`user_id`)))
@@ -78,7 +78,7 @@ AS
 		`buku`.`materi` AS `content`,
 		`buku`.`img_buku` AS `img`,
 		`buku`.`file_pdf` AS `file`,
-		'Redaksi SalamDakwah' AS `user`,
+		'Kitab & Terjemahan' AS `user`,
 		'images/logo-padding.png' AS `img_user`,
 		'kitab' AS `type`
 	FROM `buku`
@@ -89,7 +89,7 @@ AS
 		`hadist`.`penjelasan` AS `content`,
 		NULL AS `img`,
 		NULL AS `file`,
-		'Redaksi SalamDakwah' AS `user`,
+		'Kumpulan Hadist Dzikir Doa' AS `user`,
 		'images/logo-padding.png' AS `img_user`,
 		'hadist' AS `type`
 	FROM `hadist`
@@ -100,7 +100,7 @@ AS
 		`mp3_download`.`keterangan` AS `content`,
 		NULL AS `img`,
 		`mp3_download`.`file_mp3` AS `file`,
-		'Redaksi SalamDakwah' AS `user`,
+		'Salwa Audio' AS `user`,
 		'images/logo-padding.png' AS `img_user`,
 		'audio' AS `type`
 	FROM `mp3_download`
@@ -111,7 +111,7 @@ AS
 		`murotal`.`keterangan` AS `content`,
 		NULL AS `img`,
 		`murotal`.`file_mp3` AS `file`,
-		'Redaksi SalamDakwah' AS `user`,
+		'Murottal' AS `user`,
 		'images/logo-padding.png' AS `img_user`,
 		'murottal' AS `type`
 	FROM `murotal`
@@ -122,7 +122,7 @@ AS
 		NULL AS `content`,
 		`salwaimages`.`img_images` AS `img`,
 		NULL AS `file`,
-		'Redaksi SalamDakwah' AS `user`,
+		'Salwa Images' AS `user`,
 		'images/logo-padding.png' AS `img_user`,
 		'image' AS `type`
 	FROM `salwaimages`
@@ -133,7 +133,7 @@ AS
 		`informasi`.`content` AS `content`,
 		`informasi`.`img_gambar` AS `img`,
 		NULL AS `file`,
-		'Redaksi SalamDakwah' AS `user`,
+		'Salwa Info' AS `user`,
 		'images/logo-padding.png' AS `img_user`,
 		'informasi' AS `type`
 	FROM `informasi`
@@ -144,7 +144,7 @@ AS
 		NULL AS `content`,
 		`tb_kajian`.`img_kajian_photo` AS `img`,
 		NULL AS `file`,
-		'Redaksi SalamDakwah' AS `user`,
+		'Info Kajian' AS `user`,
 		'images/logo-padding.png' AS `img_user`,
 		'kajian' AS `type`
 	FROM `tb_kajian`
