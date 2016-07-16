@@ -61,8 +61,6 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'latin1',
 			'collation' => 'latin1_swedish_ci',
-            // 'charset' => 'utf8',
-            // 'collation' => 'utf8_unicode_ci',
             'prefix' => '',
             'strict' => false,
             'engine' => null,
