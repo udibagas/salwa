@@ -1,4 +1,4 @@
-@extends('quran.mobile.layout')
+@extends('quran.mobile.main')
 
 @section('content')
 

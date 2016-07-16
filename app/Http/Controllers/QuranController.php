@@ -14,7 +14,7 @@ class QuranController extends Controller
 {
 	public function index(Request $request)
 	{
-		$view = BrowserDetect::isMobile() ? 'quran.mobile.ayah' : 'quran.ayah';
+		$view = BrowserDetect::isMobile() ? 'quran.mobile.main' : 'quran.ayah';
 
 		if (is_numeric($request->q)) {
 			return redirect('/quran/'.$request->q);
@@ -85,7 +85,7 @@ class QuranController extends Controller
 
     public function surah(Surah $surah, Request $request)
 	{
-		$view = BrowserDetect::isMobile() ? 'quran.mobile.surah' : 'quran.surah';
+		$view = BrowserDetect::isMobile() ? 'quran.mobile.main' : 'quran.surah';
 		$ayats = $surah->ayats()->paginate();
 
 		if ($request->ajax()) {
@@ -100,7 +100,7 @@ class QuranController extends Controller
 
     public function ayah(Request $request, Surah $surah, $from, $to = 0)
 	{
-		$view = BrowserDetect::isMobile() ? 'quran.mobile.ayah' : 'quran.ayah';
+		$view = BrowserDetect::isMobile() ? 'quran.mobile.main' : 'quran.ayah';
 
 		if ($to == 0) {
 			$to = $from;

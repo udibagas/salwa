@@ -65,72 +65,40 @@
 
 		<script type="text/javascript">
 
-			var type = '{{ request("type") }}';
-			var q = '{{ request("q") }}';
+			var url 		= '{{ $posts->nextPageUrl() }}';
+			var type 		= '{{ request("type") }}';
+			var q 			= '{{ request("q") }}';
+			var lastPage 	= false;
+			var nextBtn 	= $('.next-page');
 
-			$('#menu').sidr({
-				name:'sidr',timing:'ease-in-out',speed:200,side:'right',
-				onOpen: function() {
-					$('.top').css('left', '-275px');
-					$('.top').css('right', '275px');
-				},
-				onClose: function() {
-					$('.top').css('right', '0');
-					$('.top').css('left', '0');
-				}
-			});
+			nextBtn.on('click', function(e) { e.preventDefault(); loadMore(); });
 
-			$('.profile').initial({charCount:1, height:40, width:40,fontSize:17});
-
-			var lastPage = false;
 			var loadMore = function() {
 				$.ajax({
-					url: url,
-					data: {type: type, q: q},
-					dataType: 'json',
-					beforeSend: function() {
-						nextBtn.hide();
-						$('.loading').removeClass('hidden');
-					},
+					url: url, data: {type: type, q: q}, dataType: 'json',
+					beforeSend: function() { nextBtn.hide(); $('.loading').removeClass('hidden'); },
 					success: function(json) {
 						$('.loading').addClass('hidden');
 						$('#post-list').append(json.html);
 
-						if (json.currentPage < json.lastPage) {
-							nextBtn.show();
-						} else {
-							lastPage = true;
-							nextBtn.parent().html('<br />-&bull; END &bull;-<br /><br />');
-						}
+						if (json.currentPage < json.lastPage) { nextBtn.show(); } else { lastPage = true; nextBtn.parent().html('<br />-&bull; END &bull;-<br /><br />'); }
 
 						$('.profile').initial({charCount:1, height:40, width:40,fontSize:17});
-						if (q.length > 0) {
-							$('#post-list h4, #post-list p, #post-list .terjemahan').each(function(index, element) {
-								text = $(this).html().replace(RegExp(q, "gi"),'<b>'+q+'</b>');
-								$(this).html(text);
-							});
-						}
+						if (q.length > 0) { $('#post-list h4, #post-list p, #post-list .terjemahan').each(function(index, element) { text = $(this).html().replace(RegExp(q, "gi"),'<b>'+q+'</b>'); $(this).html(text); }); }
 						url = json.nextPageUrl;
 					}
 				});
 			};
 
-			$(window).scroll(function() {
-				if($(window).scrollTop() + $(window).height() == $(document).height() && lastPage == false && url != '') {
-				   loadMore();
-				}
-			});
+			$('#menu').sidr({ name:'sidr',timing:'ease-in-out',speed:200,side:'right', onOpen: function() { $('.top').css('left', '-275px'); $('.top').css('right', '275px'); }, onClose: function() { $('.top').css('right', '0'); $('.top').css('left', '0'); } });
 
-			var nextBtn = $('.next-page');
-			nextBtn.on('click', function(e) {
-				e.preventDefault();
-				loadMore();
-			});
+			$('.profile').initial({charCount:1, height:40, width:40,fontSize:17});
 
-			$('body').on("click", ".back-to-top", function(e) {
-				e.preventDefault()
-				$("html, body").animate({scrollTop: 0}, 700);
-			});
+			$(window).scroll(function() { if($(window).scrollTop() + $(window).height() == $(document).height() && lastPage == false && url != '') { loadMore(); } });
+
+			$('body').on("click", ".back-to-top", function(e) { e.preventDefault(); $("html, body").animate({scrollTop: 0}, 700); });
+
+			$('#post-list h4, #post-list p').each(function(index, element) { text = $(this).html().replace(RegExp(q, "gi"),'<b>'+q+'</b>'); $(this).html(text); });
 
 		</script>
 

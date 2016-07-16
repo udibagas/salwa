@@ -1,7 +1,5 @@
 @extends('timeline.mobile.layout')
 
-@section('title', 'Timeline')
-
 @section('content')
 
 	<div id="post-list">
@@ -15,17 +13,3 @@
 		</div>
 	@endif
 @stop
-
-
-@push('script')
-	<script type="text/javascript">
-
-		$('#post-list h4, #post-list p').each(function(index, element) {
-			text = $(this).html().replace(RegExp(q, "gi"),'<b>'+q+'</b>');
-			$(this).html(text);
-		});
-
-		var url = '{{ $posts->nextPageUrl() }}';
-
-	</script>
-@endpush
