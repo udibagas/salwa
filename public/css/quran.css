@@ -9,56 +9,24 @@
 body {
 	font-family: "Nirmala UI", sans-serif;
 	padding-top: 50px;
-	padding-bottom: 0;
+	padding-bottom: 56px;
 	color: #5a5a5a;
 }
 
-.row.no-gutter {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.row.no-gutter [class*='col-']:not(:first-child),
-.row.no-gutter [class*='col-']:not(:last-child) {
-  padding-right: 1px;
-  padding-left: 1px;
-}
-
-.thumbnail {
-    margin-bottom:2px;
-}
-
-.thumbnail > a > img {
-	filter: brightness(80%);
-	-webkit-filter: brightness(80%);
-	height: 100%;
-	width: 100%;
-	object-fit:cover;
-	-o-object-fit:cover;
-}
-
-img.cover {
-	height: 100%;
-	width: 100%;
-	object-fit:cover;
-	-o-object-fit:cover;
+.row-post.warning {
+	background-color: #fcf8e3;
 }
 
 .search-field {
-	border-radius:20px;
-	background-image: url('/images/loop.png');
-	background-repeat: no-repeat;
-	background-position: 8px 49%;
-	padding-left: 25px;
-}
-
-.search-field-salwa {
 	border-radius:20px;
 	background-image: url('/images/logo.png');
 	background-size: 30px;
 	background-repeat: no-repeat;
 	background-position: 8px 49%;
-	padding-left: 45px;
+	padding-left: 42px;
+	border: none;
+	box-shadow: none;
+	-webkit-box-shadow : none;
 }
 
 a:hover {
@@ -79,19 +47,6 @@ a:hover {
     margin-right: -15px;
     margin-left: -15px;
 	border-bottom:1px solid #EEE;
-}
-
-.row-post.no-gutter {
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-.row-post.no-gutter [class*='col-']:not(:first-child),
-.row-post.no-gutter [class*='col-']:not(:last-child) {
-  padding-right: 1px;
-  padding-left: 1px;
 }
 
 .loading {
@@ -123,9 +78,41 @@ a:hover {
 	top:0;
 	left:0;
 	right:0;
-	background-color:#032876;
+	/*background-color:#032876;*/
+	background-color:#297FB9;
 	z-index:998;
 	padding:10px;
+}
+
+.list-group-item:first-of-type, .list-group-item:last-child {
+	border-radius: 0;
+}
+
+.ayat {
+	font-size: 22px;
+	text-align: right;
+}
+
+.player {
+	position:fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	padding:5px;
+	/*background-color:#297FB9;*/
+	background-color:#FFF;
+	text-align: center;
+}
+
+.title {
+	background-color: #0084FF;
+	padding: 10px 15px;
+	color: #FFFFFF;
+	margin:0 -15px;
+}
+
+.text-white {
+	color: #fff;
 }
 
 body.sidr-open { position: fixed !important; }

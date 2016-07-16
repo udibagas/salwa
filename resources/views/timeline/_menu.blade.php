@@ -14,7 +14,7 @@
 	<a class="list-group-item @if (request('type') == 'hadist') active @endif" href="/timeline?type=hadist">
 		<i class="fa fa-heartbeat"></i> HADIST, DO'A, DZIKIR
 	</a>
-	<a class="list-group-item @if (request('type') == 'forum') image @endif" href="/timeline?type=image">
+	<a class="list-group-item @if (request('type') == 'image') active @endif" href="/timeline?type=image">
 		<i class="fa fa-image"></i> IMAGES
 	</a>
 	<a class="list-group-item @if (request('type') == 'informasi') active @endif" href="/timeline?type=informasi">

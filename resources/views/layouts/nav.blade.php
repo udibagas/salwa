@@ -59,8 +59,8 @@
 		      </ul>
         </li>
 		  @if (auth()->guest())
-		  <li class="@if (url()->current() == url('login')) active @endif"><a href="/login">Login</a></li>
-		  <li class="@if (url()->current() == url('register')) active @endif"><a href="/register">Register</a></li>
+		  <li class="@if (url()->current() == url('login')) active @endif"><a href="/login">LOGIN</a></li>
+		  <li class="@if (url()->current() == url('register')) active @endif"><a href="/register">REGISTER</a></li>
 		  @else
 			  @if (auth()->user()->img_user)
 			  <li class="no-hover">
@@ -77,16 +77,16 @@
 		      <ul class="dropdown-menu">
 		        <li><a href="/me"><i class="fa fa-user"></i> Profile</a></li>
 		        <!-- <li><a href="/message"><i class="fa fa-inbox"></i> Inbox <span class="badge">1</span></a></li> -->
-		        <li><a href="/pertanyaan-saya"><i class="fa fa-question-circle"></i> Pertanyaan Saya</a></li>
-		        <li><a href="/forum-saya"><i class="fa fa-comments"></i> Forum Saya</a></li>
+		        <li><a href="/pertanyaan-saya"><i class="fa fa-question-circle"></i> PERTANYAAN SAYA</a></li>
+		        <li><a href="/forum-saya"><i class="fa fa-comments"></i> FORUM SAYA</a></li>
 				@if (auth()->user()->isAdmin())
 				  <li class="@if (url()->current() == url('cms')) active @endif"><a href="/cms"><i class="fa fa-th"></i> CMS</a></li>
 				  @endif
 				@if (auth()->user()->isUstadz())
-				  <li class="@if (url()->current() == url('pertanyaan/admin-ustadz')) active @endif"><a href="/pertanyaan/admin-ustadz"><i class="fa fa-inbox"></i> Pertanyaan Masuk</a></li>
+				  <li class="@if (url()->current() == url('pertanyaan/admin-ustadz')) active @endif"><a href="/pertanyaan/admin-ustadz"><i class="fa fa-inbox"></i> PERTANYAAN MASUK</a></li>
 				  @endif
 		        <!-- <li role="separator" class="divider"></li> -->
-		        <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+		        <li><a href="/logout"><i class="fa fa-sign-out"></i> LOGOUT</a></li>
 		      </ul>
         </li>
 		  @endif

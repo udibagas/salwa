@@ -25,56 +25,44 @@
 		<meta name="tgn.nation" content="Indonesia" />
 
         <link rel="icon" href="/images/logo.png">
-        <title>SalamDakwah | Situs Da'wah Ahlussunnah wal Jama'ah dengan Pemahaman Para Salaful Ummah</title>
+        <title>SalamDakwah | Al Quran Online</title>
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="/fa/css/font-awesome.min.css" rel="stylesheet">
-		<link href="/css/timeline.css" rel="stylesheet">
 		<link href="/sidr/dist/stylesheets/jquery.sidr.bare.css" rel="stylesheet">
-
-		@stack('css')
-
+		<link href="/css/quran.css" rel="stylesheet">
 		<script type="text/javascript" src="/js/jquery.min.js"></script>
         <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/initialjs/dist/initial.min.js"></script>
-
-		@if ($isMobile)
 		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
-		@endif
+		<script type="text/javascript" src="/initialjs/dist/initial.min.js"></script>
 
     </head>
 
     <body>
 
 		<div class="top">
-			@include('timeline._form')
+			@include('quran.mobile._nav')
 		</div>
 
         <div class="container">
 
             @yield('content')
 
-			<div class="row text-center" style="padding:5px;background-color:#032876;color:#fff;">
-				<small>&copy; {{date('Y')}} - <a href="http://www.salamdakwah.com" style="color:#fff;">Www.SalamDakwah.Com</a></small>
-			</div>
-
-			@include('timeline._menu')
-
-			<a href="#" class="back-to-top">
-				<img class="profile img-circle" data-name="&uarr;" style="position:fixed;bottom:65px;right:20px;" data-font-size="17" />
-			</a>
-
-			<a href="#">
-				<img class="profile img-circle" data-name="+" style="position:fixed;bottom:20px;right:20px;" data-font-size="28" />
-			</a>
-
+			@if ($ayats->lastPage() > 1)
+				<div class="text-center text-bold">
+					<br /><img src="/images/loading.png" alt="" class="loading hidden" />
+					<a href="{{ $ayats->nextPageUrl() }}" class="next-page">LOAD MORE</a><br><br>
+				</div>
+			@endif
         </div>
+
+		@include('quran.mobile._player')
+		@include('quran.mobile._surah')
 
 		<script type="text/javascript">
 
-			var type = '{{ request("type") }}';
-			var q = '{{ request("q") }}';
-
-			// $('.content').text($(this).text().slice(0, 150));
+			var url			= '{{ $ayats->nextPageUrl() }}';
+			var q 			= '{{ request("q") }}';
+			var lastPage 	= false;
 
 			$('#menu').sidr({
 				name:'sidr',timing:'ease-in-out',speed:200,side:'right',
@@ -90,11 +78,10 @@
 
 			$('.profile').initial({charCount:1, height:40, width:40,fontSize:17});
 
-			var lastPage = false;
 			var loadMore = function() {
 				$.ajax({
 					url: url,
-					data: {type: type, q: q},
+					data: {q: q},
 					dataType: 'json',
 					beforeSend: function() {
 						nextBtn.hide();
@@ -108,7 +95,7 @@
 							nextBtn.show();
 						} else {
 							lastPage = true;
-							nextBtn.parent().html('<br />-&bull; END &bull;-<br /><br />');
+							nextBtn.parent().html('<br /><a href="#" class="back-to-top">&#8679;UP</a><br /><br />');
 						}
 
 						$('.profile').initial({charCount:1, height:40, width:40,fontSize:17});
@@ -129,7 +116,6 @@
 				}
 			});
 
-
 			var nextBtn = $('.next-page');
 			nextBtn.on('click', function(e) {
 				e.preventDefault();
@@ -141,6 +127,90 @@
 				$("html, body").animate({scrollTop: 0}, 700);
 			});
 
+			if (q.length > 0) {
+				$('#post-list .terjemahan').each(function(index, element) {
+					text = $(this).html().replace(RegExp(q, "gi"),'<b>'+q+'</b>');
+					$(this).html(text);
+				});
+			}
+
+			// PLAYER
+			var stopAudio = function() {
+				audio.pause();
+				$('.pause').hide();
+				$('.play').show();
+			};
+
+			var playAudio = function(a, e) {
+				$('.track').removeClass('warning');
+
+				if (e.length) {
+					$(e).addClass('warning');
+				}
+
+				$('html, body').animate({
+			        scrollTop: $(".track.warning").offset().top - 50
+			    }, 700);
+
+				a.play();
+				$('.play').hide();
+				$('.pause').show();
+
+				a.addEventListener('timeupdate',function (){
+					if (a.ended) {
+						stopAudio();
+					}
+			    });
+			};
+
+			$('.pause').hide();
+
+			var audio = new Audio('@if ($ayats->count()) /quran_audio/misyari/{{ $ayats->first()->surat_id }}/{{ $ayats->first()->ayat_id }}.mp3 @endif');
+
+			$('.track').first().addClass('warning');
+
+			$('.play').click(function(e) {
+				e.preventDefault();
+				audio.pause();
+				playAudio(audio, $('.track.warning'));
+			});
+
+			$(document).on('click', '.track', function() {
+				audio.pause();
+				audio = new Audio($(this).attr('audiourl'));
+				playAudio(audio, $(this));
+			});
+
+			$('.next').click(function(e) {
+				e.preventDefault();
+				var next = $('.track.warning').next();
+
+				if (next.length == 0) {
+					return;
+				}
+
+				audio.pause();
+				audio = new Audio($(next).attr('audiourl'));
+				playAudio(audio, next);
+			});
+
+			$('.prev').click(function(e) {
+				e.preventDefault();
+				var prev = $('.track.warning').prev('.track');
+
+				if (prev.length == 0) {
+					return;
+				}
+
+				audio.pause();
+				audio = new Audio($(prev).attr('audiourl'));
+				playAudio(audio, prev);
+			});
+
+			$('.pause').click(function(e) {
+				e.preventDefault();
+				stopAudio();
+			});
 
 		</script>
 
