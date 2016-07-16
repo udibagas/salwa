@@ -30,16 +30,10 @@
 		<link href="/fa/css/font-awesome.min.css" rel="stylesheet">
 		<link href="/css/timeline.css" rel="stylesheet">
 		<link href="/sidr/dist/stylesheets/jquery.sidr.bare.css" rel="stylesheet">
-
-		@stack('css')
-
 		<script type="text/javascript" src="/js/jquery.min.js"></script>
         <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="/initialjs/dist/initial.min.js"></script>
-
-		@if ($isMobile)
 		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
-		@endif
 
     </head>
 
@@ -73,8 +67,6 @@
 
 			var type = '{{ request("type") }}';
 			var q = '{{ request("q") }}';
-
-			// $('.content').text($(this).text().slice(0, 150));
 
 			$('#menu').sidr({
 				name:'sidr',timing:'ease-in-out',speed:200,side:'right',
@@ -129,7 +121,6 @@
 				}
 			});
 
-
 			var nextBtn = $('.next-page');
 			nextBtn.on('click', function(e) {
 				e.preventDefault();
@@ -140,7 +131,6 @@
 				e.preventDefault()
 				$("html, body").animate({scrollTop: 0}, 700);
 			});
-
 
 		</script>
 

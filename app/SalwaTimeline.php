@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SalwaTimeline extends Model
 {
-	protected $connection = 'mysql3';
+	protected $connection = 'mysql';
 
     public $table = 'salwa_timeline';
 

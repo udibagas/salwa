@@ -95,7 +95,7 @@
 							nextBtn.show();
 						} else {
 							lastPage = true;
-							nextBtn.parent().html('<br /><a href="#" class="back-to-top">&#8679;UP</a><br /><br />');
+							nextBtn.parent().html('<br /><a href="#" class="back-to-top">UP</a><br /><br />');
 						}
 
 						$('.profile').initial({charCount:1, height:40, width:40,fontSize:17});

@@ -16,7 +16,7 @@ var loadMore = function() {
 				nextBtn.show();
 			} else {
 				lastPage = true;
-				nextBtn.parent().html('<br /><a href="#" class="back-to-top">&uarr; BACK TO TOP</a><br /><br />');
+				nextBtn.parent().html('<br /><a href="#" class="back-to-top">UP</a><br /><br />');
 			}
 
 			$('.profile').initial({charCount:1, height:50, width:50,fontSize:25});
