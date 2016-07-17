@@ -18,7 +18,7 @@
 
 return [
 
-    'encoding'  => 'ANSI',
+    'encoding'  => 'ISO-8859-1',
     'finalize'  => true,
     'cachePath' => storage_path('app/purifier'),
     'cacheFileMode' => 0755,
