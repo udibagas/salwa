@@ -56,7 +56,7 @@
 		<br>
 		{!! nl2br(str_replace('&nbsp;',' ',strip_tags(explode('|||', $p->content)[1]))) !!}
 	@else
-		{!! nl2br(strip_tags($p->content, '<p><img><br><br /><ul><li><ol>')) !!}
+		{!! nl2br(strip_tags($p->content, '<img><br><br /><ul><li><ol>')) !!}
 	@endif
 	</div>
 
