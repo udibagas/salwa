@@ -62,24 +62,14 @@ class QuranController extends Controller
 			$request->page = 1;
 		}
 
-		$nextPage = $request->page + 1;
-
 		if ($request->ajax())
 		{
-			$html = '<img src="/quran_image/'.sprintf("%03d", $request->page).'.jpg" class="img-responsive" alt="" />';
+			$html = '<img src="/quran_image/page'.sprintf("%03d", $request->page).'.png" alt="" />';
 
-			return response()->json([
-				'html' 			=> $html,
-				'nextPageUrl' 	=> url()->current().'?page='.$nextPage,
-				'currentPage'	=> $request->page,
-				'lastPage'		=> 114,
-			]);
+			return response()->json(['html' => $html]);
 		}
 
-		return view($view, [
-			'page' => $request->page,
-			'nextPageUrl' => url()->current().'?page='.$nextPage
-		]);
+		return view($view, ['page' => $request->page]);
 	}
 
 
