@@ -1,1 +1,1 @@
-<img src="/{{ $p->content }}" alt="{{ $p->title }}" class="img-responsive" />
+<img src="/{{ $p->img }}" alt="{{ $p->title }}" class="img-responsive" />
