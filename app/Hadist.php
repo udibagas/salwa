@@ -49,4 +49,9 @@ class Hadist extends Model
 	{
 		return $query->join('groups', 'groups.group_id', '=', 'hadist.group_id')->where('groups.group_name', 'Kumpulan Hadits');
 	}
+
+	public function comments()
+	{
+		return $this->morphMany('App\Comment', 'commentable');
+	}
 }

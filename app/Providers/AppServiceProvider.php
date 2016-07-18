@@ -19,8 +19,14 @@ class AppServiceProvider extends ServiceProvider
 		Relation::morphMap([
 			'artikel' 	=> \App\Artikel::class,
 			'audio'		=> \App\Mp3::class,
+			'image' 	=> \App\SalwaImages::class,
+			'hadist' 	=> \App\Hadist::class,
 			'informasi' => \App\Informasi::class,
+			'kajian' 	=> \App\Kajian::class,
+			'kitab' 	=> \App\Buku::class,
+			'murottal' 	=> \App\Murottal::class,
 			'peduli' 	=> \App\Peduli::class,
+			'pertanyaan'=> \App\Pertanyaan::class,
 			'produk'	=> \App\Produk::class,
 			'video' 	=> \App\Video::class,
 		]);

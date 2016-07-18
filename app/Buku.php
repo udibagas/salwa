@@ -25,4 +25,9 @@ class Buku extends Model
 	{
 		return $this->belongsTo('App\Group', 'group_id', 'group_id');
 	}
+
+	public function comments()
+	{
+		return $this->morphMany('App\Comment', 'commentable');
+	}
 }

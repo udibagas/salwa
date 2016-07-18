@@ -29,6 +29,9 @@
 	<a class="list-group-item @if (request('type') == 'produk') active @endif" href="/timeline?type=produk">
 		<i class="fa fa-shopping-cart"></i> MARKET
 	</a>
+	<a class="list-group-item @if (request('type') == 'murottal') active @endif" href="/timeline?type=murottal">
+		<i class="fa fa-microphone"></i> MUROTTAL
+	</a>
 	<a class="list-group-item @if (request('type') == 'peduli') active @endif" href="/timeline?type=peduli">
 		<i class="fa fa-heart-o"></i> PEDULI
 	</a>

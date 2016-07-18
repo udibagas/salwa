@@ -84,4 +84,9 @@ class Kajian extends Model
 	{
 		return $query->where('kajian_status', 'A');
 	}
+
+	public function comments()
+	{
+		return $this->morphMany('App\Comment', 'commentable');
+	}
 }

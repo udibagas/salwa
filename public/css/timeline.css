@@ -130,6 +130,6 @@ a:hover {
 
 body.sidr-open { position: fixed !important; }
 
-img {
+img:not(.profile) {
 	max-width: 100%;
 }

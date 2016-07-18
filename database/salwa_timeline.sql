@@ -13,7 +13,7 @@ AS
 		'video' AS `type`,
 		NULL AS `group_id`,
 		NULL AS `group`
-	FROM (`videos` JOIN `users` ON ((`users`.`user_id` = `videos`.`user_id`)))
+	FROM (`videos` LEFT JOIN `users` ON ((`users`.`user_id` = `videos`.`user_id`)))
 	WHERE ((`videos`.`type` = 'video')
 		OR (`videos`.`type` = 'praktek'))
 	UNION SELECT
@@ -28,12 +28,12 @@ AS
 		'artikel' AS `type`,
 		`groups`.`group_id` AS `group_id`,
 		`groups`.`group_name` AS `group`
-	FROM (`artikel` JOIN `users` ON ((`users`.`user_id` = `artikel`.`user_id`)) JOIN `groups` ON ((`groups`.`group_id` = `artikel`.`group_id`)))
+	FROM (`artikel` LEFT JOIN `users` ON ((`users`.`user_id` = `artikel`.`user_id`)) LEFT JOIN `groups` ON ((`groups`.`group_id` = `artikel`.`group_id`)))
 	UNION SELECT
 		`pertanyaan`.`pertanyaan_id` AS `id`,
 		`pertanyaan`.`tgl_tanya` AS `time`,
 		`pertanyaan`.`judul_pertanyaan` AS `title`,
-		`pertanyaan`.`ket_pertanyaan` AS `content`,
+		CONCAT(`pertanyaan`.`ket_pertanyaan`, '|||', `pertanyaan`.`jawaban`) AS `content`,
 		NULL AS `img`,
 		NULL AS `file`,
 		'Tanya Ustadz' AS `user`,
@@ -41,7 +41,7 @@ AS
 		'pertanyaan' AS `type`,
 		`groups`.`group_id` AS `group_id`,
 		`groups`.`group_name` AS `group`
-	FROM (`pertanyaan` JOIN `users` ON ((`users`.`user_id` = `pertanyaan`.`user_id`)) JOIN `groups` ON ((`groups`.`group_id` = `pertanyaan`.`group_id`)))
+	FROM (`pertanyaan` LEFT JOIN `users` ON ((`users`.`user_id` = `pertanyaan`.`user_id`)) LEFT JOIN `groups` ON ((`groups`.`group_id` = `pertanyaan`.`group_id`)))
 	WHERE (`pertanyaan`.`status` = 's')
 	UNION SELECT
 		`forums`.`forum_id` AS `id`,
@@ -55,7 +55,7 @@ AS
 		'forum' AS `type`,
 		`groups`.`group_id` AS `group_id`,
 		`groups`.`group_name` AS `group`
-	FROM (`forums` JOIN `posts` ON((`forums`.`forum_id` = `posts`.`forum_id`)) JOIN `users` ON ((`users`.`user_id` = `forums`.`user_id`)) JOIN `groups` ON ((`groups`.`group_id` = `forums`.`group_id`)))
+	FROM (`forums` LEFT JOIN `posts` ON((`forums`.`forum_id` = `posts`.`forum_id`)) LEFT JOIN `users` ON ((`users`.`user_id` = `forums`.`user_id`)) LEFT JOIN `groups` ON ((`groups`.`group_id` = `forums`.`group_id`)))
 	WHERE (`forums`.`status` = 'a')
 	UNION SELECT
 		`produk`.`id_produk` AS `id`,

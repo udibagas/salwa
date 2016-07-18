@@ -48,6 +48,10 @@ Route::get('promo', 'BannerController@index');
 
 Route::group(['middleware' => 'auth'], function() {
 
+	Route::get('timeline/create', 'TimelineController@create');
+	Route::post('timeline/post-pertanyaan', 'TimelineController@postPertanyaan');
+	Route::post('timeline/post-forum', 'TimelineController@postForum');
+
 	Route::group(['middleware' => 'role:'.User::ROLE_ADMIN], function() {
 
 		Route::resource('area', 'AreaController');

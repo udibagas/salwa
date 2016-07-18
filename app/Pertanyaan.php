@@ -47,4 +47,9 @@ class Pertanyaan extends Model
 	{
 		return $query->where('jawaban', '!=', 'NULL');
 	}
+
+	public function comments()
+	{
+		return $this->morphMany('App\Comment', 'commentable');
+	}
 }

@@ -6,7 +6,7 @@
 					<img class="media-object img-circle cover" src="/{{ $p->img_user }}" style="border:1px solid #ccc;" />
 				</div>
 			@else
-				<img class="media-object img-circle profile" data-name="{{ $p->user }}" />
+				<img class="profile img-circle media-object" data-name="{{ $p->user }}" />
 			@endif
 		</div>
 		<div class="media-body">
@@ -30,41 +30,10 @@
 
 	<h4>{{ $p->title }}</h4>
 
-	@if ($p->img)
-		<br>
-		<img src="/{{ $p->img }}" alt="" class="img-responsive" />
-		<br>
-	@endif
-
-	@if ($p->type == 'video' && $p->file)
-		<br>
-		<iframe width="100%" height="200" src="https://www.youtube.com/embed/{{ $p->file }}" frameborder="0" allowfullscreen></iframe>
-		<br>
-	@endif
-
-	@if (in_array($p->type, ['audio', 'murottal']) && $p->file)
-		<br>
-		<audio controls="controls" preload="none" style="width:100%"><source src="/{{ $p->file }}" type="application/ogg"></source></audio>
-		<br>
-	@endif
-
-	<div class="content">
-	@if ($p->type == 'hadist')
-		<div style="font-size:22px;margin-top:20px;">
-			{!! explode('|||', $p->content)[0] !!}
-		</div>
-		<br>
-		{!! nl2br(str_replace('&nbsp;',' ',strip_tags(explode('|||', $p->content)[1]))) !!}
-	@else
-		{!! nl2br(strip_tags($p->content, '<img><br><br /><ul><li><ol>')) !!}
-	@endif
-	</div>
-
-
-
+	@include('timeline.mobile._'.$p->type)
 
 </div>
-<div class="row-post">
+<!-- <div class="row-post">
 	<div class="col-xs-4">
 		<a href="#">5 <i class="fa fa-heart"></i></a>
 	</div>
@@ -78,4 +47,4 @@
 	<div class="clearfix">
 
 	</div>
-</div>
+</div> -->
