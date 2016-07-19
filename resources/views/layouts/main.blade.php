@@ -23,9 +23,7 @@
 @endpush
 
 @if (!$isMobile)
-
-@section('footer')
-	@include('layouts.footer')
-@endsection
-
+	@section('footer')
+		@include('layouts.footer')
+	@endsection
 @endif

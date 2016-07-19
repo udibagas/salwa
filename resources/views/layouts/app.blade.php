@@ -111,6 +111,13 @@
 				<small>&copy; {{date('Y')}} - Www.SalamDakwah.Com</small>
 			</div>
 
+			@if (!$isMobile)
+				<a class="btn btn-success" style="font-size:18px;position:fixed;bottom:40px;right:40px;">
+					<i class="fa fa-pause"></i>
+					<span style="margin-left:5px;">SALWA RADIO</span>
+				</a>
+			@endif
+
         </div>
 
 		@if ($isMobile)
@@ -118,6 +125,25 @@
 		@endif
 
 		<script type="text/javascript">
+
+			@if (!$isMobile)
+				var audio = new Audio('http://119.82.232.83:1111/;stream.mp3');
+				audio.volume = 1.0;
+
+				$(document).on('click', '.fa-play', function() {
+					audio.play();
+					$(this).removeClass('fa-play');
+					$(this).addClass('fa-pause');
+				});
+
+				$(document).on('click', '.fa-pause', function() {
+					audio.pause();
+					$(this).removeClass('fa-pause');
+					$(this).addClass('fa-play');
+				});
+
+				audio.play();
+			@endif
 
 			$('#popup').modal('show')
 
@@ -150,9 +176,7 @@
 
 			@endif
 
-			// $(document).on('load', '.profile', function() {
-				$('.profile').initial({charCount:1, height:50, width:50,fontSize:25});
-			// });
+			$('.profile').initial({charCount:1, height:50, width:50,fontSize:25});
 
 			$(document).on('click', '.delete', function() {
 				return confirm('Anda yakin?');

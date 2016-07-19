@@ -52,23 +52,23 @@
 
 <script type="text/javascript">
 
-	var audio = new Audio('http://119.82.232.83:1111/;stream.mp3');
+	// var audio = new Audio('http://119.82.232.83:1111/;stream.mp3');
 
 	// audio.play();
 
-	$(document).on('click', '.fa-play', function() {
-		audio.play();
-		$(this).removeClass('fa-play');
-		$(this).addClass('fa-pause');
-		return false;
-	});
-
-	$(document).on('click', '.fa-pause', function() {
-		audio.pause();
-		$(this).removeClass('fa-pause');
-		$(this).addClass('fa-play');
-		return false;
-	});
+	// $(document).on('click', '.fa-play', function() {
+	// 	audio.play();
+	// 	$(this).removeClass('fa-play');
+	// 	$(this).addClass('fa-pause');
+	// 	return false;
+	// });
+	//
+	// $(document).on('click', '.fa-pause', function() {
+	// 	audio.pause();
+	// 	$(this).removeClass('fa-pause');
+	// 	$(this).addClass('fa-play');
+	// 	return false;
+	// });
 
 	$('#myCarousel').carousel({
 		interval: 10000

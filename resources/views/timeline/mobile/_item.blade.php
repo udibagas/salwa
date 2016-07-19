@@ -2,7 +2,7 @@
 	<div class="media">
 		<div class="media-left">
 			@if ($p->img_user)
-				<div class="" style="width:40px;width;40px;">
+				<div class="" style="width:40px;height;40px;">
 					<img class="media-object img-circle cover" src="/{{ $p->img_user }}" style="border:1px solid #ccc;" />
 				</div>
 			@else

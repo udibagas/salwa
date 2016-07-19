@@ -84,6 +84,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('peduli/admin', 'PeduliController@admin');
 		Route::get('pertanyaan/admin', 'PertanyaanController@admin');
 		Route::get('produk/admin', 'ProdukController@admin');
+		Route::get('tafsir/admin', 'TafsirController@admin');
 		Route::get('ustadz/admin', 'UstadzController@admin');
 		Route::get('video/admin', 'VideoController@admin');
 
@@ -101,6 +102,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::resource('peduli', 'PeduliController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('produk', 'ProdukController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('ustadz', 'UstadzController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('tafsir', 'TafsirController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('video', 'VideoController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 	});
 
@@ -145,6 +147,7 @@ Route::resource('audio', 'AudioController', ['only' => ['index', 'show']]);
 Route::resource('murottal', 'MurottalController', ['only' => ['index', 'show']]);
 Route::resource('peduli', 'PeduliController', ['only' => ['index', 'show']]);
 Route::resource('produk', 'ProdukController', ['only' => ['index', 'show']]);
+Route::resource('tafsir', 'TafsirController', ['only' => ['index', 'show']]);
 Route::resource('ustadz', 'UstadzController', ['only' => ['index', 'show']]);
 Route::resource('video', 'VideoController', ['only' => ['index', 'show']]);
 Route::resource('pertanyaan', 'PertanyaanController', ['only' => ['index', 'show']]);

@@ -3,7 +3,7 @@ CREATE ALGORITHM=UNDEFINED
 AS
 	SELECT
 		`videos`.`video_id` AS `id`,
-		`videos`.`date` AS `time`,
+		`videos`.`updated` AS `time`,
 		`videos`.`title` AS `title`,
 		`videos`.`desc` AS `content`,
 		NULL AS `img`,
@@ -18,7 +18,7 @@ AS
 		OR (`videos`.`type` = 'praktek'))
 	UNION SELECT
 		`artikel`.`artikel_id` AS `id`,
-		`artikel`.`tgl_artikel` AS `time`,
+		`artikel`.`updated` AS `time`,
 		`artikel`.`judul` AS `title`,
 		`artikel`.`isi` AS `content`,
 		`artikel`.`img_artikel` AS `img`,
@@ -31,7 +31,7 @@ AS
 	FROM (`artikel` LEFT JOIN `users` ON ((`users`.`user_id` = `artikel`.`user_id`)) LEFT JOIN `groups` ON ((`groups`.`group_id` = `artikel`.`group_id`)))
 	UNION SELECT
 		`pertanyaan`.`pertanyaan_id` AS `id`,
-		`pertanyaan`.`tgl_tanya` AS `time`,
+		`pertanyaan`.`updated` AS `time`,
 		`pertanyaan`.`judul_pertanyaan` AS `title`,
 		CONCAT(`pertanyaan`.`ket_pertanyaan`, '|||', `pertanyaan`.`jawaban`) AS `content`,
 		NULL AS `img`,
@@ -45,7 +45,7 @@ AS
 	WHERE (`pertanyaan`.`status` = 's')
 	UNION SELECT
 		`forums`.`forum_id` AS `id`,
-		`forums`.`date` AS `time`,
+		`forums`.`updated` AS `time`,
 		`forums`.`title` AS `title`,
 		`posts`.`description` AS `content`,
 		NULL AS `img`,
@@ -59,7 +59,7 @@ AS
 	WHERE (`forums`.`status` = 'a')
 	UNION SELECT
 		`produk`.`id_produk` AS `id`,
-		`produk`.`created` AS `time`,
+		`produk`.`updated` AS `time`,
 		`produk`.`judul` AS `title`,
 		`produk`.`sinopsis` AS `content`,
 		`produk`.`img_buku` AS `img`,
@@ -72,7 +72,7 @@ AS
 	FROM (`produk` LEFT JOIN `groups` ON ((`groups`.`group_id` = `produk`.`group_id`)))
 	UNION SELECT
 		`peduli`.`peduli_id` AS `id`,
-		`peduli`.`tgl_artikel` AS `time`,
+		`peduli`.`updated` AS `time`,
 		`peduli`.`judul` AS `title`,
 		`peduli`.`isi` AS `content`,
 		`peduli`.`img_artikel` AS `img`,
@@ -85,7 +85,7 @@ AS
 	FROM (`peduli` LEFT JOIN `users` ON ((`users`.`user_id` = `peduli`.`user_id`)) LEFT JOIN `groups` ON ((`groups`.`group_id` = `peduli`.`group_id`)))
 	UNION SELECT
 		`buku`.`buku_id` AS `id`,
-		`buku`.`created` AS `time`,
+		`buku`.`updated` AS `time`,
 		`buku`.`judul` AS `title`,
 		`buku`.`materi` AS `content`,
 		`buku`.`img_buku` AS `img`,
@@ -98,9 +98,9 @@ AS
 	FROM (`buku` LEFT JOIN `groups` ON ((`groups`.`group_id` = `buku`.`group_id`)))
 	UNION SELECT
 		`hadist`.`hadist_id` AS `id`,
-		`hadist`.`tanggal` AS `time`,
+		`hadist`.`updated` AS `time`,
 		`hadist`.`judul` AS `title`,
-		CONCAT(`hadist`.`hadist` COLLATE utf8_unicode_ci, '|||', `hadist`.`penjelasan`) AS `content`,
+		CONCAT(`hadist`.`hadist`, '|||', `hadist`.`penjelasan`) AS `content`,
 		NULL AS `img`,
 		NULL AS `file`,
 		'Kumpulan Hadist, Dzikir dan Doa' AS `user`,
@@ -111,7 +111,7 @@ AS
 	FROM (`hadist` LEFT JOIN `groups` ON ((`groups`.`group_id` = `hadist`.`group_id`)))
 	UNION SELECT
 		`mp3_download`.`mp3_download_id` AS `id`,
-		`mp3_download`.`created` AS `time`,
+		`mp3_download`.`updated` AS `time`,
 		`mp3_download`.`judul` AS `title`,
 		`mp3_download`.`keterangan` AS `content`,
 		NULL AS `img`,
@@ -124,7 +124,7 @@ AS
 	FROM (`mp3_download` LEFT JOIN `groups` ON ((`groups`.`group_id` = `mp3_download`.`group_id`)))
 	UNION SELECT
 		`murotal`.`murotal_id` AS `id`,
-		`murotal`.`created` AS `time`,
+		`murotal`.`updated` AS `time`,
 		`murotal`.`nama_surat` AS `title`,
 		`murotal`.`keterangan` AS `content`,
 		NULL AS `img`,
@@ -137,7 +137,7 @@ AS
 	FROM (`murotal` LEFT JOIN `groups` ON ((`groups`.`group_id` = `murotal`.`group_id`)))
 	UNION SELECT
 		`salwaimages`.`id_salwaimages` AS `id`,
-		`salwaimages`.`tanggal` AS `time`,
+		`salwaimages`.`updated` AS `time`,
 		`salwaimages`.`judul` AS `title`,
 		NULL AS `content`,
 		`salwaimages`.`img_images` AS `img`,
@@ -150,7 +150,7 @@ AS
 	FROM (`salwaimages`  LEFT JOIN `groups` ON ((`groups`.`group_id` = `salwaimages`.`group_id`)))
 	UNION SELECT
 		`informasi`.`informasi_id` AS `id`,
-		`informasi`.`tanggal` AS `time`,
+		`informasi`.`updated` AS `time`,
 		`informasi`.`judul` AS `title`,
 		`informasi`.`content` AS `content`,
 		`informasi`.`img_gambar` AS `img`,
@@ -163,7 +163,7 @@ AS
 	FROM (`informasi` LEFT JOIN `groups` ON ((`groups`.`group_id` = `informasi`.`group_id`)))
 	UNION SELECT
 		`tb_kajian`.`kajian_id` AS `id`,
-		`tb_kajian`.`created` AS `time`,
+		`tb_kajian`.`updated` AS `time`,
 		`tb_kajian`.`kajian_tema` AS `title`,
 		NULL AS `content`,
 		`tb_kajian`.`img_kajian_photo` AS `img`,

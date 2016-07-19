@@ -45,7 +45,7 @@
 				  <!-- <span class="caret"></span> -->
 			  </a>
 		      <ul class="dropdown-menu">
-		        <li><a href="/radio">SALWA RADIO</a></li>
+		        <!-- <li><a href="/radio">SALWA RADIO</a></li> -->
 		        <li><a href="/kitab">KITAB & TERJEMAHAN</a></li>
 				<li><a href="/kajian">KAJIAN</a></li>
 		        <li><a href="/doa">DOA</a></li>
@@ -75,7 +75,7 @@
 				  <span class="caret"></span>
 			  </a>
 		      <ul class="dropdown-menu">
-		        <li><a href="/me"><i class="fa fa-user"></i> Profile</a></li>
+		        <li><a href="/me"><i class="fa fa-user"></i> PROFILE</a></li>
 		        <!-- <li><a href="/message"><i class="fa fa-inbox"></i> Inbox <span class="badge">1</span></a></li> -->
 		        <li><a href="/pertanyaan-saya"><i class="fa fa-question-circle"></i> PERTANYAAN SAYA</a></li>
 		        <li><a href="/forum-saya"><i class="fa fa-comments"></i> FORUM SAYA</a></li>

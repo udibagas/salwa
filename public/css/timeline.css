@@ -29,8 +29,6 @@ body {
 }
 
 .thumbnail > a > img {
-	filter: brightness(80%);
-	-webkit-filter: brightness(80%);
 	height: 100%;
 	width: 100%;
 	object-fit:cover;

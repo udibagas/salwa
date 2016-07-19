@@ -1,6 +1,9 @@
 <div id="sidr-main">
 	<div class="list-group">
 		<span class="list-group-item">
+			<audio controls="controls" preload="none" style="width:100%" autoplay="autoplay"><source src="http://119.82.232.83:1111/;stream.mp3" type="application/ogg"></source></audio>
+		</span>
+		<span class="list-group-item">
 			{!! Form::open(['url' => '/search', 'method' => 'GET']) !!}
 				<input type="text" name="q" value="{{ request('q') }}" placeholder="Search" class="form-control search-field">
 			{!! Form::close() !!}
@@ -14,9 +17,9 @@
 		<a class="list-group-item" href="/video">
 			<i class="fa fa-video-camera"></i> SALWA VIDEO
 		</a>
-		<a class="list-group-item" href="/radio">
+		<!-- <a class="list-group-item" href="/radio">
 			<i class="fa fa-microphone"></i> SALWA RADIO
-		</a>
+		</a> -->
 		<a class="list-group-item" href="/artikel">
 			<i class="fa fa-file-text"></i> SALWA AKTUAL
 		</a>
