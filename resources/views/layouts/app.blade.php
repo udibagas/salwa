@@ -9,7 +9,7 @@
 		<link rel="image_src" href="@yield('image')" />
 
 		<meta property="og:url" content="{{ url()->full() }}" />
-		<meta property="og:type" content="@yield('type')" />
+		<meta property="og:type" content="website" />
 		<meta property="og:title" content="@yield('title')" />
 		<meta property="og:site_name" content="SalamDakwah" />
 		<meta property="og:description" content="@yield('description')" />
