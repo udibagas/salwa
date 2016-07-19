@@ -19,3 +19,94 @@
 	</div>
 	<span class="text-center text-bold text-danger track-title"></span>
 </span>
+
+@push('script')
+<script type="text/javascript">
+	$('.pause').hide();
+
+	var audio = new Audio('@if ($ayats->count()) /quran_audio/{{ request('qari', 'misyari') }}/{{ str_pad($ayats->first()->surat_id, 3, '0', STR_PAD_LEFT) }}/{{ str_pad($ayats->first()->ayat_id, 3, '0', STR_PAD_LEFT) }}.mp3 @endif');
+
+	$('.track').first().addClass('warning');
+
+	$('.play').click(function(e) {
+		e.preventDefault();
+		audio.pause();
+		playAudio(audio, $('.track.warning'));
+	});
+
+	$('.track').click(function() {
+		audio.pause();
+		audio = new Audio($(this).attr('audiourl'));
+		playAudio(audio, $(this));
+	});
+
+	$('.next').click(function(e) {
+		e.preventDefault();
+		var next = $('.track.warning').next();
+
+		if (next.length == 0) {
+			return;
+		}
+
+		audio.pause();
+		audio = new Audio($(next).attr('audiourl'));
+		playAudio(audio, next);
+	});
+
+	$('.prev').click(function(e) {
+		e.preventDefault();
+		var prev = $('.track.warning').prev('.track');
+
+		if (prev.length == 0) {
+			return;
+		}
+
+		audio.pause();
+		audio = new Audio($(prev).attr('audiourl'));
+		playAudio(audio, prev);
+	});
+
+	$('.pause').click(function(e) {
+		e.preventDefault();
+		stopAudio();
+	});
+
+	var stopAudio = function() {
+		audio.pause();
+		$('.pause').hide();
+		$('.play').show();
+		$('.progress-bar').removeClass('active');
+	};
+
+	var playAudio = function(a, e) {
+		$('.progress-bar').attr('aria-valuemax', a.duration);
+		$('.track').removeClass('warning');
+
+		if (e.length) {
+			$(e).addClass('warning');
+		}
+
+		$('.track-title').html($('.track.warning').attr('audio-title'));
+		a.play();
+
+		var duration = 0;
+
+		a.addEventListener('loadedmetadata', function() {
+			duration = parseInt(a.duration, 10);
+
+		});
+
+		a.addEventListener('timeupdate',function (){
+			var progress = parseInt(a.currentTime, 10)/duration*100;
+			$('.progress-bar').css('width', progress+"%").attr('aria-valuenow', progress);
+			if (a.ended) {
+				stopAudio();
+			}
+		});
+
+		$('.play').hide();
+		$('.pause').show();
+	};
+
+</script>
+@endpush

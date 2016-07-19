@@ -1,4 +1,4 @@
-@extends('quran.main')
+@extends('layouts.main')
 
 @section('title', 'Quran')
 

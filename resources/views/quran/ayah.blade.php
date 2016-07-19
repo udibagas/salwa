@@ -1,4 +1,4 @@
-@extends('quran.main')
+@extends('layouts.main')
 
 @section('title', 'Quran')
 
@@ -11,9 +11,9 @@
 		</div>
 		<div class="col-md-6">
 			<div class="list-group">
-				<!-- <span class="list-group-item info">
+				<span class="list-group-item info">
 					@include('quran._search-form')
-				</span> -->
+				</span>
 				@include('quran._player')
 				@each('quran._ayat', $ayats, 'a')
 			</div>
@@ -24,6 +24,7 @@
 		</div>
 		<div class="col-md-3">
 			@include('quran._detail-surah')
+			@include('quran._setting')
 		</div>
 	</div>
 

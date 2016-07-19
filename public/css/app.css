@@ -3,6 +3,11 @@
     src: url("/fonts/Nirmala_0.ttf");
 }
 
+@font-face {
+    font-family: "me_quran";
+    src: url("/fonts/me_quran.ttf");
+}
+
 /*@font-face {
     font-family: "Nirmala UI";
     src: url("/fonts/NirmalaB_0.ttf");
@@ -17,6 +22,13 @@ body {
 	padding-top: 80px;
 	padding-bottom: 0;
 	color: #5a5a5a;
+}
+
+.arab, .arabic, .ayat, .quran {
+	font-family: "me_quran", serif;
+	line-height: 2.2em;
+	font-size: 22px;
+	text-align: right;
 }
 
 .navbar-fixed-top {
