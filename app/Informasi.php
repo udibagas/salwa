@@ -24,6 +24,8 @@ class Informasi extends Model
 		'createdby', 'group_id', 'img_gambar'
 	];
 
+	public $appends = ['img'];
+
 	public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'user_id');
@@ -52,6 +54,19 @@ class Informasi extends Model
 	public function comments()
 	{
 		return $this->morphMany('App\Comment', 'commentable');
+	}
+
+	public function getImgAttribute($value)
+	{
+		if ($this->img_gambar) {
+			return 'http://www.salamdakwah.com/'.$this->img_gambar;
+		}
+
+		if ($this->images->count()) {
+			return 'http://www.salamdakwah.com/'.$this->images()->first()->file_upload;
+		}
+
+		return 'http://www.salamdakwah.com/images/salwa-info.jpg';
 	}
 
 }

@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
-@section('title', ' Informasi : '.$informasi->judul)
+@section('title', 'Informasi : '.$informasi->judul)
+@section('image', $informasi->img)
+@section('description', str_limit(strip_tags($informasi->content), 250))
 
 @section('breadcrumbs')
 
@@ -26,11 +28,7 @@
 		</div>
 		<hr>
 
-		@if ($informasi->img_gambar)
-		<img src="/{{ $informasi->img_gambar }}" class="img-responsive" alt="{{ $informasi->judul }}" />
-		@else
-		<img src="/images/salwa-info.jpg" class="img-responsive" alt="{{ $informasi->judul }}" />
-		@endif
+		<img src="{{ $informasi->img }}" class="img-responsive" alt="{{ $informasi->judul }}" />
 
 		<br>
 

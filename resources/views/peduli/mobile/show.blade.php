@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Informasi : {{ $peduli->judul }}')
+@section('image', $peduli->img)
+@section('description', str_limit(strip_tags($peduli->isi), 250))
 
 @section('content')
 

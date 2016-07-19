@@ -17,6 +17,8 @@ class Pertanyaan extends Model
 		'tgl_tanya', 'tgl_jawab', 'user_id', 'kd_judul', 'daerah_asal', 'createdby', 'updatedby'
 	];
 
+	public $appends = ['img'];
+
 	const CREATED_AT = 'created';
 
 	const UPDATED_AT = 'updated';
@@ -51,5 +53,10 @@ class Pertanyaan extends Model
 	public function comments()
 	{
 		return $this->morphMany('App\Comment', 'commentable');
+	}
+
+	public function getImgAttribute($value)
+	{
+		return 'http://www.salamdakwah.com/images/tanya-ustadz.jpg';
 	}
 }

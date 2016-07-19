@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('title') Tanya Ustadz : {{ $pertanyaan->judul_pertanyaan }} @stop
-@section('image', 'http://www.salamdakwah.com/images/tanya-ustadz.jpg')
-@section('description', $pertanyaan->ket_pertanyaan)
+@section('image', $pertanyaan->img)
+@section('description', strip_tags($pertanyaan->ket_pertanyaan))
 
 @section('breadcrumbs')
 

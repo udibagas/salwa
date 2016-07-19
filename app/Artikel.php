@@ -18,6 +18,8 @@ class Artikel extends Model
 
 	protected $with = ['user', 'group'];
 
+	public $appends = ['img'];
+
 	protected $fillable = [
 		'judul', 'isi', 'isi_mobile', 'ringkasan',
 		'kd_judul', 'updatedby', 'user_id',

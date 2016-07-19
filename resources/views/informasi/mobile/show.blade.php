@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Informasi : {{ $informasi->judul }}')
+@section('image', $informasi->img)
+@section('description', str_limit(strip_tags($informasi->content), 250))
 
 @section('content')
 
@@ -13,9 +15,7 @@
 	<br>
 	<br>
 
-	@if ($informasi->img_gambar)
-	<img class="img-responsive" src="/{{ $informasi->img_gambar }}" alt="{{ $informasi->judul }}">
-	@endif
+	<img class="img-responsive" src="/{{ $informasi->img }}" alt="{{ $informasi->judul }}">
 
 	<br>
 

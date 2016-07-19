@@ -24,6 +24,8 @@ class Peduli extends Model
 
 	protected $with = ['user', 'group'];
 
+	public $appends = ['img'];
+
 	public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'user_id');
@@ -37,5 +39,12 @@ class Peduli extends Model
 	public function comments()
 	{
 		return $this->morphMany('App\Comment', 'commentable');
+	}
+
+	public function getImgAttribute($value)
+	{
+		return $this->img_artikel
+			? 'http://www.salamdakwah.com/'.$this->img_artikel
+			: 'http://www.salamdakwah.com/images/salwa-peduli.jpg';
 	}
 }

@@ -17,6 +17,8 @@ class Forum extends Model
 		'updatedby', 'date', 'title_code', 'status', 'close'
 	];
 
+	public $appends = ['img'];
+
 	const CREATED_AT = 'created';
 
 	const UPDATED_AT = 'updated';
@@ -56,5 +58,14 @@ class Forum extends Model
 	public function scopeOpen($query)
 	{
 		return $query->where('close', 'N');
+	}
+
+	public function getImgAttribute($value)
+	{
+		if ($this->posts->count() && $this->posts()->first()->images->count()) {
+			return 'http://www.salamdakwah.com/'.$this->posts()->first()->images()->first()->img_image;
+		}
+
+		return 'http://www.salamdakwah.com/images/salwa-forum.jpg';
 	}
 }

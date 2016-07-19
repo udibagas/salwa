@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title') Video : {{ $video->title }} @stop
+@section('image', 'http://www.salamdakwah.com/'.$video->img_video)
+@section('description', $video->desc)
 
 @section('breadcrumbs')
 

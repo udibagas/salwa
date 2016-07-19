@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('title') Aktual : {{ $artikel->judul }} @stop
-@section('description', str_limit(strip_tags($artikel->isi), 250))
 @section('image', 'http://www.salamdakwah.com/'.$artikel->img_artikel)
+@section('description', str_limit(strip_tags($artikel->isi), 250))
 
 @section('breadcrumbs')
 
