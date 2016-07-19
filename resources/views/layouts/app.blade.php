@@ -127,22 +127,22 @@
 		<script type="text/javascript">
 
 			@if (!$isMobile)
-				var audio = new Audio('http://119.82.232.83:1111/;stream.mp3');
-				audio.volume = 1.0;
+				var radio = new Audio('http://119.82.232.83:1111/;stream.mp3');
+				radio.volume = 1.0;
 
 				$(document).on('click', '.fa-play', function() {
-					audio.play();
+					radio.play();
 					$(this).removeClass('fa-play');
 					$(this).addClass('fa-pause');
 				});
 
 				$(document).on('click', '.fa-pause', function() {
-					audio.pause();
+					radio.pause();
 					$(this).removeClass('fa-pause');
 					$(this).addClass('fa-play');
 				});
 
-				audio.play();
+				radio.play();
 			@endif
 
 			$('#popup').modal('show')
