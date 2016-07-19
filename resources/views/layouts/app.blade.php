@@ -6,11 +6,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<!-- <meta property="og:title" content="SalamDakwah | @yield('title')" />
+		<meta property="og:title" content="SalamDakwah | @yield('title')" />
 		<meta property="og:description" content="@yield('description')" />
-		<meta property="og:image" content="@yield('image')" /> -->
+		<meta property="og:image" content="@yield('image')" />
 
-		<!-- <link rel="image_src" href="@yield('image')" /> -->
+		<link rel="image_src" href="@yield('image')" />
 
 		<meta name="author" content="SalamDakwah" />
 		<meta name="description" content="video kajian, audio kajian, forum islami, jadwal kajian dan artikel, yang berdasarkan Al-Quran dan As-Sunnah sebagaimana pemahaman para sahabat Rosululloh Shallallahu Alaihi Wasallam" />
