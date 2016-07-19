@@ -120,10 +120,10 @@
 			</div>
 
 			@if (!$isMobile)
-				<a class="btn btn-success" style="font-size:18px;position:fixed;bottom:40px;right:40px;">
+				<!-- <a class="btn btn-success" style="font-size:18px;position:fixed;bottom:40px;right:40px;">
 					<i class="fa fa-pause"></i>
 					<span style="margin-left:5px;">SALWA RADIO</span>
-				</a>
+				</a> -->
 			@endif
 
         </div>
@@ -135,22 +135,24 @@
 		<script type="text/javascript">
 
 			@if (!$isMobile)
-				var radio = new Audio('http://119.82.232.83:1111/;stream.mp3');
-				radio.volume = 1.0;
+				// var radio = new Audio('http://119.82.232.83:1111/;stream.mp3');
+				// radio.volume = 1.0;
+				//
+				// $(document).on('click', '.fa-play', function() {
+				// 	radio.play();
+				// 	$(this).removeClass('fa-play');
+				// 	$(this).addClass('fa-pause');
+				// });
+				//
+				// $(document).on('click', '.fa-pause', function() {
+				// 	radio.pause();
+				// 	$(this).removeClass('fa-pause');
+				// 	$(this).addClass('fa-play');
+				// });
+				//
+				// radio.play();
 
-				$(document).on('click', '.fa-play', function() {
-					radio.play();
-					$(this).removeClass('fa-play');
-					$(this).addClass('fa-pause');
-				});
 
-				$(document).on('click', '.fa-pause', function() {
-					radio.pause();
-					$(this).removeClass('fa-pause');
-					$(this).addClass('fa-play');
-				});
-
-				radio.play();
 			@endif
 
 			$('#popup').modal('show')
@@ -196,6 +198,13 @@
 			var q = '{{ request("q") }}';
 
 		</script>
+
+		@if(!$isMobile)
+		<!-- SCM Music Player http://scmplayer.net -->
+		<script type="text/javascript" src="http://scmplayer.net/script.js"
+		data-config="{'skin':'skins/black/skin.css','volume':100,'autoplay':true,'shuffle':false,'repeat':1,'placement':'top','showplaylist':false,'playlist':[{'title':'SALWA RADIO - Menebar Salam, Menyebar Dakwah','url':'http://119.82.232.83:1111/;stream.mp3'}]}" ></script>
+		<!-- SCM Music Player script end -->
+		@endif
 
 		@stack('script')
 
