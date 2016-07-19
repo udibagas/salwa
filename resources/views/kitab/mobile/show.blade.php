@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Kitab & Terjemahan : '. $kitab->judul)
+@section('image', 'http://www.salamdakwah.com/'.$kitab->img_buku)
+@section('description', str_limit(strip_tags($kitab->materi), 250))
 
 @section('content')
 

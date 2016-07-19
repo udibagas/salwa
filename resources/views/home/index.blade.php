@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title') Home @stop
+@section('description', 'video kajian, audio kajian, forum islami, jadwal kajian dan artikel, yang berdasarkan Al-Quran dan As-Sunnah sebagaimana pemahaman para sahabat Rosululloh Shallallahu Alaihi Wasallam')
+@section('image', 'http://www.salamdakwah.com/images/logo.png')
 
 @section('slider')
 	@include('home.slider')

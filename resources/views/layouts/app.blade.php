@@ -15,8 +15,14 @@
 		<meta property="og:description" content="@yield('description')" />
 		<meta property="og:image" content="@yield('image')" />
 
+		<!-- for Twitter -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="@yield('title')" />
+		<meta name="twitter:description" content="@yield('description')" />
+		<meta name="twitter:image" content="@yield('image')" />
+
 		<meta name="author" content="SalamDakwah" />
-		<meta name="description" content="video kajian, audio kajian, forum islami, jadwal kajian dan artikel, yang berdasarkan Al-Quran dan As-Sunnah sebagaimana pemahaman para sahabat Rosululloh Shallallahu Alaihi Wasallam" />
+		<meta name="description" content="@yield('description')" />
 		<meta name="keyword" content="video kajian,audio kajian,forum islami,jadwal kajian,artikel,Al-Quran,Sunnah,sahabat,Rosululloh,islam,muslim,muhammad" />
 		<meta name="copyright" content="Copyright {{ date('Y') }} by SalamDakwah.Com" />
 		<meta name="language" content="id" />

@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
-@section('title', 'Kajian : '.$kajian->kajian_tema)
+@section('title', 'Info Kajian : '.$kajian->kajian_tema)
+@section('image', 'http://www.salamdakwah.com/'.$kajian->img_kajian_photo)
+@section('description', $kajian->kajian_tema)
 
 @section('content')
 
