@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('quran.main')
 
 @section('title', 'Quran')
 
@@ -11,9 +11,9 @@
 		</div>
 		<div class="col-md-6">
 			<div class="list-group">
-				<span class="list-group-item info">
+				<!-- <span class="list-group-item info">
 					@include('quran._search-form')
-				</span>
+				</span> -->
 				@include('quran._player')
 				@each('quran._ayat', $ayats, 'a')
 			</div>
@@ -28,16 +28,3 @@
 	</div>
 
 @stop
-
-@push('script')
-<script type="text/javascript">
-
-	if (q.length > 0) {
-		$('.list-group .terjemahan').each(function(index, element) {
-			text = $(this).html().replace(RegExp(q, "gi"),'<b><i>'+q+'</i></b>');
-			$(this).html(text);
-		});
-	}
-
-</script>
-@endpush

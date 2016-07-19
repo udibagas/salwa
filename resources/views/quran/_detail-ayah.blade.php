@@ -6,9 +6,6 @@
 </ul>
 
 <br />
-<!-- <audio controls="controls" preload="none" style="width:100%"><source src="" type="application/ogg"></source></audio>
-<br />
-<br /> -->
 
 <!-- Tab panes -->
 <div class="tab-content">

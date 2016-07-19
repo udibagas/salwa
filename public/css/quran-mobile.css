@@ -3,6 +3,11 @@
     src: url("/fonts/Nirmala_0.ttf");
 }
 
+@font-face {
+    font-family: "me_quran";
+    src: url("/fonts/me_quran.ttf");
+}
+
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
@@ -11,6 +16,12 @@ body {
 	padding-top: 50px;
 	padding-bottom: 56px;
 	color: #5a5a5a;
+}
+
+.ayat {
+	font-family: "me_quran", serif;
+	line-height: 2.2em;
+	text-align: right;
 }
 
 .row-post.warning {

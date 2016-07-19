@@ -5,9 +5,25 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>SalamDakwah | Al Quran Online</title>
+
+		<meta property="og:url" content="{{ url()->full() }}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Al Quran Online" />
+		<meta property="og:site_name" content="SalamDakwah" />
+		<meta property="og:description" content="Al Quran Online Beserta Audio dan Tafsir" />
+		<meta property="og:image" content="" />
+
+		<!-- for Twitter -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="Al Quran Online" />
+		<meta name="twitter:description" content="" />
+		<meta name="twitter:image" content="" />
+
 		<meta name="author" content="SalamDakwah" />
-		<meta name="description" content="video kajian, audio kajian, forum islami, jadwal kajian dan artikel, yang berdasarkan Al-Quran dan As-Sunnah sebagaimana pemahaman para sahabat Rosululloh Shallallahu Alaihi Wasallam" />
-		<meta name="keyword" content="video kajian,audio kajian,forum islami,jadwal kajian,artikel,Al-Quran,Sunnah,sahabat,Rosululloh,islam,muslim,muhammad" />
+		<meta name="description" content="Al Quran Online Beserta Audio dan Tafsir" />
+		<meta name="keyword" content="al quran, quran, audio quran, murottal, murotal, tafsir, tafsir quran, tafsir al quran, mp3 quran" />
+
 		<meta name="copyright" content="Copyright {{ date('Y') }} by SalamDakwah.Com" />
 		<meta name="language" content="id" />
 		<meta name="distribution" content="Global" />
@@ -23,10 +39,9 @@
 		<meta name="tgn.name" content="Jakarta" />
 		<meta name="tgn.nation" content="Indonesia" />
         <link rel="icon" href="/images/logo.png">
-        <title>SalamDakwah | Al Quran Online</title>
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="/sidr/dist/stylesheets/jquery.sidr.bare.css" rel="stylesheet">
-		<link href="/css/quran.css" rel="stylesheet">
+		<link href="/css/quran-mobile.css" rel="stylesheet">
 		<script type="text/javascript" src="/js/jquery.min.js"></script>
 		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
     </head>
@@ -57,7 +72,7 @@
 			var q = '{{ request("q") }}';
 			var lastPage = false;
 			var nextBtn = $('.next-page');
-			var audio = new Audio('@if ($ayats->count()) /quran_audio/misyari/{{ $ayats->first()->surat_id }}/{{ $ayats->first()->ayat_id }}.mp3 @endif');
+			var audio = new Audio('@if ($ayats->count()) /quran_audio/misyari/{{ str_pad($ayats->first()->surat_id, 3, '0', STR_PAD_LEFT) }}/{{ str_pad($ayats->first()->ayat_id, 3, '0', STR_PAD_LEFT) }}.mp3 @endif');
 
 			nextBtn.on('click', function(e) {
 				e.preventDefault();
