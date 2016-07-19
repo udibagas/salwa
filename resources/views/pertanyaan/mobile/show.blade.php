@@ -2,7 +2,7 @@
 
 @section('title', 'Tanya Ustadz : '.$pertanyaan->judul_pertanyaan)
 @section('image', 'http://www.salamdakwah.com/images/tanya-ustadz.jpg')
-@section('description', $pertanyaan->pertanyaan)
+@section('description', $pertanyaan->ket_pertanyaan)
 
 @section('content')
 <div class="row-post">

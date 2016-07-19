@@ -5,12 +5,15 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>SalamDakwah | @yield('title')</title>
+		<link rel="image_src" href="@yield('image')" />
 
-		<meta property="og:title" content="SalamDakwah | @yield('title')" />
+		<meta property="og:url" content="{{ url()->full() }}" />
+		<meta property="og:type" content="@yield('type')" />
+		<meta property="og:title" content="@yield('title')" />
+		<meta property="og:site_name" content="SalamDakwah" />
 		<meta property="og:description" content="@yield('description')" />
 		<meta property="og:image" content="@yield('image')" />
-
-		<link rel="image_src" href="@yield('image')" />
 
 		<meta name="author" content="SalamDakwah" />
 		<meta name="description" content="video kajian, audio kajian, forum islami, jadwal kajian dan artikel, yang berdasarkan Al-Quran dan As-Sunnah sebagaimana pemahaman para sahabat Rosululloh Shallallahu Alaihi Wasallam" />
@@ -32,7 +35,6 @@
 		<meta name="tgn.nation" content="Indonesia" />
 
         <link rel="icon" href="/images/logo.png">
-        <title>SalamDakwah | @yield('title')</title>
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
 
