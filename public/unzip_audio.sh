@@ -11,6 +11,8 @@ do
 	for a in $(seq -f "%03g" 1 114)
 	do
 		unzip $a.zip;
+		rm *.html;
+		mkdir $a;
 		cd $a;
 		for f in `ls *.mp3`
 		do
