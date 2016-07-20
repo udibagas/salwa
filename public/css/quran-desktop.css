@@ -8,6 +8,11 @@
     src: url("/fonts/me_quran.ttf");
 }
 
+@font-face {
+    font-family: "UthmanTN1Ver10";
+    src: url("/fonts/UthmanTN1Ver10.otf");
+}
+
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
@@ -19,7 +24,7 @@ body {
 }
 
 .ayat {
-	font-family: "me_quran", serif;
+	font-family: "UthmanTN1Ver10", serif;
 	text-align: right;
 	line-height: 2.2em;
 	font-size: 22px;

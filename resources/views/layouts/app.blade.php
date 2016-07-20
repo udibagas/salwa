@@ -56,6 +56,8 @@
 		@else
 		<link href="/css/app.css" rel="stylesheet">
 		@endif
+		
+		<link href="/css/surah.css" rel="stylesheet">
 
 		@stack('css')
 
