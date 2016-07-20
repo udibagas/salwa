@@ -88,10 +88,10 @@
 			var playAudio = function(a, e) {
 				$('.track').removeClass('warning');
 				if (e.length) { $(e).addClass('warning'); }
-				$('html, body').animate({ scrollTop: $(".track.warning").offset().top - 50 }, 700);
 				a.play();
 				$('.play').hide();
 				$('.pause').show();
+				$('html, body').animate({ scrollTop: $(".track.warning").offset().top - 50 }, 700);
 				a.addEventListener('timeupdate', function() { if (a.ended) { stopAudio(); } });
 				track = $('.track.warning').attr('audiourl');
 			};
