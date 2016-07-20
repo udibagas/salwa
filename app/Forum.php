@@ -62,9 +62,9 @@ class Forum extends Model
 
 	public function getImgAttribute($value)
 	{
-		if ($this->posts->count() && $this->posts()->first()->images->count()) {
-			return 'http://www.salamdakwah.com/'.$this->posts()->first()->images()->first()->img_image;
-		}
+		// if ($this->posts->count() && $this->posts()->first()->images->count()) {
+		// 	return 'http://www.salamdakwah.com/'.$this->posts()->first()->images()->first()->img_image;
+		// }
 
 		return 'http://www.salamdakwah.com/images/salwa-forum.jpg';
 	}

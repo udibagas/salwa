@@ -201,8 +201,8 @@
 
 		@if(!$isMobile)
 		<!-- SCM Music Player http://scmplayer.net -->
-		<script type="text/javascript" src="http://scmplayer.net/script.js"
-		data-config="{'skin':'skins/black/skin.css','volume':100,'autoplay':true,'shuffle':false,'repeat':1,'placement':'top','showplaylist':false,'playlist':[{'title':'SALWA RADIO - Menebar Salam, Menyebar Dakwah','url':'http://119.82.232.83:1111/;stream.mp3'}]}" ></script>
+		<!-- <script type="text/javascript" src="http://scmplayer.net/script.js"
+		data-config="{'skin':'skins/black/skin.css','volume':100,'autoplay':true,'shuffle':false,'repeat':1,'placement':'top','showplaylist':false,'playlist':[{'title':'SALWA RADIO - Menebar Salam, Menyebar Dakwah','url':'http://119.82.232.83:1111/;stream.mp3'}]}" ></script> -->
 		<!-- SCM Music Player script end -->
 		@endif
 

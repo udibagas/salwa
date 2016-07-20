@@ -51,7 +51,10 @@ class QuranController extends Controller
 			return $this->getAyatsJson($ayats);
 		}
 
-		return view($view, ['ayats' => $ayats, 'surah' => Surah::find(1)]);
+		return view($view, [
+			'ayats' => $ayats,
+			'surah' => Surah::find(1),
+		]);
 	}
 
 	public function image(Request $request)
@@ -84,7 +87,7 @@ class QuranController extends Controller
 
 		return view($view, [
 			'surah' => $surah,
-			'ayats' => $ayats
+			'ayats' => $ayats,
 		]);
 	}
 
@@ -104,7 +107,7 @@ class QuranController extends Controller
 
 		return view($view, [
 			'surah'	=> $surah,
-			'ayats'	=> $ayats
+			'ayats'	=> $ayats,
 		]);
 	}
 

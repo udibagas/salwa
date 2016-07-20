@@ -70,7 +70,7 @@ class PostController extends Controller
 			}
         }
 
-		return redirect()->action('ForumController@show', ['forum' => $forum]);
+		return redirect('/forum/'.$forum->forum_id);
     }
 
     /**
@@ -137,7 +137,7 @@ class PostController extends Controller
 		$forum->updated = date('Y-m-d H:i:s');
 		$forum->save();
 
-		return redirect()->action('ForumController@show', ['forum' => $forum]);
+		return redirect('/forum/'.$forum->forum_id);
     }
 
     /**

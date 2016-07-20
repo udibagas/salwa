@@ -13,12 +13,10 @@ do
 		unzip $a.zip;
 		rm *.html;
 		mkdir $a;
-		cd $a;
 		for f in `ls *.mp3`
 		do
-			mv $f ${$f:3}
+			mv $f $a/${$f:3}
 		done
-		cd ..
 	done
 	cd ..
 done
