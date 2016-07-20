@@ -1,12 +1,22 @@
-<div style="position:fixed;top:0;right:0;width:100%;z-index:1030;">
-	<div class="container-fluid" style="background-color:#eee;text-align:right;height:30px;">
-		<span style="font-size:13px;">Stay in touch with us:</span>
-		<span style="font-size:20px;">
-			<a href="https://www.facebook.com/Salamdakwah-287022414764661/?ref=hl" target="_blank" class="fa fa-facebook-square"> </a>
-			<a href="https://twitter.com/salamdakwah" target="_blank" class="fa fa-twitter-square"> </a>
-			<a href="https://www.youtube.com/user/salamdakwah" target="_blank" class="fa fa-youtube-square"> </a>
-			<a href="https://www.instagram.com/salamdakwah" target="_blank" class="fa fa-instagram"> </a>
-		</span>
+<div style="position:fixed;top:0;right:0;left:0;z-index:1030;background-color:#eee;height:30px;">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4">
+
+			</div>
+			<div class="col-md-4 text-center" style="margin-top:5px;">
+				<i class="fa fa-pause" class="text-primary"></i> SALWA RADIO - Menebar Salam, Menyebar Dakwah
+			</div>
+			<div class="col-md-4 text-right">
+				<span style="font-size:13px;">Stay in touch with us:</span>
+				<span style="font-size:20px;">
+					<a href="https://www.facebook.com/Salamdakwah-287022414764661/?ref=hl" target="_blank" class="fa fa-facebook-square"> </a>
+					<a href="https://twitter.com/salamdakwah" target="_blank" class="fa fa-twitter-square"> </a>
+					<a href="https://www.youtube.com/user/salamdakwah" target="_blank" class="fa fa-youtube-square"> </a>
+					<a href="https://www.instagram.com/salamdakwah" target="_blank" class="fa fa-instagram"> </a>
+				</span>
+			</div>
+		</div>
 	</div>
 </div>
 

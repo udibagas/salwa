@@ -2,7 +2,7 @@
 
 @section('title') Forum : {{ $forum->title }} @stop
 @section('image', $forum->img)
-@section('description', str_limit(strip_tags($forum->posts()->first()->description), 250))
+@section('description', str_limit(strip_tags($forum->desc), 200))
 
 @section('breadcrumbs')
 

@@ -17,7 +17,7 @@ class Forum extends Model
 		'updatedby', 'date', 'title_code', 'status', 'close'
 	];
 
-	public $appends = ['img'];
+	public $appends = ['img', 'desc'];
 
 	const CREATED_AT = 'created';
 
@@ -62,10 +62,19 @@ class Forum extends Model
 
 	public function getImgAttribute($value)
 	{
-		// if ($this->posts->count() && $this->posts()->first()->images->count()) {
-		// 	return 'http://www.salamdakwah.com/'.$this->posts()->first()->images()->first()->img_image;
-		// }
+		if ($this->posts->count() && $this->posts()->first()->images->count()) {
+			return 'http://www.salamdakwah.com/'.$this->posts()->first()->images()->first()->img_image;
+		}
 
 		return 'http://www.salamdakwah.com/images/salwa-forum.jpg';
+	}
+
+	public function getDescAttribute($value)
+	{
+		if ($this->posts->count()) {
+			return $this->posts()->first()->description;
+		}
+
+		return $this->title;
 	}
 }
