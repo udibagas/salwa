@@ -22,11 +22,26 @@
 
 @push('script')
 <script type="text/javascript">
+
 	$('.pause').hide();
-
-	var audio = new Audio('@if ($ayats->count()) /quran_audio/{{ request('qari', 'misyari') }}/{{ str_pad($ayats->first()->surat_id, 3, '0', STR_PAD_LEFT) }}/{{ str_pad($ayats->first()->ayat_id, 3, '0', STR_PAD_LEFT) }}.mp3 @endif');
-
 	$('.track').first().addClass('warning');
+
+	var qari = $('[name="qari"]').val();
+	var audioDir = '/quran_audio/'+qari;
+	var track = $('.track').first().attr('audiourl');
+
+	$('[name="qari"]').on('change', function() {
+		var q = $(this).val();
+		audioDir = '/quran_audio/'+q;
+		stopAudio();
+		initAudio(track);
+	});
+
+	var initAudio = function(t) {
+		return new Audio(audioDir+t);
+	}
+
+	var audio = initAudio(track);
 
 	$('.play').click(function(e) {
 		e.preventDefault();
@@ -36,7 +51,7 @@
 
 	$('.track').click(function() {
 		audio.pause();
-		audio = new Audio($(this).attr('audiourl'));
+		audio = initAudio($(this).attr('audiourl'));
 		playAudio(audio, $(this));
 	});
 
@@ -49,7 +64,7 @@
 		}
 
 		audio.pause();
-		audio = new Audio($(next).attr('audiourl'));
+		audio = initAudio($(next).attr('audiourl'));
 		playAudio(audio, next);
 	});
 
@@ -62,7 +77,7 @@
 		}
 
 		audio.pause();
-		audio = new Audio($(prev).attr('audiourl'));
+		audio = initAudio($(prev).attr('audiourl'));
 		playAudio(audio, prev);
 	});
 
@@ -106,6 +121,7 @@
 
 		$('.play').hide();
 		$('.pause').show();
+		track = $('.track.warning').attr('audiourl');
 	};
 
 </script>

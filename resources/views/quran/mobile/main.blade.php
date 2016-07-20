@@ -68,11 +68,11 @@
 		@include('quran.mobile._surah')
 
 		<script type="text/javascript">
+
 			var url = '{{ $ayats->nextPageUrl() }}';
 			var q = '{{ request("q") }}';
 			var lastPage = false;
 			var nextBtn = $('.next-page');
-			var audio = new Audio('@if ($ayats->count()) /quran_audio/misyari/{{ str_pad($ayats->first()->surat_id, 3, '0', STR_PAD_LEFT) }}/{{ str_pad($ayats->first()->ayat_id, 3, '0', STR_PAD_LEFT) }}.mp3 @endif');
 
 			nextBtn.on('click', function(e) {
 				e.preventDefault();
@@ -93,6 +93,7 @@
 				$('.play').hide();
 				$('.pause').show();
 				a.addEventListener('timeupdate', function() { if (a.ended) { stopAudio(); } });
+				track = $('.track.warning').attr('audiourl');
 			};
 
 			var loadMore = function() {
@@ -125,6 +126,22 @@
 
 			$('.pause').hide();
 			$('.track').first().addClass('warning');
+
+			var qari = $('[name="qari"]').val();
+			var audioDir = '/quran_audio/'+qari;
+			var track = $('.track').first().attr('audiourl');
+
+			$('[name="qari"]').on('change', function() {
+				var q = $(this).val();
+				audioDir = '/quran_audio/'+q;
+				stopAudio();
+			});
+
+			var initAudio = function(t) {
+				return new Audio(audioDir+t);
+			}
+
+			var audio = initAudio(track);
 
 			$('#menu').sidr({
 				name: 'sidr', timing: 'ease-in-out', speed: 200, side: 'right',
@@ -164,7 +181,7 @@
 
 			$(document).on('click', '.track', function() {
 				audio.pause();
-				audio = new Audio($(this).attr('audiourl'));
+				audio = initAudio($(this).attr('audiourl'));
 				playAudio(audio, $(this));
 			});
 
@@ -173,7 +190,7 @@
 				var next = $('.track.warning').next();
 				if (next.length == 0) { return; }
 				audio.pause();
-				audio = new Audio($(next).attr('audiourl'));
+				audio = initAudio($(next).attr('audiourl'));
 				playAudio(audio, next);
 			});
 
@@ -182,7 +199,7 @@
 				var prev = $('.track.warning').prev('.track');
 				if (prev.length == 0) { return; }
 				audio.pause();
-				audio = new Audio($(prev).attr('audiourl'));
+				audio = initAudio($(prev).attr('audiourl'));
 				playAudio(audio, prev);
 			});
 
