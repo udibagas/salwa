@@ -34,7 +34,7 @@
 		var q = $(this).val();
 		audioDir = '/quran_audio/'+q;
 		stopAudio();
-		initAudio(track);
+		audio = initAudio(track);
 	});
 
 	var initAudio = function(t) {

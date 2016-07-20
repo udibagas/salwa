@@ -135,6 +135,7 @@
 				var q = $(this).val();
 				audioDir = '/quran_audio/'+q;
 				stopAudio();
+				audio = initAudio(track);
 			});
 
 			var initAudio = function(t) {
