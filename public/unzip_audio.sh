@@ -16,6 +16,7 @@ do
 		do
 			mv $f ${$f:3}
 		done
+		cd ..
 	done
 	cd ..
 done
