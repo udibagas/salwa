@@ -13,6 +13,12 @@
     src: url("/fonts/UthmanTN1Ver10.otf");
 }
 
+@font-face {
+    font-family: "UthmanTN1BVer10";
+    src: url("/fonts/UthmanTN1BVer10.otf");
+	font-weight: bold;
+}
+
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
@@ -25,7 +31,7 @@ body {
 
 .ayat {
 	font-family: "UthmanTN1Ver10", serif;
-	line-height: 2.2em;
+	line-height: 1.8em;
 	text-align: right;
 }
 

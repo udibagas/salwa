@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title text-center">
-			<span class="surah s{{ $surah->id }}"></span><br>
+			<span class="arab">{{ $surah->arab }}</span><br>
 			{{ strtoupper($surah->nama) }} ({{ strtoupper($surah->arti) }})
 		</h3>
 	</div>

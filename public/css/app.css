@@ -13,6 +13,12 @@
     src: url("/fonts/UthmanTN1Ver10.otf");
 }
 
+@font-face {
+    font-family: "UthmanTN1BVer10";
+    src: url("/fonts/UthmanTN1BVer10.otf");
+	font-weight: bold;
+}
+
 /*@font-face {
     font-family: "Nirmala UI";
     src: url("/fonts/NirmalaB_0.ttf");
@@ -31,7 +37,7 @@ body {
 
 .arab, .arabic, .ayat, .quran {
 	font-family: "UthmanTN1Ver10", serif;
-	line-height: 2.2em;
+	line-height: 1.8em;
 	font-size: 22px;
 	text-align: right;
 }
