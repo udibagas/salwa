@@ -35,7 +35,7 @@
       </form>
 
       <ul class="nav navbar-nav navbar-right">
-		  <li class="@if (url()->current() == url('quran/about')) active @endif"><a href="/quran"><i class="fa fa-home"></i> HOME</a></li>
+		  <li class="@if (url()->current() == url('quran/about')) active @endif"><a href="/quran"><i class="fa fa-home"></i></a></li>
 		  <li class="@if (url()->current() == url('quran/about')) active @endif"><a href="/quran/about"><i class="fa fa-folder-open"></i> ABOUT</a></li>
 		  <li class="@if (url()->current() == url('quran/help')) active @endif"><a href="/quran/help"><i class="fa fa-support"></i> HELP</a></li>
 		  <li class="@if (url()->current() == url('quran/contact')) active @endif"><a href="/quran/contact"><i class="fa fa-envelope"></i> CONTACT</a></li>
