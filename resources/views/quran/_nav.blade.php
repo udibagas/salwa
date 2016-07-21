@@ -19,16 +19,16 @@
 			{!! Form::select('qari', \App\Ayah::getQariList(), request('qari'), ['class' => 'form-control']) !!}
 
 			<div class="btn-group">
-				<a href="#" class="btn btn-info prev">
+				<a href="#" class="btn btn-default prev" title="Step Backward">
 					<i class="fa fa-step-backward"></i>
 				</a>
-				<a href="#" class="btn btn-info pause">
+				<a href="#" class="btn btn-default pause" title="Pause">
 					<i class="fa fa-pause"></i>
 				</a>
-				<a href="#" class="btn btn-info play">
+				<a href="#" class="btn btn-default play" title="Play">
 					<i class="fa fa-play"></i>
 				</a>
-				<a href="#" class="btn btn-info next">
+				<a href="#" class="btn btn-default next" title="Step Forward">
 					<i class="fa fa-step-forward"></i>
 				</a>
 			</div>

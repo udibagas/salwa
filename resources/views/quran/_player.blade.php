@@ -49,7 +49,8 @@
 		playAudio(audio, $('.track.warning'));
 	});
 
-	$('.track > .ayat, .play-ayat').click(function() {
+	$('.track > .ayat, .play-ayat').click(function(e) {
+		e.preventDefault();
 		audio.pause();
 		audio = initAudio($(this).parent().attr('audiourl'));
 		playAudio(audio, $(this).parent());
