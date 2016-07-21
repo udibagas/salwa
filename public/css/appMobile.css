@@ -35,7 +35,7 @@ body {
 .arab, .arabic, .ayat, .quran {
 	font-family: "UthmanTN1Ver10", serif;
 	line-height: 1.8em;
-	text-align: right;
+	direction: rtl;
 }
 
 td.td-label {

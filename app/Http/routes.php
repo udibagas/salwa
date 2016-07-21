@@ -137,7 +137,6 @@ Route::get('videos-detail/{slug}.html', 'VideoController@lihat');
 Route::resource('artikel', 'ArtikelController', ['only' => ['index', 'show']]);
 Route::resource('banner', 'BannerController', ['only' => ['index', 'show']]);
 Route::resource('forum', 'ForumController', ['only' => ['index', 'show']]);
-// Route::resource('forums', 'ForumController', ['only' => ['index', 'show']]);
 Route::resource('hadist', 'HadistController', ['only' => ['index', 'show']]);
 Route::resource('image', 'ImageController', ['only' => ['index', 'show']]);
 Route::resource('informasi', 'InformasiController', ['only' => ['index', 'show']]);
@@ -153,10 +152,6 @@ Route::resource('video', 'VideoController', ['only' => ['index', 'show']]);
 Route::resource('pertanyaan', 'PertanyaanController', ['only' => ['index', 'show']]);
 
 Route::auth();
-
-Route::get('design', function() {
-	return '<img src="/images/design.jpg" style="width:100%" />';
-});
 
 Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
 

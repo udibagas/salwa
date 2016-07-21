@@ -26,54 +26,85 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-		$gate->before(function($user, $ability) {
-			return $user->isAdmin();
-		});
-
 		$gate->define('update-post', function ($user, $post) {
-            return $user->user_id === $post->user_id;
+
+			if ($user->isAdmin()) {
+				return true;
+			}
+
+            return $user->user_id == $post->user_id;
         });
 
 		$gate->define('delete-post', function ($user, $post) {
-            return $user->user_id === $post->user_id;
+
+			if ($user->isAdmin()) {
+				return true;
+			}
+
+            return $user->user_id == $post->user_id;
         });
 
 		$gate->define('update-forum', function ($user, $forum) {
-            return $user->user_id === $forum->user_id;
+
+			if ($user->isAdmin()) {
+				return true;
+			}
+
+            return $user->user_id == $forum->user_id;
         });
 
 		$gate->define('delete-forum', function ($user, $forum) {
-            return $user->user_id === $forum->user_id;
+
+			if ($user->isAdmin()) {
+				return true;
+			}
+
+            return $user->user_id == $forum->user_id;
         });
 
 		$gate->define('update-pertanyaan', function ($user, $pertanyaan) {
 
-			$gate->before(function($user, $ability) {
-				return $user->isUstadz();
-			});
+			if ($user->isAdmin()) {
+				return true;
+			}
 
-            return $user->user_id === $pertanyaan->user_id;
+            return $user->user_id == $pertanyaan->user_id;
         });
 
 		$gate->define('delete-pertanyaan', function ($user, $pertanyaan) {
 
-			$gate->before(function($user, $ability) {
-				return $user->isUstadz();
-			});
+			if ($user->isAdmin()) {
+				return true;
+			}
 
-            return $user->user_id === $pertanyaan->user_id;
+            return $user->user_id == $pertanyaan->user_id;
         });
 
 		$gate->define('jawab-pertanyaan', function ($user, $pertanyaan) {
+
+			if ($user->isAdmin()) {
+				return true;
+			}
+
             return $user->isUstadz();
         });
 
 		$gate->define('update-comment', function ($user, $comment) {
-            return $user->user_id === $comment->user_id && !$comment->approved;
+
+			if ($user->isAdmin()) {
+				return true;
+			}
+
+            return $user->user_id == $comment->user_id && !$comment->approved;
         });
 
 		$gate->define('delete-comment', function ($user, $comment) {
-            return $user->user_id === $comment->user_id;
+
+			if ($user->isAdmin()) {
+				return true;
+			}
+
+            return $user->user_id == $comment->user_id;
         });
 
     }

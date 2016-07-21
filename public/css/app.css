@@ -38,8 +38,8 @@ body {
 .arab, .arabic, .ayat, .quran {
 	font-family: "UthmanTN1Ver10", serif;
 	line-height: 1.8em;
-	font-size: 22px;
-	text-align: right;
+	font-size: 24px;
+	direction: rtl;
 }
 
 .navbar-fixed-top {

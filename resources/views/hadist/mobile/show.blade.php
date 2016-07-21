@@ -6,16 +6,20 @@
 
 <div class="row-post">
 	<h3 class="text-center">{{ $hadist->judul }}</h3>
-	<br>
+	<hr style="border-color:#999">
 
-	<div class="text-center" style="font-size:27px;">
+	<div class="arab text-center" style="font-size:27px;">
 		{{ $hadist->hadist }}
 	</div>
-	<br>
 
-	{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
+	<div class="text-center">
+		<hr style="border-top:1px dashed #999">
 
-	<br>
+		{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
+
+		<hr style="border-top:1px dashed #999">
+	</div>
+
 	<div class="text-center">
 		@include('layouts._share')
 	</div>

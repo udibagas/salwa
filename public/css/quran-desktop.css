@@ -24,16 +24,21 @@
 /* Padding below the footer and lighter body text */
 body {
 	font-family: "Nirmala UI", sans-serif;
-	padding-top: 50px;
+	padding-top: 70px;
 	padding-bottom: 0;
 	color: #5a5a5a;
+	background-color: #EEEEEE;
 }
 
-.ayat {
+.arab, .arabic, .ayat, .quran {
 	font-family: "UthmanTN1Ver10", serif;
-	text-align: right;
 	line-height: 1.8em;
-	font-size: 22px;
+	font-size: 26px;
+	direction: rtl;
+}
+
+.terjemahan {
+	font-size: 16px;
 }
 
 /* CUSTOMIZE THE NAVBAR
@@ -126,6 +131,11 @@ body {
 	background-color: #fcf8e3;
 }
 
+.track.warning {
+	/*background-color: #fcf8e3;*/
+	background-color: #D9EDF7;
+}
+
 .list-group-item.danger {
 	background-color: #f2dede;
 }
@@ -155,7 +165,7 @@ body {
 }
 
 .search-field {
-	border-radius:20px;
+	/*border-radius:20px;*/
 	background-image: url('/images/loop.png');
 	background-repeat: no-repeat;
 	background-position: 8px 49%;
@@ -192,4 +202,15 @@ a:hover {
 
 .text-bold {
 	font-weight: bold;
+}
+
+.list-group-item:first-of-type, .list-group-item:last-of-type {
+	border-radius: 0;
+}
+
+.well {
+	-webkit-box-shadow: inset 0px 0px 1px 1px rgba(170,170,170,1);
+	-moz-box-shadow: inset 0px 0px 1px 1px rgba(170,170,170,1);
+	box-shadow: inset 0px 0px 1px 1px rgba(170,170,170,1);
+	border-radius: 0;
 }

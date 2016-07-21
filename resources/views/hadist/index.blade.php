@@ -39,7 +39,7 @@
 				<div class="panel-body">
 					<h3 class="text-center">{{ $hadist->judul }}</h3><br>
 
-					<div style="font-size:20px;" class="text-right">
+					<div style="font-size:20px;" class="arab">
 						{{ $hadist->hadist }}
 					</div>
 

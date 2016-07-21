@@ -1,29 +1,38 @@
-<!-- <div class="text-center">
-	<div class="btn-group">
-		<a href="#" class="btn btn-info prev">
-			<i class="fa fa-step-backward"></i>
-		</a>
-		<a href="#" class="btn btn-info pause">
-			<i class="fa fa-pause"></i>
-		</a>
-		<a href="#" class="btn btn-info play">
-			<i class="fa fa-play"></i>
-		</a>
-		<a href="#" class="btn btn-info next">
-			<i class="fa fa-step-forward"></i>
-		</a>
+<span class="list-group-item info">
+	<div class="row no-gutter">
+		<div class="col-md-9">
+			{!! Form::select('qari', \App\Ayah::getQariList(), request('qari'), ['class' => 'form-control']) !!}
+		</div>
+		<div class="col-md-3 text-right">
+			<div class="btn-group">
+				<a href="#" class="btn btn-info prev">
+					<i class="fa fa-step-backward"></i>
+				</a>
+				<a href="#" class="btn btn-info pause">
+					<i class="fa fa-pause"></i>
+				</a>
+				<a href="#" class="btn btn-info play">
+					<i class="fa fa-play"></i>
+				</a>
+				<a href="#" class="btn btn-info next">
+					<i class="fa fa-step-forward"></i>
+				</a>
+			</div>
+		</div>
 	</div>
+
 	<div class="progress" style="margin:10px 0;height:7px;">
 		<div class="progress-bar progress-bar-striped progress-bar-info active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10" style="width:0;">
 			<span class="sr-only">0%</span>
 		</div>
 	</div>
-</div> -->
+	<!-- <div class="text-center text-bold text-danger track-title"></div> -->
+</span>
 
 @push('script')
 <script type="text/javascript">
 
-	$('.pause, .pause-ayat').hide();
+	$('.pause').hide();
 	$('.track').first().addClass('warning');
 
 	var qari = $('[name="qari"]').val();
@@ -49,10 +58,10 @@
 		playAudio(audio, $('.track.warning'));
 	});
 
-	$('.track > .ayat, .play-ayat').click(function() {
+	$('.track').click(function() {
 		audio.pause();
-		audio = initAudio($(this).parent().attr('audiourl'));
-		playAudio(audio, $(this).parent());
+		audio = initAudio($(this).attr('audiourl'));
+		playAudio(audio, $(this));
 	});
 
 	$('.next').click(function(e) {
@@ -81,15 +90,15 @@
 		playAudio(audio, prev);
 	});
 
-	$('.pause, .pause-ayat').click(function(e) {
+	$('.pause').click(function(e) {
 		e.preventDefault();
 		stopAudio();
 	});
 
 	var stopAudio = function() {
 		audio.pause();
-		$('.pause, .pause-ayat').hide();
-		$('.play, .play-ayat').show();
+		$('.pause').hide();
+		$('.play').show();
 		$('.progress-bar').removeClass('active');
 	};
 
@@ -104,13 +113,13 @@
 		$('.track-title').html($('.track.warning').attr('audio-title'));
 		a.play();
 
-		var container = $('html, body'),
+		var container = $('#ayat-container'),
     		scrollTo = $('.track.warning');
 
 		container.animate({
-		    scrollTop: scrollTo.offset().top - 70
+		    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
 		});
-
+		
 		var duration = 0;
 
 		a.addEventListener('loadedmetadata', function() {
@@ -126,8 +135,8 @@
 			}
 		});
 
-		$('.play, .play-ayat').hide();
-		$('.pause, .pause-ayat').show();
+		$('.play').hide();
+		$('.pause').show();
 		track = $('.track.warning').attr('audiourl');
 	};
 

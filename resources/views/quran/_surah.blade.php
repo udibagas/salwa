@@ -1,4 +1,4 @@
-<div class="list-group" id="sidr-right">
+<div class="list-group affix" style="height:545px;overflow-x:hidden;overflow-y:auto;width:25%;">
 	@foreach (\App\Surah::all() as $s)
 	<a href="/quran/{{ $s->id }}" class="list-group-item @if (isset($surah->id) && $s->id == $surah->id) active  @endif">
 		<div class="arab pull-right">{{ $s->arab }}</div>

@@ -22,20 +22,21 @@
 	</div>
 
 	<div class="col-md-6">
-		<div class="well text-center">
-			<h2 class="text-primary">{{ $hadist->judul }}</h2><hr />
+		<div class="text-center">
+			<h3 style="margin-top:0px;">{{ $hadist->judul }}</h3>
+			<hr style="border-color:#999;">
 
-			<div style="font-size:30px;" class="text-danger">
+			<div style="font-size:30px;" class="arab text-primary">
 				{{ $hadist->hadist }}
 			</div>
 
 			<br>
 
-			<div class="alert alert-info">
+			<hr style="border-top:1px dashed #999">
+
 				{!! $hadist->penjelasan !!}
 				<!-- {!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!} -->
-			</div>
-
+			<hr style="border-top:1px dashed #999">
 		</div>
 
 		<div class="text-center">
