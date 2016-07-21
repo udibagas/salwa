@@ -16,7 +16,7 @@
 			</div>
 
 			<div class="text-center">
-				{!! $ayats->links() !!}
+				{!! $ayats->appends(['q' => request('q')])->links() !!}
 			</div>
 		</div>
 	</div>

@@ -43,8 +43,7 @@ class QuranController extends Controller
 					return $query->join('surah', 'surah.id', '=', 'ayah.surat_id')
 								->where('ayat_text', 'LIKE', '%'.$keyword.'%')
 								->orWhere('terjemahan', 'LIKE', '%'.$keyword.'%')
-								->orWhere('surah.nama', 'LIKE', '%'.$keyword.'%')
-								->orWhere('surah.arti', 'LIKE', '%'.$keyword.'%');
+								->orWhere('surah.nama', 'LIKE', '%'.$keyword.'%');
 				})->paginate();
 
 		if ($request->ajax()) {
