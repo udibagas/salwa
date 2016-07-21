@@ -35,11 +35,11 @@
       </form>
 
       <ul class="nav navbar-nav navbar-right">
-		  <li class="@if (url()->current() == url('quran/about')) active @endif"><a href="/quran"><i class="fa fa-home"></i></a></li>
-		  <li class="@if (url()->current() == url('quran/about')) active @endif"><a href="/quran/about"><i class="fa fa-folder-open"></i> ABOUT</a></li>
-		  <li class="@if (url()->current() == url('quran/help')) active @endif"><a href="/quran/help"><i class="fa fa-support"></i> HELP</a></li>
-		  <li class="@if (url()->current() == url('quran/contact')) active @endif"><a href="/quran/contact"><i class="fa fa-envelope"></i> CONTACT</a></li>
-		  <li class="@if (url()->current() == url('quran/feedback')) active @endif"><a href="/quran/feedback"><i class="fa fa-commenting"></i> FEEDBACK</a></li>
+		  <li class="@if (url()->current() == url('quran/about')) active @endif"><a href="#"><i class="fa fa-home"></i></a></li>
+		  <li class="@if (url()->current() == url('quran/about')) active @endif"><a href="#"><i class="fa fa-folder-open"></i> ABOUT</a></li>
+		  <li class="@if (url()->current() == url('quran/help')) active @endif"><a href="#"><i class="fa fa-support"></i> HELP</a></li>
+		  <li class="@if (url()->current() == url('quran/contact')) active @endif"><a href="#"><i class="fa fa-envelope"></i> CONTACT</a></li>
+		  <li class="@if (url()->current() == url('quran/feedback')) active @endif"><a href="#"><i class="fa fa-commenting"></i> FEEDBACK</a></li>
 		  <!-- <li class="@if (url()->current() == url('quran/donate')) active @endif"><a href="/quran/donate"><i class="fa fa-money"></i> DONATE</a></li> -->
 		  <!-- <li class="dropdown no-hover">
 		      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
