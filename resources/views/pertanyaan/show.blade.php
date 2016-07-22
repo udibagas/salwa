@@ -31,7 +31,7 @@
 			{!! Form::open(['url' => '/pertanyaan/'.$pertanyaan->pertanyaan_id, 'method' => 'DELETE']) !!}
 
 			<div class="btn-group">
-				@can('update-pertanyaan')
+				@can('update-pertanyaan', $pertanyaan)
 				<a href="/pertanyaan/{{$pertanyaan->pertanyaan_id}}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
 				@endcan
 
