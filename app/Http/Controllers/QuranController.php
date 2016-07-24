@@ -8,6 +8,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Requests;
 use App\Ayah;
 use App\Surah;
+use App\Tafsir;
 use BrowserDetect;
 
 class QuranController extends Controller
@@ -123,6 +124,36 @@ class QuranController extends Controller
 			'nextPageUrl' 	=> $ayats->nextPageUrl(),
 			'currentPage'	=> $ayats->currentPage(),
 			'lastPage'		=> $ayats->lastPage(),
+		]);
+	}
+
+	public function downloadAudio(Request $request)
+	{
+		$ayat 		= Ayah::findOrFail($request->id);
+		$audioDir 	= 'quran_audio';
+		$qari 		= $request->qari;
+		$surah		= str_pad($ayat->surat_id, 3, '0', STR_PAD_LEFT);
+		$ayah		= str_pad($ayat->ayat_id, 3, '0', STR_PAD_LEFT);
+		$fileAudio	= $audioDir.'/'.$qari.'/'.$surah.'/'.$ayah.'.mp3';
+
+		if (!file_exists($fileAudio)) {
+			return abort(404);
+		}
+
+		return response()->download($fileAudio, 'Surah_'.$ayat->surat->nama.'_'.$ayah.'_'.$qari.'.mp3');
+	}
+
+	public function detailAyah($ayah)
+	{
+		$ayah = Ayah::findOrFail($ayah);
+		$tafsir = Tafsir::where('from_ayah', '>=', $ayah->ayat_id)
+					// ->where('to_ayah', '<=', $ayah->ayat_id)
+					// ->where('surah_id', $ayah->surat_id)
+					->orderBy('from_ayah', 'ASC')->get();
+
+		return view('quran._detail-ayah', [
+			'ayah' => $ayah,
+			'tafsir' => $tafsir
 		]);
 	}
 }

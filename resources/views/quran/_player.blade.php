@@ -29,12 +29,49 @@
 	var qari = $('[name="qari"]').val();
 	var audioDir = '/quran_audio/'+qari;
 	var track = $('.track').first().attr('audiourl');
+	var container = $('html, body');
 
 	$('[name="qari"]').on('change', function() {
-		var q = $(this).val();
-		audioDir = '/quran_audio/'+q;
+		qari = $(this).val();
+		audioDir = '/quran_audio/'+qari;
 		stopAudio();
 		audio = initAudio(track);
+	});
+
+	$('.download').click(function(e) {
+		e.preventDefault();
+		window.location = '/quran/download-audio?qari='+qari+'&id='+$(this).attr('data-id');
+	});
+
+	$('.detail-ayah-btn').click(function(e) {
+		e.preventDefault();
+
+		var t = this;
+		stopAudio();
+
+		$('.track').removeClass('warning');
+		$(this).parent().parent().addClass('warning');
+
+		container.animate({
+		    scrollTop: $('.track.warning').offset().top - 70
+		});
+
+		$.ajax({
+			type: 'GET', url: this.href, dataTyspe: 'html',
+			success: function(html) {
+				$(t).parent().parent().find('.detail-ayah').html(html);
+				audio = initAudio($('.track.warning').attr('audiourl'));
+			}
+		});
+	});
+
+	$('.copy-ayat').click(function(e) {
+		e.preventDefault();
+		var ayat = $(this).attr('data-copytarget');
+		var ayatField = document.querySelector(ayat);
+		ayatField.select();
+		document.execCommand('copy');
+		alert('Ayat & terjemahan berhasil dicopy. Tekan Ctrl+V atau Klik kanan paste.');
 	});
 
 	var initAudio = function(t) {
@@ -105,11 +142,8 @@
 		$('.track-title').html($('.track.warning').attr('audio-title'));
 		a.play();
 
-		var container = $('html, body'),
-    		scrollTo = $('.track.warning');
-
 		container.animate({
-		    scrollTop: scrollTo.offset().top - 70
+		    scrollTop: $('.track.warning').offset().top - 70
 		});
 
 		var duration = 0;
