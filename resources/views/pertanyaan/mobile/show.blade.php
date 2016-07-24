@@ -2,6 +2,7 @@
 
 @section('title', 'Tanya Ustadz : '.$pertanyaan->judul_pertanyaan)
 @section('image', $pertanyaan->img)
+@section('imageSquare', $pertanyaan->imgSquare)
 @section('description', strip_tags($pertanyaan->ket_pertanyaan))
 
 @section('content')

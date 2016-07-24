@@ -2,6 +2,7 @@
 
 @section('title', 'Informasi : {{ $informasi->judul }}')
 @section('image', $informasi->img)
+@section('imageSquare', $informasi->imgSquare)
 @section('description', str_limit(strip_tags($informasi->content), 250))
 
 @section('content')

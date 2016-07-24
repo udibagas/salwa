@@ -2,6 +2,7 @@
 
 @section('title', 'Forum : '.$forum->title)
 @section('image', $forum->img)
+@section('imageSquare', $forum->imgSquare)
 @section('description', str_limit(strip_tags($forum->desc), 200))
 
 @section('content')

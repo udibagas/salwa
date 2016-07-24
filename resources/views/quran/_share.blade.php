@@ -6,7 +6,7 @@
 </div>
 
 <div class="btn-group">
-	<a href="#" class="btn btn-default" title="Copy Ayat & Translation"><i class="fa fa-clone"></i></a>
+	<button data-copytarget="{{$copytarget}}" class="btn btn-default" title="Copy Ayat & Translation"><i class="fa fa-clone"></i></button>
 	<a href="#" class="btn btn-default" title="Download Audio"><i class="fa fa-download"></i></a>
 	<a href="/quran/{{ $ayah }}" class="btn btn-default" title="Detail Ayat"><i class="fa fa-list-alt"></i></a>
 </div>

@@ -24,7 +24,7 @@ class Informasi extends Model
 		'createdby', 'group_id', 'img_gambar'
 	];
 
-	public $appends = ['img'];
+	public $appends = ['img', 'imgSquare'];
 
 	public function user()
 	{
@@ -67,6 +67,19 @@ class Informasi extends Model
 		}
 
 		return 'http://www.salamdakwah.com/images/salwa-info.jpg';
+	}
+
+	public function getImgSquareAttribute($value)
+	{
+		if ($this->img_gambar) {
+			return 'http://www.salamdakwah.com/'.$this->img_gambar;
+		}
+
+		if ($this->images->count()) {
+			return 'http://www.salamdakwah.com/'.$this->images()->first()->file_upload;
+		}
+
+		return 'http://www.salamdakwah.com/images/salwa-info-square.png';
 	}
 
 }

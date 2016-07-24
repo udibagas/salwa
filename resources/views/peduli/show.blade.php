@@ -2,6 +2,7 @@
 
 @section('title') Salwa Peduli : {{ $peduli->judul }} @stop
 @section('image', $peduli->img)
+@section('imageSquare', $peduli->imgSquare)
 @section('description', str_limit(strip_tags($peduli->isi), 250))
 
 @section('breadcrumbs')

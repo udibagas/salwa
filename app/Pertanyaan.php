@@ -17,7 +17,7 @@ class Pertanyaan extends Model
 		'tgl_tanya', 'tgl_jawab', 'user_id', 'kd_judul', 'daerah_asal', 'createdby', 'updatedby'
 	];
 
-	public $appends = ['img'];
+	public $appends = ['img', 'imgSquare'];
 
 	const CREATED_AT = 'created';
 
@@ -58,5 +58,10 @@ class Pertanyaan extends Model
 	public function getImgAttribute($value)
 	{
 		return 'http://www.salamdakwah.com/images/tanya-ustadz.jpg';
+	}
+
+	public function getImgSquareAttribute($value)
+	{
+		return 'http://www.salamdakwah.com/images/tanya-ustadz-square.png';
 	}
 }

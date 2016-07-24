@@ -12,6 +12,11 @@
 
 	<hr style="border-top:1px dashed #999;">
 
-	@include('quran._share', ['ayah' => $a->surat_id.':'.$a->ayat_id])
+	<input type="hidden" name="ayat{{$a->surat_id}}_{{$a->ayat_id}}" value="{{$a->ayat_text."\n\n".$a->terjemahan}}" id="ayat{{$a->surat_id}}_{{$a->ayat_id}}">
+
+	@include('quran._share', [
+		'ayah' => $a->surat_id.':'.$a->ayat_id,
+		'copytarget' => '#ayat'.$a->surat_id.'_'.$a->ayat_id
+	])
 
 </div>

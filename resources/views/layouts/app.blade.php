@@ -19,7 +19,7 @@
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content="@yield('title')" />
 		<meta name="twitter:description" content="@yield('description')" />
-		<meta name="twitter:image" content="@yield('image')" />
+		<meta name="twitter:image" content="@yield('imageSquare')" />
 
 		<meta name="author" content="SalamDakwah" />
 		<meta name="description" content="@yield('description')" />
@@ -56,7 +56,7 @@
 		@else
 		<link href="/css/app.css" rel="stylesheet">
 		@endif
-		
+
 		<link href="/css/surah.css" rel="stylesheet">
 
 		@stack('css')

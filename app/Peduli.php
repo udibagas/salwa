@@ -24,7 +24,7 @@ class Peduli extends Model
 
 	protected $with = ['user', 'group'];
 
-	public $appends = ['img'];
+	public $appends = ['img', 'imgSquare'];
 
 	public function user()
 	{
@@ -46,5 +46,12 @@ class Peduli extends Model
 		return $this->img_artikel
 			? 'http://www.salamdakwah.com/'.$this->img_artikel
 			: 'http://www.salamdakwah.com/images/salwa-peduli.jpg';
+	}
+
+	public function getImgSquareAttribute($value)
+	{
+		return $this->img_artikel
+			? 'http://www.salamdakwah.com/'.$this->img_artikel
+			: 'http://www.salamdakwah.com/images/salwa-peduli-quare.png';
 	}
 }
