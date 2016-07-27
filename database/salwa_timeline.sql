@@ -33,11 +33,11 @@ AS
 		`pertanyaan`.`pertanyaan_id` AS `id`,
 		`pertanyaan`.`updated` AS `time`,
 		`pertanyaan`.`judul_pertanyaan` AS `title`,
-		CONCAT(`pertanyaan`.`ket_pertanyaan`, '|||', `pertanyaan`.`jawaban`) AS `content`,
+		CONCAT(`pertanyaan`.`ket_pertanyaan`, '<br /><br /><strong>Jawaban:</strong><br /><br />', `pertanyaan`.`jawaban`) AS `content`,
 		NULL AS `img`,
 		NULL AS `file`,
 		'Tanya Ustadz' AS `user`,
-		NULL AS `img_user`,
+		"/images/tanya-ustadz-square.png" AS `img_user`,
 		'pertanyaan' AS `type`,
 		`groups`.`group_id` AS `group_id`,
 		`groups`.`group_name` AS `group`
@@ -78,7 +78,7 @@ AS
 		`peduli`.`img_artikel` AS `img`,
 		NULL AS `file`,
 		'Salwa Peduli' AS `user`,
-		'images/logo-padding.png' AS `img_user`,
+		"/images/salwa-peduli-square.png" AS `img_user`,
 		'peduli' AS `type`,
 		`groups`.`group_id` AS `group_id`,
 		`groups`.`group_name` AS `group`
@@ -100,7 +100,7 @@ AS
 		`hadist`.`hadist_id` AS `id`,
 		`hadist`.`updated` AS `time`,
 		`hadist`.`judul` AS `title`,
-		CONCAT(`hadist`.`hadist`, '|||', `hadist`.`penjelasan`) AS `content`,
+		CONCAT('<span class="hadist">', `hadist`.`hadist`, '</span>', `hadist`.`penjelasan`) AS `content`,
 		NULL AS `img`,
 		NULL AS `file`,
 		'Kumpulan Hadist, Dzikir dan Doa' AS `user`,
@@ -165,12 +165,17 @@ AS
 		`tb_kajian`.`kajian_id` AS `id`,
 		`tb_kajian`.`updated` AS `time`,
 		`tb_kajian`.`kajian_tema` AS `title`,
-		NULL AS `content`,
+		CONCAT('<i class="fa fa-user"></i> ', `tb_ustadz`.`ustadz_name`, '<br /><i class="fa fa-map-marker"></i> ', `tb_kajian`.`kajian_tempat`, "<br />", `tb_area`.`nama_area`, " - ", `tb_lokasi`.`nama_lokasi`, '<br /><i class="fa fa-mobile"></i> ', `tb_pic`.`pic_name`, "(", `tb_pic`.`pic_phone`, ")") AS `content`,
 		`tb_kajian`.`img_kajian_photo` AS `img`,
 		NULL AS `file`,
 		'Info Kajian' AS `user`,
 		'images/logo-padding.png' AS `img_user`,
 		'kajian' AS `type`,
 		`tb_kajian`.`jenis_kajian` AS `group_id`,
-		NULL AS `group`
+		CASE `tb_kajian`.`jenis_kajian` WHEN 1 THEN 'Tematik' ELSE 'Rutin' END AS `group`
 	FROM `tb_kajian`
+	LEFT JOIN `tb_ustadz` ON `tb_kajian`.`kajian_ustadz_id` = `tb_ustadz`.`ustadz_id`
+	LEFT JOIN `tb_lokasi` ON `tb_kajian`.`id_lokasi` = `tb_lokasi`.`id_lokasi`
+	LEFT JOIN `tb_area` ON `tb_kajian`.`id_area` = `tb_area`.`id_area`
+	LEFT JOIN `tb_pic` ON `tb_kajian`.`kajian_pic_id` = `tb_pic`.`pic_id`
+	WHERE `tb_kajian`.`kajian_dates` >= DATE(NOW()) OR `tb_kajian`.`jenis_kajian` != 1

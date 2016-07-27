@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\RegisterRequest;
 use App\User;
 use BrowserDetect;
 
@@ -44,7 +45,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create', ['user' => new User]);
     }
 
     /**
@@ -53,9 +54,26 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
-        //
+		$data 				= $request->all();
+		$data['confirm'] 	= $request->password;
+		$data['password'] 	= bcrypt($request->password);
+		$data['api_token']	= str_random(60);
+
+		if ($request->hasFile('img')) {
+
+            $file = $request->file('img');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_user', $fileName);
+
+            $data['img_user'] = 'uploads/dirimg_user/'.$fileName;
+
+        }
+
+		$user = User::create($data);
+		return redirect('/user/'.$user->user_id)->with('success', 'User berhasil di tambahkan.');
     }
 
     /**
@@ -150,7 +168,7 @@ class UserController extends Controller
 	public function deletePp(User $user, Request $request)
 	{
 		$user->img_user = '';
-		
+
 		if ($user->img_user && file_exists($user->img_user)) {
 			unlink($user->img_user);
 		}

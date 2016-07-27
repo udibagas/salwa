@@ -120,7 +120,7 @@ class VideoController extends Controller
 
         }
 
-		Video::create($data);
+		$video = Video::create($data);
 		return redirect('/video/'.$video->video_id)->with('success', 'Video berhasil disimpan');
     }
 

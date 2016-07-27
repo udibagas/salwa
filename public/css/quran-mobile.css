@@ -32,6 +32,7 @@ body {
 .ayat {
 	font-family: "UthmanTN1Ver10", serif;
 	line-height: 1.8em;
+	font-size: 20px;
 	direction: rtl;
 }
 
@@ -109,11 +110,6 @@ a:hover {
 
 .list-group-item:first-of-type, .list-group-item:last-child {
 	border-radius: 0;
-}
-
-.ayat {
-	font-size: 22px;
-	text-align: right;
 }
 
 .player {

@@ -2,7 +2,7 @@
 	<div class="media">
 		<div class="media-left">
 			@if ($p->img_user)
-				<div class="" style="width:40px;height;40px;">
+				<div class="" style="width:40px;height:40px;">
 					<img class="media-object img-circle cover" src="/{{ $p->img_user }}" style="border:1px solid #ccc;" />
 				</div>
 			@else
@@ -17,11 +17,7 @@
 					in <a href="/timeline?type={{ $p->type }}&q={{ request('q') }}">{{ ucfirst($p->type) }}</a>
 					@if ($p->group_id)
 						&bull;
-						@if ($p->type == 'kajian')
-						<a href="/timeline?type={{ $p->type }}&q={{ request('q') }}&group_id={{ $p->group_id}}">{{ $p->group_id == 1 ? 'Rutin' : 'Pekanan' }}</a>
-						@else
 						<a href="/timeline?type={{ $p->type }}&q={{ request('q') }}&group_id={{ $p->group_id}}">{{ $p->group }}</a>
-						@endif
 					@endif
 				</small>
 			</div>
@@ -30,7 +26,16 @@
 
 	<h4>{{ $p->title }}</h4>
 
+	@if ($p->img)
+		<br>
+		<img src="/{{ $p->img }}" alt="" class="img-responsive" />
+		<br>
+	@endif
+
 	@include('timeline.mobile._'.$p->type)
+
+	{!! $p->content !!}
+
 
 </div>
 <!-- <div class="row-post">
