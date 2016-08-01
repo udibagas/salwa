@@ -26,7 +26,7 @@ class MurottalRequest extends Request
         $rules['POST'] = [
             'nama_surat'	=> 'required',
 			'group_id'		=> 'required',
-			'file'			=> 'required|mimes:mp3',
+			'file'			=> 'mimetypes:audio/mpeg',
         ];
 
         $rules['PUT'] = [

@@ -26,7 +26,7 @@ class AudioRequest extends Request
         return [
             'group_id'	=> 'required',
 			'judul'		=> 'required|min:3',
-			'file'		=> 'mimes:mp3',
+			'file'		=> 'mimetypes:audio/mpeg',
         ];
     }
 }
