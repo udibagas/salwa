@@ -62,7 +62,35 @@
 
 		<script type="text/javascript">
 
-			$('[data-toggle="tooltip"]').tooltip(); 
+			// var loadMore = function() {
+			// 	$.ajax({
+			// 		url: url, data: { q: q }, dataType: 'json',
+			// 		beforeSend: function() { nextBtn.hide(); $('.loading').removeClass('hidden'); },
+			// 		success: function(json) {
+			//
+			// 			$('.loading').addClass('hidden');
+			// 			$('#post-list').append(json.html);
+			//
+			// 			if (json.currentPage < json.lastPage) {
+			// 				nextBtn.show();
+			// 			} else {
+			// 				lastPage = true;
+			// 				nextBtn.parent().html('<br /><a href="#" class="back-to-top">UP</a><br /><br />');
+			// 			}
+			//
+			// 			if (q.length > 0) {
+			// 				$('#post-list h4, #post-list p, #post-list .terjemahan').each(function(index, element) {
+			// 					text = $(this).html().replace(RegExp(q, "gi"), '<b>' + q + '</b>');
+			// 					$(this).html(text);
+			// 				});
+			// 			}
+			//
+			// 			url = json.nextPageUrl;
+			// 		}
+			// 	});
+			// };
+
+			$('[data-toggle="tooltip"]').tooltip();
 
 			var q = '{{ request("q") }}';
 
@@ -72,6 +100,18 @@
 					$(this).html(text);
 				});
 			}
+
+			@if (app()->environment('production'))
+
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+				ga('create', 'UA-78820743-1', 'auto');
+				ga('send', 'pageview');
+
+			@endif
 
 		</script>
 

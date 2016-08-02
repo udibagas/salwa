@@ -23,7 +23,7 @@
 @push('script')
 <script type="text/javascript">
 
-	$('.pause, .pause-ayat').hide();
+	$('.pause, .pause-ayat, .pause-surah').hide();
 	$('.track').first().addClass('warning');
 
 	var qari = $('[name="qari"]').val();
@@ -38,9 +38,14 @@
 		audio = initAudio(track);
 	});
 
-	$('.download').click(function(e) {
+	$('.download-ayah').click(function(e) {
 		e.preventDefault();
-		window.location = '/quran/download-audio?qari='+qari+'&id='+$(this).attr('data-id');
+		window.location = '/quran/download-ayah-audio?qari='+qari+'&id='+$(this).attr('data-id');
+	});
+
+	$('.download-surah').click(function(e) {
+		e.preventDefault();
+		window.location = '/quran/download-surah-audio?qari='+qari+'&id='+$(this).attr('data-id');
 	});
 
 	$('.detail-ayah-btn').click(function(e) {
@@ -93,6 +98,13 @@
 		playAudio(audio, $(this).parent());
 	});
 
+	$('.play-surah').click(function(e) {
+		e.preventDefault();
+		audio.pause();
+		audio = initAudio($(this).attr('audiourl'));
+		playAudio(audio, 0);
+	});
+
 	$('.next').click(function(e) {
 		e.preventDefault();
 		var next = $('.track.warning').next();
@@ -119,15 +131,15 @@
 		playAudio(audio, prev);
 	});
 
-	$('.pause, .pause-ayat').click(function(e) {
+	$('.pause, .pause-ayat, .pause-surah').click(function(e) {
 		e.preventDefault();
 		stopAudio();
 	});
 
 	var stopAudio = function() {
 		audio.pause();
-		$('.pause, .pause-ayat').hide();
-		$('.play, .play-ayat').show();
+		$('.pause, .pause-ayat, .pause-surah').hide();
+		$('.play, .play-ayat, .play-surah').show();
 		$('.progress-bar').removeClass('active');
 	};
 
@@ -137,14 +149,16 @@
 
 		if (e.length) {
 			$(e).addClass('warning');
+			container.animate({
+			    scrollTop: $('.track.warning').offset().top - 70
+			});
 		}
 
 		$('.track-title').html($('.track.warning').attr('audio-title'));
 		a.play();
 
-		container.animate({
-		    scrollTop: $('.track.warning').offset().top - 70
-		});
+		$('.play, .play-ayat, .play-surah').hide();
+		$('.pause, .pause-ayat, .pause-surah').show();
 
 		var duration = 0;
 
@@ -161,8 +175,6 @@
 			}
 		});
 
-		$('.play, .play-ayat').hide();
-		$('.pause, .pause-ayat').show();
 		track = $('.track.warning').attr('audiourl');
 	};
 

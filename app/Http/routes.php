@@ -23,7 +23,8 @@ Route::get('search', 'HomeController@search');
 Route::get('salwa.id', 'HomeController@salwaId');
 
 Route::get('quran', 'QuranController@index');
-Route::get('quran/download-audio', 'QuranController@downloadAudio');
+Route::get('quran/download-ayah-audio', 'QuranController@downloadAyahAudio');
+Route::get('quran/download-surah-audio', 'QuranController@downloadSurahAudio');
 Route::get('quran/{ayah}/detail-ayah', 'QuranController@detailAyah');
 Route::get('quran/image', 'QuranController@image');
 Route::get('quran/search', 'QuranController@search');

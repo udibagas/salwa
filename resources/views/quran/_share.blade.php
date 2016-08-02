@@ -7,7 +7,7 @@
 
 <div class="btn-group">
 	<a href="#" data-copytarget="{{$copytarget}}" class="btn btn-default copy-ayat" data-toggle="tooltip" title="Copy Ayat & Translation"><i class="fa fa-clone"></i></a>
-	<a href="#" class="btn btn-default download" data-id="{{ $ayah->id }}" data-toggle="tooltip" title="Download Audio"><i class="fa fa-download"></i></a>
+	<a href="#" class="btn btn-default download-ayah" data-id="{{ $ayah->id }}" data-toggle="tooltip" title="Download Audio"><i class="fa fa-download"></i></a>
 	<a href="/quran/{{ $ayah->id }}/detail-ayah" class="btn btn-default detail-ayah-btn" data-toggle="tooltip" title="Detail Ayat"><i class="fa fa-list-alt"></i></a>
 </div>
 

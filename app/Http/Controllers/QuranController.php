@@ -127,7 +127,7 @@ class QuranController extends Controller
 		]);
 	}
 
-	public function downloadAudio(Request $request)
+	public function downloadAyahAudio(Request $request)
 	{
 		$ayat 		= Ayah::findOrFail($request->id);
 		$audioDir 	= 'quran_audio';
@@ -141,6 +141,21 @@ class QuranController extends Controller
 		}
 
 		return response()->download($fileAudio, 'Surah_'.$ayat->surat->nama.'_'.$ayah.'_'.$qari.'.mp3');
+	}
+
+	public function downloadSurahAudio(Request $request)
+	{
+		$surah 		= Surah::findOrFail($request->id);
+		$audioDir 	= 'quran_audio';
+		$qari 		= $request->qari;
+		$file		= str_pad($surah->id, 3, '0', STR_PAD_LEFT).'.mp3';
+		$fileAudio	= $audioDir.'/'.$qari.'/'.$file;
+
+		if (!file_exists($fileAudio)) {
+			return abort(404);
+		}
+
+		return response()->download($fileAudio, 'Surah_'.$surah->nama.'_'.$qari.'.mp3');
 	}
 
 	public function detailAyah($ayah)
