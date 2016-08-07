@@ -1,3 +1,3 @@
-ERROR {{ $e->getCode() }} : {{ $e->getMessage() }}
+ERROR {{ $code }} : {{ $message }}
 ============================
-{{ $e->getTraceAsString() }}
+{{ $trace }}
