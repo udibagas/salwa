@@ -56,7 +56,7 @@
 			<div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
 				<label for="description" class="col-md-2 control-label">Description:</label>
 				<div class="col-md-10">
-					{{ Form::textarea('description', $kajian->description, ['class' => 'summernote', 'placeholder' => 'Tempat Kajian', 'rows' => 4]) }}
+					{{ Form::textarea('description', $kajian->description, ['class' => 'summernote', 'placeholder' => 'Description', 'rows' => 4]) }}
 
 					@if ($errors->has('description'))
 					<span class="help-block">
@@ -107,7 +107,7 @@
 				</div>
 
 				<div class="form-group{{ $errors->has('pekan') ? ' has-error' : '' }}">
-					<label for="pekan" class="col-md-2 control-label">Hari:</label>
+					<label for="hari" class="col-md-2 control-label">Hari:</label>
 					<div class="col-md-10">
 						{{ Form::select('hari',
 							\App\Kajian::getDay(),
@@ -128,7 +128,7 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('waktu') ? ' has-error' : '' }}">
-				<label for="kajian_dates" class="col-md-2 control-label">Waktu:</label>
+				<label for="waktu" class="col-md-2 control-label">Waktu:</label>
 				<div class="col-md-10">
 					{{ Form::text('waktu', $kajian->waktu, ['class' => 'form-control', 'placeholder' => 'Waktu']) }}
 

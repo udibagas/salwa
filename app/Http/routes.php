@@ -13,6 +13,8 @@
 
 use App\User;
 
+Route::resource('kaijans', 'Kajians');
+
 Route::get('jajal', function() {
 	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);
 });

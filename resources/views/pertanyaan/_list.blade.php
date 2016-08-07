@@ -8,8 +8,8 @@
 
 				<div class="pull-right">
 					{!! Form::open(['url' => '/pertanyaan/'.$p->pertanyaan_id, 'method' => 'DELETE']) !!}
-					@can('update-pertanyaan', $p)
 					<div class="btn-group">
+						@can('update-pertanyaan', $p)
 						<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
 						@endcan
 						@can('jawab-pertanyaan', $p)

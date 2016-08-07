@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Requests\KajianRequest;
-use App\Kajian;
+use App\Http\Requests\KajiansRequest;
+use App\Kajians;
 use BrowserDetect;
 
-class KajianNewController extends Controller
+class KajiansController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class KajianNewController extends Controller
      */
     public function index(Request $request)
     {
-		$view = BrowserDetect::isMobile() ? 'kajian.mobile.index' : 'kajian.index';
-        return view('kajian.index', [
+		$view = BrowserDetect::isMobile() ? 'kajians.mobile.index' : 'kajians.index';
+        return view('kajians.index', [
 			'kajians' => Kajian::when($request->tema, function($query) use ($request) {
 							return $query->where('tema', 'like', '%'.$request->tema.'%');
 						})->when($request->rutin == 'rutin', function($query) {
@@ -35,7 +35,7 @@ class KajianNewController extends Controller
 
     public function admin(Request $request)
     {
-        return view('kajian.admin', [
+        return view('kajians.admin', [
 			'kajians' => Kajian::when($request->tema, function($query) use ($request) {
 							return $query->where('tema', 'like', '%'.$request->tema.'%');
 						})->when($request->rutin == 'rutin', function($query) {
@@ -58,7 +58,7 @@ class KajianNewController extends Controller
      */
     public function create()
     {
-        return view('kajian.create', ['kajian' => new Kajian]);
+        return view('kajians.create', ['kajian' => new Kajians]);
     }
 
     /**
@@ -67,7 +67,7 @@ class KajianNewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(KajianRequest $request)
+    public function store(KajiansRequest $request)
     {
 		$data = $request->all();
 		$data['user_id'] = auth()->user()->user_id;
@@ -85,7 +85,7 @@ class KajianNewController extends Controller
         }
 
 		Kajian::create($data);
-		return redirect('/kajian/admin')->with('success', 'Data kajian telah disimpan');
+		return redirect('/kajians/admin')->with('success', 'Data kajian telah disimpan');
     }
 
     /**
@@ -96,7 +96,7 @@ class KajianNewController extends Controller
      */
     public function show(Kajian $kajian)
     {
-        return view('kajian.show', ['kajian' => $kajian]);
+        return view('kajians.show', ['kajian' => $kajian]);
     }
 
     /**
@@ -107,7 +107,7 @@ class KajianNewController extends Controller
      */
     public function edit(Kajian $kajian)
     {
-        return view('kajian.edit', ['kajian' => $kajian]);
+        return view('kajians.edit', ['kajian' => $kajian]);
     }
 
     /**
