@@ -1,1 +1,3 @@
-error mas bro : {{ $error }}
+ERROR {{ $e->getCode() }} : {{ $e->getMessage() }}
+============================
+{{ $e->getTraceAsString() }}
