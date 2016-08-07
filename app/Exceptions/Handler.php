@@ -37,7 +37,7 @@ class Handler extends ExceptionHandler
             if ($e instanceof \Exception) {
                 \Mail::send('emails.exception', [
                         // 'code' => $e->getCode(),
-                        'message' => $e->getMessage(),
+                        'error' => $e->getMessage()
                         // 'trace' => $e->getTraceAsString()
                     ], function ($m) {
                         $m->to('udibagas@gmail.com', 'Bagas Udi Sahsangka')->subject('SalamDakwah | ERROR');
