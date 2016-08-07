@@ -13,6 +13,10 @@
 
 use App\User;
 
+Route::get('hahaha', function() {
+	return Userss::take(10)->get();
+});
+
 Route::resource('kaijans', 'Kajians');
 
 Route::get('jajal', function() {

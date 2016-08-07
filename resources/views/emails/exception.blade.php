@@ -1,1 +1,1 @@
-error mas bro : {!! $error !!}
+error mas bro : {{ $error }}
