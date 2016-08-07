@@ -1,3 +1,2 @@
-ERROR {{ $code }} : {{ $message }}
+ERROR {{ $message }}
 ============================
-{{ $trace }}
