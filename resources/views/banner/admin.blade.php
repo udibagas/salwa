@@ -54,7 +54,7 @@
 		<tbody>
 			<?php $i = $banners->firstItem(); ?>
 			@foreach ($banners as $a)
-				<tr>
+				<tr class="@if ($a->active) danger @endif">
 					<td>{{ $i++ }}</td>
 					<td><img src="/{{ $a->img }}" alt="" style="width:250px;" /></td>
 					<td>{{ $a->name }}</td>
