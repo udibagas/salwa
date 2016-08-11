@@ -15,7 +15,7 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-plus-circle"></i> Tambah Promo Baru</h4>
+	<h4 class="title"><i class="fa fa-plus-circle"></i> ADD BANNER</h4>
 	@include('banner._form', ['url' => '/banner', 'method' => 'POST'])
 
 @stop

@@ -3,7 +3,7 @@
 		{!! Form::model($banner, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method, 'files' => true]) !!}
 
 			<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-				<label for="name" class="col-md-2 control-label">Name:</label>
+				<label for="name" class="col-md-2 control-label">Name :</label>
 				<div class="col-md-10">
 					{{ Form::text('name', $banner->name, ['class' => 'form-control', 'placeholder' => 'Name']) }}
 
@@ -15,28 +15,8 @@
 				</div>
 			</div>
 
-			<div class="form-group{{ $errors->has('position_id') ? ' has-error' : '' }}">
-				<label for="position_id" class="col-md-2 control-label">Position:</label>
-				<div class="col-md-10">
-					{{ Form::select('position_id',
-						\App\Position::selectRaw('position_id, CONCAT(banner_type, ": ", width, " x ", height) as type')
-						->pluck('type', 'position_id'),
-						$banner->position_id, [
-							'class' => 'form-control',
-							'placeholder' => '-- Pilih Posisi --'
-						]
-					) }}
-
-					@if ($errors->has('position_id'))
-						<span class="help-block">
-							<strong>{{ $errors->first('position_id') }}</strong>
-						</span>
-					@endif
-				</div>
-			</div>
-
 			<div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-				<label for="url" class="col-md-2 control-label">URL:</label>
+				<label for="url" class="col-md-2 control-label">URL :</label>
 				<div class="col-md-10">
 					{{ Form::text('url', $banner->url, ['class' => 'form-control', 'placeholder' => 'URL']) }}
 
@@ -49,7 +29,7 @@
 			</div>
 
 			<div class="form-group @if ($errors->has('img')) has-error @endif">
-				<label for="img" class="col-md-2 control-label">Banner:</label>
+				<label for="img" class="col-md-2 control-label">Gambar :</label>
 				<div class="col-md-10">
 					<input type="file" name="img" class="form-control">
 					@if ($errors->has('img'))
@@ -66,10 +46,10 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
-				<label for="active" class="col-md-2 control-label">Active:</label>
+				<label for="active" class="col-md-2 control-label">Active :</label>
 				<div class="col-md-10">
 					{{ Form::select('active',
-						['1' => 'No', '2' => 'Yes'],
+						['0' => 'No', '1' => 'Yes'],
 						$banner->active, [
 							'class' => 'form-control',
 						]

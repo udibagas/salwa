@@ -16,7 +16,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        return view('banner.index', ['banners' => Banner::active()->orderBy('banner_id', 'DESC')->paginate()]);
+        return view('banner.index', ['banners' => Banner::active()->orderBy('id', 'DESC')->paginate()]);
     }
 
     public function admin(Request $request)
@@ -24,9 +24,13 @@ class BannerController extends Controller
         return view('banner.admin', [
 			'banners' => Banner::when($request->name, function($query) use ($request) {
 							return $query->where('name', 'like', '%'.$request->name.'%');
-						})->when($request->active, function($query) use ($request) {
-							return $query->where('active', $request->active);
-						})->orderBy('updated', 'DESC')->paginate()
+						})->when($request->url, function($query) use ($request) {
+							return $query->where('url', 'like', '%'.$request->url.'%');
+						})->when($request->active == 'active', function($query) {
+							return $query->where('active', 1);
+						})->when($request->active == 'inactive', function($query) {
+							return $query->where('active', 0);
+						})->orderBy('name', 'DESC')->paginate()
 		]);
     }
 
@@ -49,7 +53,6 @@ class BannerController extends Controller
     public function store(BannerRequest $request)
     {
 		$data = $request->all();
-		$data['createdby'] = auth()->user()->name;
 
 		if ($request->hasFile('img')) {
 
@@ -58,7 +61,7 @@ class BannerController extends Controller
             $fileName = time().'_'.$file->getClientOriginalName();
             $file->move('uploads/dirimg_banner', $fileName);
 
-            $data['img_banner'] = 'uploads/dirimg_banner/'.$fileName;
+            $data['img'] = 'uploads/dirimg_banner/'.$fileName;
 
         }
 
@@ -98,7 +101,6 @@ class BannerController extends Controller
     public function update(BannerRequest $request, Banner $banner)
     {
 		$data = $request->all();
-		$data['updatedby'] = auth()->user()->name;
 
 		if ($request->hasFile('img')) {
 
@@ -107,7 +109,7 @@ class BannerController extends Controller
             $fileName = time().'_'.$file->getClientOriginalName();
             $file->move('uploads/dirimg_banner', $fileName);
 
-            $data['img_banner'] = 'uploads/dirimg_banner/'.$fileName;
+            $data['img'] = 'uploads/dirimg_banner/'.$fileName;
 
         }
 

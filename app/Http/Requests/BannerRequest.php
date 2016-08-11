@@ -24,9 +24,9 @@ class BannerRequest extends Request
     public function rules()
     {
         return [
-            'url' => 'required|url',
-            'group_id' => 'required|integer',
-			'img' => 'image'
+            'name'  => 'required',
+            'url'   => 'url',
+			'img'   => 'image'
         ];
     }
 }

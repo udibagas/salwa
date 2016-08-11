@@ -194,4 +194,6 @@ class KajiansController extends Controller
 	{
 		return $kajian;
 	}
+
+    // tema, ustadz, keterangan, waktu, area, lokasi, tempat, jenis, pekan, hari, tanggal
 }

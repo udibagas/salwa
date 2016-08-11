@@ -15,7 +15,7 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-edit"></i> Edit Promo</h4>
-	@include('banner._form', ['url' => '/banner/'.$banner->banner_id, 'method' => 'PUT'])
+	<h4 class="title"><i class="fa fa-edit"></i> EDIT BANNER</h4>
+	@include('banner._form', ['url' => '/banner/'.$banner->id, 'method' => 'PUT'])
 
 @stop
