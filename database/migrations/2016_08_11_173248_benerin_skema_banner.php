@@ -15,7 +15,7 @@ class BenerinSkemaBanner extends Migration
         Schema::create('banner', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->string('img');
             $table->boolean('active');
             $table->timestamps();
