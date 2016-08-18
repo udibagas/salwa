@@ -213,6 +213,16 @@ class KajianController extends Controller
 					return $query->where('id_lokasi', $request->id_lokasi);
 				})->when($request->id_area, function($query) use($request) {
 					return $query->where('id_area', $request->id_area);
+				})->when($request->jenis, function($query) use($request) {
+
+                    if ($request->jenis == 'rutin') {
+                        return $query->rutin();
+                    }
+
+                    if ($request->jenis == 'tematik') {
+                        return $query->tematik();
+                    }
+
 				})->when($request->kajian_tema, function($query) use($request) {
 					return $query->where('kajian_tema', 'like', '%'.$request->kajian_tema.'%');
 				})->when($request->kajian_ustadz_id, function($query) use($request) {
@@ -226,7 +236,7 @@ class KajianController extends Controller
 			'results'	=> $data->items(),
 			'total'		=> $data->total(),
 			'pages'		=> $data->lastPage(),
-			'user'		=> auth()->guard('api')->user()->name
+			// 'user'		=> auth()->guard('api')->user()->name
 		]);
 	}
 
