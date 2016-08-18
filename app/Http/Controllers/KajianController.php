@@ -229,7 +229,7 @@ class KajianController extends Controller
 					return $query->where('kajian_ustadz_id', $request->kajian_ustadz_id);
 				})->when($request->today, function($query) {
 					return $query->whereRaw('DATE(kajian_dates) = '.date('Y-m-d'));
-				})->orderBy('created', 'ASC')->paginate(10);
+				})->orderBy('created', 'DESC')->paginate(10);
 
 
 		return response()->json([
