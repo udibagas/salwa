@@ -91,7 +91,7 @@ class MurottalController extends Controller
 
         }
 
-		Murottal::create($data);
+		$murottal = Murottal::create($data);
 		return redirect('/murottal/admin')->with('success', 'Murottal berhasil disimpan');
     }
 

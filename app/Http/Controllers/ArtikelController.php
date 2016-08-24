@@ -115,7 +115,7 @@ class ArtikelController extends Controller
 
         }
 
-		Artikel::create($data);
+		$artikel = Artikel::create($data);
 		return redirect('/artikel/'.$artikel->artikel_id)->with('success', 'Artikel berhasil disimpan');
     }
 

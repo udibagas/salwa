@@ -98,7 +98,7 @@ class PeduliController extends Controller
 
         }
 
-		Peduli::create($data);
+		$peduli = Peduli::create($data);
 		return redirect('/peduli/'.$peduli->peduli_id)->with('success', 'Data berhasil disimpan');
     }
 
