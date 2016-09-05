@@ -16,12 +16,19 @@ class Kajian extends Model
 
 	const UPDATED_AT = 'updated';
 
+    protected $appends = ['jenis'];
+
 	protected $fillable = [
 		'kajian_user_id', 'kajian_tema', 'kajian_ustadz_id', 'id_lokasi', 'id_area',
 		'kajian_tempat', 'kajian_pic_id', 'kajian_pic_id2', 'img_kajian_photo',
 		'jenis_kajian', 'setiap_hari', 'setiap_jam', 'setiap_tanggal', 'setiap_bulan',
 		'kajian_status', 'kajian_dates', 'createdby', 'updatedby'
 	];
+
+    public function getJenisAttribute()
+    {
+        return self::jenisKajianList($this->jenis_kajian);
+    }
 
 	public function ustadz()
 	{

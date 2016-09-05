@@ -209,7 +209,7 @@ class KajianController extends Controller
 	// API
 	public function apiIndex(Request $request)
 	{
-		$data = Kajian::when($request->id_lokasi, function($query) use($request) {
+		$data = Kajian::with(['ustadz', 'lokasi', 'area', 'pic1', 'pic2'])->when($request->id_lokasi, function($query) use($request) {
 					return $query->where('id_lokasi', $request->id_lokasi);
 				})->when($request->id_area, function($query) use($request) {
 					return $query->where('id_area', $request->id_area);
