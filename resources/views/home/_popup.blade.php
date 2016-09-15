@@ -1,4 +1,4 @@
-<?php if (strtotime(date('Y-m-d')) <= strtotime('2016-10-15')) : ?>
+<?php if (strtotime(date('Y-m-d')) <= strtotime('2016-10-14')) : ?>
 <div class="gal-item">
 	<div class="box">
 		<div class="modal fade" id="popup" tabindex="-1" role="dialog">

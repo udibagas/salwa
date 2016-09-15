@@ -255,4 +255,21 @@ class KajianController extends Controller
 			'error'		=> false,
 		]);
 	}
+
+    public function apiStore(Request $request)
+    {
+        $data = $request->all();
+
+        $kajian = Kajian::create($data);
+
+        if ($request->get('pic1')) {
+            $pic1 = Pic::create($request->pic1);
+        }
+
+        if ($request->get('pic2')) {
+            $pic2 = Pic::create($request->pic2);
+        }
+
+        return $kajian;
+    }
 }
