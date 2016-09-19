@@ -1,0 +1,19 @@
+'kajian_tema' => Tema Kajian
+'kajian_ustadz_id' => ID Ustadz
+'id_lokasi' => ID Lokasi
+'id_area' => ID Area
+'kajian_tempat' => Alamat tempat kajian
+'img_kajian_photo' => brosur kajian
+'jenis_kajian' => 1 : tematik, 2 = rutin (pekanan), 3 = rutin (bulanan)
+'setiap_hari' => untuk kajian rutin (pekanan) : 0 = ahad .. 6 = sabtu
+'setiap_jam' => untuk kajian rutin : (hh:mm:ss)
+'setiap_tanggal' => untuk kajian rutin (bulanan) : 1 - 31
+'kajian_dates' => Tanggal kajian (yyyy-mm-dd) untuk kajian tematik
+'pic1_name' => Nama PIC ikhwan
+'pic1_phone' => Telp PIC ikhwan
+'pic2_name' => Nama PIC akhwat
+'pic2_phone' => Telp PIC akhwat
+api_token = JvzPtjb9z2uue3KOaMog6UsaxmGvqals9lO2StqMOCXN05LN2c8WdefZIcSt
+
+
+http://localhost:8000/api/kajian/create?kajian_tema=Ini_Judul_Kajian2112121&kajian_ustadz_id=2&id_lokasi=1&id_area=2&kajian_tempat=Masjid&jenis_kajian=2&setiap_hari=0&setiap_jam=08:00&pic1_name=bagas&pic1_phone=08888&pic2_name=putri&pic2_phone=09999&api_token=JvzPtjb9z2uue3KOaMog6UsaxmGvqals9lO2StqMOCXN05LN2c8WdefZIcSt

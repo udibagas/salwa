@@ -13,7 +13,7 @@
 
 use App\User;
 
-Route::resource('kaijans', 'Kajians');
+Route::resource('kajians', 'Kajians');
 
 Route::get('jajal', function() {
 	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);
@@ -170,6 +170,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
 	Route::get('hadits/{hadist}', 'HadistController@apiShow');
 
 	// kajian
+	Route::get('kajian/create', 'KajianController@apiStore');
 	Route::get('kajian', 'KajianController@apiIndex');
 	Route::get('kajian/{kajian}', 'KajianController@apiShow');
 

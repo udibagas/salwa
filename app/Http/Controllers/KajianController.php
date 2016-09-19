@@ -260,16 +260,35 @@ class KajianController extends Controller
     {
         $data = $request->all();
 
-        $kajian = Kajian::create($data);
-
-        if ($request->get('pic1')) {
-            $pic1 = Pic::create($request->pic1);
+        if ($request->get('pic1_name')) {
+            $pic1 = Pic::create([
+                'pic_name' => $request->pic1_name,
+                'pic_phone' => $request->pic1_phone,
+            ]);
         }
 
-        if ($request->get('pic2')) {
-            $pic2 = Pic::create($request->pic2);
+        if ($request->get('pic2_name')) {
+            $pic2 = Pic::create([
+                'pic_name' => $request->pic2_name,
+                'pic_phone' => $request->pic2_phone,
+            ]);
         }
 
-        return $kajian;
+        if ($request->hasFile('img_kajian_photo')) {
+
+            $file = $request->file('img_kajian_photo');
+
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $file->move('uploads/dirimg_kajian_photo', $fileName);
+
+            $data['img_kajian_photo'] = 'uploads/dirimg_kajian_photo/'.$fileName;
+
+        }
+
+        $data['kajian_user_id']	= auth()->guard('api')->user()->user_id;
+        $data['kajian_pic_id'] = $pic1->pic_id;
+        $data['kajian_pic_id2'] = $pic2->pic_id;
+
+        return Kajian::create($data);
     }
 }
