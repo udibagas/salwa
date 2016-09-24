@@ -38,6 +38,9 @@
 	<a class="list-group-item info @if (url()->current() == url('banner/admin')) active @endif" href="/banner/admin">
 		<i class="fa fa-list"></i> Banner
 	</a>
+	<a class="list-group-item info @if (url()->current() == url('popup')) active @endif" href="/popup">
+		<i class="fa fa-image"></i> Popup
+	</a>
 	<a class="list-group-item info @if (url()->current() == url('produk/admin')) active @endif" href="/produk/admin">
 		<i class="fa fa-tags"></i> Salwa Market
 	</a>

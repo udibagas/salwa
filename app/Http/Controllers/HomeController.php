@@ -21,6 +21,7 @@ use App\Post;
 use Instagram;
 use BrowserDetect;
 use App\SalwaSearch;
+use App\Popup;
 
 class HomeController extends Controller
 {
@@ -82,6 +83,7 @@ class HomeController extends Controller
 			'videoRandom' 	=> Video::limit(9)->orderByRaw('RAND()')->get(),
 			'pertanyaan'	=> Pertanyaan::limit(5)->show()->dijawab()->orderBy('pertanyaan_id', 'DESC')->get(),
 			'forumKategori'	=> Group::active()->ofType('forum')->has('forums')->limit(10)->get(),
+            'popup' => Popup::show()->latest()->first()
 		]);
     }
 

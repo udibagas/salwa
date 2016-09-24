@@ -16,4 +16,4 @@
 api_token = JvzPtjb9z2uue3KOaMog6UsaxmGvqals9lO2StqMOCXN05LN2c8WdefZIcSt
 
 
-http://localhost:8000/api/kajian/create?kajian_tema=Ini_Judul_Kajian2112121&kajian_ustadz_id=2&id_lokasi=1&id_area=2&kajian_tempat=Masjid&jenis_kajian=2&setiap_hari=0&setiap_jam=08:00&pic1_name=bagas&pic1_phone=08888&pic2_name=putri&pic2_phone=09999&api_token=JvzPtjb9z2uue3KOaMog6UsaxmGvqals9lO2StqMOCXN05LN2c8WdefZIcSt
+http://www.salamdakwah.com/api/kajian/create?kajian_tema=Ini_Judul_Kajian2112121&kajian_ustadz_id=2&id_lokasi=1&id_area=2&kajian_tempat=Masjid&jenis_kajian=2&setiap_hari=0&setiap_jam=08:00&pic1_name=bagas&pic1_phone=08888&pic2_name=putri&pic2_phone=09999&api_token=JvzPtjb9z2uue3KOaMog6UsaxmGvqals9lO2StqMOCXN05LN2c8WdefZIcSt

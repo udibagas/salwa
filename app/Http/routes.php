@@ -13,7 +13,7 @@
 
 use App\User;
 
-Route::resource('kajians', 'Kajians');
+// Route::resource('kajians', 'Kajians');
 
 Route::get('jajal', function() {
 	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);
@@ -64,6 +64,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('cms', 'CmsController@index');
 		Route::resource('group', 'GroupController');
 		Route::resource('lokasi', 'LokasiController');
+		Route::resource('popup', 'PopupController');
 		Route::resource('post', 'PostController', ['only' => ['index']]);
 		Route::resource('user/{user}/delete-pp', 'UserController@deletePp');
 		Route::resource('user', 'UserController', ['except' => ['update']]);
