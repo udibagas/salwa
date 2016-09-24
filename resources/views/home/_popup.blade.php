@@ -13,14 +13,15 @@
 		</div>
 	</div>
 </div>
-<?php endif; ?>
 
 @push('script')
 
 <script type="text/javascript">
-	$('#popup').click(function() {
-		window.location = '{{ $popup->url }}';
-	});
+	// $('#popup').click(function() {
+	// 	window.location = '{{ $popup->url }}';
+	// });
 </script>
 
 @endpush
+
+<?php endif; ?>
