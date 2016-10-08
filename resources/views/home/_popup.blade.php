@@ -17,9 +17,10 @@
 @push('script')
 
 <script type="text/javascript">
-	// $('#popup').click(function() {
-	// 	window.location = '{{ $popup->url }}';
-	// });
+	$('#popup').click(function() {
+		var win = window.open('{{ $popup->url }}', '_blank');
+  		win.focus();
+	});
 </script>
 
 @endpush

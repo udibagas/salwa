@@ -16,7 +16,31 @@ class Kajian extends Model
 
 	const UPDATED_AT = 'updated';
 
-    protected $appends = ['jenis'];
+    protected $appends = [
+        'jenis',
+        'pic_nama_ikhwan', 'pic_phone_ikhwan',
+        'pic_nama_akhwat', 'pic_phone_akhwat'
+    ];
+
+    public function getPicNamaIkhwanAttribute()
+    {
+        return $this->pic1 ? $this->pic1->pic_name : '';
+    }
+
+    public function getPicPhoneIkhwanAttribute()
+    {
+        return $this->pic1 ? $this->pic1->pic_phone : '';
+    }
+
+    public function getPicNamaAkhwatAttribute()
+    {
+        return $this->pic2 ? $this->pic2->pic_name : '';
+    }
+
+    public function getPicPhoneAkhwatAttribute()
+    {
+        return $this->pic2 ? $this->pic2->pic_phone : '';
+    }
 
 	protected $fillable = [
 		'kajian_user_id', 'kajian_tema', 'kajian_ustadz_id', 'id_lokasi', 'id_area',

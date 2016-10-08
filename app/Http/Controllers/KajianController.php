@@ -111,7 +111,6 @@ class KajianController extends Controller
 
         }
 
-		$kajian = Kajian::create($data);
 
 		$pic1 = Pic::create([
 			'pic_name' => $request->pic_nama_ikhwan,
@@ -123,10 +122,10 @@ class KajianController extends Controller
 			'pic_phone' => $request->pic_phone_akhwat,
 		]);
 
-		$kajian->update([
-			'kajian_pic_id' => $pic1->pic_id,
-			'kajian_pic_id2' => $pic2->pic_id
-		]);
+        $data['kajian_pic_id'] = $pic1->pic_id;
+        $data['kajian_pic_id2'] = $pic2->pic_id;
+
+        $kajian = Kajian::create($data);
 
 		return redirect('kajian/admin')->with('success', 'Data berhasil disimpan');
     }
@@ -183,6 +182,34 @@ class KajianController extends Controller
 
             $data['img_kajian_photo'] = 'uploads/dirimg_kajian_photo/'.$fileName;
 
+            if ($kajian->img_kajian_photo && file_exists($kajian->img_kajian_photo)) {
+                unlink($kajian->img_kajian_photo);
+            }
+
+        }
+
+        if ($kajian->pic1 && $kajian->pic1->pic_name == $request->pic_nama_ikhwan) {
+            if ($kajian->pic1->pic_phone != $request->pic_phone_ikhwan) {
+                $kajian->pic1->update(['pic_phone' => $request->pic_phone_ikhwan]);
+            }
+        } else {
+            $pic1 = Pic::create([
+                'pic_name' => $request->pic_nama_ikhwan,
+                'pic_phone' => $request->pic_phone_ikhwan,
+            ]);
+            $data['kajian_pic_id'] = $pic1->pic_id;
+        }
+
+        if ($kajian->pic2 && $kajian->pic2->pic_name == $request->pic_nama_ikhwan) {
+            if ($kajian->pic2->pic_phone != $request->pic_phone_ikhwan) {
+                $kajian->pic2->update(['pic_phone' => $request->pic_phone_ikhwan]);
+            }
+        } else {
+            $pic2 = Pic::create([
+                'pic_name' => $request->pic_nama_akhwat,
+                'pic_phone' => $request->pic_phone_akhwat,
+            ]);
+            $data['kajian_pic_id2'] = $pic2->pic_id;
         }
 
 		$kajian->update($data);
