@@ -10,7 +10,6 @@
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
 			'/forum' => 'FORUM',
-			'/forum-category/'.$forum->group_id.'-'.str_slug($forum->group->group_name) => $forum->group->group_name,
 			'#' => str_limit($forum->title, 60)
 		]
 	])

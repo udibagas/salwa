@@ -64,4 +64,9 @@ class Pertanyaan extends Model
 	{
 		return 'http://www.salamdakwah.com/images/tanya-ustadz-square.png';
 	}
+
+    // public function getRouteKeyName()
+    // {
+    //     return 'pertanyaan_id';
+    // }
 }

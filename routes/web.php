@@ -158,37 +158,3 @@ Route::resource('video', 'VideoController', ['only' => ['index', 'show']]);
 Route::resource('pertanyaan', 'PertanyaanController', ['only' => ['index', 'show']]);
 
 Route::auth();
-
-Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function() {
-
-	Route::get('lokasi', 'LokasiController@apiIndex');
-	Route::get('area', 'AreaController@apiIndex');
-
-	// hadist
-	Route::get('hadits', 'HadistController@apiIndexHadits');
-	Route::get('doa', 'HadistController@apiIndexDoa');
-	Route::get('dzikir', 'HadistController@apiIndexDzikir');
-	Route::get('hadits/{hadist}', 'HadistController@apiShow');
-
-	// kajian
-	Route::get('kajian/create', 'KajianController@apiStore');
-	Route::get('kajian', 'KajianController@apiIndex');
-	Route::get('kajian/{kajian}', 'KajianController@apiShow');
-
-	// ustadz
-	Route::get('ustadz', 'UstadzController@apiIndex');
-	Route::get('ustadz/{ustadz}', 'UstadzController@apiShow');
-
-	// image
-	Route::get('image', 'ImageController@apiIndex');
-	Route::get('image/{image}', 'ImageController@apiShow');
-
-	// artikel
-	Route::get('artikel', 'ArtikelController@apiIndex');
-	Route::get('artikel/{artikel}', 'ArtikelController@apiShow');
-
-	// video
-	Route::get('video', 'VideoController@apiIndex');
-	Route::get('video/{video}', 'VideoController@apiShow');
-
-});

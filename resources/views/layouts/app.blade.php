@@ -42,6 +42,7 @@
 
         <link rel="icon" href="/images/logo.png">
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/chosen/chosen.min.css">
         <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
 
 		@if (!$isMobile)
@@ -66,6 +67,7 @@
         <script type="text/javascript" src="/tinymce/js/tinymce/tinymce.min.js"></script>
 		<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
 		<script type="text/javascript" src="/jwplayer/jwplayer.html5.js"></script>
+        <script src="/chosen/chosen.jquery.min.js"></script>
 		<script type="text/javascript">jwplayer.key="Po/UoGBXOficWhpXsaov0bySptHn7pVD5NSbKQ==";</script>
 		<script type="text/javascript" src="/initialjs/dist/initial.min.js"></script>
 		@if ($isMobile)

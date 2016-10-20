@@ -96,7 +96,18 @@
 				  <li class="@if (url()->current() == url('pertanyaan/admin-ustadz')) active @endif"><a href="/pertanyaan/admin-ustadz"><i class="fa fa-inbox"></i> PERTANYAAN MASUK</a></li>
 				  @endif
 		        <!-- <li role="separator" class="divider"></li> -->
-		        <li><a href="/logout"><i class="fa fa-sign-out"></i> LOGOUT</a></li>
+		        <!-- <li><a href="/logout"><i class="fa fa-sign-out"></i> LOGOUT</a></li> -->
+				<li>
+					<a href="{{ url('/logout') }}"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                        <i class="fa fa-sign-out"></i> LOGOUT
+                    </a>
+
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+				</li>
 		      </ul>
         </li>
 		  @endif

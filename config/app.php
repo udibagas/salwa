@@ -153,6 +153,7 @@ return [
 		Vinkla\Instagram\InstagramServiceProvider::class,
 		hisorange\BrowserDetect\Provider\BrowserDetectService::class,
 		Snowfire\Beautymail\BeautymailServiceProvider::class,
+        Illuminate\Notifications\NotificationServiceProvider::class,
 
         /*
          * Application Service Providers...

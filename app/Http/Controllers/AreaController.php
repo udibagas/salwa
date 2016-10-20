@@ -16,14 +16,9 @@ class AreaController extends Controller
      */
     public function apiIndex(Request $request)
     {
-        $data = Area::when($request->id_lokasi, function($query) use ($request) {
-					return $query->where('id_lokasi', $request->id_lokasi);
-				})->orderBy('nama_area', 'ASC')->get();
-
-		return response()->json([
-			'results'	=> $data,
-			'total'		=> $data->count(),
-		]);
+        return Area::when($request->id_lokasi, function($query) use ($request) {
+			return $query->where('id_lokasi', $request->id_lokasi);
+		})->orderBy('nama_area', 'ASC')->pluck('nama_area', 'id_area');
     }
 
 	public function index(Request $request)
