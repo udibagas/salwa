@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Salwa Images')
+@section('image', 'http://www.salamdakwah.com/'.$images->first()->img_images)
+@section('description', 'Poster Dakwah')
 
 @section('content')
 
