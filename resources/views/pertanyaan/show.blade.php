@@ -19,10 +19,10 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-3 hidden-xs">
+	<div class="col-sm-3 hidden-xs">
 		@include('pertanyaan._group')
 	</div>
-	<div class="col-md-6">
+	<div class="col-sm-6">
 
 		<h2 style="margin-top:0;">{{ $pertanyaan->judul_pertanyaan }}</h2>
 		<hr>
@@ -62,10 +62,10 @@
 		@endif
 
 	</div>
-	<div class="col-md-3">
-		<div class="panel panel-blue">
+	<div class="col-sm-3">
+		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h4 class="panel-title">PERTANYAAN TERKAIT</h4>
+				<h3 class="panel-title">PERTANYAAN TERKAIT</h3>
 			</div>
 			<ul class="list-group">
 				@foreach ($terkait as $p)

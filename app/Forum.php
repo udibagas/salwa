@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Forum extends Model
 {
+    const CREATED_AT = 'created';
+
+	const UPDATED_AT = 'updated';
+
     protected $table = 'forums';
 
 	protected $primaryKey = 'forum_id';
@@ -17,13 +21,14 @@ class Forum extends Model
 		'updatedby', 'date', 'title_code', 'status', 'close'
 	];
 
-	public $appends = ['img', 'desc', 'imgSquare'];
+	protected $appends = ['url'];
 
-	const CREATED_AT = 'created';
+	// protected $with = ['user', 'group'];
 
-	const UPDATED_AT = 'updated';
-
-	protected $with = ['user', 'group'];
+    public function getUrlAttribute()
+    {
+        return '/forum/'.$this->forum_id.'-'.str_slug($this->title);
+    }
 
 	public function user()
 	{

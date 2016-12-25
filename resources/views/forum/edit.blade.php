@@ -17,17 +17,17 @@
 @section('content')
 
 	<div class="row">
-		<div class="col-md-8">
-			<div class="panel panel-info">
+		<div class="col-sm-8">
+			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fa fa-edit"></i> Edit Forum</h3>
+					<h3 class="panel-title"><i class="fa fa-edit"></i> EDIT FORUM</h3>
 				</div>
 				<div class="panel-body">
 					@include('forum._form', ['url' => '/forum/'.$forum->forum_id, 'method' => 'PUT'])
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-sm-4">
 			@include('forum._panduan')
 		</div>
 	</div>

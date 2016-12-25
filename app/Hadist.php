@@ -20,6 +20,13 @@ class Hadist extends Model
 
 	protected $hidden = ['created', 'updated', 'createdby', 'updatedby', 'dilihat'];
 
+    protected $appends = ['url'];
+
+    public function getUrlAttribute()
+    {
+        return '/hadist/'.$this->hadist_id.'-'.str_slug($this->judul);
+    }
+
 	public function getTanggalAttribute($value)
 	{
 		return date('d/m/Y H:i:s', strtotime($value));

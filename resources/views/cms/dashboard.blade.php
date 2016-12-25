@@ -16,9 +16,9 @@
 @section('cms-content')
 
 <div class="row panel-link">
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/user">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-users"></i> USERS <br>
@@ -30,9 +30,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/group">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-tags"></i> GROUPS <br>
@@ -44,9 +44,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/video/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-video-camera"></i> VIDEOS <br>
@@ -58,9 +58,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/artikel/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-file-text"></i> ARTICLES <br>
@@ -72,9 +72,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/informasi/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-newspaper-o"></i> INFORMASI <br>
@@ -86,9 +86,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/peduli/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-heart"></i> PEDULI <br>
@@ -100,9 +100,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/image/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-image"></i> IMAGES <br>
@@ -114,9 +114,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/forum/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-comments"></i> FORUMS <br>
@@ -128,9 +128,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/mp3/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-music"></i> AUDIOS <br>
@@ -142,9 +142,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/murottal/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-microphone"></i> MUROTTALS <br>
@@ -156,9 +156,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/pertanyaan/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-question-circle"></i> QUESTIONS <br>
@@ -170,9 +170,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/doa/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-heartbeat"></i> DOA <br>
@@ -184,9 +184,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/dzikir/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-hand-stop-o"></i> DZIKIR <br>
@@ -198,9 +198,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/hadist/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-list-alt"></i> HADIST <br>
@@ -212,9 +212,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/produk/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-tags"></i> PRODUCTS <br>
@@ -226,9 +226,9 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-md-2">
+	<div class="col-sm-2">
 		<a href="/buku/admin">
-			<div class="panel panel-info text-center">
+			<div class="panel panel-primary text-center">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<i class="fa fa-book"></i> KITAB <br>

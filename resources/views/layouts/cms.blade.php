@@ -2,14 +2,13 @@
 
 @section('content')
 	<div class="row">
-		<div class="col-md-2">
-			<!-- <a href="#sidr" id="menu"><i class="fa fa-list"></i></a> -->
+		<div class="col-sm-2">
 			<div id="sidr">
 				@include('layouts.adminnav')
 			</div>
 		</div>
 
-		<div class="col-md-10">
+		<div class="col-sm-10">
 			@if (session('error'))
 				<div class="alert alert-danger text-center">
 					<strong>{{ session('error') }}</strong>
@@ -26,20 +25,3 @@
 		</div>
 	</div>
 @endsection
-
-@push('script')
-<script type="text/javascript">
-
-	// $(document).ready(function () {
-	//   $('#menu').sidr({
-	// 	timing: 'ease-in-out',
-	// 	speed: 500
-	//   });
-	// });
-	//
-	// $( window ).resize(function () {
-	//   $.sidr('close', 'sidr');
-	// });
-
-</script>
-@endpush

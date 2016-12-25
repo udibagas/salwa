@@ -1,4 +1,4 @@
-<div class="panel panel-blue">
+<div class="panel panel-primary">
 	<div class="panel-heading">
 		<h3 class="panel-title">REGISTER</h3>
 	</div>

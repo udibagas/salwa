@@ -1,8 +1,8 @@
-<div class="panel panel-danger">
-	<div class="panel-heading">
+<div class="panel panel-default">
+	<div class="panel-heading text-center">
 		<h3 class="panel-title">PANDUAN MEMBUAT PERTANYAAN</h3>
 	</div>
-	<div class="panel-body text-bold">
+	<div class="panel-body">
 		<ol style="padding-left:15px;">
 			<li>Ini adalah halaman untuk input pertanyaan seputar Islam.</li>
 			<li>Jangan mem-posting pertanyaan di halaman forum.</li>

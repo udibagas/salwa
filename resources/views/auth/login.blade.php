@@ -3,12 +3,13 @@
 @section('title', 'Login')
 
 @section('content')
+    <br>
     <div class="row">
-		<div class="col-md-9 col-sm-8 hidden-xs">
+		<div class="col-sm-9 hidden-xs">
 			@include('auth._promo')
 		</div>
 
-        <div class="col-md-3 col-sm-4">
+        <div class="col-sm-3">
 			@include('auth._form-login')
         </div>
     </div>

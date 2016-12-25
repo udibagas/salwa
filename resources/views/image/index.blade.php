@@ -18,13 +18,19 @@
 
 
 	<div class="row">
-		<div class="col-md-3 hidden-xs">
+		<div class="col-sm-3 hidden-xs">
 			@include('image._group')
 		</div>
-		<div class="col-md-9">
-			<h4 class="title"><i class="fa fa-image"></i> SALWA IMAGES</h4>
-			<div class="row no-gutter">
-				@each('image._list', $images, 'image')
+		<div class="col-sm-9">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><i class="fa fa-image"></i> SALWA IMAGES</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row no-gutter">
+						@each('image._list', $images, 'image')
+					</div>
+				</div>
 			</div>
 
 			<nav class="text-center">

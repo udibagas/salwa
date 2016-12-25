@@ -1,0 +1,55 @@
+
+// Body
+// $body-bg: #f5f8fa;
+$body-bg: #ffffff;
+
+// Borders
+$laravel-border-color: darken($body-bg, 10%);
+$list-group-border: $laravel-border-color;
+$navbar-default-border: $laravel-border-color;
+$panel-default-border: $laravel-border-color;
+$panel-inner-border: $laravel-border-color;
+
+// Brands
+$brand-primary: #297FB9;
+// $brand-primary: #3097D1;
+// $brand-info: #8eb4cb;
+// $brand-success: #2ab27b;
+// $brand-warning: #cbb956;
+// $brand-danger: #bf5329;
+
+// Typography
+$font-family-sans-serif: "Nirmala UI", sans-serif;
+$text-color: #5a5a5a;
+
+// Navbar
+// $navbar-height: 70px;
+$navbar-default-bg: $brand-primary;
+$navbar-default-link-color : #FFF;
+$navbar-default-link-hover-color : #FFF;
+$navbar-default-link-active-color: #FFF;
+
+// Buttons
+$btn-default-color: $text-color;
+
+// Inputs
+$input-border: lighten($text-color, 40%);
+$input-border-focus: lighten($brand-primary, 25%);
+$input-color-placeholder: lighten($text-color, 30%);
+
+// Panels
+$panel-default-heading-bg: #FFF;
+$panel-primary-heading-bg: #0084FF;
+$panel-footer-bg: #FFF;
+
+// Ubah beberapa
+$well-border: 1px solid #ddd;
+// $grid-gutter-width: 20px;
+
+// Tabs
+$nav-tabs-active-link-hover-bg : #fff;
+$nav-tabs-justified-active-link-border-color: #fff;
+
+$border-radius-base: 2px;
+$border-radius-large: 4px;
+$border-radius-small: 2px;

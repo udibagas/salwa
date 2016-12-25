@@ -233,4 +233,9 @@ class InformasiController extends Controller
 
 		return redirect('/informasi/'.$file->informasi_id.'/edit');
 	}
+
+    public function apiIndex(Request $request)
+    {
+        return Informasi::orderBy('updated', 'DESC')->limit($request->get('limit', 5))->get();
+    }
 }

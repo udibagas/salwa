@@ -16,63 +16,37 @@
 
 
 	<div class="row">
-		<div class="col-md-3 hidden-xs">
+		<div class="col-sm-3 hidden-xs">
 			@include('audio._group')
 		</div>
 
-		<div class="col-md-9">
-			<h4 class="title"><i class="fa fa-music"></i> SALWA AUDIO</h4>
-			<table class="table table-hover table-striped">
-				<tbody>
-					<?php $i = $audios->firstItem(); ?>
-					@foreach ($audios as $m)
-					<tr>
-						<td>{{ $i++ }}</td>
-						<td><strong><a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}">{{ $m->judul }}</a></strong></td>
-						<td>
-							<audio controls="controls" preload="none"><source src="/{{ $m->file_mp3 }}" type="application/ogg"></source></audio>
-						</td>
-						<td class="text-right">
-							<a href="/audio/{{ $m->mp3_download_id }}/download" class="btn btn-info"><span class="fa fa-download"></span> Download</a>
-						</td>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>
-
+		<div class="col-sm-9">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><i class="fa fa-music"></i> SALWA AUDIO</h3>
+				</div>
+				<table class="table table-hover table-striped">
+					<tbody>
+						<?php $i = $audios->firstItem(); ?>
+						@foreach ($audios as $m)
+						<tr>
+							<td>{{ $i++ }}</td>
+							<td><strong><a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}">{{ $m->judul }}</a></strong></td>
+							<td>
+								<audio controls="controls" preload="none"><source src="/{{ $m->file_mp3 }}" type="application/ogg"></source></audio>
+							</td>
+							<td class="text-right">
+								<a href="/audio/{{ $m->mp3_download_id }}/download" class="btn btn-default"><span class="fa fa-download"></span> Download</a>
+							</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
 			<nav class="text-center">
 				{!! $audios->appends(['search' => request('search'), 'group_id' => request('group_id')])->links() !!}
 			</nav>
 		</div>
-
 	</div>
 
 @stop
-
-@push('script')
-
-	<script type="text/javascript">
-
-		// var audio;
-
-		// $(document).on('click', '.fa-play', function() {
-		// 	audio = new Audio(this.href);
-		// 	audio.play();
-		// 	$(this).removeClass('fa-play');
-		// 	$(this).addClass('fa-stop');
-		// 	$(this).text(' Stop');
-		// 	return false;
-		// });
-
-		// $(document).on('click', '.fa-stop', function() {
-		// 	// var audio = new Audio(this.href);
-		// 	audio.stop();
-		// 	$(this).removeClass('fa-stop');
-		// 	$(this).addClass('fa-play');
-		// 	$(this).text(' Play');
-		// 	return false;
-		// });
-
-	</script>
-
-@endpush

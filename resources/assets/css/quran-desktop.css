@@ -1,0 +1,115 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+body {
+	padding-top: 70px;
+	padding-bottom: 0;
+}
+
+.arab, .arabic, .ayat, .quran {
+	cursor: pointer;
+}
+
+.terjemahan {
+	font-size: 16px;
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+.navbar-default {
+	background-color: #297FB9;
+	border-color: #032876;
+	border-bottom: none;
+}
+
+.dropdown-menu {
+	background-color: #297FB9;
+}
+
+.dropdown-menu > li > a:hover {
+	background-color: #032876;
+}
+
+.dropdown-menu > li {
+	padding: 5px 0px;
+}
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper > .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+.navbar-wrapper .navbar {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.navbar-wrapper .navbar .container {
+  width: auto;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+}
+
+.navbar-nav>li {
+	border-left: 1px solid #032876;
+}
+
+.navbar-nav>li:first-of-type {
+	border-left: none;
+}
+
+.navbar-brand {
+	margin-top: -10px;
+}
+
+.navbar-default .navbar-nav>li>a, .dropdown-menu>li>a {
+	color: #FFFFFF;
+}
+
+.list-group-item.info:not(.active) {
+	background-color: #D9EDF7;
+}
+
+.list-group-item.warning {
+	background-color: #fcf8e3;
+}
+
+.track.warning {
+	/*background-color: #fcf8e3;*/
+	background-color: #D9EDF7;
+	/*background-color: #FFF;*/
+}
+
+.list-group-item.danger {
+	background-color: #f2dede;
+}

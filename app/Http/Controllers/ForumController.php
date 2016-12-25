@@ -411,4 +411,16 @@ class ForumController extends Controller
 			'page'			=> $forums->currentPage()
 		]);
 	}
+
+    public function apiGroup()
+    {
+        return Group::forum()->with(['forums' => function($query) {
+            $query->active()->with(['user'])->limit(5);
+        }])->active()->orderBy('group_name')->get();
+    }
+
+    public function apiIndex(Request $request)
+    {
+        return Forum::orderBy('updated', 'DESC')->limit($request->get('limit', 5))->get();
+    }
 }

@@ -16,15 +16,15 @@
 
 	<div class="row">
 
-		<div class="col-md-3 hidden-xs">
+		<div class="col-sm-3 hidden-xs">
 			@include('forum._group', ['group' => null])
 		</div>
 
-		<div class="col-md-6">
+		<div class="col-sm-6">
 			@each('forum._list', $groups, 'group')
 		</div>
 
-		<div class="col-md-3">
+		<div class="col-sm-3">
 			@include('forum._panduan')
 		</div>
 

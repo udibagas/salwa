@@ -18,10 +18,10 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-3 hidden-xs">
+	<div class="col-sm-3 hidden-xs">
 		@include('artikel._group')
 	</div>
-	<div class="col-md-6">
+	<div class="col-sm-6">
 		<!-- include('home.promo', ['promo' => \App\Banner::active()->get()]) -->
 
 		<h2 style="margin-top:0;">{{ $artikel->judul }}</h2>
@@ -66,9 +66,15 @@
 			</div>
 		@endif
 	</div>
-	<div class="col-md-3">
-		<h4 class="title">ARTIKEL TERKAIT</h4>
-		@each('artikel._list-side', $terkait, 'artikel')
+	<div class="col-sm-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">ARTIKEL TERKAIT</h3>
+			</div>
+			<div class="panel-body">
+				@each('artikel._list-side', $terkait, 'artikel')
+			</div>
+		</div>
 	</div>
 </div>
 

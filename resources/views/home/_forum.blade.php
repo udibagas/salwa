@@ -7,16 +7,19 @@
 	@endforeach
 </ul>
 
+<br />
+
 <!-- Tab panes -->
 <div class="tab-content">
 	<?php $j = 0; ?>
 	@foreach ($forumKategori as $f)
 	<?php $j++ ?>
 	<div role="tabpanel" class="tab-pane @if ($j==1) active @endif" id="{{$j}}">
-		<br />
-		<ul class="list-group">
-			@each('forum._item', $f->forums()->active()->orderBy('created', 'DESC')->limit(5)->get(), 'f')
-		</ul>
+		<div class="panel panel-default">
+			<ul class="list-group">
+				@each('forum._item', $f->forums()->active()->orderBy('created', 'DESC')->limit(5)->get(), 'f')
+			</ul>
+		</div>
 	</div>
 	@endforeach
 

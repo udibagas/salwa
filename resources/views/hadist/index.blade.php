@@ -6,7 +6,7 @@
 
 	@include('layouts._breadcrumbs', [
 		'breadcrumbs' => [
-			'#' => 'HADIST',
+			'#' => 'HADIST, DZIKIR & DO\'A',
 		]
 	])
 
@@ -16,13 +16,13 @@
 
 
 	<div class="row">
-		<div class="col-md-3 hidden-xs">
+		<div class="col-sm-3 hidden-xs">
 			@include('hadist._group')
 		</div>
-		<div class="col-md-6">
-			<div class="panel panel-blue">
+		<div class="col-sm-6">
+			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4 class="panel-title"><i class="fa fa-list-alt"></i> HADIST</h4>
+					<h3 class="panel-title"><i class="fa fa-list-alt"></i> HADIST, DZIKIR & DO'A</h3>
 				</div>
 				<ul class="list-group">
 					@each('hadist._list', $hadists, 'a')
@@ -34,10 +34,12 @@
 			</nav>
 
 		</div>
-		<div class="col-md-3">
-			<div class="panel panel-blue">
+		<div class="col-sm-3">
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">
+					<h3>{{ $hadist->judul }}</h3>
+				</div>
 				<div class="panel-body">
-					<h3 class="text-center">{{ $hadist->judul }}</h3><br>
 
 					<div style="font-size:20px;" class="arab">
 						{{ $hadist->hadist }}
@@ -45,7 +47,7 @@
 
 					<br>
 
-					{!! $hadist->penjelasan !!}
+					{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
 
 				</div>
 			</div>

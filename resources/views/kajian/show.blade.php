@@ -15,10 +15,10 @@
 @section('content')
 
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-sm-3">
 			@include('kajian._group')
 		</div>
-		<div class="col-md-9">
+		<div class="col-sm-9">
 			<h1>{{ $kajian->tema }}</h1>
 			<h4>{{ $kajian->ustadz ? 'Ustadz '.$kajian->ustadz->ustadz_name : ''}}</h4>
 

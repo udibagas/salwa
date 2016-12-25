@@ -18,7 +18,12 @@ class Artikel extends Model
 
 	protected $with = ['user', 'group'];
 
-	public $appends = ['img'];
+	protected $appends = ['url'];
+
+    public function getUrlAttribute()
+    {
+        return '/artikel/'.$this->artikel_id.'-'.str_slug($this->judul);
+    }
 
 	protected $fillable = [
 		'judul', 'isi', 'isi_mobile', 'ringkasan',

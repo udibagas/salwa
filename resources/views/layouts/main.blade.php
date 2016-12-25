@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
-@push('css')
-	<link href="/css/carousel.css" rel="stylesheet">
-@endpush
-
 @push('script')
-	<script src="/js/carousel.js"></script>
 
 	@if (app()->environment('production'))
 	<script>

@@ -16,18 +16,20 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-3 hidden-xs">
+	<div class="col-sm-3 hidden-xs">
 		@include('produk._group')
 	</div>
 
-	<div class="col-md-6">
-		<h2 style="margin-top:0;">{{ $produk->judul }}</h2><hr />
+	<div class="col-sm-6">
+		<h2 style="margin-top:0;">{{ $produk->judul }}</h2>
+		@include('layouts._share')
+		<hr />
 
 		<div class="row">
-			<div class="col-md-5 col-sm-4">
+			<div class="col-sm-5 col-sm-4">
 				<img src="/{{ $produk->img_buku }}" style="width:100%;margin-bottom:30px;" alt="" />
 			</div>
-			<div class="col-md-7 col-sm-8">
+			<div class="col-sm-7 col-sm-8">
 				<p>{!! $produk->sinopsis !!}</p>
 				<table class="table table-hover table-striped table-bordered">
 					<tbody>
@@ -47,10 +49,6 @@
 				</table>
 			</div>
 		</div>
-
-		<hr>
-		@include('layouts._share')
-		<hr>
 
 		@include('comment.index', [
 		'comments' => $produk->comments()
@@ -74,9 +72,15 @@
 		@endif
 
 	</div>
-	<div class="col-md-3">
-		<h4 class="title">PRODUK TERKAIT</h4>
-		@each('produk._list-side', $terkait, 'produk')
+	<div class="col-sm-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">PRODUK TERKAIT</h3>
+			</div>
+			<div class="panel-body">
+				@each('produk._list-side', $terkait, 'produk')
+			</div>
+		</div>
 	</div>
 </div>
 

@@ -17,14 +17,14 @@
 
 	<div class="row">
 
-		<div class="col-md-3 hidden-xs">
+		<div class="col-sm-3 hidden-xs">
 			@include('forum._group')
 		</div>
 
-		<div class="col-md-6">
-			<div class="panel panel-blue">
+		<div class="col-sm-6">
+			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4 class="panel-title">{{ strtoupper($group->group_name) }}</h4>
+					{{ strtoupper($group->group_name) }}
 				</div>
 				<div class="panel-body">
 					<div class="media">
@@ -60,7 +60,7 @@
 
 		</div>
 
-		<div class="col-md-3">
+		<div class="col-sm-3">
 			@include('forum._panduan')
 		</div>
 	</div>

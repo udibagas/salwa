@@ -17,13 +17,18 @@ class Pertanyaan extends Model
 		'tgl_tanya', 'tgl_jawab', 'user_id', 'kd_judul', 'daerah_asal', 'createdby', 'updatedby'
 	];
 
-	public $appends = ['img', 'imgSquare'];
+	protected $appends = ['img', 'imgSquare', 'url'];
 
 	const CREATED_AT = 'created';
 
 	const UPDATED_AT = 'updated';
 
 	protected $with = ['user', 'group'];
+
+    public function getUrlAttribute()
+    {
+        return '/pertanyaan/'.$this->pertanyaan_id.'-'.str_slug($this->judul_pertanyaan);
+    }
 
 	public function user()
 	{

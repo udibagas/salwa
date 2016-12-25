@@ -1,10 +1,10 @@
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-sm-9">
 		{!! Form::model($banner, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method, 'files' => true]) !!}
 
 			<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-				<label for="name" class="col-md-2 control-label">Name :</label>
-				<div class="col-md-10">
+				<label for="name" class="col-sm-2 control-label">Name :</label>
+				<div class="col-sm-10">
 					{{ Form::text('name', $banner->name, ['class' => 'form-control', 'placeholder' => 'Name']) }}
 
 					@if ($errors->has('name'))
@@ -16,8 +16,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-				<label for="url" class="col-md-2 control-label">URL :</label>
-				<div class="col-md-10">
+				<label for="url" class="col-sm-2 control-label">URL :</label>
+				<div class="col-sm-10">
 					{{ Form::text('url', $banner->url, ['class' => 'form-control', 'placeholder' => 'URL']) }}
 
 					@if ($errors->has('url'))
@@ -29,8 +29,8 @@
 			</div>
 
 			<div class="form-group @if ($errors->has('img')) has-error @endif">
-				<label for="img" class="col-md-2 control-label">Gambar :</label>
-				<div class="col-md-10">
+				<label for="img" class="col-sm-2 control-label">Gambar :</label>
+				<div class="col-sm-10">
 					<input type="file" name="img" class="form-control">
 					@if ($errors->has('img'))
 					<span class="help-block">
@@ -46,8 +46,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('active') ? ' has-error' : '' }}">
-				<label for="active" class="col-md-2 control-label">Active :</label>
-				<div class="col-md-10">
+				<label for="active" class="col-sm-2 control-label">Active :</label>
+				<div class="col-sm-10">
 					{{ Form::select('active',
 						['0' => 'No', '1' => 'Yes'],
 						$banner->active, [
@@ -66,7 +66,7 @@
 			<hr>
 
 			<div class="form-group">
-				<div class=" col-md-offset-2 col-md-10">
+				<div class=" col-sm-offset-2 col-sm-10">
 					<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
 				</div>
 			</div>

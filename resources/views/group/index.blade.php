@@ -13,9 +13,9 @@
 @stop
 
 @section('cms-content')
-	<div class="panel panel-blue">
+	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h4 class="panel-title"><i class="fa fa-tags"></i> GROUPS</h4>
+			<h3 class="panel-title"><i class="fa fa-tags"></i> GROUPS</h3>
 		</div>
 		<div class="panel-body">
 			<a href="/group/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Add Group</a>

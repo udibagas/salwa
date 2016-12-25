@@ -39,12 +39,9 @@
 		<meta name="tgn.name" content="Jakarta" />
 		<meta name="tgn.nation" content="Indonesia" />
         <link rel="icon" href="/images/logo.png">
-        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
-		<link href="/css/quran-desktop.css" rel="stylesheet">
-		<script type="text/javascript" src="/js/jquery.min.js"></script>
-        <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
-
+        <link href="/css/quran-desktop.css" rel="stylesheet">
+        <link href="/css/app.css" rel="stylesheet">
+        <link href="/css/quran-desktop.css" rel="stylesheet">
     </head>
 
     <body>
@@ -60,35 +57,10 @@
 			</div> -->
         </div>
 
-		<script type="text/javascript">
+        <script type="text/javascript" src="/js/app.js"></script>
+        <script type="text/javascript" src="/js/quran.js"></script>
 
-			// var loadMore = function() {
-			// 	$.ajax({
-			// 		url: url, data: { q: q }, dataType: 'json',
-			// 		beforeSend: function() { nextBtn.hide(); $('.loading').removeClass('hidden'); },
-			// 		success: function(json) {
-			//
-			// 			$('.loading').addClass('hidden');
-			// 			$('#post-list').append(json.html);
-			//
-			// 			if (json.currentPage < json.lastPage) {
-			// 				nextBtn.show();
-			// 			} else {
-			// 				lastPage = true;
-			// 				nextBtn.parent().html('<br /><a href="#" class="back-to-top">UP</a><br /><br />');
-			// 			}
-			//
-			// 			if (q.length > 0) {
-			// 				$('#post-list h4, #post-list p, #post-list .terjemahan').each(function(index, element) {
-			// 					text = $(this).html().replace(RegExp(q, "gi"), '<b>' + q + '</b>');
-			// 					$(this).html(text);
-			// 				});
-			// 			}
-			//
-			// 			url = json.nextPageUrl;
-			// 		}
-			// 	});
-			// };
+		<script type="text/javascript">
 
 			$('[data-toggle="tooltip"]').tooltip();
 

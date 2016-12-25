@@ -6,10 +6,10 @@
 
 	<br>
 	<div class="row">
-		<div class="col-md-3 hidden-xs">
+		<div class="col-sm-3 hidden-xs">
 			@include('quran._surah')
 		</div>
-		<div class="col-md-9">
+		<div class="col-sm-9">
 			<!-- <span class="list-group-item info">
 				include('quran._search-form')
 			</span> -->
@@ -23,7 +23,7 @@
 				{!! $ayats->links() !!}
 			</div>
 		</div>
-		<!-- <div class="col-md-3">
+		<!-- <div class="col-sm-3">
 			@include('quran._detail-surah')
 		</div> -->
 	</div>

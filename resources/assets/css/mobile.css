@@ -1,0 +1,155 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+body {
+	padding-top: 50px;
+	height: 100%;
+}
+
+.arab, .arabic, .ayat, .quran {
+	line-height: 1.8em;
+	direction: rtl;
+}
+
+.title, .sub-title {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.panel-title {
+	font-weight: bold;
+}
+
+.nav-tabs>li>a {
+	font-weight: bold;
+}
+
+.row-post.no-gutter {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.row-post.no-gutter [class*='col-']:not(:first-child),
+.row-post.no-gutter [class*='col-']:not(:last-child) {
+  padding-right: 1px;
+  padding-left: 1px;
+}
+
+.form-control {
+	border-radius: 0;
+}
+
+.search-field {
+	border-radius:20px;
+	background-image: url('/images/loop.png');
+	background-repeat: no-repeat;
+	background-position: 8px 49%;
+	padding-left: 25px;
+}
+
+.panel-link a:hover {
+	text-decoration: none;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.text-white {
+	color: #fff;
+}
+
+.row-post {
+	padding:10px;
+	margin-top: 0;
+    margin-bottom: 0;
+    margin-right: -15px;
+    margin-left: -15px;
+	border-bottom:1px solid #EEE;
+}
+
+.alert {
+	margin:4px -10px;
+}
+
+img.media-object:not(.profile) {
+	border: 1px solid #D9EDF7;
+}
+
+.panel:not(.note-editor) {
+	margin: 0 -15px;
+	border: none;
+}
+
+.mobile-nav {
+	background-color:#297FB9;
+	height:50px;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	z-index: 998;
+	padding-top: 10px;
+	color: #fff;
+}
+
+.mobile-nav a:not(.logo) {
+	font-size: 20px;
+	color: #fff;
+}
+
+.mobile-nav .text-right a:not(:first-of-type) {
+	margin-left: 14px;
+}
+
+img {
+	max-width: 100%;
+}
+
+.initial-container {
+	height:50px;
+	width:50px;
+}
+
+.row-post.info {
+	background-color:#D9EDF7;
+}
+
+.row-post.warning {
+	background-color: #fcf8e3;
+}
+
+.row-post.danger {
+	background-color: #f2dede;
+}
+
+.loading {
+	width:40px;
+	-webkit-animation:spin 2s linear infinite;
+	-moz-animation:spin 2s linear infinite;
+	animation:spin 2s linear infinite;
+}
+
+@-moz-keyframes spin { 100% {
+	-moz-transform:rotate(360deg);
+	}
+}
+
+@-webkit-keyframes spin { 100% {
+	-webkit-transform:rotate(360deg);
+	}
+}
+
+@keyframes spin { 100% {
+	-webkit-transform:rotate(360deg);
+	transform:rotate(360deg);
+	}
+}
+
+body.sidr-open { position: fixed !important; }
+
+.list-group-item:first-of-type, .list-group-item:last-of-type {
+	border-radius: 0;
+}

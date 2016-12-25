@@ -20,13 +20,21 @@ Route::get('/user', function (Request $request) {
 
 Route::get('lokasi', 'LokasiController@ndex');
 Route::get('area', 'AreaController@apiIndex');
+Route::get('hadist', 'HadistController@apiIndex');
+Route::get('pertanyaan', 'PertanyaanController@apiIndex');
+Route::get('informasi', 'InformasiController@apiIndex');
+Route::get('artikel', 'ArtikelController@apiIndex');
+Route::get('peduli', 'PeduliController@apiIndex');
+Route::get('image', 'ImageController@apiIndex');
+Route::get('video', 'VideoController@apiIndex');
+Route::get('forum/group', 'ForumController@apiGroup');
+Route::get('forum', 'ForumController@apiIndex');
+
 
 Route::group(['middleware' => 'auth:api'], function() {
 
 	// hadist
-	Route::get('hadits', 'HadistController@apiIndexHadits');
-	Route::get('doa', 'HadistController@apiIndexDoa');
-	Route::get('dzikir', 'HadistController@apiIndexDzikir');
+	// Route::get('dzikir', 'HadistController@apiIndexDzikir');
 	Route::get('hadits/{hadist}', 'HadistController@apiShow');
 
 	// kajian
@@ -39,15 +47,14 @@ Route::group(['middleware' => 'auth:api'], function() {
 	Route::get('ustadz/{ustadz}', 'UstadzController@apiShow');
 
 	// image
-	Route::get('image', 'ImageController@apiIndex');
 	Route::get('image/{image}', 'ImageController@apiShow');
 
 	// artikel
-	Route::get('artikel', 'ArtikelController@apiIndex');
+	// Route::get('artikel', 'ArtikelController@apiIndex');
 	Route::get('artikel/{artikel}', 'ArtikelController@apiShow');
 
 	// video
-	Route::get('video', 'VideoController@apiIndex');
+	// Route::get('video', 'VideoController@apiIndex');
 	Route::get('video/{video}', 'VideoController@apiShow');
 
 });

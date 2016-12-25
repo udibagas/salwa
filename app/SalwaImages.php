@@ -23,6 +23,13 @@ class SalwaImages extends Model
 
 	protected $with = ['group'];
 
+    protected $appends = ['url'];
+
+    public function getUrlAttribute()
+    {
+        return '/image/'.$this->id_salwaimages.'-'.str_slug($this->judul);
+    }
+    
 	public function group()
 	{
 		return $this->belongsTo('App\Group', 'group_id', 'group_id');

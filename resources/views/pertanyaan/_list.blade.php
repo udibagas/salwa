@@ -1,4 +1,4 @@
-<div class="panel @if ($p->status == 'h') panel-danger @else panel-blue @endif">
+<div class="panel @if ($p->status == 'h') panel-danger @else panel-default @endif">
 	<div class="panel-body">
 		<div class="media">
 			<div class="media-left">

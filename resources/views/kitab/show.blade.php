@@ -18,10 +18,10 @@
 @section('content')
 
 	<div class="row">
-		<div class="col-md-3 hidden-xs">
+		<div class="col-sm-3 hidden-xs">
 			@include('kitab._group')
 		</div>
-		<div class="col-md-6">
+		<div class="col-sm-6">
 			<div class="media">
 				<div class="media-left">
 					<img class="media-object" src="/{{ $kitab->img_buku }}" alt="" style="width:200px;">
@@ -46,9 +46,15 @@
 			<hr>
 
 		</div>
-		<div class="col-md-3">
-			<h4 class="title">KITAB TERKAIT</h4>
-			@each('kitab._list-side', $terkait, 'b')
+		<div class="col-sm-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">KITAB TERKAIT</h3>
+				</div>
+				<div class="panel-body">
+					@each('kitab._list-side', $terkait, 'b')
+				</div>
+			</div>
 		</div>
 	</div>
 

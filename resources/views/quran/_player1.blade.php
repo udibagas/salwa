@@ -1,9 +1,9 @@
 <span class="list-group-item info">
 	<div class="row no-gutter">
-		<div class="col-md-9">
+		<div class="col-sm-9">
 			{!! Form::select('qari', \App\Ayah::getQariList(), request('qari'), ['class' => 'form-control']) !!}
 		</div>
-		<div class="col-md-3 text-right">
+		<div class="col-sm-3 text-right">
 			<div class="btn-group">
 				<a href="#" class="btn btn-info prev">
 					<i class="fa fa-step-backward"></i>

@@ -19,6 +19,10 @@ Route::get('jajal', function() {
 	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);
 });
 
+Route::get('cobaaja', function() {
+	return view('cobaaja');
+});
+
 Route::get('timeline', 'TimelineController@index');
 
 Route::get('search', 'HomeController@search');

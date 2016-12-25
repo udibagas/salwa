@@ -15,7 +15,7 @@
 @section('content')
 
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-sm-12">
 
 			@foreach ($banners as $p)
 				@if ($pos = $p->positions()->first())

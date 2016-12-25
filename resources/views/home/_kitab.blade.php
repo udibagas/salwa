@@ -13,7 +13,7 @@
 			<div class="item @if ($i == 1) active @endif" style="min-height:250px;">
 				<div class="row no-gutter">
 					@foreach ($chunk as $b)
-					<div class="col-md-2 col-sm-2">
+					<div class="col-sm-2 col-sm-2">
 						<div class="thumbnail" style="height:250px;">
 							<a href="/kitab/{{ $b->buku_id }}-{{ str_slug($b->judul) }}">
 								<img src="/{{ $b->img_buku }}" alt="{{ $b->judul }}">

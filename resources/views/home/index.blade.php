@@ -37,45 +37,16 @@
 	<div class="clearfix"></div>
 	<br>
 
+
 	<div class="row">
-		<div class="col-md-6 col-sm-6">
-			@include('home.doa')
+		<div class="col-sm-6 col-sm-6">
+			<hadist limit="5" group="doa" header="DOA" icon="heartbeat"></hadist>
 		</div>
-		<div class="col-md-6 col-sm-6">
-			@include('home.dzikir')
+		<div class="col-sm-6 col-sm-6">
+			<hadist limit="5" group="dzikir" header="DZIKIR" icon="hand-stop-o"></hadist>
 		</div>
 	</div>
 
 	@include('home._popup')
 
 @stop
-
-@push('script')
-
-<script type="text/javascript">
-
-	// var audio = new Audio('http://119.82.232.83:1111/;stream.mp3');
-
-	// audio.play();
-
-	// $(document).on('click', '.fa-play', function() {
-	// 	audio.play();
-	// 	$(this).removeClass('fa-play');
-	// 	$(this).addClass('fa-pause');
-	// 	return false;
-	// });
-	//
-	// $(document).on('click', '.fa-pause', function() {
-	// 	audio.pause();
-	// 	$(this).removeClass('fa-pause');
-	// 	$(this).addClass('fa-play');
-	// 	return false;
-	// });
-
-	$('#myCarousel').carousel({
-		interval: 10000
-	});
-
-</script>
-
-@endpush

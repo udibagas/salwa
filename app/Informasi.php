@@ -24,7 +24,12 @@ class Informasi extends Model
 		'createdby', 'group_id', 'img_gambar'
 	];
 
-	public $appends = ['img', 'imgSquare'];
+	protected $appends = ['img', 'imgSquare', 'url'];
+
+	public function getUrlAttribute()
+    {
+        return '/informasi/'.$this->informasi_id.'-'.str_slug($this->judul);
+    }
 
 	public function user()
 	{

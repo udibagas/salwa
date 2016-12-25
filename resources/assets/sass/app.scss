@@ -1,2 +1,271 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// Variables
+@import "variables";
 
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@font-face {
+    font-family: "Nirmala UI";
+    src: url("/fonts/Nirmala_0.ttf");
+}
+
+@font-face {
+    font-family: "UthmanTN1Ver10";
+    src: url("/fonts/UthmanTN1Ver10.otf");
+}
+
+@font-face {
+    font-family: "UthmanTN1BVer10";
+    src: url("/fonts/UthmanTN1BVer10.otf");
+	font-weight: bold;
+}
+
+body {
+    padding-top: 80px;
+	padding-bottom: 0;
+}
+
+.arab, .arabic, .ayat, .quran {
+	font-family: "UthmanTN1Ver10", serif;
+	line-height: 1.8em;
+	font-size: 26px;
+	direction: rtl;
+	cursor: pointer;
+}
+
+.navbar-fixed-top {
+	top: 30px;
+	// border-width: 0;
+}
+
+img.cover {
+	height: 100%;
+	width: 100%;
+	object-fit:cover;
+	-o-object-fit:cover;
+}
+
+.th-label {
+    width: 150px;
+}
+
+.carousel-caption p {
+    font-size: 18px;
+}
+
+.carousel-control.right, .carousel-control.left {
+	background-image: none;
+}
+
+.carousel-control {
+	color: #000;
+}
+.carousel-control:hover {
+	color: #0084FF;
+}
+
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+    vertical-align: middle;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.dropdown-menu {
+	background-color: #297FB9;
+}
+
+.dropdown-menu > li > a:hover {
+	background-color: #032876;
+}
+
+.dropdown-menu > li {
+	padding: 5px 0px;
+}
+
+.navbar-nav>li {
+	border-left: 1px solid #032876;
+}
+
+.navbar-nav>li:first-of-type {
+	border-left: none;
+}
+
+.navbar-brand {
+	margin-top: -10px;
+}
+
+.navbar-default .navbar-nav>li>a, .dropdown-menu>li>a {
+	color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.dropdown-menu>li>a:hover,
+.navbar-default .navbar-nav>li.active>a,
+.dropdown-menu>li.active>a {
+	color: #FFFFFF;
+}
+
+// .dropdown-menu>li:not(.no-hover):hover,
+// .navbar-default .navbar-nav>li:not(.no-hover):hover,
+// .navbar-default .navbar-nav>li.active:not(.no-hover),
+// .navbar-default .navbar-nav>.active>a:not(.no-hover),
+// .navbar-default .navbar-nav>.active>a:not(.no-hover):focus,
+// .navbar-default .navbar-nav>.active>a:not(.no-hover):hover
+// {
+// 	background-color: #032876;
+// }
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+	background-color: inherit;
+	color: #FFFFFF;
+}
+
+.search-field {
+	border-radius:20px;
+	background-image: url('/images/loop.png');
+	background-repeat: no-repeat;
+	background-position: 8px 49%;
+	padding-left: 25px;
+}
+
+ul.link-icon {
+	list-style: none;
+	margin: 15px auto 0px;
+}
+
+ul.link-icon > li {
+	display: inline-block;
+}
+
+.link-icon > li > a {
+	color: #555;
+	font-size: 12px;
+}
+
+.link-icon > li {
+	border-right: 1px solid #555;
+	padding: 0px 3px;
+	color: #555;
+	width: 122px;
+	margin-bottom: 15px;
+}
+
+.link-icon > li > a > i {
+	font-size: 25px;
+}
+
+.link-icon > li:last-of-type {
+	border-right: none;
+}
+
+.navbar-brand {
+	position: fixed;
+	top: -10px;
+}
+
+.title {
+	background-color: #0084FF;
+	padding: 10px;
+	color: #FFFFFF;
+	margin-top: 0;
+}
+
+.sub-title {
+	background-color: #A2D2FF;
+	padding: 10px;
+	color: #134A80;
+}
+
+.thumbnail {
+    margin-bottom:2px;
+}
+
+.thumbnail > a > img {
+	filter: brightness(80%);
+	-webkit-filter: brightness(80%);
+	height: 100%;
+	width: 100%;
+	object-fit:cover;
+	-o-object-fit:cover;
+}
+
+.thumbnail, .img-thumbnail {
+	border: none;
+	padding: 0;
+	background-color: #0084FF;
+	border-radius: 0;
+}
+
+.thumbnail .caption {
+	position: absolute;
+    bottom: 0;
+    left: 0;
+	color: #FFFFFF;
+}
+
+.caption h2, .caption h3, .caption h4 {
+	font-size: 18px;
+	margin: 0 0 5px 0;
+}
+
+.video-block, .thumbnail-block {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.video-block:hover  {
+  background: #333 url('/images/play-icon.png') no-repeat center;
+  opacity: 0.8;
+}
+
+.thumbnail-block:hover  {
+  background: #333;
+  opacity: 0.8;
+}
+
+.row.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.no-gutter [class*='col-']:not(:first-child),
+.row.no-gutter [class*='col-']:not(:last-child) {
+  padding-right: 1px;
+  padding-left: 1px;
+}
+
+
+.form-horizontal .modal-body  .form-group {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.footer {
+	background-color: #efefef;
+	padding: 40px 0 40px 0;
+	margin-top: 20px;
+}
+
+.jumbotron {
+	background-color: #A2D2FF;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #800000;
+}
+
+.badge {
+	font-weight: normal;
+}

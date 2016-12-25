@@ -1,4 +1,4 @@
-<div class="col-md-3 col-sm-3">
+<div class="col-sm-3 col-sm-3">
 	<div class="thumbnail" style="height:200px;">
 		<a href="/peduli/{{ $peduli->peduli_id }}-{{ str_slug($peduli->judul) }}">
 

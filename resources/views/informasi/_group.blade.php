@@ -1,11 +1,11 @@
 <div class="list-group" id="sidr-right">
-	<span class="list-group-item info">
+	<span class="list-group-item">
 		{!! Form::open(['url' => '/informasi', 'method' => 'GET']) !!}
 		{!! Form::hidden('group_id', request('group_id')) !!}
 			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search Informasi" class="form-control search-field">
 		{!! Form::close() !!}
 	</span>
-	<a href="/informasi?search={{ request('search') }}" class="list-group-item info @if (request('group_id') == null) active @endif">
+	<a href="/informasi?search={{ request('search') }}" class="list-group-item @if (request('group_id') == null) active @endif">
 		SEMUA KATEGORI
 		<span class="badge">{{ \App\Informasi::count() }}</span>
 	</a>

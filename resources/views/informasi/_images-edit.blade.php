@@ -1,4 +1,4 @@
-<div class="col-md-2 col-xs-6">
+<div class="col-sm-2 col-xs-6">
 	<div class="thumbnail" style="height:100px;">
 		<img src="/{{ $image->file_upload }}" alt="" class="cover" /><br/>
 	</div>

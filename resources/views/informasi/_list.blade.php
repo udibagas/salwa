@@ -1,4 +1,4 @@
-<div class="col-md-3 col-sm-3">
+<div class="col-sm-3 col-sm-3">
 	<div class="thumbnail" style="height:200px;">
 		<a href="/informasi/{{ $informasi->informasi_id }}-{{ str_slug($informasi->judul) }}">
 			@if ($informasi->img_gambar)

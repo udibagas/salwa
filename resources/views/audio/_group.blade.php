@@ -1,5 +1,5 @@
 <div class="list-group" id="sidr-right">
-	<span class="list-group-item info">
+	<span class="list-group-item">
 		{!! Form::open(['url' => '/audio', 'method' => 'GET']) !!}
 		{!! Form::hidden('group_id', request('group_id')) !!}
 			<input type="text" name="search" value="{{ request('search') }}" placeholder="Search Audio" class="form-control search-field">

@@ -22,6 +22,12 @@ class Video extends Model
 		'createdby', 'group_id', 'img_video'
 	];
 
+    protected $appends = ['url'];
+
+    public function getUrlAttribute()
+    {
+        return '/video/'.$this->video_id.'-'.str_slug($this->title);
+    }
 
 	public function user()
 	{

@@ -1,6 +1,6 @@
-<div class="panel panel-info">
+<div class="panel panel-default">
 	<div class="panel-heading">
-		<strong>{{ $header or 'Tulis' }} Komentar</strong>
+		<h3 class="panel-title">{{ $header or 'TULIS' }} KOMENTAR</h3>
 	</div>
 	<div class="panel-body">
 		{!! Form::model($comment, ['url' => $url, 'method' => $method, 'class' => 'comment']) !!}
@@ -30,7 +30,7 @@
 			</div>
 
 			<div class="form-group">
-				<button type="submit" name="submit" class="btn btn-info"><i class="fa fa-send"></i> Kirim Komentar</button>
+				<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-send"></i> Kirim Komentar</button>
 			</div>
 
 		{!! Form::close() !!}

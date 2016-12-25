@@ -1,10 +1,10 @@
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-sm-9">
 		{!! Form::model($kitab, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method, 'files' => true]) !!}
 
 			<div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
-				<label for="judul" class="col-md-3 control-label">Judul:</label>
-				<div class="col-md-9">
+				<label for="judul" class="col-sm-3 control-label">Judul:</label>
+				<div class="col-sm-9">
 					{{ Form::text('judul', $kitab->judul, ['class' => 'form-control', 'placeholder' => 'Judul Kitab']) }}
 
 					@if ($errors->has('judul'))
@@ -16,8 +16,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('penulis') ? ' has-error' : '' }}">
-				<label for="penulis" class="col-md-3 control-label">Penulis:</label>
-				<div class="col-md-9">
+				<label for="penulis" class="col-sm-3 control-label">Penulis:</label>
+				<div class="col-sm-9">
 					{{ Form::text('penulis', $kitab->penulis, ['class' => 'form-control', 'placeholder' => 'Penulis']) }}
 
 					@if ($errors->has('penulis'))
@@ -29,8 +29,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
-				<label for="group_id" class="col-md-3 control-label">Kategori:</label>
-				<div class="col-md-9">
+				<label for="group_id" class="col-sm-3 control-label">Kategori:</label>
+				<div class="col-sm-9">
 					{{ Form::select('group_id',
 						\App\Group::active()->kitab()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
 						$kitab->group_id, [
@@ -48,8 +48,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-				<label for="img" class="col-md-3 control-label">Gambar:</label>
-				<div class="col-md-9">
+				<label for="img" class="col-sm-3 control-label">Gambar:</label>
+				<div class="col-sm-9">
 					<input type="file" name="img" class="form-control">
 
 					@if ($errors->has('img'))
@@ -61,8 +61,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
-				<label for="file" class="col-md-3 control-label">File PDF:</label>
-				<div class="col-md-9">
+				<label for="file" class="col-sm-3 control-label">File PDF:</label>
+				<div class="col-sm-9">
 					<input type="file" name="file" class="form-control">
 
 					@if ($errors->has('file'))
@@ -74,8 +74,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('materi') ? ' has-error' : '' }}">
-				<label for="materi" class="col-md-3 control-label">Keterangan:</label>
-				<div class="col-md-9">
+				<label for="materi" class="col-sm-3 control-label">Keterangan:</label>
+				<div class="col-sm-9">
 					{{ Form::textarea('materi', $kitab->materi, ['class' => 'summernote', 'placeholder' => '']) }}
 
 					@if ($errors->has('materi'))
@@ -89,7 +89,7 @@
 			<hr>
 
 			<div class="form-group">
-				<div class=" col-md-offset-3 col-md-9">
+				<div class=" col-sm-offset-3 col-sm-9">
 					<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
 				</div>
 			</div>
@@ -97,7 +97,7 @@
 		{!! Form::close() !!}
 	</div>
 
-	<div class="col-md-3">
+	<div class="col-sm-3">
 		@if ($kitab->img_buku)
 		<img src="/{{ $kitab->img_buku }}" class="img-responsive" alt="" />
 		@endif

@@ -285,4 +285,13 @@ class HadistController extends Controller
 	{
 		return $hadist;
 	}
+
+    public function apiIndex(Request $request)
+    {
+        return Hadist::orderByRaw($request->get('order', 'RAND()'))
+                    ->when($request->group, function($query) use($request) {
+                        $group = $request->group;
+                        return $query->$group();
+                    })->limit($request->get('limit', 5))->get();
+    }
 }

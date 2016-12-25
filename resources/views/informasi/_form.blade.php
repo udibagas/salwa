@@ -1,10 +1,10 @@
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-sm-9">
 		{!! Form::model($informasi, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method, 'files' => true]) !!}
 
 			<div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
-				<label for="judul" class="col-md-2 control-label">Judul:</label>
-				<div class="col-md-10">
+				<label for="judul" class="col-sm-2 control-label">Judul:</label>
+				<div class="col-sm-10">
 					{{ Form::text('judul', $informasi->judul, ['class' => 'form-control', 'placeholder' => 'Judul Informasi']) }}
 
 					@if ($errors->has('judul'))
@@ -16,8 +16,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
-				<label for="group_id" class="col-md-2 control-label">Kategori:</label>
-				<div class="col-md-10">
+				<label for="group_id" class="col-sm-2 control-label">Kategori:</label>
+				<div class="col-sm-10">
 					{{ Form::select('group_id',
 						\App\Group::active()->informasi()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
 						$informasi->group_id, [
@@ -35,8 +35,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-				<label for="img" class="col-md-2 control-label">Gambar:</label>
-				<div class="col-md-10">
+				<label for="img" class="col-sm-2 control-label">Gambar:</label>
+				<div class="col-sm-10">
 					<input type="file" name="img" class="form-control">
 
 					@if ($errors->has('img'))
@@ -48,8 +48,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-				<label for="content" class="col-md-2 control-label">Content:</label>
-				<div class="col-md-10">
+				<label for="content" class="col-sm-2 control-label">Content:</label>
+				<div class="col-sm-10">
 					{{ Form::textarea('content', $informasi->content, ['class' => 'summernote', 'placeholder' => '']) }}
 
 					@if ($errors->has('content'))
@@ -61,8 +61,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
-				<label for="file" class="col-md-2 control-label">File:</label>
-				<div class="col-md-10">
+				<label for="file" class="col-sm-2 control-label">File:</label>
+				<div class="col-sm-10">
 					<input type="file" name="file[]" class="note-image-input form-control" multiple="multiple">
 					<span class="help-block">
 						<strong>Tekan ctrl + click untuk memilih lebih dari 1 file pada dialog file. Hanya diperbolehkan upload file gambar, pdf, office, dan zip.</strong>
@@ -76,7 +76,7 @@
 			</div>
 
 			<div class="form-group">
-				<div class="col-md-offset-2 col-md-10">
+				<div class="col-sm-offset-2 col-sm-10">
 					@if (isset($dokumens) && $dokumens->count())
 					<ul class="list-group">
 						@foreach ($dokumens as $d)
@@ -102,7 +102,7 @@
 			<hr>
 
 			<div class="form-group">
-				<div class="col-md-offset-2 col-md-10">
+				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
 				</div>
 			</div>
@@ -110,7 +110,7 @@
 		{!! Form::close() !!}
 	</div>
 
-	<div class="col-md-3">
+	<div class="col-sm-3">
 		@if ($informasi->img_gambar)
 		<img src="/{{ $informasi->img_gambar }}" class="img-responsive" alt="" />
 		@endif

@@ -1,6 +1,6 @@
 {!! Form::model($artikel, ['class' => 'form-vertical', 'url' => $url, 'method' => $method, 'files' => true]) !!}
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-sm-9">
 
 			<div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
 				{{ Form::text('judul', $artikel->judul, ['class' => 'form-control', 'placeholder' => 'Judul Artikel']) }}
@@ -26,7 +26,7 @@
 
 	</div>
 
-	<div class="col-md-3">
+	<div class="col-sm-3">
 		<div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
 			<label for="group_id" class="control-label">Group:</label>
 			{{ Form::select('group_id',

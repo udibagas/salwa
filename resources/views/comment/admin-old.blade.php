@@ -14,9 +14,9 @@
 
 @section('cms-content')
 
-	<div class="panel panel-blue">
+	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h4 class="panel-title"><i class="fa fa-file-text"></i> COMMENTS</h4>
+			<h3 class="panel-title"><i class="fa fa-file-text"></i> COMMENTS</h3>
 		</div>
 		<div class="panel-body">
 			<a href="/comment/approve-all" class="delete btn btn-info"><i class="fa fa-check"></i> Approve All Comment</a>

@@ -14,7 +14,7 @@
 
 @section('cms-content')
 
-	<div class="panel panel-blue">
+	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">MANAGE TAFSIR</h3>
 		</div>

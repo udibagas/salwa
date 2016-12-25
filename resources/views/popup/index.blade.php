@@ -13,9 +13,9 @@
 @stop
 
 @section('cms-content')
-	<div class="panel panel-blue">
+	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h4 class="panel-title"><i class="fa fa-tags"></i> POPUPS</h4>
+			<h3 class="panel-title"><i class="fa fa-tags"></i> POPUPS</h3>
 		</div>
 		<div class="panel-body">
 			<a href="/popup/create" class="btn btn-info"><i class="fa fa-plus-circle"></i> Add Popup</a>

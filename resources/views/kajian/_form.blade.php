@@ -1,10 +1,10 @@
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-sm-12">
 		{!! Form::model($kajian, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method, 'files' => true]) !!}
 
 			<div class="form-group{{ $errors->has('tema') ? ' has-error' : '' }}">
-				<label for="tema" class="col-md-2 control-label">Tema Kajian:</label>
-				<div class="col-md-10">
+				<label for="tema" class="col-sm-2 control-label">Tema Kajian:</label>
+				<div class="col-sm-10">
 					{{ Form::text('tema', $kajian->tema, ['class' => 'form-control', 'placeholder' => 'Tema Kajian']) }}
 
 					@if ($errors->has('tema'))
@@ -16,8 +16,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('kajian_ustadz_id') ? ' has-error' : '' }}">
-				<label for="kajian_ustadz_id" class="col-md-2 control-label">Ustadz:</label>
-				<div class="col-md-10">
+				<label for="kajian_ustadz_id" class="col-sm-2 control-label">Ustadz:</label>
+				<div class="col-sm-10">
 					{{ Form::select('ustadz_id',
 						\App\Ustadz::orderBy('ustadz_name', 'ASC')->pluck('ustadz_name', 'ustadz_id'),
 						$kajian->kajian_ustadz_id, [
@@ -35,8 +35,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('peserta') ? ' has-error' : '' }}">
-				<label for="peserta" class="col-md-2 control-label">Peserta:</label>
-				<div class="col-md-10">
+				<label for="peserta" class="col-sm-2 control-label">Peserta:</label>
+				<div class="col-sm-10">
 					{{ Form::select('peserta',
 						\App\Kajian::getPesertaList(),
 						$kajian->peserta, [
@@ -54,8 +54,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-				<label for="description" class="col-md-2 control-label">Description:</label>
-				<div class="col-md-10">
+				<label for="description" class="col-sm-2 control-label">Description:</label>
+				<div class="col-sm-10">
 					{{ Form::textarea('description', $kajian->description, ['class' => 'summernote', 'placeholder' => 'Description', 'rows' => 4]) }}
 
 					@if ($errors->has('description'))
@@ -67,8 +67,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('rutin') ? ' has-error' : '' }}">
-				<label for="rutin" class="col-md-2 control-label">Jenis Kajian:</label>
-				<div class="col-md-10">
+				<label for="rutin" class="col-sm-2 control-label">Jenis Kajian:</label>
+				<div class="col-sm-10">
 					{{ Form::select('rutin',
 						['1' => 'Rutin', '0' => 'Tematik'],
 						$kajian->rutin, [
@@ -87,8 +87,8 @@
 
 			<div class="field-rutin">
 				<div class="form-group{{ $errors->has('pekan') ? ' has-error' : '' }}">
-					<label for="pekan" class="col-md-2 control-label">Pekan:</label>
-					<div class="col-md-10">
+					<label for="pekan" class="col-sm-2 control-label">Pekan:</label>
+					<div class="col-sm-10">
 
 						<input type="checkbox" name="pekan[]" value="1"> 1 <br>
 						<input type="checkbox" name="pekan[]" value="2"> 2 <br>
@@ -104,8 +104,8 @@
 				</div>
 
 				<div class="form-group{{ $errors->has('pekan') ? ' has-error' : '' }}">
-					<label for="hari" class="col-md-2 control-label">Hari:</label>
-					<div class="col-md-10">
+					<label for="hari" class="col-sm-2 control-label">Hari:</label>
+					<div class="col-sm-10">
 
 						<input type="checkbox" name="hari[]" value="Ahad"> Ahad <br>
 						<input type="checkbox" name="hari[]" value="Senin"> Senin <br>
@@ -126,8 +126,8 @@
 
 			<div class="field-tematik">
 				<div class="form-group{{ $errors->has('tanggal') ? ' has-error' : '' }}">
-					<label for="tanggal" class="col-md-2 control-label">Tanggal:</label>
-					<div class="col-md-10">
+					<label for="tanggal" class="col-sm-2 control-label">Tanggal:</label>
+					<div class="col-sm-10">
 						{{ Form::text('tanggal', $kajian->tanggal, ['class' => 'form-control', 'placeholder' => 'Tanggal']) }}
 
 						@if ($errors->has('tanggal'))
@@ -140,8 +140,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('jam') ? ' has-error' : '' }}">
-				<label for="jam" class="col-md-2 control-label">Jam:</label>
-				<div class="col-md-10">
+				<label for="jam" class="col-sm-2 control-label">Jam:</label>
+				<div class="col-sm-10">
 					{{ Form::text('jam', $kajian->jam, ['class' => 'form-control', 'placeholder' => 'Jam']) }}
 
 					@if ($errors->has('jam'))
@@ -153,8 +153,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('lokasi_id') ? ' has-error' : '' }}">
-				<label for="lokasi_id" class="col-md-2 control-label">Lokasi:</label>
-				<div class="col-md-10">
+				<label for="lokasi_id" class="col-sm-2 control-label">Lokasi:</label>
+				<div class="col-sm-10">
 					{{ Form::select('lokasi_id',
 						\App\Lokasi::orderBy('nama_lokasi', 'ASC')->pluck('nama_lokasi', 'id_lokasi'),
 						$kajian->lokasi_id, [
@@ -172,8 +172,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('area_id') ? ' has-error' : '' }}">
-				<label for="area_id" class="col-md-2 control-label">Area:</label>
-				<div class="col-md-10">
+				<label for="area_id" class="col-sm-2 control-label">Area:</label>
+				<div class="col-sm-10">
 					{{ Form::select('area_id',
 						\App\Area::orderBy('nama_area', 'ASC')->pluck('nama_area', 'id_area'),
 						$kajian->area_id, [
@@ -191,8 +191,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('tempat') ? ' has-error' : '' }}">
-				<label for="tempat" class="col-md-2 control-label">Tempat:</label>
-				<div class="col-md-10">
+				<label for="tempat" class="col-sm-2 control-label">Tempat:</label>
+				<div class="col-sm-10">
 					{{ Form::textarea('tempat', $kajian->tempat, ['class' => 'form-control', 'placeholder' => 'Tempat Kajian', 'rows' => 4]) }}
 
 					@if ($errors->has('tempat'))
@@ -204,8 +204,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('lat') ? ' has-error' : '' }}">
-				<label for="lat" class="col-md-2 control-label">Latitude:</label>
-				<div class="col-md-10">
+				<label for="lat" class="col-sm-2 control-label">Latitude:</label>
+				<div class="col-sm-10">
 					{{ Form::text('lat', $kajian->lat, ['class' => 'form-control', 'placeholder' => 'Latitude']) }}
 
 					@if ($errors->has('lat'))
@@ -217,8 +217,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('long') ? ' has-error' : '' }}">
-				<label for="long" class="col-md-2 control-label">Longitude:</label>
-				<div class="col-md-10">
+				<label for="long" class="col-sm-2 control-label">Longitude:</label>
+				<div class="col-sm-10">
 					{{ Form::text('long', $kajian->long, ['class' => 'form-control', 'placeholder' => 'Longitude']) }}
 
 					@if ($errors->has('long'))
@@ -230,8 +230,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('cp') ? ' has-error' : '' }}">
-				<label for="cp" class="col-md-2 control-label">PIC:</label>
-				<div class="col-md-10">
+				<label for="cp" class="col-sm-2 control-label">PIC:</label>
+				<div class="col-sm-10">
 					{{ Form::text('cp',
 						$kajian->cp, [
 							'class' => 'form-control',
@@ -248,8 +248,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-				<label for="img" class="col-md-2 control-label">Brosur Kajian:</label>
-				<div class="col-md-10">
+				<label for="img" class="col-sm-2 control-label">Brosur Kajian:</label>
+				<div class="col-sm-10">
 					<input type="file" name="img" class="form-control">
 
 					@if ($errors->has('img'))
@@ -267,8 +267,8 @@
 
 			@if ($kajian->id)
 			<div class="form-group{{ $errors->has('video') ? ' has-error' : '' }}">
-				<label for="video" class="col-md-2 control-label">Video Kajian:</label>
-				<div class="col-md-10">
+				<label for="video" class="col-sm-2 control-label">Video Kajian:</label>
+				<div class="col-sm-10">
 					{{ Form::text('video', $kajian->video, ['class' => 'form-control', 'placeholder' => 'Video Kajian']) }}
 
 					@if ($errors->has('video'))
@@ -280,8 +280,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('audio') ? ' has-error' : '' }}">
-				<label for="audio" class="col-md-2 control-label">Audio Kajian:</label>
-				<div class="col-md-10">
+				<label for="audio" class="col-sm-2 control-label">Audio Kajian:</label>
+				<div class="col-sm-10">
 					{{ Form::text('audio', $kajian->audio, ['class' => 'form-control', 'placeholder' => 'Audio Kajian']) }}
 
 					@if ($errors->has('audio'))
@@ -293,8 +293,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('fawaid') ? ' has-error' : '' }}">
-				<label for="fawaid" class="col-md-2 control-label">Fawaid Kajian:</label>
-				<div class="col-md-10">
+				<label for="fawaid" class="col-sm-2 control-label">Fawaid Kajian:</label>
+				<div class="col-sm-10">
 					{{ Form::textarea('fawaid', $kajian->fawaid, ['class' => 'summernote', 'placeholder' => 'Tempat Kajian', 'rows' => 4]) }}
 
 					@if ($errors->has('fawaid'))
@@ -306,8 +306,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('transkrip') ? ' has-error' : '' }}">
-				<label for="transkrip" class="col-md-2 control-label">Transkrip Kajian:</label>
-				<div class="col-md-10">
+				<label for="transkrip" class="col-sm-2 control-label">Transkrip Kajian:</label>
+				<div class="col-sm-10">
 					{{ Form::textarea('transkrip', $kajian->transkrip, ['class' => 'summernote', 'placeholder' => 'Tempat Kajian', 'rows' => 4]) }}
 
 					@if ($errors->has('transkrip'))
@@ -322,7 +322,7 @@
 			<hr>
 
 			<div class="form-group">
-				<div class="col-md-offset-2 col-md-10">
+				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
 				</div>
 			</div>

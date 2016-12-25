@@ -17,57 +17,34 @@
 
 <div class="row">
 
-	<div class="col-md-3 hidden-xs">
+	<div class="col-sm-3 hidden-xs">
 		@include('hadist._group')
 	</div>
 
-	<div class="col-md-6">
-		<div class="text-center">
-			<h3 style="margin-top:0px;">{{ $hadist->judul }}</h3>
-			<hr style="border-color:#999;">
-
-			<div style="font-size:30px;" class="arab text-primary">
-				{{ $hadist->hadist }}
+	<div class="col-sm-6">
+		<div class="panel panel-default text-center">
+			<div class="panel-heading">
+				<h2>{{ $hadist->judul }}</h2>
 			</div>
+			<div class="panel-body">
+				<div style="font-size:30px;" class="arab">
+					{{ $hadist->hadist }}
+				</div> <br>
 
-			<br>
+				<hr style="border-top:1px dashed #999">
 
-			<hr style="border-top:1px dashed #999">
+					{!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!}
+				<hr style="border-top:1px dashed #999">
 
-				{!! $hadist->penjelasan !!}
-				<!-- {!! preg_replace('/(<[^>]+) style=".*?"/i', '$1', strip_tags(str_replace('&nbsp;', ' ', $hadist->penjelasan), '<p><br><i><em><strong><hr><img>')) !!} -->
-			<hr style="border-top:1px dashed #999">
-		</div>
-
-		<div class="text-center">
-			@include('layouts._share')
+				<div class="text-center">
+					@include('layouts._share')
+				</div>
+			</div>
 		</div>
 
 	</div>
-	<div class="col-md-3 hidden-xs">
-		<div class="panel panel-blue">
-			<div class="panel-heading">
-				<h4 class="panel-title">HADIST TERKAIT</h4>
-			</div>
-			<ul class="list-group">
-				@foreach ($terkait as $a)
-				<li class="list-group-item">
-					<div class="media">
-						<div class="media-left media-middle">
-							<div class="" style="height:30px;width:30px;">
-								<img class="media-object profile img-circle cover" alt="{{ $a->judul }}" data-name="{{ $a->judul }}">
-							</div>
-						</div>
-						<div class="media-body">
-							<strong>
-								<a href="/hadist/{{ $a->hadist_id }}-{{ $a->kd_judul }}">{{ $a->judul }}</a>
-							</strong>
-						</div>
-					</div>
-				</li>
-				@endforeach
-			</ul>
-		</div>
+	<div class="col-sm-3 hidden-xs">
+		<hadist limit="10" group="{{ $url }}" header="TERKAIT"></hadist>
 	</div>
 </div>
 

@@ -16,7 +16,7 @@
 
 @section('content')
 
-	<div class="col-md-offset-2 col-md-8">
+	<div class="col-sm-offset-2 col-sm-8">
 		@include('pertanyaan.ustadz._form-jawab')
 	</div>
 

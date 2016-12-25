@@ -39,11 +39,8 @@
 		<meta name="tgn.name" content="Jakarta" />
 		<meta name="tgn.nation" content="Indonesia" />
         <link rel="icon" href="/images/logo.png">
-        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/sidr/dist/stylesheets/jquery.sidr.bare.css" rel="stylesheet">
-		<link href="/css/quran-mobile.css" rel="stylesheet">
-		<script type="text/javascript" src="/js/jquery.min.js"></script>
-		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
+        <link href="/css/app.css" rel="stylesheet">
+        <link href="/css/quran-mobile.css" rel="stylesheet">
     </head>
 
     <body>
@@ -66,6 +63,9 @@
 
 		@include('quran.mobile._player')
 		@include('quran.mobile._surah')
+
+        <script type="text/javascript" src="/js/app.js"></script>
+        <script type="text/javascript" src="/js/all.js"></script>
 
 		<script type="text/javascript">
 
@@ -208,7 +208,7 @@
 				e.preventDefault();
 				stopAudio();
 			});
-			
+
 			@if (app()->environment('production'))
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

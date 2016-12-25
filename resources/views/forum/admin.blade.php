@@ -18,7 +18,7 @@
 
 	</div>
 
-	<div class="panel panel-blue">
+	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">MANAGE FORUM</h3>
 		</div>
