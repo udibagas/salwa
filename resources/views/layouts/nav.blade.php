@@ -1,13 +1,13 @@
 <div style="position:fixed;top:0;right:0;left:0;z-index:1030;background-color:#eee;height:30px;">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-4 col-md-4">
 
 			</div>
-			<div class="col-sm-4 text-center" style="margin-top:5px;">
+			<div class="col-sm-4 col-md-4 text-center" style="margin-top:5px;">
 				<i class="fa fa-pause" class="text-primary"></i> SALWA RADIO - Menebar Salam, Menyebar Dakwah
 			</div>
-			<div class="col-sm-4 text-right">
+			<div class="col-sm-4 col-md-4 text-right">
 				<span style="font-size:13px;">Stay in touch with us:</span>
 				<span style="font-size:20px;">
 					<a href="https://www.facebook.com/Salamdakwah-287022414764661/?ref=hl" target="_blank" class="fa fa-facebook-square"> </a>

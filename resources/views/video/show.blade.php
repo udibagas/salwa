@@ -18,10 +18,10 @@
 @section('content')
 
 <div class="row">
-	<div class="col-sm-3 hidden-xs">
+	<div class="col-sm-3 col-md-3 hidden-xs">
 		@include('video._group')
 	</div>
-	<div class="col-sm-6">
+	<div class="col-sm-6 col-md-6">
 		<h2 style="margin-top:0;">{{ $video->title }}</h2>
 		<div class="text-muted">
 			{{ $video->user ? $video->user->name.' - ' : '' }}
@@ -82,7 +82,7 @@
 
 
 	</div>
-	<div class="col-sm-3">
+	<div class="col-sm-3 col-md-3">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">VIDEO TERKAIT</h3>

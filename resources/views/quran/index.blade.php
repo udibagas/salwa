@@ -5,10 +5,10 @@
 @section('content')
 
 	<div class="row">
-		<div class="col-sm-3 col-sm-3 hidden-xs">
+		<div class="col-sm-3 col-md-3 col-sm-3 col-md-3 hidden-xs">
 			@include('quran._surah')
 		</div>
-		<div class="col-sm-9 col-sm-9">
+		<div class="col-md-9 col-md-9">
 			@include('quran._player')
 
 			<div class="" style="" id="ayat-container">

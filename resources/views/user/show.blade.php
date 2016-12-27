@@ -28,7 +28,7 @@
 
 <div class="row">
 
-	<div class="col-sm-12">
+	<div class="col-md-12">
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
 			<li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">PROFILE</a></li>
@@ -43,7 +43,7 @@
 			<div role="tabpanel" class="tab-pane active" id="1">
 				<br>
 				<div class="row">
-					<div class="col-sm-9">
+					<div class="col-md-9">
 						@include('user._form', ['url' => '/user/'.$user->user_id, 'method' => 'PUT'])
 					</div>
 				</div>

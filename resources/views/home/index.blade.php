@@ -39,10 +39,10 @@
 
 
 	<div class="row">
-		<div class="col-sm-6 col-sm-6">
+		<div class="col-sm-6 col-md-6 col-sm-6 col-md-6">
 			<hadist limit="5" group="doa" header="DOA" icon="heartbeat"></hadist>
 		</div>
-		<div class="col-sm-6 col-sm-6">
+		<div class="col-sm-6 col-md-6 col-sm-6 col-md-6">
 			<hadist limit="5" group="dzikir" header="DZIKIR" icon="hand-stop-o"></hadist>
 		</div>
 	</div>

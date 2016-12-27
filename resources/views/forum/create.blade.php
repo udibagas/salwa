@@ -16,7 +16,7 @@
 @section('content')
 
 <div class="row">
-	<div class="col-sm-8">
+	<div class="col-md-8">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title"><i class="fa fa-plus"></i> BUAT THREAD FORUM BARU</h3>
@@ -26,7 +26,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-4">
+	<div class="col-sm-4 col-md-4">
 		@include('forum._panduan')
 	</div>
 </div>

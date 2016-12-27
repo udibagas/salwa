@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="row">
-	<div class="col-sm-8 col-sm-offset-2">
+	<div class="col-md-8 col-md-offset-2">
 		<br>
 		@include('quran._search-form')
 		<div id="post-list" style="margin-top:55px;">

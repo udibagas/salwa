@@ -16,20 +16,20 @@
 @section('content')
 
 <div class="row">
-	<div class="col-sm-3 hidden-xs">
+	<div class="col-sm-3 col-md-3 hidden-xs">
 		@include('produk._group')
 	</div>
 
-	<div class="col-sm-6">
+	<div class="col-sm-6 col-md-6">
 		<h2 style="margin-top:0;">{{ $produk->judul }}</h2>
 		@include('layouts._share')
 		<hr />
 
 		<div class="row">
-			<div class="col-sm-5 col-sm-4">
+			<div class="col-sm-5 col-sm-4 col-md-4">
 				<img src="/{{ $produk->img_buku }}" style="width:100%;margin-bottom:30px;" alt="" />
 			</div>
-			<div class="col-sm-7 col-sm-8">
+			<div class="col-sm-7 col-md-8">
 				<p>{!! $produk->sinopsis !!}</p>
 				<table class="table table-hover table-striped table-bordered">
 					<tbody>
@@ -72,7 +72,7 @@
 		@endif
 
 	</div>
-	<div class="col-sm-3">
+	<div class="col-sm-3 col-md-3">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">PRODUK TERKAIT</h3>

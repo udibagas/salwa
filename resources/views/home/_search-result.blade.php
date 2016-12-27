@@ -1,4 +1,4 @@
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-video-camera"></i> Video</h4>
 	<ul class="list-group">
 		@foreach($videos as $v)
@@ -21,7 +21,7 @@
 
 	</ul>
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-file-text-o"></i> Artikel</h4>
 	<ul class="list-group">
 		@foreach($artikels as $v)
@@ -43,7 +43,7 @@
 	</ul>
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-newspaper-o"></i> Informasi</h4>
 
 	<ul class="list-group">
@@ -66,7 +66,7 @@
 	</ul>
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-heart-o"></i> Peduli</h4>
 
 	<ul class="list-group">
@@ -89,7 +89,7 @@
 	</ul>
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-comments-o"></i> Forum</h4>
 	<ul class="list-group">
 		@foreach($forums as $v)
@@ -113,7 +113,7 @@
 	</ul>
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-comments-o"></i> Komentar Forum</h4>
 	<ul class="list-group">
 		@foreach($posts as $v)
@@ -137,7 +137,7 @@
 	</ul>
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-question"></i> Tanya Ustadz</h4>
 	<ul class="list-group">
 		@foreach($pertanyaan as $v)
@@ -159,7 +159,7 @@
 	</ul>
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-book"></i> Kitab</h4>
 	<ul class="list-group">
 		@foreach($buku as $v)
@@ -183,7 +183,7 @@
 	</ul>
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-heartbeat"></i> Doa</h4>
 	<ul class="list-group">
 		@foreach($doa as $v)
@@ -204,7 +204,7 @@
 	</ul>
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-hand-stop-o"></i> Dzikir</h4>
 	<ul class="list-group">
 		@foreach($dzikir as $v)
@@ -225,7 +225,7 @@
 	</ul>
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-list-alt"></i> Hadist</h4>
 	<ul class="list-group">
 		@foreach($hadist as $v)
@@ -246,7 +246,7 @@
 	</ul>
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-music"></i> Audio</h4>
 	<ul class="list-group">
 		@foreach($audios as $v)
@@ -270,7 +270,7 @@
 	</ul>
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-image"></i> Images</h4>
 	<ul class="list-group">
 		@foreach($images as $v)
@@ -292,7 +292,7 @@
 	</ul>
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 col-md-6">
 	<h4 class="title"><i class="fa fa-shopping-cart"></i> Market</h4>
 	<ul class="list-group">
 		@foreach($produks as $v)

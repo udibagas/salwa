@@ -5,7 +5,7 @@
 @section('content')
 	<br>
 	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3">
+		<div class="col-sm-6 col-md-6 col-md-offset-3">
 			<ul class="list-group">
 				<li class="list-group-item info">
 					@include('search._form')

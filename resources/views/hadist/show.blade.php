@@ -17,11 +17,11 @@
 
 <div class="row">
 
-	<div class="col-sm-3 hidden-xs">
+	<div class="col-sm-3 col-md-3 hidden-xs">
 		@include('hadist._group')
 	</div>
 
-	<div class="col-sm-6">
+	<div class="col-sm-6 col-md-6">
 		<div class="panel panel-default text-center">
 			<div class="panel-heading">
 				<h2>{{ $hadist->judul }}</h2>
@@ -43,7 +43,7 @@
 		</div>
 
 	</div>
-	<div class="col-sm-3 hidden-xs">
+	<div class="col-sm-3 col-md-3 hidden-xs">
 		<hadist limit="10" group="{{ $url }}" header="TERKAIT"></hadist>
 	</div>
 </div>

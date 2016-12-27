@@ -16,11 +16,11 @@
 
 	<div class="row">
 
-		<div class="col-sm-3 hidden-xs">
+		<div class="col-sm-3 col-md-3 hidden-xs">
 			@include('forum._group')
 		</div>
 
-		<div class="col-sm-6">
+		<div class="col-sm-6 col-md-6">
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -44,7 +44,7 @@
 
 		</div>
 
-		<div class="col-sm-3">
+		<div class="col-sm-3 col-md-3">
 			@include('forum._panduan')
 		</div>
 	</div>

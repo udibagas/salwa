@@ -1,4 +1,4 @@
-<div class="col-md-4 col-sm-4">
+<div class="col-md-4 col-sm-4 col-md-4">
 	<div class="thumbnail" style="height:270px;">
 		<a href="/video/{{ $video->video_id }}-{{ str_slug($video->title) }}">
 			@if ($video->img_video)

@@ -8,7 +8,7 @@
 			</div>
 		</div>
 
-		<div class="col-sm-10">
+		<div class="col-md-10">
 			@if (session('error'))
 				<div class="alert alert-danger text-center">
 					<strong>{{ session('error') }}</strong>

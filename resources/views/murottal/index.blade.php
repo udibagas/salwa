@@ -16,10 +16,10 @@
 
 
 	<div class="row">
-		<div class="col-sm-3 hidden-xs">
+		<div class="col-sm-3 col-md-3 hidden-xs">
 			@include('murottal._group')
 		</div>
-		<div class="col-sm-9">
+		<div class="col-md-9">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"><i class="fa fa-microphone"></i> MUROTTAL QURAN</h3>

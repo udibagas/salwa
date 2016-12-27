@@ -1,4 +1,4 @@
-<div class="col-sm-4 col-sm-6">
+<div class="col-sm-4 col-md-4 col-sm-6 col-md-6">
 	<div class="thumbnail" style="height:270px;">
 		<a href="/kajian/{{ $kajian->id }}-{{ str_slug($kajian->tema) }}">
 			@if ($kajian->brosur)

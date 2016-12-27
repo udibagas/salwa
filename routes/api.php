@@ -30,6 +30,8 @@ Route::get('video', 'VideoController@apiIndex');
 Route::get('forum/group', 'ForumController@apiGroup');
 Route::get('forum', 'ForumController@apiIndex');
 
+Route::resource('kajian', 'Api\KajianController');
+
 
 Route::group(['middleware' => 'auth:api'], function() {
 
@@ -38,9 +40,9 @@ Route::group(['middleware' => 'auth:api'], function() {
 	Route::get('hadits/{hadist}', 'HadistController@apiShow');
 
 	// kajian
-	Route::get('kajian/create', 'KajianController@apiStore');
-	Route::get('kajian', 'KajianController@apiIndex');
-	Route::get('kajian/{kajian}', 'KajianController@apiShow');
+	// Route::get('kajian/create', 'KajianController@apiStore');
+	// Route::get('kajian', 'KajianController@apiIndex');
+	// Route::get('kajian/{kajian}', 'KajianController@apiShow');
 
 	// ustadz
 	Route::get('ustadz', 'UstadzController@apiIndex');

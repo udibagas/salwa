@@ -18,7 +18,7 @@
 		<div class="col-sm-2">
 			@include('home._navsearch')
 		</div>
-		<div class="col-sm-10">
+		<div class="col-md-10">
 			<div class="row">
 				@include('home._search-result')
 			</div>

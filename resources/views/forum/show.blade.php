@@ -19,11 +19,11 @@
 @section('content')
 
 <div class="row">
-	<div class="col-sm-3 hidden-xs">
+	<div class="col-sm-3 col-md-3 hidden-xs">
 		@include('forum._group', ['group' => $forum->group])
 	</div>
 
-	<div class="col-sm-6">
+	<div class="col-sm-6 col-md-6">
 		<h2 style="margin-top:0;">{{ $forum->title }}</h2>
 		<hr>
 		@include('layouts._share')
@@ -70,7 +70,7 @@
 		@endif
 	</div>
 
-	<div class="col-sm-3">
+	<div class="col-sm-3 col-md-3">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">FORUM TERKAIT</h3>

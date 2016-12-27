@@ -18,21 +18,21 @@
 @section('content')
 
 	<div class="row">
-		<div class="col-sm-3 hidden-xs">
+		<div class="col-sm-3 col-md-3 hidden-xs">
 			@include('kajian._group')
 		</div>
-		<div class="col-sm-6">
+		<div class="col-sm-6 col-md-6">
 			<h2 style="margin-top:0;">{{ $kajian->kajian_tema }}</h2>
 			<hr>
 			@include('layouts._share')
 			<hr>
 			<div class="row">
-				<div class="col-sm-6">
+				<div class="col-sm-6 col-md-6">
 					@if ($kajian->img_kajian_photo)
 					<img src="/{{ $kajian->img_kajian_photo}}" alt="{{ $kajian->kajian_tema }}" class="img-responsive" style="width:100%" />
 					@endif
 				</div>
-				<div class="col-sm-6">
+				<div class="col-sm-6 col-md-6">
 					<p>
 						Pemateri:<br />
 						<strong>{{ $kajian->ustadz ? $kajian->ustadz->ustadz_name : ''}}</strong>
@@ -77,7 +77,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-3">
+		<div class="col-sm-3 col-md-3">
 			<h4 class="title">KAJIAN TERKAIT</h4>
 			@each('kajian._list-side', $terkait, 'kajian')
 		</div>

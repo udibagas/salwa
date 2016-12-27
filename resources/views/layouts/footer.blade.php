@@ -17,7 +17,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-2 col-sm-6 col-xs-6">
+	<div class="col-md-2 col-sm-6 col-md-6 col-xs-6">
 
 		<ul style="list-style:none;font-weight:bold;">
 			<li><a href="/"><i class="fa fa-home"></i> Home</a></li>
@@ -34,7 +34,7 @@
 
 	</div>
 
-	<div class="col-md-2 col-sm-6 col-xs-6">
+	<div class="col-md-2 col-sm-6 col-md-6 col-xs-6">
 
 		<ul style="list-style:none;font-weight:bold;">
 			<li><a href="/doa">Do'a</a></li>

@@ -52,7 +52,7 @@
 
     	</div>
 	</div>
-	<div class="col-sm-4 col-xs-12">
+	<div class="col-sm-4 col-md-4 col-xs-12">
 		<div id="tile3" class="tile">
 
         <div class="carousel slide" data-ride="carousel">
@@ -81,7 +81,7 @@
          </div>
 		</div>
 	</div>
-	<div class="col-sm-4 col-xs-12">
+	<div class="col-sm-4 col-md-4 col-xs-12">
 		<div id="tile4" class="tile">
 
         <div class="carousel slide" data-ride="carousel">
@@ -111,7 +111,7 @@
 </div>
 
 <div class="row">
-	<div class="col-sm-4 col-xs-12">
+	<div class="col-sm-4 col-md-4 col-xs-12">
 		<div id="tile7" class="tile">
 
         <div class="carousel slide" data-ride="carousel">
@@ -137,7 +137,7 @@
 
 		</div>
 	</div>
-	<div class="col-sm-4 col-xs-12">
+	<div class="col-sm-4 col-md-4 col-xs-12">
 		<div id="tile8" class="tile">
 
          <div class="carousel slide" data-ride="carousel">
@@ -169,7 +169,7 @@
 
 		</div>
 	</div>
-	<div class="col-sm-4 col-xs-12">
+	<div class="col-sm-4 col-md-4 col-xs-12">
 		<div id="tile10" class="tile">
            <div class="carousel slide" data-ride="carousel">
           <!-- Wrapper for slides -->

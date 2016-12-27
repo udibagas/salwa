@@ -16,11 +16,11 @@
 
 	<div class="row">
 
-		<div class="col-sm-3 hidden-xs">
+		<div class="col-sm-3 col-md-3 hidden-xs">
 			@include('pertanyaan._group')
 		</div>
 
-		<div class="col-sm-6">
+		<div class="col-sm-6 col-md-6">
 
 			@if (count($pertanyaans) == 0)
 				<div class="alert alert-warning text-center">
@@ -36,7 +36,7 @@
 
 		</div>
 
-		<div class="col-sm-3">
+		<div class="col-sm-3 col-md-3">
 			@include('pertanyaan._panduan')
 		</div>
 

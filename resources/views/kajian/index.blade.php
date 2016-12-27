@@ -15,10 +15,10 @@
 @section('content')
 
 	<div class="row">
-		<div class="col-sm-3">
+		<div class="col-sm-3 col-md-3">
 			@include('kajian._group')
 		</div>
-		<div class="col-sm-9">
+		<div class="col-md-9">
 			<div class="row no-gutter">
 				@each('kajian._list', $kajians, 'kajian')
 			</div>

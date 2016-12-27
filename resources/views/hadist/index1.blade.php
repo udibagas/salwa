@@ -16,10 +16,10 @@
 
 
 	<div class="row">
-		<div class="col-sm-3">
+		<div class="col-sm-3 col-md-3">
 			@include('hadist._group')
 		</div>
-		<div class="col-sm-9">
+		<div class="col-md-9">
 			<h4 class="title">HADIST</h4>
 				@foreach ($hadists as $h)
 					<div class="well">
@@ -40,7 +40,7 @@
 			</nav>
 
 		</div>
-		<!-- <div class="col-sm-3">
+		<!-- <div class="col-sm-3 col-md-3">
 			include('home.sidebar')
 		</div> -->
 	</div>

@@ -1,4 +1,4 @@
-<div class="col-sm-3">
+<div class="col-sm-3 col-md-3">
 	<div class="thumbnail" style="height:200px;">
 		<a href="{{ $artikel->url }}">
 			<img src="/{{ $artikel->img_artikel }}" alt="{{ $artikel->judul }}">
