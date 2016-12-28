@@ -22,11 +22,15 @@
 		@include('image._group')
 	</div>
 	<div class="col-sm-6 col-md-6">
-		<h2 style="margin-top:0;">{{ $image->judul }}</h2><hr />
-		<img src="/{{ $image->img_images }}" alt="{{ $image->judul }}" class="img-responsive" />
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2>{{ $image->judul }}</h2><hr />
+				<img src="/{{ $image->img_images }}" alt="{{ $image->judul }}" class="img-responsive" />
 
-		<hr>
-		@include('layouts._share')
+				<hr>
+				@include('layouts._share')
+			</div>
+		</div>
 	</div>
 	<div class="col-sm-3 col-md-3">
 		<div class="panel panel-default">

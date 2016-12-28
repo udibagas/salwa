@@ -27,7 +27,7 @@
         methods: {
            fetchHadist: function() {
                this.$http.get('/api/hadist?limit='+this.limit+'&group='+this.group+'&order=RAND()').then(function(h) {
-                   this.$set(this, 'hadist', h.body)
+                   this.$set(this, 'hadist', h.body.data)
                })
            }
         },

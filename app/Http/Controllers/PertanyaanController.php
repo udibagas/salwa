@@ -288,9 +288,4 @@ class PertanyaanController extends Controller
         $pertanyaan->delete();
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
-
-    public function apiIndex(Request $request)
-    {
-        return Pertanyaan::orderBy('updated', 'DESC')->limit($request->get('limit', 5))->get();
-    }
 }

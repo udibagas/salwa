@@ -22,42 +22,45 @@
 		@include('video._group')
 	</div>
 	<div class="col-sm-6 col-md-6">
-		<h2 style="margin-top:0;">{{ $video->title }}</h2>
-		<div class="text-muted">
-			{{ $video->user ? $video->user->name.' - ' : '' }}
-			{{ $video->updated->diffForHumans() }}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2>{{ $video->title }}</h2>
+				<div class="text-muted">
+					{{ $video->user ? $video->user->name.' - ' : '' }}
+					{{ $video->updated->diffForHumans() }}
+				</div>
+				<hr />
+
+				@if ($video->url_video_youtube)
+				<iframe width="100%" height="300" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
+				@endif
+
+				@if (count($video->files))
+				<div id="video"></div>
+				@push('script')
+				<script type="text/javascript">
+
+					var playlist = {!! json_encode($video->files()->web()->selectRaw('concat("/",file_upload) as file, img_file as image, "'.$video->title.'" as title')->get(), JSON_UNESCAPED_SLASHES) !!};
+
+					var player = jwplayer('video');
+
+					player.setup({
+				        playlist: playlist,
+						width: 600,
+						height: 300
+					});
+
+		        </script>
+				@endpush
+				@endif
+
+				<br><br>
+				{!! $video->desc !!}
+
+				<hr>
+				@include('layouts._share')
+			</div>
 		</div>
-		<hr />
-
-		@if ($video->url_video_youtube)
-		<iframe width="100%" height="300" src="https://www.youtube.com/embed/{{ $video->url_video_youtube }}" frameborder="0" allowfullscreen></iframe>
-		@endif
-
-		@if (count($video->files))
-		<div id="video"></div>
-		@push('script')
-		<script type="text/javascript">
-
-			var playlist = {!! json_encode($video->files()->web()->selectRaw('concat("/",file_upload) as file, img_file as image, "'.$video->title.'" as title')->get(), JSON_UNESCAPED_SLASHES) !!};
-
-			var player = jwplayer('video');
-
-			player.setup({
-		        playlist: playlist,
-				width: 600,
-				height: 300
-			});
-
-        </script>
-		@endpush
-		@endif
-
-		<br><br>
-		{!! $video->desc !!}
-
-		<hr>
-		@include('layouts._share')
-		<hr>
 
 		@include('comment.index', [
 		'comments' => $video->comments()

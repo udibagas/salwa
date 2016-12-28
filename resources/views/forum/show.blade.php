@@ -24,48 +24,45 @@
 	</div>
 
 	<div class="col-sm-6 col-md-6">
-		<h2 style="margin-top:0;">{{ $forum->title }}</h2>
-		<hr>
-		@include('layouts._share')
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2>{{ $forum->title }}</h2>
+				<hr>
+				@include('layouts._share')
 
-		@can('update-forum', $forum)
-		<div class="pull-right">
-			{!! Form::open(['url' => '/forum/'.$forum->forum_id, 'method' => 'DELETE']) !!}
-			{!! Form::hidden('redirect', '/forum') !!}
-			<div class="btn-group">
-				<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Edit Forum</a>
-				<button type="submit" name="delete" class="delete btn btn-danger"><i class="fa fa-trash"></i> Delete Forum</button>
+				@can('update-forum', $forum)
+				<div class="pull-right">
+					{!! Form::open(['url' => '/forum/'.$forum->forum_id, 'method' => 'DELETE']) !!}
+					{!! Form::hidden('redirect', '/forum') !!}
+					<div class="btn-group">
+						<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Edit Forum</a>
+						<button type="submit" name="delete" class="delete btn btn-danger"><i class="fa fa-trash"></i> Delete Forum</button>
+					</div>
+					{!! Form::close() !!}
+				</div>
+				@endcan
 			</div>
-			{!! Form::close() !!}
 		</div>
-		@endcan
-
-		<br />
-		<br />
 
 		@each('post._list', $posts, 'p')
-
-		<!-- <nav class="text-center">
-			{ posts->links() }
-		</nav> -->
 
 		@if (auth()->check())
 
 			@if ($forum->close == 'Y')
 				<div class="alert alert-danger text-center">
-					<strong>Anda tidak dapat berkomentar di thread ini. Forum ini sudah ditutup.</strong>
+					Anda tidak dapat berkomentar di thread ini. Forum ini sudah ditutup.
 				</div>
 			@elseif ($forum->user && (auth()->user()->jenis_kelamin == $forum->user->jenis_kelamin))
 				@include('post._form', ['url' => '/post', 'method' => 'POST'])
 			@else
 				<div class="alert alert-danger text-center">
-					<strong>Anda tidak dapat berkomentar di thread ini. Forum Akhwat dan Ikhwan kami pisahkan.</strong>
+					Anda tidak dapat berkomentar di thread ini. Forum Akhwat dan Ikhwan kami pisahkan.
 				</div>
 			@endif
 
 		@else
 			<div class="alert alert-danger text-center">
-				<strong>Silakan <a href="/login">Login</a> untuk menulis komentar.</strong>
+				Silakan <a href="/login">Login</a> untuk menulis komentar.
 			</div>
 		@endif
 	</div>

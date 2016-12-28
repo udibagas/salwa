@@ -24,26 +24,29 @@
 	<div class="col-sm-6 col-md-6">
 		<!-- include('home.promo', ['promo' => \App\Banner::active()->get()]) -->
 
-		<h2 style="margin-top:0;">{{ $artikel->judul }}</h2>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2>{{ $artikel->judul }}</h2>
 
-		<div class="text-muted">
-			{{ $artikel->user ? $artikel->user->name.' - ' : '' }}
-			{{ $artikel->updated->diffForHumans() }}
+				<div class="text-muted">
+					{{ $artikel->user ? $artikel->user->name.' - ' : '' }}
+					{{ $artikel->updated->diffForHumans() }}
+				</div>
+
+				<hr>
+
+				@if ($artikel->img_artikel)
+				<div style="height:300px;margin-bottom:30px;" class="thumbnail">
+					<img src="/{{ $artikel->img_artikel }}" alt="{{ $artikel->judul }}" class="img-responsive cover" />
+				</div>
+				@endif
+
+				{!! $artikel->isi !!}
+				<hr>
+				@include('layouts._share')
+
+			</div>
 		</div>
-
-		<hr>
-
-		@if ($artikel->img_artikel)
-		<div style="height:300px;margin-bottom:30px;" class="thumbnail">
-			<img src="/{{ $artikel->img_artikel }}" alt="{{ $artikel->judul }}" class="img-responsive cover" />
-		</div>
-		@endif
-
-		{!! $artikel->isi !!}
-
-		<hr>
-		@include('layouts._share')
-		<hr>
 
 		@include('comment.index', [
 		'comments' => $artikel->comments()

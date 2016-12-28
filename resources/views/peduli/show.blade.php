@@ -23,25 +23,28 @@
 		@include('peduli._group')
 	</div>
 	<div class="col-sm-6 col-md-6">
-		<h2 style="margin-top:0;">{{ $peduli->judul }}</h2>
-		<div class="text-muted">
-			{{ $peduli->updated->diffForHumans() }}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2>{{ $peduli->judul }}</h2>
+				<div class="text-muted">
+					{{ $peduli->updated->diffForHumans() }}
+				</div>
+				<hr>
+
+				@if ($peduli->img_artikel)
+				<img src="/{{ $peduli->img_artikel }}" class="img-responsive" alt="{{ $peduli->judul }}" />
+				@else
+				<img src="/images/salwa-peduli.jpg" class="img-responsive" alt="{{ $peduli->judul }}" />
+				@endif
+
+				<br>
+
+				{!! $peduli->isi !!}
+
+				<hr>
+				@include('layouts._share')
+			</div>
 		</div>
-		<hr>
-
-		@if ($peduli->img_artikel)
-		<img src="/{{ $peduli->img_artikel }}" class="img-responsive" alt="{{ $peduli->judul }}" />
-		@else
-		<img src="/images/salwa-peduli.jpg" class="img-responsive" alt="{{ $peduli->judul }}" />
-		@endif
-
-		<br>
-
-		{!! $peduli->isi !!}
-
-		<hr>
-		@include('layouts._share')
-		<hr>
 
 		@include('comment.index', [
 		'comments' => $peduli->comments()

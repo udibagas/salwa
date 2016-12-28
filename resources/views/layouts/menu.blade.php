@@ -59,7 +59,7 @@
 		<a class="list-group-item" href="/image">
 			<i class="fa fa-image"></i> SALWA IMAGE
 		</a>
-		<a class="list-group-item" href="informasi">
+		<a class="list-group-item" href="/informasi">
 			<i class="fa fa-newspaper-o"></i> SALWA INFO
 		</a>
 		<!-- <a class="list-group-item" href="/promo">

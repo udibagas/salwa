@@ -44,30 +44,6 @@ class VideoController extends Controller
         return view($view, ['videos' => $videos]);
     }
 
-    // public function apiIndex(Request $request)
-    // {
-	// 	$search = str_replace(' ', '%', $request->search);
-    //
-    //     $data = Video::selectRaw('video_id AS id, title, url_video_youtube AS yotube_id, img_video AS image, videos.created, users.name AS category')
-	// 			->join('users', 'users.user_id', '=', 'videos.user_id')
-	// 			->video()->when($search, function($query) use ($search) {
-	// 				return $query->where('title', 'like', '%'.$search.'%');
-	// 			})->when($request->user_id, function($query) use ($request) {
-	// 				return $query->where('user_id', $request->user_id);
-	// 			})->orderBy('videos.created', 'DESC')->paginate(10);
-    //
-	// 	return response()->json([
-	// 		'results'	=> $data->items(),
-	// 		'total'		=> $data->total(),
-	// 		'pages'		=> $data->lastPage(),
-	// 	]);
-    // }
-
-    public function apiIndex(Request $request)
-    {
-        return Video::orderBy('updated', 'DESC')->limit($request->get('limit', 5))->get();
-    }
-
     public function admin(Request $request)
     {
 		$title = str_replace(' ', '%', $request->title);
@@ -151,11 +127,6 @@ class VideoController extends Controller
 			'video' 	=> $video,
 			'terkait'	=> Video::where('user_id', $video->user_id)->orderByRaw('RAND()')->limit(10)->get()
 		]);
-    }
-
-    public function apiShow(Video $video)
-    {
-        return $video;
     }
 
 	public function lihat($slug)

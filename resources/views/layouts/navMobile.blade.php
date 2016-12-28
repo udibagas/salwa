@@ -10,7 +10,11 @@
 			<div class="col-xs-4 text-right" style="padding-left:0;margin-left:0;">
 				@if (auth()->check())
 				<a href="/me"><i class="fa fa-user"></i></a>
-				<a href="/logout"><i class="fa fa-sign-out"></i></a>
+				<a href="/logout" onclick="event.preventDefault();
+						 document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i></a>
+				<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+					{{ csrf_field() }}
+				</form>
 				@else
 				<a href="/register"><i class="fa fa-edit"></i></a>
 				<a href="/login"><i class="fa fa-sign-in"></i></a>

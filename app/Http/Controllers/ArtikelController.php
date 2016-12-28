@@ -44,28 +44,6 @@ class ArtikelController extends Controller
         return view($view, ['artikels' => $artikels]);
     }
 
-    // public function apiIndex(Request $request)
-    // {
-	// 	$search = str_replace(' ', '%', $request->search);
-    //
-    // 	$data = Artikel::when($request->group_id, function($query) use ($request) {
-	// 				return $query->where('group_id', $request->group_id);
-	// 			})->when($search, function($query) use ($search) {
-	// 				return $query->where('judul', 'like', '%'.$search.'%');
-	// 			})->orderBy('updated', 'DESC')->paginate(10);
-    //
-	// 	return response()->json([
-	// 		'results'	=> $data->items(),
-	// 		'total'		=> $data->total(),
-	// 		'pages'		=> $data->lastPage(),
-	// 	]);
-    // }
-
-    public function apiIndex(Request $request)
-    {
-        return Artikel::orderBy('updated', 'DESC')->limit($request->get('limit', 5))->get();
-    }
-
     public function admin(Request $request)
     {
 		$judul = str_replace(' ', '%', $request->judul);
@@ -139,11 +117,6 @@ class ArtikelController extends Controller
 			'terkait'	=> Artikel::where('group_id', $artikel->group_id)->orderByRaw('RAND()')->limit(10)->get()
 		]);
     }
-
-	public function apiShow(Artikel $artikel)
-	{
-		return $artikel;
-	}
 
     public function baca($slug)
     {

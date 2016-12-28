@@ -173,25 +173,5 @@ class ImageController extends Controller
 
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
-
-	// public function apiIndex()
-	// {
-	// 	$data = SalwaImages::paginate(5);
-    //
-	// 	return response()->json([
-	// 		'results'	=> $data->items(),
-	// 		'total'		=> $data->total(),
-	// 		'pages'		=> $data->lastPage()
-	// 	]);
-	// }
-
-    public function apiIndex(Request $request)
-    {
-        return SalwaImages::orderBy('updated', 'DESC')->limit($request->get('limit', 5))->get();
-    }
-
-	public function apiShow(SalwaImages $image)
-	{
-		return $image;
-	}
+    
 }

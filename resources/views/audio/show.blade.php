@@ -20,20 +20,22 @@
 		@include('audio._group')
 	</div>
 	<div class="col-sm-6 col-md-6">
-		<h2>{{ $audio->judul }}</h2>
-		<i class="fa fa-clock-o"></i> {{ $audio->updated->diffForHumans() }}
-		<hr>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2>{{ $audio->judul }}</h2>
+				<i class="fa fa-clock-o"></i> {{ $audio->updated->diffForHumans() }}
+				<hr>
 
-		<audio controls="controls" preload="none" autoplay="autoplay"><source src="/{{ $audio->file_mp3 }}" type="application/ogg"></source></audio>
+				<audio controls="controls" preload="none" autoplay="autoplay"><source src="/{{ $audio->file_mp3 }}" type="application/ogg"></source></audio>
 
-		<br><br>
-		{!! $audio->keterangan !!}
+				<br><br>
+				{!! $audio->keterangan !!}
 
-		<hr>
-		@include('layouts._share')
-		<a href="/audio/{{ $audio->mp3_download_id }}/download" class="btn btn-info"><i class="fa fa-download"></i> Download</a>
-
-		<hr>
+				<hr>
+				@include('layouts._share')
+				<a href="/audio/{{ $audio->mp3_download_id }}/download" class="btn btn-default"><i class="fa fa-download"></i> Download</a>
+			</div>
+		</div>
 
 		@include('comment.index', [
 		'comments' => $audio->comments()

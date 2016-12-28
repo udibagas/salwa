@@ -182,9 +182,5 @@ class PeduliController extends Controller
 
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
-
-    public function apiIndex(Request $request)
-    {
-        return Peduli::orderBy('updated', 'DESC')->limit($request->get('limit', 5))->get();
-    }
+    
 }

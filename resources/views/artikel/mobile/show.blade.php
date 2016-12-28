@@ -45,7 +45,7 @@
 	])
 @else
 	<div class="alert alert-danger text-center">
-		<strong>Silakan <a href="/login">login</a> untuk menulis komentar.</strong>
+		Silakan <a href="/login">login</a> untuk menulis komentar.
 	</div>
 @endif
 

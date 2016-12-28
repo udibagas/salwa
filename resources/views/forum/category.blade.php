@@ -24,7 +24,7 @@
 		<div class="col-sm-6 col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					{{ strtoupper($group->group_name) }}
+					<h3 class="panel-title">{{ strtoupper($group->group_name) }}</h3>
 				</div>
 				<div class="panel-body">
 					<div class="media">

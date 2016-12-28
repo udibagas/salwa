@@ -21,32 +21,36 @@
 	</div>
 
 	<div class="col-sm-6 col-md-6">
-		<h2 style="margin-top:0;">{{ $produk->judul }}</h2>
-		@include('layouts._share')
-		<hr />
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2>{{ $produk->judul }}</h2>
+				@include('layouts._share')
+				<hr />
 
-		<div class="row">
-			<div class="col-sm-5 col-sm-4 col-md-4">
-				<img src="/{{ $produk->img_buku }}" style="width:100%;margin-bottom:30px;" alt="" />
-			</div>
-			<div class="col-sm-7 col-md-8">
-				<p>{!! $produk->sinopsis !!}</p>
-				<table class="table table-hover table-striped table-bordered">
-					<tbody>
-						<tr>
-							<th style="width:150px;">Penerbit</th>
-							<td>: {{ $produk->penerbit }}</td>
-						</tr>
-						<tr>
-							<th>Penulis</th>
-							<td>: {{ $produk->penulis }}</td>
-						</tr>
-						<tr>
-							<th>Harga</th>
-							<td>: Rp. {{ $produk->harga }}</td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="row">
+					<div class="col-sm-5 col-sm-4 col-md-4">
+						<img src="/{{ $produk->img_buku }}" style="width:100%;margin-bottom:30px;" alt="" />
+					</div>
+					<div class="col-sm-7 col-md-8">
+						<p>{!! $produk->sinopsis !!}</p>
+						<table class="table table-hover table-striped table-bordered">
+							<tbody>
+								<tr>
+									<th style="width:150px;">Penerbit</th>
+									<td>: {{ $produk->penerbit }}</td>
+								</tr>
+								<tr>
+									<th>Penulis</th>
+									<td>: {{ $produk->penulis }}</td>
+								</tr>
+								<tr>
+									<th>Harga</th>
+									<td>: Rp. {{ $produk->harga }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 

@@ -23,19 +23,33 @@
 		@include('informasi._group')
 	</div>
 	<div class="col-sm-6 col-md-6">
-		<h2 style="margin-top:0;">{{ $informasi->judul }}</h2>
-		<div class="text-muted">
-			{{ $informasi->updated->diffForHumans() }}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h2>{{ $informasi->judul }}</h2>
+				<div class="text-muted">
+					{{ $informasi->updated->diffForHumans() }}
+				</div>
+				<hr>
+
+				<img src="{{ $informasi->img }}" class="img-responsive" alt="{{ $informasi->judul }}" />
+
+				<br>
+
+				{!! $informasi->content !!}
+
+				@if ($images)
+				<div class="row no-gutter">
+					@each('informasi._images', $images, 'image')
+				</div>
+				@endif
+
+
+				<hr>
+				@include('layouts._share')
+			</div>
 		</div>
-		<hr>
 
-		<img src="{{ $informasi->img }}" class="img-responsive" alt="{{ $informasi->judul }}" />
-
-		<br>
-
-		{!! $informasi->content !!}
-
-		@if ($dokumens)
+		@if (count($dokumens))
 		<div class="list-group">
 			@foreach ($dokumens as $d)
 			<a class="list-group-item" href="/{{ $d->file_upload }}" target="_blank">
@@ -45,16 +59,6 @@
 			@endforeach
 		</div>
 		@endif
-
-		@if ($images)
-		<div class="row no-gutter">
-			@each('informasi._images', $images, 'image')
-		</div>
-		@endif
-
-		<hr>
-		@include('layouts._share')
-		<hr>
 
 		@include('comment.index', [
 		'comments' => $informasi->comments()
