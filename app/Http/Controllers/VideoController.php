@@ -136,13 +136,13 @@ class VideoController extends Controller
 	public function lihat($slug)
     {
 		$view = 'video.show';
-        event(new ShowVideo($video));
 
 		if (BrowserDetect::isMobile()) {
 			$view =  'video.mobile.show';
 		}
 
 		$video = Video::where('title_code', $slug)->firstOrFail();
+        event(new ShowVideo($video));
 
         return view($view, [
 			'video' 	=> $video,

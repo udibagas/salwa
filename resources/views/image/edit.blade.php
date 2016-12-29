@@ -15,7 +15,13 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-edit"></i> Edit Image</h4>
-	@include('image._form', ['url' => '/image/'.$image->id_salwaimages, 'method' => 'PUT'])
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="fa fa-edit"></i> EDIT IMAGE</h3>
+		</div>
+		<div class="panel-body">
+			@include('image._form', ['url' => '/image/'.$image->id_salwaimages, 'method' => 'PUT'])
+		</div>
+	</div>
 
 @stop

@@ -13,10 +13,10 @@ class AddLokasiYangLebihDetail extends Migration
     public function up()
     {
         Schema::table('lokasi', function (Blueprint $table) {
-            $table->integer('provinsi_id');
-            $table->integer('kota_id');
-            $table->integer('kecamatan_id');
-            $table->integer('kelurahan_id');
+            // $table->integer('provinsi_id');
+            // $table->integer('kota_id');
+            // $table->integer('kecamatan_id');
+            // $table->integer('kelurahan_id');
         });
     }
 
@@ -28,7 +28,7 @@ class AddLokasiYangLebihDetail extends Migration
     public function down()
     {
         Schema::table('lokasi', function (Blueprint $table) {
-            $table->dropColumn(['provinsi_id', 'kota_id', 'kecamatan_id', 'kelurahan_id']);
+            // $table->dropColumn(['provinsi_id', 'kota_id', 'kecamatan_id', 'kelurahan_id']);
         });
     }
 }
