@@ -19,7 +19,7 @@
 					<h3><i class="fa fa-clock-o"></i> SALWA AKTUAL</h3>
 					<h4>{{ $a->judul }}</h4>
 					{{ $a->user ? $a->user->name : '' }}<br>
-					<em>{{ $a->updated->diffForHumans() }}</em>
+					<em>{{ $a->created->diffForHumans() }}</em>
 				</div>
 			</a>
   		</div>
@@ -71,7 +71,7 @@
 					 <h3><i class="fa fa-video-camera"></i> SALWA VIDEO</h3>
 					 <h3>{{ $v->title }}</h3>
 					 {{ $v->user->name }}<br>
-					 <em>{{ $v->updated->diffForHumans() }}</em>
+					 <em>{{ $v->created->diffForHumans() }}</em>
 				 </div>
 				 </a>
 		  	  </div>
@@ -97,7 +97,7 @@
 						<h3><i class="fa fa-question-circle"></i> TANYA USTADZ</h3>
 						<h3>{{ $v->judul_pertanyaan }}</h3>
 						{{ $v->user->jenis_kelamin == 'p' ? 'Ikhwan' : 'Akhwat' }}<br>
-						<em>{{ $v->updated->diffForHumans() }}</em>
+						<em>{{ $v->created->diffForHumans() }}</em>
 					</div>
 			   </a>
   			</div>
@@ -126,7 +126,7 @@
 				<div class="tilecaption">
 					<h3><i class="fa fa-heart"></i> SALWA PEDULI</h3>
 					<h3>{{ $a->judul }}</h3>
-					{{ $a->updated->diffForHumans() }}
+					{{ $a->created->diffForHumans() }}
 				</div>
 	   		</a>
   		</div>
@@ -158,7 +158,7 @@
 				  <h3><i class="fa fa-comment"></i> {{ $f->group->group_name or 'FORUM' }}</h3>
 				  <h3>{{ $f->title }}</h3>
 				  {{ $f->user->name }}<br>
-				  <em>{{ $f->updated->diffForHumans() }}</em>
+				  <em>{{ $f->created->diffForHumans() }}</em>
 			  </div>
 			  </a>
   		  </div>
@@ -183,7 +183,7 @@
 				  <div class="tilecaption">
 					  <h3><i class="fa fa-info-circle"></i> SALWA INFO</h3>
 					  <h3>{{ $a->judul }}</h3>
-					  {{ $a->updated->diffForHumans() }}
+					  {{ $a->created->diffForHumans() }}
 				  </div>
 				  </a>
 		  	  </div>

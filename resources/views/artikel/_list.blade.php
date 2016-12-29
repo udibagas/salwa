@@ -6,7 +6,7 @@
 			<div class="caption">
 				<h4>{{ $artikel->judul }}</h4>
 				{{ $artikel->user ? $artikel->user->name : '' }}<br />
-				<em>{{ $artikel->updated->diffForHumans() }}</em>
+				<em>{{ $artikel->created->diffForHumans() }}</em>
 			</div>
 		</a>
 	</div>

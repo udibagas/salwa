@@ -9,7 +9,7 @@
 			<div class="caption">
 				<h2>{{ $video->title }}</h2>
 				{{ $video->user ? $video->user->name : '' }}<br />
-				<em>{{ $video->updated->diffForHumans() }}</em>
+				<em>{{ $video->created->diffForHumans() }}</em>
 			</div>
 		</a>
 	</div>

@@ -10,7 +10,7 @@
 	<h3>{{ $video->title }}</h3>
 	<small>
 		{{ $video->user ? $video->user->name.' | ' : '' }}
-		{{ $video->updated->diffForHumans() }}
+		{{ $video->created->diffForHumans() }}
 	</small>
 
 	<br><br>

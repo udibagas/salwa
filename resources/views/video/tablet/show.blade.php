@@ -17,7 +17,7 @@
 
 <h2>{{ $video->title }}</h2>
 <i class="fa fa-user"></i> {{ $video->user ? $video->user->name : '' }}
-<i class="fa fa-clock-o"></i> {{ $video->updated->diffForHumans() }}
+<i class="fa fa-clock-o"></i> {{ $video->created->diffForHumans() }}
 <hr />
 
 @if ($video->url_video_youtube)

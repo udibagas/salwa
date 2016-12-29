@@ -12,7 +12,7 @@
 		</strong>
 		<div class="text-muted">
 			{{ $video->user ? $video->user->name.' - ' : '' }}
-			{{ $video->updated->diffForHumans() }}
+			{{ $video->created->diffForHumans() }}
 		</div>
 	</div>
 </div>

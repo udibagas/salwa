@@ -27,7 +27,7 @@
 				<h2>{{ $video->title }}</h2>
 				<div class="text-muted">
 					{{ $video->user ? $video->user->name.' - ' : '' }}
-					{{ $video->updated->diffForHumans() }}
+					{{ $video->created->diffForHumans() }}
 				</div>
 				<hr />
 

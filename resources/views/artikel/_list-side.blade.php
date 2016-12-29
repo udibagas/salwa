@@ -12,7 +12,7 @@
 		</strong>
 		<div class="text-muted">
 			{{ $artikel->user ? $artikel->user->name.' - ' : '' }}
-			{{ $artikel->updated->diffForHumans() }}
+			{{ $artikel->created->diffForHumans() }}
 		</div>
 	</div>
 </div>
