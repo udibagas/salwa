@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Requests\BukuRequest;
-use App\Buku;
+use Illuminate\Http\Request;
+use App\Events\NewKitab;
+use App\Http\Requests;
 use BrowserDetect;
+use App\Buku;
 
 class KitabController extends Controller
 {
@@ -106,6 +107,7 @@ class KitabController extends Controller
         }
 
 		$buku = Buku::create($data);
+        event(new NewKitab($buku));
 		return redirect('/kitab/'.$buku->buku_id)->with('success', 'Buku berhasil disimpan');
     }
 
@@ -211,6 +213,8 @@ class KitabController extends Controller
 			return abort(404);
 		}
 
+        $kitab->didownload += 1;
+        $kitab->save();
 		return response()->download($kitab->file_pdf);
 	}
 }

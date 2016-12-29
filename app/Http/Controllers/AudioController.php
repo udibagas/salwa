@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Requests\AudioRequest;
+use Illuminate\Http\Request;
+use App\Events\NewAudio;
+use App\Http\Requests;
 use App\Mp3;
 use BrowserDetect;
 
@@ -92,7 +93,7 @@ class AudioController extends Controller
         }
 
 		$audio = Mp3::create($data);
-
+        event(new NewAudio($audio));
 		return redirect('/audio/'.$audio->mp3_download_id)->with('success', 'Audio berhasil disimpan');
     }
 

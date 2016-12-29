@@ -86,11 +86,11 @@
 				</div>
 			</div>
 
-			<hr>
-
 			<div class="form-group">
 				<div class=" col-md-offset-3 col-md-9">
-					<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
+					<button type="submit" name="submit" class="btn btn-primary">
+						<i class="fa fa-save"></i> SIMPAN
+					</button>
 				</div>
 			</div>
 

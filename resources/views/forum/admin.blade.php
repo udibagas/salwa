@@ -14,13 +14,9 @@
 
 @section('cms-content')
 
-	<div class="" style="margin-bottom:10px;">
-
-	</div>
-
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">MANAGE FORUM</h3>
+			<h3 class="panel-title"><i class="fa fa-comments-o"></i> MANAGE FORUM</h3>
 		</div>
 		<div class="panel-body">
 			{!! Form::open(['class' => 'form-inline']) !!}
@@ -36,19 +32,22 @@
 					['class' => 'form-control', 'placeholder' => '--Select Action--']
 				) !!}
 
-				<button type="submit" name="submit" class="btn btn-info action">SUBMIT</button>
-				<div class="pull-right text-bold">
-					Showing {{ $forums->firstItem() }} to {{ $forums->lastItem() }} of {{ $forums->total() }} entries
-				</div>
+				<button type="submit" name="submit" class="btn btn-primary action">SUBMIT</button>
 			{!! Form::close() !!}
-		</div>
-		<div id="table">
-			@include('forum._table')
-		</div>
-	</div>
 
-	<div class="text-center" id="pagination">
-		{!! $forums->appends(['title' => request('title'),'user' => request('user'),'group_id' => request('group_id')])->links() !!}
+			<hr>
+
+			<div id="table">
+				@include('forum._table')
+			</div>
+		</div>
+		<div class="panel-footer" id="pagination">
+			<div class="pull-right">
+				Showing {{ $forums->firstItem() }} to {{ $forums->lastItem() }} of {{ $forums->total() }} entries
+			</div>
+			{!! $forums->appends(['title' => request('title'),'user' => request('user'),'group_id' => request('group_id')])->links() !!}
+			<div class="clearfix"></div>
+		</div>
 	</div>
 
 @stop

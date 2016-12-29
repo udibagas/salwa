@@ -61,6 +61,13 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::post('timeline/post-pertanyaan', 'TimelineController@postPertanyaan');
 	Route::post('timeline/post-forum', 'TimelineController@postForum');
 
+	// Notifikasi
+	Route::get('notifikasi', 'UserController@notifikasi');
+    Route::get('notifikasi/hapus/{id}', 'UserController@hapusNotifikasi');
+    Route::get('notifikasi/baca/{id}', 'UserController@bacaNotifikasi');
+    Route::get('notifikasi/read-all', 'UserController@bacaSemuaNotifikasi');
+    Route::get('notifikasi/delete-all', 'UserController@hapusSemuaNotifikasi');
+
 	Route::group(['middleware' => 'role:'.User::ROLE_ADMIN], function() {
 
 		Route::resource('area', 'AreaController');

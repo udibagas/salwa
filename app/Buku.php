@@ -21,6 +21,13 @@ class Buku extends Model
 		'img_buku', 'createdby', 'updatedby', 'group_id'
 	];
 
+    protected $appends = ['url'];
+
+    public function getUrlAttribute()
+    {
+        return '/kitab/'.$this->buku_id.'-'.str_slug($this->judul);
+    }
+
 	public function group()
 	{
 		return $this->belongsTo('App\Group', 'group_id', 'group_id');

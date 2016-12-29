@@ -177,4 +177,40 @@ class UserController extends Controller
 
 		return redirect($request->redirect)->with('success', 'Profile picture berhasil dihapus');
 	}
+
+    public function notifikasi()
+    {
+        return view('user.notifikasi', [
+            'notifications' => auth()->user()->notifications()->paginate()
+        ]);
+    }
+
+    public function bacaNotifikasi($id, Request $request)
+    {
+        $notifikasi = auth()->user()->unreadNotifications()->where('id', $id)->first();
+
+        if ($notifikasi) {
+            $notifikasi->markAsread();
+        }
+
+        return redirect($request->get('redirect', '/notifikasi'));
+    }
+
+    public function hapusNotifikasi($id)
+    {
+        auth()->user()->notifications()->where('id', $id)->first()->delete();
+        return redirect('/notifikasi');
+    }
+
+    public function bacaSemuaNotifikasi()
+    {
+        auth()->user()->unreadNotifications->markAsread();
+        return redirect('/notifikasi');
+    }
+
+    public function hapusSemuaNotifikasi()
+    {
+        auth()->user()->notifications()->delete();
+        return redirect('/notifikasi');
+    }
 }

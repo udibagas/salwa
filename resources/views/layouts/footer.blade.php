@@ -19,7 +19,7 @@
 
 	<div class="col-sm-6 col-md-2 col-xs-6">
 
-		<ul style="list-style:none;font-weight:bold;">
+		<ul style="list-style:none;">
 			<li><a href="/"><i class="fa fa-home"></i> Home</a></li>
 			<li><a href="/artikel">Salwa Aktual</a></li>
 			<li><a href="/audio">Salwa Audio</a></li>
@@ -28,7 +28,7 @@
 			<li><a href="/informasi">Salwa Info</a></li>
 			<li><a href="/produk">Salwa Market</a></li>
 			<li><a href="/peduli">Salwa Peduli</a></li>
-			<li><a href="/promo">Salwa Promo</a></li>
+			<!-- <li><a href="/promo">Salwa Promo</a></li> -->
 			<li><a href="/video">Salwa Video</a></li>
 		</ul>
 
@@ -36,7 +36,7 @@
 
 	<div class="col-sm-6 col-md-2 col-xs-6">
 
-		<ul style="list-style:none;font-weight:bold;">
+		<ul style="list-style:none;">
 			<li><a href="/doa">Do'a</a></li>
 			<li><a href="/dzikir">Dzikir</a></li>
 			<li><a href="/hadist">Hadist</a></li>

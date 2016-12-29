@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Requests\KajianRequest;
-use App\Kajian;
+use Illuminate\Http\Request;
+use App\Events\NewKajian;
+use App\Http\Requests;
 use BrowserDetect;
+use App\Kajian;
 
 class KajianController extends Controller
 {

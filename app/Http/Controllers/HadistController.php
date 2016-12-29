@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Requests\HadistRequest;
-use App\Hadist;
+use Illuminate\Http\Request;
+use App\Events\ShowHadist;
+use App\Events\NewHadist;
+use App\Http\Requests;
 use BrowserDetect;
+use App\Hadist;
 
 class HadistController extends Controller
 {
@@ -143,7 +145,7 @@ class HadistController extends Controller
 		$data['createdby'] 		= auth()->user()->name;
 
 		$hadist = Hadist::create($data);
-
+        event(new NewHadist($hadist));
         return redirect('/hadist/'.$hadist->hadist_id)->with('success', 'Hadist berhasil disimpan');
     }
 
@@ -156,6 +158,7 @@ class HadistController extends Controller
     public function show(Hadist $hadist)
     {
 		$view = BrowserDetect::isMobile() ? 'hadist.mobile.show' : 'hadist.show';
+        event(new ShowHadist($hadist));
 
 		if ($hadist->group->group_name == 'Dzikir') {
 			$url = 'dzikir';
@@ -176,6 +179,7 @@ class HadistController extends Controller
     public function baca($slug)
     {
 		$hadist = Hadist::where('kd_judul', $slug)->firstOrFail();
+        event(new ShowHadist($hadist));
 
 		if ($hadist->group->group_name == 'Dzikir') {
 			$url = 'dzikir';
@@ -280,18 +284,4 @@ class HadistController extends Controller
 			'pages'		=> $data->lastPage()
 		]);
 	}
-
-	public function apiShow(Hadist $hadist)
-	{
-		return $hadist;
-	}
-
-    public function apiIndex(Request $request)
-    {
-        return Hadist::orderByRaw($request->get('order', 'RAND()'))
-                    ->when($request->group, function($query) use($request) {
-                        $group = $request->group;
-                        return $query->$group();
-                    })->limit($request->get('limit', 5))->get();
-    }
 }

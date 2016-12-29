@@ -3,7 +3,7 @@
 		{!! Form::model($peduli, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method, 'files' => true]) !!}
 
 			<div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
-				<label for="group_id" class="col-sm-3 col-md-3 control-label">Judul :</label>
+				<label for="group_id" class="col-sm-3 control-label">Judul :</label>
 				<div class="col-md-9">
 					{{ Form::text('judul', $peduli->judul, ['class' => 'form-control', 'placeholder' => 'Judul']) }}
 
@@ -16,7 +16,7 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
-				<label for="group_id" class="col-sm-3 col-md-3 control-label">Group :</label>
+				<label for="group_id" class="col-sm-3 control-label">Group :</label>
 				<div class="col-md-9">
 					{{ Form::select('group_id',
 						\App\Group::active()->peduli()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
@@ -35,7 +35,7 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
-				<label for="img" class="col-sm-3 col-md-3 control-label">Gambar :</label>
+				<label for="img" class="col-sm-3 control-label">Gambar :</label>
 				<div class="col-md-9">
 					<input type="file" name="img" class="form-control">
 
@@ -48,7 +48,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('isi') ? ' has-error' : '' }}">
-				<div class="col-md-12">
+				<label for="img" class="col-sm-3 control-label">Isi :</label>
+				<div class="col-md-9">
 					{{ Form::textarea('isi', $peduli->isi, ['class' => 'summernote', 'placeholder' => '']) }}
 
 					@if ($errors->has('isi'))
@@ -59,11 +60,11 @@
 				</div>
 			</div>
 
-			<hr>
-
 			<div class="form-group">
-				<div class="col-md-12">
-					<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
+				<div class="col-md-9 col-md-offset-3">
+					<button type="submit" name="submit" class="btn btn-primary">
+						<i class="fa fa-save"></i> SIMPAN
+					</button>
 				</div>
 			</div>
 

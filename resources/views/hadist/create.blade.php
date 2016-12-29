@@ -15,7 +15,13 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-plus-circle"></i> Tambah Hadist Baru</h4>
-	@include('hadist._form', ['url' => '/hadist', 'method' => 'POST'])
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="fa fa-plus-circle"></i> ADD NEW HADIST</h3>
+		</div>
+		<div class="panel-body">
+			@include('hadist._form', ['url' => '/hadist', 'method' => 'POST'])
+		</div>
+	</div>
 
 @stop

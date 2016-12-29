@@ -44,7 +44,7 @@
 									<td>: {{ $produk->penulis }}</td>
 								</tr>
 								<tr>
-									<th>Harga</th>
+								<th>Harga</th>
 									<td>: Rp. {{ $produk->harga }}</td>
 								</tr>
 							</tbody>

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Requests\PeduliRequest;
-use App\Peduli;
+use Illuminate\Http\Request;
+use App\Events\NewPeduli;
+use App\Http\Requests;
 use BrowserDetect;
+use App\Peduli;
 
 class PeduliController extends Controller
 {
@@ -99,6 +100,7 @@ class PeduliController extends Controller
         }
 
 		$peduli = Peduli::create($data);
+        event(new NewPeduli($peduli));
 		return redirect('/peduli/'.$peduli->peduli_id)->with('success', 'Data berhasil disimpan');
     }
 
@@ -182,5 +184,5 @@ class PeduliController extends Controller
 
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
-    
+
 }

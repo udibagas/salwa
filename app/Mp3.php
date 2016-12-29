@@ -21,6 +21,13 @@ class Mp3 extends Model
 		'createdby', 'updatedby', 'keterangan'
 	];
 
+	protected $appends = ['url'];
+
+    public function getUrlAttribute()
+    {
+        return '/audio/'.$this->mp3_download_id.'-'.str_slug($this->judul);
+    }
+
 	// protected $with = ['group'];
 
 	public function group()

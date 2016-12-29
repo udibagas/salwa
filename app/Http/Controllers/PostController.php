@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use Illuminate\Http\Request;
+use App\Events\NewPost;
+use App\PostImage;
+use BrowserDetect;
 use App\Forum;
 use App\Post;
-use App\PostImage;
 use Gate;
-use BrowserDetect;
 
 class PostController extends Controller
 {
@@ -69,6 +70,8 @@ class PostController extends Controller
 				]);
 			}
         }
+
+        event(new NewPost($post));
 
 		return redirect('/forum/'.$forum->forum_id);
     }

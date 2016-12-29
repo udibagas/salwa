@@ -36,9 +36,8 @@
 				<hr>
 
 				@if ($artikel->img_artikel)
-				<div style="height:300px;margin-bottom:30px;" class="thumbnail">
-					<img src="/{{ $artikel->img_artikel }}" alt="{{ $artikel->judul }}" class="img-responsive cover" />
-				</div>
+				<img src="/{{ $artikel->img_artikel }}" alt="{{ $artikel->judul }}" class="img-responsive" />
+				<br>
 				@endif
 
 				{!! $artikel->isi !!}
@@ -48,12 +47,14 @@
 			</div>
 		</div>
 
-		@include('comment.index', [
+		<comment id="{{ $artikel->artikel_id }}" type="artikel" approved="1"></comment>
+
+		<!-- include('comment.index', [
 		'comments' => $artikel->comments()
 					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
 						return $query->approved();
 					})->get()
-		])
+		]) -->
 
 		@if (auth()->check())
 			@include('comment.form', [

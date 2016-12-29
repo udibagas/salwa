@@ -24,6 +24,7 @@ Route::get('area', 'AreaController@apiIndex');
 // all can index & show
 Route::resource('artikel', 'Api\ArtikelController', ['only' => ['index', 'show']]);
 Route::resource('audio', 'Api\AudioController', ['only' => ['index', 'show']]);
+Route::resource('comment', 'Api\CommentController', ['only' => ['index', 'show']]);
 Route::resource('forum', 'Api\ForumController', ['only' => ['index', 'show']]);
 Route::resource('hadist', 'Api\HadistController', ['only' => ['index', 'show']]);
 Route::resource('image', 'Api\ImageController', ['only' => ['index', 'show']]);
@@ -41,6 +42,7 @@ Route::group(['middleware' => 'auth:api'], function() {
 
     Route::resource('artikel', 'Api\ArtikelController', ['only' => ['store', 'update', 'destroy']]);
     Route::resource('audio', 'Api\AudioController', ['only' => ['store', 'update', 'destroy']]);
+    Route::resource('comment', 'Api\CommentController', ['only' => ['store', 'update', 'destroy']]);
     Route::resource('forum', 'Api\ForumController', ['only' => ['store', 'update', 'destroy']]);
     Route::resource('hadist', 'Api\HadistController', ['only' => ['store', 'update', 'destroy']]);
     Route::resource('image', 'Api\ImageController', ['only' => ['store', 'update', 'destroy']]);

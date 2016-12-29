@@ -1,4 +1,4 @@
-<table class="table table-striped table-hover table-condensed" style="margin-bottom:0;">
+<table class="table table-striped table-hover">
 	<thead>
 		<tr>
 			<th><input type="checkbox" name="" value="" class="select-all"></th>

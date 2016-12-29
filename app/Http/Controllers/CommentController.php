@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Requests\CommentRequest;
+use App\Events\NewComment;
+use App\Http\Requests;
 use App\Comment;
 use Gate;
 

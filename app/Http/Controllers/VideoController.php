@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Requests\VideoRequest;
-use App\Video;
+use Illuminate\Http\Request;
+use App\Events\ShowVideo;
+use App\Events\NewVideo;
+use App\Http\Requests;
 use BrowserDetect;
+use App\Video;
 
 class VideoController extends Controller
 {
@@ -102,6 +104,7 @@ class VideoController extends Controller
         }
 
 		$video = Video::create($data);
+        event(new NewVideo($video));
 		return redirect('/video/'.$video->video_id)->with('success', 'Video berhasil disimpan');
     }
 
@@ -114,6 +117,7 @@ class VideoController extends Controller
     public function show(Video $video)
     {
 		$view = 'video.show';
+        event(new ShowVideo($video));
 
 		if (BrowserDetect::isMobile()) {
 			$view =  'video.mobile.show';
@@ -132,6 +136,7 @@ class VideoController extends Controller
 	public function lihat($slug)
     {
 		$view = 'video.show';
+        event(new ShowVideo($video));
 
 		if (BrowserDetect::isMobile()) {
 			$view =  'video.mobile.show';

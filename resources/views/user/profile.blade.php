@@ -27,55 +27,57 @@
 
 @section('content')
 
-@if (session('error'))
-	<div class="alert alert-danger text-center">
-		<strong>{{ session('error') }}</strong>
-	</div>
-@endif
+	@if (session('error'))
+		<div class="alert alert-danger text-center">
+			<strong>{{ session('error') }}</strong>
+		</div>
+	@endif
 
-@if (session('success'))
-	<div class="alert alert-success text-center">
-		<strong>{{ session('success') }}</strong>
-	</div>
-@endif
+	@if (session('success'))
+		<div class="alert alert-success text-center">
+			<strong>{{ session('success') }}</strong>
+		</div>
+	@endif
 
-<div class="row">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="fa fa-user"></i> USER PROFILE
+			</h3>
+		</div>
+		<div class="panel-body">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">PROFILE</a></li>
+				<li role="presentation"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">PERTANYAAN</a></li>
+				<li role="presentation"><a href="#3" aria-controls="3" role="tab" data-toggle="tab">FORUM</a></li>
+				<!-- <li role="presentation"><a href="#4" aria-controls="4" role="tab" data-toggle="tab">DISKUSI</a></li> -->
+			</ul>
 
-	<div class="col-md-12">
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">PROFILE</a></li>
-			<li role="presentation"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">PERTANYAAN</a></li>
-			<li role="presentation"><a href="#3" aria-controls="3" role="tab" data-toggle="tab">FORUM</a></li>
-			<!-- <li role="presentation"><a href="#4" aria-controls="4" role="tab" data-toggle="tab">DISKUSI</a></li> -->
-		</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
 
-		<!-- Tab panes -->
-		<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="1">
+					<br />
+					@include('user._form', ['url' => '/user/'.$user->user_id, 'method' => 'PUT'])
+				</div>
 
-			<div role="tabpanel" class="tab-pane active" id="1">
-				<br />
-				@include('user._form', ['url' => '/user/'.$user->user_id, 'method' => 'PUT'])
+				<div role="tabpanel" class="tab-pane" id="2">
+					<br />
+					@include('user._pertanyaan', ['pertanyaans' => $user->pertanyaans])
+				</div>
+
+				<div role="tabpanel" class="tab-pane" id="3">
+					<br />
+					@include('user._forum', ['forums' => $user->forums])
+				</div>
+
+				<!-- <div role="tabpanel" class="tab-pane" id="4">
+					<br />
+					include('user._post', ['posts' => $user->posts])
+				</div> -->
+
 			</div>
-
-			<div role="tabpanel" class="tab-pane" id="2">
-				<br />
-				@include('user._pertanyaan', ['pertanyaans' => $user->pertanyaans])
-			</div>
-
-			<div role="tabpanel" class="tab-pane" id="3">
-				<br />
-				@include('user._forum', ['forums' => $user->forums])
-			</div>
-
-			<!-- <div role="tabpanel" class="tab-pane" id="4">
-				<br />
-				include('user._post', ['posts' => $user->posts])
-			</div> -->
-
 		</div>
 	</div>
-
-</div>
-
 @stop

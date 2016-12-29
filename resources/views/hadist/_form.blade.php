@@ -1,7 +1,7 @@
 {!! Form::model($hadist, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method]) !!}
 
 	<div class="form-group{{ $errors->has('judul') ? ' has-error' : '' }}">
-		<label for="judul" class="col-sm-2 control-label">Judul:</label>
+		<label for="judul" class="col-md-2 control-label">Judul:</label>
 		<div class="col-md-10">
 			{{ Form::text('judul', $hadist->judul, ['class' => 'form-control', 'placeholder' => 'Judul Hadist']) }}
 
@@ -14,7 +14,7 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('group_id') ? ' has-error' : '' }}">
-		<label for="group_id" class="col-sm-2 control-label">Group:</label>
+		<label for="group_id" class="col-md-2 control-label">Group:</label>
 		<div class="col-md-10">
 			{{ Form::select('group_id',
 				\App\Group::active()->hadist()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'),
@@ -33,7 +33,7 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('hadist') ? ' has-error' : '' }}">
-		<label for="hadist" class="col-sm-2 control-label">Hadist/Doa/Dzikir:</label>
+		<label for="hadist" class="col-md-2 control-label">Hadist/Doa/Dzikir:</label>
 		<div class="col-md-10">
 			{{ Form::textarea('hadist', $hadist->hadist, ['class' => 'form-control', 'rows' => '4', 'placeholder' => 'Hadist']) }}
 
@@ -46,7 +46,7 @@
 	</div>
 
 	<div class="form-group{{ $errors->has('penjelasan') ? ' has-error' : '' }}">
-		<label for="penjelasan" class="col-sm-2 control-label">Penjelasan:</label>
+		<label for="penjelasan" class="col-md-2 control-label">Penjelasan:</label>
 		<div class="col-md-10">
 			{{ Form::textarea('penjelasan', $hadist->penjelasan, ['class' => 'summernote', 'placeholder' => 'Penjelasan']) }}
 
@@ -58,11 +58,11 @@
 		</div>
 	</div>
 
-	<hr>
-
 	<div class="form-group">
-		<div class="col-md-12">
-			<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
+		<div class="col-md-10 col-md-offset-2">
+			<button type="submit" name="submit" class="btn btn-primary">
+				<i class="fa fa-save"></i> SIMPAN
+			</button>
 		</div>
 	</div>
 

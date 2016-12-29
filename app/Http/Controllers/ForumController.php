@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Requests\PostRequest;
 use App\Http\Requests\ForumRequest;
+use App\Http\Requests\PostRequest;
+use App\Events\NewForum;
+use App\Http\Requests;
+use BrowserDetect;
 use App\Forum;
 use App\Group;
 use App\Post;
 use Gate;
-use BrowserDetect;
 
 class ForumController extends Controller
 {
@@ -99,6 +100,7 @@ class ForumController extends Controller
 			}
         }
 
+        event(new NewForum($forum));
 		return redirect('/forum/'.$forum->forum_id.'-'.str_slug($forum->title));
     }
 

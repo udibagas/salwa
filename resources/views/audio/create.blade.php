@@ -15,7 +15,13 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-plus-circle"></i> Tambah Audio Baru</h4>
-	@include('audio._form', ['url' => '/audio', 'method' => 'POST'])
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="fa fa-plus-circle"></i> ADD NEW AUDIO</h3>
+		</div>
+		<div class="panel-body">
+			@include('audio._form', ['url' => '/audio', 'method' => 'POST'])
+		</div>
+	</div>
 
 @stop

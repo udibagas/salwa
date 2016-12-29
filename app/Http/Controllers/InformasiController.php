@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Requests\InformasiRequest;
-use App\Informasi;
+use App\Events\NewInformasi;
+use Illuminate\Http\Request;
 use App\InformasiFile;
+use App\Http\Requests;
+use App\Informasi;
 use BrowserDetect;
 
 class InformasiController extends Controller
@@ -110,6 +111,7 @@ class InformasiController extends Controller
 			}
 		}
 
+        event(new NewInformasi($informasi));
 		return redirect('/informasi/'.$informasi->informasi_id)->with('success', 'Informasi berhasil disimpan');
     }
 

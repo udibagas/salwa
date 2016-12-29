@@ -16,6 +16,7 @@ require('./bootstrap');
 Vue.component('hadist', require('./components/Hadist.vue'));
 Vue.component('forum', require('./components/Forum.vue'));
 Vue.component('slider', require('./components/Slider.vue'));
+Vue.component('comment', require('./components/Comment.vue'));
 
 const app = new Vue({
     el: '#app',

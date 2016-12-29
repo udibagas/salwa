@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Requests\ProdukRequest;
-use App\Produk;
+use Illuminate\Http\Request;
+use App\Events\NewProduct;
+use App\Http\Requests;
 use BrowserDetect;
+use App\Produk;
 
 class ProdukController extends Controller
 {
@@ -92,6 +93,7 @@ class ProdukController extends Controller
         }
 
 		$produk = Produk::create($data);
+        event(new NewProduct($produk));
 		return redirect('/produk/'.$produk->id_produk)->with('success', 'Produk berhasil disimpan');
     }
 

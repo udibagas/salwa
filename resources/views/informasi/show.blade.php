@@ -31,11 +31,24 @@
 				</div>
 				<hr>
 
-				<img src="{{ $informasi->img }}" class="img-responsive" alt="{{ $informasi->judul }}" />
+				<img src="/{{ $informasi->img_gambar }}" class="img-responsive" alt="{{ $informasi->judul }}" />
 
 				<br>
 
 				{!! $informasi->content !!}
+
+				@if (count($dokumens))
+				<ul class="list-group">
+					@foreach ($dokumens as $d)
+					<li class="list-group-item">
+						<a href="/{{ $d->file_upload }}" target="_blank">
+							<i class="fa fa-download"></i>
+							{{ str_replace('uploads/dirfile_upload/', '' ,$d->file_upload) }}
+						</a>
+					</li>
+					@endforeach
+				</ul>
+				@endif
 
 				@if ($images)
 				<div class="row no-gutter">
@@ -43,22 +56,10 @@
 				</div>
 				@endif
 
-
 				<hr>
 				@include('layouts._share')
 			</div>
 		</div>
-
-		@if (count($dokumens))
-		<div class="list-group">
-			@foreach ($dokumens as $d)
-			<a class="list-group-item" href="/{{ $d->file_upload }}" target="_blank">
-				<i class="fa fa-download"></i>
-				{{ str_replace('uploads/dirfile_upload/', '' ,$d->file_upload) }}
-			</a>
-			@endforeach
-		</div>
-		@endif
 
 		@include('comment.index', [
 		'comments' => $informasi->comments()

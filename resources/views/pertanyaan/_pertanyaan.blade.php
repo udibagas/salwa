@@ -1,6 +1,6 @@
 <div class="panel @if ($p->status == 's') panel-default @else panel-danger @endif">
 	<div class="panel-body">
-		<h2 style="margin-top:0;">{{ $pertanyaan->judul_pertanyaan }}</h2>
+		<h2>{{ $pertanyaan->judul_pertanyaan }}</h2>
 		<hr>
 		@include('layouts._share')
 
@@ -24,7 +24,7 @@
 		</div>
 		<br>
 		<br>
-		
+
 		<div class="media">
 			<div class="media-left">
 				<img class="profile media-object img-circle" data-name="{{ ($pertanyaan->user && $pertanyaan->user->jenis_kelamin == 'p') ? 'Ikhwan' : 'Akhwat' }}" data-width="40" data-height="40" />

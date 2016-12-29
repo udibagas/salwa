@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -29,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'api_token'
+        'password', 'remember_token', 'api_token', 'confirm', 'validasi', 'session_id'
     ];
 
 	protected $appends = ['role'];
@@ -73,9 +73,29 @@ class User extends Authenticatable
 		return $query->where('active', 'Y');
 	}
 
+    public function scopeAdmin($query)
+	{
+		return $query->where('user_status', self::ROLE_ADMIN);
+	}
+
+    public function scopeStaff($query)
+	{
+		return $query->where('user_status', self::ROLE_STAFF);
+	}
+
 	public function scopeUstadz($query)
 	{
 		return $query->where('user_status', self::ROLE_USTADZ);
+	}
+
+	public function scopeAktualita($query)
+	{
+		return $query->where('user_status', self::ROLE_AKTUALITA);
+	}
+
+	public function scopeMember($query)
+	{
+		return $query->where('user_status', self::ROLE_MEMBER);
 	}
 
 	public static function roleList($index = 9999)

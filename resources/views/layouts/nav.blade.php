@@ -110,7 +110,27 @@
 				</li>
 		      </ul>
         </li>
-		  @endif
+		<li class="dropdown">
+		   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+			   <i class="fa fa-envelope"></i>
+			   <sup><span class="badge" style="font-size:8px;background-color:#236C9E;">{{ auth()->user()->unreadNotifications->count() }}</span></sup>
+
+		   </a>
+
+		   <ul class="dropdown-menu" role="menu">
+			   @foreach (auth()->user()->unreadNotifications as $n)
+			   <li>
+				   <a href="/notifikasi/baca/{{ $n->id }}?redirect={{ $n->data['url'] }}">
+					   <strong>{{ $n->data['subject'] }}</strong><br>
+					   {{ $n->data['message'] }}<br>
+					   <small>{{ $n->created_at->diffForhumans() }}</small>
+				   </a>
+			   </li>
+			   @endforeach
+			   <li><a href="/notifikasi">Lihat Semua Notifikasi</a></li>
+		   </ul>
+	   </li>
+		 @endif
       </ul>
     </div><!--/.navbar-collapse -->
   </div>

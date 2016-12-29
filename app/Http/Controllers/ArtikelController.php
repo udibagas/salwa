@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Requests\ArtikelRequest;
-use App\Artikel;
+use Illuminate\Http\Request;
+use App\Events\ShowArtikel;
+use App\Events\NewArtikel;
+use App\Http\Requests;
 use BrowserDetect;
+use App\Artikel;
 
 class ArtikelController extends Controller
 {
@@ -99,6 +101,7 @@ class ArtikelController extends Controller
         }
 
 		$artikel = Artikel::create($data);
+        event(new NewArtikel($artikel));
 		return redirect('/artikel/'.$artikel->artikel_id)->with('success', 'Artikel berhasil disimpan');
     }
 
@@ -111,6 +114,7 @@ class ArtikelController extends Controller
     public function show(Artikel $artikel)
     {
 		$view = BrowserDetect::isMobile() ? 'artikel.mobile.show' : 'artikel.show';
+        event(new ShowArtikel($artikel));
 
         return view($view, [
 			'artikel' 	=> $artikel,
@@ -121,6 +125,7 @@ class ArtikelController extends Controller
     public function baca($slug)
     {
 		$artikel = Artikel::where('kd_judul', $slug)->firstOrFail();
+        event(new ShowArtikel($artikel));
 
         return view('artikel.show', [
 			'artikel' 	=> $artikel,

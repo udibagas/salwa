@@ -15,7 +15,15 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-plus-circle"></i> Tambah Video Baru</h4>
-	@include('video._form', ['url' => '/video', 'method' => 'POST'])
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="fa fa-plus-circle"></i> ADD NEW VIDEO
+			</h3>
+		</div>
+		<div class="panel-body">
+			@include('video._form', ['url' => '/video', 'method' => 'POST'])
+		</div>
+	</div>
 
 @stop

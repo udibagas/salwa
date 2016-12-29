@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Requests\PertanyaanRequest;
 use App\Http\Requests\JawabanRequest;
+use Illuminate\Http\Request;
+use App\Events\NewPertanyaan;
+use App\Http\Requests;
 use App\Pertanyaan;
-use Gate;
 use BrowserDetect;
+use Gate;
 
 class PertanyaanController extends Controller
 {
@@ -178,7 +179,7 @@ class PertanyaanController extends Controller
 		return view($view, [
 			'pertanyaan' 	=> $pertanyaan,
 			'terkait'		=> Pertanyaan::where('group_id', $pertanyaan->group_id)
-									->show()->orderByRaw('RAND()')->limit(5)->get()
+									->show()->orderByRaw('RAND()')->limit(10)->get()
 		]);
     }
 

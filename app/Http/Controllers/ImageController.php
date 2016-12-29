@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Requests\ImageRequest;
+use Illuminate\Http\Request;
+use App\Events\NewImage;
+use App\Http\Requests;
 use App\SalwaImages;
 use BrowserDetect;
 
@@ -92,7 +93,7 @@ class ImageController extends Controller
         }
 
 		$image = SalwaImages::create($data);
-
+        event(new NewImage($image));
 		return redirect('/image/'.$image->id_salwaimages)->with('success', 'Image berhasil disimpan');
     }
 
@@ -173,5 +174,5 @@ class ImageController extends Controller
 
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
-    
+
 }

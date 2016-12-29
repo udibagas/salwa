@@ -129,11 +129,9 @@
 			</div>
 		</div>
 
-		<hr>
-
 		<div class="form-group">
-			<div class="col-md-offset-3 col-md-offset-3 col-md-9 col-md-9">
-				<button type="submit" name="save" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+			<div class="col-md-offset-3 col-md-9">
+				<button type="submit" name="save" class="btn btn-primary"><i class="fa fa-save"></i> SIMPAN</button>
 			</div>
 		</div>
 

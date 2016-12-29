@@ -15,7 +15,16 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-plus-circle"></i> Tambah Artikel Baru</h4>
-	@include('artikel._form', ['url' => '/artikel', 'method' => 'POST'])
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="fa fa-plus-circle"></i> TAMBAH ARTIKEL BARU
+			</h3>
+		</div>
+		<div class="panel-body">
+			@include('artikel._form', ['url' => '/artikel', 'method' => 'POST'])
+		</div>
+	</div>
+
 
 @stop

@@ -58,11 +58,11 @@
 				</div>
 			</div>
 
-			<hr>
-
 			<div class="form-group">
-				<div class="col-md-12">
-					<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
+				<div class="col-md-10 col-md-offset-2">
+					<button type="submit" name="submit" class="btn btn-primary">
+						<i class="fa fa-save"></i> SIMPAN
+					</button>
 				</div>
 			</div>
 
