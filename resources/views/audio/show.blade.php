@@ -38,10 +38,7 @@
 		</div>
 
 		@include('comment.index', [
-		'comments' => $audio->comments()
-					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
-						return $query->approved();
-					})->get()
+			'comments' => $audio->comments()->approved()->get()
 		])
 
 		@if (auth()->check())

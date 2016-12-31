@@ -1,4 +1,4 @@
-<div class="col-sm-2 col-sm-2 col-xs-6">
+<div class="col-sm-3 col-sm-3 col-xs-6">
 	<div class="thumbnail" style="height:100px;">
 		<img src="/{{ $image->img_image }}" alt="{{ $image->image_desc }}" class="cover" /><br/>
 	</div>

@@ -1,6 +1,6 @@
 <div class="col-sm-4 col-md-3">
 	<div class="thumbnail" style="height:275px;">
-		<a href="/kitab/{{ $b->buku_id }}-{{ str_slug($b->judul) }}">
+		<a href="{{ $b->url }}">
 			<img src="/{{ $b->img_buku }}" alt="{{ $b->judul }}">
 			<div class="thumbnail-block">
 			</div>

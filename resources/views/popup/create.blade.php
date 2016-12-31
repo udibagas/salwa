@@ -14,6 +14,12 @@
 @stop
 
 @section('cms-content')
-	<h4 class="title"><i class="fa fa-image"></i> ADD NEW POPUP</h4>
-	@include('popup._form', ['url' => '/popup', 'method' => 'POST'])
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="fa fa-plus-circle"></i> ADD NEW POPUP</h3>
+		</div>
+		<div class="panel-body">
+			@include('popup._form', ['url' => '/popup', 'method' => 'POST'])
+		</div>
+	</div>
 @endsection

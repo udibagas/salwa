@@ -19,14 +19,9 @@ Route::get('jajal', function() {
 	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);
 });
 
-Route::get('cobaaja', function() {
-	return view('cobaaja');
-});
-
 Route::get('timeline', 'TimelineController@index');
-
 Route::get('search', 'HomeController@search');
-Route::get('salwa.id', 'HomeController@salwaId');
+Route::get('salwa-id', 'HomeController@salwaId');
 
 Route::get('quran', 'QuranController@index');
 Route::get('quran/download-ayah-audio', 'QuranController@downloadAyahAudio');
@@ -84,6 +79,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('audio/admin', 'AudioController@admin');
 		Route::get('banner/admin', 'BannerController@admin');
 		Route::get('comment/{comment}/approve', 'CommentController@approve');
+		Route::get('comment/{comment}/unapprove', 'CommentController@unapprove');
 		Route::get('comment/approve-all', 'CommentController@approveAll');
 		Route::get('forum/admin', 'ForumController@admin');
 		Route::get('forum/activate', 'ForumController@activate');
@@ -143,6 +139,8 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::get('pertanyaan-saya', 'PertanyaanController@mine');
 	Route::get('forum-saya', 'ForumController@mine');
+	Route::get('post-saya', 'PostController@mine');
+	Route::get('komentar-saya', 'CommentController@mine');
 });
 
 Route::get('baca-artikel/{slug}.html', 'ArtikelController@baca');

@@ -47,14 +47,11 @@
 			</div>
 		</div>
 
-		<comment id="{{ $artikel->artikel_id }}" type="artikel" approved="1"></comment>
+		<!-- <comment id="{{ $artikel->artikel_id }}" type="artikel" approved="1"></comment> -->
 
-		<!-- include('comment.index', [
-		'comments' => $artikel->comments()
-					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
-						return $query->approved();
-					})->get()
-		]) -->
+		@include('comment.index', [
+			'comments' => $artikel->comments()->approved()->get()
+		])
 
 		@if (auth()->check())
 			@include('comment.form', [

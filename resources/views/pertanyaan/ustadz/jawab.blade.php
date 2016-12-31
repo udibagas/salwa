@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.user')
 
 @section('title', 'Tanya Ustadz : Jawab Pertanyaan')
 
@@ -14,12 +14,15 @@
 
 @stop
 
-@section('content')
+@section('user-content')
 
-	<div class="col-md-offset-2 col-md-8">
-		@include('pertanyaan.ustadz._form-jawab')
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">JAWAB PERTANYAAN</h3>
+		</div>
+		<div class="panel-body">
+			@include('pertanyaan.ustadz._form-jawab')
+		</div>
 	</div>
-
-	<div class="clearfix"></div>
 
 @stop

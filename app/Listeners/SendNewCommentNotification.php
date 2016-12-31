@@ -29,6 +29,6 @@ class SendNewCommentNotification implements ShouldQueue
      */
     public function handle(NewComment $event)
     {
-        Notification::send(User::active()->get(), new NewCommentNotification($event->comment));
+        Notification::send(User::active()->admin()->get(), new NewCommentNotification($event->comment));
     }
 }

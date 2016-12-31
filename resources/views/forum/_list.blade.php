@@ -8,7 +8,7 @@
 			<a href="/forum-category/{{ $group->group_id }}-{{ str_slug($group->group_name) }}">MORE</a>
 		</li>
 		@if (count($group->forums) == 0)
-		<li class="list-group-item text-center"><strong>Belum ada thread.</strong></li>
+		<li class="list-group-item text-center"><p>Belum ada thread.</p></li>
 		@endif
 	</ul>
 </div>

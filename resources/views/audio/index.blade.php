@@ -31,7 +31,7 @@
 						@foreach ($audios as $m)
 						<tr>
 							<td>{{ $i++ }}</td>
-							<td><strong><a href="/audio/{{ $m->mp3_download_id }}-{{ str_slug($m->judul) }}">{{ $m->judul }}</a></strong></td>
+							<td><strong><a href="{{ $m->url }}">{{ $m->judul }}</a></strong></td>
 							<td>
 								<audio controls="controls" preload="none"><source src="/{{ $m->file_mp3 }}" type="application/ogg"></source></audio>
 							</td>

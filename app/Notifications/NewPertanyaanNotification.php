@@ -58,7 +58,7 @@ class NewPertanyaanNotification extends Notification
     {
         return [
             'subject' => 'Pertanyaan Baru',
-            'message' => 'Pertanyaan baru dengan judul "'.$this->pertanyaan->judul_pertanyaan.'" baru saja dipublish',
+            'message' => $this->pertanyaan->user->name.' baru saja membuat pertanyaan dengan judul "'.$this->pertanyaan->judul_pertanyaan.'"',
             'url' => $this->pertanyaan->url
         ];
     }

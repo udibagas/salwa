@@ -25,7 +25,7 @@ class KitabController extends Controller
 								->orWhere('penulis', 'like', '%'.$search.'%');
 					})->when($request->group_id, function($query) use ($request) {
 						return $query->where('group_id', $request->group_id);
-					})->orderBy('updated', 'DESC')->paginate(16);
+					})->orderBy('created', 'DESC')->paginate(16);
 
 		if ($request->ajax()) {
 			$html = '';
@@ -56,7 +56,7 @@ class KitabController extends Controller
 							return $query->where('penulis', 'like', '%'.$request->penulis.'%');
 						})->when($request->group_id, function($query) use ($request) {
 							return $query->where('group_id', $request->group_id);
-						})->orderBy('updated', 'DESC')->paginate()
+						})->orderBy('created', 'DESC')->paginate()
 		]);
     }
 

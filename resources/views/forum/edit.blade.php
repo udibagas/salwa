@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.user')
 
 @section('title', 'Forum : Edit Forum')
 
@@ -14,7 +14,7 @@
 
 @stop
 
-@section('content')
+@section('user-content')
 
 	<div class="row">
 		<div class="col-md-8">

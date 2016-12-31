@@ -6,7 +6,7 @@
 	</div>
 	<div class="media-body">
 		<strong>
-			<a href="/kitab/{{ $b->buku_id }}-{{ str_slug($b->judul) }}">
+			<a href="{{ $b->url }}">
 				{{ $b->judul }}
 			</a>
 		</strong><br>

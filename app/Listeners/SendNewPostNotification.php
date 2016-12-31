@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Notifications\NewPostNotification;
 use Notification;
 use App\User;
+use App\Post;
 
 class SendNewPostNotification implements ShouldQueue
 {
@@ -29,6 +30,20 @@ class SendNewPostNotification implements ShouldQueue
      */
     public function handle(NewPost $event)
     {
-        Notification::send(User::active()->get(), new NewPostNotification($event->post));
+        // kirim notifikasi ke user yang mengikuti forum & admin
+        $userList = [];
+        $admins = User::active()->admin()->get();
+        $posts = Post::where('forum_id', $event->post->forum_id)->get();
+
+        foreach ($admins as $a) {
+            $userList[] = $a->user_id;
+        }
+
+        foreach ($posts as $p) {
+            $userList[] = $p->user_id;
+        }
+
+        $users = User::whereIn('user_id', $userList)->active()->get();
+        Notification::send($users, new NewPostNotification($event->post));
     }
 }

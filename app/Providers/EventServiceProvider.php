@@ -16,8 +16,14 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\NewComment' => [
             'App\Listeners\SendNewCommentNotification',
         ],
+        'App\Events\CommentApproved' => [
+            'App\Listeners\SendCommentApprovedNotification',
+        ],
         'App\Events\NewForum' => [
             'App\Listeners\SendNewForumNotification',
+        ],
+        'App\Events\ForumApproved' => [
+            'App\Listeners\SendForumApprovedNotification',
         ],
         'App\Events\NewPost' => [
             'App\Listeners\SendNewPostNotification',
@@ -39,6 +45,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\NewPertanyaan' => [
             'App\Listeners\SendNewPertanyaanNotification',
+        ],
+        'App\Events\PertanyaanAnswered' => [
+            'App\Listeners\SendPertanyaanAnsweredNotification',
         ],
         'App\Events\NewKitab' => [
             'App\Listeners\SendNewKitabNotification',

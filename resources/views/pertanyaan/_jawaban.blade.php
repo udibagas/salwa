@@ -14,7 +14,7 @@
 
 					@if (auth()->check() && auth()->user()->user_id == $p->dijawab_oleh)
 					<div class="pull-right">
-						<a href="/pertanyaan/{{$p->pertanyaan_id}}/jawab" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit Jawaban</a>
+						<a href="/pertanyaan/{{$p->pertanyaan_id}}/jawab">Edit Jawaban</a>
 					</div>
 					@endif
 

@@ -58,8 +58,8 @@ class NewCommentNotification extends Notification
     {
         return [
             'subject' => 'Komentar Baru',
-            'message' => $this->post->user->name.' mengomentari forum "'.$this->post->forum->title.'"',
-            'url' => $this->comment->url
+            'message' => $this->comment->user->name.' mengomentari '.$this->comment->commentable_type.' "'.$this->comment->commentable->title.'"',
+            'url' => $this->comment->commentable->url
         ];
     }
 }

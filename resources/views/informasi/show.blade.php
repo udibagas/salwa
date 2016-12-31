@@ -62,10 +62,7 @@
 		</div>
 
 		@include('comment.index', [
-		'comments' => $informasi->comments()
-					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
-						return $query->approved();
-					})->get()
+			'comments' => $informasi->comments()->approved()->get()
 		])
 
 		@if (auth()->check())

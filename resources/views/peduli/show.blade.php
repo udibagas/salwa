@@ -47,10 +47,7 @@
 		</div>
 
 		@include('comment.index', [
-		'comments' => $peduli->comments()
-					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
-						return $query->approved();
-					})->get()
+			'comments' => $peduli->comments()->approved()->get()
 		])
 
 		@if (auth()->check())

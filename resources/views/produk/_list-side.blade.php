@@ -6,7 +6,7 @@
 	</div>
 	<div class="media-body">
 		<strong>
-			<a href="/produk/{{ $produk->id_produk }}-{{ str_slug($produk->judul) }}">
+			<a href="{{ $produk->url }}">
 				{{ $produk->judul }}
 			</a>
 		</strong>

@@ -18,7 +18,21 @@
 			<h3 class="panel-title"><i class="fa fa-tags"></i> GROUPS</h3>
 		</div>
 		<div class="panel-body">
-			<a href="/group/create" class="btn btn-primary"><i class="fa fa-plus-circle"></i> ADD NEW GROUP</a>
+			{!! Form::open(['method' => 'GET', 'class' => 'form-inline']) !!}
+				<label for="">FILTER : </label>
+				<input type="text" name="group_name" value="{{ request('group_name') }}" placeholder="Name" class="form-control">
+
+				{{ Form::select('type', \App\Group::typeList(), request('type'), ['class' => 'form-control', 'placeholder' => '-Jenis-']) }}
+
+				<input type="text" name="description" value="{{ request('description') }}" placeholder="Description" class="form-control">
+
+				{!! Form::select('delete', ['Y' => 'Y', 'N' => 'N'], request('delete'), ['class' => 'form-control', 'placeholder' => '-Deleted?-']) !!}
+
+				<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
+				<a href="/group" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
+
+				<a href="/group/create" class="btn btn-primary pull-right"><i class="fa fa-plus-circle"></i> ADD NEW GROUP</a>
+			{!! Form::close() !!}
 
 			<hr>
 			<table class="table table-hover table-striped">
@@ -29,29 +43,8 @@
 						<th>Type</th>
 						<th>Description</th>
 						<th>Deleted</th>
-						<th style="width:170px;">Action</th>
+						<th style="width:1370px;">Action</th>
 					</tr>
-					{!! Form::open(['method' => 'GET']) !!}
-					<tr>
-						<td></td>
-						<td>
-							<input type="text" name="group_name" value="{{ request('group_name') }}" placeholder="Name" class="form-control">
-						</td>
-						<td>
-							{{ Form::select('type', \App\Group::typeList(), request('type'), ['class' => 'form-control', 'placeholder' => '-All-']) }}
-						</td>
-						<td>
-							<input type="text" name="description" value="{{ request('description') }}" placeholder="Description" class="form-control">
-						</td>
-						<td>
-							{!! Form::select('delete', ['Y' => 'Y', 'N' => 'N'], request('delete'), ['class' => 'form-control', 'placeholder' => '-All-']) !!}
-						</td>
-						<td>
-							<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
-							<a href="/group" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
-						</td>
-					</tr>
-					{!! Form::close() !!}
 				</thead>
 				<tbody>
 					<?php $i = $groups->firstItem(); ?>

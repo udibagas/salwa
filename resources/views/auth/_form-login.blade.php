@@ -1,4 +1,4 @@
-<div class="panel panel-primary" @if ($isMobile) style="margin-top:0;" @endif>
+<div class="panel panel-default" @if ($isMobile) style="margin-top:0;" @endif>
 	<div class="panel-heading">
 		<h3 class="panel-title"><i class="fa fa-sign-in"></i> LOGIN</h3>
 	</div>
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 
-		<div class="panel-footer text-center">
+		<div class="panel-footer">
 			<button type="submit" class="btn btn-primary">
 				<i class="fa fa-btn fa-sign-in"></i> Login
 			</button>

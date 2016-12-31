@@ -181,7 +181,7 @@ class UserController extends Controller
     public function notifikasi()
     {
         return view('user.notifikasi', [
-            'notifications' => auth()->user()->notifications()->paginate()
+            'notifications' => auth()->user()->notifications()->paginate(10)
         ]);
     }
 

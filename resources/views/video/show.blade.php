@@ -62,14 +62,9 @@
 			</div>
 		</div>
 
-		<comment id="{{ $video->video_id }}" type="video" approved="1"></comment>
-
-		<!-- include('comment.index', [
-		'comments' => $video->comments()
-			->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
-				return $query->approved();
-			})->get()
-		]) -->
+		@include('comment.index', [
+			'comments' => $video->comments()->approved()->get()
+		])
 
 		@if (auth()->check())
 			@include('comment.form', [

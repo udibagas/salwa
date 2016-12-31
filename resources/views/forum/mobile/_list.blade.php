@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div class="media-body">
-			<a href="/forum/{{ $a->forum_id }}-{{ $a->title_code }}" class="text-bold">{{ $a->title }}</a>
+			<a href="{{ $a->url }}" class="text-bold">{{ $a->title }}</a>
 			<br>
 			<small>{{ $a->user ? $a->user->name.' | ' : '' }} {{ $a->created->diffForHumans() }}</small>
 		</div>

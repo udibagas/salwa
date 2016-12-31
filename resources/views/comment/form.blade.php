@@ -20,7 +20,7 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-				{!! Form::textarea('content', $comment->content, ['class' => 'form-control', 'rows' => 4, 'placeholder' => 'Komentar Anda']) !!}
+				{!! Form::textarea('content', strip_tags($comment->content), ['class' => 'form-control', 'rows' => 4, 'placeholder' => 'Komentar Anda']) !!}
 
 				@if ($errors->has('content'))
 				<span class="help-block">
@@ -30,7 +30,7 @@
 			</div>
 
 			<div class="form-group">
-				<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-send"></i> Kirim Komentar</button>
+				<button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-send"></i> KIRIM KOMENTAR</button>
 			</div>
 
 		{!! Form::close() !!}

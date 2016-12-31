@@ -53,7 +53,7 @@
 					@foreach ($kitabs as $a)
 						<tr>
 							<td>{{ $i++ }}</td>
-							<td><a href="/kitab/{{ $a->buku_id }}-{{ str_slug($a->judul) }}">{{ $a->judul }}</a></td>
+							<td><a href="{{ $a->url }}">{{ $a->judul }}</a></td>
 							<td>{{ $a->penulis }}</td>
 							<td>{{ $a->group ? $a->group->group_name : '' }}</td>
 							<td>{{ $a->created }}</td>

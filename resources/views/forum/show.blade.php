@@ -28,19 +28,17 @@
 			<div class="panel-body">
 				<h2>{{ $forum->title }}</h2>
 				<hr>
-				@include('layouts._share')
-
 				@can('update-forum', $forum)
 				<div class="pull-right">
-					{!! Form::open(['url' => '/forum/'.$forum->forum_id, 'method' => 'DELETE']) !!}
+					<a href="/forum/{{ $forum->forum_id }}/edit">Edit</a> &bull;
+					<a href="#" onclick="event.preventDefault(); if(confirm('Anda yakin?')) {document.getElementById('delete-forum').submit()}">Hapus</a>
+
+					{!! Form::open(['url' => '/forum/'.$forum->forum_id, 'method' => 'DELETE', 'style' => 'display:none;', 'id' => 'delete-forum']) !!}
 					{!! Form::hidden('redirect', '/forum') !!}
-					<div class="btn-group">
-						<a href="/forum/{{ $forum->forum_id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i> Edit Forum</a>
-						<button type="submit" name="delete" class="delete btn btn-danger"><i class="fa fa-trash"></i> Delete Forum</button>
-					</div>
 					{!! Form::close() !!}
 				</div>
 				@endcan
+				@include('layouts._share')
 			</div>
 		</div>
 
@@ -65,6 +63,7 @@
 				Silakan <a href="/login">Login</a> untuk menulis komentar.
 			</div>
 		@endif
+
 	</div>
 
 	<div class="col-sm-3 col-md-3">

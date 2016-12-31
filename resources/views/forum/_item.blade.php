@@ -10,7 +10,7 @@
 			@endif
 		</div>
 		<div class="media-body">
-			<a href="/forum/{{ $f->forum_id }}-{{ str_slug($f->title) }}">
+			<a href="{{ $f->url }}">
 				<strong>{{ $f->title }} </strong>
 			</a>
 			<div class="text-muted">

@@ -15,7 +15,13 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-edit"></i> EDIT BANNER</h4>
-	@include('banner._form', ['url' => '/banner/'.$banner->id, 'method' => 'PUT'])
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="fa fa-edit"></i> EDIT BANNER</h3>
+		</div>
+		<div class="panel-body">
+			@include('banner._form', ['url' => '/banner/'.$banner->id, 'method' => 'PUT'])
+		</div>
+	</div>
 
 @stop

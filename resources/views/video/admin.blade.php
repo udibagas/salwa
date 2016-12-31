@@ -53,7 +53,7 @@
 					@foreach ($videos as $a)
 						<tr>
 							<td>{{ $i++ }}</td>
-							<td><a href="/video/{{ $a->video_id }}-{{ str_slug($a->title) }}">{{ $a->title }}</a></td>
+							<td><a href="{{ $a->url }}">{{ $a->title }}</a></td>
 							<td><a href="http://youtu.be/{{ $a->url_video_youtube }}" target="_blank">{{ $a->url_video_youtube }}</a></td>
 							<td>{{ $a->user ? $a->user->name : '' }}</td>
 							<td>{{ $a->created }}</td>

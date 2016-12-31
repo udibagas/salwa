@@ -122,7 +122,7 @@
 			   <li>
 				   <a href="/notifikasi/baca/{{ $n->id }}?redirect={{ $n->data['url'] }}">
 					   <strong>{{ $n->data['subject'] }}</strong><br>
-					   {{ $n->data['message'] }}<br>
+					   {{ str_limit($n->data['message'], 75) }}<br>
 					   <small>{{ $n->created_at->diffForhumans() }}</small>
 				   </a>
 			   </li>

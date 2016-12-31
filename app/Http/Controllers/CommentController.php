@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\CommentRequest;
+use App\Events\CommentApproved;
 use App\Events\NewComment;
 use App\Http\Requests;
 use App\Comment;
@@ -26,10 +27,12 @@ class CommentController extends Controller
 							})->when($request->user, function($query) use ($request) {
 								return $query->join('users', 'users.user_id', '=', 'comments.user_id')
 											->where('users.name', 'like', '%'.$request->user.'%');
-							})->when($request->title, function($query) use ($request) {
+							})->when($request->q, function($query) use ($request) {
 								return $query->where(function($q) use ($request) {
-									return $q->where('title', 'like', '%'.$request->title.'%')
-											->orWhere('content', 'like', '%'.$request->title.'%');
+									return $q->join('users', 'users.user_id', '=', 'comments.user_id')
+                                            ->where('title', 'like', '%'.$request->q.'%')
+											->orWhere('content', 'like', '%'.$request->q.'%')
+                                            ->orWhere('users.name', 'like', '%'.$request->user.'%');;
 								});
 							})->when($request->approved == 'yes', function($query) use ($request) {
 								return $query->approved();
@@ -61,7 +64,8 @@ class CommentController extends Controller
 		$data['content']	= clean($request->content);
 		$data['user_id']	= auth()->user()->user_id;
 
-		Comment::create($data);
+		$comment = Comment::create($data);
+        event(new NewComment($comment));
 		return redirect($request->redirect)->with('success', 'Komentar Anda akan tampil setelah dimoderasi.');
     }
 
@@ -125,13 +129,30 @@ class CommentController extends Controller
 	public function approve(Comment $comment, Request $request)
 	{
 		$comment->update(['approved' => 1]);
-		$redirect = $request->redirect ? $request->redirect : '/comment';
-		return redirect($redirect);
+        event(new CommentApproved($comment));
+		return redirect($request->get('redirect', '/comment'));
+	}
+
+	public function unapprove(Comment $comment, Request $request)
+	{
+		$comment->update(['approved' => 0]);
+        return redirect($request->get('redirect', '/comment'));
 	}
 
 	public function approveAll()
 	{
-		Comment::where('approved', 0)->update(['approved' => 1]);
+        $comments = Comment::where('approved', 0)->get();
+        foreach ($comments as $c) {
+            $c->update(['approved' => 1]);
+            event(new CommentApproved($c));
+        }
 		return redirect('/comment');
 	}
+
+    public function mine(Request $request)
+    {
+        return view('comment.mine', [
+            'comments' => auth()->user()->comments()->latest()->paginate()
+        ]);
+    }
 }

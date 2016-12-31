@@ -23,7 +23,9 @@ class PostController extends Controller
         return view('post.admin', [
 			'posts' => Post::when($request->forum_id, function($query) use ($request) {
 						return $query->where('forum_id', $request->forum_id);
-					})->orderBy('created', 'DESC')->paginate(),
+					})->when($request->q, function($query) use ($request) {
+						return $query->where('description', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%');
+					})->orderBy('created', 'ASC')->paginate(),
 			'forum' => Forum::find($request->forum_id)
 		]);
     }
@@ -72,7 +74,6 @@ class PostController extends Controller
         }
 
         event(new NewPost($post));
-
 		return redirect('/forum/'.$forum->forum_id);
     }
 
@@ -181,4 +182,14 @@ class PostController extends Controller
 
 		return redirect($request->redirect);
 	}
+
+    public function mine(Request $request)
+    {
+        return view('post.mine', [
+            'posts' => auth()->user()->posts()
+                    ->when($request->q, function($query) use($request) {
+                        return $query->where('description', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%');
+                    })->orderBy('post_id', 'DESC')->paginate()
+        ]);
+    }
 }

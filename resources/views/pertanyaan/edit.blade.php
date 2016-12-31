@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.user')
 
 @section('title', 'Tanya Ustadz : Edit Pertanyaan')
 
@@ -14,13 +14,13 @@
 
 @stop
 
-@section('content')
+@section('user-content')
 
 	<div class="row">
 		<div class="col-md-8">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fa fa-question-circle-o"></i> EDIT PERTANYAAN</h3>
+					<h3 class="panel-title"><i class="fa fa-edit"></i> EDIT PERTANYAAN</h3>
 				</div>
 				<div class="panel-body">
 					@include('pertanyaan._form', ['url' => '/pertanyaan/'.$pertanyaan->pertanyaan_id, 'method' => 'PUT'])

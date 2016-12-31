@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.user')
 
 @section('title', 'Pertanyaan Saya')
 
@@ -12,20 +12,69 @@
 
 @stop
 
-@section('content')
+@section('user-content')
 
-<h4 class="title"><i class="fa fa-question-circle-o"></i> PERTANYAAN SAYA</h4>
+<div class="panel panel-default">
+	
+	<div class="panel-heading">
+		@if (auth()->user()->pertanyaans()->where('status', '!=', 's')->count() > 0)
+			<a href="/hapus-pertanyaan-saya" class="pull-right">Hapus pertanyaan saya yang belum dijawab</a>
+		@endif
 
-@if (count($pertanyaans) == 0)
-	<div class="alert alert-warning text-center">
-		<strong>Tidak ada pertanyaan.</strong>
+		<h3 class="panel-title"><i class="fa fa-question-circle-o"></i> PERTANYAAN SAYA</h3>
 	</div>
-@endif
 
-@each('pertanyaan._list', $pertanyaans, 'p')
+	<div class="panel-body">
 
-<div class="text-center">
-	{!! $pertanyaans->appends(['search' => request('search'),'group_id' => request('group_id')])->links() !!}
+		{!! Form::open(['class' => 'form-inline', 'method' => 'GET']) !!}
+			<a href="/pertanyaan/create" class="btn btn-primary">
+				<i class="fa fa-plus-circle"></i> BUAT PERTANYAAN
+			</a>
+			<div class="pull-right">
+				{!! Form::text('q', request('q'), ['placeholder' => 'Search Pertanyaan', 'class' => 'form-control']) !!}
+				<button type="submit" name="search" class="btn btn-primary"><i class="fa fa-search"></i></button>
+				<a href="/pertanyaan-saya" class="btn btn-primary"><i class="fa fa-refresh"></i></a>
+			</div>
+		{!! Form::close() !!}
+
+		@if (count($pertanyaans) == 0)
+			<p class="text-center">Tidak ada pertanyaan.</p>
+		@endif
+	</div>
+
+	<ul class="list-group">
+		@foreach($pertanyaans as $p)
+		<li class="list-group-item @if ($p->status != 's') disabled @endif">
+			@if ($p->status != 's')
+			<div class="pull-right">
+				<a href="/pertanyaan/{{ $p->pertanyaan_id }}/edit">Edit</a> &bull;
+				<a href="#" onclick="event.preventDefault(); if(confirm('Anda yakin?')) {document.getElementById('delete-pertanyaan-{{$p->pertanyaan_id}}').submit()}">Hapus</a>
+
+				{!! Form::open(['method' => 'DELETE', 'url' => '/pertanyaan/'.$p->pertanyaan_id, 'style' => 'display:none;', 'id' => 'delete-pertanyaan-'.$p->pertanyaan_id]) !!}
+					{!! Form::hidden('redirect', url()->full()) !!}
+				{!! Form::close() !!}
+			</div>
+			@endif
+
+			<a href="{{ $p->url }}"><strong>{{ $p->judul_pertanyaan }}</strong></a><br>
+
+			@if ($p->group)
+			<a href="/pertanyaan?group_id={{ $p->group_id }}">{{ $p->group->group_name }}</a> &bull;
+			@endif
+
+			{{ $p->created->diffForHumans() }}
+		</li>
+		@endforeach
+	</ul>
+
+	<div class="panel-footer">
+		<div class="pull-right">
+			Showing {{ $pertanyaans->firstItem() }} to {{ $pertanyaans->lastItem() }} of {{ $pertanyaans->total() }} entries
+		</div>
+		{!! $pertanyaans->appends(['q' => request('q')])->links() !!}
+		<div class="clearfix"></div>
+	</div>
+
 </div>
 
-@stop
+@endsection

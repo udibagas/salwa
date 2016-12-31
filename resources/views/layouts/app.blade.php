@@ -153,7 +153,7 @@
 				}
 			@endif
 
-			$('.profile').initial({charCount:1, height:50, width:50,fontSize:25});
+			$('.profile').initial({charCount:1, height:40, width:40,fontSize:18});
 		</script>
 		@stack('script')
     </body>

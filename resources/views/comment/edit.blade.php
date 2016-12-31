@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.user')
 
 @section('title', 'Comment : Edit Comment')
 
@@ -13,14 +13,11 @@
 
 @stop
 
-@section('content')
+@section('user-content')
 
-	<div class="col-md-offset-2 col-md-8 col-md-12 col-xs-12">
-		@include('comment.form', [
-			'url' => '/comment/'.$comment->id, 'method' => 'PUT',
-			'header' => 'Edit'
-		])
-	</div>
-	<div class="clearfix"></div>
+	@include('comment.form', [
+		'url' => '/comment/'.$comment->id, 'method' => 'PUT',
+		'header' => 'EDIT'
+	])
 
 @stop

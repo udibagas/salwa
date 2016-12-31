@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\ForumRequest;
 use App\Http\Requests\PostRequest;
+use App\Events\ForumApproved;
 use App\Events\NewForum;
 use App\Http\Requests;
 use BrowserDetect;
@@ -32,7 +33,11 @@ class ForumController extends Controller
     public function mine(Request $request)
     {
 		$view = BrowserDetect::isMobile() ? 'forum.mobile.mine' : 'forum.mine';
-		$forums = Forum::where('user_id', auth()->user()->user_id)->active()->orderBy('updated', 'DESC')->paginate();
+
+        $forums = Forum::where('user_id', auth()->user()->user_id)
+                        ->when($request->q, function($query) use($request) {
+                            return $query->where('title', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%');
+                        })->orderBy('updated', 'DESC')->paginate();
 
 		if ($request->ajax()) {
 			$html = '';
@@ -326,7 +331,12 @@ class ForumController extends Controller
 
 	public function activate(Request $request)
 	{
-		Forum::whereIn('forum_id', $request->selection)->update(['status' => 'a']);
+		$forums = Forum::whereIn('forum_id', $request->selection)->get();
+
+        foreach ($forums as $f) {
+            $f->update(['status' => 'a']);
+            event(new ForumApproved($f));
+        }
 
 		if ($request->ajax()) {
 			$forums = Forum::orderBy('forum_id', 'DESC')->paginate();

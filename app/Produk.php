@@ -24,6 +24,18 @@ class Produk extends Model
 		'createdby', 'updatedby', 'group_id', 'img_buku'
 	];
 
+	protected $appends = ['url', 'title'];
+
+    public function getUrlAttribute()
+    {
+        return '/produk/'.$this->id_produk.'-'.str_slug($this->judul);
+    }
+
+	public function getTitleAttribute()
+    {
+        return $this->judul;
+    }
+
 	public function group()
 	{
 		return $this->belongsTo('App\Group', 'group_id', 'group_id');

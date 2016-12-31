@@ -6,22 +6,22 @@
 			</div>
 			<div class="media-body">
 
-				<div class="pull-right">
-					{!! Form::open(['url' => '/pertanyaan/'.$p->pertanyaan_id, 'method' => 'DELETE']) !!}
-					<div class="btn-group">
-						@can('update-pertanyaan', $p)
-						<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
-						@endcan
-						@can('jawab-pertanyaan', $p)
-						<a href="/pertanyaan/{{$p->pertanyaan_id}}/jawab" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Jawab</a>
-						@endcan
-						@can('delete-pertanyaan', $p)
+				<!-- <div class="pull-right">
+					@can('update-pertanyaan', $p)
+						<a href="/pertanyaan/{{$p->pertanyaan_id}}/edit">Edit</a> &bull;
+					@endcan
+
+					@can('jawab-pertanyaan', $p)
+						<a href="/pertanyaan/{{$p->pertanyaan_id}}/jawab">Jawab</a> &bull;
+					@endcan
+
+					@can('delete-pertanyaan', $p)
+						<a href="#" onclick="event.preventDefault(); if(confirm('Anda yakin?')) {document.getElementById('delete-pertanyaan-{{$p->pertanyaan_id}}').submit()}">Hapus</a>
 						{!! Form::hidden('redirect', url()->current()) !!}
-						<button type="submit" name="submit" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Hapus</button>
-						@endcan
-					</div>
-					{!! Form::close() !!}
-				</div>
+						{!! Form::open(['url' => '/pertanyaan/'.$p->pertanyaan_id, 'method' => 'DELETE', 'id' => 'delete-pertanyaan-'.$p->pertanyaan_id, 'style' => 'display:none;']) !!}
+						{!! Form::close() !!}
+					@endcan
+				</div> -->
 
 				<strong>
 					@if ($p->user)
@@ -39,9 +39,7 @@
 			</div>
 
 			<h4>
-					<a href="/pertanyaan/{{ $p->pertanyaan_id }}-{{ str_slug($p->judul_pertanyaan) }}">
-						{{ $p->judul_pertanyaan }}
-					</a>
+				<a href="{{ $p->url }}">{{ $p->judul_pertanyaan }}</a>
 			</h4>
 
 			{!! $p->ket_pertanyaan !!}

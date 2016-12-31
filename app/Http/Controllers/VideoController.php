@@ -26,7 +26,7 @@ class VideoController extends Controller
 						return $query->where('title', 'like', '%'.$search.'%');
 					})->when($request->user_id, function($query) use ($request) {
 						return $query->where('user_id', $request->user_id);
-					})->orderBy('updated', 'DESC')->paginate();
+					})->orderBy('created', 'DESC')->paginate();
 
 		if ($request->ajax()) {
 			$html = '';
@@ -58,7 +58,7 @@ class VideoController extends Controller
 						})->when($request->user, function($query) use ($request) {
 							return $query->join('users', 'users.user_id', '=', 'videos.user_id')
 								->where('users.name', 'like', '%'.$request->user.'%');
-						})->orderBy('videos.updated', 'DESC')->paginate()
+						})->orderBy('videos.created', 'DESC')->paginate()
 		]);
     }
 

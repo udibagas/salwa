@@ -26,20 +26,15 @@
 
         <link rel="icon" href="/images/logo.png">
         <title>Salwa.id</title>
-        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/fa/css/font-awesome.min.css" rel="stylesheet">
-		<link href="/css/salwa-id.css" rel="stylesheet">
-		<link href="/sidr/dist/stylesheets/jquery.sidr.bare.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/app.css">
+        
+        @if ($isMobile)
+        <link rel="stylesheet" href="/css/mobile.css">
+        @else
+        <link rel="stylesheet" href="/css/all.css">
+        @endif
 
 		@stack('css')
-
-		<script type="text/javascript" src="/js/jquery.min.js"></script>
-        <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/initialjs/dist/initial.min.js"></script>
-		
-		@if ($isMobile)
-		<script type="text/javascript" src="/sidr/dist/jquery.sidr.min.js"></script>
-		@endif
 
     </head>
 
@@ -64,7 +59,8 @@
 
 		@stack('script')
 
-		<script type="text/javascript" src="/js/pager.js"></script>
+		<script type="text/javascript" src="/js/app.js"></script>
+		<script type="text/javascript" src="/js/all.js"></script>
 
     </body>
 </html>

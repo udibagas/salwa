@@ -30,7 +30,7 @@
 				<ul class="list-group">
 					@if (count($forums) == 0)
 					<li class="list-group-item text-center">
-						<strong>Belum ada post</strong>
+						<p>Tidak ada hasil</p>
 					</li>
 					@endif
 

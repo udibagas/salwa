@@ -59,7 +59,7 @@ class NewForumNotification extends Notification
     {
         return [
             'subject' => 'Forum Baru',
-            'message' => 'Forum baru dengan judul "'.$this->forum->title.'" baru saja dibuat',
+            'message' => $this->forum->user->name.' baru saja membuat forum dengan judul "'.$this->forum->title.'"',
             'url' => $this->forum->url
         ];
     }

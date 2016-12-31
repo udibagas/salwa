@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-sm-4 col-md-4 col-md-offset-4">
-            <div class="panel panel-primary text-center" style="margin-top:85px;">
+            <div class="panel panel-default text-center" style="margin-top:85px;">
                 <div class="panel-heading">
                     <h3 class="panel-title">RESET PASWORD</h3>
                 </div>

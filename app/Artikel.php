@@ -18,11 +18,21 @@ class Artikel extends Model
 
 	protected $with = ['user', 'group'];
 
-	protected $appends = ['url'];
+	protected $appends = ['url', 'title', 'id'];
 
     public function getUrlAttribute()
     {
         return '/artikel/'.$this->artikel_id.'-'.str_slug($this->judul);
+    }
+
+    public function getTitleAttribute()
+    {
+        return $this->judul;
+    }
+
+    public function getIdAttribute()
+    {
+        return $this->artikel_id;
     }
 
 	protected $fillable = [

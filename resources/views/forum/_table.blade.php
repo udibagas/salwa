@@ -9,7 +9,7 @@
 			<th>Close</th>
 			<th style="width:150px;">Created At</th>
 			<!-- <th style="width:150px;">Updated At</th> -->
-			<th>Action</th>
+			<th style="width:100px;">Action</th>
 		</tr>
 		{!! Form::open(['method' => 'GET']) !!}
 		<tr>
@@ -42,8 +42,8 @@
 			<td> </td>
 			<!-- <td> </td> -->
 			<td style="padding-top:10px;" class="text-right">
-				<button type="submit" name="submit" class="btn btn-xs btn-info search"><i class="fa fa-filter"></i></button>
-				<a href="/forum/admin" class="btn btn-xs btn-info refresh"><i class="fa fa-refresh"></i></a>
+				<button type="submit" name="submit" class="btn btn-default search"><i class="fa fa-filter"></i></button>
+				<a href="/forum/admin" class="btn btn-default refresh"><i class="fa fa-refresh"></i></a>
 			</td>
 		</tr>
 		{!! Form::close() !!}
@@ -63,7 +63,7 @@
 				<td class="text-right">
 					{!! Form::open(['method' => 'DELETE', 'url' => '/forum/'.$a->forum_id]) !!}
 						{!! Form::hidden('redirect', url()->full()) !!}
-						<a href="/forum/{{ $a->forum_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> EDIT</a>
+						<a href="/forum/{{ $a->forum_id }}/edit">Edit</a>
 						<!-- <button type="submit" name="delete" class="btn btn-danger btn-xs delete"><i class="fa fa-trash"></i> Delete</button> -->
 					{!! Form::close() !!}
 				</td>

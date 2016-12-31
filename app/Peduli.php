@@ -24,11 +24,23 @@ class Peduli extends Model
 
 	protected $with = ['user', 'group'];
 
-	protected $appends = ['img', 'imgSquare', 'url'];
+	protected $appends = ['img', 'imgSquare', 'url', 'title'];
+
+	protected $hidden = ['peduli_id'];
 
 	public function getUrlAttribute()
     {
         return '/peduli/'.$this->peduli_id.'-'.str_slug($this->judul);
+    }
+
+	public function getTitleAttribute()
+    {
+        return $this->judul;
+    }
+
+	public function getIdAttribute()
+    {
+        return $this->peduli_id;
     }
 
 	public function user()

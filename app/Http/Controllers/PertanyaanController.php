@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PertanyaanRequest;
 use App\Http\Requests\JawabanRequest;
-use Illuminate\Http\Request;
+use App\Events\PertanyaanAnswered;
 use App\Events\NewPertanyaan;
+use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Pertanyaan;
 use BrowserDetect;
@@ -55,7 +56,7 @@ class PertanyaanController extends Controller
 	public function mine(Request $request)
 	{
 		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.mine' : 'pertanyaan.mine';
-		$search = str_replace(' ', '%', $request->search);
+		$search = str_replace(' ', '%', $request->q);
 		$pertanyaans = Pertanyaan::where('user_id', auth()->user()->user_id)
 							->when($search, function($query) use ($search) {
 								return $query->where('judul_pertanyaan', 'like', '%'.$search.'%');
@@ -163,6 +164,7 @@ class PertanyaanController extends Controller
 		$data['ket_pertanyaan'] = clean($request->ket_pertanyaan);
 
         $pertanyaan = Pertanyaan::create($data);
+        event(new NewPertanyaan($pertanyaan));
 		return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan]);
     }
 
@@ -241,6 +243,7 @@ class PertanyaanController extends Controller
 		$data['jawaban'] 		= $request->jawaban;
 
 		$pertanyaan->update($data);
+        event(new PertanyaanAnswered($pertanyaan));
 		return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan])
 						->with('success', 'Jawaban telah disimpan');
 	}
@@ -264,14 +267,7 @@ class PertanyaanController extends Controller
 		$data['ket_pertanyaan'] = clean($request->ket_pertanyaan);
 
 		$pertanyaan->update($data);
-
-		if (auth()->user()->isAdmin()) {
-			return redirect('/pertanyaan/admin');
-		} elseif (auth()->user()->isUstadz()) {
-			return redirect('/pertanyaan/admin-ustadz');
-		} else {
-			return redirect()->action('PertanyaanController@show', ['pertanyaan' => $pertanyaan]);
-		}
+        return redirect('/pertanyaan-saya');
     }
 
     /**

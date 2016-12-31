@@ -6,9 +6,7 @@
 			</div>
 		</div>
 		<div class="media-body danger">
-			<a href="/pertanyaan/{{ $a->pertanyaan_id }}-{{ $a->kd_judul }}" class="text-bold">
-				{{ $a->judul_pertanyaan }}
-			</a>
+			<a href="{{ $a->url }}" class="text-bold">{{ $a->judul_pertanyaan }}</a>
 			<br>
 			<small>
 				{{ $a->user ? $a->user->jenis_kelamin == 'p' ? 'Ikhwan | ' : 'Akhwat | ' : '' }} {{ $a->created->diffForHumans() }}

@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">REGISTER</h3>
 	</div>
@@ -79,7 +79,7 @@
 
 	</div>
 	<div class="panel-footer">
-		<button type="submit" name="save" class="btn btn-info">REGISTER</button>
+		<button type="submit" name="save" class="btn btn-primary">REGISTER</button>
 	</div>
 	{!! Form::close() !!}
 </div>

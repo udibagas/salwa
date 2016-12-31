@@ -1,6 +1,6 @@
 <div class="col-sm-3 col-md-3 col-sm-3 col-md-3">
 	<div class="thumbnail" style="height:200px;">
-		<a href="/informasi/{{ $informasi->informasi_id }}-{{ str_slug($informasi->judul) }}">
+		<a href="{{ $informasi->url }}">
 			@if ($informasi->img_gambar)
 			<img src="/{{ $informasi->img_gambar }}" alt="{{ $informasi->judul }}">
 			@endif

@@ -55,10 +55,7 @@
 		</div>
 
 		@include('comment.index', [
-		'comments' => $produk->comments()
-					->when((auth()->check() && !auth()->user()->isAdmin()) || auth()->guest(), function($query) {
-						return $query->approved();
-					})->get()
+			'comments' => $produk->comments()->approved()->get()
 		])
 
 		@if (auth()->check())

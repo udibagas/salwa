@@ -15,12 +15,11 @@
 			<div class="media-body">
 				@can('update-post', $p)
 				<div class="pull-right">
-					{!! Form::open(['url' => '/post/'.$p->post_id, 'method' => 'DELETE']) !!}
+					<a href="/post/{{ $p->post_id }}/edit" class="">Edit</a> &bull;
+					<a href="#" onclick="event.preventDefault(); if(confirm('Anda yakin?')) {document.getElementById('delete-post-{{$p->post_id}}').submit()}">Hapus</a>
+
+					{!! Form::open(['url' => '/post/'.$p->post_id, 'method' => 'DELETE', 'id' => 'delete-post-'.$p->post_id, 'sytle' => 'display:none;']) !!}
 					{!! Form::hidden('redirect', url()->current()) !!}
-					<div class="btn-group">
-						<a href="/post/{{ $p->post_id }}/edit" class="btn btn-info btn-xs">Edit</a>
-						<button type="submit" name="delete" class="btn btn-danger btn-xs delete">Delete</button>
-					</div>
 					{!! Form::close() !!}
 				</div>
 				@endcan

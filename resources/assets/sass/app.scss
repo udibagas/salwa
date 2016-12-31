@@ -254,7 +254,8 @@ ul.link-icon > li {
 }
 
 .jumbotron {
-	background-color: #A2D2FF;
+	// background-color: #A2D2FF;
+	background-color: #FFFFFF;
 }
 
 .text-bold {
@@ -270,10 +271,10 @@ a:hover {
 	font-weight: normal;
 }
 
-.panel, .alert {
-    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.05);
-    -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.05);
-    -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.05);
+.panel, .alert, .jumbotron {
+    box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.05);
+    -webkit-box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.05);
+    -moz-box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.05);
 }
 
 .pagination {

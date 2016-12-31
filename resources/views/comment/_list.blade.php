@@ -17,7 +17,7 @@
 		</div>
 		<br>
 
-		<strong>{{ $c->title }}</strong><br>
+		<h4>{{ $c->title }}</h4>
 		{!! $c->content !!}
 	</div>
 </div>
