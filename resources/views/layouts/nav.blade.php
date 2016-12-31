@@ -118,7 +118,7 @@
 		   </a>
 
 		   <ul class="dropdown-menu" role="menu">
-			   @foreach (auth()->user()->unreadNotifications as $n)
+			   @foreach (auth()->user()->unreadNotifications->take(5) as $n)
 			   <li>
 				   <a href="/notifikasi/baca/{{ $n->id }}?redirect={{ $n->data['url'] }}">
 					   <strong>{{ $n->data['subject'] }}</strong><br>
