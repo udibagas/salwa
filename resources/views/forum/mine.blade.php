@@ -24,14 +24,25 @@
 				<a href="/forum/create" class="btn btn-primary">
 					<i class="fa fa-plus-circle"></i> BUAT FORUM BARU
 				</a>
+
+				@if (request('status') == 'a')
+				<a class="btn btn-primary" href="/forum-saya?q={{ request('q') }}">Tampilkan semua forum</a>
+				@else
+				<a class="btn btn-primary" href="/forum-saya?q={{ request('q') }}&status=a">Hanya tampilkan forum yang sudah disetujui</a>
+				@endif
+
 				<div class="pull-right">
 					{!! Form::text('q', request('q'), ['placeholder' => 'Search Forum', 'class' => 'form-control']) !!}
+					<input type="hidden" name="status" value="{{ request('status') }}">
 					<button type="submit" name="search" class="btn btn-primary"><i class="fa fa-search"></i></button>
 					<a href="/forum-saya" class="btn btn-primary"><i class="fa fa-refresh"></i></a>
 				</div>
 			{!! Form::close() !!}
 		</div>
 		<ul class="list-group">
+			@if ($forums->total() == 0)
+			<li class="list-group-item text-center">Tidak ada forum</li>
+			@endif
 			@foreach ($forums as $f)
 			<li class="list-group-item @if ($f->status == 'b') disabled @endif">
 				<div class="pull-right">
@@ -50,13 +61,15 @@
 			</li>
 			@endforeach
 		</ul>
+		@if ($forums->total() > 0)
 		<div class="panel-footer">
 			<div class="pull-right">
 				Showing {{ $forums->firstItem() }} to {{ $forums->lastItem() }} of {{ $forums->total() }} entries
 			</div>
-			{!! $forums->appends(['q' => request('q')])->links() !!}
+			{!! $forums->appends(['q' => request('q'), 'status' => request('status')])->links() !!}
 			<div class="clearfix"></div>
 		</div>
+		@endif
 	</div>
 
 @stop

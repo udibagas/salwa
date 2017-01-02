@@ -24,6 +24,11 @@
 	</div>
 
 	<div class="col-sm-6 col-md-6">
+		@if (session('success'))
+			<div class="alert alert-success text-center">
+				{{ session('success') }}
+			</div>
+		@endif
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<h2>{{ $forum->title }}</h2>
@@ -44,7 +49,12 @@
 
 		@each('post._list', $posts, 'p')
 
-		@if (auth()->check())
+		@if ($forum->status == 'b')
+			<div class="alert alert-danger text-center">
+				Forum belum disetuji.
+			</div>
+			
+		@elseif (auth()->check())
 
 			@if ($forum->close == 'Y')
 				<div class="alert alert-danger text-center">

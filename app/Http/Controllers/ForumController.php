@@ -34,10 +34,15 @@ class ForumController extends Controller
     {
 		$view = BrowserDetect::isMobile() ? 'forum.mobile.mine' : 'forum.mine';
 
-        $forums = Forum::where('user_id', auth()->user()->user_id)
-                        ->when($request->q, function($query) use($request) {
-                            return $query->where('title', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%');
-                        })->orderBy('updated', 'DESC')->paginate();
+        $forums = auth()->user()->forums()->when($request->q, function($query) use($request) {
+                        return $query->join('groups', 'groups.group_id', '=', 'forums.group_id', 'left')
+                            ->where(function($q) use($request) {
+                                return $q->where('title', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%')
+                                    ->orWhere('groups.group_name', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%');
+                            });
+                    })->when($request->status, function($query) use ($request) {
+                        return $query->where('status', $request->status);
+                    })->orderBy('forums.updated', 'DESC')->paginate();
 
 		if ($request->ajax()) {
 			$html = '';
@@ -106,7 +111,7 @@ class ForumController extends Controller
         }
 
         event(new NewForum($forum));
-		return redirect('/forum/'.$forum->forum_id.'-'.str_slug($forum->title));
+		return redirect($forum->url)->with('success', 'Forum Anda akan tampil setelah di moderasi.');
     }
 
     /**
