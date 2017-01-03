@@ -48,17 +48,19 @@ class ArtikelController extends Controller
 
     public function admin(Request $request)
     {
-		$judul = str_replace(' ', '%', $request->judul);
-
         return view('artikel.admin', [
-			'artikels' => Artikel::when($request->group_id, function($query) use ($request) {
-								return $query->where('group_id', $request->group_id);
-							})->when($judul, function($query) use ($judul) {
-								return $query->where('judul', 'like', '%'.$judul.'%');
-							})->when($request->user, function($query) use ($request) {
-								return $query->join('users', 'users.user_id', '=', 'artikel.user_id')
-									->where('users.name', 'like', '%'.$request->user.'%');
-							})->orderBy('artikel.created', 'DESC')->paginate()
+			'artikels' => Artikel::select('artikel.*')
+                        ->when($request->q, function($query) use($request) {
+                            return $query
+                                ->join('groups', 'groups.group_id', '=', 'artikel.group_id', 'left')
+                                ->join('users', 'users.user_id', '=', 'artikel.user_id', 'left')
+                                ->where(function($q) use($request) {
+                                    $search = str_replace(' ', '%', $request->q);
+                                    return $q->where('judul', 'LIKE', '%'.$search.'%')
+                                        ->orWhere('groups.group_name', 'LIKE', '%'.$search.'%')
+                                        ->orWhere('users.name', 'like', '%'.$search.'%');
+                                });
+                        })->orderBy('artikel.created', 'DESC')->paginate()
 		]);
     }
 
@@ -191,7 +193,8 @@ class ArtikelController extends Controller
 		if ($artikel->img_artikel && file_exists($artikel->img_artikel)) {
 			unlink($artikel->img_artikel);
 		}
-
+        // 
+        $artikel->comments()->delete();
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 }

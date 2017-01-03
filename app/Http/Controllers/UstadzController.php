@@ -18,16 +18,8 @@ class UstadzController extends Controller
     {
         return view('ustadz.admin', [
 			'ustadzs' => Ustadz::orderBy('ustadz_name', 'ASC')
-							->when($request->ustadz_name, function($query) use ($request) {
-								$query->where('ustadz_name', 'like', '%'.$request->ustadz_name.'%');
-							})->when($request->address, function($query) use ($request) {
-								$query->where('address', 'like', '%'.$request->address.'%');
-							})->when($request->phone, function($query) use ($request) {
-								$query->where('phone', 'like', '%'.$request->phone.'%');
-							})->when($request->ustadz_gender, function($query) use ($request) {
-								$query->where('ustadz_gender', $request->ustadz_gender);
-							})->when($request->ustadz_status, function($query) use ($request) {
-								$query->where('ustadz_status', $request->ustadz_status);
+							->when($request->q, function($query) use ($request) {
+								return $query->where('ustadz_name', 'like', '%'.$request->q.'%');
 							})->paginate()
 		]);
     }

@@ -48,17 +48,17 @@ class VideoController extends Controller
 
     public function admin(Request $request)
     {
-		$title = str_replace(' ', '%', $request->title);
-
         return view('video.admin', [
-			'videos' => Video::video()->when($title, function($query) use ($title) {
-							return $query->where('title', 'like', '%'.$title.'%');
-						})->when($request->url_video_youtube, function($query) use ($request) {
-							return $query->where('url_video_youtube', 'like', '%'.$request->url_video_youtube.'%');
-						})->when($request->user, function($query) use ($request) {
-							return $query->join('users', 'users.user_id', '=', 'videos.user_id')
-								->where('users.name', 'like', '%'.$request->user.'%');
-						})->orderBy('videos.created', 'DESC')->paginate()
+			'videos' => Video::video()->select('videos.*')
+                        ->when($request->q, function($query) use($request) {
+                            return $query
+                                ->join('users', 'users.user_id', '=', 'videos.user_id', 'left')
+                                ->where(function($q) use($request) {
+                                    $search = str_replace(' ', '%', $request->q);
+                                    return $q->where('title', 'LIKE', '%'.$search.'%')
+                                        ->orWhere('users.name', 'like', '%'.$search.'%');
+                                });
+                        })->orderBy('videos.created', 'DESC')->paginate()
 		]);
     }
 
@@ -209,6 +209,7 @@ class VideoController extends Controller
 			unlink($video->img_video);
 		}
 
+        $video->comments()->delete();
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 }

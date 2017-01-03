@@ -168,6 +168,7 @@ class ProdukController extends Controller
 			unlink($produk->img_buku);
 		}
 
+        $produk->comments()->delete();
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 }

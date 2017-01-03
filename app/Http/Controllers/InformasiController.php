@@ -47,14 +47,17 @@ class InformasiController extends Controller
 
     public function admin(Request $request)
     {
-		$judul = str_replace(' ', '%', $request->judul);
-
         return view('informasi.admin', [
-			'informasis' => Informasi::when($judul, function($query) use ($judul) {
-								return $query->where('judul', 'like', '%'.$judul.'%');
-							})->when($request->group_id, function($query) use ($request) {
-								return $query->where('group_id', $request->group_id);
-							})->orderBy('updated', 'DESC')->paginate()
+			'informasis' => Informasi::select('informasi.*')
+                        ->when($request->q, function($query) use($request) {
+                            return $query
+                                ->join('groups', 'groups.group_id', '=', 'informasi.group_id', 'left')
+                                ->where(function($q) use($request) {
+                                    $search = str_replace(' ', '%', $request->q);
+                                    return $q->where('judul', 'LIKE', '%'.$search.'%')
+                                        ->orWhere('groups.group_name', 'LIKE', '%'.$search.'%');
+                                });
+                        })->orderBy('informasi.created', 'DESC')->paginate()
 		]);
     }
 
@@ -222,6 +225,7 @@ class InformasiController extends Controller
 			}
 		}
 
+        $informasi->comments()->delete();
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 

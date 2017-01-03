@@ -29,6 +29,9 @@
 			</div>
 		</div>
 		<ul class="list-group">
+			@if ($posts->total() == 0)
+			<li class="list-group-item text-center">Tidak ada komentar</li>
+			@endif
 			@foreach ($posts as $f)
 			<li class="list-group-item">
 				<div class="pull-right">

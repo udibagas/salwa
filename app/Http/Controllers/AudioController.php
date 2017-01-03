@@ -47,14 +47,14 @@ class AudioController extends Controller
 
     public function admin(Request $request)
     {
-		$judul = str_replace(' ', '%', $request->judul);
-
         return view('audio.admin', [
-			'audios' => Mp3::when($judul, function($query) use ($judul) {
-						return $query->where('judul', 'like', '%'.$judul.'%');
-					})->when($request->group_id, function($query) use ($request) {
-						return $query->where('group_id', $request->group_id);
-					})->orderBy('updated', 'DESC')->paginate()
+			'audios' => Mp3::select('mp3_download.*')->when($request->q, function($query) use ($request) {
+							return $query->join('groups', 'groups.group_id', '=', 'mp3_download.group_id', 'left')
+                                ->where(function($q) use($request) {
+                                    return $q->where('judul', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%')
+                                        ->orWhere('groups.group_name', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%');
+                                });
+						})->orderBy('mp3_download.created', 'DESC')->paginate()
 		]);
     }
 

@@ -20,23 +20,21 @@
 			<h3 class="panel-title"><i class="fa fa-comments-o"></i> FORUM SAYA</h3>
 		</div>
 		<div class="panel-body">
-			{!! Form::open(['class' => 'form-inline', 'method' => 'GET']) !!}
-				<a href="/forum/create" class="btn btn-primary">
-					<i class="fa fa-plus-circle"></i> BUAT FORUM BARU
-				</a>
+			<a href="/forum/create" class="btn btn-primary">
+				<i class="fa fa-plus-circle"></i> BUAT FORUM BARU
+			</a>
 
-				@if (request('status') == 'a')
-				<a class="btn btn-primary" href="/forum-saya?q={{ request('q') }}">Tampilkan semua forum</a>
-				@else
-				<a class="btn btn-primary" href="/forum-saya?q={{ request('q') }}&status=a">Hanya tampilkan forum yang sudah disetujui</a>
-				@endif
+			@if (request('status') == 'a')
+			<a class="btn btn-primary" href="/forum-saya?q={{ request('q') }}">Tampilkan semua forum</a>
+			@else
+			<a class="btn btn-primary" href="/forum-saya?q={{ request('q') }}&status=a">Hanya tampilkan forum yang sudah disetujui</a>
+			@endif
 
-				<div class="pull-right">
-					{!! Form::text('q', request('q'), ['placeholder' => 'Search Forum', 'class' => 'form-control']) !!}
-					<input type="hidden" name="status" value="{{ request('status') }}">
-					<button type="submit" name="search" class="btn btn-primary"><i class="fa fa-search"></i></button>
-					<a href="/forum-saya" class="btn btn-primary"><i class="fa fa-refresh"></i></a>
-				</div>
+			{!! Form::open(['class' => 'form-inline pull-right', 'method' => 'GET']) !!}
+				{!! Form::text('q', request('q'), ['placeholder' => 'Search Forum', 'class' => 'form-control']) !!}
+				<input type="hidden" name="status" value="{{ request('status') }}">
+				<button type="submit" name="search" class="btn btn-primary"><i class="fa fa-search"></i></button>
+				<a href="/forum-saya" class="btn btn-primary"><i class="fa fa-refresh"></i></a>
 			{!! Form::close() !!}
 		</div>
 		<ul class="list-group">

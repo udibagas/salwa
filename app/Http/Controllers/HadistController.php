@@ -106,14 +106,14 @@ class HadistController extends Controller
 
     public function admin(Request $request)
     {
-		$judul = str_replace(' ', '%', $request->judul);
-
         return view('hadist.admin', [
-			'hadists' 	=> Hadist::when($request->group_id, function($query) use ($request) {
-							return $query->where('group_id', $request->group_id);
-						})->when($judul, function($query) use ($judul) {
-							return $query->where('judul', 'like', '%'.$judul.'%');
-						})->orderBy('updated', 'DESC')->paginate()
+			'hadists' 	=> Hadist::select('hadist.*')->when($request->q, function($query) use ($request) {
+							return $query->join('groups', 'groups.group_id', '=', 'hadist.group_id', 'left')
+                                ->where(function($q) use($request) {
+                                    return $q->where('judul', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%')
+                                        ->orWhere('groups.group_name', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%');
+                                });
+						})->orderBy('hadist.updated', 'DESC')->paginate()
 		]);
     }
 

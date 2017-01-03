@@ -15,7 +15,13 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-edit"></i> Edit Ustadz</h4>
-	@include('ustadz._form', ['url' => '/ustadz/'.$ustadz->ustadz_id, 'method' => 'PUT'])
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="fa fa-edit"></i> EDIT USTADZ</h3>
+		</div>
+		<div class="panel-body">
+			@include('ustadz._form', ['url' => '/ustadz/'.$ustadz->ustadz_id, 'method' => 'PUT'])
+		</div>
+	</div>
 
 @stop

@@ -309,6 +309,34 @@ class ForumController extends Controller
 
 	public function admin(Request $request)
 	{
+		$forums = Forum::when($request->search, function($query) use($request) {
+                        return $query->join('groups', 'groups.group_id', '=', 'forums.group_id', 'left')
+                            ->join('users', 'users.user_id', '=', 'forums.user_id', 'left')
+                            ->where(function($q) use($request) {
+                                $search = str_replace(' ', '%', $request->search);
+                                return $q->where('title', 'LIKE', '%'.$search.'%')
+                                    ->orWhere('groups.group_name', 'LIKE', '%'.$search.'%')
+                                    ->orWhere('users.name', 'like', '%'.$search.'%');
+                            });
+                    })->when($request->status, function($query) use ($request) {
+                        return $query->where('status', $request->status);
+                    })->orderBy('forums.forum_id', 'DESC')->paginate();
+
+		if ($request->ajax()) {
+			return response()->json([
+				'table'			=> " ".view('forum._table', ['forums' => $forums]),
+				'pagination'	=> " ".$forums->appends(['search' => request('search'),'status' => request('status')])->links(),
+				'page'			=> $forums->currentPage()
+			]);
+		}
+
+		return view('forum.admin', [
+			'forums' => $forums
+		]);
+	}
+
+	public function admin1(Request $request)
+	{
 		$title		= str_replace(' ', '%', $request->title);
 		$forums		= Forum::when($title, function($query) use ($title) {
 							return $query->where('title', 'like', '%'.$title.'%');

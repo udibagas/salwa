@@ -15,7 +15,14 @@
 
 @section('cms-content')
 
-	<h4 class="title"><i class="fa fa-plus-circle"></i> Tambah Ustadz Baru</h4>
-	@include('ustadz._form', ['url' => '/ustadz', 'method' => 'POST'])
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><i class="fa fa-user-plus"></i> TAMBAH USTADZ BARU</h3>
+		</div>
+		<div class="panel-body">
+			@include('ustadz._form', ['url' => '/ustadz', 'method' => 'POST'])
+		</div>
+	</div>
+
 
 @stop

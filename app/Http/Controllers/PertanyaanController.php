@@ -88,24 +88,14 @@ class PertanyaanController extends Controller
 	public function admin(Request $request)
 	{
 		return view('pertanyaan.admin', [
-			'pertanyaans' => Pertanyaan::when($request->judul_pertanyaan, function($query) use ($request) {
-									return $query->where('judul_pertanyaan', 'like', '%'.$request->judul_pertanyaan.'%');
+			'pertanyaans' => Pertanyaan::select('pertanyaan.*')->when($request->q, function($query) use ($request) {
+									return $query->join('groups', 'groups.group_id', '=', 'pertanyaan.group_id', 'left')
+                                        ->where(function($q) use($request) {
+                                            return $q->where('judul_pertanyaan', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%')
+                                                ->orWhere('groups.group_name', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%');
+                                        });
 								})->when($request->status, function($query) use ($request) {
 									return $query->where('status', $request->status);
-								})->when($request->jawaban == 'belum', function($query) use ($request) {
-									return $query->where('jawaban', NULL);
-								})->when($request->jawaban == 'sudah', function($query) use ($request) {
-									return $query->where('jawaban', '!=', '');
-								})->when($request->user, function($query) use ($request) {
-									return $query->join('users', 'users.user_id', '=', 'pertanyaan.user_id')
-												->where('users.name', 'like', '%'.$request->user.'%');
-								})->when($request->dijawab_oleh, function($query) use ($request) {
-									return $query->where('dijawab_oleh', $request->dijawab_oleh);
-								})->when($request->jenis_kelamin, function($query) use ($request) {
-									return $query->join('users as u', 'u.user_id', '=', 'pertanyaan.user_id')
-												->where('u.jenis_kelamin',  $request->jenis_kelamin);
-								})->when($request->group_id, function($query) use ($request) {
-									return $query->where('group_id', $request->group_id);
 								})->orderBy('pertanyaan.created', 'DESC')->paginate(),
 		]);
 	}
@@ -118,7 +108,7 @@ class PertanyaanController extends Controller
 
 		$view = BrowserDetect::isMobile() ? 'pertanyaan.mobile.ustadz.admin' : 'pertanyaan.ustadz.admin';
 		return view($view, [
-			'pertanyaans' => Pertanyaan::when($request->q, function($query) use ($request) {
+			'pertanyaans' => Pertanyaan::select('pertanyaan.*')->when($request->q, function($query) use ($request) {
 									return $query->join('groups', 'groups.group_id', '=', 'pertanyaan.group_id', 'left')
                                         ->where(function($q) use($request) {
                                             return $q->where('judul_pertanyaan', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%')

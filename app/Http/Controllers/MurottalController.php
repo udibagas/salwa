@@ -46,13 +46,14 @@ class MurottalController extends Controller
 
 	public function admin(Request $request)
     {
-		$nama_surat = str_replace(' ', '%', $request->nama_surat);
-
         return view('murottal.admin', [
-			'murottals' => Murottal::when($nama_surat, function($query) use ($nama_surat) {
-							return $query->where('nama_surat', 'like', '%'.$nama_surat.'%');
-						})->when($request->group_id, function($query) use ($request) {
-							return $query->where('group_id', $request->group_id);
+			'murottals' => Murottal::select('murotal.*')
+                        ->when($request->q, function($query) use ($request) {
+							return $query->join('groups', 'groups.group_id', '=', 'murotal.group_id', 'left')
+                                ->where(function($q) use($request) {
+                                    return $q->where('nama_surat', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%')
+                                        ->orWhere('groups.group_name', 'LIKE', '%'.str_replace(' ', '%', $request->q).'%');
+                                });
 						})->orderBy('nama_surat', 'ASC')->paginate()
 		]);
     }

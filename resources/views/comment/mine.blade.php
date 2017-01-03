@@ -32,6 +32,9 @@
 			</a>
 		</div>
 		<ul class="list-group">
+			@if ($comments->total() == 0)
+			<li class="list-group-item text-center">Tidak ada komentar</li>
+			@endif
 			@foreach ($comments as $f)
 			<li class="list-group-item @if ($f->approved == 0) disabled @endif">
 				<div class="pull-right">

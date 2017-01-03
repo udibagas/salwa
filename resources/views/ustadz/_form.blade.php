@@ -3,8 +3,8 @@
 		{!! Form::model($ustadz, ['class' => 'form-horizontal', 'url' => $url, 'method' => $method, 'files' => true]) !!}
 
 			<div class="form-group{{ $errors->has('ustadz_name') ? ' has-error' : '' }}">
-				<label for="ustadz_name" class="col-sm-2 control-label">Name:</label>
-				<div class="col-md-10">
+				<label for="ustadz_name" class="col-md-3 control-label">Name:</label>
+				<div class="col-md-7">
 					{{ Form::text('ustadz_name', $ustadz->ustadz_name, ['class' => 'form-control', 'placeholder' => 'Name']) }}
 
 					@if ($errors->has('ustadz_name'))
@@ -16,8 +16,8 @@
 			</div>
 
 			<div class="form-group @if ($errors->has('ustadz_address')) has-error @endif">
-				<label for="ustadz_address" class="col-sm-2 control-label">Address:</label>
-				<div class="col-md-10">
+				<label for="ustadz_address" class="col-md-3 control-label">Address:</label>
+				<div class="col-md-7">
 					{!! Form::textarea('ustadz_address', $ustadz->ustadz_address, ['class' => 'form-control', 'placeholder' => 'Address', 'rows' => 4]) !!}
 					@if ($errors->has('ustadz_address'))
 						<span class="help-block">
@@ -28,8 +28,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('ustadz_phone') ? ' has-error' : '' }}">
-				<label for="ustadz_phone" class="col-sm-2 control-label">Phone:</label>
-				<div class="col-md-10">
+				<label for="ustadz_phone" class="col-md-3 control-label">Phone:</label>
+				<div class="col-md-7">
 					{{ Form::text('ustadz_phone', $ustadz->ustadz_phone, ['class' => 'form-control', 'placeholder' => 'Phone']) }}
 
 					@if ($errors->has('ustadz_phone'))
@@ -41,8 +41,8 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('ustadz_gender') ? ' has-error' : '' }}">
-				<label for="ustadz_gender" class="col-sm-2 control-label">Gender:</label>
-				<div class="col-md-10">
+				<label for="ustadz_gender" class="col-md-3 control-label">Gender:</label>
+				<div class="col-md-7">
 					{{ Form::select('ustadz_gender',
 						['P' => 'Pria', 'W' => 'Wanita'],
 						$ustadz->ustadz_gender, [
@@ -60,10 +60,10 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('ustadz_status') ? ' has-error' : '' }}">
-				<label for="ustadz_status" class="col-sm-2 control-label">Status:</label>
-				<div class="col-md-10">
+				<label for="ustadz_status" class="col-md-3 control-label">Status:</label>
+				<div class="col-md-7">
 					{{ Form::select('ustadz_status',
-						['A' => 'A', 'N' => 'N'],
+						['A' => 'Aktif', 'N' => 'Non Aktif'],
 						$ustadz->ustadz_status, [
 							'class' => 'form-control',
 							'placeholder' => '-- Pilih Status --'
@@ -78,11 +78,11 @@
 				</div>
 			</div>
 
-			<hr>
-
 			<div class="form-group">
-				<div class="col-md-12">
-					<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
+				<div class="col-md-7 col-md-offset-3">
+					<button type="submit" name="submit" class="btn btn-primary">
+						<i class="fa fa-save"></i> SIMPAN
+					</button>
 				</div>
 			</div>
 

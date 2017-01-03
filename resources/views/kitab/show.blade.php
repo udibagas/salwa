@@ -33,6 +33,7 @@
 							<b>{{ $kitab->penulis }}</b>
 							<br />
 
+
 							<p>{!! $kitab->materi !!}</p>
 
 						</div>
@@ -41,7 +42,7 @@
 
 						@include('layouts._share')
 
-						<a href="/kitab/{{ $kitab->buku_id }}/download" class="btn btn-default"><span class="fa fa-download"></span> Download</a>
+						<a href="/kitab/{{ $kitab->buku_id }}/download" class="btn btn-default"><span class="fa fa-download"></span> Download ({{ $kitab->didownload }}x)</a>
 
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 @extends('layouts.cms')
 
-@section('title') Salwa Audio @stop
+@section('title', 'Murottal')
 
 @section('breadcrumbs')
 
@@ -16,66 +16,50 @@
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title"><i class="fa fa-microphone"></i> MUROTTAL AL QUR'AN</h3>
+			<h3 class="panel-title"><i class="fa fa-microphone"></i> MUROTTAL</h3>
 		</div>
 		<div class="panel-body">
-			{!! Form::open(['method' => 'GET', 'class' => 'form-inline']) !!}
-				<label for="">FILTER : </label>
-				<input type="text" name="nama_surat" value="{{ request('nama_surat') }}" class="form-control" placeholder="Nama Surat">
+			<a href="/murottal/create" class="btn btn-primary"><i class="fa fa-plus-circle"></i> ADD NEW MUROTTAL</a>
 
-				{!! Form::select('group_id', \App\Group::active()->murottal()->orderBy('group_name', 'ASC')->pluck('group_name', 'group_id'), request('group_id'), ['class' => 'form-control', 'placeholder' => '-Semua Kategori-']) !!}
+			{!! Form::open(['method' => 'GET', 'class' => 'form-inline pull-right']) !!}
+				<input type="text" name="q" value="{{ request('q') }}" class="form-control" placeholder="Search Murottal">
 
-				<button type="submit" name="filter" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button>
-				<a href="/artikel/admin" class="btn btn-warning"><i class="fa fa-refresh"></i> Clear</a>
-
-				<a href="/murottal/create" class="btn btn-primary pull-right"><i class="fa fa-plus-circle"></i> ADD NEW MUROTTAL</a>
+				<button type="submit" name="filter" class="btn btn-primary"><i class="fa fa-search"></i></button>
+				<a href="/murottal/admin" class="btn btn-primary"><i class="fa fa-refresh"></i></a>
 			{!! Form::close() !!}
-			<hr>
-
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Judul</th>
-						<th>Kategori</th>
-						<th style="width:250px;">Play</th>
-						<th style="width:150px;">Created At</th>
-						<th style="width:150px;">Updated At</th>
-						<th style="width:130px;">Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php $i = $murottals->firstItem(); ?>
-					@foreach ($murottals as $a)
-						<tr>
-							<td>{{ $i++ }}</td>
-							<td>{{ $a->nama_surat }}</td>
-							<td>{{ $a->group ? $a->group->group_name : '' }}</td>
-							<td>
-								<audio controls="controls" preload="none" style="width:100%"><source src="/{{ $a->file_mp3 }}" type="application/ogg"></source></audio>
-							</td>
-							<td>{{ $a->created }}</td>
-							<td>{{ $a->updated }}</td>
-							<td>
-								{!! Form::open(['method' => 'DELETE', 'url' => '/murottal/'.$a->murotal_id]) !!}
-								{!! Form::hidden('redirect', url()->full()) !!}
-								<div class="btn-group">
-									<a href="/murottal/{{ $a->murotal_id }}/edit" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</a>
-									<button type="submit" name="delete" class="btn btn-danger btn-xs delete"><i class="fa fa-trash"></i> Hapus</button>
-								</div>
-								{!! Form::close() !!}
-							</td>
-						</tr>
-					@endforeach
-				</tbody>
-			</table>
 		</div>
+		<ul class="list-group">
+			@if ($murottals->total() == 0)
+			<li class="list-group-item text-center">Tidak ada murottal</li>
+			@endif
+			@foreach ($murottals as $a)
+			<li class="list-group-item">
+				<div class="pull-right">
+					<a href="/murottal/{{ $a->murotal_id }}/edit">Edit</a> &bull;
+					<a href="#" onclick="event.preventDefault(); if(confirm('Anda yakin?')) {document.getElementById('delete-murottal-{{$a->murotal_id}}').submit()}">Hapus</a>
+
+					{!! Form::open(['method' => 'DELETE', 'url' => '/murottal/'.$a->murotal_id, 'id' => 'delete-murottal-'.$a->murotal_id, 'style' => 'display:none;']) !!}
+					{!! Form::hidden('redirect', url()->full()) !!}
+					{!! Form::close() !!}
+				</div>
+
+				@if ($a->group)
+				<a href="/murottal?group_id={{ $a->group_id}}" class="text-bold">[{{ $a->group->group_name }}]</a>
+				@endif
+				<b>{{ $a->nama_surat }}</b> &bull;
+				{{ $a->created ? $a->created->diffForHumans() : '' }}
+				<br>
+				<audio controls="controls" preload="none"><source src="/{{ $a->file_mp3 }}" type="application/ogg"></source></audio>
+			</li>
+			@endforeach
+		</ul>
 		<div class="panel-footer">
 			<div class="pull-right">
 				Showing {{ $murottals->firstItem() }} to {{ $murottals->lastItem() }} of {{ $murottals->total() }} entries
 			</div>
-			{!! $murottals->appends(['nama_surat' => request('nama_surat'),'group_id' => request('group_id')])->links() !!}
-			<div class="clearfix"> </div>
+			{!! $murottals->appends(['q' => request('q')])->links() !!}
+			<div class="clearfix"></div>
 		</div>
 	</div>
+
 @stop

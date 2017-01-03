@@ -46,17 +46,19 @@ class PeduliController extends Controller
 
     public function admin(Request $request)
     {
-		$judul = str_replace(' ', '%', $request->judul);
-
         return view('peduli.admin', [
-			'pedulis' => Peduli::when($judul, function($query) use ($judul) {
-								return $query->where('judul', 'like', '%'.$judul.'%');
-							})->when($request->group_id, function($query) use ($request) {
-								return $query->where('group_id', $request->group_id);
-							})->when($request->user, function($query) use ($request) {
-								return $query->join('users', 'users.user_id', '=', 'peduli.user_id')
-									->where('users.name', 'like', '%'.$request->user.'%');
-							})->orderBy('peduli.updated', 'DESC')->paginate()
+			'pedulis' => Peduli::select('peduli.*')
+                        ->when($request->q, function($query) use($request) {
+                            return $query
+                                ->join('groups', 'groups.group_id', '=', 'peduli.group_id', 'left')
+                                ->join('users', 'users.user_id', '=', 'peduli.user_id', 'left')
+                                ->where(function($q) use($request) {
+                                    $search = str_replace(' ', '%', $request->q);
+                                    return $q->where('judul', 'LIKE', '%'.$search.'%')
+                                        ->orWhere('groups.group_name', 'LIKE', '%'.$search.'%')
+                                        ->orWhere('users.name', 'like', '%'.$search.'%');
+                                });
+                        })->orderBy('peduli.updated', 'DESC')->paginate()
 		]);
     }
 
@@ -182,6 +184,8 @@ class PeduliController extends Controller
 			unlink($peduli->img_artikel);
 		}
 
+        // delete comment
+        $peduli->comments()->delete();
 		return redirect($request->redirect)->with('success', 'Data berhasil dihapus');
     }
 

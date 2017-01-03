@@ -43,7 +43,7 @@
 						<th>Type</th>
 						<th>Description</th>
 						<th>Deleted</th>
-						<th style="width:1370px;">Action</th>
+						<th style="width:130px;">Action</th>
 					</tr>
 				</thead>
 				<tbody>

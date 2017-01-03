@@ -24,9 +24,6 @@ class CommentController extends Controller
 			'comments' => Comment::orderBy('id', 'DESC')
 							->when($request->type, function($query) use ($request) {
 								return $query->ofType($request->type);
-							})->when($request->user, function($query) use ($request) {
-								return $query->join('users', 'users.user_id', '=', 'comments.user_id')
-											->where('users.name', 'like', '%'.$request->user.'%');
 							})->when($request->q, function($query) use ($request) {
 								return $query->where(function($q) use ($request) {
 									return $q->join('users', 'users.user_id', '=', 'comments.user_id')
