@@ -21,6 +21,7 @@ elixir((mix) => {
            'chosen.min.css',
            'font-awesome.min.css',
            'gallery.css',
+           'bootstrap-datetimepicker.min.css',
        ])
     //    QURAN DESKTOP
        .styles([
@@ -40,6 +41,7 @@ elixir((mix) => {
            'font-awesome.min.css',
            'gallery.css',
            'jquery.sidr.bare.css',
+           'bootstrap-datetimepicker.min.css',
            'mobile.css',
        ], 'public/css/mobile.css')
        .scripts([
@@ -47,6 +49,8 @@ elixir((mix) => {
            'chosen.jquery.min.js',
            'initial.min.js',
            'jquery.sidr.min.js',
+           'moment.min.js',
+           'bootstrap-datetimepicker.min.js',
            'pager.js',
            'main.js'
        ])

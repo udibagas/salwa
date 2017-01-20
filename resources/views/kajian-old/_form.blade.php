@@ -56,13 +56,18 @@
 			<div class="form-group{{ $errors->has('tanggal') ? ' has-error' : '' }}">
 				<label for="tanggal" class="col-sm-3 col-md-3 control-label">Tanggal & Jam:</label>
 				<div class="col-md-9">
-					{{ Form::text('tanggal', $kajian->kajian_dates, ['class' => 'form-control', 'placeholder' => 'Tanggal Kajian (Untuk jenis kajian sekali waktu dd-mm-yyyy hh:mm)']) }}
+					<!-- <div class="input-group date" id=""> -->
+						{{ Form::text('kajian_dates', $kajian->kajian_dates, ['class' => 'form-control', 'placeholder' => 'Tanggal Kajian (Untuk jenis kajian sekali waktu yyyy-mm-dd hh:mm)']) }}
+						<!-- <span class="input-group-addon">
+							<i class="fa fa-calendar"></i>
+						</span> -->
 
-					@if ($errors->has('kajian_dates'))
-					<span class="help-block">
-						<strong>{{ $errors->first('kajian_dates') }}</strong>
-					</span>
-					@endif
+						@if ($errors->has('kajian_dates'))
+						<span class="help-block">
+							<strong>{{ $errors->first('kajian_dates') }}</strong>
+						</span>
+						@endif
+					<!-- </div> -->
 				</div>
 			</div>
 
@@ -274,3 +279,13 @@
 		@endif
 	</div>
 </div>
+
+@push('script')
+
+<script type="text/javascript">
+$('#datetimepicker').datetimepicker({
+	viewMode: 'months'
+});
+</script>
+
+@endpush
