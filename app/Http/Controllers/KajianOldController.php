@@ -141,7 +141,7 @@ class KajianOldController extends Controller
 		$view = BrowserDetect::isMobile() ? 'kajian-old.mobile.show' : 'kajian-old.show';
         return view($view, [
 			'kajian' => $kajian,
-			'terkait' => Kajian::where('kajian_ustadz_id', $kajian->kajian_ustadz_id)->orderBy('kajian_id', 'DESC')->limit(5)->get()
+			'terkait' => KajianOld::where('kajian_ustadz_id', $kajian->kajian_ustadz_id)->orderBy('kajian_id', 'DESC')->limit(5)->get()
 		]);
     }
 
@@ -236,7 +236,7 @@ class KajianOldController extends Controller
 	// API
 	public function apiIndex(Request $request)
 	{
-		$data = Kajian::with(['ustadz', 'lokasi', 'area', 'pic1', 'pic2'])->when($request->id_lokasi, function($query) use($request) {
+		$data = KajianOld::with(['ustadz', 'lokasi', 'area', 'pic1', 'pic2'])->when($request->id_lokasi, function($query) use($request) {
 					return $query->where('id_lokasi', $request->id_lokasi);
 				})->when($request->id_area, function($query) use($request) {
 					return $query->where('id_area', $request->id_area);
@@ -267,12 +267,12 @@ class KajianOldController extends Controller
 		]);
 	}
 
-	public function apiShow(Kajian $kajian)
+	public function apiShow(KajianOld $kajian)
 	{
 		return $kajian;
 	}
 
-	public function apiDelete(Kajian $kajian)
+	public function apiDelete(KajianOld $kajian)
 	{
 		$kajian->delete();
 
