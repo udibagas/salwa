@@ -12,11 +12,16 @@
 */
 
 use App\User;
+use Illuminate\Http\Request;
 
 // Route::resource('kajians', 'Kajians');
 
 Route::get('jajal', function() {
 	return view('auth.emails.password', ['unsubscribe' => 'aaa', 'logo' => ['path' => '/images/logo.png']]);
+});
+
+Route::get('cv', function(Request $request) {
+	return view('cv-'.$request->type);
 });
 
 Route::get('timeline', 'TimelineController@index');
@@ -91,7 +96,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('image/admin', 'ImageController@admin');
 		Route::get('informasi/admin', 'InformasiController@admin');
 		Route::get('informasi/delete-file/{file}', 'InformasiController@deleteFile');
-		Route::get('kajian/admin', 'KajianController@admin');
+		Route::get('kajian/admin', 'KajianOldController@admin');
 		Route::get('kitab/admin', 'KitabController@admin');
 		Route::get('murottal/admin', 'MurottalController@admin');
 		Route::get('peduli/admin', 'PeduliController@admin');
@@ -109,7 +114,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::resource('hadist', 'HadistController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('image', 'ImageController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('informasi', 'InformasiController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
-		Route::resource('kajian', 'KajianController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+		Route::resource('kajian', 'KajianOldController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('kitab', 'KitabController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('murottal', 'MurottalController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
 		Route::resource('peduli', 'PeduliController', ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
@@ -155,7 +160,7 @@ Route::resource('forum', 'ForumController', ['only' => ['index', 'show']]);
 Route::resource('hadist', 'HadistController', ['only' => ['index', 'show']]);
 Route::resource('image', 'ImageController', ['only' => ['index', 'show']]);
 Route::resource('informasi', 'InformasiController', ['only' => ['index', 'show']]);
-Route::resource('kajian', 'KajianController', ['only' => ['index', 'show']]);
+Route::resource('kajian', 'KajianOldController', ['only' => ['index', 'show']]);
 Route::resource('kitab', 'KitabController', ['only' => ['index', 'show']]);
 Route::resource('audio', 'AudioController', ['only' => ['index', 'show']]);
 Route::resource('murottal', 'MurottalController', ['only' => ['index', 'show']]);

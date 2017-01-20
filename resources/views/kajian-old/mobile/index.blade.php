@@ -6,7 +6,7 @@
 
 	<h4 class="title">JADWAL KAJIAN</h4>
 	<div id="post-list">
-		@each('kajian.mobile._list', $kajians, 'a')
+		@each('kajian-old.mobile._list', $kajians, 'a')
 	</div>
 
 	@if ($kajians->lastPage() > 1)

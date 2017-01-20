@@ -20,7 +20,7 @@
 				@if ($a->jenis_kajian == 1)
 				{{ $a->kajian_dates }}
 				@elseif ($a->jenis_kajian == 2)
-				{{ \App\Kajian::getHari($a->setiap_hari) }}, {{ $a->setiap_jam }}
+				{{ \App\KajianOld::getHari($a->setiap_hari) }}, {{ $a->setiap_jam }}
 				@else
 				{{ $a->setiap_tanggal }}
 				@endif

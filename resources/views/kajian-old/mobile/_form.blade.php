@@ -29,7 +29,7 @@
 
 		<div class="form-group{{ $errors->has('jenis_kajian') ? ' has-error' : '' }}">
 			{{ Form::select('jenis_kajian',
-				\App\Kajian::jenisKajianList(),
+				\App\KajianOld::jenisKajianList(),
 				$kajian->jenis_kajian, [
 					'class' => 'form-control',
 					'placeholder' => '-- Pilih Jenis Kajian --'
@@ -55,7 +55,7 @@
 
 		<div class="form-group{{ $errors->has('setiap_hari') ? ' has-error' : '' }}">
 			{{ Form::select('setiap_hari',
-				\App\Kajian::getHari(),
+				\App\KajianOld::getHari(),
 				$kajian->setiap_hari, [
 					'class' => 'form-control',
 					'placeholder' => '-- Pilih Hari (Untuk jenis kajian pekanan) --'

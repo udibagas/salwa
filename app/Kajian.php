@@ -27,10 +27,10 @@ class Kajian extends Model
 	{
 		if ($this->rutin)
 		{
-			return $this->hari. ' Pukul '.$this->jam.' Pekan '.$this->pekan;
+			return $this->hari.' Pekan '.$this->pekan.'<br />'.$this->jam;
 		} else {
             $hari = date('D',strtotime($this->tanggal));
-            return self::getDay($hari).', '.date('d F Y', strtotime($this->tanggal)).' Pukul '.$this->jam;
+            return self::getDay($hari).', '.date('d F Y', strtotime($this->tanggal)).'<br />'.$this->jam;
 		}
 	}
 

@@ -15,7 +15,7 @@
 			  <?php $i++ ?>
 			<div class="item @if ($i == 1) active @endif" style="max-height:200px;">
 				<div class="row no-gutter">
-					@each('kajian._list', $chunk, 'kajian')
+					@each('kajian-old._list', $chunk, 'kajian')
 				</div>
 			</div>
 

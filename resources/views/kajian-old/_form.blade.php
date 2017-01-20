@@ -38,7 +38,7 @@
 				<label for="jenis_kajian" class="col-sm-3 col-md-3 control-label">Jenis Kajian:</label>
 				<div class="col-md-9">
 					{{ Form::select('jenis_kajian',
-						\App\Kajian::jenisKajianList(),
+						\App\KajianOld::jenisKajianList(),
 						$kajian->jenis_kajian, [
 							'class' => 'form-control',
 							'placeholder' => '-- Pilih Jenis Kajian --'
@@ -54,13 +54,13 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('tanggal') ? ' has-error' : '' }}">
-				<label for="tanggal" class="col-sm-3 col-md-3 control-label">Tanggal:</label>
+				<label for="tanggal" class="col-sm-3 col-md-3 control-label">Tanggal & Jam:</label>
 				<div class="col-md-9">
-					{{ Form::text('tanggal', $kajian->tanggal, ['class' => 'form-control', 'placeholder' => 'Tanggal Kajian (Untuk jenis kajian sekali waktu)']) }}
+					{{ Form::text('tanggal', $kajian->kajian_dates, ['class' => 'form-control', 'placeholder' => 'Tanggal Kajian (Untuk jenis kajian sekali waktu dd-mm-yyyy hh:mm)']) }}
 
-					@if ($errors->has('tanggal'))
+					@if ($errors->has('kajian_dates'))
 					<span class="help-block">
-						<strong>{{ $errors->first('tanggal') }}</strong>
+						<strong>{{ $errors->first('kajian_dates') }}</strong>
 					</span>
 					@endif
 				</div>
@@ -70,7 +70,7 @@
 				<label for="setiap_hari" class="col-sm-3 col-md-3 control-label">Setiap Hari:</label>
 				<div class="col-md-9">
 					{{ Form::select('setiap_hari',
-						\App\Kajian::getHari(),
+						\App\KajianOld::getHari(),
 						$kajian->setiap_hari, [
 							'class' => 'form-control',
 							'placeholder' => '-- Pilih Hari (Untuk jenis kajian pekanan) --'
@@ -257,11 +257,11 @@
 				</div>
 			</div>
 
-			<hr>
-
 			<div class="form-group">
 				<div class="col-md-offset-3 col-md-9">
-					<button type="submit" name="submit" class="btn btn-info">SIMPAN</button>
+					<button type="submit" name="submit" class="btn btn-primary">
+						<i class="fa fa-save"></i> SIMPAN
+					</button>
 				</div>
 			</div>
 

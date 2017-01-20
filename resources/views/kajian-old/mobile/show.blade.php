@@ -25,7 +25,7 @@
 					@if ($kajian->jenis_kajian == 1)
 					{{ $kajian->kajian_dates }}
 					@elseif ($kajian->jenis_kajian == 2)
-					{{ \App\Kajian::getHari($kajian->setiap_hari) }}, {{ $kajian->setiap_jam }}
+					{{ \App\KajianOld::getHari($kajian->setiap_hari) }}, {{ $kajian->setiap_jam }}
 					@else
 					{{ $kajian->setiap_tanggal }}
 					@endif
@@ -64,7 +64,7 @@
 		@include('layouts._share')
 	</div>
 
-	@include('kajian._group')
+	@include('kajian-old._group')
 
 	@if (auth()->check() && auth()->user()->isAdmin())
 		{!! Form::open(['method' => 'DELETE']) !!}

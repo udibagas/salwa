@@ -19,7 +19,7 @@
 
 	<div class="row">
 		<div class="col-sm-3 col-md-3 hidden-xs">
-			@include('kajian._group')
+			@include('kajian-old._group')
 		</div>
 		<div class="col-sm-6 col-md-6">
 			<h2 style="margin-top:0;">{{ $kajian->kajian_tema }}</h2>
@@ -48,7 +48,7 @@
 							@if ($kajian->jenis_kajian == 1)
 							{{ $kajian->kajian_dates }}
 							@elseif ($kajian->jenis_kajian == 2)
-							{{ \App\Kajian::getHari($kajian->setiap_hari) }}, {{ $kajian->setiap_jam }}
+							{{ \App\KajianOld::getHari($kajian->setiap_hari) }}, {{ $kajian->setiap_jam }}
 							@else
 							{{ $kajian->setiap_tanggal }}
 							@endif
@@ -79,7 +79,7 @@
 		</div>
 		<div class="col-sm-3 col-md-3">
 			<h4 class="title">KAJIAN TERKAIT</h4>
-			@each('kajian._list-side', $terkait, 'kajian')
+			@each('kajian-old._list-side', $terkait, 'kajian')
 		</div>
 	</div>
 

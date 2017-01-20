@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Requests\KajianRequest;
-use App\Kajian;
+use App\Http\Requests\KajianOldRequest;
+use App\KajianOld;
 use App\Pic;
 use BrowserDetect;
 
@@ -18,8 +18,8 @@ class KajianOldController extends Controller
      */
 	public function index(Request $request)
 	{
-		$view = BrowserDetect::isMobile() ? 'kajian.mobile.index' : 'kajian.index';
-		$kajians = Kajian::active()->when($request->rutin == 'rutin', function($query) use($request) {
+		$view = BrowserDetect::isMobile() ? 'kajian-old.mobile.index' : 'kajian-old.index';
+		$kajians = KajianOld::active()->when($request->rutin == 'rutin', function($query) use($request) {
 						return $query->rutin()->orderBy('setiap_hari', 'ASC');
 					})->when($request->rutin == 'tematik', function($query) use($request) {
 						return $query->tematik()->whereRaw('DATE(kajian_dates) >= DATE(NOW())');
@@ -35,7 +35,7 @@ class KajianOldController extends Controller
 			$html = '';
 
 			foreach ($kajians as $a) {
-				$html .= view('kajian.mobile._list', ['a' => $a]);
+				$html .= view('kajian-old.mobile._list', ['a' => $a]);
 			}
 
 			return response()->json([
@@ -52,8 +52,8 @@ class KajianOldController extends Controller
 
 	public function admin(Request $request)
     {
-        return view('kajian.admin', [
-			'kajians' => Kajian::when($request->tempat, function($query) use($request) {
+        return view('kajian-old.admin', [
+			'kajians' => KajianOld::when($request->tempat, function($query) use($request) {
 							return $query->where('kajian_tempat', 'like', '%'.$request->tempat.'%');
 						})->when($request->jenis, function($query) use($request) {
 							return $query->where('jenis_kajian', $request->jenis);
@@ -79,8 +79,8 @@ class KajianOldController extends Controller
      */
     public function create()
     {
-		$view = BrowserDetect::isMobile() ? 'kajian.mobile.create' : 'kajian.create';
-        return view($view, ['kajian' => new Kajian]);
+		$view = BrowserDetect::isMobile() ? 'kajian-old.mobile.create' : 'kajian-old.create';
+        return view($view, ['kajian' => new KajianOld]);
     }
 
     /**
@@ -89,7 +89,7 @@ class KajianOldController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(KajianRequest $request)
+    public function store(KajianOldRequest $request)
     {
         $data				= $request->all();
 		$data['createdby']	= auth()->user()->name;
@@ -125,7 +125,7 @@ class KajianOldController extends Controller
         $data['kajian_pic_id'] = $pic1->pic_id;
         $data['kajian_pic_id2'] = $pic2->pic_id;
 
-        $kajian = Kajian::create($data);
+        $kajian = KajianOld::create($data);
 
 		return redirect('kajian/admin')->with('success', 'Data berhasil disimpan');
     }
@@ -136,9 +136,9 @@ class KajianOldController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Kajian $kajian)
+    public function show(KajianOld $kajian)
     {
-		$view = BrowserDetect::isMobile() ? 'kajian.mobile.show' : 'kajian.show';
+		$view = BrowserDetect::isMobile() ? 'kajian-old.mobile.show' : 'kajian-old.show';
         return view($view, [
 			'kajian' => $kajian,
 			'terkait' => Kajian::where('kajian_ustadz_id', $kajian->kajian_ustadz_id)->orderBy('kajian_id', 'DESC')->limit(5)->get()
@@ -151,9 +151,9 @@ class KajianOldController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kajian $kajian)
+    public function edit(KajianOld $kajian)
     {
-		$view = BrowserDetect::isMobile() ? 'kajian.mobile.edit' : 'kajian.edit';
+		$view = BrowserDetect::isMobile() ? 'kajian-old.mobile.edit' : 'kajian-old.edit';
         return view($view, ['kajian' => $kajian]);
     }
 
@@ -222,7 +222,7 @@ class KajianOldController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kajian $kajian, Request $request)
+    public function destroy(KajianOld $kajian, Request $request)
     {
         $kajian->delete();
 
@@ -316,6 +316,6 @@ class KajianOldController extends Controller
         $data['kajian_pic_id'] = $pic1->pic_id;
         $data['kajian_pic_id2'] = $pic2->pic_id;
 
-        return Kajian::create($data);
+        return KajianOld::create($data);
     }
 }
