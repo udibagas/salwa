@@ -16,7 +16,7 @@
 	<br>
 	<br>
 
-	<img class="img-responsive" src="/{{ $informasi->img }}" alt="{{ $informasi->judul }}">
+	<img class="img-responsive" src="/{{ $informasi->img_gambar }}" alt="{{ $informasi->judul }}">
 
 	<br>
 
